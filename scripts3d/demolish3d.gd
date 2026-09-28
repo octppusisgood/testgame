@@ -388,7 +388,9 @@ func damage_structure_at(pos: Vector3, dmg: int) -> void:
 
 
 # 建筑血量标记：满血不显示（避免全城满屏标签）；受损后楼顶挂 HP x/y，
-# 颜色随血量变化（<30% 红 / <70% 黄 / 其余浅绿）；坍塌/归零后隐藏
+# 颜色随血量变化（<30% 红 / <70% 黄 / 其余浅绿）；坍塌/归零后隐藏。
+# 标签挂到建筑自身节点下：随建筑距离剔除一起隐藏（远处楼标签不会悬空可见），
+# 建筑坍塌销毁时标签一并释放。
 func _refresh_hp_label(s: Dictionary) -> void:
 	if s.is_empty():
 		return
@@ -399,19 +401,29 @@ func _refresh_hp_label(s: Dictionary) -> void:
 		or GameState.demolished_buildings.has(pos_px)
 		or GameState.demolished_towers.has(pos_px)
 	)
-	var label: Label3D = _hp_labels.get(pos_px, null)
+	# 注意：Godot 4.7 里被释放的对象存在字典中时值会变为 null 但键保留，
+	# 必须用 has() 判存在后再校验有效性
+	var label = null
+	if _hp_labels.has(pos_px):
+		label = _hp_labels[pos_px]
+		if label == null or not is_instance_valid(label):
+			_hp_labels.erase(pos_px)
+			label = null
 	if hp >= GameState.BUILDING_HP or collapsed:
 		if label != null:
 			label.visible = false
 		return
 	if label == null:
+		var host := _label_host(s)
+		if host == null:
+			return
 		label = Label3D.new()
 		label.font_size = 48
 		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		var size_px: Vector2 = s["size"]
 		var floors := int(s["floors"])
 		var height := 10.0 if GameState.demolish_is_big(size_px, floors) else 5.0
-		add_child(label)
+		host.add_child(label)
 		label.global_position = Vector3(pos_px.x * SCALE, height, pos_px.y * SCALE)
 		_hp_labels[pos_px] = label
 	var ratio := float(hp) / float(GameState.BUILDING_HP)
@@ -423,6 +435,14 @@ func _refresh_hp_label(s: Dictionary) -> void:
 		label.modulate = Color(0.8, 0.95, 0.8)
 	label.text = "HP %d/%d" % [hp, GameState.BUILDING_HP]
 	label.visible = true
+
+
+# 标签宿主：优先建筑模型根节点（进 occludable 组、随建筑剔除/销毁联动）
+func _label_host(s: Dictionary) -> Node3D:
+	for node in _structure_nodes(s):
+		if node != null and is_instance_valid(node) and node is Node3D and not node.is_queued_for_deletion():
+			return node
+	return null
 
 
 
@@ -547,10 +567,12 @@ func _collapse_structure(s: Dictionary, drop_pile := 0) -> void:
 		if node != null and is_instance_valid(node) and not node.is_in_group("npcs"):
 			node.queue_free()
 	_leave_rubble(center, maxf(size_px.x, size_px.y) * SCALE / 2.0)
-	# 坍塌成废墟：隐藏血量标记
-	var hp_label: Label3D = _hp_labels.get(pos_px, null)
-	if hp_label != null:
-		hp_label.visible = false
+	# 坍塌成废墟：清理血量标记（标签挂在建筑节点下，随 queue_free 已释放，这里清引用）
+	var hp_value = _hp_labels.get(pos_px, null)
+	if hp_value != null:
+		if is_instance_valid(hp_value):
+			(hp_value as Label3D).visible = false
+		_hp_labels.erase(pos_px)
 	var noun := _structure_noun(kind)
 	if drop_pile > 0:
 		_drop_material_pile(door_pos, drop_pile)

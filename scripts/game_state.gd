@@ -1022,6 +1022,8 @@ var echo_offer: Array = []
 var boss_sp_bonus := 0
 var _last_world_stage := -1
 var skills_open := false
+# 玩家当前所在建筑（内部房间）id；空 = 在室外
+var player_in_building := ""
 
 var news: Array = []
 var map_open := false
@@ -4034,6 +4036,7 @@ func reset_run(reload_scene := false) -> void:
 	news.clear()
 	map_open = false
 	backpack_open = false
+	player_in_building = ""
 	signal_strength = 0.0
 	in_coverage = false
 	_signal_sources.clear()

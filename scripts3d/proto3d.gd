@@ -282,6 +282,9 @@ func _ready() -> void:
 	GameState.reset_coverage()
 	GameState.custom_outbreak = false
 	GameState.custom_map_size = Vector2.ZERO
+	# 建筑内部系统：进入建筑 = 传送到地下懒生成的内部房间（容量 20）
+	var interiors := preload("res://scripts3d/building_interior3d.gd").new()
+	add_child(interiors)
 	if GameState.test_mode:
 		_build_test_hint()
 	_setup_environment()
@@ -3143,6 +3146,7 @@ class BaseDoor extends Node3D:
 
 	func _ready() -> void:
 		add_to_group("interactables")
+		add_to_group("building_doors")
 		_plate = Label3D.new()
 		_plate.text = "据点"
 		_plate.font_size = 64
@@ -3226,6 +3230,17 @@ class BaseDoor extends Node3D:
 		if channeling():
 			return []
 		var options: Array = []
+		# 进入建筑（内部房间容量 20：玩家 + 市民）
+		var interiors_root := get_tree().get_first_node_in_group("building_interiors")
+		var room_used := 0
+		if interiors_root != null:
+			room_used = interiors_root.occupant_count_for(building_id)
+		options.append({
+			"id": "enter",
+			"label": "进入建筑（%d/%d 人）" % [room_used, interiors_root.CAP if interiors_root != null else 20],
+			"disabled": room_used >= 20,
+			"reason": "楼内已满（20 人）",
+		})
 		if building_id == "power":
 			# 发电厂：专属修复交互（发电站停运后恢复全城供电）
 			if GameState.grid_repaired:
@@ -3294,6 +3309,10 @@ class BaseDoor extends Node3D:
 
 	func interact_choose(id: String, _player: Node3D) -> void:
 		match id:
+			"enter":
+				var interiors_root := get_tree().get_first_node_in_group("building_interiors")
+				if interiors_root != null:
+					interiors_root.enter_player(self, _player)
 			"claim":
 				_try_interact()
 			"repair":

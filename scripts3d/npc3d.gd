@@ -59,6 +59,11 @@ var _alert_timer := 0.0
 var _base_color := Color.WHITE
 var _panicked := false
 var _panic_timer := 0.0
+# 建筑避难：躲入的内部房间 building_id（空 = 在室外）；门口引用/滞留计时/再进冷却
+var sheltered := ""
+var _shelter_door: Node3D = null
+var _shelter_timer := 0.0
+var _shelter_cooldown := 0.0
 var _saw_crime_msec := 0
 var _limbs := {}
 var _avoid_angle := 0.0
@@ -877,9 +882,29 @@ func _wander_or_flee(delta: float) -> void:
 		velocity.x = 0.0
 		velocity.z = 0.0
 		return
+	# 躲在建筑内部：室内漫步，滞留计时到点出来探头
+	if not sheltered.is_empty():
+		_shelter_timer -= delta
+		_idle_wander(delta)
+		if _shelter_timer <= 0.0:
+			_leave_shelter()
+		return
+	if _shelter_cooldown > 0.0:
+		_shelter_cooldown -= delta
 	if not _panicked:
 		_wander(delta)
 		return
+	# 恐慌中跑到建筑门口 → 躲入内部房间（容量 20）
+	if _shelter_door != null and is_instance_valid(_shelter_door):
+		if global_position.distance_to(_shelter_door.global_position) < 3.5:
+			var interiors_root := get_tree().get_first_node_in_group("building_interiors")
+			if interiors_root != null and interiors_root.enter_npc(_shelter_door, self):
+				sheltered = str(_shelter_door.get("building_id"))
+				_shelter_timer = randf_range(40.0, 80.0)
+				_flee_done = true
+				_flee_target = Vector3.INF
+			_shelter_door = null
+			return
 	if _flee_done:
 		velocity.x = 0.0
 		velocity.z = 0.0
@@ -915,11 +940,31 @@ func _wander_or_flee(delta: float) -> void:
 	_wander(delta)
 
 
-# 逃向避难处：玩家据点优先，否则最近的建筑
+# 逃向避难处：优先最近的可进入建筑（躲进内部房间），其次玩家据点，否则最近的建筑
 func _pick_shelter() -> Vector3:
+	if _shelter_cooldown <= 0.0:
+		var interiors_root := get_tree().get_first_node_in_group("building_interiors")
+		if interiors_root != null:
+			var door: Node3D = interiors_root.nearest_enterable_door(global_position)
+			if door != null:
+				_shelter_door = door
+				return door.global_position
 	if GameState.has_home_base():
 		return GameState.home_base["position"]
 	return _nearest_building_pos()
+
+
+# 滞留到点离开建筑：探头查看，附近没丧尸就恢复游荡，仍危险则继续逃
+func _leave_shelter() -> void:
+	var interiors_root := get_tree().get_first_node_in_group("building_interiors")
+	if interiors_root != null:
+		interiors_root.npc_leave(self)
+	sheltered = ""
+	_shelter_cooldown = 8.0
+	_flee_done = false
+	_flee_target = Vector3.INF
+	if _nearest_zombie(18.0) == null:
+		_panicked = false
 
 
 func _nearest_building_pos() -> Vector3:

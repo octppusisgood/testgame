@@ -210,6 +210,12 @@ func _try_recruit() -> void:
 	_recruit_target = null
 	if Network.is_multiplayer():
 		Network.unregister_entity(npc)
+	# 目标躲在建筑里时先送回门口，随从不能留在内部房间（会追不出门）
+	if str(npc.get("sheltered")) != "":
+		var interiors_root := get_tree().get_first_node_in_group("building_interiors")
+		if interiors_root != null:
+			interiors_root.npc_leave(npc)
+			npc.set("sheltered", "")
 	var follower := FollowerBody.new()
 	follower.follower_name = fname
 	follower.manager = self

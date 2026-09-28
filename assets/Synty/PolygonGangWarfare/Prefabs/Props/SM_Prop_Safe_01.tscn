@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dsdt20005ijoh"]
+
+[ext_resource type="ArrayMesh" uid="uid://cx7uhfg6v4igs" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Safe_01.res" id="1_61f3t"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_3qvic"]
+[ext_resource type="ArrayMesh" uid="uid://c7pegwo0rrxn" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Safe_Door_01.res" id="3_3qvic"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61f3t"]
+size = Vector3(0.5083838, 0.6110941, 0.54896975)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qvic"]
+size = Vector3(0.45280272, 0.47515664, 0.11521728)
+
+[node name="SM_Prop_Safe_01" type="MeshInstance3D" unique_id=537375806]
+gi_mode = 2
+mesh = ExtResource("1_61f3t")
+surface_material_override/0 = ExtResource("2_3qvic")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=610619821]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=508986786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30554706, 0.040200204)
+shape = SubResource("BoxShape3D_61f3t")
+
+[node name="SM_Prop_Safe_Door_01" type="MeshInstance3D" parent="." unique_id=1444999717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21891113, 0.097647086, 0.3146875)
+gi_mode = 2
+mesh = ExtResource("3_3qvic")
+surface_material_override/0 = ExtResource("2_3qvic")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Safe_Door_01" unique_id=2052920856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2114209, 0.23757832, -0.007508546)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Safe_Door_01/MeshCollider" unique_id=309608606]
+shape = SubResource("BoxShape3D_3qvic")

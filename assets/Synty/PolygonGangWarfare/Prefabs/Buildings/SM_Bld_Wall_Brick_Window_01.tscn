@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b5ypw6fkagdwm"]
+
+[ext_resource type="ArrayMesh" uid="uid://cr51brsf5ofro" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Wall_Brick_Window_01.res" id="1_mhp7k"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_k8olh"]
+[ext_resource type="ArrayMesh" uid="uid://ds0kpmmp1c3nx" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Wall_Brick_Glass_01.res" id="3_k8olh"]
+[ext_resource type="Material" uid="uid://bgr664d17lip1" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Glass_mat.tres" id="4_lntq4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qgbhb"]
+points = PackedVector3Array(-0.02351141, -0.02351129, -0.21653348, -0.02351141, -0.02351129, 0.16432363, -0.02351141, 0.11907087, -0.21653348, 3.0235112, -0.02351129, -0.21653348, 3.0235112, -0.02351129, 0.16432363, -0.02351141, 0.88090104, 0.21197271, 3.0235112, 0.11907087, -0.21653348, -0.02351141, 3.0238094, -0.02606298, 3.0235112, 0.88090104, 0.21197271, -0.02351141, 3.0238094, 0.16432363, 3.0235112, 3.0238094, -0.02606298, 3.0235112, 3.0238094, 0.16432363)
+
+[node name="SM_Bld_Wall_Brick_Window_01" type="MeshInstance3D" unique_id=355762274]
+gi_mode = 2
+mesh = ExtResource("1_mhp7k")
+surface_material_override/0 = ExtResource("2_k8olh")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1388528739]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1955610688]
+shape = SubResource("ConvexPolygonShape3D_qgbhb")
+
+[node name="SM_Bld_Wall_Brick_Glass_01" type="MeshInstance3D" parent="." unique_id=1101475113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5001602, 1.7041268, 0.09107816)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_k8olh")
+surface_material_override/0 = ExtResource("4_lntq4")

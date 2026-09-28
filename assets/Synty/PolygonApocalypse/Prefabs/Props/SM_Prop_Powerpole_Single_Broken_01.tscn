@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d38xyuksf1ij4"]
+
+[ext_resource type="ArrayMesh" uid="uid://b2iqc72q8xwdh" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Powerpole_Single_Broken_01.res" id="1_yt5cm"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_rmdi5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fj2gi"]
+points = PackedVector3Array(-0.4669886, 4.7262793, -0.16893701, 0.13718918, 0.58346695, -0.38492608, -0.121592015, -0.02158618, -0.12573919, -0.4669886, 4.7262793, 0.0037739575, -0.121592015, 6.3246384, -0.12581947, -0.16463345, 4.8995953, -0.38492608, 0.13718918, -0.02158618, 0.0898484, 0.26684603, 4.8995953, -0.34180856, 0.4396331, 4.770385, -0.16893701, 0.26693478, 0.9282354, -0.21205454, -0.07828432, -0.02158618, 0.13304621, -0.42376965, 4.6405535, 0.26263964, 0.13718918, 6.3246384, 0.08992872, 0.4396331, 4.770385, 0.17624402, 0.26684603, 4.770385, 0.43535066, -0.16463345, 4.597069, 0.43535066)
+
+[node name="SM_Prop_Powerpole_Single_Broken_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_yt5cm")
+surface_material_override/0 = ExtResource("2_rmdi5")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_fj2gi")

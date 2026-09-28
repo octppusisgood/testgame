@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://t8ukwjusw682"]
+
+[ext_resource type="ArrayMesh" uid="uid://2d4pq2eo2xql" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Lighting_Ceiling_Industrial_03.res" id="1_kq4po"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_1i8t1"]
+[ext_resource type="ArrayMesh" uid="uid://d2jw1p7cpdjs7" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Lighting_Ceiling_Industrial_Glass_03.res" id="3_1i8t1"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_0jyxo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_06c44"]
+points = PackedVector3Array(-0.1119187, -0.023501515, -0.013773471, -0.1119187, 0.0046616793, 0.014204733, -0.06517405, 0.0046616793, -0.09786172, -0.027844168, -1.4150803, -0.04180929, -0.037171155, -1.6112565, -0.0044218004, -0.027844168, -1.4150803, 0.042259753, -0.06517405, -0.023501515, 0.098312184, 0.065557346, 0.0046616793, 0.098312184, 0.065557346, 0.0046616793, -0.09786172, 0.02818358, -1.6112565, -0.03247682, -0.00914631, -1.6394196, -0.013773471, -0.01849524, -1.6112565, 0.032908082, 0.02818358, -1.4150803, 0.042259753, 0.03753251, -1.6112565, 0.014204733, 0.112280056, -0.023501515, 0.014204733, 0.112280056, -0.023501515, -0.013773471)
+
+[node name="SM_Prop_Lighting_Ceiling_Industrial_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_kq4po")
+surface_material_override/0 = ExtResource("2_1i8t1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_06c44")
+
+[node name="SM_Prop_Lighting_Ceiling_Industrial_Glass_03" type="Node3D" parent="."]
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="SM_Prop_Lighting_Ceiling_Industrial_Glass_03"]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_1i8t1")
+surface_material_override/0 = ExtResource("4_0jyxo")

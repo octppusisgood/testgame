@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bco3nru8vu50p"]
+
+[ext_resource type="ArrayMesh" uid="uid://68w7nep7vk08" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Attach_Tank_Armour_06.res" id="1_hymyn"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_vex87"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0it7m"]
+points = PackedVector3Array(-0.011643171, -0.3765139, -0.45142618, -0.011643171, -0.16007888, -0.46580318, 0.060484886, -0.3765139, -0.45142618, -0.011643171, -0.3765139, 0.44347474, 0.11824581, 0.31628382, -0.46580318, 0.11824581, -0.33316812, -0.45142618, -0.011643171, 0.35955614, -0.46580318, 0.060484886, -0.3765139, 0.44347474, 0.11824581, -0.044514626, 0.45794216, -0.011643171, -0.0012423396, 0.45794216, 0.060484886, 0.37402922, -0.37917945, 0.060484886, 0.37402922, 0.18369398, 0.11102411, 0.28094602, 0.23975524, 0.11824581, -0.33316812, 0.44347474, -0.011643171, 0.3739558, -0.37917945, -0.011643171, 0.35955614, 0.27022728)
+
+[node name="SM_Veh_Attach_Tank_Armour_06" type="MeshInstance3D" unique_id=649515272]
+gi_mode = 2
+mesh = ExtResource("1_hymyn")
+surface_material_override/0 = ExtResource("2_vex87")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=2050605904]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1986914732]
+shape = SubResource("ConvexPolygonShape3D_0it7m")

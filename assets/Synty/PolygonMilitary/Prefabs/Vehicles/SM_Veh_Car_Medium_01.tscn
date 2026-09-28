@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dtwl1hwdpj7s3"]
+
+[ext_resource type="ArrayMesh" uid="uid://60maw5g25dx1" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Car_Medium_01.res" id="1_nabyy"]
+[ext_resource type="Material" uid="uid://2gnaomegm4fe" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_01_mat.tres" id="2_cowlj"]
+[ext_resource type="ArrayMesh" uid="uid://csrtqjblwvqg6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Car_Medium_01_Glass.res" id="3_cowlj"]
+[ext_resource type="Material" uid="uid://bsdrxux17jhqg" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_Alt_mat.tres" id="4_hv7j6"]
+[ext_resource type="ArrayMesh" uid="uid://buev18bq4l5v3" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Car_Medium_01_SteeringW.res" id="5_rqm2a"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="6_tgp56"]
+[ext_resource type="ArrayMesh" uid="uid://jh2vxj7nksts" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Car_Medium_01_Wheel_fl.res" id="7_hv7j6"]
+[ext_resource type="ArrayMesh" uid="uid://cauk8gibugrk1" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Car_Medium_01_Wheel_fr.res" id="8_hb85o"]
+[ext_resource type="ArrayMesh" uid="uid://1bfrufvkf5be" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Car_Medium_01_Wheel_rl.res" id="9_tgp56"]
+[ext_resource type="ArrayMesh" uid="uid://cvi6jkhu5m62y" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Car_Medium_01_Wheel_rr.res" id="10_ptbtx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_snc0j"]
+points = PackedVector3Array(1.1260431, 1.1919557, 0.24828863, 0.9023276, 0.5105043, -2.2702832, 0.7776268, 0.95310646, -2.3401797, 0.5990687, 1.5314975, -1.2935722, 0.6514761, 1.5870665, 0.32738185, 0.8886561, 0.9547777, 2.1460695, 0.8886561, 0.24352244, 2.066516, -0.8807683, 0.5029837, -2.3875437, 0.65106183, 0.16427743, -1.6481128, -0.6183168, 1.5171527, -1.2627625, -0.69226724, 1.5870665, 0.32738185, -0.850111, 0.9547777, 2.2251625, -0.79625356, 0.43334836, 2.310234, -0.9294472, 0.32262817, 1.9878826, -0.9296543, 0.32262817, -1.8853928, -0.9901404, 1.167444, 0.37152696)
+
+[node name="SM_Veh_Car_Medium_01" type="MeshInstance3D" unique_id=894894201]
+gi_mode = 2
+mesh = ExtResource("1_nabyy")
+surface_material_override/0 = ExtResource("2_cowlj")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1573782703]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1314750123]
+shape = SubResource("ConvexPolygonShape3D_snc0j")
+
+[node name="SM_Veh_Car_Medium_01_Glass" type="MeshInstance3D" parent="." unique_id=306862722]
+gi_mode = 2
+mesh = ExtResource("3_cowlj")
+surface_material_override/0 = ExtResource("4_hv7j6")
+
+[node name="SM_Veh_Car_Medium_01_SteeringW" type="MeshInstance3D" parent="." unique_id=1453815484]
+transform = Transform3D(1, 0, 0, 0, 0.9060948, -0.42307478, 0, 0.42307478, 0.9060948, 0.37902504, 0.9742947, 0.4167622)
+gi_mode = 2
+mesh = ExtResource("5_rqm2a")
+surface_material_override/0 = ExtResource("6_tgp56")
+
+[node name="SM_Veh_Car_Medium_01_Wheel_fl" type="MeshInstance3D" parent="." unique_id=1483763141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7477643, 0.35274088, 1.4155415)
+gi_mode = 2
+mesh = ExtResource("7_hv7j6")
+surface_material_override/0 = ExtResource("6_tgp56")
+
+[node name="SM_Veh_Car_Medium_01_Wheel_fr" type="MeshInstance3D" parent="." unique_id=1135381656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7477643, 0.35274088, 1.4155415)
+gi_mode = 2
+mesh = ExtResource("8_hb85o")
+surface_material_override/0 = ExtResource("6_tgp56")
+
+[node name="SM_Veh_Car_Medium_01_Wheel_rl" type="MeshInstance3D" parent="." unique_id=1034425251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7477643, 0.35274088, -1.3897216)
+gi_mode = 2
+mesh = ExtResource("9_tgp56")
+surface_material_override/0 = ExtResource("6_tgp56")
+
+[node name="SM_Veh_Car_Medium_01_Wheel_rr" type="MeshInstance3D" parent="." unique_id=1235349715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7477643, 0.35274088, -1.3897216)
+gi_mode = 2
+mesh = ExtResource("10_ptbtx")
+surface_material_override/0 = ExtResource("6_tgp56")

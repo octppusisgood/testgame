@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c744w7eq6ary5"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2msgo0cdw877" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Sign_3dText_Sandwich_01.res" id="1_3c74p"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_u2170"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_adr6f"]
+size = Vector3(3.9748704, 0.7378598, 0.10932861)
+
+[node name="SM_Sign_3dText_Sandwich_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3c74p")
+surface_material_override/0 = ExtResource("2_u2170")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3689299, 0)
+shape = SubResource("BoxShape3D_adr6f")

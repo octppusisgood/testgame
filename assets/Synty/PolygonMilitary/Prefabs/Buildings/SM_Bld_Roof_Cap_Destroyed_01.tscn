@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cjway0a8eguo8"]
+
+[ext_resource type="ArrayMesh" uid="uid://ceofreis8rxpc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Roof_Cap_Destroyed_01.res" id="1_u1p4v"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_j3o7v"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r0tii"]
+points = PackedVector3Array(2.381114, 2.6469276, 1.4557452, 1.2259955, 3.7044795, 0.7816167, -0.3134663, 2.838748, 2.7059464, 1.4615102, 0.011838018, 2.4400253, 2.0312362, 0.003243212, -1.8642702, 2.2557845, 2.8895354, -1.2716768, -0.025731087, 3.9943588, -0.8549429, -1.4294194, 0.48181766, 2.6212144, -2.3338795, 2.7430332, 1.4557452, -2.8038642, 0.03371571, 0.19648409, -1.334378, 0.019260805, -2.4994962, 0.8802955, 2.064434, -2.7382388, -1.30879, 2.971577, -2.1680274, -2.7683544, 2.4277601, 0.19381952, -2.9537373, 2.0640435, 0.102692366, -2.5986376, 2.064434, -1.4512666)
+
+[node name="SM_Bld_Roof_Cap_Destroyed_01" type="MeshInstance3D" unique_id=1353151204]
+gi_mode = 2
+mesh = ExtResource("1_u1p4v")
+surface_material_override/0 = ExtResource("2_j3o7v")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=648094339]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=351178983]
+shape = SubResource("ConvexPolygonShape3D_r0tii")

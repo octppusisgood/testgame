@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://wputeqk4qp76"]
+
+[ext_resource type="ArrayMesh" uid="uid://hfxlu6u25l55" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Generic_Small_Rocks_04.res" id="1_y7pok"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_x8j1c"]
+
+[node name="SM_Generic_Small_Rocks_04" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_y7pok")
+surface_material_override/0 = ExtResource("2_x8j1c")

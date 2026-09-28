@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqrafqdaeyne7"]
+
+[ext_resource type="ArrayMesh" uid="uid://uxrwrdii123a" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Warehouse_Cage_Trolley_01.res" id="1_mmho8"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_6uejn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_14dfy"]
+points = PackedVector3Array(0.45068187, 0.050397635, 0.54428023, -0.45543796, 0.050397635, 0.54428023, 0.43046123, 0.03117846, -0.47386557, 0.4912209, 0.1976772, -0.47050083, 0.5009893, 2.0965314, 0.36426723, 0.45068187, 2.0305793, 0.47709078, -0.4969538, 2.0459547, 0.42157274, -0.49011588, 0.20799485, 0.44754428, -0.48904136, 0.2518955, -0.5299093, -0.4352173, 0.03117846, -0.47386557, 0.45068187, 1.3593245, -0.5299093, 0.49835187, 2.0912714, -0.4127747, 0.45068187, 2.0977454, 0.44333833, -0.4968561, 2.0137877, -0.4711317, -0.4969538, 2.0783238, -0.4075173, 0.45068187, 2.0641623, -0.496262)
+
+[node name="SM_Prop_Warehouse_Cage_Trolley_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_mmho8")
+surface_material_override/0 = ExtResource("2_6uejn")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_14dfy")

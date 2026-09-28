@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj5qa754lhmq"]
+
+[ext_resource type="ArrayMesh" uid="uid://4dq4cgsjvgn2" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Baseball_01.res" id="1_cxyyv"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_4d2g7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cxyyv"]
+radius = 0.055478744
+
+[node name="SM_Prop_Sport_Baseball_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_cxyyv")
+surface_material_override/0 = ExtResource("2_4d2g7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("SphereShape3D_cxyyv")

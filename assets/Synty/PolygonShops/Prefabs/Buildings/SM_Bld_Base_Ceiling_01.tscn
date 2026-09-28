@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1qhtmvffeubs"]
+
+[ext_resource type="ArrayMesh" uid="uid://dp320l0rveryh" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Base_Ceiling_01.res" id="1_3q40v"]
+[ext_resource type="Material" uid="uid://c6mydsyteqhai" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Tile_02_mat.tres" id="2_cq0wm"]
+
+[node name="SM_Bld_Base_Ceiling_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3q40v")
+surface_material_override/0 = ExtResource("2_cq0wm")

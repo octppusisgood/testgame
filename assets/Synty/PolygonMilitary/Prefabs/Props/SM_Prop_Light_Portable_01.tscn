@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://p0iebo646u4v"]
+
+[ext_resource type="ArrayMesh" uid="uid://bucta8eft2oxc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Light_Portable_01.res" id="1_lcnuw"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_y0lpy"]
+[ext_resource type="ArrayMesh" uid="uid://dqdisk6k6cnsp" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Light_Portable_Pole_01.res" id="3_y0lpy"]
+[ext_resource type="ArrayMesh" uid="uid://c3r06qsntgdu" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Light_Portable_Lights_01.res" id="4_cyg1l"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wroe3"]
+points = PackedVector3Array(-0.5124297, 0.04715274, -0.28945175, -0.5124297, 0.04715274, -0.25162095, -0.039780736, 1.2003309, -0.024810046, -0.49344382, 0.04715274, -0.30841064, -0.49344382, -0.009452224, -0.25162095, -0.039780736, 0.04715274, 0.56108916, -0.039780736, 1.2003309, 0.0129338205, 0.035763144, 1.2003309, -0.024810046, 0.5084121, 0.04715274, -0.30841064, 0.48942626, -0.009452224, -0.25162095, 0.035763144, -0.009452224, 0.56108916, 0.035763144, 0.04715274, 0.5800481, 0.035763144, 0.009376623, 0.5800481, 0.035763144, 1.2003309, 0.031892687, 0.5084121, 0.009376623, -0.25162095, 0.5084121, 0.04715274, -0.25162095)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lcnuw"]
+size = Vector3(0.5975421, 0.22149597, 0.11685974)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0lpy"]
+size = Vector3(0.0745977, 0.7589136, 0.0681308)
+
+[node name="SM_Prop_Light_Portable_01" type="MeshInstance3D" unique_id=1010342610]
+gi_mode = 2
+mesh = ExtResource("1_lcnuw")
+surface_material_override/0 = ExtResource("2_y0lpy")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1359425362]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=264630871]
+shape = SubResource("ConvexPolygonShape3D_wroe3")
+
+[node name="SM_Prop_Light_Portable_Pole_01" type="MeshInstance3D" parent="." unique_id=379738045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0241035e-09, 1.5771512, -4.5967707e-05)
+gi_mode = 2
+mesh = ExtResource("3_y0lpy")
+surface_material_override/0 = ExtResource("2_y0lpy")
+
+[node name="SM_Prop_Light_Portable_Lights_01" type="MeshInstance3D" parent="SM_Prop_Light_Portable_Pole_01" unique_id=1462304731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001111294, 0.41348004, 0.0012286995)
+gi_mode = 2
+mesh = ExtResource("4_cyg1l")
+surface_material_override/0 = ExtResource("2_y0lpy")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Light_Portable_Pole_01/SM_Prop_Light_Portable_Lights_01" unique_id=537669456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-07, 0.0022421703, -0.0017943121)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Light_Portable_Pole_01/SM_Prop_Light_Portable_Lights_01/MeshCollider" unique_id=268598168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.022552848, 0)
+shape = SubResource("BoxShape3D_lcnuw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Light_Portable_Pole_01" unique_id=1137882999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-07, 0, -5.811453e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Light_Portable_Pole_01/MeshCollider" unique_id=1288420116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00067775656, -0.05182004, 0)
+shape = SubResource("BoxShape3D_y0lpy")

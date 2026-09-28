@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq7ym47478vg3"]
+
+[ext_resource type="ArrayMesh" uid="uid://ckk2si7fpqnda" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Mags_01.res" id="1_in5xv"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_jj65i"]
+
+[node name="SM_Chr_Attach_Mags_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_in5xv")
+surface_material_override/0 = ExtResource("2_jj65i")

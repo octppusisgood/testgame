@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://2i10n8vw57rn"]
+
+[ext_resource type="ArrayMesh" uid="uid://wapjplj2hehc" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Shotgun_Vintage_01.res" id="1_p8wda"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_34v3d"]
+[ext_resource type="ArrayMesh" uid="uid://tui50g6wt1es" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Shotgun_Vintage_Break_01.res" id="3_34v3d"]
+[ext_resource type="ArrayMesh" uid="uid://bprjvo4e0cd3m" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Shotgun_Vintage_Hammer_01.res" id="4_7xglg"]
+[ext_resource type="ArrayMesh" uid="uid://dhhxop2rwvevd" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Shotgun_Vintage_Hammer_02.res" id="5_28aya"]
+[ext_resource type="ArrayMesh" uid="uid://dv70wivrru0rp" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Shotgun_Vintage_Trigger_01.res" id="6_7uwrt"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w0wx8"]
+points = PackedVector3Array(-0.019463765, -0.19455993, -0.37197596, -0.029747425, -0.12247222, -0.413167, 0.021691024, -0.15341732, -0.42341644, 0.010762747, -0.18657817, -0.39402187, 0.021691024, -0.18426168, -0.3616621, 0.011377148, -0.07105653, 0.101237625, -0.04004116, -0.009342596, 0.21443239, -0.05032482, 0.011203527, 0.12180093, -0.05032482, 0.052371323, 0.1321148, -0.019463765, -0.019640848, -0.43379477, 0.03197469, -0.13279565, -0.413167, 0.021691024, -0.009367779, -0.43379477, 0.052562155, 0.011203527, 0.22474632, -0.04004116, 0.062669575, 0.16299197, 0.052562155, 0.052371323, 0.1321148, 0.021691024, 0.052371323, 0.018919975)
+
+[node name="SM_Wep_Shotgun_Vintage_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_p8wda")
+surface_material_override/0 = ExtResource("2_34v3d")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_w0wx8")
+
+[node name="SM_Wep_Shotgun_Vintage_Break_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0011679077, 0.011507447, 0.22116521)
+gi_mode = 2
+mesh = ExtResource("3_34v3d")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_34v3d")
+
+[node name="SM_Wep_Shotgun_Vintage_Hammer_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034353636, 0.016888723, 0.09754928)
+gi_mode = 2
+mesh = ExtResource("4_7xglg")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_34v3d")
+
+[node name="SM_Wep_Shotgun_Vintage_Hammer_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038437806, 0.016888723, 0.09754928)
+gi_mode = 2
+mesh = ExtResource("5_28aya")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_34v3d")
+
+[node name="SM_Wep_Shotgun_Vintage_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012817383, -0.012400578, 0.06733107)
+gi_mode = 2
+mesh = ExtResource("6_7uwrt")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_34v3d")

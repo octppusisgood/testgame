@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://brdw0wo88p5p1"]
+
+[ext_resource type="ArrayMesh" uid="uid://bu1e73pt6l6m3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Item_Ammo_Crate_04.res" id="1_2gbk1"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_4eblo"]
+[ext_resource type="ArrayMesh" uid="uid://d2yf3ddaicx3w" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Item_Ammo_Crate_Lid_04.res" id="3_4eblo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_66nfy"]
+points = PackedVector3Array(-0.12033901, 0.003093427, -0.09131118, -0.12085955, 0.0028971075, 0.089504205, -0.12033901, 0.08956339, -0.09131118, 0.12031534, 0.003093427, -0.09131118, -0.10940771, 0.00074651267, -0.08838469, -0.120835885, 0.08975079, 0.089485206, -0.10940771, 0.00074651267, 0.09030234, 0.0036910921, 0.08524436, 0.10282544, -0.11475505, 0.08889412, 0.09155656, -0.109384045, 0.0919103, -0.08836568, 0.12031534, 0.08956339, -0.09131118, 0.12085955, 0.0028971075, 0.089504205, 0.109384045, 0.00074651267, -0.08838469, 0.10936038, 0.0919103, 0.09028334, 0.109384045, 0.00074651267, 0.09030234, 0.12081222, 0.08975079, 0.089485206)
+
+[node name="SM_Item_Ammo_Crate_04" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_2gbk1")
+surface_material_override/0 = ExtResource("2_4eblo")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_66nfy")
+
+[node name="SM_Item_Ammo_Crate_Lid_04" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.092650585, -0.091428906)
+gi_mode = 2
+mesh = ExtResource("3_4eblo")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4eblo")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsd0jkvea32o2"]
+
+[ext_resource type="ArrayMesh" uid="uid://c614sybci1xdv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Decontamination_Shower_01.res" id="1_10gec"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_pbi2j"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1v0m6"]
+points = PackedVector3Array(-1.1012139, 0.1092284, -0.64096165, -1.0379452, 0.24363819, 0.6180338, -0.9282504, 2.3807304, 0.5672, -0.9349444, 2.3895516, -0.54085326, -1.0098736, 0.051889524, -0.8012598, -1.0023159, 0.023568295, 0.7518236, -1.0046912, 0.0579252, 0.7908066, -0.8613107, 2.3904803, -0.61554474, -0.9133509, 2.2892666, 0.63050836, 0.9069772, 2.3737662, 0.6004135, 0.9870887, 0.09715706, -0.7954903, 0.9538348, 0.01892547, -0.76149714, 0.99032784, 0.05653235, 0.79174215, 0.8771781, 2.3830516, -0.61180234, 1.104773, 0.05305023, -0.65203285, 1.088362, 0.10667485, 0.6726101)
+
+[node name="SM_Prop_Decontamination_Shower_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_10gec")
+surface_material_override/0 = ExtResource("2_pbi2j")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_1v0m6")

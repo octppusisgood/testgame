@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ddv3f54ptfeg7"]
+
+[ext_resource type="ArrayMesh" uid="uid://cj4gfvqshe7fq" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_SubMachineGun_01.res" id="1_xhbu1"]
+[ext_resource type="Material" uid="uid://cxg8h0r6sfae" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_C_mat.tres" id="2_bsvnq"]
+[ext_resource type="ArrayMesh" uid="uid://bvf47ba1avrj6" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_SubMachineGun_01_Magazine.res" id="3_bsvnq"]
+[ext_resource type="ArrayMesh" uid="uid://hoj37tuj06t8" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_SubMachineGun_01_Slide.res" id="4_2udft"]
+[ext_resource type="ArrayMesh" uid="uid://ed46bomaq6ku" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_SubMachineGun_01_Trigger.res" id="5_jd2xk"]
+
+[node name="SM_Wep_SubMachineGun_01" type="MeshInstance3D" unique_id=521143626]
+gi_mode = 2
+mesh = ExtResource("1_xhbu1")
+surface_material_override/0 = ExtResource("2_bsvnq")
+
+[node name="SM_Wep_SubMachineGun_01_Magazine" type="MeshInstance3D" parent="." unique_id=1776395405]
+gi_mode = 2
+mesh = ExtResource("3_bsvnq")
+surface_material_override/0 = ExtResource("2_bsvnq")
+
+[node name="SM_Wep_SubMachineGun_01_Slide" type="MeshInstance3D" parent="." unique_id=1499826410]
+gi_mode = 2
+mesh = ExtResource("4_2udft")
+surface_material_override/0 = ExtResource("2_bsvnq")
+
+[node name="SM_Wep_SubMachineGun_01_Trigger" type="MeshInstance3D" parent="." unique_id=1998562736]
+gi_mode = 2
+mesh = ExtResource("5_jd2xk")
+surface_material_override/0 = ExtResource("2_bsvnq")

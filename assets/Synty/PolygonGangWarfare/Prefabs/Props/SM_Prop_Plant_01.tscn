@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dixmssj7os3mo"]
+
+[ext_resource type="ArrayMesh" uid="uid://dj5ma2cpxihyv" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Plant_01.res" id="1_yfmok"]
+[ext_resource type="Material" uid="uid://bb07osmu50kao" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/Plant_01_mat.tres" id="2_my3b3"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="3_hb0pq"]
+
+[node name="SM_Prop_Plant_01" type="MeshInstance3D" unique_id=669375555]
+gi_mode = 2
+mesh = ExtResource("1_yfmok")
+surface_material_override/0 = ExtResource("2_my3b3")
+surface_material_override/1 = ExtResource("3_hb0pq")

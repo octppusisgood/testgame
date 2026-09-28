@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck84ixue2788v"]
+
+[ext_resource type="ArrayMesh" uid="uid://cfu22ww74vfpf" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Bunker_Wall_Container_Door_01.res" id="1_qlda7"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_781gx"]
+[ext_resource type="ArrayMesh" uid="uid://b6ogh1wnileuq" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Bunker_Wall_Container_Door_R.res" id="3_781gx"]
+[ext_resource type="ArrayMesh" uid="uid://dgln3oe5kgcw2" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Bunker_Wall_Container_Door_L.res" id="4_y0jns"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rm3at"]
+size = Vector3(2.5099902, 3.011996, 0.31696045)
+
+[node name="SM_Bld_Bunker_Wall_Container_Door_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_qlda7")
+surface_material_override/0 = ExtResource("2_781gx")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.5000001, 0.03348144)
+shape = SubResource("BoxShape3D_rm3at")
+
+[node name="SM_Bld_Bunker_Wall_Container_Door_R" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.361699, 0.35003218, 0.08687317)
+gi_mode = 2
+mesh = ExtResource("3_781gx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_781gx")
+
+[node name="SM_Bld_Bunker_Wall_Container_Door_L" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13588867, 0.35003218, 0.08687317)
+gi_mode = 2
+mesh = ExtResource("4_y0jns")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_781gx")

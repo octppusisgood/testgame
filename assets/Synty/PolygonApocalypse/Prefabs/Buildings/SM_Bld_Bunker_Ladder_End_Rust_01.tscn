@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3almj0xlaqlo"]
+
+[ext_resource type="ArrayMesh" uid="uid://m1dc4lfwb12j" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Bunker_Ladder_End_Rust_01.res" id="1_j8nsn"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_e1skt"]
+
+[node name="SM_Bld_Bunker_Ladder_End_Rust_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_j8nsn")
+surface_material_override/0 = ExtResource("2_e1skt")

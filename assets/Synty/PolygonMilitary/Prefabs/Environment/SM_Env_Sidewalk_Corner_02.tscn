@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dwqrkyahuokix"]
+
+[ext_resource type="ArrayMesh" uid="uid://bj37ad86m14nf" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Env_Sidewalk_Corner_02.res" id="1_2c5y3"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_1y8o3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2c5y3"]
+size = Vector3(5.017639, 0.98779297, 2.5324707)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1y8o3"]
+size = Vector3(2.4851074, 0.9876709, 2.4371338)
+
+[node name="SM_Env_Sidewalk_Corner_02" type="MeshInstance3D" unique_id=1792226343]
+gi_mode = 2
+mesh = ExtResource("1_2c5y3")
+surface_material_override/0 = ExtResource("2_1y8o3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=426366708]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1713561055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.516693, -0.501709, 1.274292)
+shape = SubResource("BoxShape3D_2c5y3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=173309869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2344971, -0.48565674, 3.7750854)
+shape = SubResource("BoxShape3D_1y8o3")

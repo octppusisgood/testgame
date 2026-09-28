@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://blhfxmjfb7ur2"]
+
+[ext_resource type="ArrayMesh" uid="uid://c0ojfkly1nnij" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bike_Broken_01.res" id="1_1auu2"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_08g5x"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w6brf"]
+points = PackedVector3Array(0.7935296, -0.03327106, -0.62303734, 0.7850274, 0.029257625, -0.6165053, 0.9615996, 0.27734768, -0.013045907, 0.9938295, 0.30945957, 0.3713392, 0.7694067, -0.011141181, 0.660256, -0.06422025, -0.07531783, 0.08292478, -0.32403666, 0.0032667816, -0.39454177, -0.35290515, 0.18120044, -0.4299655, 0.28852892, 0.405701, -0.4941553, -0.06422025, 0.24533, 0.33918148, -0.9298794, 0.05298838, 0.6279727, 0.8655032, 0.14922982, 0.6279727, -0.54509807, -0.04320596, 0.5317508, -1.0261736, -0.011141181, 0.17914665, -0.8658151, 0.085053176, -0.10926777, -0.99414146, 0.05298838, 0.4997188)
+
+[node name="SM_Prop_Bike_Broken_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_1auu2")
+surface_material_override/0 = ExtResource("2_08g5x")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_w6brf")

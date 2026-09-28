@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bydm4mc3wmbr4"]
+
+[ext_resource type="ArrayMesh" uid="uid://87b5oduxt6sm" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Bunker_Wall_Slab_x1_01.res" id="1_prjlx"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_46swm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxwko"]
+size = Vector3(2.5099902, 3.0119956, 0.25)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_prjlx")
+surface_material_override/0 = ExtResource("2_46swm")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.5000001, 0)
+shape = SubResource("BoxShape3D_uxwko")

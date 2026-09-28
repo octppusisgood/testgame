@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://k2n8ggka222p"]
+
+[ext_resource type="ArrayMesh" uid="uid://c36plwj32gcxi" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Computer_Mouse_02.res" id="1_wxsqj"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_lb28l"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_25oj3"]
+points = PackedVector3Array(0.0437695, 9.2442193e-10, 0.033810653, 0.0338338, 0.03127989, 0.026353225, 0.030217692, 9.2442193e-10, 0.06540173, -0.0058487207, 9.2442193e-10, -0.072170034, 0.03122504, 0.0051195794, -0.058547802, -0.0035929568, 0.031584214, 0.05869715, 0.0033637546, 0.032231387, -0.05492562, 0.007177893, 0.03935026, 0.02538731, -0.0013458021, 0.008902444, 0.07294439, -0.028406372, 9.2442193e-10, 0.06540173, -0.032917902, 9.2442193e-10, -0.0631501, -0.033425882, 0.033155914, 0.02569981, -0.008552197, 0.034623604, -0.04776649, -0.043628484, 0.0024885244, 0.03561464, -0.04418812, 9.2442193e-10, 0.036083393, -0.033210635, 0.024553945, -0.027681157)
+
+[node name="SM_Prop_Computer_Mouse_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_wxsqj")
+surface_material_override/0 = ExtResource("2_lb28l")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_25oj3")

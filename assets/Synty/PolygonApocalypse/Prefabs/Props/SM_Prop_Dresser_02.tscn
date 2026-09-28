@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5mw1ri76klxl"]
+
+[ext_resource type="ArrayMesh" uid="uid://dmya4qbmvskqe" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dresser_02.res" id="1_ryx0g"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_hav7v"]
+[ext_resource type="ArrayMesh" uid="uid://clnkygko4tnrv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dresser_02_Drawer_01.res" id="3_hav7v"]
+[ext_resource type="ArrayMesh" uid="uid://b311rsrlvmadi" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dresser_02_Drawer_02.res" id="4_81h6f"]
+[ext_resource type="ArrayMesh" uid="uid://c1u2jmdodfymi" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dresser_02_Drawer_03.res" id="5_8ro2b"]
+[ext_resource type="ArrayMesh" uid="uid://cxd6ih1sf6f8n" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dresser_02_Drawer_04.res" id="6_pikgg"]
+[ext_resource type="ArrayMesh" uid="uid://bp6j07q7w0ql1" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dresser_02_Clothes_01.res" id="7_88n2g"]
+[ext_resource type="ArrayMesh" uid="uid://8xmq3djha215" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dresser_02_Drawer_05.res" id="8_hc1sc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7a3a8"]
+points = PackedVector3Array(0.93452996, 0.98717743, -0.08934119, 0.9219062, -0.014773905, 0.23617071, 0.9219062, 0.014943328, -0.3586414, 0.90763575, 0.9729563, -0.37054336, -0.9153197, 0.97687936, -0.373483, -0.93452984, 0.98717743, -0.08934119, 0.8876937, 0.962364, 0.35891885, 0.87781423, 0.16166604, 0.3549037, 0.8770824, 0.009745264, 0.30944675, -0.922089, -0.014773905, 0.23617071, 0.8951948, -6.240327e-05, -0.31942222, -0.922089, 0.014943328, -0.3586414, 0.91239256, 0.17726023, -0.37247923, -0.8876936, 0.962364, 0.35891885, -0.87781405, 0.16166604, 0.3549037, -0.8772652, 0.009745264, 0.30944675)
+
+[node name="SM_Prop_Dresser_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ryx0g")
+surface_material_override/0 = ExtResource("2_hav7v")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_7a3a8")
+
+[node name="SM_Prop_Dresser_02_Drawer_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4684979, 0.84888226, 0.311445)
+gi_mode = 2
+mesh = ExtResource("3_hav7v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_hav7v")
+
+[node name="SM_Prop_Dresser_02_Drawer_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4684978, 0.48733512, 0.3015035)
+gi_mode = 2
+mesh = ExtResource("4_81h6f")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_hav7v")
+
+[node name="SM_Prop_Dresser_02_Drawer_03" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4684979, 0.34415329, 0.32561225)
+gi_mode = 2
+mesh = ExtResource("5_8ro2b")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_hav7v")
+
+[node name="SM_Prop_Dresser_02_Drawer_04" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46849608, 0.3254908, 0.48217687)
+gi_mode = 2
+mesh = ExtResource("6_pikgg")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_hav7v")
+
+[node name="SM_Prop_Dresser_02_Clothes_01" type="MeshInstance3D" parent="SM_Prop_Dresser_02_Drawer_04"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002734065, -0.0036075711, 0.019445807)
+gi_mode = 2
+mesh = ExtResource("7_88n2g")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_hav7v")
+
+[node name="SM_Prop_Dresser_02_Drawer_05" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46849608, 0.5914368, 0.15855949)
+gi_mode = 2
+mesh = ExtResource("8_hc1sc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_hav7v")

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://s3s0aplg8p03"]
+
+[ext_resource type="ArrayMesh" uid="uid://cvru7qeathe04" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_GasTower_Pipe_01.res" id="1_p15bp"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_ijytv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tia7n"]
+points = PackedVector3Array(0.71843195, 2.2831488, -2.8370934, 1.448448, 2.2831488, -2.1066842, -1.4704733, 2.2831488, -1.7417834, -0.3755921, 3.7427526, -4.6615977, 1.0835829, 3.7427526, -4.2960896, 1.448448, 2.6480496, 0.8107014, -0.740743, 2.2831488, 1.5411105, 1.448448, 4.47209, -4.6615977, -1.4704733, 2.6480496, 0.4464078, -1.4704733, 4.835598, -4.6615977, 1.448448, 6.295666, -3.566895, 0.3538525, 6.295666, -2.1066842, -1.1053224, 5.9303007, -2.1066842, 0.71843195, 7.0259323, -4.6615977, -1.4704733, 6.295666, -3.566895, -0.740743, 7.0259323, -4.6615977)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1vrs4"]
+points = PackedVector3Array(0.71828914, 3.7421455, -20.713663, -0.74031436, 3.7421455, -18.891068, -1.8349814, 4.8374557, -20.715235, 1.8129563, 4.8374557, -20.713663, 1.4483054, 4.472483, -5.0299034, 0.71828914, 4.1071177, -4.6638126, -1.4703305, 4.472483, -5.0299034, -1.8353386, 5.9304085, -5.0299034, -1.4699733, 7.390691, -20.713663, 1.4479482, 7.390691, -20.713663, 1.8133135, 5.9304085, -5.0299034, 0.7186463, 7.390298, -5.0299034, -0.74031436, 7.390298, -5.0299034, -1.4703305, 6.6603527, -5.0299034, 1.4483054, 7.0253253, -5.0299034, -0.37530637, 7.755663, -18.524977)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p15bp"]
+height = 1.5507813
+radius = 2.0439453
+
+[node name="SM_Bld_GasTower_Pipe_01" type="MeshInstance3D" unique_id=1170983401]
+gi_mode = 2
+mesh = ExtResource("1_p15bp")
+surface_material_override/0 = ExtResource("2_ijytv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1103900417]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=351438371]
+shape = SubResource("ConvexPolygonShape3D_tia7n")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=1008533456]
+shape = SubResource("ConvexPolygonShape3D_1vrs4")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider" unique_id=1706069957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85058594, 0.055640936)
+shape = SubResource("CylinderShape3D_p15bp")

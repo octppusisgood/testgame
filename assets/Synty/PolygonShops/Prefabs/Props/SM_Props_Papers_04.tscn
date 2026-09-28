@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://xh2c7mm2hxb3"]
+
+[ext_resource type="ArrayMesh" uid="uid://c2rxr36u2ignp" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Props_Papers_04.res" id="1_3qmvc"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_vxsxs"]
+
+[node name="SM_Props_Papers_04" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3qmvc")
+surface_material_override/0 = ExtResource("2_vxsxs")

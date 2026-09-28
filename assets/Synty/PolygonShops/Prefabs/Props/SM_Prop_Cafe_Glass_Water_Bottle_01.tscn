@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://pwl6vf3mhakr"]
+
+[ext_resource type="ArrayMesh" uid="uid://bstxm7f3yqei7" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Glass_Water_Bottle_01.res" id="1_ygg0w"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_65ybd"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="3_gtiv5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3fq0i"]
+points = PackedVector3Array(-0.045860343, 0.003014326, 0.039991893, -0.045860343, 0.008789606, -0.041955944, -0.04000103, 0.008789606, -0.047815256, 0.047815286, 0.008789606, 0.039991893, 0.041946806, 0.008789606, 0.045860372, -0.034536008, 0.20973326, 0.039606772, -0.045860343, 0.34245643, -0.0068367533, -0.022441436, 0.31903043, -0.036114972, 0.032804817, 0.020015307, -0.043423064, 0.0434231, 0.019979212, -0.03281395, 0.02438721, 0.31903043, -0.036114972, 0.041946806, 0.34830388, 0.004872702, 0.03654597, 0.204716, 0.03968013, -0.016582122, 0.34830388, 0.028291613, -0.04000103, 0.35418746, 0.004872702, 0.012677759, 0.37176597, -0.024396349)
+
+[node name="SM_Prop_Cafe_Glass_Water_Bottle_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ygg0w")
+surface_material_override/0 = ExtResource("2_65ybd")
+surface_material_override/1 = ExtResource("3_gtiv5")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_3fq0i")

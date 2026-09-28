@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://3xhbykb7rovl"]
+
+[ext_resource type="ArrayMesh" uid="uid://d3f7wlncw240a" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01.res" id="1_ne4ut"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_83ose"]
+[ext_resource type="ArrayMesh" uid="uid://ck5uhsjyhki8o" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Dial_01.res" id="3_83ose"]
+[ext_resource type="ArrayMesh" uid="uid://sxncymqi1vpw" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Dial_02.res" id="4_iu8va"]
+[ext_resource type="ArrayMesh" uid="uid://c0j32542vj0ep" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Dial_03.res" id="5_njiht"]
+[ext_resource type="ArrayMesh" uid="uid://cq3dq1bf0pcwt" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Door_01.res" id="6_fv4g8"]
+[ext_resource type="ArrayMesh" uid="uid://c4ouq1ie54ipm" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Door_02.res" id="7_l2fxh"]
+[ext_resource type="ArrayMesh" uid="uid://ha7o0o7tdab2" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Door_03.res" id="8_kpnjh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ne4ut"]
+size = Vector3(1.7556152, 1.0429077, 1.0717773)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83ose"]
+size = Vector3(1.6340027, 0.3388977, 0.03894043)
+
+[node name="SM_Prop_Kitchen_Grill_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ne4ut")
+surface_material_override/0 = ExtResource("2_83ose")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00036621094, 0.5272522, 0.014404297)
+shape = SubResource("BoxShape3D_ne4ut")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0025177002, 1.1860504, -0.47808838)
+shape = SubResource("BoxShape3D_83ose")
+
+[node name="SM_Prop_Kitchen_Grill_01_Dial_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.563393, 0.8599132, 0.5270371)
+gi_mode = 2
+mesh = ExtResource("3_83ose")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_83ose")
+
+[node name="SM_Prop_Kitchen_Grill_01_Dial_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.326464e-16, 0.8599132, 0.5270371)
+gi_mode = 2
+mesh = ExtResource("4_iu8va")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_83ose")
+
+[node name="SM_Prop_Kitchen_Grill_01_Dial_03" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5534589, 0.8599132, 0.5270371)
+gi_mode = 2
+mesh = ExtResource("5_njiht")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_83ose")
+
+[node name="SM_Prop_Kitchen_Grill_01_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29424036, 0.47854587, 0.48137388)
+gi_mode = 2
+mesh = ExtResource("6_fv4g8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_83ose")
+
+[node name="SM_Prop_Kitchen_Grill_01_Door_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27151242, 0.47854587, 0.48137388)
+gi_mode = 2
+mesh = ExtResource("7_l2fxh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_83ose")
+
+[node name="SM_Prop_Kitchen_Grill_01_Door_03" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83540046, 0.47854587, 0.48137388)
+gi_mode = 2
+mesh = ExtResource("8_kpnjh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_83ose")

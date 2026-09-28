@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://cidv4hj5r531q"]
+
+[ext_resource type="ArrayMesh" uid="uid://cnb584jqgn7x3" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_01.res" id="1_82bir"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_ug4om"]
+[ext_resource type="ArrayMesh" uid="uid://ck0145uj6a4ie" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_CylinderFlip_01.res" id="3_ug4om"]
+[ext_resource type="ArrayMesh" uid="uid://b56vs6pakkvvn" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_Cylinder_01.res" id="4_al4so"]
+[ext_resource type="ArrayMesh" uid="uid://qwca315dr2k1" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_Bullet_06.res" id="5_qnhot"]
+[ext_resource type="ArrayMesh" uid="uid://ddfmwdngufqtd" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_Bullet_05.res" id="6_llai0"]
+[ext_resource type="ArrayMesh" uid="uid://bp5oai82ahisx" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_Bullet_04.res" id="7_bbton"]
+[ext_resource type="ArrayMesh" uid="uid://dov542saeuudw" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_Bullet_03.res" id="8_evyee"]
+[ext_resource type="ArrayMesh" uid="uid://c11x3ft3h5wet" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_Bullet_02.res" id="9_poedr"]
+[ext_resource type="ArrayMesh" uid="uid://dx1cbe0dxbksl" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_Bullet_01.res" id="10_ujetx"]
+[ext_resource type="ArrayMesh" uid="uid://d3hj5p0xeipqo" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_Hammer_01.res" id="11_gk6eu"]
+[ext_resource type="ArrayMesh" uid="uid://3onmc7hoc04y" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Revolver_Snub_Trigger_01.res" id="12_cxfyp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8iq4g"]
+points = PackedVector3Array(-0.018818233, -0.07963217, 0.011044402, -0.018818233, 0.035110816, -0.013522411, -0.014001587, -0.0790543, -0.016436266, 0.013339834, -0.07959605, -0.017039133, 0.022182865, -0.07963217, 0.011044402, -0.0065183453, -0.034558438, 0.105342776, -0.014716799, 0.06382365, 0.21192457, -0.022919668, 0.06380559, 0.076681495, 0.022182865, -0.018125307, -0.038139462, -0.0101606315, -0.052129246, -0.04055093, -0.014716799, 0.092500366, 0.056184035, 0.0092604775, 0.041359022, -0.007669583, 0.018081428, 0.08431993, 0.12995982, 0.009878559, 0.059706338, 0.21606927, -0.0065183453, 0.10485231, 0.20780496, 0.008818986, 0.09139881, 0.05914813)
+
+[node name="SM_Wep_Revolver_Snub_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_82bir")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_8iq4g")
+
+[node name="SM_Wep_Revolver_Snub_CylinderFlip_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011608201, 0.02101223, 0.103100605)
+gi_mode = 2
+mesh = ExtResource("3_ug4om")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="SM_Wep_Revolver_Snub_Cylinder_01" type="MeshInstance3D" parent="SM_Wep_Revolver_Snub_CylinderFlip_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0116081955, 0.033481263, 0.0007160455)
+gi_mode = 2
+mesh = ExtResource("4_al4so")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="SM_Wep_Revolver_Snub_Bullet_06" type="MeshInstance3D" parent="SM_Wep_Revolver_Snub_CylinderFlip_01/SM_Wep_Revolver_Snub_Cylinder_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014356035, 0.008811288, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("5_qnhot")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="SM_Wep_Revolver_Snub_Bullet_05" type="MeshInstance3D" parent="SM_Wep_Revolver_Snub_CylinderFlip_01/SM_Wep_Revolver_Snub_Cylinder_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014808829, -0.008027036, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("6_llai0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="SM_Wep_Revolver_Snub_Bullet_04" type="MeshInstance3D" parent="SM_Wep_Revolver_Snub_CylinderFlip_01/SM_Wep_Revolver_Snub_Cylinder_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0004528221, -0.016838312, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("7_bbton")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="SM_Wep_Revolver_Snub_Bullet_03" type="MeshInstance3D" parent="SM_Wep_Revolver_Snub_CylinderFlip_01/SM_Wep_Revolver_Snub_Cylinder_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014355989, -0.00881131, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("8_evyee")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="SM_Wep_Revolver_Snub_Bullet_02" type="MeshInstance3D" parent="SM_Wep_Revolver_Snub_CylinderFlip_01/SM_Wep_Revolver_Snub_Cylinder_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014808787, 0.008027025, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("9_poedr")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="SM_Wep_Revolver_Snub_Bullet_01" type="MeshInstance3D" parent="SM_Wep_Revolver_Snub_CylinderFlip_01/SM_Wep_Revolver_Snub_Cylinder_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00045277746, 0.01683829, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("10_ujetx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="SM_Wep_Revolver_Snub_Hammer_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.152557e-09, 0.046702337, 0.03880028)
+gi_mode = 2
+mesh = ExtResource("11_gk6eu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")
+
+[node name="SM_Wep_Revolver_Snub_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.152557e-09, 0.010952085, 0.07733116)
+gi_mode = 2
+mesh = ExtResource("12_cxfyp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ug4om")

@@ -1,0 +1,165 @@
+[gd_scene load_steps=22 format=3 uid="uid://cq3n2kctajqni"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0ypbi3okfwju" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01.res" id="1_moc0b"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_npdor"]
+[ext_resource type="ArrayMesh" uid="uid://dro2ak76duayx" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Ride_On_Mower_01_Steering_Wheel_01.res" id="3_npdor"]
+[ext_resource type="ArrayMesh" uid="uid://ckjq4nyv8p030" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Deck_01.res" id="4_4hg85"]
+[ext_resource type="ArrayMesh" uid="uid://cibinsox80uoa" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Deck_01_Blade_01.res" id="5_gqosu"]
+[ext_resource type="ArrayMesh" uid="uid://b0q40w1vrd61j" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Deck_01_Blade_02.res" id="6_pls7t"]
+[ext_resource type="ArrayMesh" uid="uid://dgha41rtky3s5" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Lever_01.res" id="7_yqgm4"]
+[ext_resource type="ArrayMesh" uid="uid://24ea6t8pou5p" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Pedal_01.res" id="8_d4x3b"]
+[ext_resource type="ArrayMesh" uid="uid://dlpp0caiuvsg6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Pedal_02.res" id="9_v5api"]
+[ext_resource type="ArrayMesh" uid="uid://c811f1cxt7xdu" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Pedal_03.res" id="10_o5ndv"]
+[ext_resource type="ArrayMesh" uid="uid://ctfur3mi8xiv8" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Seat_01.res" id="11_smj8u"]
+[ext_resource type="ArrayMesh" uid="uid://c0v4psfo18j3f" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_FL_01.res" id="12_bmbd0"]
+[ext_resource type="ArrayMesh" uid="uid://csapftv55d1yj" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_FR_01.res" id="13_bllmh"]
+[ext_resource type="ArrayMesh" uid="uid://d1jp73bi6vetb" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_RL_01.res" id="14_ajg66"]
+[ext_resource type="ArrayMesh" uid="uid://dq88yywpf2hgc" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_RR_01.res" id="15_hisl6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k3vhb"]
+points = PackedVector3Array(0.43519986, 0.6347883, -0.5332682, -0.20846629, 0.87072664, -0.20112059, 0.6192858, 0.7138054, 0.12406111, 0.7771872, 0.52975667, -0.5332682, -0.51141465, 0.16172898, -0.32281303, -0.6166293, 0.24060696, -0.32281303, -0.7394591, 0.755192, -0.15689754, -0.20925975, 0.87225693, 0.21366817, 0.7771872, 0.52975667, 0.54497147, 0.4088565, 0.6347883, 0.54497147, 0.59881425, 0.22405232, 0.2731951, 0.5878643, 0.22926912, -0.257059, -0.51141465, 0.16172898, 0.3345163, -0.69438976, 0.1895519, 0.18791538, -0.84403896, 0.42917684, -0.10729179, -0.7562807, 0.72778636, 0.1418981)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ehlls"]
+points = PackedVector3Array(0.29692462, 0.539501, 0.13832808, 0.29692462, 0.539501, -0.13848394, -0.22810757, 0.13845953, 0.19562584, 0.26832232, 0.5012866, 0.24338984, 0.3435916, 0.43742153, 0.22518042, 0.35383978, 0.44710597, -0.2076512, 0.26832232, 0.5012866, -0.24354571, -0.23766097, 0.12887976, -0.1957817, -0.20859545, 0.0047092405, 0.17960915, -0.19944733, 0.10977258, 0.24338984, 0.16914055, 0.032558616, 0.23471415, 0.203996, 0.008740071, 0.2131679, 0.203996, 0.008740071, -0.21332377, 0.26832232, 0.2627871, -0.23253424, -0.19944733, 0.10977258, -0.24354571, -0.20847966, 0.0048139375, -0.17971735)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mr5kl"]
+radius = 0.21460623
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kbq1r"]
+radius = 0.21460623
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vwvte"]
+radius = 0.26693988
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wwlc6"]
+radius = 0.26693988
+
+[node name="SM_Veh_Ride_On_Mower_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_moc0b")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_k3vhb")
+
+[node name="SM_Prop_Ride_On_Mower_01_Steering_Wheel_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, 0, 0, 1, -0.06258487, 0.8357103, 0.008117913)
+gi_mode = 2
+mesh = ExtResource("3_npdor")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SM_Veh_Ride_On_Mower_01_Deck_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01403902, 0.058659628, -0.008124694)
+gi_mode = 2
+mesh = ExtResource("4_4hg85")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SM_Veh_Ride_On_Mower_01_Deck_01_Blade_01" type="MeshInstance3D" parent="SM_Veh_Ride_On_Mower_01_Deck_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025020197, 0.012216911, -0.2330728)
+gi_mode = 2
+mesh = ExtResource("5_gqosu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SM_Veh_Ride_On_Mower_01_Deck_01_Blade_02" type="MeshInstance3D" parent="SM_Veh_Ride_On_Mower_01_Deck_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025020197, 0.012216911, 0.24311066)
+gi_mode = 2
+mesh = ExtResource("6_pls7t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SM_Veh_Ride_On_Mower_01_Lever_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47354215, 0.5181584, -0.34325165)
+gi_mode = 2
+mesh = ExtResource("7_yqgm4")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SM_Veh_Ride_On_Mower_01_Pedal_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12911719, 0.4133313, 0.31885514)
+gi_mode = 2
+mesh = ExtResource("8_d4x3b")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SM_Veh_Ride_On_Mower_01_Pedal_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1200412, 0.4086598, -0.2527481)
+gi_mode = 2
+mesh = ExtResource("9_v5api")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SM_Veh_Ride_On_Mower_01_Pedal_03" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12723908, 0.40482438, -0.33395445)
+gi_mode = 2
+mesh = ExtResource("10_o5ndv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SM_Veh_Ride_On_Mower_01_Seat_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4977608, 0.64161056, 0.008127442)
+gi_mode = 2
+mesh = ExtResource("11_smj8u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Veh_Ride_On_Mower_01_Seat_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Ride_On_Mower_01_Seat_01/MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ehlls")
+
+[node name="SM_Veh_Ride_On_Mower_01_Wheel_FL_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57731175, 0.21744913, 0.3956366)
+gi_mode = 2
+mesh = ExtResource("12_bmbd0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_Ride_On_Mower_01_Wheel_FL_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Ride_On_Mower_01_Wheel_FL_01/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4505806e-08, 0, 0)
+shape = SubResource("SphereShape3D_mr5kl")
+
+[node name="SM_Veh_Ride_On_Mower_01_Wheel_FR_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57731175, 0.21744913, -0.37938294)
+gi_mode = 2
+mesh = ExtResource("13_bllmh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_Ride_On_Mower_01_Wheel_FR_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Ride_On_Mower_01_Wheel_FR_01/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4505806e-08, 0, 0)
+shape = SubResource("SphereShape3D_kbq1r")
+
+[node name="SM_Veh_Ride_On_Mower_01_Wheel_RL_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573411, 0.26693988, 0.3858554)
+gi_mode = 2
+mesh = ExtResource("14_ajg66")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_Ride_On_Mower_01_Wheel_RL_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Ride_On_Mower_01_Wheel_RL_01/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4505806e-08, 0, 0)
+shape = SubResource("SphereShape3D_vwvte")
+
+[node name="SM_Veh_Ride_On_Mower_01_Wheel_RR_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573411, 0.26693988, -0.36960173)
+gi_mode = 2
+mesh = ExtResource("15_hisl6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_npdor")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_Ride_On_Mower_01_Wheel_RR_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Ride_On_Mower_01_Wheel_RR_01/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4505806e-08, 0, 0)
+shape = SubResource("SphereShape3D_wwlc6")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://borvi8ru77gai"]
+
+[ext_resource type="ArrayMesh" uid="uid://fp4j37sh1uds" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Goggles_Strap_01.res" id="1_dixa5"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_oovmr"]
+[ext_resource type="ArrayMesh" uid="uid://ly23t308vcej" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Goggles_Strap_01_Glass.res" id="3_oovmr"]
+[ext_resource type="Material" uid="uid://cfqslifgwex8v" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_mat.tres" id="4_oovmr"]
+
+[node name="SM_Chr_Attach_Goggles_Strap_01" type="MeshInstance3D" unique_id=1387940873]
+gi_mode = 2
+mesh = ExtResource("1_dixa5")
+surface_material_override/0 = ExtResource("2_oovmr")
+
+[node name="SM_Chr_Attach_Goggles_Strap_01_Glass" type="MeshInstance3D" parent="." unique_id=1507059472]
+gi_mode = 2
+mesh = ExtResource("3_oovmr")
+surface_material_override/0 = ExtResource("4_oovmr")

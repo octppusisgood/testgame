@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://e65iqnmx7e8x"]
+
+[ext_resource type="ArrayMesh" uid="uid://bpnhq3p72waqm" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Sword_01.res" id="1_4qvyp"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_x1i6i"]
+[ext_resource type="ArrayMesh" uid="uid://dr2o71d1pdy63" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Sword_01_Sheath.res" id="3_x1i6i"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6tu24"]
+points = PackedVector3Array(0.008167546, 0.21429032, 0.06746784, 0.008167546, 0.8514912, 0.00634031, -0.009283923, 0.21429032, 0.06746784, 0.016893283, -0.26587808, 0.023794085, 0.04309613, 0.21429032, 0.032540634, 0.008167546, 1.1396815, -0.03731378, -0.009283923, 1.1396815, -0.03731378, -0.0442125, 0.21429032, 0.023794085, -0.02674394, -0.26587808, 0.00634031, -0.02674394, -0.26587808, -0.037254818, 0.016893283, -0.2571045, -0.054728247, 0.04309613, 0.19689184, -0.028547585, 0.008167546, 1.2181977, -0.1333292, -0.009283923, 1.2532921, -0.1333292, -0.0442125, 0.21429032, -0.019820698, -0.009283923, -0.2571045, -0.063455135)
+
+[node name="SM_Wep_Sword_01" type="MeshInstance3D" unique_id=865063425]
+gi_mode = 2
+mesh = ExtResource("1_4qvyp")
+surface_material_override/0 = ExtResource("2_x1i6i")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=449934218]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=411774456]
+shape = SubResource("ConvexPolygonShape3D_6tu24")
+
+[node name="SM_Wep_Sword_01_Sheath" type="MeshInstance3D" parent="." unique_id=1332657315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38970274, -0.0017756969)
+gi_mode = 2
+mesh = ExtResource("3_x1i6i")
+surface_material_override/0 = ExtResource("2_x1i6i")

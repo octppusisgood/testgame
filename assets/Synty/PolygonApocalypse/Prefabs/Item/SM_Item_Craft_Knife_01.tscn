@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://buwcvx856slvx"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqq4su1qn6clw" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Item_Craft_Knife_01.res" id="1_do6bn"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_ig03k"]
+[ext_resource type="ArrayMesh" uid="uid://bfpqvdlisy7h0" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Item_Craft_Knife_Blade_01.res" id="3_ig03k"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dxfjl"]
+points = PackedVector3Array(0.015415078, -0.05427926, -0.11050283, -0.016208922, -0.05427926, -0.0969435, -0.016208922, -0.045245346, -0.1376215, 0.015415078, -0.045245346, -0.1376215, 0.015415078, -0.02264795, 0.11089082, -0.016208922, -0.02264795, 0.11089082, -0.016208922, 0.004453793, -0.14215071, 0.015415078, 0.004453793, -0.14215071, 0.015415078, 0.031572342, 0.12442185, 0.010895595, -0.013605632, 0.13798116, -0.011689439, -0.018126793, 0.13348027, -0.011689439, 0.013496108, 0.1470396, -0.016208922, 0.031572342, 0.12442185, -0.016208922, 0.031572342, -0.11503205, 0.015415078, 0.031572342, -0.11503205, 0.010895595, 0.022530027, 0.1425104)
+
+[node name="SM_Item_Craft_Knife_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_do6bn")
+surface_material_override/0 = ExtResource("2_ig03k")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_dxfjl")
+
+[node name="SM_Item_Craft_Knife_Blade_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006790411, 0.0009026256, 0.05567707)
+gi_mode = 2
+mesh = ExtResource("3_ig03k")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ig03k")

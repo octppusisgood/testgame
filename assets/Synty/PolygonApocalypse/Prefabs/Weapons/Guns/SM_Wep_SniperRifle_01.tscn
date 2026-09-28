@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmju35yvf4rau"]
+
+[ext_resource type="ArrayMesh" uid="uid://c2scwwuv8pwwq" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SniperRifle_01.res" id="1_a5gaw"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_pwfvw"]
+[ext_resource type="ArrayMesh" uid="uid://bf2vixnfgl8yu" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SniperRifle_01_Bolt_01.res" id="3_pwfvw"]
+[ext_resource type="ArrayMesh" uid="uid://do8su1exsfvq4" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SniperRifle_01_Bullets_01.res" id="4_edk4f"]
+[ext_resource type="ArrayMesh" uid="uid://p8nfv201pvhv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SniperRifle_01_Magazine_01.res" id="5_sek80"]
+[ext_resource type="ArrayMesh" uid="uid://djx6b8vicir0l" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SniperRifle_01_Magazine_01_Scope_01.res" id="6_up05f"]
+[ext_resource type="ArrayMesh" uid="uid://big20bg0kn86p" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SniperRifle_01_Trigger_01.res" id="7_epv5k"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c1pa1"]
+points = PackedVector3Array(0.011331648, -0.1425689, -0.30363557, -0.020141182, -0.13468894, -0.2879346, -0.020141182, -0.0088484585, -0.327343, 0.019193113, -0.12680899, -0.31153804, 0.019193113, 0.038407385, 0.73491573, -0.012279715, 0.0069353282, 0.64039797, -0.028013434, -0.016680658, -0.18572237, -0.020141182, 0.038407385, 0.73491573, -0.028013434, 0.05414343, 0.6167945, 0.019193113, -0.0088484585, -0.327343, -0.010149894, 0.06651257, 0.12964869, 0.027070757, -0.06386487, -0.1778199, 0.027070757, 0.046287343, 0.6167945, 0.011331648, 0.101375386, 0.65609896, -0.020141182, 0.085615486, 0.65609896, 0.027070757, 0.04626347, 0.026708573)
+
+[node name="SM_Wep_SniperRifle_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_a5gaw")
+surface_material_override/0 = ExtResource("2_pwfvw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_c1pa1")
+
+[node name="SM_Wep_SniperRifle_01_Bolt_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00016005879, 0.05467213, 0.09779232)
+gi_mode = 2
+mesh = ExtResource("3_pwfvw")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_pwfvw")
+
+[node name="SM_Wep_SniperRifle_01_Bullets_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026871996, 0.024860527, 0.341044)
+gi_mode = 2
+mesh = ExtResource("4_edk4f")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_pwfvw")
+
+[node name="SM_Wep_SniperRifle_01_Magazine_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00041814617, -0.01654002, 0.18254566)
+gi_mode = 2
+mesh = ExtResource("5_sek80")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_pwfvw")
+
+[node name="SM_Wep_SniperRifle_01_Magazine_01_Scope_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00025850613, 0.029932002, 0.1712629)
+gi_mode = 2
+mesh = ExtResource("6_up05f")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_pwfvw")
+
+[node name="SM_Wep_SniperRifle_01_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2188474e-17, -0.007841617, 0.07399956)
+gi_mode = 2
+mesh = ExtResource("7_epv5k")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_pwfvw")

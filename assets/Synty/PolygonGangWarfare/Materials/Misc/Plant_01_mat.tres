@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bb07osmu50kao"]
+
+[ext_resource type="Texture2D" uid="uid://bqif2d8rxic0h" path="res://Assets/Synty/PolygonGangWarfare/Textures/Misc/Leaves_01_Diffuse.tga" id="1_p0ohc"]
+[ext_resource type="Texture2D" uid="uid://moha040ysbpq" path="res://Assets/Synty/PolygonGangWarfare/Textures/Misc/Leaves_01_Normals.png" id="2_rk3fd"]
+
+[resource]
+resource_name = "Plant_01_mat"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_p0ohc")
+roughness = 0.784
+normal_enabled = true
+normal_texture = ExtResource("2_rk3fd")
+uv1_scale = Vector3(1, 1, 0)

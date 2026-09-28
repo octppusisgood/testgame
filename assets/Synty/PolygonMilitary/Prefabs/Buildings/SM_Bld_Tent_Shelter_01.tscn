@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c6rwnopi6guyy"]
+
+[ext_resource type="ArrayMesh" uid="uid://cuupe2803r1qi" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Tent_Shelter_01.res" id="1_8m1th"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_5m0mp"]
+[ext_resource type="Shape3D" uid="uid://budgd4nwrhy52" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Tent_Shelter_01_Collision.res" id="3_5m0mp"]
+
+[node name="SM_Bld_Tent_Shelter_01" type="MeshInstance3D" unique_id=328569804]
+gi_mode = 2
+mesh = ExtResource("1_8m1th")
+surface_material_override/0 = ExtResource("2_5m0mp")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1893967465]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=729722825]
+shape = ExtResource("3_5m0mp")

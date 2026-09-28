@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk2ahu67pnss6"]
+
+[ext_resource type="ArrayMesh" uid="uid://bh3bc8a4vu306" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Car_Racing_01.res" id="1_qruck"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_p7n2e"]
+[ext_resource type="ArrayMesh" uid="uid://dkeve8b27d3m0" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Car_Racing_01_Wheel.res" id="3_p7n2e"]
+[ext_resource type="ArrayMesh" uid="uid://b1bxk8ty8uja" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Car_Racing_01_Stick.res" id="4_5e1t1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_83drl"]
+points = PackedVector3Array(0.3161996, 0.1543581, 0.77470315, -0.32981354, 0.1543581, 0.77470315, 0.4486732, 0.0013766205, 0.5680828, 0.45656192, 1.7834278, 0.016096354, 0.14764935, 1.3900717, 0.7182158, -0.4702721, 0.12644814, 0.5779718, -0.44872227, 0.027542211, 0.5513015, -0.24553841, 1.2777342, 0.7182158, -0.44872227, 0.027716648, -0.73426956, 0.44819212, 0.002423244, -0.7559954, 0.48465365, 1.5585781, -0.0679602, 0.44809592, 1.7670307, -0.7559954, -0.4701759, 1.7834278, 0.016096354, -0.4981714, 1.5585781, -0.0679602, -0.44872227, 1.7419118, -0.73441935, 0.44819212, 1.2979689, -0.7559954)
+
+[node name="SM_Prop_Arcade_Car_Racing_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_qruck")
+surface_material_override/0 = ExtResource("2_p7n2e")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_83drl")
+
+[node name="SM_Prop_Arcade_Car_Racing_01_Wheel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 3.8146972e-08, 0.88488686, -0.124650955)
+gi_mode = 2
+mesh = ExtResource("3_p7n2e")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_p7n2e")
+
+[node name="SM_Prop_Arcade_Car_Racing_01_Stick" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.89076793, -0.45445845, 0, 0.45445845, 0.89076793, -0.31009072, 0.80750686, -0.23612922)
+gi_mode = 2
+mesh = ExtResource("4_5e1t1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_p7n2e")

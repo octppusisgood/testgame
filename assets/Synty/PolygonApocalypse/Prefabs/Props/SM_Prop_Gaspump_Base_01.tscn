@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgerh2k0lcp53"]
+
+[ext_resource type="ArrayMesh" uid="uid://br784owdl1rvj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Gaspump_Base_01.res" id="1_kn3ax"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_r6773"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftrox"]
+size = Vector3(5.7462044, 0.46406496, 2.172365)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wy4mf"]
+size = Vector3(0.40961647, 1.5530351, 0.41542268)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h0ono"]
+size = Vector3(0.33703327, 1.5530351, 0.32733917)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxudw"]
+size = Vector3(0.4236622, 1.5530351, 0.29150724)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bns8f"]
+size = Vector3(0.34553814, 1.5530351, 0.3339672)
+
+[node name="SM_Prop_Gaspump_Base_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_kn3ax")
+surface_material_override/0 = ExtResource("2_r6773")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002129078, -0.04579252, 0)
+shape = SubResource("BoxShape3D_ftrox")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6661649, 0.49869257, 0.87847114)
+shape = SubResource("BoxShape3D_wy4mf")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.730914, 0.49869257, 0.922513)
+shape = SubResource("BoxShape3D_h0ono")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.659142, 0.49869257, -0.94042873)
+shape = SubResource("BoxShape3D_wxudw")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7266617, 0.49869257, -0.919199)
+shape = SubResource("BoxShape3D_bns8f")

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cx7osbuniicl2"]
+
+[ext_resource type="ArrayMesh" uid="uid://qa0kaig311pu" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Slowcooker_01.res" id="1_6qivb"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_ls7hm"]
+[ext_resource type="ArrayMesh" uid="uid://c1sny4xaly3om" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Slowcooker_Lid_01.res" id="3_ls7hm"]
+[ext_resource type="Material" uid="uid://bgr664d17lip1" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Glass_mat.tres" id="4_14sce"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nh3e4"]
+points = PackedVector3Array(-0.07182944, 0.06592882, -0.1722295, -0.13537492, 0.0023435024, -0.10822848, -0.18308645, 0.25704312, -0.124091685, 0.07534227, 0.22007969, -0.17024231, 0.086090475, 0.059273347, -0.16123146, 0.14219087, -0.0041583776, -0.08859648, -0.1327534, 0.004775308, 0.10470852, -0.18219513, 0.026763948, -0.06810793, -0.26781374, 0.1547793, 0.028510302, -0.19084612, 0.25696632, 0.11454165, 0.19928741, 0.2573503, 0.10693553, 0.18303403, 0.25704312, -0.124091685, 0.26781374, 0.1547793, -0.038437217, 0.13270098, 0.0047497097, 0.10470852, -0.07937941, 0.25665915, 0.17778891, 0.0788551, 0.027199112, 0.14513743)
+
+[node name="SM_Prop_Slowcooker_01" type="MeshInstance3D" unique_id=1812695636]
+gi_mode = 2
+mesh = ExtResource("1_6qivb")
+surface_material_override/0 = ExtResource("2_ls7hm")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=824138079]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1188921775]
+shape = SubResource("ConvexPolygonShape3D_nh3e4")
+
+[node name="SM_Prop_Slowcooker_Lid_01" type="MeshInstance3D" parent="." unique_id=909941467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4855435e-08, 0.28313884, -0.0025539212)
+gi_mode = 2
+mesh = ExtResource("3_ls7hm")
+surface_material_override/0 = ExtResource("2_ls7hm")
+surface_material_override/1 = ExtResource("4_14sce")

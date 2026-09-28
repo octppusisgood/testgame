@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bnendenrhx44"]
+
+[ext_resource type="ArrayMesh" uid="uid://erljmwpu4ab6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Helmet_10.res" id="1_7gkmy"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_ifio7"]
+[ext_resource type="ArrayMesh" uid="uid://posrktshagip" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Helmet_10_Visor.res" id="3_ifio7"]
+
+[node name="SM_Chr_Attach_Helmet_10" type="MeshInstance3D" unique_id=1743952465]
+gi_mode = 2
+mesh = ExtResource("1_7gkmy")
+surface_material_override/0 = ExtResource("2_ifio7")
+
+[node name="SM_Chr_Attach_Helmet_10_Visor" type="Node3D" parent="." unique_id=325313758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13460045, 0.019940132)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="SM_Chr_Attach_Helmet_10_Visor" unique_id=613257590]
+gi_mode = 2
+mesh = ExtResource("3_ifio7")
+surface_material_override/0 = ExtResource("2_ifio7")

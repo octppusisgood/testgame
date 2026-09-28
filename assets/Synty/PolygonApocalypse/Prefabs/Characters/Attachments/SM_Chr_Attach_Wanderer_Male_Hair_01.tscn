@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://hgbt400i4itc"]
+
+[ext_resource type="ArrayMesh" uid="uid://oceeyi1v4rf6" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Wanderer_Male_Hair_01.res" id="1_2g1xx"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_2novb"]
+
+[node name="SM_Chr_Attach_Wanderer_Male_Hair_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_2g1xx")
+surface_material_override/0 = ExtResource("2_2novb")

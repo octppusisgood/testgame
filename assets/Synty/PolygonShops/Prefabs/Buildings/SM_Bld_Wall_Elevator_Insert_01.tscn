@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwmr2anlrhk1r"]
+
+[ext_resource type="ArrayMesh" uid="uid://06hkxxulrfol" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Elevator_Insert_01.res" id="1_7kglg"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_6fqa0"]
+[ext_resource type="ArrayMesh" uid="uid://7qlgkjr884yn" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Elevator_Insert_01_Door_R.res" id="3_6fqa0"]
+[ext_resource type="Shape3D" uid="uid://cqr40i5eafk2b" path="res://Assets/Synty/PolygonShops/Models/Collision/SM_Bld_Wall_Elevator_Insert_01_Collision.res" id="3_k8014"]
+[ext_resource type="ArrayMesh" uid="uid://1th4g5vn2bhg" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Elevator_Insert_01_Door_L.res" id="4_k8014"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5hoyv"]
+size = Vector3(0.7488867, 2.3387191, 0.04028686)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_14gi2"]
+size = Vector3(0.7488867, 2.3387191, 0.04028686)
+
+[node name="SM_Bld_Wall_Elevator_Insert_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_7kglg")
+surface_material_override/0 = ExtResource("2_6fqa0")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = ExtResource("3_k8014")
+
+[node name="SM_Bld_Wall_Elevator_Insert_01_Door_R" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2499963, 0.079694726, -0.0064453534)
+gi_mode = 2
+mesh = ExtResource("3_6fqa0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6fqa0")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Wall_Elevator_Insert_01_Door_R"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Wall_Elevator_Insert_01_Door_R/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37444335, 1.1693593, -0.02014339)
+shape = SubResource("BoxShape3D_5hoyv")
+
+[node name="SM_Bld_Wall_Elevator_Insert_01_Door_L" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2499963, 0.079694726, -0.0064453534)
+gi_mode = 2
+mesh = ExtResource("4_k8014")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6fqa0")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Wall_Elevator_Insert_01_Door_L"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Wall_Elevator_Insert_01_Door_L/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37444335, 1.1693593, -0.02014339)
+shape = SubResource("BoxShape3D_14gi2")

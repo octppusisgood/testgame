@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://yee1tfnbernc"]
+
+[ext_resource type="ArrayMesh" uid="uid://b42e2eubsa4el" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Music_Headphone_Stand_02.res" id="1_34olg"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_ksqi1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bbd38"]
+points = PackedVector3Array(-0.10704215, -0.004348874, 0.020051688, -0.080947146, -0.004348874, 0.08094713, -0.020051695, 0.5348604, 0.08094713, -0.10704215, 0.021750683, -0.0060007498, -0.080947146, 0.0043146536, -0.084285766, -0.037441276, -0.004348874, -0.10171792, 0.023390323, -0.004348874, 0.10704215, 0.023411602, 0.5348604, 0.08094713, -0.020051695, 0.5522964, -0.06687491, -0.020051695, 0.5348604, -0.08430706, 0.014684886, -0.004348874, -0.11040206, 0.11040206, -0.004348874, -0.014684893, 0.084285766, 0.0043146536, 0.08094713, 0.11040206, 0.013032669, 0.011346258, 0.023411602, 0.5348604, -0.08430706, 0.09296991, -0.004348874, -0.05821205)
+
+[node name="SM_Prop_Music_Headphone_Stand_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_34olg")
+surface_material_override/0 = ExtResource("2_ksqi1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_bbd38")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdemf6eddwjno"]
+
+[ext_resource type="ArrayMesh" uid="uid://vhm11k02fb8m" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Tree_02.res" id="1_vyv6c"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_bvj8s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tw4xm"]
+radius = 0.33
+height = 6.49
+
+[node name="SM_Env_Tree_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_vyv6c")
+surface_material_override/0 = ExtResource("2_bvj8s")
+
+[node name="CapsuleCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CapsuleCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17, 0)
+shape = SubResource("CapsuleShape3D_tw4xm")

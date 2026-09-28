@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cx7cmy38lmei0"]
+
+[ext_resource type="ArrayMesh" uid="uid://dp6syp8kq7s7d" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_ClothCover_Large_01.res" id="1_x4ba7"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_55ttu"]
+[ext_resource type="Shape3D" uid="uid://bs0pdpkx1tjbp" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Village_ClothCover_Large_01_Collision.res" id="3_38kxr"]
+[ext_resource type="ArrayMesh" uid="uid://7xyc3b8ywier" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_ClothCover_Large_Cloth_01.res" id="3_55ttu"]
+
+[node name="SM_Bld_Village_ClothCover_Large_01" type="MeshInstance3D" unique_id=1211919978]
+gi_mode = 2
+mesh = ExtResource("1_x4ba7")
+surface_material_override/0 = ExtResource("2_55ttu")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=281157234]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1793801638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.057986498, 0.20532966, 0.35577393)
+shape = ExtResource("3_38kxr")
+
+[node name="SM_Bld_Village_ClothCover_Large_Cloth_01" type="MeshInstance3D" parent="." unique_id=1408095551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007592638, 2.259738, -1.0946479)
+gi_mode = 2
+mesh = ExtResource("3_55ttu")
+surface_material_override/0 = ExtResource("2_55ttu")

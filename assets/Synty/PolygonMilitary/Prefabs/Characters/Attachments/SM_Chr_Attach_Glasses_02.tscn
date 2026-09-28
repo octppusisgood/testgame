@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://0li1ry62hepy"]
+
+[ext_resource type="ArrayMesh" uid="uid://beic3xrrgssbe" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Glasses_02.res" id="1_s7qhh"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_yhmyv"]
+
+[node name="SM_Chr_Attach_Glasses_02" type="MeshInstance3D" unique_id=1972629517]
+gi_mode = 2
+mesh = ExtResource("1_s7qhh")
+surface_material_override/0 = ExtResource("2_yhmyv")

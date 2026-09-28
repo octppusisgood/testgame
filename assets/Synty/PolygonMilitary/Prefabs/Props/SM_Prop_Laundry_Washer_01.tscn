@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c566n6ka7igya"]
+
+[ext_resource type="ArrayMesh" uid="uid://b24jovx566ier" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Laundry_Washer_01.res" id="1_s1f24"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_o81fm"]
+[ext_resource type="ArrayMesh" uid="uid://bhjgpfk0ye7tv" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Laundry_Washer_Door_01.res" id="3_o81fm"]
+[ext_resource type="Material" uid="uid://bsdrxux17jhqg" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_Alt_mat.tres" id="4_qj67f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1f24"]
+size = Vector3(1, 1.2304077, 1)
+
+[node name="SM_Prop_Laundry_Washer_01" type="MeshInstance3D" unique_id=238850831]
+gi_mode = 2
+mesh = ExtResource("1_s1f24")
+surface_material_override/0 = ExtResource("2_o81fm")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=922730421]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1080555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60635376, 0)
+shape = SubResource("BoxShape3D_s1f24")
+
+[node name="SM_Prop_Laundry_Washer_Door_01" type="MeshInstance3D" parent="." unique_id=1943219859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31569883, 0.70113933, 0.48439178)
+gi_mode = 2
+mesh = ExtResource("3_o81fm")
+surface_material_override/0 = ExtResource("4_qj67f")
+surface_material_override/1 = ExtResource("2_o81fm")

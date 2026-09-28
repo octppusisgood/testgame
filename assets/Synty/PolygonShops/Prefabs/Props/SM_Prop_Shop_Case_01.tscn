@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwo23um5igdd7"]
+
+[ext_resource type="ArrayMesh" uid="uid://bwhgnbsifghla" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Shop_Case_01.res" id="1_hc8jh"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_bs1jg"]
+[ext_resource type="ArrayMesh" uid="uid://gaqyhv0heca2" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Shop_Case_01_Glass_01.res" id="3_bs1jg"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_tca06"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r8xue"]
+points = PackedVector3Array(0.35605636, 1.0953121, 0.35685346, 0.35451797, 1.0931158, -0.3583906, 0.34088215, 1.1341858, -0.34473825, 0.3410919, 1.1346251, 0.34180084, -0.35831985, 1.0920178, 0.35454306, 0.35605636, 0.151581, 0.35685346, 0.35451797, 0.153338, -0.3583906, -0.35685137, 1.0898215, -0.3561502, -0.3411877, 1.1271578, -0.34046748, -0.3411877, 1.1271578, 0.33732012, -0.35831985, 0.15421651, 0.35454306, -0.30762264, 0.012777637, 0.3211473, 0.31780615, 0.01727996, 0.31855682, 0.3173866, 0.018048652, -0.32121414, -0.35685137, 0.15597351, -0.3561502, -0.30468568, 0.018048652, -0.32121414)
+
+[node name="SM_Prop_Shop_Case_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_hc8jh")
+surface_material_override/0 = ExtResource("2_bs1jg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_r8xue")
+
+[node name="SM_Prop_Shop_Case_01_Glass_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4414062e-06, 0, -5.0601415e-07)
+gi_mode = 2
+mesh = ExtResource("3_bs1jg")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_tca06")

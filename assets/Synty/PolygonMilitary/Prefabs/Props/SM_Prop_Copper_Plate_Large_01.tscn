@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cewk8wo2ybyfe"]
+
+[ext_resource type="ArrayMesh" uid="uid://qyuwy6e2dg8l" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Copper_Plate_Large_01.res" id="1_ygmbi"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_8eo6k"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1py46"]
+points = PackedVector3Array(0.81649673, 0.1889222, -0.03718412, 0.6260823, 0.08611405, -0.44450182, 0.28044224, 0.1889222, -0.77730465, 0.28059447, 0.1889222, 0.7794323, 0.5841912, 0.062443938, 0.4332199, 0.7255548, 0.06242357, 0.012644887, 0.42668045, -0.004492374, -0.3024816, 0.2636857, 0.110028595, -0.7306757, -0.23123932, 0.06256616, -0.6814562, -0.68884313, 0.1889222, -0.4455685, -0.6634038, 0.1889222, 0.49843943, -0.23580927, 0.06234209, 0.6969936, 0.42607105, -0.004349783, 0.3038473, -0.42668065, -0.0044516334, -0.3024816, -0.124454975, -0.019158881, 0.34285724, -0.73956954, 0.062199492, 0.03672129)
+
+[node name="SM_Prop_Copper_Plate_Large_01" type="MeshInstance3D" unique_id=585711820]
+gi_mode = 2
+mesh = ExtResource("1_ygmbi")
+surface_material_override/0 = ExtResource("2_8eo6k")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=763361195]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=832169689]
+shape = SubResource("ConvexPolygonShape3D_1py46")

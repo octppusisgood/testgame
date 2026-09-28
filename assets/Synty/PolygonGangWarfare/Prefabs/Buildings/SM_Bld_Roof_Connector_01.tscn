@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dqhd62w5mq2fd"]
+
+[ext_resource type="ArrayMesh" uid="uid://derqajmmiceam" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Roof_Connector_01.res" id="1_fn4on"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_3a8kx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fn4on"]
+points = PackedVector3Array(-1.6021926, -0.1499615, -0.60519254, -3, -0.47753158, -0.4482074, -3, -0.011101246, -0.54251695, -1.6021926, 0.3349716, -0.60519254, -1.3807752, -0.1499615, -0.60519254, 0, -0.47753158, -0.4482074, -1.6183438, -0.5666321, -0.24157941, -3, -0.47753158, 0.44050622, -3, 0.35095936, -0.54251695, -1.3807752, 0.3349716, -0.60519254, 0, -0.011101246, -0.54251695, -1.3969264, -0.5666321, -0.24157941, 0, -0.47753158, 0.44050622, -1.6183438, -0.5666321, 0.24146092, -1.6021926, -0.1499615, 0.60519254, -3, -0.011101246, 0.54239845, -3, 0.35095936, 0.54239845, 0, 0.35095936, -0.54251695, -1.3969264, -0.5666321, 0.24146092, 0, -0.011101246, 0.54239845, -1.3807752, -0.1499615, 0.60519254, -1.6021926, 0.3349716, 0.60519254, 0, 0.35095936, 0.54239845, -1.3807752, 0.3349716, 0.60519254)
+
+[node name="SM_Bld_Roof_Connector_01" type="MeshInstance3D" unique_id=1504739042]
+gi_mode = 2
+mesh = ExtResource("1_fn4on")
+surface_material_override/0 = ExtResource("2_3a8kx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1256296545]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=980778395]
+shape = SubResource("ConvexPolygonShape3D_fn4on")

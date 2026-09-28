@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bwxrh2htjdnpp"]
+
+[ext_resource type="ArrayMesh" uid="uid://wajcpc688ru" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Wall_Beam_Bare_02.res" id="1_xkuf7"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_mxiu8"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5vdwy"]
+points = PackedVector3Array(0.15465179, 3.023213, 0.15467562, -0.13100654, 3.023213, 0.15467562, 0.15465179, -0.023511171, 0.15467562, 0.15465179, 3.023213, -0.22616486, -0.13100654, 3.023213, -0.22616486, -0.13100654, -0.023511171, 0.15467562, 0.15465179, -0.023511171, -0.22616486, -0.13100654, -0.023511171, -0.22616486)
+
+[node name="SM_Bld_Wall_Beam_Bare_02" type="MeshInstance3D" unique_id=1849183029]
+gi_mode = 2
+mesh = ExtResource("1_xkuf7")
+surface_material_override/0 = ExtResource("2_mxiu8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1588816040]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1288370100]
+shape = SubResource("ConvexPolygonShape3D_5vdwy")

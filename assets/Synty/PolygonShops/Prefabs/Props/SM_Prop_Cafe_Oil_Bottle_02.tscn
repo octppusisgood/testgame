@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://4be7470t3dsv"]
+
+[ext_resource type="ArrayMesh" uid="uid://dcvwuk4lc8q2g" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Oil_Bottle_02.res" id="1_j771s"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_f1ijb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vj44j"]
+points = PackedVector3Array(-0.04332778, 0.0032392442, -0.027599478, -0.030428918, 0.0032392442, -0.04049834, -0.030428918, 0.0032392442, 0.043327846, -0.03715733, 0.2360122, 0.026145771, -0.027302667, 0.23756297, -0.035977174, 0.040498406, 0.0032392442, -0.034048907, 0.028887786, 0.23609173, -0.034409944, 0.027599543, 0.0032392442, 0.043327846, 0.023406595, 0.23613149, 0.037272274, -0.026153915, 0.2360122, 0.03714919, -0.004622992, 0.40945867, 0.004623059, -0.023979487, 0.33203998, 0.004623059, 0.0082512535, 0.40945867, -0.008251186, 0.040498406, 0.0032392442, 0.030428983, 0.034401804, 0.23609173, -0.02889593, 0.035969034, 0.23756297, 0.027294531)
+
+[node name="SM_Prop_Cafe_Oil_Bottle_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_j771s")
+surface_material_override/0 = ExtResource("2_f1ijb")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_vj44j")

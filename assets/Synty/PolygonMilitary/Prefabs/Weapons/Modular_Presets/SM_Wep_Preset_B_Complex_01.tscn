@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://b8h4quloshr67"]
+
+[ext_resource type="ArrayMesh" uid="uid://ffjdsqpgofew" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Complex_01.res" id="1_iuoiq"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_vhy4a"]
+[ext_resource type="ArrayMesh" uid="uid://spvg4vwixp1f" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Complex_01_Mag.res" id="3_vhy4a"]
+[ext_resource type="ArrayMesh" uid="uid://dtbcali06gpmn" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Complex_01_RailCanted.res" id="4_n6kr6"]
+[ext_resource type="ArrayMesh" uid="uid://dxonbm64en3wo" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Complex_01_RailCanted_Sight.res" id="5_xl5f3"]
+[ext_resource type="ArrayMesh" uid="uid://delbikvfosee0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Complex_01_RailCanted_Sight_Glass.res" id="6_b501f"]
+[ext_resource type="Material" uid="uid://dufyylglufax8" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_Glass_mat.tres" id="7_mxpdy"]
+[ext_resource type="ArrayMesh" uid="uid://c4yfx01xcn73c" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Complex_01_Sight.res" id="8_nu6o6"]
+[ext_resource type="ArrayMesh" uid="uid://b4ohe7ngvqexd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Complex_01_Sight_Glass.res" id="9_mxpdy"]
+[ext_resource type="ArrayMesh" uid="uid://do8ma5lpbt728" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Complex_01_Slide.res" id="10_6uct2"]
+[ext_resource type="ArrayMesh" uid="uid://d3eddc4mwaw50" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Complex_01_Trigger.res" id="11_c0pbn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bjwct"]
+points = PackedVector3Array(0.009674396, -0.0933058, -0.079040825, -0.024275642, -0.07065656, -0.47514385, 0.02097077, -0.07065656, -0.47514385, 0.07757448, 0.087709755, 0.5318538, 0.010308068, -0.058937047, 0.4503365, -0.024275642, -0.07063109, 0.45260087, 0.02097077, 0.09899615, -0.48662743, -0.046917126, 0.087709755, 0.30557856, -0.03560857, 0.13298275, -0.3958909, 0.03229151, 0.13298275, -0.3958909, 0.07757448, 0.11035898, 0.41863534, 0.03229151, 0.12167087, 1.1657157, 0.02097077, 0.06513694, 1.1657157, -0.03560857, 0.12167087, 1.1657157, -0.010079019, 0.15372118, 0.29878548, 0.009674396, 0.16696933, 0.9279568)
+
+[node name="SM_Wep_Preset_B_Complex_01" type="MeshInstance3D" unique_id=1269809012]
+gi_mode = 2
+mesh = ExtResource("1_iuoiq")
+surface_material_override/0 = ExtResource("2_vhy4a")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1221314563]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=898444630]
+shape = SubResource("ConvexPolygonShape3D_bjwct")
+
+[node name="SM_Wep_Preset_B_Complex_01_Mag" type="MeshInstance3D" parent="." unique_id=33780049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013679814, -0.04689924, 0.25376403)
+gi_mode = 2
+mesh = ExtResource("3_vhy4a")
+surface_material_override/0 = ExtResource("2_vhy4a")
+
+[node name="SM_Wep_Preset_B_Complex_01_RailCanted" type="MeshInstance3D" parent="." unique_id=617148275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14698097, 0.036749806)
+gi_mode = 2
+mesh = ExtResource("4_n6kr6")
+surface_material_override/0 = ExtResource("2_vhy4a")
+
+[node name="SM_Wep_Preset_B_Complex_01_RailCanted_Sight" type="MeshInstance3D" parent="SM_Wep_Preset_B_Complex_01_RailCanted" unique_id=1484699342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03572272, 0.006682977, -0.024430295)
+gi_mode = 2
+mesh = ExtResource("5_xl5f3")
+surface_material_override/0 = ExtResource("2_vhy4a")
+
+[node name="SM_Wep_Preset_B_Complex_01_RailCanted_Sight_Glass" type="MeshInstance3D" parent="SM_Wep_Preset_B_Complex_01_RailCanted/SM_Wep_Preset_B_Complex_01_RailCanted_Sight" unique_id=840274055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033088367, 0.03312376, 0.041541442)
+gi_mode = 2
+mesh = ExtResource("6_b501f")
+surface_material_override/0 = ExtResource("7_mxpdy")
+
+[node name="SM_Wep_Preset_B_Complex_01_Sight" type="MeshInstance3D" parent="." unique_id=264592081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5018819e-05, 0.15756068, 0.14862697)
+gi_mode = 2
+mesh = ExtResource("8_nu6o6")
+surface_material_override/0 = ExtResource("2_vhy4a")
+
+[node name="SM_Wep_Preset_B_Complex_01_Sight_Glass" type="MeshInstance3D" parent="SM_Wep_Preset_B_Complex_01_Sight" unique_id=944950939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.231879e-08, 0.06003432, 0.06553663)
+gi_mode = 2
+mesh = ExtResource("9_mxpdy")
+surface_material_override/0 = ExtResource("7_mxpdy")
+
+[node name="SM_Wep_Preset_B_Complex_01_Slide" type="MeshInstance3D" parent="." unique_id=903156751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020771123, 0.11821374, 0.19275804)
+gi_mode = 2
+mesh = ExtResource("10_6uct2")
+surface_material_override/0 = ExtResource("2_vhy4a")
+
+[node name="SM_Wep_Preset_B_Complex_01_Trigger" type="MeshInstance3D" parent="." unique_id=970543079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03777122, 0.05450493)
+gi_mode = 2
+mesh = ExtResource("11_c0pbn")
+surface_material_override/0 = ExtResource("2_vhy4a")

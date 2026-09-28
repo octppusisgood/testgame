@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3r4bhektycek"]
+
+[ext_resource type="Texture2D" uid="uid://cn4022g24t2gb" path="res://Assets/Synty/PolygonGangWarfare/Textures/Vehicle/Vehicle_04.png" id="1_uxm0i"]
+[ext_resource type="Texture2D" uid="uid://cnfh1hlvaryu" path="res://Assets/Synty/PolygonGangWarfare/Textures/Vehicle/Vehicle_01_Emission.png" id="2_v1k7r"]
+
+[resource]
+resource_name = "Vehicle_04_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_uxm0i")
+roughness = 0.8
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("2_v1k7r")
+uv1_scale = Vector3(1, 1, 0)

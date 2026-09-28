@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b3ii1lq2occw8"]
+
+[ext_resource type="ArrayMesh" uid="uid://b51hk4aop31vm" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Cover_01.res" id="1_a0lqa"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_damok"]
+[ext_resource type="ArrayMesh" uid="uid://gvavyk73sks6" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Cover_Leaf_01.res" id="3_damok"]
+[ext_resource type="Shape3D" uid="uid://cfb0jdhv4c7j0" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Village_Cover_01_Collision.res" id="3_wqyo7"]
+
+[node name="SM_Bld_Village_Cover_01" type="MeshInstance3D" unique_id=425921123]
+gi_mode = 2
+mesh = ExtResource("1_a0lqa")
+surface_material_override/0 = ExtResource("2_damok")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1824390295]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=279930739]
+shape = ExtResource("3_wqyo7")
+
+[node name="SM_Bld_Village_Cover_Leaf_01" type="MeshInstance3D" parent="." unique_id=75212458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003918457, 3.9317029, -0.07804443)
+gi_mode = 2
+mesh = ExtResource("3_damok")
+surface_material_override/0 = ExtResource("2_damok")

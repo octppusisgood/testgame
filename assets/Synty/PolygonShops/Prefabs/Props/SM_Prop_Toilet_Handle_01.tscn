@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://du3n0ff836na5"]
+
+[ext_resource type="ArrayMesh" uid="uid://cml2gagyaf1t5" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Toilet_Handle_01.res" id="1_khq6f"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_0uclr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_16y45"]
+points = PackedVector3Array(0.02217295, -0.120293155, -0.40765965, -0.02531581, -0.11237346, -0.41563728, -0.033216134, 0.014328614, -0.49493295, 0.030085675, -0.10444057, -0.41563728, 0.02217295, -0.120293155, 0.40769202, -0.06492905, -0.025269896, -0.44745165, -0.02531581, -0.11237346, 0.41557354, -0.03324094, -0.10444057, -0.39987427, 0.061773792, -0.025269896, -0.45523706, -0.06492905, 0.014328614, -0.44745165, 0.061773792, 0.014328614, -0.45523706, 0.061773792, -0.025269896, 0.45526946, -0.041141264, 0.014328614, 0.4869877, -0.06492905, -0.025269896, 0.4472918, -0.06492905, 0.014328614, 0.4472918, 0.061773792, 0.014328614, 0.45526946)
+
+[node name="SM_Prop_Toilet_Handle_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_khq6f")
+surface_material_override/0 = ExtResource("2_0uclr")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_16y45")

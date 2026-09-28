@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://yii8ovgs4eg6"]
+
+[ext_resource type="ArrayMesh" uid="uid://duh2lefsufxa6" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Gurney_01.res" id="1_3xawk"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_ebaye"]
+[ext_resource type="ArrayMesh" uid="uid://br1xdhl32ewe1" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Gurney_Legs_r1.res" id="3_ebaye"]
+[ext_resource type="ArrayMesh" uid="uid://cvtj0m4wl1wrf" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Gurney_Wheels_f.res" id="4_muy0m"]
+[ext_resource type="ArrayMesh" uid="uid://dlnvovlpj1oms" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Gurney_Legs_r.res" id="5_r80lf"]
+[ext_resource type="ArrayMesh" uid="uid://cqd6tsd2n378f" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Gurney_Wheels_r.res" id="6_3cp2p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qr1ni"]
+points = PackedVector3Array(0.5459394, 0.48357934, 0.9597094, -0.5249134, 0.48357934, 0.9597094, 0.5459394, 0.48352873, -0.9968463, 0.4719357, 1.0004731, -0.36940068, 0.4719357, 1.0004731, 0.36891794, 0.4719357, 0.70511246, 1.1814554, -0.48801634, 0.8156767, 1.144346, -0.52292174, 0.6733854, 0.9264703, -0.5249134, 0.48352873, -0.9968463, 0.50893754, 0.70511246, -1.1443734, -0.43592024, 0.97243994, 0.32884884, 0.37686288, 0.91687953, -1.0498923, -0.35961044, 0.91773975, -1.054901, -0.3772204, 0.9265444, 1.0705824, 0.39803678, 0.9265444, 1.0705824, -0.48801634, 0.81572723, -1.1443734)
+
+[node name="SM_Prop_Bed_Gurney_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3xawk")
+surface_material_override/0 = ExtResource("2_ebaye")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_qr1ni")
+
+[node name="SM_Prop_Bed_Gurney_Legs_f" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005402832, 0.7380175, 0.7402547)
+gi_mode = 2
+mesh = ExtResource("3_ebaye")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ebaye")
+
+[node name="SM_Prop_Bed_Gurney_Wheels_f" type="MeshInstance3D" parent="SM_Prop_Bed_Gurney_Legs_f"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2204982e-06, -0.6555647, 0.06858373)
+gi_mode = 2
+mesh = ExtResource("4_muy0m")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ebaye")
+
+[node name="SM_Prop_Bed_Gurney_Legs_r" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005402832, 0.7380175, -0.35507646)
+gi_mode = 2
+mesh = ExtResource("5_r80lf")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ebaye")
+
+[node name="SM_Prop_Bed_Gurney_Wheels_r" type="MeshInstance3D" parent="SM_Prop_Bed_Gurney_Legs_r"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2204982e-06, -0.65556467, -0.11582586)
+gi_mode = 2
+mesh = ExtResource("6_3cp2p")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ebaye")

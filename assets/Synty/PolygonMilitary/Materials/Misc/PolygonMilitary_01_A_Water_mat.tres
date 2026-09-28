@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://nws0c0smgbyh"]
+
+[ext_resource type="Texture2D" uid="uid://bslklnrmmkhqw" path="res://Assets/Synty/PolygonMilitary/Textures/Alts/PolygonMilitary_01_A.png" id="1_dp1ms"]
+
+[resource]
+resource_name = "PolygonMilitary_01_A_Water_mat"
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(1, 1, 1, 0.722)
+albedo_texture = ExtResource("1_dp1ms")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

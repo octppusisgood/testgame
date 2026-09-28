@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://byy7d0fqqep4v"]
+
+[ext_resource type="ArrayMesh" uid="uid://b5ym45cyern6x" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Sign_Food_01.res" id="1_at5un"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_c3xoj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sm0sh"]
+points = PackedVector3Array(1.4116635, 0.6501955, 0.1590355, 1.6734226, 0.44096136, 0.1590355, 1.5685878, 0.54551446, -0.15473121, 1.4116635, 0.6501955, -0.15473121, -1.5164983, 0.6501955, 0.1590355, 1.6734226, -0.44793177, -0.15473121, 1.6210053, -0.5002723, 0.1590355, -1.6210053, 0.6501955, -0.15473121, -1.6734226, 0.54551446, 0.1590355, 1.4640808, -0.60495335, -0.15473121, 1.4640808, -0.60495335, 0.1590355, -1.6734226, -0.60495335, -0.15473121, -1.6210053, -0.60495335, 0.1590355, 1.0981426, -0.6571659, -0.15473121, 0.62736964, -0.6571659, 0.1590355, -0.8367113, -0.6571659, -0.15473121)
+
+[node name="SM_Prop_Sign_Food_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_at5un")
+surface_material_override/0 = ExtResource("2_c3xoj")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_sm0sh")

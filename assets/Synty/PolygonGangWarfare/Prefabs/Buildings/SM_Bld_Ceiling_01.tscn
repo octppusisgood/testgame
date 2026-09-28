@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c6dimfb838ehn"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccsap0guartdl" path="res://Assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Ceiling_01.res" id="1_2gbno"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_a140o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2gbno"]
+size = Vector3(2.9999988, 0.15696584, 3)
+
+[node name="SM_Bld_Ceiling_01" type="MeshInstance3D" unique_id=418723363]
+gi_mode = 2
+mesh = ExtResource("1_2gbno")
+surface_material_override/0 = ExtResource("2_a140o")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1219565742]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1151718903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5000006, 0.062106997, -1.5)
+shape = SubResource("BoxShape3D_2gbno")

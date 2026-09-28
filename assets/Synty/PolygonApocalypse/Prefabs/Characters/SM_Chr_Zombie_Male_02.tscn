@@ -1,0 +1,611 @@
+[gd_scene load_steps=64 format=3 uid="uid://duakka6sooh5f"]
+
+[ext_resource type="ArrayMesh" uid="uid://dxvsrbabtnhxa" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Zombie_Male_01.mesh" id="1_43ai3"]
+[ext_resource type="Skin" uid="uid://c62ammsp71e6v" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Zombie_Male_01_skin.tres" id="2_pvkxt"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="3_r5l7f"]
+[ext_resource type="ArrayMesh" uid="uid://t5i40dcnhdm8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Teen_Female_01.mesh" id="4_ct5sv"]
+[ext_resource type="Skin" uid="uid://m33ouqc2gpdb" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Teen_Female_01_skin.tres" id="5_7y8ic"]
+[ext_resource type="ArrayMesh" uid="uid://c7x4lrr84orj8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Teen_Male_01.mesh" id="6_gyg6n"]
+[ext_resource type="Skin" uid="uid://b7b8d0et15dgb" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Teen_Male_01_skin.tres" id="7_b4oxo"]
+[ext_resource type="ArrayMesh" uid="uid://dh0ronblx0bbv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Soldier_Male_01.mesh" id="8_s4naw"]
+[ext_resource type="Skin" uid="uid://cix1th4o0fe4v" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Soldier_Male_01_skin.tres" id="9_s7jsv"]
+[ext_resource type="ArrayMesh" uid="uid://c8lo0n3hxeio4" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Soldier_Female_01.mesh" id="10_3q0fh"]
+[ext_resource type="Skin" uid="uid://dopofks42dcq7" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Soldier_Female_01_skin.tres" id="11_i1kkh"]
+[ext_resource type="ArrayMesh" uid="uid://p5kacqore5i6" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Sheriff_Male_01.mesh" id="12_cfuvp"]
+[ext_resource type="Skin" uid="uid://dxjwkk3j3l3mb" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Sheriff_Male_01_skin.tres" id="13_rgk8r"]
+[ext_resource type="ArrayMesh" uid="uid://c5evsqwct50xp" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Scout_Female_01.mesh" id="14_y7fcb"]
+[ext_resource type="Skin" uid="uid://8dhel2c7rdln" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Scout_Female_01_skin.tres" id="15_kxmwk"]
+[ext_resource type="ArrayMesh" uid="uid://c1pb4n2jp227x" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_RiotCop_Male_01.mesh" id="16_kdt6g"]
+[ext_resource type="Skin" uid="uid://gq2agvxti1c4" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_RiotCop_Male_01_skin.tres" id="17_er3ui"]
+[ext_resource type="ArrayMesh" uid="uid://bc4grk3xtumkf" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Punk_Female_01.mesh" id="18_38ijc"]
+[ext_resource type="Skin" uid="uid://clw7gqaeljoox" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Punk_Female_01_skin.tres" id="19_ies1o"]
+[ext_resource type="ArrayMesh" uid="uid://bbpahbhqj25lw" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Press_Male_01.mesh" id="20_t2vdr"]
+[ext_resource type="Skin" uid="uid://b8b17w58lf742" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Press_Male_01_skin.tres" id="21_1kdje"]
+[ext_resource type="ArrayMesh" uid="uid://bjddrc100m6hn" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Biker_Male_01.mesh" id="22_xbxjq"]
+[ext_resource type="Skin" uid="uid://bthum71imnmda" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Biker_Male_01_skin.tres" id="23_dd402"]
+[ext_resource type="ArrayMesh" uid="uid://bsn384ou72xgk" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Business_Male_01.mesh" id="24_8760u"]
+[ext_resource type="Skin" uid="uid://cuem1qjn4iuki" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Business_Male_01_skin.tres" id="25_o32cw"]
+[ext_resource type="ArrayMesh" uid="uid://4xardmg4r7u2" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Cool_Female_01.mesh" id="26_o2b8i"]
+[ext_resource type="Skin" uid="uid://ytgdxwgb45to" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Cool_Female_01_skin.tres" id="27_nyi38"]
+[ext_resource type="ArrayMesh" uid="uid://cmuvfrt7p31oi" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Cool_Male_01.mesh" id="28_8nsmc"]
+[ext_resource type="Skin" uid="uid://dgvicet7e6qa8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Cool_Male_01_skin.tres" id="29_n8jta"]
+[ext_resource type="ArrayMesh" uid="uid://cvk5x1vf2xmax" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Criminal_Male_01.mesh" id="30_38eq7"]
+[ext_resource type="Skin" uid="uid://dhsfn6kcfmr0y" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Criminal_Male_01_skin.tres" id="31_vxfof"]
+[ext_resource type="ArrayMesh" uid="uid://nsdinc1nvs58" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Eastern_Female_01.mesh" id="32_s3frs"]
+[ext_resource type="Skin" uid="uid://j24a5mei3ta8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Eastern_Female_01_skin.tres" id="33_ore6y"]
+[ext_resource type="ArrayMesh" uid="uid://wqoh2i2o1tbe" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Emo_Female_01.mesh" id="34_sh8xn"]
+[ext_resource type="Skin" uid="uid://d20r7pcjp3f7p" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Emo_Female_01_skin.tres" id="35_lvl8w"]
+[ext_resource type="ArrayMesh" uid="uid://tvinmvs1xayl" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Hazmat_Male_01.mesh" id="36_0ouaq"]
+[ext_resource type="Skin" uid="uid://bbdfwldjd7xqk" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Hazmat_Male_01_skin.tres" id="37_jnh8d"]
+[ext_resource type="ArrayMesh" uid="uid://bfgjw75mfii47" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Homeless_Male_01.mesh" id="38_15bcu"]
+[ext_resource type="Skin" uid="uid://bpna1na2kq5wv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Homeless_Male_01_skin.tres" id="39_enn25"]
+[ext_resource type="ArrayMesh" uid="uid://ceujty2y34ets" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Hunter_Male_01.mesh" id="40_iig5r"]
+[ext_resource type="Skin" uid="uid://cx2agwxul6m3v" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Hunter_Male_01_skin.tres" id="41_a8hja"]
+[ext_resource type="ArrayMesh" uid="uid://qe4fs7xnwxtl" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Islander_Male_01.mesh" id="42_akwtv"]
+[ext_resource type="Skin" uid="uid://b42r8vgfump4w" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Islander_Male_01_skin.tres" id="43_rhelh"]
+[ext_resource type="ArrayMesh" uid="uid://dau7jp6a8q8gg" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Nerd_Female_01.mesh" id="44_sr85y"]
+[ext_resource type="Skin" uid="uid://dlaflc45iv56h" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Nerd_Female_01_skin.tres" id="45_s2p2c"]
+[ext_resource type="ArrayMesh" uid="uid://cd1twqjciy6ua" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Mechanic_Female_01.mesh" id="46_y4abe"]
+[ext_resource type="Skin" uid="uid://cpo2i4ewvgv0u" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Mechanic_Female_01_skin.tres" id="47_butlr"]
+[ext_resource type="ArrayMesh" uid="uid://b1br4u0gpnjlc" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Patient_Female_01.mesh" id="48_tab5u"]
+[ext_resource type="Skin" uid="uid://di0juhf6viluw" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Patient_Female_01_skin.tres" id="49_sg1ic"]
+[ext_resource type="ArrayMesh" uid="uid://dj2ptlm6dmf06" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Waitress_Female_01.mesh" id="50_aw8rt"]
+[ext_resource type="Skin" uid="uid://c2ghmv1340h34" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Waitress_Female_01_skin.tres" id="51_2r72g"]
+[ext_resource type="ArrayMesh" uid="uid://cs2xlq7o0aogu" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Wanderer_Male_01.mesh" id="52_ewnup"]
+[ext_resource type="Skin" uid="uid://bdaamep2jgy11" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Wanderer_Male_01_skin.tres" id="53_uwjkt"]
+[ext_resource type="ArrayMesh" uid="uid://ds5vh2bhcxbmu" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Nun_Female_01.mesh" id="54_qrrgl"]
+[ext_resource type="Skin" uid="uid://b5p5s7yr2uyfj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Nun_Female_01_skin.tres" id="55_18b8c"]
+[ext_resource type="ArrayMesh" uid="uid://b6b2bpvaprjdn" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Zombie_Female_02.mesh" id="56_5rha6"]
+[ext_resource type="Skin" uid="uid://bv578vhlniddk" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Zombie_Female_02_skin.tres" id="57_xnuge"]
+[ext_resource type="ArrayMesh" uid="uid://bcuj05uptoqcy" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Zombie_Female_01.mesh" id="58_meqd0"]
+[ext_resource type="Skin" uid="uid://dnutsicn26er3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Zombie_Female_01_skin.tres" id="59_mj7fy"]
+[ext_resource type="ArrayMesh" uid="uid://sii1n4t11n76" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Zombie_Male_02.mesh" id="60_b88mb"]
+[ext_resource type="Skin" uid="uid://b1817m1ob428j" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Zombie_Male_02_skin.tres" id="61_8tath"]
+[ext_resource type="Shape3D" uid="uid://cj5gwdnnnm3q3" path="res://assets/Synty/PolygonApocalypse/Models/Synty_Character_Collider.tres" id="62_3th7v"]
+[ext_resource type="PackedScene" uid="uid://b1j1bajka3c7d" path="res://assets/Synty/PolygonApocalypse/Prefabs/Characters/Attachments/SM_Chr_Attach_Zombie_Male_Hair_02.tscn" id="62_pvkxt"]
+
+[node name="SM_Chr_Zombie_Male_02" type="CharacterBody3D"]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="."]
+bones/0/name = "Root"
+bones/0/parent = -1
+bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bones/0/enabled = true
+bones/0/position = Vector3(0, 0, 0)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/name = "Hips"
+bones/1/parent = 0
+bones/1/rest = Transform3D(0, 0, 1, 0.9887751, 0.14941198, 0, -0.149412, 0.9887751, 0, 5.0487097e-31, 0.8762761, 3.5128346e-17)
+bones/1/enabled = true
+bones/1/position = Vector3(5.0487097e-31, 0.8762761, 3.5128346e-17)
+bones/1/rotation = Quaternion(0.46113664, 0.5360532, 0.46113664, 0.5360532)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/name = "Spine_01"
+bones/2/parent = 1
+bones/2/rest = Transform3D(0.9801282, 0.19836503, -2.60679e-15, 0.19836503, -0.9801283, -4.2781374e-16, -2.6398519e-15, -9.778367e-17, -1, 0.10393265, 2.7755576e-17, 5.646429e-17)
+bones/2/enabled = true
+bones/2/position = Vector3(0.10393265, 2.7755576e-17, 5.646429e-17)
+bones/2/rotation = Quaternion(0.9950197, 0.09967895, -1.3182256e-15, 8.292047e-17)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/name = "Spine_02"
+bones/3/parent = 2
+bones/3/rest = Transform3D(0.9807909, 0.19506204, 1.1572506e-15, 0.19506204, -0.980791, 1.19411e-15, 1.3679465e-15, -9.454366e-16, -1, 0.18151169, -1.3877788e-17, -6.629276e-17)
+bones/3/enabled = true
+bones/3/position = Vector3(0.18151169, -1.3877788e-17, -6.629276e-17)
+bones/3/rotation = Quaternion(0.99518615, 0.09800279, 6.34353e-16, -5.374739e-16)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/name = "Spine_03"
+bones/4/parent = 3
+bones/4/rest = Transform3D(0.9753179, 0.2208054, 1.6379938e-15, 0.2208054, -0.97531784, 1.0978079e-15, 1.8399665e-15, -7.090337e-16, -1, 0.17903724, -2.7755576e-17, 9.671688e-17)
+bones/4/enabled = true
+bones/4/position = Vector3(0.17903724, -2.7755576e-17, 9.671688e-17)
+bones/4/rotation = Quaternion(0.99381036, 0.11109032, 8.7490536e-16, -4.5452376e-16)
+bones/4/scale = Vector3(1, 0.99999994, 1)
+bones/5/name = "Neck"
+bones/5/parent = 4
+bones/5/rest = Transform3D(0.99651664, 0.08339398, -2.479984e-15, -0.08339398, 0.99651664, -1.0533132e-16, 2.4625613e-15, 3.1178012e-16, 1, 0.111889675, 0, -5.0514127e-17)
+bones/5/enabled = true
+bones/5/position = Vector3(0.111889675, 0, -5.0514127e-17)
+bones/5/rotation = Quaternion(1.0436877e-16, -1.2367136e-15, -0.041733347, 0.9991288)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/name = "Head"
+bones/6/parent = 5
+bones/6/rest = Transform3D(0, 0.9873026, 0.15885058, 0, 0.15885061, -0.9873026, -1, 0, 0, 0.121644355, -2.220446e-16, -5.896117e-17)
+bones/6/enabled = true
+bones/6/position = Vector3(0.121644355, -2.220446e-16, -5.896117e-17)
+bones/6/rotation = Quaternion(0.458571, 0.5382497, -0.458571, 0.5382496)
+bones/6/scale = Vector3(1, 0.99999994, 0.99999994)
+bones/7/name = "Eyes"
+bones/7/parent = 6
+bones/7/rest = Transform3D(1, -1.5777218e-30, 0, 1.5777218e-30, 1, 0, 0, 0, 1, 2.9881457e-18, 0.09447606, 0.12272215)
+bones/7/enabled = true
+bones/7/position = Vector3(2.9881457e-18, 0.09447606, 0.12272215)
+bones/7/rotation = Quaternion(0, 0, 7.888609e-31, 1)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/name = "Eyebrows"
+bones/8/parent = 6
+bones/8/rest = Transform3D(1, -1.5777218e-30, 0, 1.5777218e-30, 1, 0, 0, 0, 1, 5.443442e-19, 0.1276692, 0.12272215)
+bones/8/enabled = true
+bones/8/position = Vector3(5.443442e-19, 0.1276692, 0.12272215)
+bones/8/rotation = Quaternion(0, 0, 7.888609e-31, 1)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/name = "Jaw"
+bones/9/parent = 6
+bones/9/rest = Transform3D(1, -1.5777218e-30, 0, 1.5777218e-30, 1, 0, 0, 0, 1, 4.59198e-05, 0.062475115, 0.02164003)
+bones/9/enabled = true
+bones/9/position = Vector3(4.59198e-05, 0.062475115, 0.02164003)
+bones/9/rotation = Quaternion(0, 0, 7.888609e-31, 1)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/name = "Clavicle_L"
+bones/10/parent = 4
+bones/10/rest = Transform3D(-0.048608065, 0.9965637, 0.06706911, 0.46712887, 0.08203405, -0.8803756, -0.8828522, -0.011463374, -0.46951127, 0.058011726, -0.041914478, -0.07447154)
+bones/10/enabled = true
+bones/10/position = Vector3(0.058011726, -0.041914478, -0.07447154)
+bones/10/rotation = Quaternion(0.5785476, 0.6324858, -0.35251346, 0.37547138)
+bones/10/scale = Vector3(1, 1, 1.0000001)
+bones/11/name = "Shoulder_L"
+bones/11/parent = 10
+bones/11/rest = Transform3D(0.88550895, 0.060278427, -0.46069556, -0.07101114, 0.99745756, -0.005981885, 0.45916373, 0.038011532, 0.8875381, 0.13197872, 4.440892e-16, -1.3877788e-17)
+bones/11/enabled = true
+bones/11/position = Vector3(0.13197872, 4.440892e-16, -1.3877788e-17)
+bones/11/rotation = Quaternion(0.0113281235, -0.23685999, -0.033806525, 0.9708894)
+bones/11/scale = Vector3(1, 0.99999994, 1)
+bones/12/name = "Elbow_L"
+bones/12/parent = 11
+bones/12/rest = Transform3D(0.9932755, -0.08250205, -0.081223026, 0.08222759, 0.9965909, -0.006723989, 0.08150087, 0, 0.9966733, 0.33947402, -0.0014490709, -0.0014362643)
+bones/12/enabled = true
+bones/12/position = Vector3(0.33947402, -0.0014490709, -0.0014362643)
+bones/12/rotation = Quaternion(0.0016838327, -0.040749595, 0.041251875, 0.99831605)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/name = "Hand_L"
+bones/13/parent = 12
+bones/13/rest = Transform3D(0.9974323, 3.314778e-15, 0.07161552, -3.318228e-15, 1, -7.079936e-17, -0.07161552, -1.6701904e-16, 0.9974323, 0.27114528, 0, -0.00038136425)
+bones/13/enabled = true
+bones/13/position = Vector3(0.27114528, 0, -0.00038136425)
+bones/13/rotation = Quaternion(-2.407038e-17, 0.035830766, -1.6593171e-15, 0.9993579)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/name = "Thumb_01_L"
+bones/14/parent = 13
+bones/14/rest = Transform3D(0.8312143, 0.15431747, -0.5341057, -0.18253398, 0.98319954, -3.7252903e-09, 0.5251325, 0.09749244, 0.8454177, 0.035140477, -0.011706916, 0.045055393)
+bones/14/enabled = true
+bones/14/position = Vector3(0.035140477, -0.011706916, 0.045055393)
+bones/14/rotation = Quaternion(0.02548064, -0.2768427, -0.088039555, 0.9565343)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/name = "Thumb_02_L"
+bones/15/parent = 14
+bones/15/rest = Transform3D(0.93210596, 0.26877838, 0.24276882, -0.28760552, 0.95668787, 0.045070767, -0.22013995, -0.11183238, 0.9690366, 0.06370214, 2.220446e-16, -1.110223e-16)
+bones/15/enabled = true
+bones/15/position = Vector3(0.06370214, 2.220446e-16, -1.110223e-16)
+bones/15/rotation = Quaternion(-0.039942026, 0.11784031, -0.14163579, 0.98206806)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/name = "Thumb_03_L"
+bones/16/parent = 15
+bones/16/rest = Transform3D(0.8479752, -0.45291466, 0.27532965, 0.43077642, 0.8915539, 0.13986906, -0.30881995, 7.450581e-09, 0.9511205, 0.056655698, 2.220446e-16, -2.7755576e-17)
+bones/16/enabled = true
+bones/16/position = Vector3(0.056655698, 2.220446e-16, -2.7755576e-17)
+bones/16/rotation = Quaternion(-0.03640326, 0.15203469, 0.22999536, 0.96055317)
+bones/16/scale = Vector3(1, 1, 0.99999994)
+bones/17/name = "IndexFinger_01_L"
+bones/17/parent = 13
+bones/17/rest = Transform3D(0.991306, 0.008452439, -0.13130495, -0.008526259, 0.99996364, 0, 0.13130018, 0.00111954, 0.991342, 0.10396562, 0.003987151, 0.026726495)
+bones/17/enabled = true
+bones/17/position = Vector3(0.10396562, 0.003987151, 0.026726495)
+bones/17/rotation = Quaternion(0.0002804953, -0.065794446, -0.0042539304, 0.99782413)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/name = "IndexFinger_02_L"
+bones/18/parent = 17
+bones/18/rest = Transform3D(0.9804317, 0.19567049, 0.021604845, -0.19572008, 0.9806598, 0.00018421537, -0.021150956, -0.004409112, 0.9997666, 0.040936317, -2.220446e-16, -2.7755576e-17)
+bones/18/enabled = true
+bones/18/position = Vector3(0.040936317, -2.220446e-16, -2.7755576e-17)
+bones/18/rotation = Quaternion(-0.001153992, 0.010741635, -0.09832993, 0.99509525)
+bones/18/scale = Vector3(1, 0.99999994, 1)
+bones/19/name = "IndexFinger_03_L"
+bones/19/parent = 18
+bones/19/rest = Transform3D(0.9921787, 0.113423415, 0.052120946, -0.11413447, 0.9934059, 0.010865093, -0.050544903, -0.016728912, 0.99858165, 0.03791188, 8.881784e-16, -2.7755576e-17)
+bones/19/enabled = true
+bones/19/position = Vector3(0.03791188, 8.881784e-16, -2.7755576e-17)
+bones/19/rotation = Quaternion(-0.0069121956, 0.025717413, -0.057002403, 0.99801886)
+bones/19/scale = Vector3(0.99999994, 1, 0.99999994)
+bones/20/name = "IndexFinger_04_L"
+bones/20/parent = 19
+bones/20/rest = Transform3D(0.9478223, -0.3142089, 0.05390505, 0.31370196, 0.9493539, 0.017841024, -0.056780774, 0, 0.9983867, 0.03779794, -8.881784e-16, -6.938894e-18)
+bones/20/enabled = true
+bones/20/position = Vector3(0.03779794, -8.881784e-16, -6.938894e-18)
+bones/20/rotation = Quaternion(-0.004519649, 0.028039927, 0.15906802, 0.986859)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/name = "Finger_01_L"
+bones/21/parent = 13
+bones/21/rest = Transform3D(0.9897603, 0.11253022, 0.08781534, -0.11296663, 0.99359876, 0, -0.087253205, -0.009920202, 0.9961368, 0.099825256, -0.0011595894, -0.0328334)
+bones/21/enabled = true
+bones/21/position = Vector3(0.099825256, -0.0011595894, -0.0328334)
+bones/21/rotation = Quaternion(-0.0024864315, 0.04387974, -0.056519255, 0.9974337)
+bones/21/scale = Vector3(1, 0.99999994, 1)
+bones/22/name = "Finger_02_L"
+bones/22/parent = 21
+bones/22/rest = Transform3D(0.99833536, 0.042417992, -0.039079875, -0.042623613, 0.9990813, -0.004443163, 0.0388555, 0.006101492, 0.9992262, 0.042488147, 4.440892e-16, -4.510281e-17)
+bones/22/enabled = true
+bones/22/position = Vector3(0.042488147, 4.440892e-16, -4.510281e-17)
+bones/22/rotation = Quaternion(0.0026372704, -0.019492025, -0.021269329, 0.9995803)
+bones/22/scale = Vector3(0.99999994, 1, 1)
+bones/23/name = "Finger_03_L"
+bones/23/parent = 22
+bones/23/rest = Transform3D(0.972665, 0.18112765, 0.14531189, -0.1863168, 0.9822247, 0.022818372, -0.13859588, -0.049268678, 0.98912275, 0.035133272, -6.661338e-16, -5.2041704e-17)
+bones/23/enabled = true
+bones/23/position = Vector3(0.035133272, -6.661338e-16, -5.2041704e-17)
+bones/23/rotation = Quaternion(-0.018149227, 0.07147895, -0.09251083, 0.9929769)
+bones/23/scale = Vector3(0.99999994, 1, 1)
+bones/24/name = "Finger_04_L"
+bones/24/parent = 23
+bones/24/rest = Transform3D(0.9241558, -0.33495015, -0.18369678, 0.32852298, 0.9422358, -0.065301344, 0.19495839, 0, 0.98081154, 0.030032394, 4.440892e-16, 6.938894e-17)
+bones/24/enabled = true
+bones/24/position = Vector3(0.030032394, 4.440892e-16, 6.938894e-17)
+bones/24/rotation = Quaternion(0.016646372, -0.09652534, 0.16913004, 0.98071444)
+bones/24/scale = Vector3(0.99999994, 1, 1)
+bones/25/name = "Clavicle_R"
+bones/25/parent = 4
+bones/25/rest = Transform3D(0.048608065, -0.99656355, -0.06706908, -0.46712884, -0.08203411, 0.8803755, -0.8828521, -0.011463404, -0.46951103, 0.058015343, -0.04191418, 0.0744715)
+bones/25/enabled = true
+bones/25/position = Vector3(0.058015343, -0.04191418, 0.0744715)
+bones/25/rotation = Quaternion(0.6324858, -0.57854754, -0.37547138, -0.35251343)
+bones/25/scale = Vector3(0.99999994, 0.99999994, 0.99999994)
+bones/26/name = "Shoulder_R"
+bones/26/parent = 25
+bones/26/rest = Transform3D(0.88550895, 0.060278427, -0.46069556, -0.07101114, 0.99745756, -0.005981885, 0.45916373, 0.038011532, 0.8875381, -0.1319786, 6.4733917e-06, 4.7353424e-08)
+bones/26/enabled = true
+bones/26/position = Vector3(-0.1319786, 6.4733917e-06, 4.7353424e-08)
+bones/26/rotation = Quaternion(0.0113281235, -0.23685999, -0.033806525, 0.9708894)
+bones/26/scale = Vector3(1, 0.99999994, 1)
+bones/27/name = "Elbow_R"
+bones/27/parent = 26
+bones/27/rest = Transform3D(0.9932755, -0.08250205, -0.081223026, 0.08222759, 0.9965909, -0.006723989, 0.08150087, 0, 0.9966733, -0.3394746, 0.0014475865, 0.0014362637)
+bones/27/enabled = true
+bones/27/position = Vector3(-0.3394746, 0.0014475865, 0.0014362637)
+bones/27/rotation = Quaternion(0.0016838327, -0.040749595, 0.041251875, 0.99831605)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/name = "Hand_R"
+bones/28/parent = 27
+bones/28/rest = Transform3D(0.9974323, -2.0948169e-15, 0.07161552, 2.0920894e-15, 1, 1.130929e-16, -0.07161552, 3.7023552e-17, 0.9974323, -0.2711449, -8.881784e-16, 0.00038136088)
+bones/28/enabled = true
+bones/28/position = Vector3(-0.2711449, -8.881784e-16, 0.00038136088)
+bones/28/rotation = Quaternion(-1.9029561e-17, 0.035830766, 1.0473991e-15, 0.9993579)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/name = "Thumb_01_R"
+bones/29/parent = 28
+bones/29/rest = Transform3D(0.8312143, 0.15431747, -0.5341057, -0.18253398, 0.98319954, -3.7252903e-09, 0.5251325, 0.09749244, 0.8454177, -0.03514, 0.01171, -0.0450554)
+bones/29/enabled = true
+bones/29/position = Vector3(-0.03514, 0.01171, -0.0450554)
+bones/29/rotation = Quaternion(0.02548064, -0.2768427, -0.088039555, 0.9565343)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/name = "Thumb_02_R"
+bones/30/parent = 29
+bones/30/rest = Transform3D(0.93210596, 0.26877838, 0.24276882, -0.28760552, 0.95668787, 0.045070767, -0.22013995, -0.11183238, 0.9690366, -0.06370146, -7.811825e-06, 4.3638116e-07)
+bones/30/enabled = true
+bones/30/position = Vector3(-0.06370146, -7.811825e-06, 4.3638116e-07)
+bones/30/rotation = Quaternion(-0.039942026, 0.11784031, -0.14163579, 0.98206806)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/name = "Thumb_03_R"
+bones/31/parent = 30
+bones/31/rest = Transform3D(0.8479752, -0.45291466, 0.27532965, 0.43077642, 0.8915539, 0.13986906, -0.30881995, 7.450581e-09, 0.9511205, -0.056655083, 9.8355024e-08, -2.0279542e-07)
+bones/31/enabled = true
+bones/31/position = Vector3(-0.056655083, 9.8355024e-08, -2.0279542e-07)
+bones/31/rotation = Quaternion(-0.03640326, 0.15203469, 0.22999536, 0.96055317)
+bones/31/scale = Vector3(1, 1, 0.99999994)
+bones/32/name = "IndexFinger_01_R"
+bones/32/parent = 28
+bones/32/rest = Transform3D(0.991306, 0.008452439, -0.13130495, -0.008526259, 0.99996364, 0, 0.13130018, 0.00111954, 0.991342, -0.103966, -0.00399, -0.026726501)
+bones/32/enabled = true
+bones/32/position = Vector3(-0.103966, -0.00399, -0.026726501)
+bones/32/rotation = Quaternion(0.0002804953, -0.065794446, -0.0042539304, 0.99782413)
+bones/32/scale = Vector3(1, 1, 1)
+bones/33/name = "IndexFinger_02_R"
+bones/33/parent = 32
+bones/33/rest = Transform3D(0.9804317, 0.19567049, 0.021604845, -0.19572008, 0.9806598, 0.00018421537, -0.021150956, -0.004409112, 0.9997666, -0.04093591, 9.698692e-07, -4.956748e-08)
+bones/33/enabled = true
+bones/33/position = Vector3(-0.04093591, 9.698692e-07, -4.956748e-08)
+bones/33/rotation = Quaternion(-0.001153992, 0.010741635, -0.09832993, 0.99509525)
+bones/33/scale = Vector3(1, 0.99999994, 1)
+bones/34/name = "IndexFinger_03_R"
+bones/34/parent = 33
+bones/34/rest = Transform3D(0.9921787, 0.113423415, 0.052120946, -0.11413447, 0.9934059, 0.010865093, -0.050544903, -0.016728912, 0.99858165, -0.037912127, 3.2499834e-06, -4.545292e-08)
+bones/34/enabled = true
+bones/34/position = Vector3(-0.037912127, 3.2499834e-06, -4.545292e-08)
+bones/34/rotation = Quaternion(-0.0069121956, 0.025717413, -0.057002403, 0.99801886)
+bones/34/scale = Vector3(0.99999994, 1, 0.99999994)
+bones/35/name = "IndexFinger_04_R"
+bones/35/parent = 34
+bones/35/rest = Transform3D(0.9478223, -0.3142089, 0.05390505, 0.31370196, 0.9493539, 0.017841024, -0.056780774, 0, 0.9983867, -0.037793327, -5.2657088e-06, -1.550738e-07)
+bones/35/enabled = true
+bones/35/position = Vector3(-0.037793327, -5.2657088e-06, -1.550738e-07)
+bones/35/rotation = Quaternion(-0.004519649, 0.028039927, 0.15906802, 0.986859)
+bones/35/scale = Vector3(1, 1, 1)
+bones/36/name = "Finger_01_R"
+bones/36/parent = 28
+bones/36/rest = Transform3D(0.9897603, 0.11253022, 0.08781534, -0.11296663, 0.99359876, 0, -0.087253205, -0.009920202, 0.9961368, -0.099825, 0.00116, 0.0328334)
+bones/36/enabled = true
+bones/36/position = Vector3(-0.099825, 0.00116, 0.0328334)
+bones/36/rotation = Quaternion(-0.0024864315, 0.04387974, -0.056519255, 0.9974337)
+bones/36/scale = Vector3(1, 0.99999994, 1)
+bones/37/name = "Finger_02_R"
+bones/37/parent = 36
+bones/37/rest = Transform3D(0.99833536, 0.042417992, -0.039079875, -0.042623613, 0.9990813, -0.004443163, 0.0388555, 0.006101492, 0.9992262, -0.042488094, 2.6534414e-07, -1.9789931e-08)
+bones/37/enabled = true
+bones/37/position = Vector3(-0.042488094, 2.6534414e-07, -1.9789931e-08)
+bones/37/rotation = Quaternion(0.0026372704, -0.019492025, -0.021269329, 0.9995803)
+bones/37/scale = Vector3(0.99999994, 1, 1)
+bones/38/name = "Finger_03_R"
+bones/38/parent = 37
+bones/38/rest = Transform3D(0.972665, 0.18112765, 0.14531189, -0.1863168, 0.9822247, 0.022818372, -0.13859588, -0.049268678, 0.98912275, -0.035133246, -1.9978481e-07, 1.4853608e-08)
+bones/38/enabled = true
+bones/38/position = Vector3(-0.035133246, -1.9978481e-07, 1.4853608e-08)
+bones/38/rotation = Quaternion(-0.018149227, 0.07147895, -0.09251083, 0.9929769)
+bones/38/scale = Vector3(0.99999994, 1, 1)
+bones/39/name = "Finger_04_R"
+bones/39/parent = 38
+bones/39/rest = Transform3D(0.9241558, -0.33495015, -0.18369678, 0.32852298, 0.9422358, -0.065301344, 0.19495839, 0, 0.98081154, -0.03003113, 1.1334714e-06, 3.5910992e-07)
+bones/39/enabled = true
+bones/39/position = Vector3(-0.03003113, 1.1334714e-06, 3.5910992e-07)
+bones/39/rotation = Quaternion(0.016646372, -0.09652534, 0.16913004, 0.98071444)
+bones/39/scale = Vector3(0.99999994, 1, 1)
+bones/40/name = "UpperLeg_R"
+bones/40/parent = 1
+bones/40/rest = Transform3D(-0.9882767, 0.03138482, 0.14941196, -0.14933667, 0.0047426224, -0.98877496, -0.031741116, -0.99949604, 5.9604645e-08, -0.041157685, -0.026920699, -0.09896705)
+bones/40/enabled = true
+bones/40/position = Vector3(-0.041157685, -0.026920699, -0.09896705)
+bones/40/rotation = Quaternion(-0.041775253, 0.7058717, -0.70419, 0.064159356)
+bones/40/scale = Vector3(0.9999999, 0.9999999, 0.9999999)
+bones/41/name = "LowerLeg_R"
+bones/41/parent = 40
+bones/41/rest = Transform3D(0.99875826, -0.038768545, -0.031288043, -0.024284398, 0.16950983, -0.98522925, 0.043499537, 0.98476565, 0.16835785, 0.39930904, -8.326673e-17, -6.2450045e-17)
+bones/41/enabled = true
+bones/41/position = Vector3(0.39930904, -8.326673e-17, -6.2450045e-17)
+bones/41/rotation = Quaternion(0.6443777, -0.024462726, 0.0047377083, 0.7643013)
+bones/41/scale = Vector3(1, 1, 1)
+bones/42/name = "Ankle_R"
+bones/42/parent = 41
+bones/42/rest = Transform3D(0.4823094, -0.8759694, 0.00742954, -0.8641162, -0.47435653, 0.1681938, -0.14380838, -0.087541446, -0.985726, 0.37712353, -7.632783e-17, 2.0816682e-16)
+bones/42/enabled = true
+bones/42/position = Vector3(0.37712353, -7.632783e-17, 2.0816682e-16)
+bones/42/rotation = Quaternion(0.85767007, -0.507213, -0.039752714, -0.074543595)
+bones/42/scale = Vector3(0.99999994, 1, 1)
+bones/43/name = "Ball_R"
+bones/43/parent = 42
+bones/43/rest = Transform3D(0.85418296, -0.5199726, 1.1028596e-13, 0.5199726, 0.85418296, 7.040501e-14, -1.3081306e-13, -2.7930844e-15, 1, 0.112840354, -1.2490009e-16, 1.3877788e-17)
+bones/43/enabled = true
+bones/43/position = Vector3(0.112840354, -1.2490009e-16, 1.3877788e-17)
+bones/43/rotation = Quaternion(-1.9005466e-14, 6.259997e-14, 0.27001584, 0.9628559)
+bones/43/scale = Vector3(1, 1, 1)
+bones/44/name = "Toes_R"
+bones/44/parent = 43
+bones/44/rest = Transform3D(0, 1.7202613e-13, 1, -3.2965845e-16, 1, -1.7202613e-13, -1, -3.2965845e-16, 0, 0.07295756, -8.6571375e-15, 9.672818e-15)
+bones/44/enabled = true
+bones/44/position = Vector3(0.07295756, -8.6571375e-15, 9.672818e-15)
+bones/44/rotation = Quaternion(6.070387e-14, 0.70710677, -6.093697e-14, 0.70710677)
+bones/44/scale = Vector3(1, 1, 1)
+bones/45/name = "UpperLeg_L"
+bones/45/parent = 1
+bones/45/rest = Transform3D(0.98827684, -0.031384822, -0.14941198, 0.14933668, -0.0047426224, 0.9887751, -0.031741116, -0.99949616, -1.1920929e-07, -0.041157786, -0.02692075, 0.098967105)
+bones/45/enabled = true
+bones/45/position = Vector3(-0.041157786, -0.02692075, 0.098967105)
+bones/45/rotation = Quaternion(-0.70587176, -0.041775256, 0.064159356, 0.70418996)
+bones/45/scale = Vector3(1, 1, 1)
+bones/46/name = "LowerLeg_L"
+bones/46/parent = 45
+bones/46/rest = Transform3D(0.99875826, -0.038768545, -0.031288043, -0.024284398, 0.16950983, -0.98522925, 0.043499537, 0.98476565, 0.16835785, -0.3993092, -3.8050266e-07, 1.5265567e-16)
+bones/46/enabled = true
+bones/46/position = Vector3(-0.3993092, -3.8050266e-07, 1.5265567e-16)
+bones/46/rotation = Quaternion(0.6443777, -0.024462726, 0.0047377083, 0.7643013)
+bones/46/scale = Vector3(1, 1, 1)
+bones/47/name = "Ankle_L"
+bones/47/parent = 46
+bones/47/rest = Transform3D(0.4823094, -0.8759694, 0.00742954, -0.8641162, -0.47435653, 0.1681938, -0.14380838, -0.087541446, -0.985726, -0.37712327, 1.3169495e-07, -8.411038e-07)
+bones/47/enabled = true
+bones/47/position = Vector3(-0.37712327, 1.3169495e-07, -8.411038e-07)
+bones/47/rotation = Quaternion(0.85767007, -0.507213, -0.039752714, -0.074543595)
+bones/47/scale = Vector3(0.99999994, 1, 1)
+bones/48/name = "Ball_L"
+bones/48/parent = 47
+bones/48/rest = Transform3D(0.85418296, -0.5199726, 5.0908046e-13, 0.5199726, 0.85418296, 3.0530924e-13, -5.936003e-13, 3.917927e-15, 1, -0.112840325, -1.6849572e-08, -5.551115e-17)
+bones/48/enabled = true
+bones/48/position = Vector3(-0.112840325, -1.6849572e-08, -5.551115e-17)
+bones/48/rotation = Quaternion(-7.8254535e-14, 2.8630475e-13, 0.27001584, 0.9628559)
+bones/48/scale = Vector3(1, 1, 1)
+bones/49/name = "Toes_L"
+bones/49/parent = 48
+bones/49/rest = Transform3D(0, -1.8619585e-13, 1, 2.0208363e-14, 1, 1.8619587e-13, -1, 2.0208356e-14, 0, -0.0729575, 4.2928334e-14, -4.4145243e-14)
+bones/49/enabled = true
+bones/49/position = Vector3(-0.0729575, 4.2928334e-14, -4.4145243e-14)
+bones/49/rotation = Quaternion(-5.868544e-14, 0.70710677, 7.297491e-14, 0.70710677)
+bones/49/scale = Vector3(1, 1, 1)
+
+[node name="SM_Chr_Zombie_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("1_43ai3")
+skin = ExtResource("2_pvkxt")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Teen_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("4_ct5sv")
+skin = ExtResource("5_7y8ic")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Teen_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("6_gyg6n")
+skin = ExtResource("7_b4oxo")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Soldier_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("8_s4naw")
+skin = ExtResource("9_s7jsv")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Soldier_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("10_3q0fh")
+skin = ExtResource("11_i1kkh")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Sheriff_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("12_cfuvp")
+skin = ExtResource("13_rgk8r")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Scout_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("14_y7fcb")
+skin = ExtResource("15_kxmwk")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_RiotCop_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("16_kdt6g")
+skin = ExtResource("17_er3ui")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Punk_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("18_38ijc")
+skin = ExtResource("19_ies1o")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Press_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("20_t2vdr")
+skin = ExtResource("21_1kdje")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Biker_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("22_xbxjq")
+skin = ExtResource("23_dd402")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Business_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("24_8760u")
+skin = ExtResource("25_o32cw")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Cool_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("26_o2b8i")
+skin = ExtResource("27_nyi38")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Cool_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("28_8nsmc")
+skin = ExtResource("29_n8jta")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Criminal_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("30_38eq7")
+skin = ExtResource("31_vxfof")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Eastern_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("32_s3frs")
+skin = ExtResource("33_ore6y")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Emo_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("34_sh8xn")
+skin = ExtResource("35_lvl8w")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Hazmat_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("36_0ouaq")
+skin = ExtResource("37_jnh8d")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Homeless_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("38_15bcu")
+skin = ExtResource("39_enn25")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Hunter_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("40_iig5r")
+skin = ExtResource("41_a8hja")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Islander_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("42_akwtv")
+skin = ExtResource("43_rhelh")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Nerd_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("44_sr85y")
+skin = ExtResource("45_s2p2c")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Mechanic_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("46_y4abe")
+skin = ExtResource("47_butlr")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Patient_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("48_tab5u")
+skin = ExtResource("49_sg1ic")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Waitress_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("50_aw8rt")
+skin = ExtResource("51_2r72g")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Wanderer_Male_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("52_ewnup")
+skin = ExtResource("53_uwjkt")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Nun_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("54_qrrgl")
+skin = ExtResource("55_18b8c")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Zombie_Female_02" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("56_5rha6")
+skin = ExtResource("57_xnuge")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Zombie_Female_01" type="MeshInstance3D" parent="Skeleton3D"]
+visible = false
+mesh = ExtResource("58_meqd0")
+skin = ExtResource("59_mj7fy")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="SM_Chr_Zombie_Male_02" type="MeshInstance3D" parent="Skeleton3D"]
+mesh = ExtResource("60_b88mb")
+skin = ExtResource("61_8tath")
+surface_material_override/0 = ExtResource("3_r5l7f")
+
+[node name="Head_Bone_Attachments" type="BoneAttachment3D" parent="Skeleton3D"]
+transform = Transform3D(1, 5.9604638e-08, 1.1920928e-07, -1.08227404e-07, 1, 2.9802322e-08, -7.778429e-08, -1.1116227e-22, 1, -1.5883421e-15, 1.5691124, -0.004839601)
+bone_name = "Head"
+bone_idx = 6
+
+[node name="SM_Chr_Attach_Zombie_Male_Hair_02" parent="Skeleton3D/Head_Bone_Attachments" instance=ExtResource("62_pvkxt")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91, 0)
+shape = ExtResource("62_3th7v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

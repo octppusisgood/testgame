@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://geh7lu0cwnpy"]
+
+[ext_resource type="ArrayMesh" uid="uid://bs1i1dsk5jspy" path="res://assets/Synty/PolygonMilitary/Models/extracted/FX_Decal_Bullet_Metal_03.res" id="1_uk7dh"]
+[ext_resource type="Material" uid="uid://bnaaabx6rfe78" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Decal_Bullet_Holes_01_mat.tres" id="2_dfxvq"]
+
+[node name="FX_Decal_Bullet_Metal_03" type="MeshInstance3D" unique_id=1648989671]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("1_uk7dh")
+surface_material_override/0 = ExtResource("2_dfxvq")

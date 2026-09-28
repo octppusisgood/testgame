@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://w7i3udc7qosk"]
+
+[ext_resource type="Texture2D" uid="uid://cx5h3ki4x6xq4" path="res://Assets/Synty/PolygonMilitary/Textures/Fence_01_Alpha.tga" id="1_pvqti"]
+
+[resource]
+resource_name = "Fence_Wire_01_mat"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_pvqti")
+uv1_scale = Vector3(1, 1, 0)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b02tlb07h0h5k"]
+
+[ext_resource type="ArrayMesh" uid="uid://tkkcgfruye25" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Rifle_01.res" id="1_5l8mb"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_5bde4"]
+[ext_resource type="ArrayMesh" uid="uid://721qjq1nbkn6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Rifle_Bolt_01.res" id="3_5bde4"]
+[ext_resource type="ArrayMesh" uid="uid://wy2bofklhayp" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Rifle_Mag_01.res" id="4_fsypo"]
+[ext_resource type="ArrayMesh" uid="uid://dvntm1cb8ij1v" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Rifle_Trigger_01.res" id="5_osv1j"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jmj0s"]
+points = PackedVector3Array(0.013004053, -0.13547155, -0.37694815, -0.023801904, 0.011757135, -0.39534932, 0.03142595, -0.11705809, -0.38614872, 0.022218157, 0.039377317, 0.9668711, 0.003808871, -0.09866438, -0.02732578, -0.023801904, -0.12624507, -0.36774755, 0.003808871, 0.039397076, -0.28494227, 0.03142595, 0.011757135, -0.39534932, -0.033003394, 0.0025701523, 0.28576088, -0.019689929, 0.04972996, 0.11948359, 0.03142595, 0.0485643, 0.5709792, 0.013016667, 0.057790786, 0.9668711, -0.014594108, 0.03017059, 0.9668711, 0.011730097, 0.0663653, 0.11054969, -0.014594108, 0.057790786, 0.9668711, -0.020156626, 0.04396093, 0.59551406)
+
+[node name="SM_Wep_Rifle_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_5l8mb")
+surface_material_override/0 = ExtResource("2_5bde4")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_jmj0s")
+
+[node name="SM_Wep_Rifle_Bolt_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0010720361, 0.04559894, 0.07529684)
+gi_mode = 2
+mesh = ExtResource("3_5bde4")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_5bde4")
+
+[node name="SM_Wep_Rifle_Mag_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0800039e-08, -0.033816356, 0.18350364)
+gi_mode = 2
+mesh = ExtResource("4_fsypo")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_5bde4")
+
+[node name="SM_Wep_Rifle_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.215939e-05, -0.018208265, 0.05694054)
+gi_mode = 2
+mesh = ExtResource("5_osv1j")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_5bde4")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8qvsn771wbwq"]
+
+[ext_resource type="ArrayMesh" uid="uid://dvgcovla7ni63" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Door_Barricaded_03.res" id="1_o6egc"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_y6u1m"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aco7t"]
+points = PackedVector3Array(-0.05787134, 0.40592125, 0.14167866, -0.02250202, -0.017653465, -0.07014328, -0.02250202, -0.017653465, 0.07107134, 1.0365801, -0.017653465, 0.07107134, 0.89533776, 0.9710562, 0.1769996, 0.8247166, 1.6416978, 0.1769996, 0.15387456, 2.1004415, 0.14167866, 0.012749799, 2.2420015, 0.07107134, -0.02250202, 2.2420015, -0.07014328, 0.648105, 0.86488605, -0.17607152, 1.0013282, -0.017653465, -0.07014328, 1.1425705, 1.5355276, 0.035750404, 1.0365801, 2.2420015, 0.07107134, 1.0365801, 2.2420015, -0.07014328, 0.89533776, 0.9710562, -0.17607152, 1.0365801, 1.0416151, -0.07014328)
+
+[node name="SM_Bld_Door_Barricaded_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_o6egc")
+surface_material_override/0 = ExtResource("2_y6u1m")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_aco7t")

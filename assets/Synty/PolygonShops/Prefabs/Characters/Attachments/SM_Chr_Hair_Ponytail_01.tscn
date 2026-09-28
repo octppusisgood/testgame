@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxprxa0xhbgnd"]
+
+[ext_resource type="ArrayMesh" uid="uid://40uayh0dpk4c" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Chr_Hair_Ponytail_01.res" id="1_nle1h"]
+[ext_resource type="Material" uid="uid://c00i4t2473bv4" path="res://Assets/Synty/PolygonShops/Materials/Alternates/PolygonShops_Mat_01_A_Colour_Emissive_mat.tres" id="2_aeef1"]
+
+[node name="SM_Chr_Hair_Ponytail_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_nle1h")
+surface_material_override/0 = ExtResource("2_aeef1")

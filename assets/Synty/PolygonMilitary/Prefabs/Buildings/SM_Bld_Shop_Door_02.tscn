@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c7b4j4cceb5q2"]
+
+[ext_resource type="ArrayMesh" uid="uid://cjjgigh8qhwld" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Shop_Door_02.res" id="1_0g4sq"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_gtapu"]
+[ext_resource type="ArrayMesh" uid="uid://npcwi5lk2bp1" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Shop_Door_02_L.res" id="3_gtapu"]
+[ext_resource type="ArrayMesh" uid="uid://cjty6ljaxhxmj" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Shop_Door_02_R.res" id="4_bmf17"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pptsf"]
+size = Vector3(0.512135, 2.2247095, 0.28045696)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ko0xt"]
+size = Vector3(0.5141186, 2.2247095, 0.28045696)
+
+[node name="SM_Bld_Shop_Door_02" type="MeshInstance3D" unique_id=782934991]
+gi_mode = 2
+mesh = ExtResource("1_0g4sq")
+surface_material_override/0 = ExtResource("2_gtapu")
+
+[node name="SM_Bld_Shop_Door_02_L" type="MeshInstance3D" parent="." unique_id=45747899]
+gi_mode = 2
+mesh = ExtResource("3_gtapu")
+surface_material_override/0 = ExtResource("2_gtapu")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Shop_Door_02_L" unique_id=439058305]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Shop_Door_02_L/BoxCollider" unique_id=1349413871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2560687, 1.1123548, -0.052241884)
+shape = SubResource("BoxShape3D_pptsf")
+
+[node name="SM_Bld_Shop_Door_02_R" type="MeshInstance3D" parent="." unique_id=1105443397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0262561, 0, 0)
+gi_mode = 2
+mesh = ExtResource("4_bmf17")
+surface_material_override/0 = ExtResource("2_gtapu")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Shop_Door_02_R" unique_id=2002155378]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Shop_Door_02_R/BoxCollider" unique_id=1196751937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2570593, 1.1123548, -0.052241884)
+shape = SubResource("BoxShape3D_ko0xt")

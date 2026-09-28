@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cemqf61sggg53"]
+
+[ext_resource type="ArrayMesh" uid="uid://bousau176ieqn" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_TransportPlane_Destroyed_Fuselage_01.res" id="1_x8i6t"]
+[ext_resource type="Material" uid="uid://bqegqg744qrbj" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Air_Vehicles_Burnt_01_mat.tres" id="2_rlrms"]
+[ext_resource type="Shape3D" uid="uid://ckjs7d04evbfu" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Veh_TransportPlane_Destroyed_Fuselage_01_Collision.res" id="3_rlrms"]
+
+[node name="SM_Veh_TransportPlane_Destroyed_Fuselage_01" type="MeshInstance3D" unique_id=855673982]
+gi_mode = 2
+mesh = ExtResource("1_x8i6t")
+surface_material_override/0 = ExtResource("2_rlrms")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1035102901]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=698383953]
+shape = ExtResource("3_rlrms")

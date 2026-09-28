@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://deobc7gvmdbdh"]
+
+[ext_resource type="ArrayMesh" uid="uid://bibvm27oh0hd7" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Deli_Fridge_Insert_03.res" id="1_a1fik"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_jpht3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q4dyw"]
+points = PackedVector3Array(-1.0015928, 1.0422473, -0.42545012, -0.95175415, 0.6456232, -0.39825708, -1.0308503, 1.0482377, -0.3127622, 1.0010327, 1.0422473, -0.42545012, -0.95175415, 0.6456232, 0.64236593, -1.0308503, 0.7905739, 0.685766, 0.95119405, 0.6456232, -0.39825708, -0.8377508, 1.0160002, 0.073813975, -0.7408984, 1.0482377, -0.11947411, 1.030492, 1.0482377, -0.3127622, 0.95119405, 0.6456232, 0.64236593, 1.030492, 0.7905739, 0.685766, 0.28936923, 0.88712883, 0.52445686, -0.80546665, 0.88712883, 0.4600638, 0.28936923, 1.0160002, 0.041617423, 0.86927307, 1.0482377, -0.18386722)
+
+[node name="SM_Prop_Market_Deli_Fridge_Insert_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_a1fik")
+surface_material_override/0 = ExtResource("2_jpht3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_q4dyw")

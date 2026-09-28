@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c8g3gd5jl34ru"]
+
+[ext_resource type="ArrayMesh" uid="uid://s56cltmjpqt8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Bomb_Dynamite_01.res" id="1_2o2c7"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_45cqr"]
+
+[node name="SM_Chr_Attach_Bomb_Dynamite_01" type="MeshInstance3D" unique_id=1787444422]
+gi_mode = 2
+mesh = ExtResource("1_2o2c7")
+surface_material_override/0 = ExtResource("2_45cqr")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://ba0iou6gjlxwu"]
+
+[ext_resource type="ArrayMesh" uid="uid://cdh6cyhbyvnbh" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Bld_ShopFront_07.res" id="1_vmpvs"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_aoamd"]
+[ext_resource type="Material" uid="uid://r07p7hgiwjxe" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Brick_Coloured_01_mat.tres" id="3_e7qnh"]
+[ext_resource type="Material" uid="uid://5d2avydyfst7" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_Red_01_mat.tres" id="4_hq5ce"]
+[ext_resource type="Material" uid="uid://buo25cdi05x6y" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_White_01_mat.tres" id="5_vpu28"]
+[ext_resource type="Shape3D" uid="uid://cgw530ptrpthl" path="res://Assets/Synty/PolygonShops/Models/Collision/SM_Bld_ShopFront_07_Collision.res" id="6_aoamd"]
+
+[node name="SM_Bld_ShopFront_07" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_vmpvs")
+surface_material_override/0 = ExtResource("2_aoamd")
+surface_material_override/1 = ExtResource("3_e7qnh")
+surface_material_override/2 = ExtResource("4_hq5ce")
+surface_material_override/3 = ExtResource("5_vpu28")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = ExtResource("6_aoamd")
+
+[node name="SM_Bld_ShopFront_07_Glass" type="MeshInstance3D" parent="."]
+gi_mode = 2
+skeleton = NodePath("")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://o1a3hyrvrtek"]
+
+[ext_resource type="ArrayMesh" uid="uid://btybkpcxc2x3g" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_ControlTower_Destroyed_01.res" id="1_0ssfg"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_8413j"]
+[ext_resource type="Shape3D" uid="uid://b6b7tv1gd3g4t" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_ControlTower_Destroyed_01_Collision.res" id="3_8413j"]
+
+[node name="SM_Bld_ControlTower_Destroyed_01" type="MeshInstance3D" unique_id=289748137]
+gi_mode = 2
+mesh = ExtResource("1_0ssfg")
+surface_material_override/0 = ExtResource("2_8413j")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1037887488]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1339088981]
+shape = ExtResource("3_8413j")

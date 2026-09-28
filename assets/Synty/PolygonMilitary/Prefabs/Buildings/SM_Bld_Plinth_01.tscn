@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://o4dd5rq2jy8g"]
+
+[ext_resource type="ArrayMesh" uid="uid://xa4g62b5nquw" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Plinth_01.res" id="1_djgj0"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_xbp8t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1h4e"]
+size = Vector3(7.0267334, 3, 10.221337)
+
+[node name="SM_Bld_Plinth_01" type="MeshInstance3D" unique_id=1528281344]
+gi_mode = 2
+mesh = ExtResource("1_djgj0")
+surface_material_override/0 = ExtResource("2_xbp8t")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=1800574417]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=640844276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3821354, -1.5, -5.0000005)
+shape = SubResource("BoxShape3D_u1h4e")

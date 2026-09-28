@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dvyys070w7f5r"]
+
+[ext_resource type="Texture2D" uid="uid://vwtjrg3wu8y" path="res://Assets/Synty/PolygonMilitary/Textures/Weapons/Weapons_06.png" id="1_yk5t5"]
+
+[resource]
+resource_name = "Weapon_06_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_yk5t5")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://djav3yapg2lr0"]
+
+[ext_resource type="ArrayMesh" uid="uid://chdl2mv8o87dt" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_MuzzleBrake_02.res" id="1_qu846"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_v8r7f"]
+
+[node name="SM_Wep_Mod_MuzzleBrake_02" type="MeshInstance3D" unique_id=1116422236]
+gi_mode = 2
+mesh = ExtResource("1_qu846")
+surface_material_override/0 = ExtResource("2_v8r7f")

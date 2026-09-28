@@ -1,0 +1,56 @@
+[gd_scene format=4 uid="uid://c41jpjsh5vr1m"]
+
+[ext_resource type="ArrayMesh" uid="uid://byv0ttalxsbf6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RocketLauncher_01.res" id="1_pvs5c"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_tb4cq"]
+[ext_resource type="ArrayMesh" uid="uid://ddd4d0fkohrbr" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RocketLauncher_Handle_02.res" id="3_i1rpy"]
+[ext_resource type="ArrayMesh" uid="uid://dwem0tgsom4xt" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RocketLauncher_Handle_01.res" id="4_tb4cq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pvs5c"]
+points = PackedVector3Array(0.14101827, 0.07255994, -0.75197816, 0.14101827, -0.06419602, -0.75197816, -0.13260078, 0.07255994, -0.8204008, 0.09537938, 0.11819883, 0.5704782, -0.06419602, -0.13260078, -0.8204008, 0.07255994, -0.10978134, 0.61604565, -0.06419602, 0.11819883, 0.61604565, 0.07255994, 0.14101827, -0.8204008, -0.10978134, -0.06419602, 0.61604565, 0.11819883, -0.06419602, 0.61604565, 0.07255994, -0.13260078, -0.8204008, -0.06419602, 0.14101827, -0.8204008, -0.13260078, -0.06419602, -0.8204008, -0.06419602, -0.10978134, 0.61604565, -0.10978134, 0.07255994, 0.61604565, 0.09537938, 0.14101827, 0.00038494915, 0.11819883, 0.049767278, 0.61604565, 0.14101827, 0.07255994, -0.8204008, 0.11819883, 0.11819883, 0.00038494915, 0.049767278, 0.14101827, 0.045809567, 0.14101827, -0.06419602, -0.8204008, -0.13260078, 0.07255994, -0.75197816, -0.06419602, -0.13260078, -0.75197816, 0.049767278, 0.11819883, 0.61604565, 0.07255994, -0.13260078, -0.75197816, -0.13260078, -0.06419602, -0.75197816, -0.06419602, 0.14101827, -0.75197816, -0.08698868, -0.10978134, -0.729123, -0.10978134, -0.08698868, -0.729123)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uon70"]
+resource_name = "RoyaleMaterial"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 0.8)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n2tcv"]
+resource_name = "SM_Wep_RocketLauncher_Trigger_01"
+_surfaces = [{
+"aabb": AABB(-0.006841115, 2.8150897e-08, -0.023453144, 0.01368223, 0.02889863, 0.033633213),
+"attribute_data": PackedByteArray("p0eAPfqMIj+jQ4A9AVMiP7dbgD2oWiI/E2CAPQ+TIj+wtH09vnoiP9CyfT2WjCI/UOd9PSGRIj/g6H09pn8iP4gBfz0/VCI/uAF/Pft1Ij+IPX89qXwiP7A8fz3UWyI/o0OAPQFTIj+IAX89P1QiP7A8fz3UWyI/t1uAPahaIj+4AX89+3UiP4gBfz0/VCI/o0OAPQFTIj+nR4A9+owiP5AXfj2MjiI/QBl+PaB2Ij+IPX89qXwiPxNggD0PkyI/t1uAPahaIj+wPH891FsiP5AXfj2MjiI/p0eAPfqMIj8TYIA9D5MiP5Bafj2LlCI/sFt+PUV9Ij+IPX89qXwiP7gBfz37dSI/QBl+PaB2Ij+QWn49i5QiPxNggD0PkyI/iD1/Pal8Ij+wW349RX0iP1DnfT0hkSI/0LJ9PZaMIj+QF349jI4iP5Bafj2LlCI/0LJ9PZaMIj+wtH09vnoiP0AZfj2gdiI/kBd+PYyOIj/g6H09pn8iP7Bbfj1FfSI/QBl+PaB2Ij+wtH09vnoiP1DnfT0hkSI/kFp+PYuUIj+wW349RX0iP+DofT2mfyI/"),
+"format": 34359742487,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAEAATABQAFAAVABAAFgAXABgAGAAZABYAGgAbABwAHAAdABoAHgAfACAAIAAhAB4AIgAjACQAJAAlACIAJgAnACgAKAApACYAKgArACwALAAtACoALgAvADAAMAAxAC4AMgAzADQANAA1ADIA"),
+"material": SubResource("StandardMaterial3D_uon70"),
+"name": "RoyaleMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 54,
+"vertex_data": PackedByteArray("byvgO+G87DwQdQ87byvgO3rQ8TJOyiY8byvgu3rQ8TJOyiY8byvgu+G87DwQdQ87HQaoO5zgijzPIMC8HQaoO3a63jyRIMC8HQaou3a63jyRIMC8HQaou5zgijzPIMC8byvgO3rQ8TI3LEe8byvgO1e8eTwtTjy8byvgu1e8eTwtTjy8byvgu3rQ8TI3LEe8byvgO3rQ8TJOyiY8byvgO3rQ8TI3LEe8byvgu3rQ8TI3LEe8byvgu3rQ8TJOyiY8byvgO1e8eTwtTjy8byvgO3rQ8TI3LEe8byvgO3rQ8TJOyiY8byvgO+G87DwQdQ87byvgO+G87DxtuaC8byvgO1e8eTy1uaC8byvgu1e8eTwtTjy8byvgu+G87DwQdQ87byvgu3rQ8TJOyiY8byvgu3rQ8TI3LEe8byvgO+G87DxtuaC8byvgO+G87DwQdQ87byvgu+G87DwQdQ87byvgu+G87DxtuaC8byvgu1e8eTy1uaC8byvgu1e8eTwtTjy8byvgO1e8eTwtTjy8byvgO1e8eTy1uaC8byvgu+G87DxtuaC8byvgu+G87DwQdQ87byvgu1e8eTwtTjy8byvgu1e8eTy1uaC8HQaou3a63jyRIMC8HQaoO3a63jyRIMC8byvgO+G87DxtuaC8byvgu+G87DxtuaC8HQaoO3a63jyRIMC8HQaoO5zgijzPIMC8byvgO1e8eTy1uaC8byvgO+G87DxtuaC8HQaou5zgijzPIMC8byvgu1e8eTy1uaC8byvgO1e8eTy1uaC8HQaoO5zgijzPIMC8HQaou3a63jyRIMC8byvgu+G87DxtuaC8byvgu1e8eTy1uaC8HQaou5zgijzPIMC8/3+5myoeLrT/f7mbmCHWsv9/uZtUIFWz/3+5m9QctLT+////+hp9Tf7////vGfdM/v////safU3+////AhwBTqj6//+TGNJMqPr///MW+Uuo+v//Xhi2TKj6///1GYtN/38AAMZ0/z//fwAAU3T/P/9/AACRdP8//38AAAV1/z////9//3/hw////3//f5DB////f/9/wsT///9//39jxf///3//f5rC////f/9/xMIAAP9//3/4OgAA/3//f6s4AAD/f/9/RzsAAP9//396Pv9///+Qbv+//3///ydu/7//f///YW7/v/9////Kbv+//38AAKNu/z//fwAA9G7/P/9/AABXbv8//38AAAdu/z8AAP9//392PQAA/3//f4w9AAD/f/9/cD0AAP9//39NPXyn///9wmjJfKf//0PDXcl8p///K8NhyXyn///vwmrJ/v+Jp6ujQcb+/4mnYaO5xv7/iad6o5DG/v+Jp7ujKMZ8pwAAJTr3SHynAABfOgBJfKcAAG8520h8pwAADjnMSAAAiad4WkFDAACJp3FaNkMAAImnjVpjQwAAiaeYWnVD")
+}]
+blend_shape_mode = 0
+
+[node name="SM_Wep_RocketLauncher_01" type="MeshInstance3D" unique_id=551387632]
+mesh = ExtResource("1_pvs5c")
+surface_material_override/0 = ExtResource("2_tb4cq")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=974354832]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=2032611477]
+shape = SubResource("ConvexPolygonShape3D_pvs5c")
+
+[node name="SM_Wep_RocketLauncher_Trigger_01" type="MeshInstance3D" parent="." unique_id=1963945888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014870444, 0.054285213, 0.026678909)
+mesh = SubResource("ArrayMesh_n2tcv")
+surface_material_override/0 = ExtResource("2_tb4cq")
+
+[node name="SM_Wep_RocketLauncher_Handle_02" type="MeshInstance3D" parent="." unique_id=1975969229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-09, -0.06263918, -0.17770238)
+mesh = ExtResource("3_i1rpy")
+surface_material_override/0 = ExtResource("2_tb4cq")
+
+[node name="SM_Wep_RocketLauncher_Handle_01" type="MeshInstance3D" parent="." unique_id=1083018299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.057418894, 0.4064601)
+mesh = ExtResource("4_tb4cq")
+surface_material_override/0 = ExtResource("2_tb4cq")

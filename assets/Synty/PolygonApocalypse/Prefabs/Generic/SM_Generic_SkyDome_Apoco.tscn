@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://l0nhl3vwos5f"]
+
+[ext_resource type="ArrayMesh" uid="uid://de3mc7p8ofj52" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Generic_SkyDome_02.res" id="1_ukcup"]
+[ext_resource type="Material" uid="uid://ba73eoedw28a6" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Skydome_Day_01_mat.tres" id="2_ksw3s"]
+
+[node name="SM_Generic_SkyDome_Apoco" type="MeshInstance3D"]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("1_ukcup")
+surface_material_override/0 = ExtResource("2_ksw3s")

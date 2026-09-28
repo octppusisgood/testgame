@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://l3xhwygkqpsv"]
+
+[ext_resource type="ArrayMesh" uid="uid://nvx0nhv5tsyp" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_RoadPiece_Damaged_11.res" id="1_u3hxe"]
+[ext_resource type="Material" uid="uid://cs5tr0n48vvsw" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Road_Standard_01_mat.tres" id="2_g2e73"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t84c4"]
+points = PackedVector3Array(0.433338, 0.22092724, -0.24623096, 0.37360966, -0.14491913, -0.17429215, 0.34780985, 0.21905479, -0.46022612, 0.19919586, 0.23303846, -0.5230588, 0.053762615, 0.17487276, 0.726673, 0.17021525, 0.08766404, 0.6683935, 0.25733382, -0.14491913, 0.40686405, 0.082919955, -0.11583628, -0.75581264, -0.35293788, -0.17396215, 0.87182546, -0.41116416, -0.17396215, 0.84286785, 0.14114624, 0.17487276, -0.6977152, -0.29488832, 0.029538155, -0.81409216, -0.41107583, 0.029538155, -0.058279455, -0.38200685, 0.0004951507, 0.9302871, -0.32386893, -0.028587714, -0.930287, -0.46930212, 0.0004951507, -0.08741921)
+
+[node name="SM_Env_RoadPiece_Damaged_11" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_u3hxe")
+surface_material_override/0 = ExtResource("2_g2e73")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_t84c4")

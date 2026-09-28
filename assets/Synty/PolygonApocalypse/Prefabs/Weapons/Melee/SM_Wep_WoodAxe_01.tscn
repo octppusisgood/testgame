@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhb1geudha2td"]
+
+[ext_resource type="ArrayMesh" uid="uid://db3png6dudxai" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_WoodAxe_01.res" id="1_osrgg"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_bhycu"]
+[ext_resource type="ArrayMesh" uid="uid://cakoj6mslapnl" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_WoodAxe_Guard_01.res" id="3_bhycu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pabch"]
+points = PackedVector3Array(-0.014851816, -0.1782306, 0.30749005, -0.056081414, 0.00036375225, -0.36557212, -0.014838368, -0.027128026, -0.3793807, 0.012607686, -0.1782306, 0.30749005, 0.012607686, -0.1782306, 0.47234583, -0.069811165, -0.013382137, 0.43108952, -0.056081414, 0.027778879, -0.36557212, 0.026337445, 0.00036375225, -0.39310455, 0.040080644, -0.013382137, -0.36557212, 0.067567036, -0.013382137, 0.40355706, 0.026350886, 0.082787976, 0.47217637, -0.069811165, 0.014084086, 0.45853722, 0.067567036, 0.055270657, 0.44472867, -0.069811165, 0.055270657, 0.44472867, -0.042338215, 0.069016546, 0.26623374, 0.012607686, 0.055296198, -0.3381244)
+
+[node name="SM_Wep_WoodAxe_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_osrgg")
+surface_material_override/0 = ExtResource("2_bhycu")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_pabch")
+
+[node name="SM_Wep_WoodAxe_Guard_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00021234514, 2.513683e-05)
+gi_mode = 2
+mesh = ExtResource("3_bhycu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bhycu")

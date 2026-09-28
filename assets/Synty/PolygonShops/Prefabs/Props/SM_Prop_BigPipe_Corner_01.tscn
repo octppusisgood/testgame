@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuupr81nw3gjg"]
+
+[ext_resource type="ArrayMesh" uid="uid://du16t3ap66ty8" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_BigPipe_Corner_01.res" id="1_kuaov"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_frbob"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pc766"]
+points = PackedVector3Array(0.5555207, -0.019319504, 0.8336897, 0.13180132, 0.0059733987, 0.71583873, 0.18143995, -0.1935713, 0.65944326, 0.5531082, -0.2748852, 0.5756254, 0.5531082, 0.27488515, 0.5756254, 0.18143995, 0.1934636, 0.65944326, -0.14950857, 0.0059733987, 0.43451434, -0.06792285, -0.20578721, 0.38489288, -0.009365365, -0.2748852, 0.013221511, 0.55047643, -0.19690779, 0.35885793, 0.53848714, 0.030674309, 0.28679252, 0.156511, 0.22020945, 0.019424194, -0.009365365, 0.27483132, 0.013221511, -0.1913249, 0.19986752, 0.009385641, -0.1913249, -0.19992141, 0.009467254, 0.15709583, -0.19136488, 0)
+
+[node name="SM_Prop_BigPipe_Corner_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_kuaov")
+surface_material_override/0 = ExtResource("2_frbob")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_pc766")

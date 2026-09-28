@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cgfkv2lg673di"]
+
+[ext_resource type="ArrayMesh" uid="uid://bvxi6tk56r4n4" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Ladder_Folding_01.res" id="1_n5dos"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_6p2sg"]
+[ext_resource type="ArrayMesh" uid="uid://e6mt6sdtkpkd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Ladder_Folding_Legs_01.res" id="3_6p2sg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rc3n7"]
+points = PackedVector3Array(0.34933406, 0.09663539, 0.38897258, -0.34610263, 0.09663539, 0.38897258, 0.34933406, -0.019321442, 0.38897258, 0.38799047, 2.1446412, -0.03611511, 0.34925842, 2.4537787, -0.07477322, -0.34610263, -0.019321442, 0.38897258, -0.3462539, 2.4537787, -0.07477322, -0.38483465, 2.1446412, -0.03611511, 0.34933406, -0.019321442, 0.15694839, 0.38799047, 2.1059082, -0.38388664, 0.38799047, 2.260356, -0.07477322, 0.34925842, 2.4537787, -0.3066461, -0.38483465, 2.1059082, -0.38388664, -0.34610263, -0.019321442, 0.15694839, -0.3462539, 2.4537787, -0.3066461, -0.38483465, 2.260356, -0.07477322)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n5dos"]
+points = PackedVector3Array(-0.33332455, -2.1539192, -0.2959512, -0.33306354, -2.1539192, -0.4536699, 0.3333246, -2.1539192, -0.2959512, -0.33241096, -2.090671, -0.28481686, -0.32745156, 0.016877174, 0.08282584, -0.32745156, 0.05088401, 0.06890792, -0.32745156, 0.05889821, -0.017015398, -0.32745156, 0.028573751, -0.04926294, -0.33241096, -2.090671, -0.44573933, 0.33299834, -2.1539192, -0.4536699, 0.33234578, -2.090671, -0.28481686, 0.32738638, 0.05889821, -0.017015398, 0.32738638, 0.05088401, 0.06890792, 0.32738638, 0.016877174, 0.08282584, 0.32738638, 0.028573751, -0.04926294, 0.32738638, -0.05200267, -0.06664717, -0.32745156, -0.46593106, -0.14495507, 0.33234578, -2.090671, -0.44573933)
+
+[node name="SM_Prop_Ladder_Folding_01" type="MeshInstance3D" unique_id=1224288903]
+gi_mode = 2
+mesh = ExtResource("1_n5dos")
+surface_material_override/0 = ExtResource("2_6p2sg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1775024790]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1087487399]
+shape = SubResource("ConvexPolygonShape3D_rc3n7")
+
+[node name="SM_Prop_Ladder_Folding_Legs_01" type="MeshInstance3D" parent="." unique_id=1017160359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00076904293, 2.1539192, -0.29995126)
+gi_mode = 2
+mesh = ExtResource("3_6p2sg")
+surface_material_override/0 = ExtResource("2_6p2sg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Ladder_Folding_Legs_01" unique_id=635556968]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Ladder_Folding_Legs_01/MeshCollider" unique_id=1525345440]
+shape = SubResource("ConvexPolygonShape3D_n5dos")

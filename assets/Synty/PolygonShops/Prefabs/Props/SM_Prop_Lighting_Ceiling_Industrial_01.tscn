@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1yyfncxx8s6"]
+
+[ext_resource type="ArrayMesh" uid="uid://dd8yxq2tryc13" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Lighting_Ceiling_Industrial_01.res" id="1_v8lwn"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_usax3"]
+[ext_resource type="ArrayMesh" uid="uid://dce0lubeb1g7r" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Lighting_Ceiling_Industrial_Glass_01.res" id="3_usax3"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_8m14e"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3hmhk"]
+points = PackedVector3Array(-0.11529924, -0.026093602, 0.005337715, -0.06342945, 0.005186558, 0.098712265, -0.09452452, 0.005186558, -0.046481308, -0.042699404, -1.6544837, -0.005002938, -0.05306443, -1.4264197, 0.015716948, 0.07138285, 0.005186558, 0.088333026, -0.032289706, -1.4264197, 0.04681608, 0.019535407, -1.6544837, 0.036456138, 0.07138285, 0.005186558, -0.087998256, -0.06342945, -0.026093602, -0.098377496, -0.032289706, -1.4264197, -0.0465006, -0.011582002, -1.6855984, -0.015362889, 0.040287793, -1.6544837, 0.015716948, 0.11290996, -0.026093602, 0.015716948, 0.11290996, -0.026093602, -0.015362889, 0.029900432, -1.6544837, -0.03610207)
+
+[node name="SM_Prop_Lighting_Ceiling_Industrial_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_v8lwn")
+surface_material_override/0 = ExtResource("2_usax3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_3hmhk")
+
+[node name="SM_Prop_Lighting_Ceiling_Industrial_Glass_01" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_usax3")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_8m14e")

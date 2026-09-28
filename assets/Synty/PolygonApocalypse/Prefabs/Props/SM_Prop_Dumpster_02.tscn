@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bx4ue2glk3ms"]
+
+[ext_resource type="ArrayMesh" uid="uid://cmmchu435gvfs" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dumpster_02.res" id="1_3ivqk"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_s7eas"]
+[ext_resource type="ArrayMesh" uid="uid://ji5e8t8xbruu" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dumpster_Rubbish_01.res" id="3_s7eas"]
+[ext_resource type="Material" uid="uid://dih81x3j3aip0" path="res://assets/Synty/PolygonApocalypse/Materials/Misc/Rubble_01_mat.tres" id="4_nnj0b"]
+[ext_resource type="ArrayMesh" uid="uid://dcflh2b285t05" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dumpster_Rubbish_TrashBag_01.res" id="5_wl3ap"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wkuk6"]
+points = PackedVector3Array(-1.3610785, 1.4737127, 0.044571638, -1.0836512, 1.8570718, -0.65712315, -1.0379802, 0.020996924, -0.56133944, -1.0379802, -0.019995928, 0.40785939, -1.1769367, 1.1194535, 0.6182671, -1.1878686, 2.390485, 0.50795776, -0.10901177, 2.5650842, 0.6099257, 1.0308208, 1.8793396, -0.56148326, 0.9812629, 0.02049084, -0.52078235, 0.90644, 0.06224282, 0.5134228, -0.95684123, 0.020996924, 0.56936854, -0.028358698, 2.1609757, 0.7715786, 0.093106866, 1.0708694, 0.81213576, 1.1027284, 1.8375876, 0.73116535, 1.1207054, 0.8502165, -0.53027445, 1.1207054, 0.8502165, 0.5444878)
+
+[node name="SM_Prop_Dumpster_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3ivqk")
+surface_material_override/0 = ExtResource("2_s7eas")
+surface_material_override/1 = ExtResource("2_s7eas")
+surface_material_override/2 = ExtResource("2_s7eas")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_wkuk6")
+
+[node name="SM_Prop_Dumpster_Rubbish_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_s7eas")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_nnj0b")
+
+[node name="SM_Prop_Dumpster_Rubbish_TrashBag_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("5_wl3ap")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_s7eas")

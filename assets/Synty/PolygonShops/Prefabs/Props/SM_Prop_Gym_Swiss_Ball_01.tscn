@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://l4j7o2gd4vx2"]
+
+[ext_resource type="ArrayMesh" uid="uid://i3uwijm62jyw" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Swiss_Ball_01.res" id="1_ov2jd"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_oteve"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ov2jd"]
+radius = 0.38123024
+
+[node name="SM_Prop_Gym_Swiss_Ball_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ov2jd")
+surface_material_override/0 = ExtResource("2_oteve")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("SphereShape3D_ov2jd")

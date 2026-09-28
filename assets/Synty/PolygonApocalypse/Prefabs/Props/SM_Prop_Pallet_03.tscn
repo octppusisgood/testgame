@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://blrc0ccphwfwd"]
+
+[ext_resource type="ArrayMesh" uid="uid://dubwxvgyal7dg" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Pallet_03.res" id="1_plt24"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_mj4jg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plt24"]
+size = Vector3(1.4440918, 0.23840332, 1.3740234)
+
+[node name="SM_Prop_Pallet_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_plt24")
+surface_material_override/0 = ExtResource("2_mj4jg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, 0.121520996, -0.0024414063)
+shape = SubResource("BoxShape3D_plt24")

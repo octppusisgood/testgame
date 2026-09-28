@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://beu8woadnojw"]
+
+[ext_resource type="ArrayMesh" uid="uid://ht281cg35mkb" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Base_Wall_Glass_Door_01.res" id="1_1kjsl"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_1c3gv"]
+[ext_resource type="ArrayMesh" uid="uid://b3hcqpml1qbj" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Base_Wall_Glass_Door_01_Glass.res" id="3_1c3gv"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_v2kum"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kr87w"]
+data = PackedVector3Array(0.7486, 1.9669, 0.1125, 0.7486, 0, 0.1125, 0, 0, 0.1125, 0, 0, 0.1125, 0, 1.9669, 0.1125, 0.7486, 1.9669, 0.1125, 0.7486, 1.9669, -0.1125, 0.7486, 1.9669, 0.1125, 0, 1.9669, 0.1125, 0, 1.9669, 0.1125, 0, 1.9669, -0.1125, 0.7486, 1.9669, -0.1125, 0.7486, 0, -0.1125, 0.7486, 1.9669, -0.1125, 0, 1.9669, -0.1125, 0, 1.9669, -0.1125, 0, 0, -0.1125, 0.7486, 0, -0.1125, 0.7486, 0, 0.1125, 0.7486, 0, -0.1125, 0, 0, -0.1125, 0, 0, -0.1125, 0, 0, 0.1125, 0.7486, 0, 0.1125, 0.7486, 1.9669, -0.1125, 0.7486, 0, -0.1125, 0.7486, 0, 0.1125, 0.7486, 0, 0.1125, 0.7486, 1.9669, 0.1125, 0.7486, 1.9669, -0.1125, 0, 1.9669, 0.1125, 0, 0, 0.1125, 0, 0, -0.1125, 0, 0, -0.1125, 0, 1.9669, -0.1125, 0, 1.9669, 0.1125, 2.5, 1.9669, 0.1125, 2.5, 0, 0.1125, 1.7514, 0, 0.1125, 1.7514, 0, 0.1125, 1.7514, 1.9669, 0.1125, 2.5, 1.9669, 0.1125, 2.5, 1.9669, -0.1125, 2.5, 1.9669, 0.1125, 1.7514, 1.9669, 0.1125, 1.7514, 1.9669, 0.1125, 1.7514, 1.9669, -0.1125, 2.5, 1.9669, -0.1125, 2.5, 0, -0.1125, 2.5, 1.9669, -0.1125, 1.7514, 1.9669, -0.1125, 1.7514, 1.9669, -0.1125, 1.7514, 0, -0.1125, 2.5, 0, -0.1125, 2.5, 0, 0.1125, 2.5, 0, -0.1125, 1.7514, 0, -0.1125, 1.7514, 0, -0.1125, 1.7514, 0, 0.1125, 2.5, 0, 0.1125, 2.5, 1.9669, -0.1125, 2.5, 0, -0.1125, 2.5, 0, 0.1125, 2.5, 0, 0.1125, 2.5, 1.9669, 0.1125, 2.5, 1.9669, -0.1125, 1.7514, 1.9669, 0.1125, 1.7514, 0, 0.1125, 1.7514, 0, -0.1125, 1.7514, 0, -0.1125, 1.7514, 1.9669, -0.1125, 1.7514, 1.9669, 0.1125, 2.5, 3, 0.1125, 2.5, 1.9669, 0.1125, 0, 1.9669, 0.1125, 0, 1.9669, 0.1125, 0, 3, 0.1125, 2.5, 3, 0.1125, 2.5, 3, -0.1125, 2.5, 3, 0.1125, 0, 3, 0.1125, 0, 3, 0.1125, 0, 3, -0.1125, 2.5, 3, -0.1125, 2.5, 1.9669, -0.1125, 2.5, 3, -0.1125, 0, 3, -0.1125, 0, 3, -0.1125, 0, 1.9669, -0.1125, 2.5, 1.9669, -0.1125, 2.5, 1.9669, 0.1125, 2.5, 1.9669, -0.1125, 0, 1.9669, -0.1125, 0, 1.9669, -0.1125, 0, 1.9669, 0.1125, 2.5, 1.9669, 0.1125, 2.5, 3, -0.1125, 2.5, 1.9669, -0.1125, 2.5, 1.9669, 0.1125, 2.5, 1.9669, 0.1125, 2.5, 3, 0.1125, 2.5, 3, -0.1125, 0, 3, 0.1125, 0, 1.9669, 0.1125, 0, 1.9669, -0.1125, 0, 1.9669, -0.1125, 0, 3, -0.1125, 0, 3, 0.1125)
+
+[node name="SM_Bld_Base_Wall_Glass_Door_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_1kjsl")
+surface_material_override/0 = ExtResource("2_1c3gv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConcavePolygonShape3D_kr87w")
+
+[node name="SM_Bld_Base_Wall_Glass_Door_01_Glass" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_1c3gv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_v2kum")

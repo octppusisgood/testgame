@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://chsngsek5poea"]
+
+[ext_resource type="ArrayMesh" uid="uid://cjqcxw2ee26ep" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Sign_Shield_01.res" id="1_wb058"]
+[ext_resource type="Material" uid="uid://bg83cqkqoxv0b" path="res://assets/Synty/PolygonApocalypse/Materials/Character/PolygonApocalypse_Chr_01_A_mat.tres" id="2_cd0ws"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_20eer"]
+points = PackedVector3Array(0.11262041, 0.25766036, 0.06488177, 0.2494494, -0.08035219, 0.137357, 0.25761983, 0.112660944, 0.06488177, 0.087655276, 0.05113074, -0.05463137, -0.08770573, 0.05113074, -0.05463137, -0.10909, 0.24948993, 0.087384, 0.03207639, -0.24945933, 0.137357, 0.09653178, -0.2575793, 0.10510954, 0.25761983, -0.08837129, 0.09707166, 0.0914883, -0.0533697, -0.058621537, -0.09153877, -0.0533697, -0.058621537, -0.25761983, 0.112660944, 0.06488177, -0.103189155, 0.09586623, 0.09937368, -0.15286721, -0.20926297, 0.113166615, -0.11262041, -0.2575793, 0.08097671, -0.25761983, -0.11263032, 0.06488177)
+
+[node name="SM_Wep_Sign_Shield_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_wb058")
+surface_material_override/0 = ExtResource("2_cd0ws")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_20eer")

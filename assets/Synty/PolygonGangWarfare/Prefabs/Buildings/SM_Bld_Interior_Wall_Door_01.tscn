@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://batusdah163qd"]
+
+[ext_resource type="ArrayMesh" uid="uid://smmvx4jtquc0" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Interior_Wall_Door_01.res" id="1_bprq5"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_4e31a"]
+[ext_resource type="ArrayMesh" uid="uid://b5e3vqm3wjxg7" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Interior_Door_01.res" id="3_4e31a"]
+[ext_resource type="ArrayMesh" uid="uid://b18yq2bqcxpxh" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Interior_Door_Glass_01.res" id="4_yhy8q"]
+[ext_resource type="Material" uid="uid://bgr664d17lip1" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Glass_mat.tres" id="5_yu7ot"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_756vg"]
+size = Vector3(1.0297232, 3, 0.38552245)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b8njh"]
+size = Vector3(0.9740081, 3, 0.38552245)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8xcp"]
+size = Vector3(3.0000007, 0.6414752, 0.38552245)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8tidt"]
+size = Vector3(3.0000007, 0.19483638, 0.38552245)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1o1i"]
+size = Vector3(1.0147341, 2.213498, 0.24597624)
+
+[node name="SM_Bld_Interior_Wall_Door_01" type="MeshInstance3D" unique_id=2110751960]
+gi_mode = 2
+mesh = ExtResource("1_bprq5")
+surface_material_override/0 = ExtResource("2_4e31a")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=1210980792]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=709084708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5148611, 1.5, 0)
+shape = SubResource("BoxShape3D_756vg")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BoxCollider" unique_id=27944772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5129964, 1.5, 0)
+shape = SubResource("BoxShape3D_b8njh")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="BoxCollider" unique_id=229390165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4999999, 2.6792624, 0)
+shape = SubResource("BoxShape3D_x8xcp")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="BoxCollider" unique_id=1555373476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4999999, 0.09741819, 0)
+shape = SubResource("BoxShape3D_8tidt")
+
+[node name="SM_Bld_Interior_Door_01" type="MeshInstance3D" parent="." unique_id=1340344101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99262846, 0.1535326, 0.087998964)
+gi_mode = 2
+mesh = ExtResource("3_4e31a")
+surface_material_override/0 = ExtResource("2_4e31a")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Interior_Door_01" unique_id=61866721]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Interior_Door_01/BoxCollider" unique_id=175156122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5073655, 1.106749, -0.038135525)
+shape = SubResource("BoxShape3D_v1o1i")
+
+[node name="SM_Bld_Interior_Door_Glass_01" type="MeshInstance3D" parent="SM_Bld_Interior_Door_01" unique_id=8519173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507367, 1.5542923, -0.03433702)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("4_yhy8q")
+surface_material_override/0 = ExtResource("5_yu7ot")

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://0207grdc2elb"]
+
+[ext_resource type="ArrayMesh" uid="uid://bay24ifn0taat" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hall_02.res" id="1_cerci"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_w58en"]
+[ext_resource type="Material" uid="uid://cvaa24c8wyg8b" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Gold_mat.tres" id="3_gcyie"]
+[ext_resource type="Shape3D" uid="uid://mdxvcbavpat0" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Hall_02_Collision.res" id="4_gcyie"]
+[ext_resource type="ArrayMesh" uid="uid://cho7v2lmye4ev" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hall_01_Door_1.res" id="4_w58en"]
+[ext_resource type="ArrayMesh" uid="uid://gy4dyhbpvil5" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hall_01_Door_2.res" id="5_gcyie"]
+[ext_resource type="ArrayMesh" uid="uid://cssdbyvlwdeso" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hall_01_Glass.res" id="6_j2lat"]
+[ext_resource type="Material" uid="uid://bsdrxux17jhqg" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_Alt_mat.tres" id="7_8md8x"]
+
+[node name="SM_Bld_Hall_02" type="MeshInstance3D" unique_id=541034200]
+gi_mode = 2
+mesh = ExtResource("1_cerci")
+surface_material_override/0 = ExtResource("2_w58en")
+surface_material_override/1 = ExtResource("3_gcyie")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=354264088]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1132814397]
+shape = ExtResource("4_gcyie")
+
+[node name="SM_Bld_Hall_01_Door_1" type="MeshInstance3D" parent="." unique_id=13632332]
+gi_mode = 2
+mesh = ExtResource("4_w58en")
+surface_material_override/0 = ExtResource("2_w58en")
+
+[node name="SM_Bld_Hall_01_Door_2" type="MeshInstance3D" parent="." unique_id=344928195]
+gi_mode = 2
+mesh = ExtResource("5_gcyie")
+surface_material_override/0 = ExtResource("2_w58en")
+
+[node name="SM_Bld_Hall_01_Glass" type="MeshInstance3D" parent="." unique_id=368341234]
+gi_mode = 2
+mesh = ExtResource("6_j2lat")
+surface_material_override/0 = ExtResource("7_8md8x")

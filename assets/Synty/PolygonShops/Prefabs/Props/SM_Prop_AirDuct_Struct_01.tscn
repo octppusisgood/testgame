@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhs10lq8ucavw"]
+
+[ext_resource type="ArrayMesh" uid="uid://df4m5l2qw3pjb" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_AirDuct_Struct_01.res" id="1_i5lat"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_ibcul"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cls8t"]
+points = PackedVector3Array(0.5702885, 0.010104179, 0.03844422, 0.6085301, -1.073906, 0.07647735, 0.5702885, 0.010104179, -0.037622035, -0.5705268, 0.010104179, 0.03844422, 0.6085301, -1.1308402, 0.07647735, 0.6085301, -1.073906, -0.07565516, -0.6085301, -1.073906, 0.07647735, -0.5705268, 0.010104179, -0.037622035, 0.6085301, -1.1308402, -0.07565516, -0.6085301, -1.1308402, 0.07647735, 0.5462237, -1.1439441, 0.018608615, -0.6085301, -1.073906, -0.07565516, 0.5462237, -1.1439441, -0.017786436, -0.6085301, -1.1308402, -0.07565516, -0.5463428, -1.1439441, 0.018608615, -0.5463428, -1.1439441, -0.017786436)
+
+[node name="SM_Prop_AirDuct_Struct_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_i5lat")
+surface_material_override/0 = ExtResource("2_ibcul")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_cls8t")

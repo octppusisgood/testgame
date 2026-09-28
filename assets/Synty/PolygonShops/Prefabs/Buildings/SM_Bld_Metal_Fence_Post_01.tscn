@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwgvvvamd6w0y"]
+
+[ext_resource type="ArrayMesh" uid="uid://582rdi7f6b5v" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Metal_Fence_Post_01.res" id="1_eit70"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_cmb6h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vyhuv"]
+size = Vector3(0.17650902, 3.0176773, 0.17650878)
+
+[node name="SM_Bld_Metal_Fence_Post_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_eit70")
+surface_material_override/0 = ExtResource("2_cmb6h")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0978193e-08, 1.5088387, 0)
+shape = SubResource("BoxShape3D_vyhuv")

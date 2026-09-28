@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://0rqomi3jepve"]
+
+[ext_resource type="ArrayMesh" uid="uid://bee11hvkt5ko0" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Warehouse_Venting_01.res" id="1_s63xp"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_317nd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wmj5l"]
+points = PackedVector3Array(0.10415292, 0.693083, -0.5491278, 0.10415292, -0.675711, -0.5491278, 0.032800674, -0.6446264, -0.671642, 0.008302212, 0.65114564, -0.6633044, -2.05693, 0.65114564, -0.6633044, -2.046518, 0.64417845, -0.304786, 0.054849386, 0.44855982, 0.3304438, -0.016808987, -0.41055402, 0.3072946, -2.046518, -0.6269403, -0.304786, -2.0667293, -0.6446264, -0.671642, -3.0243185, 0.39965516, -0.304786, -2.8739583, 0.3620053, 0.2832626, -0.48503852, -0.08001226, 0.32926673, -2.0501928, -0.3997012, 0.2954257, -2.8819203, -0.34677702, 0.2858129, -2.9756274, -0.43132174, -0.304786)
+
+[node name="SM_Prop_Warehouse_Venting_01" type="MeshInstance3D" unique_id=140648475]
+gi_mode = 2
+mesh = ExtResource("1_s63xp")
+surface_material_override/0 = ExtResource("2_317nd")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1220173323]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=847925862]
+shape = SubResource("ConvexPolygonShape3D_wmj5l")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bwk8brhgcmicf"]
+
+[ext_resource type="ArrayMesh" uid="uid://mlqe2iqdg0k3" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Street_Light_02.res" id="1_yea6q"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_jfyq5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tapee"]
+points = PackedVector3Array(0.0078858435, -0.4226781, 1.7209637, -0.037880544, -0.41123566, 1.6981727, -0.026428018, -0.033405423, -0.03055811, 0.030805469, -0.033405423, -0.03055811, 0.05371052, -0.41123566, 1.7667238, -0.07223812, -0.37690836, 1.7439327, -0.07223812, -0.29671937, 1.7553282, -0.037880544, 0.023852736, 0.56485605, -0.025087517, 0.024725854, 0.0132432915, 0.030805469, 0.03529516, -0.03055811, 0.07661557, -0.31960425, 1.7209637, 0.07661557, -0.37690836, 1.7439327, 0.030790895, 0.03529516, 1.7781192, -0.025684915, -0.22700782, 1.7884463, -0.026428018, 0.046783566, 1.7439327, -0.037880544, 0.023852736, 1.4116831)
+
+[node name="SM_Prop_Street_Light_02" type="MeshInstance3D" unique_id=915698997]
+gi_mode = 2
+mesh = ExtResource("1_yea6q")
+surface_material_override/0 = ExtResource("2_jfyq5")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=624434239]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=230850608]
+shape = SubResource("ConvexPolygonShape3D_tapee")

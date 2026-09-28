@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://440dcyprh4wa"]
+
+[ext_resource type="ArrayMesh" uid="uid://3k27unh1pj4q" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Ride_On_Mower_Ribbon_01.res" id="1_wput6"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_3wt5i"]
+
+[node name="SM_Prop_Ride_On_Mower_Ribbon_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_wput6")
+surface_material_override/0 = ExtResource("2_3wt5i")

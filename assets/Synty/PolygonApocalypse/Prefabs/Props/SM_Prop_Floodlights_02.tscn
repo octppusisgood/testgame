@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfc63kmmlsx7e"]
+
+[ext_resource type="ArrayMesh" uid="uid://7qap31vgvaum" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Floodlights_02.res" id="1_txhiy"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_grf1d"]
+[ext_resource type="ArrayMesh" uid="uid://bd6ektm32afj5" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Floodlights_LightL_02.res" id="3_grf1d"]
+[ext_resource type="ArrayMesh" uid="uid://v206fb5ksdqj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Floodlights_LightR_02.res" id="4_gjcuv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txhiy"]
+size = Vector3(0.88049316, 0.45043945, 0.1796875)
+
+[node name="SM_Prop_Floodlights_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_txhiy")
+surface_material_override/0 = ExtResource("2_grf1d")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00018310547, 0.18859863, 0.0146484375)
+shape = SubResource("BoxShape3D_txhiy")
+
+[node name="SM_Prop_Floodlights_LightL_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28153184, 0.1663034, 0)
+gi_mode = 2
+mesh = ExtResource("3_grf1d")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_grf1d")
+
+[node name="SM_Prop_Floodlights_LightR_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28987342, 0.1663034, 0)
+gi_mode = 2
+mesh = ExtResource("4_gjcuv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_grf1d")

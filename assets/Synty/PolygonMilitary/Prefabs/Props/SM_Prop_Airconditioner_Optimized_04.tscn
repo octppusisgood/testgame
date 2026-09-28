@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dxd8nra6usb7y"]
+
+[ext_resource type="ArrayMesh" uid="uid://bbf6slqlnnbbb" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Airconditioner_Optimized_04.res" id="1_ea8g0"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_8vsaw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ea8g0"]
+size = Vector3(1.0539551, 1.4211426, 0.36743164)
+
+[node name="SM_Prop_Airconditioner_Optimized_04" type="MeshInstance3D" unique_id=67271121]
+gi_mode = 2
+mesh = ExtResource("1_ea8g0")
+surface_material_override/0 = ExtResource("2_8vsaw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=302231246]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=983284975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006713867, 0.7005615, -0.017211914)
+shape = SubResource("BoxShape3D_ea8g0")

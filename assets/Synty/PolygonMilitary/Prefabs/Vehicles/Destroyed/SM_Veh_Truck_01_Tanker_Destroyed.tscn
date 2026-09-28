@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cqqo1cijil3kv"]
+
+[ext_resource type="ArrayMesh" uid="uid://c7n61w5rlya0y" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Truck_01_Tanker_Destroyed.res" id="1_d4fcl"]
+[ext_resource type="Material" uid="uid://kc8splxgww8w" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_01_Burnt_mat.tres" id="2_3wn7b"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7jkkq"]
+points = PackedVector3Array(1.3261162, 1.120029, 0.99006677, -0.38779986, 2.611696, 0.9966724, -1.2473752, 0.74667305, 0.9776809, 1.2305788, 0.9084671, 0.8468039, 1.3261162, 1.120029, 0.64532757, 0.9766847, 2.3862774, -2.8165128, 0.96778524, 2.2533681, 0.7720759, 0.278345, 2.6702464, 0.9112103, -0.49930382, 2.6985457, -2.798347, -1.1036764, 2.2016487, 0.89056706, -1.347886, 1.8072147, -2.5023255, -1.275644, 0.7777047, -2.9444997, 0.7500123, 1.0050752, -3.2211168, 1.2567533, 1.188728, -3.1472147, 0.27965367, 2.740507, -2.8763778, -1.1801064, 2.271909, -2.8681204)
+
+[node name="SM_Veh_Truck_01_Tanker_Destroyed" type="MeshInstance3D" unique_id=2031624260]
+gi_mode = 2
+mesh = ExtResource("1_d4fcl")
+surface_material_override/0 = ExtResource("2_3wn7b")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=351572683]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1546353413]
+shape = SubResource("ConvexPolygonShape3D_7jkkq")

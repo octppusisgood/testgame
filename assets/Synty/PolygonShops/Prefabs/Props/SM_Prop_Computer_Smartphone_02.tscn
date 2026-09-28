@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmhutofyrte0h"]
+
+[ext_resource type="ArrayMesh" uid="uid://by7d13bn5r6lx" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Computer_Smartphone_02.res" id="1_mbe81"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_cejg5"]
+
+[node name="SM_Prop_Computer_Smartphone_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_mbe81")
+surface_material_override/0 = ExtResource("2_cejg5")

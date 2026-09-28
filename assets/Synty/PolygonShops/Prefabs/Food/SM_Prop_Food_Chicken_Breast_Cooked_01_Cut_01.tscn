@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2js7fdv5vcp4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cov3gfddd5hbb" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Chicken_Breast_Cooked_01_Cut_01.res" id="1_g046k"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_ys1p4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6vvfx"]
+points = PackedVector3Array(0.056292772, 0.022954952, -0.09654555, 0.12589708, 0.049956363, -0.08137627, 0.15475279, -0.0028838995, -0.08181403, 0.056167588, 0.012739418, -0.09637425, 0.010035977, 0.053174034, -0.08965561, 0.15325055, 0.022594932, 0.0883027, 0.049250975, 0.06638222, -0.05948835, 0.051316574, 0.06074193, 0.014721215, 0.14091957, -0.007166623, 0.08126049, 0.109466195, -0.010241784, -0.05948835, -0.11499511, -0.004773998, -0.04304386, -0.13687164, 0.04448858, -0.026637435, -0.14237988, 0.04448858, 0.06641477, -0.005111724, 0.017839685, 0.09787628, -0.15877946, -0.004773998, 0.05545178, -0.16494495, 0.01260441, 0.0007319823)
+
+[node name="SM_Prop_Food_Chicken_Breast_Cooked_01_Cut_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_g046k")
+surface_material_override/0 = ExtResource("2_ys1p4")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_6vvfx")

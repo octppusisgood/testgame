@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dsfxhis7jiwp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cr514gnd84aiw" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Toy_Samurai_Head_Unpainted_01.res" id="1_gjilp"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_bjk74"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1treq"]
+points = PackedVector3Array(-0.1257158, 0.10048331, 0.073312, 0.0034684092, 0.11564857, 0.0931762, -0.08191998, 0.24759175, 0.0358084, -0.09888505, 0.033498876, -0.047223955, -0.100843504, 0.031829055, 0.03654337, -0.0049284473, 0.029994993, 0.07394765, 0.11720535, 0.09437889, 0.07307364, 0.08055787, 0.24759175, 0.0358084, -0.05873684, 0.28358868, 0.010819234, -0.07109955, 0.04286082, -0.06935267, -0.01403524, 0.029064273, -0.109756455, 0.0035663247, 0.003934845, 0.014414653, 0.094364926, 0.028297799, 0.036225542, 0.12437816, 0.09155935, 0.06886242, 0.07071665, 0.033498876, -0.09634812, 0.057350233, 0.28358868, 0.010819234)
+
+[node name="SM_Prop_Toy_Samurai_Head_Unpainted_01" type="MeshInstance3D" unique_id=275603249]
+gi_mode = 2
+mesh = ExtResource("1_gjilp")
+surface_material_override/0 = ExtResource("2_bjk74")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=152381905]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=291654694]
+shape = SubResource("ConvexPolygonShape3D_1treq")

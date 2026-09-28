@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgbc87xs7e617"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxhsj0kf00veb" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bunker_RoofWire_02.res" id="1_3dd6i"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_pdf3p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_msnxu"]
+points = PackedVector3Array(-0.019841194, 0.0014818907, 0.20657909, -0.019841194, 0.0014818907, -0.19016865, -0.019841194, -0.47475514, 0.20657909, 2.5196042, 0.0014159083, 0.20657909, -0.019841194, -0.47475514, -0.19016865, 2.5196042, 0.0014159083, -0.19016865, 0.41690564, -0.5937484, 0.04785669, 1.091539, -0.6731212, 0.04785669, 1.1708345, -0.5937484, 0.16692764, 2.5196042, -0.47475514, 0.20657909, 2.5196042, -0.47475514, -0.19016865, 0.9324509, -0.5539959, -0.15055601, 0.41690564, -0.5937484, -0.03144625, 1.9637898, -0.63336873, -0.03144625, 1.8449708, -0.63336873, 0.04785669, 1.6863798, -0.5539959, -0.15055601)
+
+[node name="SM_Prop_Bunker_RoofWire_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3dd6i")
+surface_material_override/0 = ExtResource("2_pdf3p")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_msnxu")

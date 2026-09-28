@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxde1rsigf2da"]
+
+[ext_resource type="ArrayMesh" uid="uid://bujxjv73wb0au" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Plank_01.res" id="1_23ia3"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_cj7rh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_agmcp"]
+points = PackedVector3Array(0.18420166, 0.06096897, 1.7317221, 0.18420166, -0.012188066, 1.7317221, 0.18420166, 0.06096897, -1.7317221, -0.1815835, 0.06096897, 1.7317221, -0.1815835, -0.012188066, 1.7317221, 0.18420166, -0.012188066, -1.7317221, -0.1815835, 0.06096897, -1.7317221, -0.1815835, -0.012188066, -1.7317221)
+
+[node name="SM_Prop_Plank_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_23ia3")
+surface_material_override/0 = ExtResource("2_cj7rh")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_agmcp")

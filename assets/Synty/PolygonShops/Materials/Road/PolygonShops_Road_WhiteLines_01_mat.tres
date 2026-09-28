@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bc0jd8w5jy0iw"]
+
+[ext_resource type="Texture2D" uid="uid://138o0r454qau" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Ground_WhiteLines_01.png" id="1_8gx0w"]
+[ext_resource type="Texture2D" uid="uid://cyuceaijunnvq" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Ground_01_Normals.png" id="2_r3ec5"]
+
+[resource]
+resource_name = "PolygonShops_Road_WhiteLines_01_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_8gx0w")
+roughness = 0.8
+normal_enabled = true
+normal_texture = ExtResource("2_r3ec5")
+uv1_scale = Vector3(1, 1, 0)

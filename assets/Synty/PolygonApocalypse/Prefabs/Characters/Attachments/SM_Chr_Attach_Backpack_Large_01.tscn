@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bipjhq2mvdpko"]
+
+[ext_resource type="ArrayMesh" uid="uid://bnorccn54n65s" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Backpack_Large_01.res" id="1_px7gl"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_bx601"]
+
+[node name="SM_Chr_Attach_Backpack_Large_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_px7gl")
+surface_material_override/0 = ExtResource("2_bx601")

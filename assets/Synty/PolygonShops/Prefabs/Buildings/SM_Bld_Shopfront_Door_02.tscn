@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cau10by5fjw0v"]
+
+[ext_resource type="ArrayMesh" uid="uid://dgoklpeouenv7" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Shopfront_Door_02.res" id="1_sppmt"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_8oc4m"]
+[ext_resource type="ArrayMesh" uid="uid://5apgh5u0bdo3" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Shopfront_Door_02_Glass.res" id="3_8oc4m"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_hqyle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mi86t"]
+size = Vector3(1.0047885, 1.9640363, 0.08684358)
+
+[node name="SM_Bld_Shopfront_Door_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_sppmt")
+surface_material_override/0 = ExtResource("2_8oc4m")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50239426, 0.9820182, -7.909536e-05)
+shape = SubResource("BoxShape3D_mi86t")
+
+[node name="SM_Bld_Shopfront_Door_02_Glass" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_8oc4m")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_hqyle")

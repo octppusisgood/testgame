@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3trhko7ryh6r"]
+
+[ext_resource type="ArrayMesh" uid="uid://b11nkqro4kwai" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_RocketLauncher_01.res" id="1_ed7mc"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_efqbn"]
+[ext_resource type="ArrayMesh" uid="uid://croun2me25e1" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_RocketLauncher_01_Fireworks_01.res" id="3_efqbn"]
+[ext_resource type="ArrayMesh" uid="uid://djm13f2nqstie" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_RocketLauncher_01_Missile_01.res" id="4_5ltes"]
+[ext_resource type="ArrayMesh" uid="uid://d2qpdelk11qem" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_RocketLauncher_01_Trigger_01.res" id="5_fsei2"]
+[ext_resource type="ArrayMesh" uid="uid://bahw2luk0t0p6" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_RocketLauncher_01_Trigger_02.res" id="6_ydxqj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n2bj3"]
+points = PackedVector3Array(-0.026575468, -0.14189374, -0.049664736, 0.013218544, -0.14189374, -0.049664736, 0.03311555, -0.14189374, 0.030030966, -0.046472482, 0.057162106, 0.26899338, -0.106221974, 0.09692885, -0.54742, -0.086285986, 0.017432407, -1.0051403, 0.053032055, -0.0025250167, -1.0051403, 0.053032055, 0.11688629, 0.26899338, 0.09286505, 0.03731577, -1.0051403, -0.026536494, 0.21641421, 0.22908318, -0.106221974, 0.17661044, -0.54742, -0.06640847, 0.17661044, -1.0051403, 0.03311555, 0.21641421, 0.22908318, 0.09286505, 0.13676965, -1.0051403, 0.013218544, 0.23637164, -0.22888654, -0.086285986, 0.1964938, -0.54742)
+
+[node name="SM_Wep_RocketLauncher_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ed7mc")
+surface_material_override/0 = ExtResource("2_efqbn")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_n2bj3")
+
+[node name="SM_Wep_RocketLauncher_01_Fireworks_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08436282, -0.0175149)
+gi_mode = 2
+mesh = ExtResource("3_efqbn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_efqbn")
+
+[node name="SM_Wep_RocketLauncher_01_Missile_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005638819, 0.087089956, -0.24142858)
+gi_mode = 2
+mesh = ExtResource("4_5ltes")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_efqbn")
+
+[node name="SM_Wep_RocketLauncher_01_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00021436154, 0.01492408, 0.036625978)
+gi_mode = 2
+mesh = ExtResource("5_fsei2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_efqbn")
+
+[node name="SM_Wep_RocketLauncher_01_Trigger_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00021436154, -0.0009949849, -0.029310763)
+gi_mode = 2
+mesh = ExtResource("6_ydxqj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_efqbn")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsqk5fv4ikvr4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cw4bq6j4qsb2l" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Chr_Hair_Headband_01.res" id="1_771sh"]
+[ext_resource type="Material" uid="uid://c00i4t2473bv4" path="res://Assets/Synty/PolygonShops/Materials/Alternates/PolygonShops_Mat_01_A_Colour_Emissive_mat.tres" id="2_h7w2d"]
+
+[node name="SM_Chr_Hair_Headband_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_771sh")
+surface_material_override/0 = ExtResource("2_h7w2d")

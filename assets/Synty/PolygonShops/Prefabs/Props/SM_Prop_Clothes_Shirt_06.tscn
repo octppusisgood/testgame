@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpdc13jc27cyu"]
+
+[ext_resource type="ArrayMesh" uid="uid://x734vf5un7pa" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Clothes_Shirt_06.res" id="1_w4edv"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_yspa7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yt2oo"]
+points = PackedVector3Array(-0.43108857, -0.41329134, -0.05776176, 0.1417973, -0.88344735, -0.07245491, -0.2546235, -0.8687691, -0.05776176, -0.2546235, -0.8687691, 0.030397132, -0.4164191, -0.41329134, 0.030397132, -0.29889077, -0.134224, 0.030397132, -0.18127616, -0.0755111, -0.05776176, 0.11245835, -0.88344735, 0.04509028, 0.3181761, -0.134224, -0.05776176, 0.4503739, -0.41329134, -0.05776176, 0.25941193, -0.8687691, -0.05776176, 0.25941193, -0.8687691, 0.030397132, 0.29392833, -0.1561507, 0.026922323, -0.048992068, 0.04218644, 0.0009878203, 0.05369419, 0.04218644, -0.028375462, 0.4503739, -0.41329134, 0.030397132)
+
+[node name="SM_Prop_Clothes_Shirt_06" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_w4edv")
+surface_material_override/0 = ExtResource("2_yspa7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_yt2oo")

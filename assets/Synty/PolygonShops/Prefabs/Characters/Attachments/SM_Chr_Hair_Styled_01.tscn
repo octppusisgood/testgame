@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ml6nh456yvyr"]
+
+[ext_resource type="ArrayMesh" uid="uid://brc3i4c8hkbo4" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Chr_Hair_Styled_01.res" id="1_lsv84"]
+[ext_resource type="Material" uid="uid://c00i4t2473bv4" path="res://Assets/Synty/PolygonShops/Materials/Alternates/PolygonShops_Mat_01_A_Colour_Emissive_mat.tres" id="2_f1u08"]
+
+[node name="SM_Chr_Hair_Styled_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_lsv84")
+surface_material_override/0 = ExtResource("2_f1u08")

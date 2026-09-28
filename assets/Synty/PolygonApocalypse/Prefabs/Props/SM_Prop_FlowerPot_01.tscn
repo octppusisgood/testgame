@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b33x40ox4t0ta"]
+
+[ext_resource type="ArrayMesh" uid="uid://c8mjwfgjpffu5" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_FlowerPot_01.res" id="1_lo4kc"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_jwl16"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_crypl"]
+points = PackedVector3Array(-0.17126791, 0.2858178, 0.16284437, 0.033191055, 0.38303867, 0.147774, -0.051802352, 0.43845063, 0.05032952, -0.08349934, 0.44870728, 0.016437188, -0.1704989, 0.2646526, -0.074979134, -0.17110074, 0.23709874, 0.1623634, 0.13597222, 0.24366125, 0.16169004, 0.16656585, 0.29759556, 0.13725679, 0.08421384, 0.4341046, 0.045616016, 0.045662552, 0.4388418, -0.08187304, -0.09934784, 0.26417455, -0.16334932, -0.07888523, 0.00919253, -0.08100729, -0.080490135, 0.004716111, 0.07909152, 0.081238076, 0.004716111, 0.07909152, 0.17031063, 0.2644353, -0.16472809, 0.07959972, 0.00919253, -0.08100729)
+
+[node name="SM_Prop_FlowerPot_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_lo4kc")
+surface_material_override/0 = ExtResource("2_jwl16")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_crypl")

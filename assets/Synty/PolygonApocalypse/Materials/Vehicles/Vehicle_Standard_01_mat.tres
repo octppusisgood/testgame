@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bj206v4v20ibu"]
+
+[ext_resource type="Texture2D" uid="uid://bis7untlr0tma" path="res://assets/Synty/PolygonApocalypse/Textures/Vehicle/Vehicle_01.png" id="1_doq4n"]
+[ext_resource type="Texture2D" uid="uid://cx40vmml45wcl" path="res://assets/Synty/PolygonApocalypse/Textures/Misc/Vehicle_01_Emissive.png" id="2_giv1w"]
+
+[resource]
+resource_name = "Vehicle_Standard_01_mat"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_doq4n")
+roughness = 0.834
+emission_enabled = true
+emission_texture = ExtResource("2_giv1w")
+uv1_scale = Vector3(1, 1, 0)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://4jeoitb3t6pb"]
+
+[ext_resource type="ArrayMesh" uid="uid://bc5wugq5tcho1" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Veh_Harpoon_Ammo_01.res" id="1_1foam"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_xejrg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ni6j7"]
+points = PackedVector3Array(-0.019083459, -0.084077924, -0.018361688, 0.0004637465, -0.084077924, -0.018361688, -0.06794381, -0.05475425, 0.05981952, -0.058177866, -0.074303366, -0.05748284, 0.010229692, -0.015656017, -0.56562984, 0.05910535, -0.035205133, 0.05981952, 0.07865256, -0.015639752, -0.028157294, -0.06794381, 0.062491655, 0.05981952, -0.07772507, -0.04497969, -0.018361688, -0.019068152, -0.0058814585, -0.56562984, 0.010229692, 0.013635129, -0.56562984, 0.07865256, 0.013618872, 0.030432701, 0.010229692, 0.07228248, -0.028157294, -0.06794381, 0.0820733, 0.010902703, -0.07772507, 0.04295881, -0.05748284, -0.009302199, 0.013635129, -0.56562984)
+
+[node name="SM_Wep_Veh_Harpoon_Ammo_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_1foam")
+surface_material_override/0 = ExtResource("2_xejrg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ni6j7")

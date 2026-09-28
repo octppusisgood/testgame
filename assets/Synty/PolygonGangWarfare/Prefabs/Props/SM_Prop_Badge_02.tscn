@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d3txxcgrtaham"]
+
+[ext_resource type="ArrayMesh" uid="uid://bpb36mxahifot" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Badge_02.res" id="1_tnt8n"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_65sv5"]
+
+[node name="SM_Prop_Badge_02" type="MeshInstance3D" unique_id=157652550]
+gi_mode = 2
+mesh = ExtResource("1_tnt8n")
+surface_material_override/0 = ExtResource("2_65sv5")

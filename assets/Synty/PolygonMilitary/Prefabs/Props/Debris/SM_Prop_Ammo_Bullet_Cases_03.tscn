@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://7pcgj15dwhlx"]
+
+[ext_resource type="ArrayMesh" uid="uid://c4ecgws1123mj" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Ammo_Bullet_Cases_03.res" id="1_j274v"]
+[ext_resource type="Material" uid="uid://cvaa24c8wyg8b" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Gold_mat.tres" id="2_qnhqx"]
+
+[node name="SM_Prop_Ammo_Bullet_Cases_03" type="MeshInstance3D" unique_id=919917942]
+gi_mode = 2
+mesh = ExtResource("1_j274v")
+surface_material_override/0 = ExtResource("2_qnhqx")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bbo7m2tx7xr1g"]
+
+[ext_resource type="ArrayMesh" uid="uid://cgo3ljq5ac2qj" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Truck_01_Canopy.res" id="1_otvyb"]
+[ext_resource type="Material" uid="uid://b0u0j04oi4jo8" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_05_mat.tres" id="2_rkl7p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iweaj"]
+points = PackedVector3Array(1.3724015, 2.1265888, -2.7159553, -1.2999792, 2.9403586, -2.7066572, -1.1832545, 3.229868, -2.7055414, 1.2468622, 3.171442, -2.7033098, 1.2984135, 3.1117063, 0.87462854, 1.3619843, 2.3044863, 0.9977362, 1.3446226, 2.081656, 0.973933, 1.348629, 2.079691, -2.625205, -1.3331002, 2.083752, -2.6724398, -1.3563383, 2.3619952, 0.9995959, -1.181652, 3.229213, 0.99810815, -0.13593781, 3.3806486, -2.641198, 1.1830244, 3.3120048, 0.96203136, -0.084920764, 3.3609986, 1.0479465, -0.08652341, 2.042356, 1.0832796, -1.3387094, 2.0810008, 0.9754207)
+
+[node name="SM_Veh_Truck_01_Canopy" type="MeshInstance3D" unique_id=1983414103]
+gi_mode = 2
+mesh = ExtResource("1_otvyb")
+surface_material_override/0 = ExtResource("2_rkl7p")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=962059966]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=472548911]
+shape = SubResource("ConvexPolygonShape3D_iweaj")

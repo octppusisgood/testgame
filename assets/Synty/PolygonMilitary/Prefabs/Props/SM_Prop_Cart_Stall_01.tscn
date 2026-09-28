@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bg6rslapxenpy"]
+
+[ext_resource type="ArrayMesh" uid="uid://uf0jxb3f7opd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Stall_01.res" id="1_u338b"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_vfc5g"]
+[ext_resource type="ArrayMesh" uid="uid://doh22ufy2d73h" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Stall_Wheel_l.res" id="3_vfc5g"]
+[ext_resource type="ArrayMesh" uid="uid://cbtnuyc8oyys0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Stall_Wheel_r.res" id="4_ted2p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o4nqu"]
+points = PackedVector3Array(0.43100804, -0.021489143, -2.0153108, -0.64730763, -0.021489143, -1.8857226, -0.69038624, 1.7903227, -2.1443753, 0.7761434, 1.8335804, -2.1443753, 0.86280733, 1.5744898, -2.0153108, 0.6469076, 0.15131372, -0.07410693, -0.86303836, 0.23737365, 0.05521941, -0.8199598, 1.8770657, -0.8935226, -0.6272043, 2.23064, -1.9791832, 0.45499688, 2.2613757, -2.0092895, 0.86280733, 1.9628979, 0.31439567, 0.73323375, 1.833808, 0.5301142, -0.63632685, 0.38057917, 0.33664823, -0.6684246, 2.1461737, 0.3604715, -0.29000896, 2.3041778, -0.726498, 0.625115, 2.1864715, 0.31675196)
+
+[node name="SM_Prop_Cart_Stall_01" type="MeshInstance3D" unique_id=614958215]
+gi_mode = 2
+mesh = ExtResource("1_u338b")
+surface_material_override/0 = ExtResource("2_vfc5g")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=904213899]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1032881450]
+shape = SubResource("ConvexPolygonShape3D_o4nqu")
+
+[node name="SM_Prop_Cart_Stall_Wheel_l" type="MeshInstance3D" parent="." unique_id=616809079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5366672, 0.18580212, -0.00072474044)
+gi_mode = 2
+mesh = ExtResource("3_vfc5g")
+surface_material_override/0 = ExtResource("2_vfc5g")
+
+[node name="SM_Prop_Cart_Stall_Wheel_r" type="MeshInstance3D" parent="." unique_id=1886382878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75959474, 0.18580212, -0.00072474044)
+gi_mode = 2
+mesh = ExtResource("4_ted2p")
+surface_material_override/0 = ExtResource("2_vfc5g")

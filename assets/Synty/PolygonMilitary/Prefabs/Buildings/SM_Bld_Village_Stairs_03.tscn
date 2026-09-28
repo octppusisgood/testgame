@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ddmkh0rhqb5o2"]
+
+[ext_resource type="ArrayMesh" uid="uid://i8umumfcdb2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Stairs_03.res" id="1_53vvv"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_hsarq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1hqdg"]
+points = PackedVector3Array(-0.6526132, 2.220446e-16, -4.2814183, -0.6395431, 3.1721735, -4.2400208, 0.60504985, 3.1766083, -4.2455125, 0.66186476, 0.04909995, -4.21721, -0.6526132, 2.220446e-16, -0.010714531, -0.6664835, 0.3066371, 0.034062386, -0.6664835, 3.2355282, -2.8950238, -0.57139194, 3.23046, -4.230305, 0.40659785, 3.2361617, -4.2374864, 0.696007, 3.2355282, -2.9634564, 0.66186476, 3.0910792, -4.21721, 0.696007, 0.23821394, 0.034062386, 0.66186476, 0.04909995, -0.075345516, 0.6275891, 0.3066371, 0.034062386, -0.6664835, 3.0315259, -2.622983, 0.6275891, 3.0315259, -2.622983)
+
+[node name="SM_Bld_Village_Stairs_03" type="MeshInstance3D" unique_id=1737919421]
+gi_mode = 2
+mesh = ExtResource("1_53vvv")
+surface_material_override/0 = ExtResource("2_hsarq")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1189300313]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1478190537]
+shape = SubResource("ConvexPolygonShape3D_1hqdg")

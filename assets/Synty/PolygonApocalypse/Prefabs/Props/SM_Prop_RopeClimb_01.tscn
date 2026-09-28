@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://but1r80aw7svc"]
+
+[ext_resource type="ArrayMesh" uid="uid://daboesovkupwh" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_RopeClimb_01.res" id="1_rpof1"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_ugyb8"]
+[ext_resource type="ArrayMesh" uid="uid://cy3iw05oh72aj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_RopeClimb_Rope_01.res" id="3_ugyb8"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pwven"]
+points = PackedVector3Array(-0.1313405, -0.08609386, 0.3145031, -0.14215049, -0.08609386, 0.3145031, -0.08798611, -0.09683558, 0.28195095, -0.00150612, 0.346711, 0.14124966, -0.00150612, 0.58476365, 0.08721638, -0.077233315, 0.58476365, 0.11964461, -0.1204447, 0.58476365, 0.09803957, -0.22868767, 0.054549366, 0.19544816, -0.1637705, -0.09683558, 0.2170119, 0.009361073, -0.07515197, -0.03179726, 0.06346825, 0.346711, 0.022401243, -0.087442756, 0.56214595, 0.010669254, -0.026700854, 0.37133023, -0.074552946, -0.18556207, 0.2200787, -0.05827687, -0.1204733, -0.07515197, -0.08587184, -0.033936128, -0.03198491, -0.107518196)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rpof1"]
+points = PackedVector3Array(-0.064322054, -3.4541326, 0.021204058, -0.06329971, -3.4541326, -0.027348302, -0.036309768, -4.409274, -0.0068245344, -0.03137845, -4.409274, 0.04148483, 0.020231992, -0.7125783, 0.05329814, 0.00096376985, -0.00043010712, 0.03769036, -0.039942104, -0.00043010712, 0.010895442, -0.016163532, -3.4541326, -0.04218037, 0.008637384, -4.409274, -0.027338956, -0.026254691, -0.00043010712, -0.035703607, 0.016623713, -4.409274, 0.050830808, 0.058551937, -0.7125783, 0.022428382, 0.039933205, -0.00043010712, 0.007652387, -0.00044345856, 1.4305115e-06, -0.0034319423, 0.02310659, -0.00043010712, -0.0376943, 0.041352466, -4.409274, 0.008297261, 0.040739052, -0.7125783, -0.022563161)
+
+[node name="SM_Prop_RopeClimb_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_rpof1")
+surface_material_override/0 = ExtResource("2_ugyb8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_pwven")
+
+[node name="SM_Prop_RopeClimb_Rope_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13646439, -0.09149048, 0.26708758)
+gi_mode = 2
+mesh = ExtResource("3_ugyb8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ugyb8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_RopeClimb_Rope_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_RopeClimb_Rope_01/MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_rpof1")

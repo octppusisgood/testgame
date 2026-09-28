@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqavrrsa0bb5b"]
+
+[ext_resource type="ArrayMesh" uid="uid://bs2wxylcemqju" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_GrassBlob_01.res" id="1_kas5u"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_k2f5a"]
+
+[node name="SM_Env_GrassBlob_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_kas5u")
+surface_material_override/0 = ExtResource("2_k2f5a")

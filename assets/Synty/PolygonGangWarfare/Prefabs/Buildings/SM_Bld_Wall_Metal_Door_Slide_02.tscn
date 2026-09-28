@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bhwgarttsbvlu"]
+
+[ext_resource type="ArrayMesh" uid="uid://7aw3ou4qrwa5" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Wall_Metal_Door_Slide_02.res" id="1_3ya7f"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_d6f4d"]
+[ext_resource type="ArrayMesh" uid="uid://dls04vcydf8ne" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Wall_Metal_Slide_02.res" id="3_d6f4d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7kp3"]
+size = Vector3(6, 2.4639878, 0.24360505)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pkoe2"]
+size = Vector3(0.57665277, 6.0000005, 0.24360505)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vn2tp"]
+size = Vector3(0.55373573, 6.0000005, 0.24360505)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o70qf"]
+size = Vector3(4.8974013, 3.5708692, 0.060775757)
+
+[node name="SM_Bld_Wall_Metal_Door_Slide_02" type="MeshInstance3D" unique_id=103397631]
+gi_mode = 2
+mesh = ExtResource("1_3ya7f")
+surface_material_override/0 = ExtResource("2_d6f4d")
+surface_material_override/1 = ExtResource("2_d6f4d")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=393010878]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=891734058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4.7680063, 0.07541275)
+shape = SubResource("BoxShape3D_s7kp3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BoxCollider" unique_id=795206802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28832638, 2.9999998, 0.07541275)
+shape = SubResource("BoxShape3D_pkoe2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="BoxCollider" unique_id=785363912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.723132, 2.9999998, 0.07541275)
+shape = SubResource("BoxShape3D_vn2tp")
+
+[node name="SM_Bld_Wall_Metal_Slide_02" type="MeshInstance3D" parent="." unique_id=636052986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0096216, 1.842986, 0.04481888)
+gi_mode = 2
+mesh = ExtResource("3_d6f4d")
+surface_material_override/0 = ExtResource("2_d6f4d")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Wall_Metal_Slide_02" unique_id=967239715]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Wall_Metal_Slide_02/BoxCollider" unique_id=444163751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1920929e-07, -7.627532e-07)
+shape = SubResource("BoxShape3D_o70qf")

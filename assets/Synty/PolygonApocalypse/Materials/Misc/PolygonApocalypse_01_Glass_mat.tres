@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bg11y7vdeg0pp"]
+
+[ext_resource type="Texture2D" uid="uid://bswlf72o4sy0d" path="res://assets/Synty/PolygonApocalypse/Textures/Alt/PolygonApocalypse_01_A.png" id="1_o6bih"]
+
+[resource]
+resource_name = "PolygonApocalypse_01_Glass_mat"
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.58039576, 0.67540795, 0.8308824, 0.641)
+albedo_texture = ExtResource("1_o6bih")
+roughness = 0.462
+uv1_scale = Vector3(1, 1, 0)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://y0ofqjitl0o4"]
+
+[ext_resource type="ArrayMesh" uid="uid://dpmpble16fefj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Road_Median_02.res" id="1_uuc5b"]
+[ext_resource type="Material" uid="uid://cs5tr0n48vvsw" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Road_Standard_01_mat.tres" id="2_xi8eu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huw67"]
+size = Vector3(5, 0.079353094, 5)
+
+[node name="SM_Env_Road_Median_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_uuc5b")
+surface_material_override/0 = ExtResource("2_xi8eu")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.039676547, -2.5)
+shape = SubResource("BoxShape3D_huw67")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://njmuquvbvs7e"]
+
+[ext_resource type="ArrayMesh" uid="uid://cedb1t0oecysg" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Golf_Club_02.res" id="1_doghh"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_snlus"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e6t2j"]
+points = PackedVector3Array(0.020634193, -0.8014441, 0.1380758, -0.019112851, -0.8014441, 0.1380758, 0.020634193, -0.84125984, 0.13142924, 0.027258702, 0.092446744, -0.0076620784, 0.027258702, 0.3045355, 0.012212742, 0.014009684, 0.3045355, 0.02547343, -0.019112851, -0.84125984, 0.08503305, -0.019112851, 0.3045355, 0.02547343, -0.02573736, 0.3045355, 0.012212742, -0.02573736, -0.05313301, 0.0055823997, 0.020634193, -0.8212959, -0.001031734, 0.020634193, 0.3045355, -0.020906555, 0.020634193, -0.79482687, -0.027536899, -0.019112851, -0.79482687, -0.027536899, -0.01226528, 0.30150723, -0.019625876, -0.02573736, 0.26471984, -0.014292422)
+
+[node name="SM_Prop_Sport_Golf_Club_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_doghh")
+surface_material_override/0 = ExtResource("2_snlus")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_e6t2j")

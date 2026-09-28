@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://ddeiuk42r45q5"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0ahkocrqa0hb" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_01.res" id="1_r8o52"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_4f4ot"]
+[ext_resource type="ArrayMesh" uid="uid://30tt2q5652e0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_01_Turret.res" id="3_4f4ot"]
+[ext_resource type="ArrayMesh" uid="uid://cma01l72blb0k" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_01_Hatch_l.res" id="4_swxyt"]
+[ext_resource type="ArrayMesh" uid="uid://cfp7rudeyqlq3" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_01_Hatch_r.res" id="5_l4bdw"]
+[ext_resource type="ArrayMesh" uid="uid://s4ur4nenbqq" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_01_Turret_Barrel.res" id="6_qfbf7"]
+[ext_resource type="ArrayMesh" uid="uid://bf2swiarbn6y2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_L.res" id="7_iheqo"]
+[ext_resource type="Material" uid="uid://dy6oiiqdsx0rp" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Tank_Tracks_01_mat.tres" id="8_kxbda"]
+[ext_resource type="ArrayMesh" uid="uid://bivm25e41j767" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_R.res" id="9_upl1s"]
+[ext_resource type="ArrayMesh" uid="uid://dtf86rsftne1r" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_L_01.res" id="10_kxbda"]
+[ext_resource type="ArrayMesh" uid="uid://bvd0dk03ac8ps" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_L_02.res" id="11_02t7b"]
+[ext_resource type="ArrayMesh" uid="uid://dgpynn0x1r0el" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_L_03.res" id="12_br726"]
+[ext_resource type="ArrayMesh" uid="uid://dmlvf1ph76aik" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_L_04.res" id="13_h3a0j"]
+[ext_resource type="ArrayMesh" uid="uid://c8c8nxgqqpngm" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_L_05.res" id="14_4s6p3"]
+[ext_resource type="ArrayMesh" uid="uid://cf8x5c5l8pp7x" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_L_06.res" id="15_r510q"]
+[ext_resource type="ArrayMesh" uid="uid://dx2djjh17scnl" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_L_07.res" id="16_dh0hc"]
+[ext_resource type="ArrayMesh" uid="uid://ck5urolww7rmx" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_L_08.res" id="17_mqui7"]
+[ext_resource type="ArrayMesh" uid="uid://bfmq3i4704o8j" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_L_09.res" id="18_djfct"]
+[ext_resource type="ArrayMesh" uid="uid://bvre2dviv14v2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_R_01.res" id="19_85yq5"]
+[ext_resource type="ArrayMesh" uid="uid://bsw06t3ocydjd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_R_02.res" id="20_3ofaw"]
+[ext_resource type="ArrayMesh" uid="uid://fksjaupdpnfw" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_R_03.res" id="21_m1d73"]
+[ext_resource type="ArrayMesh" uid="uid://drub0pnfo4hc4" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_R_04.res" id="22_m8t31"]
+[ext_resource type="ArrayMesh" uid="uid://bemc4nd1qe02k" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_R_05.res" id="23_aykp4"]
+[ext_resource type="ArrayMesh" uid="uid://deib7883woffj" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_R_06.res" id="24_qhtlc"]
+[ext_resource type="ArrayMesh" uid="uid://fk5d2a75uh1" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_R_07.res" id="25_hbktq"]
+[ext_resource type="ArrayMesh" uid="uid://dxjpd4buwvklo" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_R_08.res" id="26_ewyqb"]
+[ext_resource type="ArrayMesh" uid="uid://cxc7c0heosav2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_German_Track_Wheel_R_09.res" id="27_iv2re"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2jt1s"]
+points = PackedVector3Array(1.9505421, 0.7811427, 2.9287658, 1.8276659, 1.5187247, 3.174283, -1.984192, 0.7811427, 2.9287658, -0.87753606, 0.41196045, 2.5601172, 1.0919496, 0.3673581, 1.9131165, 1.2125145, 0.28895187, -3.341994, 1.8276659, 1.149699, -4.4486866, 1.8276659, 1.8877504, -3.341994, -1.7384397, 1.5187247, 3.174283, 0.96637714, 1.8877504, -1.9890382, -0.7546599, 1.7647418, 1.6989417, -1.7384397, 1.8877504, -3.341994, -1.8613158, 1.149699, -4.4486866, -1.2465497, 0.28895187, -3.341994, 1.7340642, 1.7303119, -4.3725686, -1.572422, 1.8107526, -4.193468)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r8o52"]
+points = PackedVector3Array(1.5757288, 0.3130169, 0.7296591, 1.2626189, 0.012863708, 0.2547722, 1.5757288, 0.31015828, 0.09871197, 1.5757288, 0.3499188, 0.7290497, 1.5683252, 0.34706023, 1.3057413, 1.5683252, 0.31015828, 1.3057413, 1.2422591, 0.012863708, -0.23108745, 1.2465779, 0.012863708, 0.9838667, 1.208326, 0, 1.4032793, 1.173159, 0, -1.1845188, 1.5757288, 0.34706023, 0.09871197, 1.2700225, 0.2681888, -3.2261055, 1.2700225, 0.65500957, -3.2809703, 1.2653953, 0.81885946, 0.26330686, 1.2311538, 0.65929747, 1.4032793, 1.4797906, 0.3499188, 1.7282019, 1.4797906, 0.3130169, 1.7282019, 1.2311538, 0.0111745335, 1.4032793, 1.1416937, 0.2571442, 1.9525385, 1.1339818, 0.24441044, 1.9354692, 1.1126965, 0.23830342, 1.9403462, 0.76719606, 0, 1.7129612, -1.1734675, 0, -1.1845188, 0.68020403, 0.24778879, -3.3273008, 1.2107939, 0.2681888, -3.2858472, 1.2993284, 0.74440587, -2.208665, 1.2107939, 0.65500957, -3.3407123, -0.19526947, 1.3274306, -1.0315065, 1.1342903, 0.8326327, -2.3507042, -0.16411269, 1.3274306, -0.9565244, -0.19526947, 1.3274306, -0.8815422, -0.21809721, 1.3274306, -0.8321638, 1.1056014, 0.8534225, -2.1952536, 0.36030757, 0.65033185, 1.9671693, 0.43465197, 0.62356496, 1.987896, 0.33778834, 0.39799532, 2.495092, 0.52071846, 0.41709596, 2.337203, 0.7218491, 0.4172259, 2.199431, 0.74251735, 0.4147571, 2.1896772, 0.9550618, 0.40410233, 2.0622683, 1.1318225, 0.39799532, 1.9494905, 1.396809, 0.35043857, 1.8202529, 1.3965005, 0.31405637, 1.8208623, 1.1253442, 0.25883338, 1.9677787, 1.1071438, 0.24713911, 1.9604635, 0.9609231, 0.24713911, 2.0628781, 0.7323376, 0.23843336, 2.206746, 0.54231226, 0.23921297, 2.339641, 0.5231863, 0.23908305, 2.3518333, 0.33377802, 0.24493018, 2.4853382, 0.31187582, 0.2385633, 2.484119, 0.36030757, 0.16255048, 2.274413, 0.23691452, 0.16242054, 2.3006263, 0.23691452, 0, 1.7147903, -1.2703311, 0.2681888, -3.2261055, -1.2111025, 0.2681888, -3.2858472, -0.6805125, 0.24778879, -3.3273008, -1.2086346, 0, 1.4032793, -1.2629275, 0.012863708, 0.2547722, -1.2425677, 0.012863708, -0.23108745, -1.5757288, 0.31015828, 0.09871197, 0.4587134, 0.37499657, -3.571145, 0.4587134, 0.4646527, -3.6077218, 0.4587134, 0.55430883, -3.571145, 0.68020403, 0.6998376, -3.3839946, -0.27023065, 1.3274306, -1.0619872, -0.27023065, 1.3274306, -0.80107355, 0.23691452, 0.6498121, 1.9817996, 0.3038553, 0.4104692, 2.4883862, -0.49418902, 0.9089054, 1.1673598, 0.31681156, 0.41592655, 2.4707074, 0.31681156, 0.3994246, 2.5036263, 0.23691452, 0.32484108, 2.6194525, 0.36030757, 0.32510096, 2.5450802, 1.208326, 0.32497102, 1.9799709, 0.5413867, 0.39682588, 2.3603683, 0.5080708, 0.4117686, 2.3554912, 0.7551652, 0.40228322, 2.2036982, 0.94611585, 0.39669594, 2.0817757, 0.9627739, 0.25883338, 2.0823855, 0.7304865, 0.24908815, 2.2268634, 0.7502295, 0.25948307, 2.2311306, 0.5484818, 0.25948307, 2.369512, 0.5271965, 0.25168687, 2.3707314, 0.33686292, 0.25597477, 2.5048456, 0.30169594, 0.2457098, 2.503017, -0.23722303, 0.16242054, 2.3006263, -0.23722303, 0, 1.7147903, -1.2703311, 0.65500957, -3.2809703, -1.2111025, 0.65500957, -3.3407123, -0.42601442, 0.5216948, -3.5406647, 0.30940795, 0.37499657, -3.571145, -0.7675046, 0, 1.7129612, -1.1130049, 0.23830342, 1.9403462, -1.1342902, 0.24441044, 1.9354692, -1.1420023, 0.2571442, 1.9525385, -1.2314622, 0.0111745335, 1.4032793, -1.2468864, 0.012863708, 0.9838667, -1.5686337, 0.31015828, 1.3057413, -1.5757288, 0.3130169, 0.7296591, -1.5757288, 0.34706023, 0.09871197, 0.30940795, 0.4646527, -3.6077218, 0.30940795, 0.55430883, -3.571145, -0.6805125, 0.6998376, -3.3839946, -0.34519196, 1.3274306, -1.0315065, -0.3223642, 1.3274306, -0.8321638, -0.9751133, 0.9089054, 1.1673598, -0.23722303, 0.6498121, 1.9817996, 0.25542355, 0.41566667, 2.4786325, 0.25542355, 0.37954435, 2.551176, -0.23722303, 0.32484108, 2.6194525, 0.25542355, 0.27221683, 2.5560532, 0.31681156, 0.25649452, 2.5158186, 0.74251735, 0.39695582, 2.2219863, -0.30200446, 0.2457098, 2.503017, -0.31218433, 0.2385633, 2.484119, -0.3606161, 0.16255048, 2.274413, -1.2996368, 0.74440587, -2.208665, -1.1345987, 0.8326327, -2.3507042, -0.37634873, 1.3274306, -0.9565244, -0.42601442, 0.5452133, -3.5406647, -0.33408654, 0.24493018, 2.4853382, -0.52349484, 0.23908305, 2.3518333, -0.5426208, 0.23921297, 2.339641, -0.73264605, 0.23843336, 2.206746, -0.9612316, 0.24713911, 2.0628781, -1.1074523, 0.24713911, 1.9604635, -1.1256528, 0.25883338, 1.9677787, -1.3968089, 0.31405637, 1.8208623, -1.4800992, 0.3130169, 1.7282019, -1.5686337, 0.34706023, 1.3057413, -1.5757288, 0.3499188, 0.7290497, -1.2657038, 0.81885946, 0.26330686, -0.34519196, 1.3274306, -0.8815422, -1.2314622, 0.65929747, 1.4032793, -1.3971174, 0.35043857, 1.8202529, -1.1321309, 0.39799532, 1.9494905, -0.9464244, 0.39669594, 2.0817757, -0.7428259, 0.39695582, 2.2219863, -0.54169536, 0.39682588, 2.3603683, -0.33809686, 0.39799532, 2.495092, -0.31712008, 0.3994246, 2.5036263, -0.3041638, 0.4104692, 2.4883862, -0.3606161, 0.65033185, 1.9671693, -0.8686868, 1.0522252, -0.029306412, -0.25573206, 0.41566667, 2.4786325, -0.25573206, 0.37954435, 2.551176, -0.3606161, 0.32510096, 2.5450802, -0.33717144, 0.25597477, 2.5048456, -0.31712008, 0.25649452, 2.5158186, -0.25573206, 0.27221683, 2.5560532, -0.8686868, 1.0522252, -0.19877815, -0.52750516, 0.25168687, 2.3707314, -0.54879045, 0.25948307, 2.369512, -0.750538, 0.25948307, 2.2311306, -0.73079515, 0.24908815, 2.2268634, -0.9630825, 0.25883338, 2.0823855, -1.2086346, 0.32497102, 1.9799709, -1.4800992, 0.3499188, 1.7282019)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4f4ot"]
+points = PackedVector3Array(-0.22888994, -0.30814895, -0.03165426, -0.22888994, -0.24292475, -0.06595198, 0.22888976, -0.30814895, -0.03165426, -0.22888994, -0.30698076, 0.2147812, 0.22888976, -0.24292475, -0.06595198, -0.22888994, 0.27886876, -0.06595198, 0.22888976, -0.30698076, 0.2147812, -0.22888994, 0.017972022, 0.82959956, -8.940697e-08, -0.10520761, 3.9807556, -4.48972e-05, -0.09157868, 4.212371, -0.066319, -0.0649049, 4.212371, -0.09316023, -5.2154064e-06, 4.212371, -0.10700654, -5.2154064e-06, 3.9807556, 0.22888976, 0.27886876, -0.06595198, -0.22888994, 0.3548663, -0.03165426, 0.22888976, 0.017972022, 0.82959956, 0.10696155, -5.2154064e-06, 3.9807556, 0.09311524, -5.2154064e-06, 4.212371, 0.06627402, -0.0649049, 4.212371, -0.22888994, 0.3429248, 0.19149265, -0.18766467, 0.04678747, 1.9110364, 0.05404085, -0.05257395, 4.2589483, -4.48972e-05, -0.074315354, 4.2589483, -0.05408585, -0.05257395, 4.2589483, -0.07586354, -5.2154064e-06, 4.2589483, -0.066319, 0.06482959, 4.212371, 0.22888976, 0.3548663, -0.03165426, 0.22888976, 0.3429248, 0.19149265, 0.18761969, 0.04678747, 1.9110364, 0.06627402, 0.06482959, 4.212371, 0.07581854, -5.2154064e-06, 4.2589483, -4.48972e-05, 0.09150335, 4.212371, 0.041897327, -0.04037282, 4.259795, -4.48972e-05, -0.057116926, 4.259795, -0.041942313, -0.04037282, 4.259795, -0.05865647, -5.2154064e-06, 4.259795, -0.041942313, 0.04029751, 4.259795, -0.05408585, 0.05249864, 4.2589483, 0.05404085, 0.05249864, 4.2589483, 0.041897327, 0.04029751, 4.259795, 0.058611482, -5.2154064e-06, 4.259795, -4.48972e-05, 0.07424006, 4.2589483, -4.48972e-05, 0.057041615, 4.259795)
+
+[node name="SM_Veh_Tank_German_01" type="MeshInstance3D" unique_id=853229182]
+gi_mode = 2
+mesh = ExtResource("1_r8o52")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=694811580]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=2007159247]
+shape = SubResource("ConvexPolygonShape3D_2jt1s")
+
+[node name="SM_Veh_Tank_German_01_Turret" type="MeshInstance3D" parent="." unique_id=75463188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6653025, 0)
+gi_mode = 2
+mesh = ExtResource("3_4f4ot")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Veh_Tank_German_01_Turret" unique_id=131537862]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Tank_German_01_Turret/MeshCollider" unique_id=369388250]
+shape = SubResource("ConvexPolygonShape3D_r8o52")
+
+[node name="SM_Veh_Tank_German_01_Hatch_l" type="MeshInstance3D" parent="SM_Veh_Tank_German_01_Turret" unique_id=481729593]
+transform = Transform3D(1, 0, 0, 0, 0.9999915, -0.0041248645, 0, 0.0041248645, 0.9999915, 0.53813547, 0.9503534, -0.8429289)
+gi_mode = 2
+mesh = ExtResource("4_swxyt")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_01_Hatch_r" type="MeshInstance3D" parent="SM_Veh_Tank_German_01_Turret" unique_id=2117097743]
+transform = Transform3D(1, 0, 0, 0, 0.9999915, -0.0041248645, 0, 0.0041248645, 0.9999915, -0.58656156, 0.9503534, -0.8429289)
+gi_mode = 2
+mesh = ExtResource("5_l4bdw")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_01_Turret_Barrel" type="MeshInstance3D" parent="SM_Veh_Tank_German_01_Turret" unique_id=2003125156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.905288e-08, 0.3069638, 1.7903401)
+gi_mode = 2
+mesh = ExtResource("6_qfbf7")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Veh_Tank_German_01_Turret/SM_Veh_Tank_German_01_Turret_Barrel" unique_id=1245217664]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Tank_German_01_Turret/SM_Veh_Tank_German_01_Turret_Barrel/MeshCollider" unique_id=1054761938]
+shape = SubResource("ConvexPolygonShape3D_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_L" type="MeshInstance3D" parent="." unique_id=1698524144]
+gi_mode = 2
+mesh = ExtResource("7_iheqo")
+surface_material_override/0 = ExtResource("8_kxbda")
+
+[node name="SM_Veh_Tank_German_Track_R" type="MeshInstance3D" parent="." unique_id=1158764368]
+gi_mode = 2
+mesh = ExtResource("9_upl1s")
+surface_material_override/0 = ExtResource("8_kxbda")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_L_01" type="MeshInstance3D" parent="." unique_id=1395342451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4519545, 0.87873054, 2.8260396)
+gi_mode = 2
+mesh = ExtResource("10_kxbda")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_L_02" type="MeshInstance3D" parent="." unique_id=193263292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3596749, 0.45654854, 1.9148737)
+gi_mode = 2
+mesh = ExtResource("11_02t7b")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_L_03" type="MeshInstance3D" parent="." unique_id=560941270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3596749, 0.45654854, 1.0702873)
+gi_mode = 2
+mesh = ExtResource("12_br726")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_L_04" type="MeshInstance3D" parent="." unique_id=1451298153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3596749, 0.45654854, 0.22570083)
+gi_mode = 2
+mesh = ExtResource("13_h3a0j")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_L_05" type="MeshInstance3D" parent="." unique_id=1004739849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3596749, 0.45654854, -0.61888564)
+gi_mode = 2
+mesh = ExtResource("14_4s6p3")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_L_06" type="MeshInstance3D" parent="." unique_id=280379471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3596749, 0.45654854, -1.4634721)
+gi_mode = 2
+mesh = ExtResource("15_r510q")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_L_07" type="MeshInstance3D" parent="." unique_id=1251797648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3596749, 0.45654854, -2.3080585)
+gi_mode = 2
+mesh = ExtResource("16_dh0hc")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_L_08" type="MeshInstance3D" parent="." unique_id=1034868840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3596749, 0.45654854, -3.152645)
+gi_mode = 2
+mesh = ExtResource("17_mqui7")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_L_09" type="MeshInstance3D" parent="." unique_id=2008605154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3136189, 0.91636074, -3.7860124)
+gi_mode = 2
+mesh = ExtResource("18_djfct")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_R_01" type="MeshInstance3D" parent="." unique_id=2075952185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4519545, 0.87873054, 2.8260396)
+gi_mode = 2
+mesh = ExtResource("19_85yq5")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_R_02" type="MeshInstance3D" parent="." unique_id=1673087544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3596749, 0.45654854, 1.9148737)
+gi_mode = 2
+mesh = ExtResource("20_3ofaw")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_R_03" type="MeshInstance3D" parent="." unique_id=2046837951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3596749, 0.45654854, 1.0702873)
+gi_mode = 2
+mesh = ExtResource("21_m1d73")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_R_04" type="MeshInstance3D" parent="." unique_id=332322133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3596749, 0.45654854, 0.22570083)
+gi_mode = 2
+mesh = ExtResource("22_m8t31")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_R_05" type="MeshInstance3D" parent="." unique_id=671727732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3596749, 0.45654854, -0.61888564)
+gi_mode = 2
+mesh = ExtResource("23_aykp4")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_R_06" type="MeshInstance3D" parent="." unique_id=309760000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3596749, 0.45654854, -1.4634721)
+gi_mode = 2
+mesh = ExtResource("24_qhtlc")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_R_07" type="MeshInstance3D" parent="." unique_id=1355286434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3596749, 0.45654854, -2.3080585)
+gi_mode = 2
+mesh = ExtResource("25_hbktq")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_R_08" type="MeshInstance3D" parent="." unique_id=299082439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3596749, 0.45654854, -3.152645)
+gi_mode = 2
+mesh = ExtResource("26_ewyqb")
+surface_material_override/0 = ExtResource("2_4f4ot")
+
+[node name="SM_Veh_Tank_German_Track_Wheel_R_09" type="MeshInstance3D" parent="." unique_id=1733735965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3136189, 0.91636074, -3.7860124)
+gi_mode = 2
+mesh = ExtResource("27_iv2re")
+surface_material_override/0 = ExtResource("2_4f4ot")

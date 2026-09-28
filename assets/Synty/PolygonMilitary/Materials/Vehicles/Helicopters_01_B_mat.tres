@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c6ixxdjxv2tcb"]
+
+[ext_resource type="Texture2D" uid="uid://di1sgkkbu1407" path="res://Assets/Synty/PolygonMilitary/Textures/Vehicles/Helicopter_01_B.png" id="1_o2iav"]
+
+[resource]
+resource_name = "Helicopters_01_B_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_o2iav")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bupfu0r8a10ya"]
+
+[ext_resource type="ArrayMesh" uid="uid://h32ua2ll4nwu" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_SmokePipe_01.res" id="1_bvvh4"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_x1fae"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ycaoo"]
+points = PackedVector3Array(-0.16282353, 0.034130313, 0.01710701, 0.08734903, -0.012780994, -0.12361497, 0.21225736, -0.012780994, 0.22034079, -0.08463508, 0.034130313, 0.14216584, -0.11600196, 0.9250779, 0.01710701, -0.10034394, 0.9250779, -0.061032757, -0.08463508, 0.06534331, -0.13924292, 0.3529254, -0.012780994, 0.07961883, 0.08734903, 0.018432008, -0.13924292, 0.35653487, 0.009986136, 0.15244368, 0.32160935, 0.034130313, 0.22034079, -0.02210465, 0.9250779, 0.11087474, 0.040324107, 0.9250779, -0.10798702, 0.11846173, 0.9250779, 0.01710701, 0.3537388, 0.015127102, 0.12168053, 0.07158932, 0.9250779, 0.09521158)
+
+[node name="SM_Prop_SmokePipe_01" type="MeshInstance3D" unique_id=1042985939]
+gi_mode = 2
+mesh = ExtResource("1_bvvh4")
+surface_material_override/0 = ExtResource("2_x1fae")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=653858295]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1950869189]
+shape = SubResource("ConvexPolygonShape3D_ycaoo")

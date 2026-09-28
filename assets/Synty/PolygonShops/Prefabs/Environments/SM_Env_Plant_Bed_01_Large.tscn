@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://drjcboqr0c1sm"]
+
+[ext_resource type="ArrayMesh" uid="uid://brem61r32qmo5" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Env_Plant_Bed_01_Large.res" id="1_ajy41"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_yp44i"]
+[ext_resource type="ArrayMesh" uid="uid://drir4snityd17" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Env_Plant_Bed_01_Large_Dirt.res" id="3_yp44i"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rj1gq"]
+points = PackedVector3Array(-0.05952406, -0.051432848, -0.059523582, -0.05952406, 0.1866616, -0.059523582, 7.5594983, -0.051432848, -0.059523582, -0.05952406, -0.051432848, 2.5595155, -0.05952406, 0.1866616, 2.5595155, 7.5594983, 0.1866616, -0.059523582, 7.5594983, -0.051432848, 2.5595155, 7.5594983, 0.1866616, 2.5595155)
+
+[node name="SM_Env_Plant_Bed_01_Large" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ajy41")
+surface_material_override/0 = ExtResource("2_yp44i")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_rj1gq")
+
+[node name="SM_Env_Plant_Bed_01_Large_Dirt" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_yp44i")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yp44i")

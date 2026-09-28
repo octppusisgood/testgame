@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://7gnk3jqyry4b"]
+
+[ext_resource type="ArrayMesh" uid="uid://cyesybecvvqef" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Item_Meat_Cooked_01.res" id="1_fuae2"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_qtqtg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kcvts"]
+points = PackedVector3Array(0.11309074, 0.022303259, -0.1725387, 0.106705695, -0.022838412, -0.15182894, 0.08463369, -0.025552312, -0.2581708, 0.081930265, 0.022322206, -0.25067714, -0.038994405, 0.022833725, 0.08589047, 0.04038298, 0.02240272, 0.08285895, 0.043868966, -0.022838412, 0.06558946, -0.040399473, -0.025552312, -0.2581708, -0.040399473, -0.025552312, 0.0898076, -0.03696684, 0.022042764, -0.2486675, -0.068607524, 0.022246422, -0.17233431, -0.062026832, 0.02186752, -0.043443322, -0.04580631, -0.025552312, 0.084323615, -0.062453687, -0.022838412, -0.1663394, -0.0671491, 0.02186752, -0.13520664, -0.062453687, -0.022838412, -0.13251573)
+
+[node name="SM_Item_Meat_Cooked_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_fuae2")
+surface_material_override/0 = ExtResource("2_qtqtg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_kcvts")

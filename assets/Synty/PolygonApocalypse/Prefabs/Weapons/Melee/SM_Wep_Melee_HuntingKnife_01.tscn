@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bas5f3p7u56my"]
+
+[ext_resource type="ArrayMesh" uid="uid://nugqssr43kup" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Melee_HuntingKnife_01.res" id="1_oumra"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_l6meh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ci6yt"]
+points = PackedVector3Array(0.0076985955, -0.033194184, 0.04015848, -0.0049501937, -0.023701556, -0.07049801, 0.010862496, -0.011042552, -0.076836765, 0.017193701, -0.007882677, 0.037043437, 0.0076985955, -0.0015629269, 0.2709977, -0.0017862935, -0.011042552, 0.29320145, -0.008110688, -0.033194184, 0.04653345, -0.011271182, 0.01739632, -0.0736855, -0.017598983, -0.007882677, 0.04968472, 0.010862496, 0.01739632, -0.0736855, 0.017193701, 0.014242947, 0.04968472, 0.0045346953, 0.033228204, 0.24256387, -0.0049501937, 0.033228204, 0.24256387, -0.017598983, 0.014242947, 0.04968472, -0.008110688, 0.033228204, 0.04015848, 0.0076985955, 0.033228204, 0.04015848)
+
+[node name="SM_Wep_Melee_HuntingKnife_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_oumra")
+surface_material_override/0 = ExtResource("2_l6meh")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ci6yt")

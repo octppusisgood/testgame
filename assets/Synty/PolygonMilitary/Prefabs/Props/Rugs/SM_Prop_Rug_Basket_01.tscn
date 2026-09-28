@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://woccu8d1dm33"]
+
+[ext_resource type="ArrayMesh" uid="uid://bsd3mmvkm6gd5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Rug_Basket_01.res" id="1_0ewek"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_qu5lg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_huap2"]
+points = PackedVector3Array(0.13511208, 1.0385553, 0.5213356, 0.49058452, 2.8154202, 0.2991469, 0.17955741, 2.7706046, 0.4323401, -0.13119811, 1.0385553, 0.5213356, -0.20931695, 0.040664427, 0.28414768, 0.296962, 0.04473856, 0.19895202, 0.4464107, 0.38370636, 0.028560638, 0.49058452, 2.7263324, 0.077058196, 0.22400281, 2.7263324, -0.05603504, -0.3976893, 1.9709883, 0.21025139, 0.044139355, 0.041207645, -0.34982008, -0.4341689, 0.79872465, -0.09103325, -0.23955067, 0.34676757, -0.37401885, 0.39191762, 0.6525991, -0.24562538, 0.046311826, 1.8381716, -0.50021243, -0.153285, 1.8210603, -0.43901554)
+
+[node name="SM_Prop_Rug_Basket_01" type="MeshInstance3D" unique_id=491561373]
+gi_mode = 2
+mesh = ExtResource("1_0ewek")
+surface_material_override/0 = ExtResource("2_qu5lg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=135948884]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1030573615]
+shape = SubResource("ConvexPolygonShape3D_huap2")

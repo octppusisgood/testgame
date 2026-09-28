@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccl3y7g7qpvcp"]
+
+[ext_resource type="ArrayMesh" uid="uid://xqui740vb5ww" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Chr_Attach_Earrings_01.res" id="1_t8s6y"]
+[ext_resource type="Material" uid="uid://c00i4t2473bv4" path="res://Assets/Synty/PolygonShops/Materials/Alternates/PolygonShops_Mat_01_A_Colour_Emissive_mat.tres" id="2_to4gk"]
+
+[node name="SM_Chr_Attach_Earrings_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_t8s6y")
+surface_material_override/0 = ExtResource("2_to4gk")

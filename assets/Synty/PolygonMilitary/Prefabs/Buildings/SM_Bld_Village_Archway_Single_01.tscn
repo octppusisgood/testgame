@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c4127woyoox8y"]
+
+[ext_resource type="ArrayMesh" uid="uid://0gu0jbrxq7qp" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Archway_Single_01.res" id="1_qs74f"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_wurtl"]
+[ext_resource type="Shape3D" uid="uid://bnkxpj7yq5hrp" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Village_Archway_Single_01_Collision.res" id="3_wurtl"]
+
+[node name="SM_Bld_Village_Archway_Single_01" type="MeshInstance3D" unique_id=1733235931]
+gi_mode = 2
+mesh = ExtResource("1_qs74f")
+surface_material_override/0 = ExtResource("2_wurtl")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=28177953]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1218278825]
+shape = ExtResource("3_wurtl")

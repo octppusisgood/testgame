@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dbv14fsl7thrx"]
+
+[ext_resource type="ArrayMesh" uid="uid://dotyyogosth8l" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_ClothCover_Small_01.res" id="1_r88jg"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_70r68"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e2f6t"]
+points = PackedVector3Array(-1.1245848, 0.13587546, -0.019118309, -1.2402854, -0.32760766, 0.25143468, -1.120954, 0.39250052, 0.20413803, 1.0296729, 0.35226345, 0.026174266, 1.0778413, 0.13587546, -0.019118309, 1.232512, -0.25031006, 0.17407657, -1.2015572, -0.2888832, 1.8733498, -1.1136925, 0.39000463, 1.836274, 1.232512, -0.32753202, 0.83121973, 1.1550555, -0.36618084, 1.6029973, -0.9311857, 0.40649277, 1.8733498, 1.1027725, 0.3890214, 0.6542581, -1.1245848, 0.13587546, 2.0282664, 1.1550555, -0.32753202, 1.7961922, 1.0778413, 0.13587546, 2.0282664, 1.0659807, 0.3890214, 1.83427)
+
+[node name="SM_Bld_Village_ClothCover_Small_01" type="MeshInstance3D" unique_id=515406060]
+gi_mode = 2
+mesh = ExtResource("1_r88jg")
+surface_material_override/0 = ExtResource("2_70r68")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1837567611]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1117373505]
+shape = SubResource("ConvexPolygonShape3D_e2f6t")

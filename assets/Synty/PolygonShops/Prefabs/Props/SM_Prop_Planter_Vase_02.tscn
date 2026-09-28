@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc7ec8pjgsl3s"]
+
+[ext_resource type="ArrayMesh" uid="uid://dajmpryagchy5" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Planter_Vase_02.res" id="1_bny4l"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_4nuvi"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rfif7"]
+points = PackedVector3Array(-0.4009509, 0.6000145, 0.025549024, -0.300482, 0.90953386, 0.23163524, -0.12450442, 0.9106792, -0.35735363, -0.29742083, 0.19225602, -0.20718692, -0.29906917, 0.20538394, 0.21584001, 0.3050002, 0.9136749, 0.2189841, -0.12403348, 0.40987992, 0.37820873, 0.12525499, 0.8932341, 0.3624135, 0.30366582, 0.91182464, -0.22507817, 0.12603992, 0.46864718, -0.38654855, -0.09412828, 0.01577802, -0.23720528, -0.079921335, 0.01357535, 0.2458584, 0.2269013, 0.06009576, 0.17152366, 0.40091658, 0.4688234, -0.018018782, 0.3860817, 0.49763432, -0.076184064, 0.2846709, 0.19207981, -0.22185925)
+
+[node name="SM_Prop_Planter_Vase_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_bny4l")
+surface_material_override/0 = ExtResource("2_4nuvi")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_rfif7")

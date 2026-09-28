@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0voj3sjvi5sf"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1xgb26ax6euo" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Deli_Fridge_01.res" id="1_0mhmg"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_w04pe"]
+[ext_resource type="ArrayMesh" uid="uid://cdl5m84ko5ht8" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Deli_Fridge_01_Glass_01.res" id="3_w04pe"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_nthul"]
+[ext_resource type="ArrayMesh" uid="uid://7axjnemv0u0k" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Deli_Fridge_01_Glass_02.res" id="5_uw7qr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jhsbm"]
+points = PackedVector3Array(-1.0944554, 0.34436753, -0.7845456, -1.1232626, 0.82489777, 0.8092558, -1.0528938, 1.5269352, -0.3489648, -1.0575118, 1.0848175, -0.75817984, 1.0942354, 0.34436753, -0.7845456, -1.0291443, 0, -0.6499087, -1.0139711, 0.011060416, 0.4749257, -1.0570719, 0.5235762, 0.76151663, 1.1232626, 0.82489777, 0.8092558, -1.0528938, 1.5269352, 0.07195103, 1.0528939, 1.5269352, -0.3489648, 1.057292, 1.0848175, -0.75817984, 1.0137513, 0.011060416, 0.4749257, 1.0289245, 0, -0.6499087, 1.0568521, 0.5235762, 0.76151663, 1.0528939, 1.5269352, 0.07195103)
+
+[node name="SM_Prop_Market_Deli_Fridge_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_0mhmg")
+surface_material_override/0 = ExtResource("2_w04pe")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_jhsbm")
+
+[node name="SM_Prop_Market_Deli_Fridge_01_Glass_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00041896704, 1.4943386, 0.430911)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_w04pe")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_nthul")
+
+[node name="SM_Prop_Market_Deli_Fridge_01_Glass_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2022987e-07, 1.8189894e-14, 0.38233936)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("5_uw7qr")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_nthul")

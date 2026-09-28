@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8ka18kvkoh7o"]
+
+[ext_resource type="ArrayMesh" uid="uid://ce2vg8nhxo8j5" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Shotgun_01.res" id="1_7t60t"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_fr0j4"]
+[ext_resource type="ArrayMesh" uid="uid://bmdpb4hwlft54" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Shotgun_01_Handle_01.res" id="3_fr0j4"]
+[ext_resource type="ArrayMesh" uid="uid://bfs1d58qx50hr" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Shotgun_01_Trigger_01.res" id="4_p2pj1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vtmwa"]
+points = PackedVector3Array(-0.023363344, -0.08147292, -0.064885214, -0.033154286, -0.032533534, -0.07466238, 0.025564544, -0.022738758, -0.084439546, 0.015773602, -0.08147292, -0.064885214, 0.025564544, -0.08147292, -0.04527053, 0.015773602, -0.003166452, 0.43417272, -0.033154286, 0.006611079, 0.42439553, -0.033154286, 0.06532799, 0.34611785, -0.023363344, 0.06532799, 0.08195333, 0.0059893653, 0.07510552, 0.07211581, 0.025564544, 0.06532799, 0.09167014, 0.035355486, 0.06532799, 0.35589504, 0.035355486, 0.006611079, 0.3950037, 0.025564544, 0.045755684, 0.5321255, -0.023363344, 0.045755684, 0.5321255, 0.0059893653, 0.09469508, 0.51239)
+
+[node name="SM_Wep_Shotgun_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_7t60t")
+surface_material_override/0 = ExtResource("2_fr0j4")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_vtmwa")
+
+[node name="SM_Wep_Shotgun_01_Handle_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6112454e-09, -0.0043102447, 0.12187358)
+gi_mode = 2
+mesh = ExtResource("3_fr0j4")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_fr0j4")
+
+[node name="SM_Wep_Shotgun_01_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00024797887, 0.08054355)
+gi_mode = 2
+mesh = ExtResource("4_p2pj1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_fr0j4")

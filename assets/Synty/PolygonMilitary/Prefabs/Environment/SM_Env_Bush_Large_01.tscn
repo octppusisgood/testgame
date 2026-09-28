@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dm6o2ki775x6f"]
+
+[ext_resource type="ArrayMesh" uid="uid://dmhx4upky10vv" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Env_Bush_Large_01.res" id="1_ifj63"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_qlwer"]
+
+[node name="SM_Env_Bush_Large_01" type="MeshInstance3D" unique_id=152051680]
+gi_mode = 2
+mesh = ExtResource("1_ifj63")
+surface_material_override/0 = ExtResource("2_qlwer")

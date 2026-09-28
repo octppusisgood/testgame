@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://co8a1i137g1qi"]
+
+[ext_resource type="ArrayMesh" uid="uid://chjdkruvgeysv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_WashingLine_03.res" id="1_rappt"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_evmtn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ckb0c"]
+points = PackedVector3Array(4.985461, 0.5766229, 0.040512405, 4.7818995, 0.54272574, 0.07438304, 4.3085456, -0.20165974, 0.07438304, 4.409839, -0.1678752, 0.0067014024, 4.985461, 0.54272574, -0.060980238, 0.010374069, 0.5766229, 0.040492527, 0.010374069, 0.47493154, 0.074363165, 1.7031504, 0.06872898, 0.1082338, 1.7031504, -0.5061708, 0.1082338, 2.1088128, -0.5738525, -0.060940485, 4.0713816, -0.20165974, -0.060980238, 1.5005627, -0.5061708, -0.094831, 1.6018566, -0.13386548, -0.094831, 0.010374069, 0.5426132, -0.06096036, 0.010374069, 0.47493154, -0.06096036, 1.3646926, -0.5399554, 0.07432341)
+
+[node name="SM_Prop_WashingLine_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_rappt")
+surface_material_override/0 = ExtResource("2_evmtn")
+surface_material_override/1 = ExtResource("2_evmtn")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ckb0c")

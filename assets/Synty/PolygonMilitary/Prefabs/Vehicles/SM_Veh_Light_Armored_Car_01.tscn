@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cnpoigku0obnm"]
+
+[ext_resource type="ArrayMesh" uid="uid://mkq0d06swr4w" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01.res" id="1_7e82f"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_qyxdn"]
+[ext_resource type="ArrayMesh" uid="uid://b0aqolhowx5vh" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Gunner.res" id="3_qyxdn"]
+[ext_resource type="ArrayMesh" uid="uid://b3413hxtxmdwk" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Weapon.res" id="4_vins2"]
+[ext_resource type="ArrayMesh" uid="uid://boh3u2bj13w46" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Plug.res" id="5_o2456"]
+[ext_resource type="ArrayMesh" uid="uid://dbqhhgs53fm8v" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Remote_Weapon.res" id="6_nllnj"]
+[ext_resource type="ArrayMesh" uid="uid://cxwna7f10hyra" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Remote_Weapon_Top.res" id="7_eoev7"]
+[ext_resource type="ArrayMesh" uid="uid://bjoh0k16pj3bl" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Remote_Weapon_Guns.res" id="8_455mb"]
+[ext_resource type="ArrayMesh" uid="uid://c2a5qlhynn2bg" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Remote_Weapon_Radar.res" id="9_g3fn1"]
+[ext_resource type="ArrayMesh" uid="uid://c1dbidw2pdau0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Wheel_fl.res" id="10_qph5a"]
+[ext_resource type="ArrayMesh" uid="uid://b8gmii7qf1s8g" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Wheel_fr.res" id="11_biy78"]
+[ext_resource type="ArrayMesh" uid="uid://brgjran7jda3t" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Wheel_rl.res" id="12_b8cp5"]
+[ext_resource type="ArrayMesh" uid="uid://c7rhjnm4c4en5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_01_Wheel_rr.res" id="13_6v8hs"]
+[ext_resource type="ArrayMesh" uid="uid://r28fwumunk6n" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_Glass_01.res" id="14_wnjbn"]
+[ext_resource type="Material" uid="uid://bsdrxux17jhqg" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_Alt_mat.tres" id="15_yfq62"]
+[ext_resource type="ArrayMesh" uid="uid://c66psn3muvrcj" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Light_Armored_Car_SteeringW_01.res" id="16_rwgs5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h7l6r"]
+points = PackedVector3Array(1.1421729, 0.52397656, -2.282412, 0.920436, 0.22842532, -1.6183367, -1.1477897, 0.52397656, -2.282412, 1.0176932, 1.3223467, -2.24643, 1.1298412, 1.6231861, 0.8475785, 1.0679504, 1.1143446, 2.2221875, 0.920436, 0.22842532, 1.7790151, -0.92605287, 0.22842532, -1.6183367, -1.2348093, 1.6039431, 0.9213648, -1.0202852, 1.3213186, -2.2391424, -1.0735673, 0.44994187, 2.2221875, -0.99841404, 1.7273343, -0.9542612, 0.9953567, 1.72895, -0.95653856, -0.99515665, 1.7251308, 1.0329549, -1.0735673, 1.1143446, 2.2221875, 0.84621346, 0.44994187, 2.3706708)
+
+[node name="SM_Veh_Light_Armored_Car_01" type="MeshInstance3D" unique_id=1465469655]
+gi_mode = 2
+mesh = ExtResource("1_7e82f")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=403125834]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=728354015]
+shape = SubResource("ConvexPolygonShape3D_h7l6r")
+
+[node name="SM_Veh_Light_Armored_Car_01_Gunner" type="MeshInstance3D" parent="." unique_id=2026601336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9303805e-34, 1.7854636, -0.03840977)
+gi_mode = 2
+mesh = ExtResource("3_qyxdn")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Weapon" type="MeshInstance3D" parent="SM_Veh_Light_Armored_Car_01_Gunner" unique_id=1057743138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9303805e-34, 0.2950456, 0.72516793)
+gi_mode = 2
+mesh = ExtResource("4_vins2")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Plug" type="MeshInstance3D" parent="." unique_id=1496806357]
+gi_mode = 2
+mesh = ExtResource("5_o2456")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Remote_Weapon" type="MeshInstance3D" parent="." unique_id=1271331856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5527136e-17, 1.7456815, 0.5762961)
+gi_mode = 2
+mesh = ExtResource("6_nllnj")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Remote_Weapon_Top" type="MeshInstance3D" parent="SM_Veh_Light_Armored_Car_01_Remote_Weapon" unique_id=280750406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0171645e-17, 0.16438723, 0)
+gi_mode = 2
+mesh = ExtResource("7_eoev7")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Remote_Weapon_Guns" type="MeshInstance3D" parent="SM_Veh_Light_Armored_Car_01_Remote_Weapon/SM_Veh_Light_Armored_Car_01_Remote_Weapon_Top" unique_id=1683614905]
+transform = Transform3D(-3.61195e-08, -0.9889971, 0, 0.82631785, -4.3230436e-08, 0, 0, 0, 0.82631785, 0, 0.57502174, -0.04745239)
+gi_mode = 2
+mesh = ExtResource("8_455mb")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Remote_Weapon_Radar" type="MeshInstance3D" parent="SM_Veh_Light_Armored_Car_01_Remote_Weapon/SM_Veh_Light_Armored_Car_01_Remote_Weapon_Top" unique_id=684220281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32285896, 0.2196083, 0.35414124)
+gi_mode = 2
+mesh = ExtResource("9_g3fn1")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Wheel_fl" type="MeshInstance3D" parent="." unique_id=1781213377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94810414, 0.41250435, 1.697642)
+gi_mode = 2
+mesh = ExtResource("10_qph5a")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Wheel_fr" type="MeshInstance3D" parent="." unique_id=1302013261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94692236, 0.41250435, 1.697642)
+gi_mode = 2
+mesh = ExtResource("11_biy78")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Wheel_rl" type="MeshInstance3D" parent="." unique_id=228119802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9476239, 0.41250435, -1.5248089)
+gi_mode = 2
+mesh = ExtResource("12_b8cp5")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_01_Wheel_rr" type="MeshInstance3D" parent="." unique_id=1296018760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9447189, 0.41250435, -1.5248089)
+gi_mode = 2
+mesh = ExtResource("13_6v8hs")
+surface_material_override/0 = ExtResource("2_qyxdn")
+
+[node name="SM_Veh_Light_Armored_Car_Glass_01" type="MeshInstance3D" parent="." unique_id=1083569100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9545815e-08, 1.4341264, 0.07170011)
+gi_mode = 2
+mesh = ExtResource("14_wnjbn")
+surface_material_override/0 = ExtResource("15_yfq62")
+
+[node name="SM_Veh_Light_Armored_Car_SteeringW_01" type="MeshInstance3D" parent="." unique_id=712996655]
+transform = Transform3D(1, 0, 0, 0, 0.9414985, -0.33701718, 0, 0.33701718, 0.9414985, 0.58167464, 1.1403153, 0.3645152)
+gi_mode = 2
+mesh = ExtResource("16_rwgs5")
+surface_material_override/0 = ExtResource("2_qyxdn")

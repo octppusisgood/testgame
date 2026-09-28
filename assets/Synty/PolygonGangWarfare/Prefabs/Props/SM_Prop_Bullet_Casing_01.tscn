@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ktm3j0d2qv6c"]
+
+[ext_resource type="ArrayMesh" uid="uid://ctfb46va2resh" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Bullet_Casing_01.res" id="1_eyfg2"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_0u0p8"]
+
+[node name="SM_Prop_Bullet_Casing_01" type="MeshInstance3D" unique_id=1074918134]
+gi_mode = 2
+mesh = ExtResource("1_eyfg2")
+surface_material_override/0 = ExtResource("2_0u0p8")

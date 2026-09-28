@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b85hbx56ktmu0"]
+
+[ext_resource type="ArrayMesh" uid="uid://8ta7vumsgtha" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Gym_Weight_Stack_01.res" id="1_43spr"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_acx7q"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rwnvi"]
+points = PackedVector3Array(0.00044448674, 0.13057297, -0.20256917, 0.020289794, 0.010372687, -0.18398692, -0.15212691, 0.1760707, -0.15755418, 0.09326796, 0.29539663, -0.15083115, 0.1464432, 0.010226954, -0.13103792, -0.09242137, 0.0036398382, 0.15425195, -0.19173272, 0.010460127, -0.0048873425, -0.124776006, 0.29452223, -0.03787607, -0.2103483, 0.17592497, -0.011485085, 0.08627121, 0.3014008, 0.080841586, 0.20262916, 0.23710355, 0.12293355, 0.22285612, 0.19108118, -0.04000573, 0.2001697, 0.0097897565, 0.0016686469, 0.113240466, 0.0102561, 0.16748922, 0.09076609, 0.19108118, 0.22402938, -0.07316972, 0.23646232, 0.20231529)
+
+[node name="SM_Prop_Gym_Weight_Stack_01" type="MeshInstance3D" unique_id=316633470]
+gi_mode = 2
+mesh = ExtResource("1_43spr")
+surface_material_override/0 = ExtResource("2_acx7q")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=2137782763]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1801622086]
+shape = SubResource("ConvexPolygonShape3D_rwnvi")

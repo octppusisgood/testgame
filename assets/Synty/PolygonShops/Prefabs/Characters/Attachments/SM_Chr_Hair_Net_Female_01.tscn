@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctr6wgyoo4svk"]
+
+[ext_resource type="ArrayMesh" uid="uid://ttfncy4xgfnl" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Chr_Hair_Net_Female_01.res" id="1_o25v7"]
+[ext_resource type="Material" uid="uid://c00i4t2473bv4" path="res://Assets/Synty/PolygonShops/Materials/Alternates/PolygonShops_Mat_01_A_Colour_Emissive_mat.tres" id="2_ga5la"]
+
+[node name="SM_Chr_Hair_Net_Female_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_o25v7")
+surface_material_override/0 = ExtResource("2_ga5la")

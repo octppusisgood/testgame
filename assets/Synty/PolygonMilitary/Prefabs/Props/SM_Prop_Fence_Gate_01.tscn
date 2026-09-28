@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://yeehe5wcwres"]
+
+[ext_resource type="ArrayMesh" uid="uid://42dvjcftl4xr" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Fence_Gate_01.res" id="1_sr8nx"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_sr8nx"]
+[ext_resource type="ArrayMesh" uid="uid://b33u3dtrcywmn" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Fence_Gate_Open_01.res" id="3_boda1"]
+[ext_resource type="Material" uid="uid://w7i3udc7qosk" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Fence_Wire_01_mat.tres" id="4_boda1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sw4wp"]
+points = PackedVector3Array(5.949931, 2.9442253, 0.066769786, 5.949931, 2.9442253, -0.052043043, -0.04902363, 2.9442253, -0.052043043, -0.033168912, 2.9176939, 0.03661301, 5.949931, -0.53071, 0.066769786, 5.949931, -0.53071, -0.052043043, -0.04902363, -0.53071, -0.052043043, -0.033168912, -0.5045187, 0.03661301)
+
+[node name="SM_Prop_Fence_Gate_01" type="MeshInstance3D" unique_id=1092608025]
+gi_mode = 2
+mesh = ExtResource("1_sr8nx")
+surface_material_override/0 = ExtResource("2_sr8nx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1866854281]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=782444558]
+shape = SubResource("ConvexPolygonShape3D_sw4wp")
+
+[node name="SM_Prop_Fence_Gate_Open_01" type="MeshInstance3D" parent="." unique_id=895870707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9038715, 0, 0.040423084)
+gi_mode = 2
+mesh = ExtResource("3_boda1")
+surface_material_override/0 = ExtResource("2_sr8nx")
+surface_material_override/1 = ExtResource("4_boda1")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bd8b6af2e0j7o"]
+
+[ext_resource type="ArrayMesh" uid="uid://b1yucr68ue7vn" path="res://assets/Synty/PolygonGangWarfare/Models/Generic/extracted/SM_Generic_Cloud_01.res" id="1_dcvbu"]
+[ext_resource type="Material" uid="uid://chci3jksy8iw8" path="res://Assets/Synty/PolygonGangWarfare/Materials/FX/Cloud_01_mat.tres" id="2_4ykql"]
+
+[node name="SM_Generic_Cloud_01" type="MeshInstance3D" unique_id=1085551789]
+gi_mode = 2
+mesh = ExtResource("1_dcvbu")
+surface_material_override/0 = ExtResource("2_4ykql")

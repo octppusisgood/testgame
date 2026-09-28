@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dmdjf3vvelra"]
+
+[ext_resource type="ArrayMesh" uid="uid://b20110653li83" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01.res" id="1_ik3no"]
+[ext_resource type="Material" uid="uid://b3h6qm776looh" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_02_mat.tres" id="2_elagc"]
+[ext_resource type="ArrayMesh" uid="uid://harobqx81uu6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Top.res" id="3_elagc"]
+[ext_resource type="Material" uid="uid://de27syahh6u0s" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_01_Alt_mat.tres" id="4_sr17l"]
+[ext_resource type="ArrayMesh" uid="uid://tfrnl21s5kml" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_01.res" id="5_3poxo"]
+[ext_resource type="ArrayMesh" uid="uid://mjm1lctgl1e" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_01_Wing_01.res" id="6_sr17l"]
+[ext_resource type="ArrayMesh" uid="uid://gjjvm28ftahg" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_01_Wing_02.res" id="7_1nhdd"]
+[ext_resource type="ArrayMesh" uid="uid://bwq8axpgli71g" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_01_Wing_03.res" id="8_6ms8c"]
+[ext_resource type="ArrayMesh" uid="uid://b8upctflmmyn8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_01_Wing_04.res" id="9_xhrhc"]
+[ext_resource type="ArrayMesh" uid="uid://yu83n5ehwcr5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_02.res" id="10_7sxoj"]
+[ext_resource type="ArrayMesh" uid="uid://cimnpl1ytq8bg" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_02_Wing_01.res" id="11_heuck"]
+[ext_resource type="ArrayMesh" uid="uid://d08vmmr0sh4k1" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_02_Wing_02.res" id="12_0jh84"]
+[ext_resource type="ArrayMesh" uid="uid://ci3n03ov22b84" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_02_Wing_03.res" id="13_ncvl8"]
+[ext_resource type="ArrayMesh" uid="uid://2hy1fmjm1dd5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_02_Wing_04.res" id="14_d6wfx"]
+[ext_resource type="ArrayMesh" uid="uid://dnxrqbly4hc6v" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_03.res" id="15_q1sgv"]
+[ext_resource type="ArrayMesh" uid="uid://e7k8mkaync55" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_03_Wing_01.res" id="16_0s3et"]
+[ext_resource type="ArrayMesh" uid="uid://cvci7w27lq564" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_03_Wing_02.res" id="17_8d1kq"]
+[ext_resource type="ArrayMesh" uid="uid://d1dt4qrh65c73" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_03_Wing_03.res" id="18_mbes6"]
+[ext_resource type="ArrayMesh" uid="uid://bopi8l6qgf636" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Missile_Launcher_01_Missile_03_Wing_04.res" id="19_piuyq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ik3no"]
+points = PackedVector3Array(-0.15599751, 0.11724424, -2.797577, -2.5004401, -0.038813476, 0.9529526, -2.5004401, 0.11737484, 0.9529526, -1.1718084, 1.0548965, -0.68818283, -0.7390485, 1.0674334, -1.1633335, 0.7384057, 1.0674334, -1.1633335, 0.23417187, -0.03907466, -2.719331, -2.343785, 0.11737484, 1.3437767, 2.1879559, -0.03907466, 1.3437767, -1.0156428, 1.0548965, 1.1090391, -0.14033198, 1.2950556, 0.28887677, 1.1716552, 1.0548965, -0.68818283, 2.5007768, -0.03907466, 0.9529526, 2.3441215, 0.11724424, 1.3437767, 0.6664424, 1.1089617, 1.0895789, 1.3283105, 0.8985776, 1.1090391)
+
+[node name="SM_Prop_Missile_Launcher_01" type="MeshInstance3D" unique_id=1245665271]
+gi_mode = 2
+mesh = ExtResource("1_ik3no")
+surface_material_override/0 = ExtResource("2_elagc")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=938529731]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=125950251]
+shape = SubResource("ConvexPolygonShape3D_ik3no")
+
+[node name="SM_Prop_Missile_Launcher_01_Top" type="MeshInstance3D" parent="." unique_id=1213558359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2949447e-05, 1.3130127, -1.3604003e-07)
+gi_mode = 2
+mesh = ExtResource("3_elagc")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_01" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top" unique_id=1922532928]
+transform = Transform3D(1, 0, 0, 0, 0.22757193, -0.97376126, 0, 0.97376126, 0.22757193, -0.65767765, 0.77528036, -0.3806084)
+gi_mode = 2
+mesh = ExtResource("5_3poxo")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_01_Wing_01" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_01" unique_id=752827368]
+gi_mode = 2
+mesh = ExtResource("6_sr17l")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_01_Wing_02" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_01" unique_id=907185549]
+transform = Transform3D(-1, -1.224647e-16, -8.742278e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0, 0)
+gi_mode = 2
+mesh = ExtResource("7_1nhdd")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_01_Wing_03" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_01" unique_id=1216682436]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711385e-08, 0, 0, 0)
+gi_mode = 2
+mesh = ExtResource("8_6ms8c")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_01_Wing_04" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_01" unique_id=1387494476]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711385e-08, 0, 0, 0)
+gi_mode = 2
+mesh = ExtResource("9_xhrhc")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_02" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top" unique_id=875315210]
+transform = Transform3D(1, 0, 0, 0, 0.22757193, -0.97376126, 0, 0.97376126, 0.22757193, -3.2949447e-05, 1.1061817, -0.380744)
+gi_mode = 2
+mesh = ExtResource("10_7sxoj")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_02_Wing_01" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_02" unique_id=462428426]
+gi_mode = 2
+mesh = ExtResource("11_heuck")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_02_Wing_02" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_02" unique_id=153992249]
+transform = Transform3D(-1, -1.224647e-16, -8.742278e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0, 0)
+gi_mode = 2
+mesh = ExtResource("12_0jh84")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_02_Wing_03" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_02" unique_id=1832603771]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711385e-08, 0, 0, 0)
+gi_mode = 2
+mesh = ExtResource("13_ncvl8")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_02_Wing_04" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_02" unique_id=835476152]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711385e-08, 2.2737367e-15, 0, 0)
+gi_mode = 2
+mesh = ExtResource("14_d6wfx")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_03" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top" unique_id=209240234]
+transform = Transform3D(1, 0, 0, 0, 0.22757193, -0.97376126, 0, 0.97376126, 0.22757193, 0.6562071, 0.77528036, -0.3806084)
+gi_mode = 2
+mesh = ExtResource("15_q1sgv")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_03_Wing_01" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_03" unique_id=789888656]
+gi_mode = 2
+mesh = ExtResource("16_0s3et")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_03_Wing_02" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_03" unique_id=1450553739]
+transform = Transform3D(-1, -1.224647e-16, -8.742278e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0, 0)
+gi_mode = 2
+mesh = ExtResource("17_8d1kq")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_03_Wing_03" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_03" unique_id=588428169]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711385e-08, 0, 0, 0)
+gi_mode = 2
+mesh = ExtResource("18_mbes6")
+surface_material_override/0 = ExtResource("4_sr17l")
+
+[node name="SM_Prop_Missile_Launcher_01_Missile_03_Wing_04" type="MeshInstance3D" parent="SM_Prop_Missile_Launcher_01_Top/SM_Prop_Missile_Launcher_01_Missile_03" unique_id=437623652]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711385e-08, 0, 0, 0)
+gi_mode = 2
+mesh = ExtResource("19_piuyq")
+surface_material_override/0 = ExtResource("4_sr17l")

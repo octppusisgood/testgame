@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqictpyhxlc8b"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqkb77mrt13cj" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Core_Roller_01.res" id="1_e16p1"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_0ksih"]
+[ext_resource type="ArrayMesh" uid="uid://bds5fnrdn8pex" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Core_Roller_01_Wheels_01.res" id="3_0ksih"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ijig8"]
+points = PackedVector3Array(0.23124431, 0.04649082, 0.006983958, 0.23872189, 0.024110638, 0.03683588, 0.23124431, 0.04649082, -0.007912792, -0.23129104, 0.04649082, 0.006983958, 0.23872189, -0.03556399, -0.0153903775, 0.23124431, 0.024110638, -0.037764713, -0.23872189, 0.024110638, 0.03683588, 0.23124431, -0.028106852, 0.03683588, -0.23129104, 0.04649082, -0.007912792, 0.23124431, -0.04302989, -0.007912792, 0.23124431, -0.028106852, -0.037764713, -0.23129104, 0.024110638, -0.037764713, -0.23129104, -0.04302989, -0.007912792, -0.23129104, -0.04302989, 0.006983958, -0.23129104, -0.028106852, 0.03683588, -0.23129104, -0.028106852, -0.037764713)
+
+[node name="SM_Prop_Gym_Core_Roller_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_e16p1")
+surface_material_override/0 = ExtResource("2_0ksih")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ijig8")
+
+[node name="SM_Prop_Gym_Core_Roller_01_Wheels_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_0ksih")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_0ksih")

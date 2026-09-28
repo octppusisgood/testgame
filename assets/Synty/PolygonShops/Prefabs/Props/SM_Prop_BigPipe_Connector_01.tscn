@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1f0xqknixact"]
+
+[ext_resource type="ArrayMesh" uid="uid://c7wt75roqp1mq" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_BigPipe_Connector_01.res" id="1_8t1ox"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_t5c3y"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8t1ox"]
+height = 0.18591309
+radius = 0.39697266
+
+[node name="SM_Prop_BigPipe_Connector_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8t1ox")
+surface_material_override/0 = ExtResource("2_t5c3y")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -2.873362e-09, 0.06573486)
+shape = SubResource("CylinderShape3D_8t1ox")

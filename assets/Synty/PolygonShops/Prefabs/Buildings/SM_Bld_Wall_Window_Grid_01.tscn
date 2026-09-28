@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://3ksuxpv3w6pf"]
+
+[ext_resource type="ArrayMesh" uid="uid://8ojhblfg52gy" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Window_Grid_01.res" id="1_m1ulo"]
+[ext_resource type="Material" uid="uid://buo25cdi05x6y" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_White_01_mat.tres" id="2_rs1u0"]
+[ext_resource type="ArrayMesh" uid="uid://c00w7o3rb5ddv" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Window_Top_01.res" id="3_rs1u0"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="4_f5yu7"]
+[ext_resource type="ArrayMesh" uid="uid://ojwpgmo8varm" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Window_Top_01_Glass.res" id="5_ry7ib"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="6_ox62k"]
+[ext_resource type="ArrayMesh" uid="uid://d2fs5ga43525d" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Window_Bottom_01.res" id="7_f5yu7"]
+[ext_resource type="ArrayMesh" uid="uid://crv5jm55hgsm6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Window_Bottom_01_Glass.res" id="8_qcda7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_whogb"]
+size = Vector3(2.4999914, 3.0057428, 0.225)
+
+[node name="SM_Bld_Wall_Window_Grid_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_m1ulo")
+surface_material_override/0 = ExtResource("2_rs1u0")
+surface_material_override/1 = ExtResource("2_rs1u0")
+surface_material_override/2 = ExtResource("2_rs1u0")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2499957, 1.5028714, 0)
+shape = SubResource("BoxShape3D_whogb")
+
+[node name="SM_Bld_Wall_Window_Top_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_rs1u0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_f5yu7")
+
+[node name="SM_Bld_Wall_Window_Top_01_Glass" type="MeshInstance3D" parent="SM_Bld_Wall_Window_Top_01"]
+gi_mode = 2
+mesh = ExtResource("5_ry7ib")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ox62k")
+
+[node name="SM_Bld_Wall_Window_Bottom_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("7_f5yu7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_f5yu7")
+
+[node name="SM_Bld_Wall_Window_Bottom_01_Glass" type="MeshInstance3D" parent="SM_Bld_Wall_Window_Bottom_01"]
+gi_mode = 2
+mesh = ExtResource("8_qcda7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_ox62k")

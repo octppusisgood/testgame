@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cek2vgdeyplpc"]
+
+[ext_resource type="ArrayMesh" uid="uid://bna7pc2fhfjjo" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Hunting_Fishing_Hand_Reel_01.res" id="1_3pes3"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_rgnkq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3pes3"]
+height = 0.06677246
+radius = 0.13134766
+
+[node name="SM_Prop_Hunting_Fishing_Hand_Reel_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3pes3")
+surface_material_override/0 = ExtResource("2_rgnkq")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -8.030483e-10, 0.018371582)
+shape = SubResource("CylinderShape3D_3pes3")

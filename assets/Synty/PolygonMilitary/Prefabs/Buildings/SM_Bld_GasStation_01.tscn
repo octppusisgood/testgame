@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cnj1qw7esmqkm"]
+
+[ext_resource type="ArrayMesh" uid="uid://cmkemwbs8xyd7" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_GasStation_01.res" id="1_pcl8s"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_rcafa"]
+[ext_resource type="ArrayMesh" uid="uid://d2p0hbs4cgjbi" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_GasStation_Door_01.res" id="3_rcafa"]
+[ext_resource type="Shape3D" uid="uid://qafk68tgkvby" path="res://assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_GasStation_01_Collision.res" id="3_vwyna"]
+[ext_resource type="ArrayMesh" uid="uid://cs4s4ajdefkdg" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_GasStation_Door_02.res" id="4_vwyna"]
+[ext_resource type="ArrayMesh" uid="uid://tmuhsc2onm6w" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_GasStation_GarageDoor_01.res" id="5_6lmwe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fkrsg"]
+size = Vector3(1.0252954, 2.2243478, 0.12702759)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d42ia"]
+size = Vector3(1.0252954, 2.2243478, 0.12702759)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s0lum"]
+size = Vector3(3.1770425, 3.132654, 0.1279819)
+
+[node name="SM_Bld_GasStation_01" type="MeshInstance3D" unique_id=1706873129]
+gi_mode = 2
+mesh = ExtResource("1_pcl8s")
+surface_material_override/0 = ExtResource("2_rcafa")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=117520821]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=2056099137]
+shape = ExtResource("3_vwyna")
+
+[node name="SM_Bld_GasStation_Door_01" type="MeshInstance3D" parent="." unique_id=1613596534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1399658, 0, -0.9327032)
+gi_mode = 2
+mesh = ExtResource("3_rcafa")
+surface_material_override/0 = ExtResource("2_rcafa")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_GasStation_Door_01" unique_id=1988255538]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_GasStation_Door_01/BoxCollider" unique_id=1103154911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5126477, 1.1121739, 0)
+shape = SubResource("BoxShape3D_fkrsg")
+
+[node name="SM_Bld_GasStation_Door_02" type="MeshInstance3D" parent="." unique_id=400536047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0893799, 0, -0.9327032)
+gi_mode = 2
+mesh = ExtResource("4_vwyna")
+surface_material_override/0 = ExtResource("2_rcafa")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_GasStation_Door_02" unique_id=1227169724]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_GasStation_Door_02/BoxCollider" unique_id=794851892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5126526, 1.1121739, 0)
+shape = SubResource("BoxShape3D_d42ia")
+
+[node name="SM_Bld_GasStation_GarageDoor_01" type="MeshInstance3D" parent="." unique_id=758102210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8005892, 1.5238878, -1.7783108)
+gi_mode = 2
+mesh = ExtResource("5_6lmwe")
+surface_material_override/0 = ExtResource("2_rcafa")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_GasStation_GarageDoor_01" unique_id=49217758]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_GasStation_GarageDoor_01/BoxCollider" unique_id=1669565654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5891216, 0.036596775, 1.5599133)
+shape = SubResource("BoxShape3D_s0lum")

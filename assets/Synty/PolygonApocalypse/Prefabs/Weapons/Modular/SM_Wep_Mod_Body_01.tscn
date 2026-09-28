@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxsyfc257x3es"]
+
+[ext_resource type="ArrayMesh" uid="uid://b14yygntvccl3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_01.res" id="1_ij4af"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_5sq51"]
+[ext_resource type="ArrayMesh" uid="uid://drvtp4b2kxi47" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_01_Charge.res" id="3_5sq51"]
+[ext_resource type="ArrayMesh" uid="uid://b51uxg68v5gj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_01_Slide.res" id="4_oxx8x"]
+[ext_resource type="ArrayMesh" uid="uid://bufycqpa1qq6i" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_01_Trigger.res" id="5_mqyst"]
+
+[node name="SM_Wep_Mod_Body_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ij4af")
+surface_material_override/0 = ExtResource("2_5sq51")
+
+[node name="SM_Wep_Mod_Body_01_Charge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.722046e-09, 0.13014367, 0.07624431)
+gi_mode = 2
+mesh = ExtResource("3_5sq51")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_5sq51")
+
+[node name="SM_Wep_Mod_Body_01_Slide" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006450404, 0.10696656, 0.13007304)
+gi_mode = 2
+mesh = ExtResource("4_oxx8x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_5sq51")
+
+[node name="SM_Wep_Mod_Body_01_Trigger" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4408918e-17, 0.03727925, 0.039398678)
+gi_mode = 2
+mesh = ExtResource("5_mqyst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_5sq51")

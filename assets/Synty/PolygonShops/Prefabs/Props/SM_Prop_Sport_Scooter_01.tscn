@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://de2osi2xqkcmq"]
+
+[ext_resource type="ArrayMesh" uid="uid://u21icg8aj5j4" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Scooter_01.res" id="1_jy42d"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_ygj1j"]
+[ext_resource type="ArrayMesh" uid="uid://da0cbu5u1nluo" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Scooter_01_Handle_01.res" id="3_ygj1j"]
+[ext_resource type="ArrayMesh" uid="uid://ci8fs4t25x15n" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Scooter_01_FrontBrake_01.res" id="4_2k5r0"]
+[ext_resource type="ArrayMesh" uid="uid://culflolyyhve6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Scooter_01_Wheel_01.res" id="5_u5axh"]
+[ext_resource type="ArrayMesh" uid="uid://c56irkly3l8ld" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Scooter_01_RearBrake_01.res" id="6_1n136"]
+[ext_resource type="ArrayMesh" uid="uid://bnni3nc0tb6df" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Scooter_01_Wheel_02.res" id="7_glrtk"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hkx4n"]
+points = PackedVector3Array(0.08016178, 0.071736485, -0.53716594, -0.0758005, 0.15839401, -0.5544754, 0.08016178, 0.08911819, -0.5544754, 0.097497135, 0.21035086, -0.36375058, 0.097497135, 0.21035086, 0.36367518, 0.07614982, 0.15393877, 0.36143136, -0.06792588, 0.1039899, 0.062148213, -0.09313586, 0.21035086, -0.36375058, -0.058483798, 0.69540703, 0.46774578, 0.045491055, 0.7127887, 0.4159242, 0.08016178, 0.15839401, -0.5544754, 0.026886798, 0.38410515, 0.52747416, -0.058483798, 0.31439006, 0.53709054, -0.055068977, 0.15513101, 0.3760696, -0.09313586, 0.21035086, 0.36367518, -0.022693463, 0.5829593, 0.49734282)
+
+[node name="SM_Prop_Sport_Scooter_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_jy42d")
+surface_material_override/0 = ExtResource("2_ygj1j")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_hkx4n")
+
+[node name="SM_Prop_Sport_Scooter_01_Handle_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.98554516, 0.1694128, 0, -0.1694128, 0.98554516, 4.4584977e-16, 0.67014855, 0.4411545)
+gi_mode = 2
+mesh = ExtResource("3_ygj1j")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ygj1j")
+
+[node name="SM_Prop_Sport_Scooter_01_FrontBrake_01" type="MeshInstance3D" parent="SM_Prop_Sport_Scooter_01_Handle_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.4901161e-08, 0, -1.4901161e-08, 1, 0.0734335, 0.52034664, 0.03469199)
+gi_mode = 2
+mesh = ExtResource("4_2k5r0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ygj1j")
+
+[node name="SM_Prop_Sport_Scooter_01_Wheel_01" type="MeshInstance3D" parent="SM_Prop_Sport_Scooter_01_Handle_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.4901161e-08, 0, -1.4901161e-08, 1, 9.7822194e-17, -0.556838, 0.0035233498)
+gi_mode = 2
+mesh = ExtResource("5_u5axh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ygj1j")
+
+[node name="SM_Prop_Sport_Scooter_01_RearBrake_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.768371e-09, 0.19287431, -0.34493983)
+gi_mode = 2
+mesh = ExtResource("6_1n136")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ygj1j")
+
+[node name="SM_Prop_Sport_Scooter_01_Wheel_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1329614e-16, 0.11935594, -0.50789064)
+gi_mode = 2
+mesh = ExtResource("7_glrtk")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ygj1j")

@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://daliy1dmta00j"]
+
+[ext_resource type="ArrayMesh" uid="uid://bho2e13xqo4kq" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_01.res" id="1_ksnn0"]
+[ext_resource type="Material" uid="uid://b0u0j04oi4jo8" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_05_mat.tres" id="2_hr5uv"]
+[ext_resource type="ArrayMesh" uid="uid://bp4ntebimsqny" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Turret_01.res" id="3_hr5uv"]
+[ext_resource type="ArrayMesh" uid="uid://cpmno4djugvfb" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Gun_01.res" id="4_v14ws"]
+[ext_resource type="ArrayMesh" uid="uid://wq5ibud5aadr" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Hatch_01.res" id="5_xl2cg"]
+[ext_resource type="ArrayMesh" uid="uid://cp1pmj67pk0x6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Hatch_02.res" id="6_mo6rs"]
+[ext_resource type="ArrayMesh" uid="uid://cc5hnsy1c22lk" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Wheel_fl_01.res" id="7_f1yor"]
+[ext_resource type="ArrayMesh" uid="uid://rsphgyj8lxr6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Wheel_fl_02.res" id="8_t8ej5"]
+[ext_resource type="ArrayMesh" uid="uid://c03l6j5i5j1ih" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Wheel_fr_01.res" id="9_bwn7g"]
+[ext_resource type="ArrayMesh" uid="uid://qbs6qc3scitr" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Wheel_fr_02.res" id="10_p1ll5"]
+[ext_resource type="ArrayMesh" uid="uid://dnsxvc4oduy0o" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Wheel_rl_01.res" id="11_wp0et"]
+[ext_resource type="ArrayMesh" uid="uid://6pk37thhkf5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Wheel_rl_02.res" id="12_aw31a"]
+[ext_resource type="ArrayMesh" uid="uid://byp364t3fitfa" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Wheel_rr_01.res" id="13_spgdu"]
+[ext_resource type="ArrayMesh" uid="uid://bn4gn6s10my6c" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_Wheel_rr_02.res" id="14_y50ul"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_822t3"]
+points = PackedVector3Array(1.3361113, 1.2949073, 2.6239293, 1.2082849, 1.8843302, 3.5873048, 0.9670775, 0.7978066, 3.5873048, 1.0875449, 0.43503308, 2.136473, 1.32957, 1.5220059, -3.6596434, 1.2085576, 2.4883537, -3.4173574, 0.84633756, 2.6092033, 2.7407458, -1.2065141, 1.8841056, 3.5873048, -1.4482665, 1.1601309, 2.7407458, -1.0857741, 0.43548232, 2.136473, 0.24209285, 0.31440806, -2.0891109, 0.9670775, 0.55610734, -3.1757925, -0.9653067, 0.55610734, -3.1757925, -1.0860467, 2.6092033, -3.7793443, -1.3329775, 2.1839833, 1.5105674, -1.4482665, 1.0392812, -2.6926627)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bdv78"]
+points = PackedVector3Array(1.0098641, 0.30059445, 0.87796116, 0.72922873, 0.8214543, 0.27709925, 0.8093811, 0.46073583, 1.0783308, 0.24851823, 0.14021285, 0.9980347, 0.72290623, 0.0055339476, 0.05968213, 0.8668951, 0.20394912, -1.3130103, 0.9696858, 0.58092195, -1.4456842, -0.43247122, 0.7413035, 0.23707473, -0.83302927, 0.4604956, 0.95776296, -0.993538, 0.62103736, -1.2855861, -0.7928511, 0.30059445, 1.0380592, -0.5966511, 0.00353218, 0.43917382, -0.25299513, 0.008496563, -0.6891715, -0.8146738, 0.20394912, -1.3488348, -1.0736904, 0.58092195, -0.76477337, -1.0298412, 0.22781019, -0.7417963)
+
+[node name="SM_Veh_APC_Heavy_01" type="MeshInstance3D" unique_id=1148628172]
+gi_mode = 2
+mesh = ExtResource("1_ksnn0")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1966729062]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=518163028]
+shape = SubResource("ConvexPolygonShape3D_822t3")
+
+[node name="SM_Veh_APC_Heavy_Turret_01" type="MeshInstance3D" parent="." unique_id=1739017404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.252661, -0.7365193)
+gi_mode = 2
+mesh = ExtResource("3_hr5uv")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Veh_APC_Heavy_Turret_01" unique_id=920393842]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_APC_Heavy_Turret_01/MeshCollider" unique_id=1462249275]
+shape = SubResource("ConvexPolygonShape3D_bdv78")
+
+[node name="SM_Veh_APC_Heavy_Gun_01" type="MeshInstance3D" parent="SM_Veh_APC_Heavy_Turret_01" unique_id=2067110950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08918382, 0.4029863, 0.6478251)
+gi_mode = 2
+mesh = ExtResource("4_v14ws")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Hatch_01" type="MeshInstance3D" parent="SM_Veh_APC_Heavy_Turret_01" unique_id=5014233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4307642, 0.6674168, -0.4885742)
+gi_mode = 2
+mesh = ExtResource("5_xl2cg")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Hatch_02" type="MeshInstance3D" parent="SM_Veh_APC_Heavy_Turret_01" unique_id=408559301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29179, 0.6674168, -0.4885742)
+gi_mode = 2
+mesh = ExtResource("6_mo6rs")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Wheel_fl_01" type="MeshInstance3D" parent="." unique_id=928972239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1498545, 0.5799333, 1.9869646)
+gi_mode = 2
+mesh = ExtResource("7_f1yor")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Wheel_fl_02" type="MeshInstance3D" parent="." unique_id=1477414309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1498545, 0.5799333, 0.71404755)
+gi_mode = 2
+mesh = ExtResource("8_t8ej5")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Wheel_fr_01" type="MeshInstance3D" parent="." unique_id=762502425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1498545, 0.5799333, 1.9869646)
+gi_mode = 2
+mesh = ExtResource("9_bwn7g")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Wheel_fr_02" type="MeshInstance3D" parent="." unique_id=1621400629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1498545, 0.5799333, 0.71404755)
+gi_mode = 2
+mesh = ExtResource("10_p1ll5")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Wheel_rl_01" type="MeshInstance3D" parent="." unique_id=565128540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1498545, 0.5799333, -0.68620574)
+gi_mode = 2
+mesh = ExtResource("11_wp0et")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Wheel_rl_02" type="MeshInstance3D" parent="." unique_id=1437588241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1498545, 0.5799333, -1.9425648)
+gi_mode = 2
+mesh = ExtResource("12_aw31a")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Wheel_rr_01" type="MeshInstance3D" parent="." unique_id=1490565867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1498545, 0.5799333, -0.68620574)
+gi_mode = 2
+mesh = ExtResource("13_spgdu")
+surface_material_override/0 = ExtResource("2_hr5uv")
+
+[node name="SM_Veh_APC_Heavy_Wheel_rr_02" type="MeshInstance3D" parent="." unique_id=1099997423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1498545, 0.5799333, -1.9425648)
+gi_mode = 2
+mesh = ExtResource("14_y50ul")
+surface_material_override/0 = ExtResource("2_hr5uv")

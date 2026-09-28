@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://sb4t4den5uwm"]
+
+[ext_resource type="ArrayMesh" uid="uid://c8f7q26n4o0g0" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Rugby_Ball_01.res" id="1_g1e3k"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_oyxnl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fhpsq"]
+points = PackedVector3Array(-0.0065665394, 0.14294231, -0.0015824288, -0.006490737, 0.14155743, 0.0048987567, 0.19327112, 0.0649737, 0.0049541444, 0.006510839, 0.10250388, -0.09916015, -0.19378167, 0.06511217, -0.0016655177, -0.0129725635, 0.09591186, 0.102421075, 0.18440123, -0.0015835315, -0.07406636, -0.0065665394, -0.0015835315, 0.1429146, 0.11647461, -0.07276624, 0.08907096, 0.13152309, -0.106861934, -0.00817439, 0.019701943, -0.0015835315, -0.14001372, -0.1253244, -0.0016112328, -0.11375665, -0.1939712, -0.0618534, -0.008340582, -0.11656823, -0.07276624, 0.08907096, -0.019568115, -0.09952208, -0.099520214, -0.019757643, -0.1400159, -0.0015824288)
+
+[node name="SM_Prop_Sport_Rugby_Ball_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_g1e3k")
+surface_material_override/0 = ExtResource("2_oyxnl")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_fhpsq")

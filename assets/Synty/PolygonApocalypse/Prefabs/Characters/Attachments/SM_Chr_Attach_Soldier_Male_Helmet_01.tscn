@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6hfb74pdvf1m"]
+
+[ext_resource type="ArrayMesh" uid="uid://85hg4k7bmxoj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Soldier_Male_Helmet_01.res" id="1_2bvkd"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_4p5pi"]
+
+[node name="SM_Chr_Attach_Soldier_Male_Helmet_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_2bvkd")
+surface_material_override/0 = ExtResource("2_4p5pi")

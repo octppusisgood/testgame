@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dn7hrrhxj1nn2"]
+
+[ext_resource type="ArrayMesh" uid="uid://diu4u8f3f8os2" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Wall_Brick_Exterior_Corner_01.res" id="1_7fc6c"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_slmxj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jso3a"]
+points = PackedVector3Array(-0.21428572, 0.6943523, -0.008571431, -0.12853283, -0.008152127, -0.008571431, -0.14572267, -0.008152127, 0.14570087, -0.21428572, 0.6943523, 0.21428572, -0.21428572, 0.8142417, -0.008571431, 0.008571431, -0.008152127, 0.12851103, -0.12851101, 0.86591816, -0.008571431, 0.008571431, 0.6258441, 0.12848921, 0.008571431, 0.6943523, 0.21428572, -0.21428572, 0.8142417, 0.21428572, -0.14572267, 3.0085716, 0.11143025, -0.12855464, 3.0085716, -0.008571431, 0.008571431, 3.0085716, 0.12853284, 0.008571431, 0.8142417, 0.21428572, -0.14572267, 3.0085716, 0.14570087)
+
+[node name="SM_Bld_Wall_Brick_Exterior_Corner_01" type="MeshInstance3D" unique_id=189516553]
+gi_mode = 2
+mesh = ExtResource("1_7fc6c")
+surface_material_override/0 = ExtResource("2_slmxj")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=169867210]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=116446003]
+shape = SubResource("ConvexPolygonShape3D_jso3a")

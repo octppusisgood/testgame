@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cy74ncwnpkwf8"]
+
+[ext_resource type="ArrayMesh" uid="uid://hmgc0pb2egsy" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Planter_01.res" id="1_kml0o"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_oe6dh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwxlj"]
+size = Vector3(2.3983471, 0.94677633, 2.398352)
+
+[node name="SM_Bld_Village_Planter_01" type="MeshInstance3D" unique_id=1215709803]
+gi_mode = 2
+mesh = ExtResource("1_kml0o")
+surface_material_override/0 = ExtResource("2_oe6dh")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=1695910025]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=854501493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-06, 0.47338817, 0)
+shape = SubResource("BoxShape3D_bwxlj")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsnrh4xb3ik6s"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqxrjx6ntwc5s" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Toilet_Stall_01.res" id="1_psnow"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_42p6p"]
+[ext_resource type="ArrayMesh" uid="uid://c2rv5knl1noek" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Toilet_Stall_Door_01.res" id="3_42p6p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_06q0y"]
+points = PackedVector3Array(0.0008957386, 0.013154618, 1.5325549, -1.2527101, 0.018328425, 1.5288172, -1.2733232, -0.017241478, 1.4489789, 0.018600225, -0.017241478, 1.4489789, -0.00011599064, 2.1850743, 1.5312093, -1.2500544, 2.1768825, 1.525528, -1.2500544, 2.1428216, 0.010992675, -1.2500544, 0.2591259, 0.010992675, -0.0010012388, 0.2537365, 0.0062083583, -0.00011599064, 2.1510134, 0.0051617892)
+
+[node name="SM_Prop_Toilet_Stall_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_psnow")
+surface_material_override/0 = ExtResource("2_42p6p")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_06q0y")
+
+[node name="SM_Prop_Toilet_Stall_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10427185, 1.2084152, 1.4832019)
+gi_mode = 2
+mesh = ExtResource("3_42p6p")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_42p6p")

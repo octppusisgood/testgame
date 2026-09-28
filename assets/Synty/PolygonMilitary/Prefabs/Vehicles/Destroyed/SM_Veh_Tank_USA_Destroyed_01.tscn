@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cspuywiw5lowh"]
+
+[ext_resource type="ArrayMesh" uid="uid://dbbtdy1kjym01" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_USA_Destroyed_01.res" id="1_k127y"]
+[ext_resource type="Material" uid="uid://kc8splxgww8w" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_01_Burnt_mat.tres" id="2_mub47"]
+[ext_resource type="ArrayMesh" uid="uid://b61c11gqla372" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Tank_USA_Destroyed_Tracks_01.res" id="3_mub47"]
+[ext_resource type="Material" uid="uid://bc4gyhvd4ynlw" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Tank_Tracks_01_Burnt_mat.tres" id="4_4b7f4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xjkbj"]
+points = PackedVector3Array(1.254057, -0.054895043, -2.2857056, -0.28559542, 0.8691042, -3.9795794, 1.8699181, 0.09920031, -2.4391131, 1.254057, -0.054895043, 3.4127412, -0.16242322, 0.2157743, 2.4155931, -0.28559542, 1.7931035, -3.826172, 2.024019, 1.6387217, -3.6719656, -0.28559542, 1.1770085, 4.1829743, 2.3319495, 0.71500885, -2.4391131, 2.024019, 0.71500885, 4.028768, -0.28559542, 2.8711982, -0.591033, 0.9463978, 2.8711982, -2.1314993, 2.485779, 2.4089122, -0.89864683, 1.8699181, 1.1770085, 4.028768, 1.0999562, 2.5630074, 1.2562485, -0.0929693, 2.13767, 1.626184)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aj37j"]
+points = PackedVector3Array(-1.2107587, -0.055181265, -2.4385746, -1.8264537, -0.055181265, -1.5141647, -1.8264537, 0.5610565, -3.3620195, -0.3555287, 0.3327248, -2.7782326, -0.39610457, 0.24248078, 2.4555874, -1.0562959, 0.098949805, 5.87822, -1.8264537, -0.055181265, 2.6418204, -2.1347914, 1.4844104, -1.3607395, -2.288666, 1.1778673, 2.3340054, -1.6723828, 1.9468036, -3.6717644, -0.74835026, 1.7929591, -3.9795794, -0.28613806, 2.8715901, -1.0519595, -0.28613806, 1.7929591, 3.4118404, -1.8264537, 1.4844104, 3.7196555, -1.3640454, 2.5630414, -0.4363296, -0.42178297, 2.4066184, 0.81519413)
+
+[node name="SM_Veh_Tank_USA_Destroyed_01" type="MeshInstance3D" unique_id=333892045]
+gi_mode = 2
+mesh = ExtResource("1_k127y")
+surface_material_override/0 = ExtResource("2_mub47")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=377800271]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=913152180]
+shape = SubResource("ConvexPolygonShape3D_xjkbj")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=1416016236]
+shape = SubResource("ConvexPolygonShape3D_aj37j")
+
+[node name="SM_Veh_Tank_USA_Destroyed_Tracks_01" type="MeshInstance3D" parent="." unique_id=879605727]
+gi_mode = 2
+mesh = ExtResource("3_mub47")
+surface_material_override/0 = ExtResource("4_4b7f4")

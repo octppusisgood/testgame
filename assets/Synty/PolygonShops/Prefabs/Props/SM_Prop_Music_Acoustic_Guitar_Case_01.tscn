@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckoir7lax3gly"]
+
+[ext_resource type="ArrayMesh" uid="uid://brj6g6q12mwd5" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Music_Acoustic_Guitar_Case_01.res" id="1_w354r"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_b2h5y"]
+[ext_resource type="ArrayMesh" uid="uid://cnhdeqx2e0an4" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Music_Acoustic_Guitar_Case_01_Lid_01.res" id="3_b2h5y"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_troad"]
+points = PackedVector3Array(0.3402958, -0.12235657, -0.5165018, 0.3129428, 0.06799642, -0.00012511015, 0.14982301, -0.12235657, 0.81575346, 0.23141617, -0.12235657, -0.8429214, 0.3402958, 0.06799642, -0.7342284, -0.12204328, 0.12240695, 0.67980206, 0.14982301, 0.06799642, 0.81575346, -0.09488994, -0.12235657, 0.81575346, -0.06760347, 0.06799642, 0.87027025, -0.14926319, -0.12235657, -0.8701798, 0.17697638, 0.06799642, -0.8701798, -0.31244954, 0.0951897, -0.6797116, -0.3396029, 0.06799642, -0.5165018, -0.3396029, -0.095139325, -0.5165018, -0.25807628, -0.12235657, -0.81583333, -0.1764831, 0.06799642, -0.8701798)
+
+[node name="SM_Prop_Music_Acoustic_Guitar_Case_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_w354r")
+surface_material_override/0 = ExtResource("2_b2h5y")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_troad")
+
+[node name="SM_Prop_Music_Acoustic_Guitar_Case_01_Lid_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.17108853, -0.97029114, 0.17106655, 0.9848077, -0.1736482, -1.5427993e-08, 0.029705413, 0.16846766, 0.9852595, -0.26025572, 0.06262695, -0.19153605)
+gi_mode = 2
+mesh = ExtResource("3_b2h5y")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_b2h5y")

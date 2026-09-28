@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dchpij0ltjym4"]
+
+[ext_resource type="ArrayMesh" uid="uid://dsiv7167d0v1m" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Melee_Machete_01.res" id="1_p2dwe"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_wuvu0"]
+[ext_resource type="ArrayMesh" uid="uid://wbxb0xl5kvr3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Melee_Machete_Guard_01.res" id="3_wuvu0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m67un"]
+points = PackedVector3Array(0.0009002499, -0.06370287, 0.703511, 0.008006141, -0.05660045, 0.788787, 0.0009002499, -0.06370287, 0.7817297, -0.013301796, -0.05660045, -0.12013751, 0.015102297, -0.049498037, -0.12013751, 0.008006141, 0.035730936, 0.8812184, 0.022213053, -0.028190795, 0.08570111, -0.013301796, 0.035730936, 0.873965, -0.013301796, -0.05660045, 0.76751703, -0.02750871, -0.028190795, 0.08570111, -0.02750871, -0.021067522, -0.11308019, -0.013301796, 0.035730936, -0.12013751, 0.022213053, 0.02862852, -0.070442185, 0.008006141, 0.042843774, 0.77457434, -0.013301796, 0.042843774, 0.77457434, -0.02750871, 0.02862852, 0.057373792)
+
+[node name="SM_Wep_Melee_Machete_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_p2dwe")
+surface_material_override/0 = ExtResource("2_wuvu0")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_m67un")
+
+[node name="SM_Wep_Melee_Machete_Guard_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_wuvu0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_wuvu0")

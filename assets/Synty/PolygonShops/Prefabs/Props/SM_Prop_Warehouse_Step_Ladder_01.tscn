@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnyjhrfp7qkn7"]
+
+[ext_resource type="ArrayMesh" uid="uid://ce3fd1s3veiyt" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Warehouse_Step_Ladder_01.res" id="1_wrjl2"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_7r5c7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uiu7c"]
+points = PackedVector3Array(-0.30954552, 0.010404408, 0.4241938, -0.30954552, -0.010100004, 0.34234238, 0.30414516, -0.010100004, 0.4241938, 0.20184332, 0.276321, 0.3627026, -0.20724371, 0.276321, 0.3627026, -0.28906113, 1.2374654, -0.025783926, -0.30954552, 0.991925, -0.005259484, -0.26857674, -0.010228157, -0.35310763, -0.26857674, 0.030780666, -0.41451675, 0.26317638, -0.010228157, -0.35310763, 0.26317638, 0.030780666, -0.41451675, 0.30414516, 1.1965847, -0.066586494, 0.30414516, 1.1760802, -0.005259484, -0.28906113, 1.2374654, -0.08711094, 0.24275208, 1.2784742, -0.10755327, -0.22766803, 1.2989786, -0.10755327)
+
+[node name="SM_Prop_Warehouse_Step_Ladder_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_wrjl2")
+surface_material_override/0 = ExtResource("2_7r5c7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_uiu7c")

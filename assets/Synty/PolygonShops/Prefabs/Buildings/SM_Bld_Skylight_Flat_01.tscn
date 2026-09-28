@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://xwtumthnmvrb"]
+
+[ext_resource type="ArrayMesh" uid="uid://bbvlk0iolofrn" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Skylight_Flat_01.res" id="1_xb1m6"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_wyy2j"]
+[ext_resource type="ArrayMesh" uid="uid://cd3wlt8032aki" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Skylight_Flat_01_Glass.res" id="3_wyy2j"]
+[ext_resource type="Material" uid="uid://q2nrvfvg1rqg" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_03_mat.tres" id="4_bfw0q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmtfc"]
+size = Vector3(2.5, 0.12565383, 2.5)
+
+[node name="SM_Bld_Skylight_Flat_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_xb1m6")
+surface_material_override/0 = ExtResource("2_wyy2j")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.06282692, 1.25)
+shape = SubResource("BoxShape3D_rmtfc")
+
+[node name="SM_Bld_Skylight_Flat_01_Glass" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_wyy2j")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_bfw0q")

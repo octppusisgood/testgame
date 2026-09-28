@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqu75f1lujgi"]
+
+[ext_resource type="ArrayMesh" uid="uid://757dyu4w3xu" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Skylight_Corner_02.res" id="1_kfswj"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_okrt7"]
+[ext_resource type="ArrayMesh" uid="uid://chq3ch6873n05" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Skylight_Corner_02_Glass.res" id="3_okrt7"]
+[ext_resource type="Material" uid="uid://q2nrvfvg1rqg" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_03_mat.tres" id="4_26d47"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kfswj"]
+points = PackedVector3Array(-2.5, 1.7218251, 0, -2.4422474, 1.6767948, 0.072435394, -2.5, 1.7218251, 2.5, -2.5, 1.8475124, 0, 0, -3.8146972e-08, 0, -0.07830858, -3.8146972e-08, 0.07806382, -2.5, 1.8475124, 2.5, -0.07268, 1.6767948, 2.4420028, 0, 1.7218251, 2.5, 0, 1.8475124, 2.5, 0, 0.115379065, 0, -0.04698515, 0.038519945, 0.109387234)
+
+[node name="SM_Bld_Skylight_Corner_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_kfswj")
+surface_material_override/0 = ExtResource("2_okrt7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_kfswj")
+
+[node name="SM_Bld_Skylight_Corner_02_Glass" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_okrt7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_26d47")

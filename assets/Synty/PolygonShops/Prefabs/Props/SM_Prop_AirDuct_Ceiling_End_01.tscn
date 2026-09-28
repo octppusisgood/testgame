@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dovmr7ov7tprj"]
+
+[ext_resource type="ArrayMesh" uid="uid://bj2k58ow6cia0" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_AirDuct_Ceiling_End_01.res" id="1_nxo8i"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_f8dt1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxo8i"]
+size = Vector3(0.96099854, 0.42407227, 0.13598633)
+
+[node name="SM_Prop_AirDuct_Ceiling_End_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_nxo8i")
+surface_material_override/0 = ExtResource("2_f8dt1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0010681152, 0.13537598, 0.05407715)
+shape = SubResource("BoxShape3D_nxo8i")

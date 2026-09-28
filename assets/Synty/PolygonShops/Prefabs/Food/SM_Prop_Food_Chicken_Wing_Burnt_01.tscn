@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmsajbe623d5p"]
+
+[ext_resource type="ArrayMesh" uid="uid://cobs5rj83x8k1" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Chicken_Wing_Burnt_01.res" id="1_5sibv"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_xmbvw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ic4n0"]
+points = PackedVector3Array(0.04517664, 0.034666654, -0.07372686, 0.104846194, 0.060915954, -0.024603173, 0.0802006, 0.003983526, -0.05185292, 0.049138397, 0.011928188, -0.07027608, -0.026305318, 0.064711444, -0.07352723, 0.09609628, 0.08613012, 0.037767515, 0.12008564, 0.06845519, 0.03159319, 0.11549193, 0.011350237, 0.02854167, 0.03652394, 0.08609561, -0.020353869, 0.020020619, -0.0019943789, -0.01828625, -0.12821753, 0.014032962, -0.010300979, -0.028881684, 0.078383856, -0.034613285, -0.024774082, 0.07411393, 0.03330432, -6.9588423e-06, 0.053316336, 0.071947336, -0.0221005, 0.016448276, 0.056803837, -0.04786414, 0.005424089, 0.02360791)
+
+[node name="SM_Prop_Food_Chicken_Wing_Burnt_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_5sibv")
+surface_material_override/0 = ExtResource("2_xmbvw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ic4n0")

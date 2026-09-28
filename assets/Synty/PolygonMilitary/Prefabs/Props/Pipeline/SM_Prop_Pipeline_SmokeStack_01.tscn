@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://qvajvltof3ts"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxrx3xenol4bw" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Pipeline_SmokeStack_01.res" id="1_kay7f"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_gblq2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kpd21"]
+points = PackedVector3Array(-2.0751977, -1.3327434, -3.431768, -3.650201, -1.3327434, -1.0706491, -2.8626993, 2.6015303, -2.6442661, 1.8574588, 2.6015303, -3.431768, 1.8574588, -1.3327434, -3.431768, -3.650201, -1.3327434, 1.2890835, -3.650201, 2.6015303, 1.2890835, -2.0751977, 3.38857, -1.0706491, 1.8574588, 3.38857, 1.2890835, 3.4317691, 2.6015303, -1.8574576, 3.4317691, -1.3327434, -1.8574576, -1.2890823, -1.3327434, 3.6502023, -1.2890823, 2.6015303, 3.6502023, 1.0706503, 2.6015303, 3.6502023, 3.4317691, 2.6015303, 2.075892, 2.6442673, -1.3327434, 2.8627005)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6ojn4"]
+points = PackedVector3Array(-2.2016785, 2.177835, 1.3724132, -1.3728861, 2.177835, -1.9413338, -1.3728861, 2.177835, 2.2016797, -2.0764346, 49.027935, 2.0759616, -2.0764346, 49.027935, -1.8583121, -2.0764346, 9.685041, -1.8583121, 0.2842245, 9.685041, -2.6448822, 1.9408605, 2.177835, -1.1125412, 1.1120682, 2.177835, 2.2016797, 1.8578389, 49.027935, 2.0759616, -0.50282, 49.027935, -2.6448822, 1.8578389, 9.685041, -1.8583121, 1.8578389, 49.027935, -1.8583121, 2.6448834, 9.685041, -0.28469753, 2.6448834, 9.685041, 0.502347, 2.6448834, 49.027935, 0.502347)
+
+[node name="SM_Prop_Pipeline_SmokeStack_01" type="MeshInstance3D" unique_id=1010776312]
+gi_mode = 2
+mesh = ExtResource("1_kay7f")
+surface_material_override/0 = ExtResource("2_gblq2")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1241448475]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=381881434]
+shape = SubResource("ConvexPolygonShape3D_kpd21")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=763770645]
+shape = SubResource("ConvexPolygonShape3D_6ojn4")

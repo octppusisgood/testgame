@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://bcu5c1r1qstod"]
+
+[ext_resource type="ArrayMesh" uid="uid://b33cjxfpdvwxs" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_01.res" id="1_404nh"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_inpx3"]
+[ext_resource type="Shape3D" uid="uid://3s2rkjmydntq" path="res://assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Hangar_01_Collision.res" id="3_c35ew"]
+[ext_resource type="ArrayMesh" uid="uid://0q40atjmbhjb" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_01.res" id="3_inpx3"]
+[ext_resource type="ArrayMesh" uid="uid://cljtugu8u1lvj" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_02.res" id="4_c35ew"]
+[ext_resource type="ArrayMesh" uid="uid://ck6px1cfq2ph" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_03.res" id="5_6mcdd"]
+[ext_resource type="ArrayMesh" uid="uid://cswv4qtrodk0l" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_04.res" id="6_mgjr6"]
+[ext_resource type="ArrayMesh" uid="uid://be3h5h6iaeidc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_05.res" id="7_qythr"]
+[ext_resource type="ArrayMesh" uid="uid://dh6rh5cwthe7l" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_06.res" id="8_t6ukc"]
+[ext_resource type="ArrayMesh" uid="uid://wtvhq0417kum" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_07.res" id="9_bv6ep"]
+[ext_resource type="ArrayMesh" uid="uid://c0wdhfnee65xx" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_08.res" id="10_ty3aq"]
+[ext_resource type="ArrayMesh" uid="uid://dxe7c0ascue7a" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_Small_01.res" id="11_gmvqv"]
+[ext_resource type="ArrayMesh" uid="uid://cctdxr28og4r8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Hangar_Door_Small_02.res" id="12_24nu4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6o0hm"]
+size = Vector3(4.5740166, 6.400533, 0.15284546)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nmohs"]
+size = Vector3(4.5740166, 6.400533, 0.15284546)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dvxi6"]
+size = Vector3(4.5740166, 6.400533, 0.15284546)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jfid3"]
+size = Vector3(4.5740166, 6.400533, 0.15284546)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njg7y"]
+size = Vector3(4.574013, 6.400533, 0.15283813)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e15hk"]
+size = Vector3(4.574013, 6.400533, 0.15283814)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nr41s"]
+size = Vector3(4.5740156, 6.400533, 0.15283814)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_igofg"]
+size = Vector3(4.574015, 6.400533, 0.15283814)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_03wqy"]
+size = Vector3(1.0253003, 2.2243466, 0.10047241)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_35jde"]
+size = Vector3(1.0253003, 2.2243466, 0.10046509)
+
+[node name="SM_Bld_Hangar_01" type="MeshInstance3D" unique_id=1463774938]
+gi_mode = 2
+mesh = ExtResource("1_404nh")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=552007022]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=505555696]
+shape = ExtResource("3_c35ew")
+
+[node name="SM_Bld_Hangar_Door_01" type="MeshInstance3D" parent="." unique_id=1434122239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.166343, 0.11411049, 16.116367)
+gi_mode = 2
+mesh = ExtResource("3_inpx3")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_01" unique_id=1956836701]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_01/BoxCollider" unique_id=817116908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2870064, 3.2002666, -0.07641288)
+shape = SubResource("BoxShape3D_6o0hm")
+
+[node name="SM_Bld_Hangar_Door_02" type="MeshInstance3D" parent="." unique_id=135687266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5923295, 0.11411049, 15.963532)
+gi_mode = 2
+mesh = ExtResource("4_c35ew")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_02" unique_id=1942501981]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_02/BoxCollider" unique_id=2145811074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2870064, 3.2002666, -0.076410525)
+shape = SubResource("BoxShape3D_nmohs")
+
+[node name="SM_Bld_Hangar_Door_03" type="MeshInstance3D" parent="." unique_id=273202201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01831604, 0.11411049, 15.8107)
+gi_mode = 2
+mesh = ExtResource("5_6mcdd")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_03" unique_id=627034101]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_03/BoxCollider" unique_id=1951664702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2870064, 3.2002666, -0.076410525)
+shape = SubResource("BoxShape3D_dvxi6")
+
+[node name="SM_Bld_Hangar_Door_04" type="MeshInstance3D" parent="." unique_id=145666297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5556974, 0.11411049, 15.657868)
+gi_mode = 2
+mesh = ExtResource("6_mgjr6")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_04" unique_id=1200109842]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_04/BoxCollider" unique_id=34886490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.287004, 3.2002666, -0.076410525)
+shape = SubResource("BoxShape3D_jfid3")
+
+[node name="SM_Bld_Hangar_Door_05" type="MeshInstance3D" parent="." unique_id=2142513002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.129716, 0.11411049, -16.311811)
+gi_mode = 2
+mesh = ExtResource("7_qythr")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_05" unique_id=814174467]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_05/BoxCollider" unique_id=1559203731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2870061, 3.2002666, 0.0764141)
+shape = SubResource("BoxShape3D_njg7y")
+
+[node name="SM_Bld_Hangar_Door_06" type="MeshInstance3D" parent="." unique_id=1181857360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.555702, 0.11411049, -16.158978)
+gi_mode = 2
+mesh = ExtResource("8_t6ukc")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_06" unique_id=383394997]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_06/BoxCollider" unique_id=73126208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2870061, 3.2002666, 0.07641174)
+shape = SubResource("BoxShape3D_e15hk")
+
+[node name="SM_Bld_Hangar_Door_07" type="MeshInstance3D" parent="." unique_id=444724740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018311156, 0.11411049, -16.006145)
+gi_mode = 2
+mesh = ExtResource("9_bv6ep")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_07" unique_id=2082429027]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_07/BoxCollider" unique_id=729949874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.287005, 3.2002666, 0.07641174)
+shape = SubResource("BoxShape3D_nr41s")
+
+[node name="SM_Bld_Hangar_Door_08" type="MeshInstance3D" parent="." unique_id=1745536111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5923247, 0.11411049, -15.8533125)
+gi_mode = 2
+mesh = ExtResource("10_ty3aq")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_08" unique_id=878723760]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_08/BoxCollider" unique_id=1007626480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2870047, 3.2002666, 0.07641174)
+shape = SubResource("BoxShape3D_igofg")
+
+[node name="SM_Bld_Hangar_Door_Small_01" type="MeshInstance3D" parent="." unique_id=1054462959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.204239, 0.11410796, 16.352604)
+gi_mode = 2
+mesh = ExtResource("11_gmvqv")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_Small_01" unique_id=1545035897]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_Small_01/BoxCollider" unique_id=132058417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51264894, 1.1121733, -0.05023322)
+shape = SubResource("BoxShape3D_03wqy")
+
+[node name="SM_Bld_Hangar_Door_Small_02" type="MeshInstance3D" parent="." unique_id=66983033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.240867, 0.11410796, -16.548048)
+gi_mode = 2
+mesh = ExtResource("12_24nu4")
+surface_material_override/0 = ExtResource("2_inpx3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Hangar_Door_Small_02" unique_id=26152208]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Hangar_Door_Small_02/BoxCollider" unique_id=1845529670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51264894, 1.1121733, 0.050234437)
+shape = SubResource("BoxShape3D_35jde")

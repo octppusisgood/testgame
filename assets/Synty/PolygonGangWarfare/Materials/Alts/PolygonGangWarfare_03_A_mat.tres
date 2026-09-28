@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dboekce1qqg7"]
+
+[ext_resource type="Texture2D" uid="uid://6sx6m1pgvtsj" path="res://Assets/Synty/PolygonGangWarfare/Textures/Alts/PolygonGangWarfare_03_A.png" id="1_wthoa"]
+[ext_resource type="Texture2D" uid="uid://br0fwst005jmn" path="res://Assets/Synty/PolygonGangWarfare/Textures/Misc/PolygonGangWarfare_01_A_Emissive.png" id="2_0ytg1"]
+
+[resource]
+resource_name = "PolygonGangWarfare_03_A_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_wthoa")
+roughness = 0.8
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("2_0ytg1")
+uv1_scale = Vector3(1, 1, 0)

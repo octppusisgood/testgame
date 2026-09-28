@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b7r5begb6ppwj"]
+
+[ext_resource type="Texture2D" uid="uid://dk3sxnlyj6k5x" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Building_Cladding_01.png" id="1_2cb3s"]
+[ext_resource type="Texture2D" uid="uid://c5xve2orm662g" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Building_Cladding_01_Normal.png" id="2_vscpv"]
+
+[resource]
+resource_name = "PolygonShops_Mat_Cladding_01_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_2cb3s")
+roughness = 0.8
+normal_enabled = true
+normal_texture = ExtResource("2_vscpv")
+uv1_scale = Vector3(1, 1, 0)

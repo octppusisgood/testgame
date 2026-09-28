@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b6gdbgrybxjta"]
+
+[ext_resource type="ArrayMesh" uid="uid://dtuwio3013ds7" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Gaspump_Cover_01.res" id="1_dtcx1"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_u7eyp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3wrvs"]
+points = PackedVector3Array(-2.582501, -0.78214145, -1.2596544, -2.951758, -0.78214145, -0.8903176, -2.8592992, 0.048000336, -0.98246896, -2.582501, 0.048000336, -1.1672592, 2.5824718, -0.78214145, -1.2596544, -2.7668405, -0.78214145, 1.1384751, -2.8592992, 0.048000336, 0.9536847, -1.7521065, 0.14027846, 0.30838144, 2.5824718, 0.048000336, -1.1672592, 2.7668114, 0.048000336, -1.0753517, 2.7668114, -0.78214145, -1.1672592, -2.3981616, 0.048000336, 1.2308701, 2.5824718, -0.78214145, 1.2308701, 1.7520776, 0.14027846, 0.30838144, 2.9517288, -0.78214145, 0.8615333, 2.6749306, 0.048000336, 1.1384751)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wrvs"]
+size = Vector3(4.8988647, 0.64746094, 2.1796265)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dtcx1"]
+size = Vector3(0.38861084, 3.1291504, 0.6152344)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u7eyp"]
+size = Vector3(0.453125, 3.6473389, 0.63671875)
+
+[node name="SM_Prop_Gaspump_Cover_01" type="MeshInstance3D" unique_id=841346194]
+gi_mode = 2
+mesh = ExtResource("1_dtcx1")
+surface_material_override/0 = ExtResource("2_u7eyp")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1301710530]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=716134628]
+shape = SubResource("ConvexPolygonShape3D_3wrvs")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=103242080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0055236816, 3.4370117, 0.080963135)
+shape = SubResource("BoxShape3D_3wrvs")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider" unique_id=816292440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5187073, 1.5609131, 0.01171875)
+shape = SubResource("BoxShape3D_dtcx1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshCollider" unique_id=27508070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5351563, 1.3236694, 0.0009765625)
+shape = SubResource("BoxShape3D_u7eyp")

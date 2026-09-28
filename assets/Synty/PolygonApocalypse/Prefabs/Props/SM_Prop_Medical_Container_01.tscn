@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0801rkebu4jl"]
+
+[ext_resource type="ArrayMesh" uid="uid://d013jiph8sklj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Medical_Container_01.res" id="1_aei02"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_jj1c8"]
+[ext_resource type="ArrayMesh" uid="uid://bejnkea1s7hf0" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Medical_Container_Handle_01.res" id="3_jj1c8"]
+[ext_resource type="ArrayMesh" uid="uid://bwnvhsxknr8hj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Medical_Container_Lid_01.res" id="4_pft2f"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ourg6"]
+points = PackedVector3Array(0.150319, 0.290876, 0.14722505, -0.12401326, 0.28745085, 0.27084956, 0.12795125, 0.28532782, 0.2668719, 0.13654737, 0.026602075, 0.25064322, 0.13633914, 0.026771918, -0.25032493, 0.14466758, 0.28535613, -0.2502719, -0.12401326, 0.28745085, -0.27090248, -0.11523868, 0.025384875, 0.27010706, -0.15354942, 0.28345957, 0.05754295, -0.13956957, 0.026234085, 0.24305919, 0.117124304, 0.0046641696, 0.23690715, 0.117124304, 0.0046641696, -0.23696011, 0.11962281, 0.026771918, -0.26703092, -0.13927212, 0.026488848, -0.24252878, -0.11392993, 0.0016919373, 0.24199852, -0.11369197, 0.002003314, -0.24152112)
+
+[node name="SM_Prop_Medical_Container_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_aei02")
+surface_material_override/0 = ExtResource("2_jj1c8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ourg6")
+
+[node name="SM_Prop_Medical_Container_Handle_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017639196, 0.2432758, -0.0019648063)
+gi_mode = 2
+mesh = ExtResource("3_jj1c8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_jj1c8")
+
+[node name="SM_Prop_Medical_Container_Lid_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32594, 0)
+gi_mode = 2
+mesh = ExtResource("4_pft2f")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_jj1c8")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbcfsqvinq7o0"]
+
+[ext_resource type="ArrayMesh" uid="uid://bb0oisvqvqw2x" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Hunting_Fishing_Lure_01.res" id="1_sj02j"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_dundw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4scd5"]
+points = PackedVector3Array(0.027540777, 0.014427301, -0.09298547, 0.027540777, 0.008017328, -0.09298547, 0.021127041, 0.017632285, -0.099393494, 0.021116368, 0.017629461, 0.06412147, 0.024328575, 0.011225138, 0.06729534, -0.020556914, 0.008017328, -0.10260755, 0.0050873607, -0.0015948061, 0.044857234, -0.020556914, 0.017632285, -0.099393494, -0.0045172367, 0.027252892, 0.057673275, -0.0045172367, 0.017629461, 0.10260975, 0.0179095, 0.011225138, 0.08975354, -0.0045172367, -0.0015948061, 0.06088732, -0.026970651, 0.008017328, -0.08338349, -0.026970651, 0.014427301, -0.08338349, -0.0013103671, 0.004815166, 0.10260975, -0.023758447, 0.014424477, 0.06729534)
+
+[node name="SM_Prop_Hunting_Fishing_Lure_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_sj02j")
+surface_material_override/0 = ExtResource("2_dundw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_4scd5")

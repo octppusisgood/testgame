@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bfkfubv14d007"]
+
+[ext_resource type="ArrayMesh" uid="uid://bwi4ponx6fnkj" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Roof_Flat_Corner_126.res" id="1_11t17"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_sygxf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_asp30"]
+points = PackedVector3Array(-0.28909355, 0.0831904, -0.28413707, -0.24121538, -0.0018887967, -0.23644742, -0.28909355, 0.0831904, 0.2850188, -0.28088748, 0.24173567, -0.2760588, 0.2890665, 0.0831904, -0.28413707, 0.24113172, -0.0019201003, -0.23644742, -0.14545904, -0.052566946, -0.14931354, -0.240989, -0.0017948896, 0.23710632, 0.2890665, 0.0831904, 0.2850188, 0.2801813, 0.24142265, 0.276272, -0.25281706, 0.2669965, 0.24886161, -0.25310004, 0.2672156, -0.24836984, 0.25307298, 0.26718432, -0.24831413, 0.24090534, -0.0017948896, 0.23710632, 0.14509243, -0.052253924, 0.14980528, 0.25279003, 0.2669965, 0.24886161)
+
+[node name="SM_Bld_Roof_Flat_Corner_126" type="MeshInstance3D" unique_id=1955793379]
+gi_mode = 2
+mesh = ExtResource("1_11t17")
+surface_material_override/0 = ExtResource("2_sygxf")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1528773994]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=602604557]
+shape = SubResource("ConvexPolygonShape3D_asp30")

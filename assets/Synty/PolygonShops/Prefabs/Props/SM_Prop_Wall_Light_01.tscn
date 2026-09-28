@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf7lrqfvpnplk"]
+
+[ext_resource type="ArrayMesh" uid="uid://banpbe2kug3y4" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Wall_Light_01.res" id="1_v7dtx"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_egb20"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oxhlj"]
+points = PackedVector3Array(-0.09522618, -0.069489285, 0.14982381, 0.10089873, -0.069489285, 0.14982381, -0.067178175, -0.041475706, 0.7520716, -0.0739934, 0.056584165, 0.9517094, -0.08119258, 0.1686138, 0.94811153, -0.09522618, 0.07055394, 0.09374973, -0.0897932, -0.0625044, 0.11858379, 0.09389152, -0.060505196, 0.12569177, 0.10089873, 0.07055394, 0.09374973, 0.08686511, 0.1686138, 0.94811153, 0.08686511, 0.056584165, 0.99023294, 0.08686511, -0.027456574, 0.7941053, 0.07285072, -0.041475706, 0.7520716, -0.0739934, 0.0821296, 0.9517094, -0.08119258, 0.18265761, 0.9341588, 0.08686511, 0.18265761, 0.92011845)
+
+[node name="SM_Prop_Wall_Light_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_v7dtx")
+surface_material_override/0 = ExtResource("2_egb20")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_oxhlj")

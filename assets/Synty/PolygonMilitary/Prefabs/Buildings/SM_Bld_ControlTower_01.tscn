@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dgm62agtsila1"]
+
+[ext_resource type="ArrayMesh" uid="uid://dw0parqypgis4" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_ControlTower_01.res" id="1_p4mv8"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_oenn8"]
+[ext_resource type="ArrayMesh" uid="uid://br34q87dnw65q" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_ControlTower_Glass_01.res" id="3_oenn8"]
+[ext_resource type="Shape3D" uid="uid://crw5i6t6k77if" path="res://assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_ControlTower_01_Collision.res" id="3_yctv0"]
+[ext_resource type="Material" uid="uid://bsdrxux17jhqg" path="res://assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_Alt_mat.tres" id="4_abra8"]
+
+[node name="SM_Bld_ControlTower_01" type="MeshInstance3D" unique_id=2091070944]
+gi_mode = 2
+mesh = ExtResource("1_p4mv8")
+surface_material_override/0 = ExtResource("2_oenn8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1405003913]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1752859534]
+shape = ExtResource("3_yctv0")
+
+[node name="SM_Bld_ControlTower_Glass_01" type="MeshInstance3D" parent="." unique_id=1284901403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35907802, 0)
+gi_mode = 2
+mesh = ExtResource("3_oenn8")
+surface_material_override/0 = ExtResource("4_abra8")

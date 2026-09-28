@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://chw4hklw1jwjj"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccpm06oehy7gk" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Rubbish_Bin_02.res" id="1_md1hq"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_37a3r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_63bb1"]
+size = Vector3(0.5681679, 0.91156894, 0.56817293)
+
+[node name="SM_Prop_Rubbish_Bin_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_md1hq")
+surface_material_override/0 = ExtResource("2_37a3r")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45578447, 0)
+shape = SubResource("BoxShape3D_63bb1")

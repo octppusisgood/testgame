@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc4karl4fsdk1"]
+
+[ext_resource type="ArrayMesh" uid="uid://csxsbvj38vjwe" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Barrel_Water_01.res" id="1_7u8c1"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_btlow"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m50si"]
+points = PackedVector3Array(-0.0027991235, 0.8434071, 0.38266218, 0.1571126, 1.0363064, 0.31984103, -0.018537343, 0.84241635, 0.3813923, -0.01867786, 0.028018598, 0.33679748, 0.18795675, 0.28640658, 0.34994435, 0.2066459, 1.0401703, -0.27341178, -0.3053386, 1.0346221, 0.17537475, 0.31119275, 0.053778134, 0.11008859, 0.33487034, 1.0230304, -0.09615305, -0.33175635, 0.25856647, 0.18814814, -0.3226928, 0.0288112, -0.047748625, 0.20495963, 0.0296038, -0.2552601, -0.16130562, 1.0162933, -0.3167367, 0.013079643, 0.2393459, -0.38045424, -0.3829056, 0.7940677, 0.00020757318, -0.31925005, 0.25589144, -0.20543645)
+
+[node name="SM_Prop_Barrel_Water_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_7u8c1")
+surface_material_override/0 = ExtResource("2_btlow")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_m50si")

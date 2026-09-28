@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://s02ghhy05q06"]
+
+[ext_resource type="ArrayMesh" uid="uid://cyta440ivd7v" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_WallFan_01.res" id="1_4mrbt"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_44niy"]
+[ext_resource type="ArrayMesh" uid="uid://fmp8nrxq0qso" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_WallFan_Top_01.res" id="3_44niy"]
+[ext_resource type="ArrayMesh" uid="uid://07gfgttdpcd7" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_WallFan_Blades_01.res" id="4_d2eq4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6axqw"]
+points = PackedVector3Array(-0.12050683, -0.11259777, -0.01197245, -0.06751001, -0.20085368, -0.012594919, -0.07048047, -0.17524351, 0.060460337, -0.11260917, -0.10500958, 0.060460337, -0.0704569, 0.09142125, 0.17974809, -0.0645867, 0.14915189, -0.008501712, -0.053152777, 0.19252533, -0.010972726, 0.05279372, 0.1935601, -0.011538607, 0.06712737, -0.20167285, -0.01295331, 0.062813126, -0.1892558, 0.053424552, 0.06981493, 0.09142125, 0.17974809, -0.021349967, 0.23878747, 0.16569537, 0.027709804, 0.23878747, 0.12357496, 0.12033636, -0.11311515, -0.012349703, 0.11194364, -0.10500958, 0.060460337, 0.020684429, 0.23878747, 0.16569537)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4mrbt"]
+points = PackedVector3Array(-0.01970028, 0.039588958, -0.1223431, 0.10796372, 0.41302225, 0.17289999, 0.010612252, 0.39584294, 0.23576897, 0.1930026, -0.084572986, 0.22763656, -0.34092695, 0.08692792, 0.13986447, 0.34092695, 0.12942281, 0.13986447, -0.11713524, -0.21142697, 0.13986447, -0.11713524, 0.43846506, 0.13986447, -0.28759873, 0.09755165, 0.23576897, -0.019528499, 0.17694362, -0.13052672, 0.22372498, -0.13674283, 0.13986447, 0.24501622, 0.12942281, 0.24642503, -0.27698648, 0.3212224, 0.13986447, 0.27698648, 0.3212224, 0.13986447, 0.06870652, 0.118326426, -0.13143562, -0.010612252, -0.16880485, 0.23576897, -0.27698648, -0.09418431, 0.13986447, 0.11713524, 0.43846506, 0.13986447, 0.11713524, -0.21142697, 0.13986447, -0.06870652, 0.118326426, -0.13143562, -0.15978448, 0.289224, 0.24642503, -0.15978448, -0.062249526, 0.24642503, 0.28759873, -0.07287325, 0.13986447, 0.19175473, 0.3212224, 0.23576897, 0.3089567, 0.12942281, 0.21445686, 0.06840795, 0.05001049, -0.111010775, -0.19175473, -0.09418431, 0.23576897, 0.068148255, 0.17672834, -0.110361464, 0.06990115, 0.038603723, 0.25481543, -0.2982777, 0.12942281, 0.086584195, 0.2982777, 0.09755165, 0.086584195, 0.15978448, 0.289224, 0.24642503)
+
+[node name="SM_Prop_WallFan_01" type="MeshInstance3D" unique_id=2013925538]
+gi_mode = 2
+mesh = ExtResource("1_4mrbt")
+surface_material_override/0 = ExtResource("2_44niy")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=896306568]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1883232643]
+shape = SubResource("ConvexPolygonShape3D_6axqw")
+
+[node name="SM_Prop_WallFan_Top_01" type="MeshInstance3D" parent="." unique_id=1195181084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.989888e-07, 0.20423108, 0.14156637)
+gi_mode = 2
+mesh = ExtResource("3_44niy")
+surface_material_override/0 = ExtResource("2_44niy")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_WallFan_Top_01" unique_id=454579721]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_WallFan_Top_01/MeshCollider" unique_id=1039607099]
+shape = SubResource("ConvexPolygonShape3D_4mrbt")
+
+[node name="SM_Prop_WallFan_Blades_01" type="MeshInstance3D" parent="SM_Prop_WallFan_Top_01" unique_id=1830647424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.989888e-07, 0.11303693, 0.15874097)
+gi_mode = 2
+mesh = ExtResource("4_d2eq4")
+surface_material_override/0 = ExtResource("2_44niy")

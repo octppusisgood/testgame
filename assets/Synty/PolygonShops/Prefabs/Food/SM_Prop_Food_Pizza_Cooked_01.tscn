@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqtbn2b7bj617"]
+
+[ext_resource type="ArrayMesh" uid="uid://dev3447pgtbwd" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Pizza_Cooked_01.res" id="1_7qfa4"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_hrjo8"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r8yif"]
+points = PackedVector3Array(0.018393606, -0.0046164766, -0.29490456, 0.14766937, 0.023078764, -0.2580017, 0.11996329, -0.0046164766, -0.26725632, -0.2585516, -0.0046164766, -0.14717732, -0.110766515, 0.023078764, -0.26725632, 0.21233621, 0.032315332, -0.10090411, 0.25849375, 0.023078764, -0.15637413, 0.29545447, -0.0046164766, -0.008646905, -0.2585516, -0.0046164766, 0.14821929, -0.29545447, 0.023078764, -0.017843693, -0.14772724, 0.032315332, -0.073371544, 0.25849375, 0.023078764, 0.14821929, 0, 0.032315332, 0.24978903, 0.25849375, -0.0046164766, 0.14821929, -0.23072982, 0.023078764, 0.17580971, -0.009196818, -0.0046164766, 0.29600438)
+
+[node name="SM_Prop_Food_Pizza_Cooked_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_7qfa4")
+surface_material_override/0 = ExtResource("2_hrjo8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_r8yif")

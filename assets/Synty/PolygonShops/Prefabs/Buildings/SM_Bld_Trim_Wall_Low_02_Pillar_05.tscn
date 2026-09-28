@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu4nyuq3i00hv"]
+
+[ext_resource type="ArrayMesh" uid="uid://cshpd23dt6ndo" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Trim_Wall_Low_02_Pillar_05.res" id="1_cgd1h"]
+[ext_resource type="Material" uid="uid://5d2avydyfst7" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_Red_01_mat.tres" id="2_qp8gg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mw4l1"]
+size = Vector3(0.26480278, 0.5806555, 0.26480278)
+
+[node name="SM_Bld_Trim_Wall_Low_02_Pillar_05" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_cgd1h")
+surface_material_override/0 = ExtResource("2_qp8gg")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13240139, 0.29032776, 0.13240139)
+shape = SubResource("BoxShape3D_mw4l1")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7c85tw6lf1h0"]
+
+[ext_resource type="ArrayMesh" uid="uid://cd3eiqtq3ontv" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Grinder_Pepper_01.res" id="1_cye45"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_yuyml"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hq0sl"]
+points = PackedVector3Array(-0.034293056, 0.0051652323, 0.0041352585, -0.019190747, 0.0059957206, -0.030291528, 0.018426374, 0.0024821148, -0.03166388, 0.018013816, 0.004366685, 0.031774804, -0.018926982, 0.0070498027, 0.030725356, -0.018345343, 0.15176246, 0.028626464, -0.031777132, 0.14906336, -0.0062908903, -0.021023585, 0.14906336, -0.025100186, -0.016796563, 0.067388, -0.030397093, 0.03480017, 0.006139459, -0.0032419097, 0.019265018, 0.15176246, -0.027782794, 0.032696806, 0.15176246, 0.0044395365, 0.02194326, 0.14906336, 0.023255043, 0.015646685, 0.1656412, -0.00083874166, -0.00949903, 0.16431561, -0.013270637, -0.026772335, 0.15642597, 0.0041228384)
+
+[node name="SM_Prop_Cafe_Grinder_Pepper_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_cye45")
+surface_material_override/0 = ExtResource("2_yuyml")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_hq0sl")

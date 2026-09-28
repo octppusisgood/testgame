@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cmp80mnleuu43"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqcmpn01cmx7w" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Knife_01.res" id="1_efgr3"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_7d3a1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8uhab"]
+points = PackedVector3Array(0.0076656025, 0.050235614, 0.042157374, -0.008168767, 0.050235614, 0.042157374, -0.008168767, -0.065955, 0.026314221, 0.012940109, -0.07121384, 0.0157466, 0.018225469, 0.055494457, 0.010479331, 0.0076619852, 0.22440577, 0.010462791, -0.01873225, 0.044910625, 0.010479331, -0.008168767, 0.22440577, 0.010462791, -0.013446891, -0.07121384, -0.015906638, 0.012940109, -0.07121384, -0.015906638, 0.018225469, 0.044910625, -0.015906638, 0.0076619852, 0.22966462, -0.021190448, -0.0028906446, 0.26667494, -0.010631099, -0.01873225, 0.055494457, -0.010622829, -0.008168767, 0.055494457, -0.042317413, 0.0023838617, 0.060786366, -0.042317413)
+
+[node name="SM_Wep_Knife_01" type="MeshInstance3D" unique_id=658267888]
+gi_mode = 2
+mesh = ExtResource("1_efgr3")
+surface_material_override/0 = ExtResource("2_7d3a1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=69163716]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1505511127]
+shape = SubResource("ConvexPolygonShape3D_8uhab")

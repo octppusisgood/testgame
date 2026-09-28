@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://doi0koahapsj3"]
+
+[ext_resource type="ArrayMesh" uid="uid://by04a3lwgc34p" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Attach_Aerial_07.res" id="1_eaxhm"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_46gvv"]
+
+[node name="SM_Veh_Attach_Aerial_07" type="MeshInstance3D" unique_id=575218606]
+gi_mode = 2
+mesh = ExtResource("1_eaxhm")
+surface_material_override/0 = ExtResource("2_46gvv")

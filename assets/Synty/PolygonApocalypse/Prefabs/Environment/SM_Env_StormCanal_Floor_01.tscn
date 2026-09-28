@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci3vtw3ixyqr4"]
+
+[ext_resource type="ArrayMesh" uid="uid://3lg01nhsweyv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_StormCanal_Floor_01.res" id="1_gf602"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_w01op"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_krmif"]
+points = PackedVector3Array(-0.039185524, -2.5396826, -5.0386877, -0.039185524, -2.5396826, 0.039186478, 0.08706546, -2.4622934, -0.08756161, 0.18597862, -2.4638462, -4.813524, 4.8801293, -2.462801, -4.8806252, 5.0386887, -2.5396826, -5.0386877, 5.0386887, -2.5396826, 0.039186478, 4.8612413, -2.4630888, -0.13826084)
+
+[node name="SM_Env_StormCanal_Floor_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_gf602")
+surface_material_override/0 = ExtResource("2_w01op")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_krmif")

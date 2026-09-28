@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://pvu6c8x4xtad"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccnnjedegrw33" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_CamoNet_Tent_01.res" id="1_1i3pu"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_xbrmv"]
+[ext_resource type="Material" uid="uid://durncr70dfke6" path="res://assets/Synty/PolygonMilitary/Materials/Misc/Camo_Netting_01_mat.tres" id="3_r13mg"]
+[ext_resource type="Shape3D" uid="uid://cpcy7qlrx4yxl" path="res://assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_CamoNet_Tent_01_Collision.res" id="4_xbrmv"]
+
+[node name="SM_Bld_CamoNet_Tent_01" type="MeshInstance3D" unique_id=839828041]
+gi_mode = 2
+mesh = ExtResource("1_1i3pu")
+surface_material_override/0 = ExtResource("2_xbrmv")
+surface_material_override/1 = ExtResource("3_r13mg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=625386342]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=417527660]
+shape = ExtResource("4_xbrmv")

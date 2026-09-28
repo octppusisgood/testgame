@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cc1ykbxcuxe5b"]
+
+[ext_resource type="ArrayMesh" uid="uid://csrqrmmlttkj" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Ice_Cream_Machine_01.res" id="1_6lxdt"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_suoxc"]
+[ext_resource type="ArrayMesh" uid="uid://dngkiju710eml" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Ice_Cream_Machine_01_Lever_01.res" id="3_suoxc"]
+[ext_resource type="ArrayMesh" uid="uid://c3xtl7d1j7h5k" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Ice_Cream_Machine_01_Lever_02.res" id="4_2ofsj"]
+[ext_resource type="ArrayMesh" uid="uid://bwckagtvd68mn" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Ice_Cream_Machine_01_Lever_03.res" id="5_4ocsn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qnlfc"]
+points = PackedVector3Array(0.17460847, 0.124420926, 0.37624475, 0.23316342, 0.70961136, 0.34689155, -0.1764404, 0.124420926, 0.37624475, 0.27974892, 0.011782374, 0.27827123, 0.29171842, 0.87057406, 0.3030238, -0.22420597, 0.8654501, 0.33263615, -0.28028837, 0.013990974, 0.27710488, -0.2823676, 0.91121227, 0.2788544, -0.26753217, 0.011959063, -0.28306797, 0.2660936, 0.011163967, -0.28365114, 0.27952415, 0.012224094, -0.26874778, 0.28143477, 0.9127141, -0.2708861, 0.27761352, 0.90653, 0.29032353, -0.2820866, 0.9106822, -0.26952535, 0.26783562, 0.9136859, -0.28572467, -0.2692742, 0.91280246, -0.2852063)
+
+[node name="SM_Prop_Kitchen_Ice_Cream_Machine_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_6lxdt")
+surface_material_override/0 = ExtResource("2_suoxc")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_qnlfc")
+
+[node name="SM_Prop_Kitchen_Ice_Cream_Machine_01_Lever_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.107296996, 0.5562581, 0.3233077)
+gi_mode = 2
+mesh = ExtResource("3_suoxc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_suoxc")
+
+[node name="SM_Prop_Kitchen_Ice_Cream_Machine_01_Lever_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2674868e-16, 0.5562581, 0.3233077)
+gi_mode = 2
+mesh = ExtResource("4_2ofsj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_suoxc")
+
+[node name="SM_Prop_Kitchen_Ice_Cream_Machine_01_Lever_03" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1075293, 0.5562581, 0.3233077)
+gi_mode = 2
+mesh = ExtResource("5_4ocsn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_suoxc")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8jo41rxs7itq"]
+
+[ext_resource type="ArrayMesh" uid="uid://dylxg05717ir8" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Skateboard_02.res" id="1_4wx71"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_kkdek"]
+[ext_resource type="ArrayMesh" uid="uid://cuvlni4k82xvo" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Skateboard_02_Wheel_01.res" id="3_kkdek"]
+[ext_resource type="ArrayMesh" uid="uid://dc22t64h760a0" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Skateboard_02_Wheel_02.res" id="4_sueei"]
+[ext_resource type="ArrayMesh" uid="uid://belbw88k6osat" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Skateboard_02_Wheel_03.res" id="5_575is"]
+[ext_resource type="ArrayMesh" uid="uid://dydsr7v3kxe4v" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Skateboard_02_Wheel_04.res" id="6_5fh7e"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qc5ym"]
+points = PackedVector3Array(0.1550807, 0.12904263, 0.4469195, 0.12191394, 0.19523871, 0.48007435, -0.0601184, 0.21183676, 0.51312864, -0.15952635, 0.12904263, 0.4304425, -0.09328518, 0.029703915, 0.31450105, 0.12191394, 0.04626631, 0.31450105, 0.1550807, 0.12904263, -0.44695508, 0.1550807, 0.17869414, -0.43047813, 0.055672765, 0.21183676, -0.5131643, -0.12639037, 0.19523871, 0.48007435, -0.07671718, 0.21183676, -0.49658686, -0.15952635, 0.17869414, 0.4304425, -0.15952635, 0.12904263, -0.43047813, -0.09328518, 0.029703915, -0.31453666, 0.08877796, 0.029703915, -0.31453666, -0.15952635, 0.17869414, -0.43047813)
+
+[node name="SM_Prop_Sport_Skateboard_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_4wx71")
+surface_material_override/0 = ExtResource("2_kkdek")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_qc5ym")
+
+[node name="SM_Prop_Sport_Skateboard_02_Wheel_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13291961, 0.057392, 0.29999998)
+gi_mode = 2
+mesh = ExtResource("3_kkdek")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_kkdek")
+
+[node name="SM_Prop_Sport_Skateboard_02_Wheel_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13291961, 0.057392, 0.29999998)
+gi_mode = 2
+mesh = ExtResource("4_sueei")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_kkdek")
+
+[node name="SM_Prop_Sport_Skateboard_02_Wheel_03" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13291961, 0.057392, -0.29999998)
+gi_mode = 2
+mesh = ExtResource("5_575is")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_kkdek")
+
+[node name="SM_Prop_Sport_Skateboard_02_Wheel_04" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13291961, 0.057392, -0.29999998)
+gi_mode = 2
+mesh = ExtResource("6_5fh7e")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_kkdek")

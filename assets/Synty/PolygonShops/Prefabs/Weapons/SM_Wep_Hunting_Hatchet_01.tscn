@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://6a0ddf5x30v5"]
+
+[ext_resource type="ArrayMesh" uid="uid://cx5pq87ficwmq" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Hunting_Hatchet_01.res" id="1_puovb"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_56abv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1ob7u"]
+points = PackedVector3Array(0.0046636593, -0.14033934, 0.3400664, -0.021987334, -0.033745803, -0.09517268, 0.022435337, -0.033745803, -0.09517268, 0.013547324, -0.122559845, 0.32231176, 0.013547324, -0.11365618, 0.4644602, -0.013099321, -0.122559845, 0.4644602, -0.021987334, 0.028412893, -0.10413349, -0.021987334, -0.06040114, 0.38448083, 0.022435337, 0.03728874, -0.09517268, 0.022435337, -0.042593814, 0.3933303, 0.013547324, 0.05504042, 0.4466499, -0.013099321, 0.11719912, 0.41114062, -0.021987334, 0.0017853826, 0.40223545, -0.004215656, 0.14391011, 0.37563133, 0.013547324, 0.13500643, 0.3933303, 0.022435337, 0.03728874, 0.3667262)
+
+[node name="SM_Wep_Hunting_Hatchet_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_puovb")
+surface_material_override/0 = ExtResource("2_56abv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_1ob7u")

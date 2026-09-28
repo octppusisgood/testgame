@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://du84yexqibdfq"]
+
+[ext_resource type="Texture2D" uid="uid://i4modg5ncl0n" path="res://Assets/Synty/PolygonApocalypse/Textures/Misc/Road_01.png" id="1_gm3bs"]
+[ext_resource type="Texture2D" uid="uid://cqcyy75ridgcq" path="res://Assets/Synty/PolygonApocalypse/Textures/Misc/Road_01_Normals.png" id="2_diyn4"]
+
+[resource]
+resource_name = "Road_01_Triplanar_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_gm3bs")
+roughness = 0.8
+normal_enabled = true
+normal_texture = ExtResource("2_diyn4")
+uv1_scale = Vector3(1, 1, 0)

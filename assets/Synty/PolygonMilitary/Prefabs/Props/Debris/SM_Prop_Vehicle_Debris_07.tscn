@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://jvqowtjhynsv"]
+
+[ext_resource type="ArrayMesh" uid="uid://xf6vggwhb33a" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Vehicle_Debris_07.res" id="1_vme3p"]
+[ext_resource type="Material" uid="uid://kc8splxgww8w" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_01_Burnt_mat.tres" id="2_vme3p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vi0ra"]
+points = PackedVector3Array(0.13531984, 0.03145802, 0.580046, -0.03901796, 0.069031, -0.62477666, -0.038450353, 0.30155736, -0.6156877, -0.62477666, 0.069031, 0.03901796, -0.26530585, 0.35674962, 0.4737265, 0.60964024, 0.31948245, 0.03807268, 0.51706576, 0.013763294, -0.30635157, -0.47387198, 0.35675925, -0.2653208, -0.5170047, 0.013783639, -0.30643538, -0.30635157, 0.013763294, 0.51706576, 0.28380507, 0.35644835, -0.4540407, 0.2653208, 0.35675925, 0.47387198, 0.5221295, 0.0120751215, 0.2900854, -0.56674725, 0.30340198, 0.2735768, 0.3657396, 0.38935238, 0.060850516, -0.038450353, 0.30155736, 0.6156877, 0.32294497, 0.30012313, -0.5318533, -0.32100156, 0.3183314, -0.52877104, 0.32103297, 0.31834432, 0.5287045, -0.20317453, 0.38935238, -0.32513016, 0.28993028, 0.012168209, -0.5218503, -0.56674725, 0.30340198, -0.2735768, -0.32500288, 0.38935238, 0.20317453, 0.52877104, 0.3183314, -0.32100156, 0.18696523, -0.0009656978, 0.29937878, 0.6221822, 0.05006653, -0.038855936, -0.5170047, 0.013783639, 0.30643538, -0.30635157, 0.013763294, -0.51706576, -0.27352446, 0.30337954, 0.56676126, 0.53190964, 0.30010968, 0.32290688, 0.32704344, 0.05147268, 0.53860307, -0.29927516, -0.0009741816, -0.18709092)
+
+[node name="SM_Prop_Vehicle_Debris_07" type="MeshInstance3D" unique_id=1610718841]
+gi_mode = 2
+mesh = ExtResource("1_vme3p")
+surface_material_override/0 = ExtResource("2_vme3p")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=48983441]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1894995660]
+shape = SubResource("ConvexPolygonShape3D_vi0ra")

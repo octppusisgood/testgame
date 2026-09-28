@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://8fcotpvrhbel"]
+
+[ext_resource type="ArrayMesh" uid="uid://cq8y7yd72oamu" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Hair_Dryer_01.res" id="1_3kjxl"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_10ljo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oeygj"]
+points = PackedVector3Array(0.040218197, 0.104577824, 0.21568108, 0.06775972, 0.110062614, 0.06696286, 0.047602132, 0.14855783, 0.05554997, 0.0068557635, 0.13758822, 0.21456528, -0.008963101, 0.13708036, 0.21399146, -0.04235249, 0.104577824, 0.21016592, 0.007179141, -0.1761968, 0.0119705945, 0.029209673, -0.12111175, 0.0119705945, 0.06775972, 0.104577824, -0.07066126, -0.0037081167, 0.16968448, -0.066166244, -0.069894016, 0.110062614, 0.05593253, -0.025832962, -0.12659656, 0.0119705945, -0.0038024336, -0.14315253, -0.0651461, 0.011868209, 0.07766165, -0.11000066, -0.069894016, 0.110062614, -0.059599053, -0.05888549, 0.099093005, -0.10365663)
+
+[node name="SM_Prop_Barber_Hair_Dryer_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3kjxl")
+surface_material_override/0 = ExtResource("2_10ljo")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_oeygj")

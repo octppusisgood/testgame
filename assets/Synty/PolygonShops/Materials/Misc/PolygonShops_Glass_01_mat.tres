@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cg0ilik1tmchi"]
+
+[resource]
+resource_name = "PolygonShops_Glass_01_mat"
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.105882354, 0.25882354, 0.24313726, 0.3372549)
+roughness = 0.87
+uv1_scale = Vector3(1, 1, 0)

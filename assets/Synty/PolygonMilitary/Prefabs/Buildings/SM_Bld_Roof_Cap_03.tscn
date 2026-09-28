@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d4ny8guddy58f"]
+
+[ext_resource type="ArrayMesh" uid="uid://ca302k0l2ynpn" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Roof_Cap_03.res" id="1_8rfns"]
+[ext_resource type="Material" uid="uid://cvaa24c8wyg8b" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Gold_mat.tres" id="2_yvo2l"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="3_tgvut"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_56cw7"]
+points = PackedVector3Array(0.4504515, 0.65102184, 1.2529392, -0.4292239, 0.28724572, 1.1828904, 1.0133976, 0.072541036, 0.64879835, 0.8621998, 1.4780712, 0.6178466, -0.058627367, 3.5940468, 0.06397319, -0.37212014, 1.3073548, 1.0649016, -0.9891645, 0.027854534, 0.72047603, -0.4333853, 0.057529166, -1.1245275, 1.0256506, 0.2683936, -0.74984837, 1.2390383, 0.27223384, -0.100327134, 0.88878644, 1.3639112, -0.6216197, 0.358207, 1.4229114, -1.021898, -0.36980826, 1.0999815, -1.0956702, -0.88998425, 1.3125916, -0.67142177, -1.1093829, 1.308053, 0.060249686, -1.1227919, 0.074635714, -0.31256765)
+
+[node name="SM_Bld_Roof_Cap_03" type="MeshInstance3D" unique_id=138449048]
+gi_mode = 2
+mesh = ExtResource("1_8rfns")
+surface_material_override/0 = ExtResource("2_yvo2l")
+surface_material_override/1 = ExtResource("3_tgvut")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1735795763]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=864288306]
+shape = SubResource("ConvexPolygonShape3D_56cw7")

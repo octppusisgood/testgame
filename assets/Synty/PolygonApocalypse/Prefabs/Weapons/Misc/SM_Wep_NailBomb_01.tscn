@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://vdh32snrum5m"]
+
+[ext_resource type="ArrayMesh" uid="uid://efjgquhgc6tk" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_NailBomb_01.res" id="1_65w2n"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_wfbbf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xvcf5"]
+points = PackedVector3Array(-0.0025296435, 0.022823809, 0.07316949, -0.079727456, 0.012282528, -0.018050566, 0.030479759, 0.005568857, 0.04797276, 0.07466817, 0.06846858, 0.059102602, 0.032540783, 0.18423846, 0.06612746, -0.037830908, 0.120253906, 0.07301491, -0.069191486, 0.12809335, 0.066110276, 0.022021309, 0.022823809, -0.1022973, 0.05479987, 0.009191783, 0.0047415644, -0.05799599, 0.16297169, 0.0020278022, -0.042101353, 0.08736101, -0.0740433, 0.088716134, 0.11407241, -0.04965383, 0.081692144, 0.21230079, 0.0064419582, 0.0074787065, 0.21467513, 0.034472667, -0.013049126, 0.12107264, -0.102262944, 0.046572253, 0.19475928, -0.05315767)
+
+[node name="SM_Wep_NailBomb_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_65w2n")
+surface_material_override/0 = ExtResource("2_wfbbf")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_xvcf5")

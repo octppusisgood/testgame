@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b5l5j3fdtdujg"]
+
+[ext_resource type="ArrayMesh" uid="uid://b80fcxyvlyyo5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Env_Ground_Round_04.res" id="1_fo1kb"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_b2vvk"]
+
+[node name="SM_Env_Ground_Round_04" type="MeshInstance3D" unique_id=280902360]
+gi_mode = 2
+mesh = ExtResource("1_fo1kb")
+surface_material_override/0 = ExtResource("2_b2vvk")

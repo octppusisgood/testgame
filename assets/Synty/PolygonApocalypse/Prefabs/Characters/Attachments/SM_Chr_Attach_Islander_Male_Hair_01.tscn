@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://h1udtbx86tt2"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1gvlt71oinrj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Islander_Male_Hair_01.res" id="1_kkgi6"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_ca6w6"]
+
+[node name="SM_Chr_Attach_Islander_Male_Hair_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_kkgi6")
+surface_material_override/0 = ExtResource("2_ca6w6")

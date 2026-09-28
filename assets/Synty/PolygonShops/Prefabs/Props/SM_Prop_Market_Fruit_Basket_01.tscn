@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://u4hgvt0l4vlo"]
+
+[ext_resource type="ArrayMesh" uid="uid://e1a4nptqk3kg" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Fruit_Basket_01.res" id="1_8b1m6"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_alfde"]
+[ext_resource type="ArrayMesh" uid="uid://q615o2uk085q" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Fruit_Basket_01_Fruit.res" id="3_alfde"]
+[ext_resource type="ArrayMesh" uid="uid://dy7nplaye7bib" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Fruit_Basket_01_Mesh.res" id="4_q38gr"]
+[ext_resource type="Material" uid="uid://bh08n74p5hnhf" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Wire_01_mat.tres" id="5_rp6h8"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mywgd"]
+points = PackedVector3Array(0.25595737, 0.5129864, 0.25645605, -0.23250438, 0.5129864, 0.25645605, -0.23665461, 0.4929464, 0.26105186, 0.23095474, 0.001716048, 0.23148566, 0.23146087, 0.0011649481, -0.23151325, 0.25595737, 0.5129864, -0.25597298, -0.25649473, 0.5129363, 0.25645605, -0.25649473, 0.5129363, -0.25597298, -0.23154274, 0.0017661479, 0.23143461, -0.23154274, 0.0017661479, -0.23095155, -0.23665461, 0.4929464, -0.26056877, -0.26110047, 0.49299648, -0.21164928)
+
+[node name="SM_Prop_Market_Fruit_Basket_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8b1m6")
+surface_material_override/0 = ExtResource("2_alfde")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_mywgd")
+
+[node name="SM_Prop_Market_Fruit_Basket_01_Fruit" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_alfde")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_alfde")
+
+[node name="SM_Prop_Market_Fruit_Basket_01_Mesh" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("4_q38gr")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_rp6h8")

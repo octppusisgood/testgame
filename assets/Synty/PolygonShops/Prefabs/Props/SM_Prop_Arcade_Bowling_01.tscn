@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdap63d274te"]
+
+[ext_resource type="ArrayMesh" uid="uid://l8pogi4bjwyg" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Bowling_01.res" id="1_52kc7"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_vacsl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_52kc7"]
+size = Vector3(1.0605469, 0.72454834, 2.7822266)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v42pj"]
+points = PackedVector3Array(0.5552609, 0.8848623, -0.51381814, -0.5291952, 0.8848623, -0.51381814, -0.51719993, 0, -0.5285244, 0.52670574, 0.037912253, -0.5483842, 0.52670574, 0.037912253, -1.7920064, 0.5552609, 2.4827666, -0.91352695, -0.5056293, 0.026489973, -1.797914, -0.5291952, 2.4827666, -0.91352695, 0.52670574, 1.7672943, -1.7920064, 0.52670574, 2.4166632, -1.7918807, -0.50573546, 2.4283285, -1.797914)
+
+[node name="SM_Prop_Arcade_Bowling_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_52kc7")
+surface_material_override/0 = ExtResource("2_vacsl")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005859375, 0.35928345, 0.40771484)
+shape = SubResource("BoxShape3D_52kc7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_v42pj")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cousnkpxvmyxx"]
+
+[ext_resource type="ArrayMesh" uid="uid://dyxvti82okh01" path="res://Assets/Synty/PolygonApocalypse/Models/extracted/SM_Generic_CloudRing_01.res" id="1_wy1hq"]
+
+[node name="SM_Generic_CloudRing_01" type="MeshInstance3D"]
+mesh = ExtResource("1_wy1hq")

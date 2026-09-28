@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bsg243vbbf6en"]
+
+[ext_resource type="ArrayMesh" uid="uid://dt8rvxhtfot4g" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Door_Cage_02.res" id="1_ulgch"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_h5fq8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ulgch"]
+size = Vector3(2.74292, 0.18603516, 0.13482666)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5fq8"]
+size = Vector3(0.6109009, 2.5575256, 0.10839844)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5yeqc"]
+size = Vector3(0.95758057, 2.5559082, 0.13024902)
+
+[node name="SM_Bld_Door_Cage_02" type="MeshInstance3D" unique_id=895117062]
+gi_mode = 2
+mesh = ExtResource("1_ulgch")
+surface_material_override/0 = ExtResource("2_h5fq8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=265624711]
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider" unique_id=1612521029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3692627, 2.6433105, -0.05581665)
+shape = SubResource("BoxShape3D_ulgch")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1405700632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4183044, 1.2744293, -0.057128906)
+shape = SubResource("BoxShape3D_h5fq8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=2018173248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46273804, 1.2757568, -0.058288574)
+shape = SubResource("BoxShape3D_5yeqc")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dffrgwv1lvhuy"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqd7y15e46avu" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Emo_Female_Spikes_R_01.res" id="1_hnoqo"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_jk8xj"]
+
+[node name="SM_Chr_Attach_Emo_Female_Spikes_R_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_hnoqo")
+surface_material_override/0 = ExtResource("2_jk8xj")

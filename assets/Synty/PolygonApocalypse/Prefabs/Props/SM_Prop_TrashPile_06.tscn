@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd3xrv7iatlqj"]
+
+[ext_resource type="ArrayMesh" uid="uid://5jbmul7vk1mm" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_TrashPile_06.res" id="1_u58ta"]
+[ext_resource type="Material" uid="uid://dih81x3j3aip0" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Rubble_01_mat.tres" id="2_mm1fh"]
+[ext_resource type="ArrayMesh" uid="uid://ddaqj4g4brxwf" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Rubble_Grass_06.res" id="3_mm1fh"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="4_dhd7f"]
+[ext_resource type="ArrayMesh" uid="uid://cahvf6iwnfnvf" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Rubble_Trash_06.res" id="5_t47os"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ndakt"]
+points = PackedVector3Array(2.211682, -0.040485263, 0.36536026, 1.5629666, -0.040485263, -1.9821638, 2.049297, 0.12141976, -1.0106024, 1.1499977, 0.49216992, 0.23904729, 1.6445711, 0.12141976, 1.8222032, 1.5633786, -0.040485263, 2.065343, -0.4602511, -0.040485263, -2.6302042, 0.83511925, 0.36424786, -1.7385246, -0.09426665, 0.55136037, -0.910251, -0.032445073, 0.56119597, 0.93301964, -0.21749794, 0.12141976, 2.4702435, -1.5124562, -0.040485263, 1.9839635, -1.6744289, 0.12141976, -1.8199041, -1.9987867, -0.040485263, 0.9325204, -1.1077302, 0.36424786, 1.4173026, -1.7844715, 0.06517411, 0.8336668)
+
+[node name="SM_Prop_TrashPile_06" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_u58ta")
+surface_material_override/0 = ExtResource("2_mm1fh")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ndakt")
+
+[node name="SM_Rubble_Grass_06" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03535732, 0.3726872, 0.27820557)
+gi_mode = 2
+mesh = ExtResource("3_mm1fh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_dhd7f")
+
+[node name="SM_Rubble_Trash_06" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10689007, 0.5861131, -0.13692239)
+gi_mode = 2
+mesh = ExtResource("5_t47os")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_dhd7f")
+surface_material_override/1 = ExtResource("4_dhd7f")

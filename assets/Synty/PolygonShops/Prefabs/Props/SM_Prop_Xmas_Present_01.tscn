@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4q1uf0xy8u8r"]
+
+[ext_resource type="ArrayMesh" uid="uid://drx6br6lelv22" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Xmas_Present_01.res" id="1_ftq8v"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_rmm8x"]
+[ext_resource type="ArrayMesh" uid="uid://bebq27ot4s5lu" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Xmas_Present_01_Lid.res" id="3_rmm8x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftq8v"]
+size = Vector3(0.5695801, 0.19525146, 0.40881348)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmm8x"]
+size = Vector3(0.59039307, 0.11810303, 0.42944336)
+
+[node name="SM_Prop_Xmas_Present_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ftq8v")
+surface_material_override/0 = ExtResource("2_rmm8x")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018310547, 0.10067749, -0.011413574)
+shape = SubResource("BoxShape3D_ftq8v")
+
+[node name="SM_Prop_Xmas_Present_01_Lid" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0028025806, 0)
+gi_mode = 2
+mesh = ExtResource("3_rmm8x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_rmm8x")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Xmas_Present_01_Lid"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Xmas_Present_01_Lid/MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00015258789, 0.23983765, -0.011108398)
+shape = SubResource("BoxShape3D_rmm8x")

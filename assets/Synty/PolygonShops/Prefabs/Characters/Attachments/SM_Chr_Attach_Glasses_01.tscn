@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ct5q3brmk7"]
+
+[ext_resource type="ArrayMesh" uid="uid://b3l8r7rvv8bwo" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Chr_Attach_Glasses_01.res" id="1_iemql"]
+[ext_resource type="Material" uid="uid://c00i4t2473bv4" path="res://Assets/Synty/PolygonShops/Materials/Alternates/PolygonShops_Mat_01_A_Colour_Emissive_mat.tres" id="2_ug3ex"]
+
+[node name="SM_Chr_Attach_Glasses_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_iemql")
+surface_material_override/0 = ExtResource("2_ug3ex")

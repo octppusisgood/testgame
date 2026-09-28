@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://byaytecd17rf"]
+
+[ext_resource type="ArrayMesh" uid="uid://bcq6bs0nrr3c5" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_KuckleDuster_02.res" id="1_g0lgv"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_48mrs"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ml0y8"]
+points = PackedVector3Array(-0.012654771, 0.015151203, 0.063346155, 0.013509119, 0.06036467, 0.05577808, -0.012726373, 0.026990734, 0.06161397, -0.013582945, -0.04799714, 0.05160746, 0.012313101, -0.019426744, 0.058729477, 0.013509119, 0.062446617, 0.009938443, -0.013068471, 0.05990062, 0.010488579, -0.012922616, 0.057204112, 0.05424662, 0.012445698, -0.06568118, 0.034122087, -0.012965047, 0.02359189, -0.011271494, -0.012742285, -0.03743688, -0.012602227, -0.012538087, -0.061906077, 0.0014485205, -0.012360407, -0.06489104, 0.033995703, 0.012257412, -0.060965437, 0.0018202337, 0.012029346, -0.032068957, -0.012602227, 0.011748241, 0.022952251, -0.008111935)
+
+[node name="SM_Wep_KuckleDuster_02" type="MeshInstance3D" unique_id=2031734419]
+gi_mode = 2
+mesh = ExtResource("1_g0lgv")
+surface_material_override/0 = ExtResource("2_48mrs")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1948038231]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=987270]
+shape = SubResource("ConvexPolygonShape3D_ml0y8")

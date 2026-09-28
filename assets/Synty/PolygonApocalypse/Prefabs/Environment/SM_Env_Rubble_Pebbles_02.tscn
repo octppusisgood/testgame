@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://v6ks4taqq5eq"]
+
+[ext_resource type="ArrayMesh" uid="uid://hp71y1w5uoty" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Rubble_Pebbles_02.res" id="1_admpj"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_6gtfn"]
+
+[node name="SM_Env_Rubble_Pebbles_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_admpj")
+surface_material_override/0 = ExtResource("2_6gtfn")

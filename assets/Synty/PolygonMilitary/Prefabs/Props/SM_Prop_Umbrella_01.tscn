@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bbvaff4mholiv"]
+
+[ext_resource type="ArrayMesh" uid="uid://djkahdegsnygl" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Umbrella_01.res" id="1_a6c5s"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_gv656"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_36pht"]
+points = PackedVector3Array(-0.0573811, -0.093667746, -0.04162727, -0.0573811, -0.093667746, 0.03321881, -0.0573811, 0.39297462, -0.0790613, 0.054899007, -0.093667746, -0.04162727, 0.054899007, -0.093667746, 0.03321881, -0.0573811, 1.3659736, 0.03321881, -0.0573811, 1.3285395, -0.0790613, 0.054899007, 0.4679855, -0.0790613, 0.054899007, 1.3659736, 0.03321881, -0.0573811, 1.3659736, -0.04162727, 0.054899007, 1.3659736, -0.0790613)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wq2vo"]
+points = PackedVector3Array(1.0648278, 1.4035397, 0.032720566, -0.0571301, 1.3662481, 0.032720566, 0.09230924, 1.4035397, -1.0144651, 0.08533406, 1.5352687, -1.0230377, 0.015792966, 1.6366982, -1.0801889, 0.8244988, 1.8842728, -0.0042078495, 0.18573534, 1.610715, 0.9223008, -0.09475416, 1.4783818, 1.1185932, -1.0676953, 1.5906018, 0.14504468, -1.0748819, 1.6405828, -0.10971773, -0.13237822, 1.5532238, -1.1270089, 0.013890624, 1.9184568, -0.85246336, -0.020140171, 1.9486699, 0.7842587, -0.020140171, 2.2481246, -0.0042078495, -1.094328, 1.851729, -0.0042078495, -0.8497717, 2.0237708, 0.030082822)
+
+[node name="SM_Prop_Umbrella_01" type="MeshInstance3D" unique_id=649406376]
+gi_mode = 2
+mesh = ExtResource("1_a6c5s")
+surface_material_override/0 = ExtResource("2_gv656")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=2115332428]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=513027472]
+shape = SubResource("ConvexPolygonShape3D_36pht")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=1272791881]
+shape = SubResource("ConvexPolygonShape3D_wq2vo")

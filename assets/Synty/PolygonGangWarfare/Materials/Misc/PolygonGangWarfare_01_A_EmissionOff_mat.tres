@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://uat7yaols7up"]
+
+[ext_resource type="Texture2D" uid="uid://c8fcmch1eduqr" path="res://Assets/Synty/PolygonGangWarfare/Textures/Alts/PolygonGangWarfare_01_A.png" id="1_cosus"]
+
+[resource]
+resource_name = "PolygonGangWarfare_01_A_EmissionOff_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_cosus")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

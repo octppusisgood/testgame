@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://drkny2ughriaq"]
+
+[ext_resource type="ArrayMesh" uid="uid://djpxhy2qpofhf" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_A_Barrel_05.res" id="1_1umhn"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_kqjme"]
+
+[node name="SM_Wep_Mod_A_Barrel_05" type="MeshInstance3D" unique_id=312279638]
+gi_mode = 2
+mesh = ExtResource("1_1umhn")
+surface_material_override/0 = ExtResource("2_kqjme")

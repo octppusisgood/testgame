@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bb3mbmjy8g4vt"]
+
+[ext_resource type="ArrayMesh" uid="uid://35ukyqmammpl" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_OutdoorGrill_01.res" id="1_8ij3r"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_c3fd7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i3821"]
+points = PackedVector3Array(-1.2746949, 0.059712313, -0.91244674, -1.1549115, -0.01991713, 0.5215014, -1.2746949, 0.5375826, 0.20278764, -1.2345176, 0.5774441, -0.87236583, 1.2746949, 0.5774441, -0.8725416, 1.1152332, -0.019823559, -0.91244674, 0.31867373, -0.01991713, 0.6807704, -0.99420214, 0.07571306, 0.8834604, -1.1035045, 0.64827776, 0.84074247, -1.1549115, 0.9360105, 0.5215014, -0.9557717, 0.9360105, 0.44186687, 1.198832, 0.008622212, -0.8581265, -0.8362378, 0.9360105, 0.8400394, 1.2746949, 0.5774441, 0.16270673, 1.2746949, -0.019823559, 0.20278764, 0.31867373, 0.1395289, 0.8400394)
+
+[node name="SM_Prop_OutdoorGrill_01" type="MeshInstance3D" unique_id=1093749805]
+gi_mode = 2
+mesh = ExtResource("1_8ij3r")
+surface_material_override/0 = ExtResource("2_c3fd7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=27689832]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=831215200]
+shape = SubResource("ConvexPolygonShape3D_i3821")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://y1gihpg68w5u"]
+
+[ext_resource type="ArrayMesh" uid="uid://pjlvqin1a24c" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_SpeakerPole_01.res" id="1_bnyaq"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_it7a8"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kmoly"]
+points = PackedVector3Array(0.07424767, 1.2384652, 0.17782345, -0.031006336, 1.2384652, 0.17782345, 0.07424767, -0.025428295, 0.17782345, 0.1269649, 9.084042, -0.08548941, 0.07424767, 9.084042, 0.12514234, -0.083672, 9.084042, 0.12514234, -0.13638923, 1.2384652, 0.12508047, -0.031006336, -0.025428295, 0.17782345, 0.1269649, -0.025428295, -0.13820148, 0.07424767, 9.243729, -0.08548941, 0.1269649, 1.2384652, -0.13820148, -0.083672, 9.243729, 0.07239932, -0.13638923, 9.084042, -0.08548941, -0.13638923, -0.025428295, 0.12508047, -0.13638923, -0.025428295, -0.13820148, -0.13638923, 1.2384652, -0.13820148)
+
+[node name="SM_Prop_SpeakerPole_01" type="MeshInstance3D" unique_id=1296123197]
+gi_mode = 2
+mesh = ExtResource("1_bnyaq")
+surface_material_override/0 = ExtResource("2_it7a8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1355941440]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=610386965]
+shape = SubResource("ConvexPolygonShape3D_kmoly")

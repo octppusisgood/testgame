@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://bc5d2k01evvh6"]
+
+[ext_resource type="ArrayMesh" uid="uid://bib4l5ofp3wm3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Gaspump_Cover_Burnt_01.res" id="1_mwtcr"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_yjqp8"]
+[ext_resource type="ArrayMesh" uid="uid://chbcjtoxwwobp" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Gaspump_Cover_Burnt_Rubble_01.res" id="3_yjqp8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwtcr"]
+size = Vector3(0.5923462, 4.453247, 0.7390137)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yjqp8"]
+size = Vector3(0.6352539, 4.441437, 0.71136475)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8mkh"]
+size = Vector3(13.362427, 0.88946533, 6.9351807)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ddmj2"]
+points = PackedVector3Array(-2.9417648, 0.33438373, 2.5538204, -3.3509185, 0.33438373, 2.7583427, -3.1465816, -0.074055, 2.7583427, -2.9417648, -0.074055, 1.941153, -3.350679, 1.5597, 0.103150666, -3.759113, 1.5597, 0.716118, -4.1670675, 0.33438373, 2.5538204, -4.3714046, -0.074055, 2.5538204, -4.167308, -0.2784543, 1.5324081, -3.350679, -0.2784543, 0.9203404, -3.350679, 1.1510813, 0.103150666, -4.9836965, -0.074055, -0.30529428, -3.759113, 1.5597, 0.103150666, -5.391891, 0.13016436, 0.30767304, -5.391891, -0.074055, 0.30767304, -3.7595928, -0.2784543, 0.5121954)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_85717"]
+points = PackedVector3Array(2.3690965, -0.2785743, -1.1217963, 0.53147054, -0.2785743, -0.30465454, 1.5518408, 0.13028651, -0.9173859, 2.3690965, -0.0740439, -1.1217963, 6.248263, -0.48270482, 0.51198745, -0.49049902, -0.2785743, 2.348682, -0.49049902, 0.33441705, 2.1447716, 2.3690965, 1.3550696, 2.1447716, 3.593381, 1.5597999, 1.7359508, 5.4318066, 1.3554695, 0.9208082, 7.67886, -0.2779745, 2.9619136, 6.6568904, -0.2779745, 3.9839654, 0.7353847, -0.2785743, 3.9839654, 2.3690965, 0.33441705, 3.9839654, 6.4521766, 0.13028651, 3.9839654, 7.67886, 0.13028651, 3.3707342)
+
+[node name="SM_Prop_Gaspump_Cover_Burnt_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_mwtcr")
+surface_material_override/0 = ExtResource("2_yjqp8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.540863, 1.9662476, -0.017456055)
+shape = SubResource("BoxShape3D_mwtcr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5563965, 1.9835052, -0.038360596)
+shape = SubResource("BoxShape3D_yjqp8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038024902, 4.5727234, -0.050964355)
+shape = SubResource("BoxShape3D_x8mkh")
+
+[node name="SM_Prop_Gaspump_Cover_Burnt_Rubble_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_yjqp8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yjqp8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Gaspump_Cover_Burnt_Rubble_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Gaspump_Cover_Burnt_Rubble_01/MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ddmj2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SM_Prop_Gaspump_Cover_Burnt_Rubble_01/MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_85717")

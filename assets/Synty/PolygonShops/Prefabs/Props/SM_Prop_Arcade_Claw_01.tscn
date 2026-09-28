@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://cxxu60be8th4l"]
+
+[ext_resource type="ArrayMesh" uid="uid://ceoxkn0pao1ca" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01.res" id="1_dvii8"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_bqv5k"]
+[ext_resource type="ArrayMesh" uid="uid://f4onshvwldm7" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Rail.res" id="3_bqv5k"]
+[ext_resource type="ArrayMesh" uid="uid://r83cnm43kxse" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_Base.res" id="4_wy563"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="5_1r1l7"]
+[ext_resource type="ArrayMesh" uid="uid://drp1genrd7jo6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_1.res" id="5_43tjc"]
+[ext_resource type="ArrayMesh" uid="uid://let566j44pgf" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_3.res" id="6_1r1l7"]
+[ext_resource type="ArrayMesh" uid="uid://jyooyr28evwr" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_2.res" id="7_bpxay"]
+[ext_resource type="ArrayMesh" uid="uid://1o3xvdxb53wb" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Stick.res" id="8_78fjo"]
+[ext_resource type="ArrayMesh" uid="uid://c5h4wlp4gunax" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Insert.res" id="9_l3qnc"]
+[ext_resource type="ArrayMesh" uid="uid://cw7ns3xlb1tg1" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Glass.res" id="10_6icki"]
+[ext_resource type="ArrayMesh" uid="uid://mpaxvps30xw8" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Door.res" id="12_l4w6x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dvii8"]
+size = Vector3(1, 1.90625, 1.0253906)
+
+[node name="SM_Prop_Arcade_Claw_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_dvii8")
+surface_material_override/0 = ExtResource("2_bqv5k")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9501953, 0)
+shape = SubResource("BoxShape3D_dvii8")
+
+[node name="SM_Prop_Arcade_Claw_01_Rail" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6374754, 0)
+gi_mode = 2
+mesh = ExtResource("3_bqv5k")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bqv5k")
+
+[node name="SM_Prop_Arcade_Claw_01_Claw_Base" type="MeshInstance3D" parent="SM_Prop_Arcade_Claw_01_Rail"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06583655, 0)
+gi_mode = 2
+mesh = ExtResource("4_wy563")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bqv5k")
+
+[node name="SM_Prop_Arcade_Claw_01_Claw_1" type="MeshInstance3D" parent="SM_Prop_Arcade_Claw_01_Rail/SM_Prop_Arcade_Claw_01_Claw_Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8857806e-18, -0.0033801794, 0.034251306)
+gi_mode = 2
+mesh = ExtResource("5_43tjc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bqv5k")
+
+[node name="SM_Prop_Arcade_Claw_01_Claw_3" type="MeshInstance3D" parent="SM_Prop_Arcade_Claw_01_Rail/SM_Prop_Arcade_Claw_01_Claw_Base"]
+transform = Transform3D(-0.50000006, -2.285222e-16, -0.8660254, -6.1232336e-17, 1, -2.285222e-16, 0.8660254, -6.1232356e-17, -0.50000006, -0.029662501, -0.0033801794, -0.017125653)
+gi_mode = 2
+mesh = ExtResource("6_1r1l7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bqv5k")
+
+[node name="SM_Prop_Arcade_Claw_01_Claw_2" type="MeshInstance3D" parent="SM_Prop_Arcade_Claw_01_Rail/SM_Prop_Arcade_Claw_01_Claw_Base"]
+transform = Transform3D(-0.50000006, -1.640716e-17, 0.8660254, -6.123234e-17, 1, -1.6407156e-17, -0.8660254, -6.123234e-17, -0.50000006, 0.029662501, -0.0033801794, -0.017125653)
+gi_mode = 2
+mesh = ExtResource("7_bpxay")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bqv5k")
+
+[node name="SM_Prop_Arcade_Claw_01_Stick" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08526434, 0.80097836, 0.57610124)
+gi_mode = 2
+mesh = ExtResource("8_78fjo")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bqv5k")
+
+[node name="SM_Prop_Arcade_Claw_01_Insert" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("9_l3qnc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bqv5k")
+
+[node name="SM_Prop_Arcade_Claw_01_Glass" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("10_6icki")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_1r1l7")
+
+[node name="SM_Prop_Arcade_Claw_01_Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24018206, 0.5360715, 0.4583517)
+gi_mode = 2
+mesh = ExtResource("12_l4w6x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bqv5k")

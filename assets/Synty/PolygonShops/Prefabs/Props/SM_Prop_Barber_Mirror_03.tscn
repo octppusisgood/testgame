@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1ifi40tbpcps"]
+
+[ext_resource type="ArrayMesh" uid="uid://bk2ifnsdjp1r8" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Mirror_03.res" id="1_runhd"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_0cg1x"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_50127"]
+points = PackedVector3Array(-0.72540754, -0.9172713, -0.037593015, 0.7364935, -0.9172713, -0.037593015, -0.72540754, -0.88871884, 0.07706589, -0.72540754, 0.9172712, -0.037593015, 0.7364935, 0.9172712, -0.037593015, 0.70758754, -0.88871884, 0.07706589, -0.72540754, 0.88853914, 0.07706589, 0.70758754, 0.88853914, 0.07706589)
+
+[node name="SM_Prop_Barber_Mirror_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_runhd")
+surface_material_override/0 = ExtResource("2_0cg1x")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_50127")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjhpp0mji2we2"]
+
+[ext_resource type="ArrayMesh" uid="uid://c5of4l2x550id" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Shoe_Box_Open_04.res" id="1_lho2v"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_hf0mv"]
+[ext_resource type="ArrayMesh" uid="uid://c0qvj6j6vqtj6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Shoe_Box_Open_04_Lid_01.res" id="3_hf0mv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jagum"]
+points = PackedVector3Array(-0.18491055, 1.3877788e-17, -0.120096505, -0.18491055, 1.3877788e-17, 0.11957924, -0.17916094, 0.14386472, -0.11641315, 0.18921743, 1.3877788e-17, -0.120096505, 0.18921743, 1.3877788e-17, 0.11957924, -0.17916094, 0.14386472, 0.11587244, 0.1834312, 0.14386472, -0.11641315, 0.1834312, 0.14386472, 0.11587244)
+
+[node name="SM_Prop_Shoe_Box_Open_04" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_lho2v")
+surface_material_override/0 = ExtResource("2_hf0mv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_jagum")
+
+[node name="SM_Prop_Shoe_Box_Open_04_Lid_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14476706, 0)
+gi_mode = 2
+mesh = ExtResource("3_hf0mv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_hf0mv")

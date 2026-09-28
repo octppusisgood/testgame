@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn1yqc2ajqr4f"]
+
+[ext_resource type="ArrayMesh" uid="uid://dhqec2va1vsfh" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Music_Electric_Guitar_02.res" id="1_ebjvb"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_4ox65"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q0w7q"]
+points = PackedVector3Array(0.28258055, 0.09320087, -0.13965383, 0.2292462, -0.013306215, -0.40599716, 0.20257899, 0.09320087, -0.40599716, -0.06370962, 0.11987327, -0.24612442, -0.037042424, 0.11987327, 1.0056559, 0.09607449, 0.09321391, 1.0855923, 0.2292462, -0.013306215, 0.36649865, -0.2768281, -0.013306215, -0.32606077, -0.17026886, 0.09320087, -0.43269825, -0.2768281, 0.09320087, -0.32606077, -0.25021568, 0.09320087, 0.25986117, -0.09032205, 0.09321391, 1.218764, 0.042794883, 0.0133140385, 1.218764, -0.09032205, 0.0133140385, 1.2721661, -0.25021568, -0.013306215, 0.25986117, -0.2768281, 0.066567585, -0.11295274)
+
+[node name="SM_Prop_Music_Electric_Guitar_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ebjvb")
+surface_material_override/0 = ExtResource("2_4ox65")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_q0w7q")

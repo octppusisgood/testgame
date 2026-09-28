@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://gv2jsjgs01kd"]
+
+[ext_resource type="ArrayMesh" uid="uid://bpcfgry3b0tka" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Tray_01.res" id="1_x7rs2"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_8vtma"]
+[ext_resource type="ArrayMesh" uid="uid://r8jwf2lhgmuw" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Tray_Bread_01.res" id="3_8vtma"]
+[ext_resource type="ArrayMesh" uid="uid://wm2bk280lvla" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Tray_Wheel_fl.res" id="4_fa26p"]
+[ext_resource type="ArrayMesh" uid="uid://b4i385igr8g2b" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Tray_Wheel_fr.res" id="5_epdpv"]
+[ext_resource type="ArrayMesh" uid="uid://c1oswdah7u8nw" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Tray_Wheel_rl.res" id="6_vnuke"]
+[ext_resource type="ArrayMesh" uid="uid://dvjlwvevx2uso" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Tray_Wheel_rr.res" id="7_kurwk"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ttajb"]
+points = PackedVector3Array(0.67691386, 1.011635, 0.40579268, 0.6571659, 1.0367023, 0.7077688, 0.62859714, 0.27276322, 0.8438624, 0.6264906, 0.2741656, -0.030962855, 0.46455705, 1.1009482, -0.2593432, 0.438753, 1.1681741, -0.26898074, 0.05353552, 1.0959523, 1.1506573, 0.21520579, 1.0600166, 1.1502192, -0.616843, 0.27276322, 0.8438624, -0.61473656, 0.2741656, -0.030962855, -0.6438319, 0.32605314, -0.052428275, 0.41466045, 1.0959523, -0.34111622, -0.40290642, 1.144071, -0.31702238, -0.4226544, 1.0719367, 1.0152937, -0.66805613, 1.0594031, 0.63767755, -0.5232375, 1.0959523, -0.26898074)
+
+[node name="SM_Prop_Cart_Tray_01" type="MeshInstance3D" unique_id=999481966]
+gi_mode = 2
+mesh = ExtResource("1_x7rs2")
+surface_material_override/0 = ExtResource("2_8vtma")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1988288600]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=775681675]
+shape = SubResource("ConvexPolygonShape3D_ttajb")
+
+[node name="SM_Prop_Cart_Tray_Bread_01" type="MeshInstance3D" parent="." unique_id=1625904763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015987907, 0.9352774, 0.5059734)
+gi_mode = 2
+mesh = ExtResource("3_8vtma")
+surface_material_override/0 = ExtResource("2_8vtma")
+
+[node name="SM_Prop_Cart_Tray_Wheel_fl" type="MeshInstance3D" parent="." unique_id=1310845337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52846646, 0.29348364, 0.82387745)
+gi_mode = 2
+mesh = ExtResource("4_fa26p")
+surface_material_override/0 = ExtResource("2_8vtma")
+
+[node name="SM_Prop_Cart_Tray_Wheel_fr" type="MeshInstance3D" parent="." unique_id=1516199101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5284671, 0.29348364, 0.82387745)
+gi_mode = 2
+mesh = ExtResource("5_epdpv")
+surface_material_override/0 = ExtResource("2_8vtma")
+
+[node name="SM_Prop_Cart_Tray_Wheel_rl" type="MeshInstance3D" parent="." unique_id=660583341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52846646, 0.29303414, -0.007960662)
+gi_mode = 2
+mesh = ExtResource("6_vnuke")
+surface_material_override/0 = ExtResource("2_8vtma")
+
+[node name="SM_Prop_Cart_Tray_Wheel_rr" type="MeshInstance3D" parent="." unique_id=1799503786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5284671, 0.29303414, -0.007960662)
+gi_mode = 2
+mesh = ExtResource("7_kurwk")
+surface_material_override/0 = ExtResource("2_8vtma")

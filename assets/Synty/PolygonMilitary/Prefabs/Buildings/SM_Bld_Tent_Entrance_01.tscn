@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://kp6wbfyjyh0a"]
+
+[ext_resource type="ArrayMesh" uid="uid://c5apsisnarod7" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Tent_Entrance_01.res" id="1_ahwds"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_30hbs"]
+[ext_resource type="ArrayMesh" uid="uid://cdeh5dtxyjfsg" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Tent_Entrance_Door_01.res" id="3_30hbs"]
+[ext_resource type="Shape3D" uid="uid://byrlrg58fvc5g" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Tent_Entrance_01_Collision.res" id="3_xv6ka"]
+[ext_resource type="ArrayMesh" uid="uid://dbguigh1fksv2" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Tent_Entrance_Door_02.res" id="4_xv6ka"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7l67p"]
+size = Vector3(1.0252984, 2.2243476, 0.43236935)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dw0vt"]
+size = Vector3(1.2465526, 2.249439, 0.10611511)
+
+[node name="SM_Bld_Tent_Entrance_01" type="MeshInstance3D" unique_id=35765815]
+gi_mode = 2
+mesh = ExtResource("1_ahwds")
+surface_material_override/0 = ExtResource("2_30hbs")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1337596033]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=936777450]
+shape = ExtResource("3_xv6ka")
+
+[node name="SM_Bld_Tent_Entrance_Door_01" type="MeshInstance3D" parent="." unique_id=764971689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.494, 0.54801846, 6.512)
+gi_mode = 2
+mesh = ExtResource("3_30hbs")
+surface_material_override/0 = ExtResource("2_30hbs")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Tent_Entrance_Door_01" unique_id=1639550389]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Tent_Entrance_Door_01/BoxCollider" unique_id=1306629202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49371552, 1.1121738, -0.005883731)
+shape = SubResource("BoxShape3D_7l67p")
+
+[node name="SM_Bld_Tent_Entrance_Door_02" type="MeshInstance3D" parent="." unique_id=1997164072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031920236, 0.56167996, -6.5531826)
+gi_mode = 2
+mesh = ExtResource("4_xv6ka")
+surface_material_override/0 = ExtResource("2_30hbs")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Tent_Entrance_Door_02" unique_id=413049868]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Tent_Entrance_Door_02/BoxCollider" unique_id=1978636760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03079468, 1.1179162, 0)
+shape = SubResource("BoxShape3D_dw0vt")

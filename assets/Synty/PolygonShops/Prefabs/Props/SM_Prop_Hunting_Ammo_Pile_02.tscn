@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg437g3p28yw1"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccs25sfpumkha" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Hunting_Ammo_Pile_02.res" id="1_5kfk5"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_ao3bj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o4ecr"]
+points = PackedVector3Array(0.13080344, 0.25768554, -0.113670476, 0.25405562, 0.2538011, -0.10232328, 0.24703717, 0.06502675, -0.11495462, -0.2617758, 0.069541804, -0.121842325, -0.24006401, 0.18872389, -0.11530484, 0.12262365, 0.25768554, 0.00085216016, 0.12262365, 0.25768554, 0.1153748, 0.25334877, 0.06343766, 0.10377078, 0.24607784, 0.2538011, 0.11198932, 0.24562341, -2.7755576e-17, 0.11177918, 0.23673671, 0.0045654937, -0.10608233, -0.24708247, 0.0032538602, -0.11495462, -0.253596, -2.7755576e-17, 0.10386416, -0.25258616, 0.063664675, 0.111335576, -0.2456182, 0.19016165, 0.10381748, 0.12348202, 0.0032538602, 0.11668229)
+
+[node name="SM_Prop_Hunting_Ammo_Pile_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_5kfk5")
+surface_material_override/0 = ExtResource("2_ao3bj")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_o4ecr")

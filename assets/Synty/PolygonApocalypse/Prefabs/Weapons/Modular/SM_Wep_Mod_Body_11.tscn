@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxm1we00t6b1t"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxx4n7c1scfa4" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11.res" id="1_h18or"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_4ncue"]
+[ext_resource type="ArrayMesh" uid="uid://xxpx5qnj84ev" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Cylinder.res" id="3_4ncue"]
+[ext_resource type="ArrayMesh" uid="uid://cbrr2kl286h26" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Cylinder_Spin.res" id="4_akw4o"]
+[ext_resource type="ArrayMesh" uid="uid://b0q25fi1nqiaw" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Cylinder_Bullet_01.res" id="5_cpyb4"]
+[ext_resource type="ArrayMesh" uid="uid://da73n5bj41pfm" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Cylinder_Bullet_02.res" id="6_83176"]
+[ext_resource type="ArrayMesh" uid="uid://ukfop2m6k68e" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Cylinder_Bullet_03.res" id="7_igbyu"]
+[ext_resource type="ArrayMesh" uid="uid://i0n6wm03asrv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Cylinder_Bullet_04.res" id="8_jj8hn"]
+[ext_resource type="ArrayMesh" uid="uid://bp7u0thu1c58" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Cylinder_Bullet_05.res" id="9_6lfqv"]
+[ext_resource type="ArrayMesh" uid="uid://bnrwwtra2blag" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Cylinder_Bullet_06.res" id="10_qx0gx"]
+[ext_resource type="ArrayMesh" uid="uid://dag8d0h6pi42f" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Hammer.res" id="11_lu4eu"]
+[ext_resource type="ArrayMesh" uid="uid://cykflf045nas4" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_11_Trigger.res" id="12_nl31s"]
+
+[node name="SM_Wep_Mod_Body_11" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_h18or")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Cylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021919174, 0.007065884, 0.13629168)
+gi_mode = 2
+mesh = ExtResource("3_4ncue")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Cylinder_Spin" type="MeshInstance3D" parent="SM_Wep_Mod_Body_11_Cylinder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021919169, 0.022388816, 0.013505429)
+gi_mode = 2
+mesh = ExtResource("4_akw4o")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Cylinder_Bullet_01" type="MeshInstance3D" parent="SM_Wep_Mod_Body_11_Cylinder/SM_Wep_Mod_Body_11_Cylinder_Spin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00045277746, 0.016838294, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("5_cpyb4")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Cylinder_Bullet_02" type="MeshInstance3D" parent="SM_Wep_Mod_Body_11_Cylinder/SM_Wep_Mod_Body_11_Cylinder_Spin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014808787, 0.008027021, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("6_83176")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Cylinder_Bullet_03" type="MeshInstance3D" parent="SM_Wep_Mod_Body_11_Cylinder/SM_Wep_Mod_Body_11_Cylinder_Spin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014355989, -0.00881131, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("7_igbyu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Cylinder_Bullet_04" type="MeshInstance3D" parent="SM_Wep_Mod_Body_11_Cylinder/SM_Wep_Mod_Body_11_Cylinder_Spin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0004528221, -0.01683831, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("8_jj8hn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Cylinder_Bullet_05" type="MeshInstance3D" parent="SM_Wep_Mod_Body_11_Cylinder/SM_Wep_Mod_Body_11_Cylinder_Spin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014808829, -0.008027036, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("9_6lfqv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Cylinder_Bullet_06" type="MeshInstance3D" parent="SM_Wep_Mod_Body_11_Cylinder/SM_Wep_Mod_Body_11_Cylinder_Spin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014356035, 0.008811284, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("10_qx0gx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Hammer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.152557e-09, 0.033235535, 0.04765225)
+gi_mode = 2
+mesh = ExtResource("11_lu4eu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")
+
+[node name="SM_Wep_Mod_Body_11_Trigger" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7180353e-06, -0.0144421095, 0.048015468)
+gi_mode = 2
+mesh = ExtResource("12_nl31s")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_4ncue")

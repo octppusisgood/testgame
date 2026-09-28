@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://2p0cfvympnsp"]
+
+[ext_resource type="ArrayMesh" uid="uid://dg4jp6fegmc0" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Mall_Kiosk_Circular_01.res" id="1_n5ge0"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_x7il7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s3hk1"]
+points = PackedVector3Array(1.7638046, 0.8834695, -0.2461927, 0.99954975, 0.8869678, 1.4740757, 1.4374896, -7.02329e-05, 0.96966755, 1.6586853, -7.02329e-05, -0.57864356, 1.1019298, 0.8833798, -1.4582316, -0.16669202, 0.8869678, 1.752334, 0.16544378, -7.02329e-05, 1.6887618, -0.55155873, 0.88364893, -1.7351003, -0.35398924, -0.029401958, -1.7965881, 0.6167375, 0.10604423, -1.708004, 0.5636643, 0.72434264, -1.7750499, -1.432917, 0.8833798, -1.1275176, -1.708898, 0.8834695, 0.5260521, -1.0079887, 0.72236925, 1.4865817, -1.4380531, -7.02329e-05, 0.96966755, -1.7342361, 0.10676183, -0.4178027)
+
+[node name="SM_Prop_Mall_Kiosk_Circular_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_n5ge0")
+surface_material_override/0 = ExtResource("2_x7il7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_s3hk1")

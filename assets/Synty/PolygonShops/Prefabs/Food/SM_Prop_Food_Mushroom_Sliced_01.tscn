@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm6pcjpppnf6h"]
+
+[ext_resource type="ArrayMesh" uid="uid://c5m7ltpfvt6rf" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Mushroom_Sliced_01.res" id="1_3mapt"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_c0hyx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_chl5n"]
+points = PackedVector3Array(-0.01141271, 0.018896544, -0.07847775, -0.07990357, -0.009655796, -0.04421981, -0.05896578, 0.03020079, -0.06832557, 0.0028302372, 0.027451307, -0.07562669, 0.067235276, 0.00063471496, -0.009403735, -0.08559747, -0.003952621, -0.0014539585, -0.073175915, 0.03562683, 0.014883049, 0.08203612, 0.00016795937, 0.028715953, 0.02511356, -0.0004373649, 0.0711801, -0.045313556, 0.06485013, 0.001306586, -0.036912184, 0.06447818, -0.032951348, 0.06846595, 0.05025671, -0.032785416, -0.01141271, 0.027451307, 0.07276403, 0.077031404, 0.055974476, 0.0014423504, 0.057061747, 0.01603037, 0.07559999, 0.014250852, 0.038857657, 0.075630166)
+
+[node name="SM_Prop_Food_Mushroom_Sliced_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3mapt")
+surface_material_override/0 = ExtResource("2_c0hyx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_chl5n")

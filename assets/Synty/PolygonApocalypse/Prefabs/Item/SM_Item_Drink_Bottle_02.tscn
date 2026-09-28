@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciybipdf28ry1"]
+
+[ext_resource type="ArrayMesh" uid="uid://sbuukfhb7i6h" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Item_Drink_Bottle_02.res" id="1_166ui"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_qnga0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qdjse"]
+points = PackedVector3Array(-0.067372546, -0.16740672, -0.0077950396, -0.05060303, -0.16740672, 0.03684655, -0.061787076, 0.08928357, 0.014520414, -0.05621472, 0.08369525, -0.024542317, -0.031814348, -0.15714453, -0.054424502, 0.04424505, -0.16740672, -0.046868455, 0.06657381, -0.16740672, 0.008930862, 0.04424505, -0.16185227, 0.048004277, -0.03134234, -0.1548076, 0.054758757, -0.0316439, 0.10940154, 0.050066955, -0.022715017, 0.17859511, 0.0033519976, -0.030634321, 0.10079889, -0.052372508, 0.030032262, 0.10140853, -0.052693132, 0.060109884, 0.09073992, -0.0019489899, 0.031238511, 0.11072241, 0.05066546, 0.021916285, 0.17859511, -0.0077950396)
+
+[node name="SM_Item_Drink_Bottle_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_166ui")
+surface_material_override/0 = ExtResource("2_qnga0")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_qdjse")

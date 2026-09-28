@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://uprjepom520h"]
+
+[ext_resource type="ArrayMesh" uid="uid://c8jubau1dxx27" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Knife_Butcher_01.res" id="1_n7s8c"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_tqgow"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eaxwv"]
+points = PackedVector3Array(0.0063515324, -0.14524631, 0.09400472, -0.008698627, -0.024828076, -0.12427193, 0.01387956, -0.032370105, -0.109231174, 0.0063515324, -0.14524631, 0.3424093, -0.008698627, -0.13770428, 0.09400472, 0.01387956, 0.020356297, -0.12427193, -0.01623255, -0.0022358894, -0.11675155, 0.01387956, 0.020356297, 0.09400472, 0.0063515324, 0.0053061396, 0.3499761, -0.008698627, -0.12267107, 0.3499761, -0.008698627, -0.13770428, 0.3348425, -0.008698627, 0.027898327, -0.1017108, 0.01387956, 0.027898327, -0.094143994, -0.01623255, 0.0053061396, 0.056356415, 0.0063515324, 0.020356297, 0.3348425, -0.008698627, 0.020356297, 0.3348425)
+
+[node name="SM_Prop_Kitchen_Knife_Butcher_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_n7s8c")
+surface_material_override/0 = ExtResource("2_tqgow")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_eaxwv")

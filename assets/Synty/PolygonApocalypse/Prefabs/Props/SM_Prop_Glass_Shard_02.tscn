@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bub6ntfoaiewn"]
+
+[ext_resource type="ArrayMesh" uid="uid://chsm54qs7mpwh" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Glass_Shard_02.res" id="1_6fjit"]
+[ext_resource type="Material" uid="uid://bg11y7vdeg0pp" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/PolygonApocalypse_01_Glass_mat.tres" id="2_nl6iv"]
+
+[node name="SM_Prop_Glass_Shard_02" type="MeshInstance3D"]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("1_6fjit")
+surface_material_override/0 = ExtResource("2_nl6iv")

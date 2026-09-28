@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://f51sarbsswo2"]
+
+[ext_resource type="ArrayMesh" uid="uid://wqglnjhepsqa" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Rubbish_Bin_01.res" id="1_g3v20"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_d5o6e"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g3v20"]
+height = 0.88134766
+radius = 0.20410156
+
+[node name="SM_Prop_Rubbish_Bin_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_g3v20")
+surface_material_override/0 = ExtResource("2_d5o6e")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4309082, 0)
+shape = SubResource("CylinderShape3D_g3v20")

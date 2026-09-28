@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmd3316a6msch"]
+
+[ext_resource type="ArrayMesh" uid="uid://dduh34ss04n0x" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Motel_Sign_02.res" id="1_w57mg"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_m684x"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ev5o1"]
+points = PackedVector3Array(-2.7715259, -0.22234839, -0.7515991, -2.7715259, -0.22234839, 0.77493834, -2.7715259, 0.3881172, -0.7515991, 2.7229333, -0.22234839, -0.7515991, -2.7715259, 0.23561287, 0.77493834, 2.7229333, -0.22234839, 0.77493834, -2.7715259, 0.3881172, 0.62192595, -2.3138335, 0.69357413, 0.16423374, -2.0352383, 0.63780826, -0.122216165, 2.7229333, 0.3881172, -0.7515991, -2.4665768, 0.3881172, 0.77493834, 2.7229333, 0.23561287, 0.77493834, 2.2647033, 0.69357413, 0.16423374, 1.9861078, 0.63780826, -0.122216165, 2.7229333, 0.3881172, 0.62192595, 2.57019, 0.3881172, 0.77493834)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1anui"]
+points = PackedVector3Array(3.3337278, 9.547492, 0.16432339, 2.8760056, 9.394522, 0.62228465, 4.2500086, 8.783686, 0.31691736, 4.2500086, 9.241552, -0.29363787, -4.298601, 9.241552, -0.29363787, -3.3831568, 9.547492, 0.46960098, 3.0283008, 8.020576, 0.62228465, -1.7037265, 8.020576, 0.62228465, 3.1805959, 6.0364885, 0.46960098, 3.1805959, 6.0364885, 0.011819065, 3.486023, 7.563057, -0.29363787, -3.535452, 7.563057, -0.29363787, -3.2308617, 6.7995987, 0.31691736, -4.298601, 9.241552, 0.31691736, -0.3288865, 6.0364885, 0.46960098, -2.1740005, 5.9958124, -0.122216195)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y3ap4"]
+points = PackedVector3Array(3.3337278, 9.547492, 0.16432339, 2.8760056, 9.394522, 0.62228465, 4.2500086, 8.783686, 0.31691736, 4.2500086, 9.241552, -0.29363787, -4.298601, 9.241552, -0.29363787, -3.3831568, 9.547492, 0.46960098, 3.0283008, 8.020576, 0.62228465, -1.7037265, 8.020576, 0.62228465, 3.1805959, 6.0364885, 0.46960098, 3.1805959, 6.0364885, 0.011819065, 3.486023, 7.563057, -0.29363787, -3.535452, 7.563057, -0.29363787, -3.2308617, 6.7995987, 0.31691736, -4.298601, 9.241552, 0.31691736, -0.3288865, 6.0364885, 0.46960098, -2.1740005, 5.9958124, -0.122216195)
+
+[node name="SM_Bld_Motel_Sign_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_w57mg")
+surface_material_override/0 = ExtResource("2_m684x")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ev5o1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_1anui")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_y3ap4")

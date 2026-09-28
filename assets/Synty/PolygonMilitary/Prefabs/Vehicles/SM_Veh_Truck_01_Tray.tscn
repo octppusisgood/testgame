@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cuo2fo80y0beh"]
+
+[ext_resource type="ArrayMesh" uid="uid://cr6xy742yj1ae" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Truck_01_Tray.res" id="1_mbe6i"]
+[ext_resource type="Material" uid="uid://b0u0j04oi4jo8" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_05_mat.tres" id="2_2h5lt"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jsbra"]
+points = PackedVector3Array(1.352859, 1.2378287, 1.0915115, 1.2583117, 2.1108432, 0.95692873, -1.3603272, 1.2378287, 1.0915115, 1.352859, 1.2378287, 0.91019845, 1.3507345, 1.4307209, 0.9483304, -1.2660456, 2.1108432, 0.95692873, 1.2583117, 2.1109285, -2.6338184, -1.3510319, 1.4321737, 0.9386103, -1.3603272, 1.2378287, 0.91019845, 1.3244417, 1.3063709, -2.7276525, 1.3507345, 1.4307209, -2.6248462, -1.2660456, 2.1109285, -2.6338184, -1.3510319, 1.4321737, -2.6147525, -1.3321755, 1.3063709, -2.7276525)
+
+[node name="SM_Veh_Truck_01_Tray" type="MeshInstance3D" unique_id=271833792]
+gi_mode = 2
+mesh = ExtResource("1_mbe6i")
+surface_material_override/0 = ExtResource("2_2h5lt")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1827298415]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1840947663]
+shape = SubResource("ConvexPolygonShape3D_jsbra")

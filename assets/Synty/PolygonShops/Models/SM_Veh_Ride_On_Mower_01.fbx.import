@@ -1,0 +1,280 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://ct0txo2v0oa1i"
+path="res://.godot/imported/SM_Veh_Ride_On_Mower_01.fbx-99b328d1a69b1d18034e1cdbde39acfd.scn"
+
+[deps]
+
+source_file="res://assets/Synty/PolygonShops/Models/SM_Veh_Ride_On_Mower_01.fbx"
+dest_files=["res://.godot/imported/SM_Veh_Ride_On_Mower_01.fbx-99b328d1a69b1d18034e1cdbde39acfd.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=1
+meshes/generate_lods=true
+meshes/create_shadow_meshes=false
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=false
+animation/fps=24.0
+animation/trimming=true
+animation/remove_immutable_tracks=false
+animation/import_rest_as_RESET=true
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"animations": {},
+"materials": {},
+"meshes": {
+"Root Scene_SM_Prop_Ride_On_Mower_01_Steering_Wheel_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Ride_On_Mower_01_Steering_Wheel_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bob0fvvg516fo"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dw3tluunq34yw"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Deck_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Deck_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dmmlgr72rjsog"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Deck_01_Blade_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Deck_01_Blade_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://cmrlgtck27pfh"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Deck_01_Blade_02": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Deck_01_Blade_02.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bs0javptijbcx"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Lever_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Lever_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dteqx7hq5al7x"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Pedal_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Pedal_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://derrqqw573wti"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Pedal_02": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Pedal_02.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://d185r8wp4gi8w"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Pedal_03": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Pedal_03.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://deic0ufyjv5a"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Seat_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Seat_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://b3c50uu2ujmr6"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Wheel_FL_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_FL_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://csbu5w80g018a"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Wheel_FR_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_FR_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://damqrkf4nvsqf"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Wheel_RL_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_RL_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://cjmphyelxppyj"
+},
+"Root Scene_SM_Veh_Ride_On_Mower_01_Wheel_RR_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_RR_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bkgaxwvtg6snl"
+},
+"SM_Prop_Ride_On_Mower_01_Steering_Wheel_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Ride_On_Mower_01_Steering_Wheel_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bob0fvvg516fo"
+},
+"SM_Veh_Ride_On_Mower_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dw3tluunq34yw"
+},
+"SM_Veh_Ride_On_Mower_01_Deck_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Deck_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dmmlgr72rjsog"
+},
+"SM_Veh_Ride_On_Mower_01_Deck_01_Blade_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Deck_01_Blade_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://cmrlgtck27pfh"
+},
+"SM_Veh_Ride_On_Mower_01_Deck_01_Blade_02": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Deck_01_Blade_02.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bs0javptijbcx"
+},
+"SM_Veh_Ride_On_Mower_01_Lever_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Lever_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dteqx7hq5al7x"
+},
+"SM_Veh_Ride_On_Mower_01_Pedal_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Pedal_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://derrqqw573wti"
+},
+"SM_Veh_Ride_On_Mower_01_Pedal_02": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Pedal_02.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://d185r8wp4gi8w"
+},
+"SM_Veh_Ride_On_Mower_01_Pedal_03": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Pedal_03.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://deic0ufyjv5a"
+},
+"SM_Veh_Ride_On_Mower_01_Seat_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Seat_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://b3c50uu2ujmr6"
+},
+"SM_Veh_Ride_On_Mower_01_Wheel_FL_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_FL_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://csbu5w80g018a"
+},
+"SM_Veh_Ride_On_Mower_01_Wheel_FR_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_FR_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://damqrkf4nvsqf"
+},
+"SM_Veh_Ride_On_Mower_01_Wheel_RL_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_RL_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://cjmphyelxppyj"
+},
+"SM_Veh_Ride_On_Mower_01_Wheel_RR_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Veh_Ride_On_Mower_01_Wheel_RR_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bkgaxwvtg6snl"
+}
+},
+"nodes": {
+"PATH:AnimationPlayer": {
+"optimizer/enabled": true,
+"optimizer/max_angular_error": 0.00277777777777777,
+"optimizer/max_linear_error": 0.5
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

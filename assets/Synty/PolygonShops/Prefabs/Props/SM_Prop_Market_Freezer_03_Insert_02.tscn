@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4ff4shjv32ec"]
+
+[ext_resource type="ArrayMesh" uid="uid://cpee35gk0lt32" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Freezer_03_Insert_02.res" id="1_8nijg"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_3lon7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5rvee"]
+points = PackedVector3Array(0.9556366, 2.1020172, 0.21944928, 0.9556366, 0.33020496, 0.21944928, -0.035732687, 2.1020172, 0.09932643, 0.7452835, 2.1020172, 0.33957213, 0.7452835, 0.33020496, 0.33957213, -0.035732687, 0.33020496, 0.09932643, -0.6060194, 1.8314586, 0.12935714, -0.9665173, 2.1020172, 0.21944928, -0.035732687, 2.1020172, 0.36962932, 0.024287581, 0.33020496, 0.36962932, -0.9665173, 0.33020496, 0.24948001, -0.9665173, 0.7509583, 0.15944079, -0.9665173, 2.1020172, 0.24948001, -0.78626835, 2.1020172, 0.30948853, -0.4261467, 0.33020496, 0.33957213, -0.78626835, 0.33020496, 0.30948853)
+
+[node name="SM_Prop_Market_Freezer_03_Insert_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8nijg")
+surface_material_override/0 = ExtResource("2_3lon7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_5rvee")

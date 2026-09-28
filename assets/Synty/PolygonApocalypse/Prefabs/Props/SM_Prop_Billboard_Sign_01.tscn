@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cikxoamk3l5u"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccbyfjp50qmdp" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Billboard_Sign_01.res" id="1_ry3lt"]
+[ext_resource type="Material" uid="uid://bxm6l0dxhs7e6" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Billboard_01_mat.tres" id="2_or2sd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_umpm1"]
+size = Vector3(4.192703, 2.0277276, 0.084079586)
+
+[node name="SM_Prop_Billboard_Sign_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ry3lt")
+surface_material_override/0 = ExtResource("2_or2sd")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9604645e-08, 0)
+shape = SubResource("BoxShape3D_umpm1")

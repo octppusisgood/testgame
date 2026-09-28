@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b34uamvs417t5"]
+
+[ext_resource type="ArrayMesh" uid="uid://iwffeb58wl2q" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Bombsuit_Wrist_01.res" id="1_6gb0j"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_uxmx6"]
+
+[node name="SM_Chr_Attach_Bombsuit_Wrist_01" type="MeshInstance3D" unique_id=440490767]
+gi_mode = 2
+mesh = ExtResource("1_6gb0j")
+surface_material_override/0 = ExtResource("2_uxmx6")

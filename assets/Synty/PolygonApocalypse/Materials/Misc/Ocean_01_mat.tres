@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d21v5yxntyctb"]
+
+[resource]
+resource_name = "Ocean_01_mat"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+depth_draw_mode = 1
+albedo_color = Color(0.3987738, 0.5773006, 0.60005665, 1)
+metallic = 0.30999997
+roughness = 0.67
+uv1_scale = Vector3(1, 1, 0)

@@ -1,0 +1,178 @@
+[gd_scene load_steps=25 format=3 uid="uid://dtte0md38hmru"]
+
+[ext_resource type="ArrayMesh" uid="uid://cpn4salbslmwy" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_01.res" id="1_plwmy"]
+[ext_resource type="Material" uid="uid://bj206v4v20ibu" path="res://assets/Synty/PolygonApocalypse/Materials/Vehicles/Vehicle_Standard_01_mat.tres" id="2_3lv2n"]
+[ext_resource type="ArrayMesh" uid="uid://ce31ork3kirra" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Armour_01.res" id="3_3lv2n"]
+[ext_resource type="ArrayMesh" uid="uid://b8n12cie4aer4" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Door_l.res" id="4_xwypr"]
+[ext_resource type="ArrayMesh" uid="uid://c5m2w01k1yucd" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Door_l_Glass.res" id="5_thxtx"]
+[ext_resource type="Material" uid="uid://d1x3gd0sksyr6" path="res://assets/Synty/PolygonApocalypse/Materials/Misc/Vehicle_Glass_01_mat.tres" id="6_h6uqy"]
+[ext_resource type="ArrayMesh" uid="uid://c8eljl0peoba0" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Door_r.res" id="7_ydnbn"]
+[ext_resource type="ArrayMesh" uid="uid://egasy1v30jp4" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Door_r_Glass.res" id="8_h6uqy"]
+[ext_resource type="ArrayMesh" uid="uid://bo8yl5d7l8euk" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Glass_01.res" id="9_8du6y"]
+[ext_resource type="ArrayMesh" uid="uid://c1ud11wpq5hk4" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Glass_Armour_01.res" id="10_rcnv4"]
+[ext_resource type="ArrayMesh" uid="uid://s4xwnuaialqb" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Roof_Props_01.res" id="11_djhsp"]
+[ext_resource type="ArrayMesh" uid="uid://bldohoywkn0q" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_SteeringW.res" id="12_xlmj8"]
+[ext_resource type="ArrayMesh" uid="uid://dfwym45tl432n" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Top_01.res" id="13_eifm3"]
+[ext_resource type="ArrayMesh" uid="uid://cg0h76sxk3chu" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Top_Dish_01.res" id="14_ofr8m"]
+[ext_resource type="ArrayMesh" uid="uid://c3l8bpxfabiqo" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Top_Dish_02.res" id="15_rl2x6"]
+[ext_resource type="ArrayMesh" uid="uid://t5wofe36ut4a" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Wheel_fl.res" id="16_0lki0"]
+[ext_resource type="ArrayMesh" uid="uid://cfl7tf0skf5ip" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Wheel_fr.res" id="17_xsx64"]
+[ext_resource type="ArrayMesh" uid="uid://c0wdd2qlvqelm" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Wheel_rl.res" id="18_4ddy5"]
+[ext_resource type="ArrayMesh" uid="uid://dqj2wwrtfgqda" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_NewsVan_Wheel_rl1.res" id="19_agup0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p64g2"]
+points = PackedVector3Array(1.2783206, 1.5464287, 1.2934852, 0.713462, 1.976619, 0.87634254, 1.0261207, 1.2103369, 2.4699502, 0.9792342, 0.3252485, 2.4332333, 1.0490704, 0.49224302, -2.4312222, 0.8277168, 1.6126657, -2.4817076, 0.7260473, 1.9923897, -2.176245, -0.990491, 1.2103369, 2.4699502, -0.7503829, 1.9713621, 0.87022305, -1.074393, 0.2863474, 2.2175226, -0.14998937, 0.20223683, 1.9656053, 0.35367, 0.20276253, -1.8993397, -0.5697466, 0.28652263, -2.7397447, -0.7878921, 1.8516798, -2.387366, -1.2426908, 1.5464287, 1.3776278, -0.99295866, 0.42705733, -2.3832865)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ql6f6"]
+radius = 0.397583
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_11ddb"]
+radius = 0.397583
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rwufk"]
+radius = 0.397583
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wlj5c"]
+radius = 0.397583
+
+[node name="SM_Veh_NewsVan_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_plwmy")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_p64g2")
+
+[node name="SM_Veh_NewsVan_Armour_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_3lv2n")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SM_Veh_NewsVan_Door_l" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8062671, 1.0849799, -2.564097)
+gi_mode = 2
+mesh = ExtResource("4_xwypr")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SM_Veh_NewsVan_Door_l_Glass" type="MeshInstance3D" parent="SM_Veh_NewsVan_Door_l"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4197454, 0.47708285, 0.1011703)
+gi_mode = 2
+mesh = ExtResource("5_thxtx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_h6uqy")
+
+[node name="SM_Veh_NewsVan_Door_r" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8062687, 1.0849799, -2.564097)
+gi_mode = 2
+mesh = ExtResource("7_ydnbn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SM_Veh_NewsVan_Door_r_Glass" type="MeshInstance3D" parent="SM_Veh_NewsVan_Door_r"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4197462, 0.47708285, 0.1011703)
+gi_mode = 2
+mesh = ExtResource("8_h6uqy")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_h6uqy")
+
+[node name="SM_Veh_NewsVan_Glass_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("9_8du6y")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_h6uqy")
+
+[node name="SM_Veh_NewsVan_Glass_Armour_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("10_rcnv4")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SM_Veh_NewsVan_Roof_Props_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("11_djhsp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SM_Veh_NewsVan_SteeringW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9385316, -0.34519333, 0, 0.34519333, 0.9385316, 0.4312698, 1.2532213, 1.0932759)
+gi_mode = 2
+mesh = ExtResource("12_xlmj8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SM_Veh_NewsVan_Top_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13132247, 1.5199667, -0.6868606)
+gi_mode = 2
+mesh = ExtResource("13_eifm3")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SM_Veh_NewsVan_Top_Dish_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1324234, -1.7870697)
+gi_mode = 2
+mesh = ExtResource("14_ofr8m")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SM_Veh_NewsVan_Top_Dish_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54935575, 2.1324236, 0.5687935)
+gi_mode = 2
+mesh = ExtResource("15_rl2x6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SM_Veh_NewsVan_Wheel_fl" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81947315, 0.39758292, 1.8411694)
+gi_mode = 2
+mesh = ExtResource("16_0lki0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_NewsVan_Wheel_fl"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_NewsVan_Wheel_fl/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09900828, 0, 2.682209e-07)
+shape = SubResource("SphereShape3D_ql6f6")
+
+[node name="SM_Veh_NewsVan_Wheel_fr" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81947315, 0.39758292, 1.8411694)
+gi_mode = 2
+mesh = ExtResource("17_xsx64")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_NewsVan_Wheel_fr"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_NewsVan_Wheel_fr/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09900828, 0, 2.682209e-07)
+shape = SubResource("SphereShape3D_11ddb")
+
+[node name="SM_Veh_NewsVan_Wheel_rl" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81947315, 0.39758292, -1.4709789)
+gi_mode = 2
+mesh = ExtResource("18_4ddy5")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_NewsVan_Wheel_rl"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_NewsVan_Wheel_rl/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09900828, 0, -3.874302e-07)
+shape = SubResource("SphereShape3D_rwufk")
+
+[node name="SM_Veh_NewsVan_Wheel_rl1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81947315, 0.39758292, -1.4709789)
+gi_mode = 2
+mesh = ExtResource("19_agup0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3lv2n")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_NewsVan_Wheel_rl1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_NewsVan_Wheel_rl1/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09900828, 0, -3.874302e-07)
+shape = SubResource("SphereShape3D_wlj5c")

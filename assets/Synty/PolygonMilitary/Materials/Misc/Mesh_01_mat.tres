@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cl8n6n82e8j85"]
+
+[ext_resource type="Texture2D" uid="uid://x0uqd2jkgpaj" path="res://Assets/Synty/PolygonMilitary/Textures/Mesh_Cover_01.tga" id="1_vrc6y"]
+
+[resource]
+resource_name = "Mesh_01_mat"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_vrc6y")
+uv1_scale = Vector3(1, 1, 0)

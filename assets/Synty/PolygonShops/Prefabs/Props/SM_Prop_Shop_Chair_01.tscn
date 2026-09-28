@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dutsbrucvqd52"]
+
+[ext_resource type="ArrayMesh" uid="uid://ff3qrh5flw1o" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Shop_Chair_01.res" id="1_y1atc"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_7rmf2"]
+[ext_resource type="ArrayMesh" uid="uid://dgd6ucb8t2dr4" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Shop_Chair_01_Seat.res" id="3_7rmf2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vcyqx"]
+points = PackedVector3Array(0.3251373, 0.089208394, 0.11559194, 0.3041968, 0.078727335, 0.17850351, 0.2917216, 0.012149099, 0.1510593, 0.29369476, -0.0052150544, 0.0840725, 0.1782994, 0.078727335, -0.30403078, 0.024778426, 0.31378478, -0.024685562, -0.11537629, 0.089208394, 0.32533967, -0.08387013, -0.005246341, 0.29388386, -0.024867654, 0.31434795, 0.024981469, -0.2622778, -0.005246341, -0.1675738, 0.11095896, 0.021754136, -0.31269068, 0.12190655, 0.040995494, -0.3251711, 0.11535072, 0.08923969, -0.32504377, -0.31472445, 0.07869604, -0.15713099, -0.178325, 0.07869604, 0.30432665, -0.3250992, 0.01571579, -0.09415574)
+
+[node name="SM_Prop_Shop_Chair_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_y1atc")
+surface_material_override/0 = ExtResource("2_7rmf2")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_vcyqx")
+
+[node name="SM_Prop_Shop_Chair_01_Seat" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_7rmf2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_7rmf2")

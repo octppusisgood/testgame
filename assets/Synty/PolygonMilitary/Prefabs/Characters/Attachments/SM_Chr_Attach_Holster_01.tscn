@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://uvadhm7p5veh"]
+
+[ext_resource type="ArrayMesh" uid="uid://v2ywuptbh353" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Holster_01.res" id="1_50s43"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_4gg05"]
+
+[node name="SM_Chr_Attach_Holster_01" type="MeshInstance3D" unique_id=1662234559]
+gi_mode = 2
+mesh = ExtResource("1_50s43")
+surface_material_override/0 = ExtResource("2_4gg05")

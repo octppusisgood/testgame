@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://5ae341s4owi2"]
+
+[ext_resource type="ArrayMesh" uid="uid://f8yjrand83yo" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Mall_Kiosk_Cabinet_01.res" id="1_nyi83"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_07o3f"]
+[ext_resource type="ArrayMesh" uid="uid://iea16ja4r3ul" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Mall_Kiosk_Cabinet_Glass_01.res" id="3_07o3f"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_vg4ve"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hhdvq"]
+points = PackedVector3Array(0.34474498, 0.00059129973, -0.69560534, -0.34616923, 0.007289931, -0.6861071, -0.38781524, 0.09848702, -0.70370674, 0.3870737, 0.092936724, -0.71348435, 0.34474498, 0.00059129973, 0.6954656, -0.34616923, 0.007289931, 0.6859675, -0.38781524, 0.8459586, -0.70370674, -0.38781524, 0.09848702, 0.7035671, 0.3870737, 0.85093474, -0.71348435, 0.3870737, 0.092936724, 0.71348435, -0.38781524, 0.8459586, 0.7035671, -0.34396935, 0.9782087, -0.6597076, 0.3568822, 0.97428524, -0.6543998, 0.3870737, 0.85093474, 0.71348435, -0.34396935, 0.9782087, 0.659568, 0.3568822, 0.97428524, 0.6542601)
+
+[node name="SM_Prop_Mall_Kiosk_Cabinet_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_nyi83")
+surface_material_override/0 = ExtResource("2_07o3f")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_hhdvq")
+
+[node name="SM_Prop_Mall_Kiosk_Cabinet_Glass_01" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_07o3f")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_vg4ve")

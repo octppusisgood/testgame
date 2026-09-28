@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3yp3727i55x4"]
+
+[ext_resource type="ArrayMesh" uid="uid://d04yfvv3hjaqv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_FlareGun_01.res" id="1_o6vc7"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_qmri8"]
+[ext_resource type="ArrayMesh" uid="uid://qabhtlmpigot" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_FlareGun_01_Barrel_01.res" id="3_qmri8"]
+[ext_resource type="ArrayMesh" uid="uid://cbpodd3mmp68" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_FlareGun_01_Bullet_01.res" id="4_6cgys"]
+[ext_resource type="ArrayMesh" uid="uid://qiv77vianfoc" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_FlareGun_01_Hammer_01.res" id="5_d0bva"]
+[ext_resource type="ArrayMesh" uid="uid://bdyopnw5i47ko" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_FlareGun_01_Trigger_01.res" id="6_quygd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8tp7w"]
+points = PackedVector3Array(-0.014202768, 0.032301664, 0.15448025, 0.011327352, 0.031689316, 0.15164264, 0.007939376, 0.12826039, 0.07695851, -0.010509158, 0.12826039, 0.065883964, -0.032657806, 0.083921164, 0.06956892, -0.025270589, -0.078399, -0.004228469, -0.017883372, -0.10055728, 0.010531008, -0.0068220515, -0.03043098, 0.11018211, 0.033775132, 0.080247015, 0.06956892, 0.022694305, -0.09318631, 0.014235657, 0.022694305, 0.039649963, -0.011578649, -0.021576978, 0.039649963, -0.011578649, -0.025270589, -0.03780195, -0.044821955, -0.010086475, -0.10343763, -0.03766883, 0.026387915, -0.03780195, -0.044821955, 0.0145332515, -0.07724233, -0.046831924)
+
+[node name="SM_Wep_FlareGun_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_o6vc7")
+surface_material_override/0 = ExtResource("2_qmri8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_8tp7w")
+
+[node name="SM_Wep_FlareGun_01_Barrel_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-09, 0.0317105, 0.14970794)
+gi_mode = 2
+mesh = ExtResource("3_qmri8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_qmri8")
+
+[node name="SM_Wep_FlareGun_01_Bullet_01" type="MeshInstance3D" parent="SM_Wep_FlareGun_01_Barrel_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0789348e-10, 0.03313491, -0.051658683)
+gi_mode = 2
+mesh = ExtResource("4_6cgys")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_qmri8")
+
+[node name="SM_Wep_FlareGun_01_Hammer_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-09, 0.044668503, 0.021777332)
+gi_mode = 2
+mesh = ExtResource("5_d0bva")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_qmri8")
+
+[node name="SM_Wep_FlareGun_01_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-09, 0.008826386, 0.08405411)
+gi_mode = 2
+mesh = ExtResource("6_quygd")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_qmri8")

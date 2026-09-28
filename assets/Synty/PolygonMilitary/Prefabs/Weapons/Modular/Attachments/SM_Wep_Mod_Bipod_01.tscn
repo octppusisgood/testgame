@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dbqt06pvfhunu"]
+
+[ext_resource type="ArrayMesh" uid="uid://bu3m5q0m7122i" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Bipod_01.res" id="1_pyrit"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_yg542"]
+[ext_resource type="ArrayMesh" uid="uid://bnxa4vmb67rdc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Bipod_Leg_L_01.res" id="3_yg542"]
+[ext_resource type="ArrayMesh" uid="uid://cjvu1xlaeixl2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Bipod_Leg_R_01.res" id="4_y3pho"]
+
+[node name="SM_Wep_Mod_Bipod_01" type="MeshInstance3D" unique_id=892124723]
+gi_mode = 2
+mesh = ExtResource("1_pyrit")
+surface_material_override/0 = ExtResource("2_yg542")
+
+[node name="SM_Wep_Mod_Bipod_Leg_L_01" type="MeshInstance3D" parent="." unique_id=1355389686]
+transform = Transform3D(0.9659258, -0.25881907, 0, 0.25881907, 0.9659258, 0, 0, 0, 1, 0.025292771, -0.04231655, -0.0026049975)
+gi_mode = 2
+mesh = ExtResource("3_yg542")
+surface_material_override/0 = ExtResource("2_yg542")
+
+[node name="SM_Wep_Mod_Bipod_Leg_R_01" type="MeshInstance3D" parent="." unique_id=130025454]
+transform = Transform3D(0.9659258, 0.25881907, 0, -0.25881907, 0.9659258, 0, 0, 0, 1, -0.025342818, -0.04231655, -0.0026049975)
+gi_mode = 2
+mesh = ExtResource("4_y3pho")
+surface_material_override/0 = ExtResource("2_yg542")

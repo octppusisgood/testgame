@@ -1,0 +1,168 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://buunfewlr08ht"
+path="res://.godot/imported/SM_Prop_Kitchen_Grill_01.fbx-63f2b3d09da8c0dd67185f53f17fdc0e.scn"
+
+[deps]
+
+source_file="res://assets/Synty/PolygonShops/Models/SM_Prop_Kitchen_Grill_01.fbx"
+dest_files=["res://.godot/imported/SM_Prop_Kitchen_Grill_01.fbx-63f2b3d09da8c0dd67185f53f17fdc0e.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=1
+meshes/generate_lods=true
+meshes/create_shadow_meshes=false
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=false
+animation/fps=24.0
+animation/trimming=true
+animation/remove_immutable_tracks=false
+animation/import_rest_as_RESET=true
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"animations": {},
+"materials": {},
+"meshes": {
+"Root Scene_SM_Prop_Kitchen_Grill_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://d1cei7406lexy"
+},
+"Root Scene_SM_Prop_Kitchen_Grill_01_Dial_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Dial_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://5a4txhly6ejn"
+},
+"Root Scene_SM_Prop_Kitchen_Grill_01_Dial_02": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Dial_02.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://clan451i7cu31"
+},
+"Root Scene_SM_Prop_Kitchen_Grill_01_Dial_03": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Dial_03.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dmy1emln7sqcx"
+},
+"Root Scene_SM_Prop_Kitchen_Grill_01_Door_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Door_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://yw8j3otr7b6f"
+},
+"Root Scene_SM_Prop_Kitchen_Grill_01_Door_02": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Door_02.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://d3c5n4ub26ci4"
+},
+"Root Scene_SM_Prop_Kitchen_Grill_01_Door_03": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Door_03.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://drvwjs370x3fd"
+},
+"SM_Prop_Kitchen_Grill_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://d1cei7406lexy"
+},
+"SM_Prop_Kitchen_Grill_01_Dial_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Dial_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://5a4txhly6ejn"
+},
+"SM_Prop_Kitchen_Grill_01_Dial_02": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Dial_02.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://clan451i7cu31"
+},
+"SM_Prop_Kitchen_Grill_01_Dial_03": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Dial_03.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dmy1emln7sqcx"
+},
+"SM_Prop_Kitchen_Grill_01_Door_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Door_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://yw8j3otr7b6f"
+},
+"SM_Prop_Kitchen_Grill_01_Door_02": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Door_02.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://d3c5n4ub26ci4"
+},
+"SM_Prop_Kitchen_Grill_01_Door_03": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Grill_01_Door_03.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://drvwjs370x3fd"
+}
+},
+"nodes": {
+"PATH:AnimationPlayer": {
+"optimizer/enabled": true,
+"optimizer/max_angular_error": 0.00277777777777777,
+"optimizer/max_linear_error": 0.5
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

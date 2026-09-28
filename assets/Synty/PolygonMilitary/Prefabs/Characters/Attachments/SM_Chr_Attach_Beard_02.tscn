@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://2f7kw7bhp37q"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqf3rhgv0k55q" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Beard_02.res" id="1_vhi2n"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_stm5x"]
+[ext_resource type="ArrayMesh" uid="uid://cu4iyr037lqft" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Beard_02_Patch.res" id="3_stm5x"]
+
+[node name="SM_Chr_Attach_Beard_02" type="MeshInstance3D" unique_id=1348494173]
+gi_mode = 2
+mesh = ExtResource("1_vhi2n")
+surface_material_override/0 = ExtResource("2_stm5x")
+
+[node name="SM_Chr_Attach_Beard_02_Patch" type="MeshInstance3D" parent="." unique_id=1794803996]
+gi_mode = 2
+mesh = ExtResource("3_stm5x")
+surface_material_override/0 = ExtResource("2_stm5x")

@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://c45mnxcxeulhh"]
+
+[ext_resource type="ArrayMesh" uid="uid://bsj3s0ihxl0rc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_01.res" id="1_1nw8p"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_m64fb"]
+[ext_resource type="ArrayMesh" uid="uid://dso50ly5ougox" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Door_01.res" id="3_m64fb"]
+[ext_resource type="ArrayMesh" uid="uid://cq01xdlok6tcp" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Door_02.res" id="4_dvf3w"]
+[ext_resource type="ArrayMesh" uid="uid://dtx6r1uh02lc0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Door_03.res" id="5_paknr"]
+[ext_resource type="ArrayMesh" uid="uid://cemp4agocpm1h" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Door_04.res" id="6_ebo2o"]
+[ext_resource type="ArrayMesh" uid="uid://uhlvhpnhwjbo" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Drawer_01.res" id="7_sx7uu"]
+[ext_resource type="ArrayMesh" uid="uid://qqipiyfkrd5y" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Drawer_02.res" id="8_ckay1"]
+[ext_resource type="ArrayMesh" uid="uid://brr0fdorw5l78" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Drawer_03.res" id="9_56iik"]
+[ext_resource type="ArrayMesh" uid="uid://enbvulka85ln" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Drawer_04.res" id="10_outp5"]
+[ext_resource type="ArrayMesh" uid="uid://dmf1s027vrl0o" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Drawer_05.res" id="11_uvx8q"]
+[ext_resource type="ArrayMesh" uid="uid://ddqyycmyy77s6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Drawer_06.res" id="12_c7yun"]
+[ext_resource type="ArrayMesh" uid="uid://dmb1b34tm65oi" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Drawer_07.res" id="13_lu5gm"]
+[ext_resource type="ArrayMesh" uid="uid://dfwkmvmg25d7g" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Lockers_Drawer_08.res" id="14_84vkx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gmp7c"]
+points = PackedVector3Array(-1.1209846, 2.295021, 0.3249725, 1.1198235, 2.295021, 0.3249725, -1.048382, 2.2559483, -0.2796535, -1.085451, 2.2581937, -0.2102509, -1.1019018, 0.14399962, -0.28448257, -1.0604459, 0.1808268, 0.30751354, 1.101618, 0.14310141, -0.28479213, 1.0575302, 2.2305734, -0.3075136, 1.0592849, 0.1808268, 0.30751354, -1.0589105, 2.1962163, -0.3075136, -1.0659294, 0.0020802617, -0.28442067, -1.0589105, 0.1828478, -0.3075136, -1.0113131, 0.060464807, 0.26919043, 1.0656457, 0.000957482, -0.28473023, 1.0575302, 0.1828478, -0.3075136, 1.0099328, 0.060464807, 0.26919043)
+
+[node name="SM_Prop_Lockers_01" type="MeshInstance3D" unique_id=1459404237]
+gi_mode = 2
+mesh = ExtResource("1_1nw8p")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1425433664]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1850181475]
+shape = SubResource("ConvexPolygonShape3D_gmp7c")
+
+[node name="SM_Prop_Lockers_Door_01" type="MeshInstance3D" parent="." unique_id=74142214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02216507, 0.88274395, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("3_m64fb")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Door_02" type="MeshInstance3D" parent="." unique_id=2053359423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0629942, 0.88274384, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("4_dvf3w")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Door_03" type="MeshInstance3D" parent="." unique_id=1567228584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0629938, 0.88274395, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("5_paknr")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Door_04" type="MeshInstance3D" parent="." unique_id=368765616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022164745, 0.88274384, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("6_ebo2o")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Drawer_01" type="MeshInstance3D" parent="." unique_id=1346496100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8661589, 0.5421394, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("7_sx7uu")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Drawer_02" type="MeshInstance3D" parent="." unique_id=1528322888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8661589, 0.20153502, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("8_ckay1")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Drawer_03" type="MeshInstance3D" parent="." unique_id=2098267938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32357937, 0.5421394, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("9_56iik")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Drawer_04" type="MeshInstance3D" parent="." unique_id=1094732712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32357937, 0.20153502, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("10_outp5")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Drawer_05" type="MeshInstance3D" parent="." unique_id=2020166512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2190004, 0.5421394, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("11_uvx8q")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Drawer_06" type="MeshInstance3D" parent="." unique_id=1515061348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2190004, 0.20153502, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("12_c7yun")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Drawer_07" type="MeshInstance3D" parent="." unique_id=1044623285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76157963, 0.5421394, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("13_lu5gm")
+surface_material_override/0 = ExtResource("2_m64fb")
+
+[node name="SM_Prop_Lockers_Drawer_08" type="MeshInstance3D" parent="." unique_id=1924503883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76157963, 0.20153502, 0.26634362)
+gi_mode = 2
+mesh = ExtResource("14_84vkx")
+surface_material_override/0 = ExtResource("2_m64fb")

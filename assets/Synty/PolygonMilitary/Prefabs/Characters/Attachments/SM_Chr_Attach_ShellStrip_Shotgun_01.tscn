@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c6gag36mw7m5y"]
+
+[ext_resource type="ArrayMesh" uid="uid://64j55tchiany" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_ShellStrip_Shotgun_01.res" id="1_gqvd4"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_ebpug"]
+
+[node name="SM_Chr_Attach_ShellStrip_Shotgun_01" type="MeshInstance3D" unique_id=1142482247]
+gi_mode = 2
+mesh = ExtResource("1_gqvd4")
+surface_material_override/0 = ExtResource("2_ebpug")

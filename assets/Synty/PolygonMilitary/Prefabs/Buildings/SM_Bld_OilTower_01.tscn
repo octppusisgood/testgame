@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dhf7q7f7mdino"]
+
+[ext_resource type="ArrayMesh" uid="uid://3nfn7nefp10q" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_OilTower_01.res" id="1_43vhe"]
+[ext_resource type="ArrayMesh" uid="uid://bbcawjyumnr10" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_OilTower_Floor_01.res" id="2_b2eyy"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_rw0ua"]
+[ext_resource type="Shape3D" uid="uid://rwnkog5rbqmk" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_OilTower_01_Collision.res" id="3_b8s2d"]
+[ext_resource type="Material" uid="uid://w7i3udc7qosk" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Fence_Wire_01_mat.tres" id="4_xko1v"]
+
+[node name="SM_Bld_OilTower_01" type="MeshInstance3D" unique_id=1662546949]
+gi_mode = 2
+mesh = ExtResource("1_43vhe")
+surface_material_override/0 = ExtResource("2_rw0ua")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1974472310]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1339961372]
+shape = ExtResource("3_b8s2d")
+
+[node name="SM_Bld_OilTower_Floor_01" type="MeshInstance3D" parent="." unique_id=299943320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9705005, 12.578003, 5.363272)
+gi_mode = 2
+mesh = ExtResource("2_b2eyy")
+surface_material_override/0 = ExtResource("4_xko1v")

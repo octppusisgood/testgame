@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://m6bdcdj51gj2"]
+
+[ext_resource type="ArrayMesh" uid="uid://bahfk4ku1id45" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Door_02.res" id="1_iywcg"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_w4suy"]
+[ext_resource type="Shape3D" uid="uid://o3yhoeaw5v3h" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Village_Door_02_Collision.res" id="3_3vigg"]
+[ext_resource type="ArrayMesh" uid="uid://bxnc15qfwc1rv" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Door_Hinge_02.res" id="3_w4suy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eu7je"]
+size = Vector3(1.0508814, 2.255659, 0.43236938)
+
+[node name="SM_Bld_Village_Door_02" type="MeshInstance3D" unique_id=2137886124]
+gi_mode = 2
+mesh = ExtResource("1_iywcg")
+surface_material_override/0 = ExtResource("2_w4suy")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=468433726]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1190170258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.040685892, 0, 0.033824444)
+shape = ExtResource("3_3vigg")
+
+[node name="SM_Bld_Village_Door_Hinge_02" type="MeshInstance3D" parent="." unique_id=460359548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09412597, 0, -0.081228025)
+gi_mode = 2
+mesh = ExtResource("3_w4suy")
+surface_material_override/0 = ExtResource("2_w4suy")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Village_Door_Hinge_02" unique_id=753557110]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Village_Door_Hinge_02/BoxCollider" unique_id=982079106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4998572, 1.1278296, -0.05023621)
+shape = SubResource("BoxShape3D_eu7je")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmkjeoo1c6xjv"]
+
+[ext_resource type="ArrayMesh" uid="uid://60bpj4t8cyh0" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Hazmat_Male_Glass_01.res" id="1_2ku2k"]
+[ext_resource type="Material" uid="uid://bg11y7vdeg0pp" path="res://assets/Synty/PolygonApocalypse/Materials/Misc/PolygonApocalypse_01_Glass_mat.tres" id="2_2ku2k"]
+
+[node name="SM_Chr_Attach_Hazmat_Male_Glass_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_2ku2k")
+surface_material_override/0 = ExtResource("2_2ku2k")

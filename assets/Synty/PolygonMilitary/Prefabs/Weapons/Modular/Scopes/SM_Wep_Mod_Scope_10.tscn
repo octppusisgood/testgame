@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dvyqwk5q5bj25"]
+
+[ext_resource type="ArrayMesh" uid="uid://3di3felf4mme" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Scope_10.res" id="1_8l3ht"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_wuqhs"]
+[ext_resource type="ArrayMesh" uid="uid://b334aag55hd37" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Scope_10_Glass.res" id="3_wuqhs"]
+[ext_resource type="Material" uid="uid://dufyylglufax8" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_Glass_mat.tres" id="4_5hgur"]
+
+[node name="SM_Wep_Mod_Scope_10" type="MeshInstance3D" unique_id=1705733194]
+gi_mode = 2
+mesh = ExtResource("1_8l3ht")
+surface_material_override/0 = ExtResource("2_wuqhs")
+
+[node name="SM_Wep_Mod_Scope_10_Glass" type="MeshInstance3D" parent="." unique_id=333415069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4667019e-08, 0.06516659, 0.0063289106)
+gi_mode = 2
+mesh = ExtResource("3_wuqhs")
+surface_material_override/0 = ExtResource("4_5hgur")

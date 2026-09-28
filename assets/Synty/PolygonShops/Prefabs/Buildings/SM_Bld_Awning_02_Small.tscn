@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://jn18gnf5s50v"]
+
+[ext_resource type="ArrayMesh" uid="uid://cbcmlbnu8wh3k" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Awning_02_Small.res" id="1_hh02c"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_fbllf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_obqy2"]
+points = PackedVector3Array(1.9559233, 2.5479314, 0.078070514, 1.994126, 2.5400712, 0.18265139, 1.956944, 1.9732903, 0.077803954, 0.54257095, 2.5479314, 0.078070514, 1.994126, 2.4935322, 0.22921075, 1.994126, 2.0514398, 0.53166896, 0.5045141, 2.5400712, 0.18265139, 1.9645263, 1.9702368, 0.52242815, 0.5415503, 1.9732903, 0.077803954, 1.994126, 2.330561, 0.34534264, 0.5045141, 2.4935322, 0.22916633, 0.5045141, 2.330561, 0.34538704, 0.5045141, 2.0514398, 0.53166896, 0.53396803, 1.9702368, 0.52242815)
+
+[node name="SM_Bld_Awning_02_Small" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_hh02c")
+surface_material_override/0 = ExtResource("2_fbllf")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_obqy2")

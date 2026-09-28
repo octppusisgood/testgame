@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://d15oeixrljt7e"]
+
+[ext_resource type="ArrayMesh" uid="uid://jtc6gi6li2yn" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Lighting_Ceiling_Industrial_02.res" id="1_q3bua"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_7qfo5"]
+[ext_resource type="ArrayMesh" uid="uid://ciewbu0nk5dyx" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Lighting_Ceiling_Industrial_Glass_02.res" id="3_7qfo5"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_g886g"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mugym"]
+points = PackedVector3Array(-0.10918394, -0.060813427, -0.020892777, -0.10918394, -0.003009081, 0.017580234, -0.06100498, -0.003009081, -0.09798967, -0.041720383, -1.6023178, -0.020911634, -0.041720383, -1.6023178, 0.007961981, -0.06100498, -0.060813427, 0.09467713, 0.064247295, -0.003009081, 0.09467713, 0.064247295, -0.003009081, -0.09798967, -0.022457473, -1.6120832, -0.04018586, -0.032088928, -1.6120832, -0.011274524, -0.022457473, -1.6023178, 0.03687332, 0.025678098, -1.4289045, 0.03687332, 0.04496269, -1.5829448, 0.007961981, 0.11242625, -0.060813427, 0.017580234, 0.11242625, -0.060813427, -0.011255667, 0.03533125, -1.6120832, -0.030548751)
+
+[node name="SM_Prop_Lighting_Ceiling_Industrial_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_q3bua")
+surface_material_override/0 = ExtResource("2_7qfo5")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_mugym")
+
+[node name="SM_Prop_Lighting_Ceiling_Industrial_Glass_01" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_7qfo5")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_g886g")

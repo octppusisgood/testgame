@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bwm8r75v0p6s"]
+
+[ext_resource type="ArrayMesh" uid="uid://dgxhwi7hj0tn8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_04_Destroyed.res" id="1_kdlye"]
+[ext_resource type="Material" uid="uid://bt3tv3qsn4njr" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_C_mat.tres" id="2_1uvbk"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oa8tr"]
+points = PackedVector3Array(2.0150187, 4.044347, 0.041860104, 2.0150187, 4.044347, -0.29169425, 1.8478496, 4.044347, 0.041860104, 5.183393, 0.45906186, 0.041860104, 5.183393, 0.45906186, -0.29169425, 1.8478496, 4.044347, -0.29169425, 1.0146168, 3.543191, 0.041860104, 5.266978, -0.041694164, 0.041860104, 5.266978, -0.041694164, -0.29169425, 1.0146168, 3.543191, -0.29169425, 0.68132365, 2.9596422, 0.041860104, -0.06989193, -0.041694164, 0.041860104, 0.013692558, -0.041694164, -0.29169425, 0.5141547, 2.6260715, -0.29169425, -0.06989193, 1.2929885, -0.29169425, -0.06989193, 1.2097958, 0.041860104)
+
+[node name="SM_Bld_Village_04_Destroyed" type="MeshInstance3D" unique_id=947391297]
+gi_mode = 2
+mesh = ExtResource("1_kdlye")
+surface_material_override/0 = ExtResource("2_1uvbk")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=338276992]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=713924698]
+shape = SubResource("ConvexPolygonShape3D_oa8tr")

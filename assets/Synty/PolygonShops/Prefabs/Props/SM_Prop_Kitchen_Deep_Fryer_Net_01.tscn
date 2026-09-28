@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://u4jhmu5h76qo"]
+
+[ext_resource type="ArrayMesh" uid="uid://du0rr7tbm473u" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Deep_Fryer_Net_01.res" id="1_aenxn"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_wkhlj"]
+[ext_resource type="ArrayMesh" uid="uid://bfdo63ck0spri" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Deep_Fryer_Net_01_Mesh.res" id="3_wkhlj"]
+[ext_resource type="Material" uid="uid://bh08n74p5hnhf" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Wire_01_mat.tres" id="4_aqdeq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qvqu8"]
+points = PackedVector3Array(0.04541178, -0.42144567, -0.7581821, 0.21362166, -0.101932526, -0.8087562, 0.04541178, -0.42144567, -0.32113773, -0.034392208, -0.3994029, -0.7158263, -0.20684128, -0.1187107, -0.8087562, -0.105923586, -0.0010066032, -0.8759776, 0.09582947, -0.051469564, -0.8759776, 0.112703964, 0.015814394, -0.8592249, 0.21362166, -0.101932526, -0.20334226, 0.062245116, -0.01782757, 0.20040756, -0.03085269, -0.38086987, -0.26940465, -0.20684128, -0.1187107, -0.22009492, -0.105923586, 0.015814394, -0.79189813, 0.09582947, 0.015814394, 0.13308078, -0.07225692, -0.01782757, 0.18354946, -0.08909026, 0.015814394, 0.14993876)
+
+[node name="SM_Prop_Kitchen_Deep_Fryer_Net_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_aenxn")
+surface_material_override/0 = ExtResource("2_wkhlj")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_qvqu8")
+
+[node name="SM_Prop_Kitchen_Deep_Fryer_Net_01_Mesh" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_wkhlj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_aqdeq")

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bh08n74p5hnhf"]
+
+[ext_resource type="Texture2D" uid="uid://bjd8hnowc365j" path="res://Assets/Synty/PolygonShops/Textures/Wire_Alpha.tga" id="1_rbjny"]
+
+[resource]
+resource_name = "PolygonShops_Wire_01_mat"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_rbjny")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

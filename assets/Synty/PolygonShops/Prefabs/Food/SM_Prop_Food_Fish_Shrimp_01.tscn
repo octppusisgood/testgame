@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://clnw8hhojdti4"]
+
+[ext_resource type="ArrayMesh" uid="uid://ujykmol47koh" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Fish_Shrimp_01.res" id="1_dgqbw"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_plt8p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nautn"]
+points = PackedVector3Array(0.059871502, 0.04305449, 0.00062680244, 0.05774624, 0.003760118, 0.004064806, 0.028617613, 0.006411357, -0.068987906, 0.024797693, 0.042429402, -0.06711985, 0.0021143183, 0.050528616, -0.04877718, 0.011837751, 0.04727384, 0.023540229, 0.02249185, 0.039761998, 0.073520534, 0.024325415, 0.007047223, 0.068691425, -0.07878462, -0.0045223087, 0.11960574, 0.0068371296, -0.0019087908, -0.04295443, -0.03875187, 0.0028817602, -0.08339574, -0.049656004, 0.037574187, -0.08115011, -0.08202114, 0.040807407, 0.09045222, -0.07870128, 0.039374013, 0.110444345, -0.08203503, 0.031096976, -0.04227875, -0.07765948, 0.0033505773, -0.03870163)
+
+[node name="SM_Prop_Food_Fish_Shrimp_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_dgqbw")
+surface_material_override/0 = ExtResource("2_plt8p")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_nautn")

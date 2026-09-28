@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bjxoh8mvefs0w"]
+
+[ext_resource type="ArrayMesh" uid="uid://d4i6qvmqgq4m7" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Crate_Plastic_02.res" id="1_keva0"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_w87nb"]
+[ext_resource type="ArrayMesh" uid="uid://2wl8a7vuh4rq" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Crate_Plastic_Lid_02.res" id="3_w87nb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qac1a"]
+size = Vector3(1.2009735, 0.46150225, 0.79798734)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_keva0"]
+size = Vector3(1.2139833, 0.1935664, 0.7979874)
+
+[node name="SM_Prop_Crate_Plastic_02" type="MeshInstance3D" unique_id=335604829]
+gi_mode = 2
+mesh = ExtResource("1_keva0")
+surface_material_override/0 = ExtResource("2_w87nb")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=1895900993]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=1543803545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0064964294, 0.23075113, -0.010668933)
+shape = SubResource("BoxShape3D_qac1a")
+
+[node name="SM_Prop_Crate_Plastic_Lid_02" type="MeshInstance3D" parent="." unique_id=2017553564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3810314e-08, 0.4384438, -0.38832435)
+gi_mode = 2
+mesh = ExtResource("3_w87nb")
+surface_material_override/0 = ExtResource("2_w87nb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SM_Prop_Crate_Plastic_Lid_02" unique_id=1698080822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920929e-07, 0.046783216, 0.3989941)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Crate_Plastic_Lid_02/StaticBody3D" unique_id=752746055]
+shape = SubResource("BoxShape3D_keva0")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2mor20f4lgak"]
+
+[ext_resource type="ArrayMesh" uid="uid://cwiis6j2ev7wj" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Lettuce_Leaves_01.res" id="1_8ue68"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_hmgc1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vjg3m"]
+points = PackedVector3Array(0.009423152, -0.012110468, -0.1192286, 0.12456024, -0.015949385, -0.027149007, -0.044230215, -0.027460082, -0.115380496, 0.009115607, -0.00036967918, -0.11416651, 0.1141513, -0.0036273096, -0.02469813, 0.10620266, -0.0035546478, 0.04161291, 0.113015786, -0.023621164, 0.038016766, 0.040011242, 0.024256306, -0.06615686, -0.117116466, -0.015949385, 0.030343473, -0.09409851, 0.007053843, -0.06162159, 0.0017820373, -0.027454026, 0.11477268, -0.018846586, 0.034398556, -0.034524538, 0.01834172, 0.033284426, 0.016508624, 0.018389031, 0.016766181, 0.059731066, -0.015274428, 2.38996e-05, 0.109229565, -0.11328408, 0.010892758, -0.011779502)
+
+[node name="SM_Prop_Food_Lettuce_Leaves_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8ue68")
+surface_material_override/0 = ExtResource("2_hmgc1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_vjg3m")

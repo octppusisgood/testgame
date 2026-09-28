@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr8wtnkbgl5wi"]
+
+[ext_resource type="ArrayMesh" uid="uid://dwfx76abx5k27" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Menu_Screen_01.res" id="1_6857w"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_i3gm6"]
+[ext_resource type="ArrayMesh" uid="uid://ypegptkr1r8j" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Menu_Screen_01_Screen_01.res" id="3_i3gm6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rwimg"]
+points = PackedVector3Array(0.6785786, 0.22326627, 0.116585046, 0.6785786, 0.22326627, -0.010602772, -0.6785786, 0.22326627, 0.116585046, 0.63606775, 0.09600788, 0.20143227, 0.6785786, -0.22196376, 0.116585046, 0.6785786, -0.22196376, -0.010602772, -0.6785786, 0.22326627, -0.010602772, -0.6360678, 0.09600788, 0.20143227, -0.6785786, -0.22196376, 0.116585046, 0.63606775, -0.09470537, 0.20143227, -0.6785786, -0.22196376, -0.010602772, -0.6360678, -0.09470537, 0.20143227)
+
+[node name="SM_Prop_Kitchen_Menu_Screen_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_6857w")
+surface_material_override/0 = ExtResource("2_i3gm6")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_rwimg")
+
+[node name="SM_Prop_Kitchen_Menu_Screen_01_Screen_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7590358e-16, 0.0025748445, 0.15523994)
+gi_mode = 2
+mesh = ExtResource("3_i3gm6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_i3gm6")

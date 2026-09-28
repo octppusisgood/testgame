@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjnattq4kvt43"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddkuqw7xldc1u" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Hunting_Fishing_Rod_Reel_02.res" id="1_biu5u"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_2x6l6"]
+[ext_resource type="ArrayMesh" uid="uid://e1d3rnid7viq" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Hunting_Fishing_Rod_Reel_02_Handle_01.res" id="3_2x6l6"]
+[ext_resource type="ArrayMesh" uid="uid://c8k1q0y26cfmq" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Hunting_Fishing_Rod_Reel_02_Handle_02.res" id="4_t6epi"]
+[ext_resource type="ArrayMesh" uid="uid://dyybf6affsser" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Hunting_Fishing_Rod_Reel_02_Roller_01.res" id="5_8wy8w"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_orldn"]
+points = PackedVector3Array(-0.017637113, -0.0018176734, -0.052819964, -0.039455734, 0.17264481, 0.016289711, -0.017637113, 0.16536611, -0.09643784, 0.014570206, 0.0015576815, -0.050322026, 0.013278469, 0.010250635, 0.042187154, -0.015139755, 0.01166489, 0.041824207, -0.039455734, 0.12176935, 0.1216729, -0.009777086, 0.18561824, 0.11607921, 0.007790543, 0.1908227, 0.016289711, 0.014546722, 0.1734745, -0.08533589, 0.04052239, 0.12176935, 0.016289711, 0.04052239, 0.12176935, 0.1216729, 0.02234412, 0.12904805, -0.06733791, -0.006731719, 0.09997097, 0.1216729, 0.03854955, 0.16887346, 0.11665566, 0.04052239, 0.17264481, 0.016289711)
+
+[node name="SM_Prop_Hunting_Fishing_Rod_Reel_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_biu5u")
+surface_material_override/0 = ExtResource("2_2x6l6")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_orldn")
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020152278, 0.14422356, -0.04136273)
+gi_mode = 2
+mesh = ExtResource("3_2x6l6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2x6l6")
+
+[node name="SM_Prop_Hunting_Fishing_Rod_Reel_02_Handle_02" type="MeshInstance3D" parent="MeshRenderer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042495407, 0.00032758713, -0.10246836)
+gi_mode = 2
+mesh = ExtResource("4_t6epi")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2x6l6")
+
+[node name="SM_Prop_Hunting_Fishing_Rod_Reel_02_Roller_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000116928466, 0.14632261, 0.13440809)
+gi_mode = 2
+mesh = ExtResource("5_8wy8w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2x6l6")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://yuwo27dsw28k"]
+
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_4lwav"]
+[ext_resource type="ArrayMesh" uid="uid://clwdvs2xom107" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Shop_Shelf_Basic_03.res" id="2_x6nhg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x6nhg"]
+size = Vector3(0.9189453, 2.2976074, 0.70947266)
+
+[node name="SM_Prop_Shop_Shelf_Basic_03" type="MeshInstance3D"]
+material_override = ExtResource("2_4lwav")
+gi_mode = 2
+mesh = ExtResource("2_x6nhg")
+surface_material_override/0 = ExtResource("2_4lwav")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0034179688, 1.1456299, -0.02709961)
+shape = SubResource("BoxShape3D_x6nhg")

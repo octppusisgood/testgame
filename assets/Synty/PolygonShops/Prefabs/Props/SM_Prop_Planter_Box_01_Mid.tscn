@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci8ha3abkciyu"]
+
+[ext_resource type="ArrayMesh" uid="uid://ciwjgkcjwucvl" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Planter_Box_01_Mid.res" id="1_vpjed"]
+[ext_resource type="Material" uid="uid://5d2avydyfst7" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_Red_01_mat.tres" id="2_3tc7d"]
+[ext_resource type="ArrayMesh" uid="uid://dnw64b4tevgif" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Planter_Box_01_Mid_Dirt.res" id="3_3tc7d"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="4_wuwwn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5ah8k"]
+points = PackedVector3Array(0.050263375, 0, 0.117924534, -0.019841194, 0.49596345, 1.0053544, 0.09078481, 0.66327566, 0.13243127, 2.4494803, 0, 0.117924534, 0.06716802, 0.004674613, 0.900072, 2.5198336, 0.49596345, 1.0053544, 0.09078481, 0.66327566, 0.9654826, 2.408959, 0.66327566, 0.13243127, 2.4325757, 0.004674613, 0.900072, 2.408959, 0.66327566, 0.9654826)
+
+[node name="SM_Prop_Planter_Box_01_Mid" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_vpjed")
+surface_material_override/0 = ExtResource("2_3tc7d")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_5ah8k")
+
+[node name="SM_Prop_Planter_Box_01_Mid_Dirt" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_3tc7d")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_wuwwn")

@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cdny75nqb0py5"]
+
+[ext_resource type="ArrayMesh" uid="uid://vfl5ug4vhgp0" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_01.res" id="1_easu6"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_2wurx"]
+[ext_resource type="ArrayMesh" uid="uid://c8rum1b1jd7j0" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_CylinderFlip_01.res" id="3_2wurx"]
+[ext_resource type="ArrayMesh" uid="uid://b0b1bwt0rfq58" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_Cylinder_01.res" id="4_k5opk"]
+[ext_resource type="ArrayMesh" uid="uid://ca5kwr2b0tqrt" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_Bullet_01.res" id="5_q4pd4"]
+[ext_resource type="ArrayMesh" uid="uid://ctoks4mqihfy8" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_Bullet_02.res" id="6_sgyc1"]
+[ext_resource type="ArrayMesh" uid="uid://cxtnrctcnbo0h" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_Bullet_03.res" id="7_cvhhu"]
+[ext_resource type="ArrayMesh" uid="uid://cvn3kocbia04r" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_Bullet_04.res" id="8_wfass"]
+[ext_resource type="ArrayMesh" uid="uid://c3ucloxp6oo7t" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_Bullet_05.res" id="9_ig4ya"]
+[ext_resource type="ArrayMesh" uid="uid://crtyuws6w8msr" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_Bullet_06.res" id="10_4f4kb"]
+[ext_resource type="ArrayMesh" uid="uid://dgjbxdsalaobt" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_Hammer_01.res" id="11_1miyc"]
+[ext_resource type="ArrayMesh" uid="uid://cknpwoxg0urqr" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Pistol_Revolver_Trigger_01.res" id="12_i4jm1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tfnde"]
+points = PackedVector3Array(-0.0202621, -0.08705659, 0.004845433, -0.026514433, -0.055747766, -0.026437681, -0.007512437, -0.0832769, -0.050371382, 0.010489967, -0.08269074, -0.0492555, 0.02353853, -0.080810994, 0.004845433, 0.017281294, 0.08185746, 0.34272617, -0.013995068, 0.08185746, 0.34272617, -0.0202621, 0.09434864, 0.06741166, -0.0202621, 0.06308025, -0.013932131, 0.02353853, -0.024459153, -0.04521525, 0.023543429, 0.088103056, 0.05490612, 0.0047668293, 0.11941187, 0.33645418, 0.017271496, 0.11312586, 0.048672583, -0.007737836, 0.11941187, 0.30513257, -0.013990168, 0.119391665, 0.048672583, 0.017281294, 0.069325835, -0.013932131)
+
+[node name="SM_Wep_Pistol_Revolver_01" type="MeshInstance3D" unique_id=2056350294]
+gi_mode = 2
+mesh = ExtResource("1_easu6")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1828985901]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1780305982]
+shape = SubResource("ConvexPolygonShape3D_tfnde")
+
+[node name="SM_Wep_Pistol_Revolver_CylinderFlip_01" type="MeshInstance3D" parent="." unique_id=785863494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011608201, 0.04044995, 0.095639005)
+gi_mode = 2
+mesh = ExtResource("3_2wurx")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="SM_Wep_Pistol_Revolver_Cylinder_01" type="MeshInstance3D" parent="SM_Wep_Pistol_Revolver_CylinderFlip_01" unique_id=1030576826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0116081955, 0.033481274, 0.0005180836)
+gi_mode = 2
+mesh = ExtResource("4_k5opk")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="SM_Wep_Pistol_Revolver_Bullet_01" type="MeshInstance3D" parent="SM_Wep_Pistol_Revolver_CylinderFlip_01/SM_Wep_Pistol_Revolver_Cylinder_01" unique_id=381637616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00045277746, 0.01683829, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("5_q4pd4")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="SM_Wep_Pistol_Revolver_Bullet_02" type="MeshInstance3D" parent="SM_Wep_Pistol_Revolver_CylinderFlip_01/SM_Wep_Pistol_Revolver_Cylinder_01" unique_id=614790425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014808787, 0.008027025, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("6_sgyc1")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="SM_Wep_Pistol_Revolver_Bullet_03" type="MeshInstance3D" parent="SM_Wep_Pistol_Revolver_CylinderFlip_01/SM_Wep_Pistol_Revolver_Cylinder_01" unique_id=16588418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014355989, -0.00881131, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("7_cvhhu")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="SM_Wep_Pistol_Revolver_Bullet_04" type="MeshInstance3D" parent="SM_Wep_Pistol_Revolver_CylinderFlip_01/SM_Wep_Pistol_Revolver_Cylinder_01" unique_id=133664687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0004528221, -0.016838312, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("8_wfass")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="SM_Wep_Pistol_Revolver_Bullet_05" type="MeshInstance3D" parent="SM_Wep_Pistol_Revolver_CylinderFlip_01/SM_Wep_Pistol_Revolver_Cylinder_01" unique_id=35491509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014808829, -0.0080270395, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("9_ig4ya")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="SM_Wep_Pistol_Revolver_Bullet_06" type="MeshInstance3D" parent="SM_Wep_Pistol_Revolver_CylinderFlip_01/SM_Wep_Pistol_Revolver_Cylinder_01" unique_id=607864455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014356035, 0.008811288, -0.00064720213)
+gi_mode = 2
+mesh = ExtResource("10_4f4kb")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="SM_Wep_Pistol_Revolver_Hammer_01" type="MeshInstance3D" parent="." unique_id=1215324164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1525585e-09, 0.06850359, 0.031036949)
+gi_mode = 2
+mesh = ExtResource("11_1miyc")
+surface_material_override/0 = ExtResource("2_2wurx")
+
+[node name="SM_Wep_Pistol_Revolver_Trigger_01" type="MeshInstance3D" parent="." unique_id=1467711291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1525585e-09, 0.030389816, 0.0696716)
+gi_mode = 2
+mesh = ExtResource("12_i4jm1")
+surface_material_override/0 = ExtResource("2_2wurx")

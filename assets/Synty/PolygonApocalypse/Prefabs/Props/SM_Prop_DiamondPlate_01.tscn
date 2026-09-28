@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvu26bq5e7ccm"]
+
+[ext_resource type="ArrayMesh" uid="uid://cgtsb8ta2vkxb" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_DiamondPlate_01.res" id="1_k8mlt"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_1vel2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k8mlt"]
+size = Vector3(1.2102051, 0.12628174, 1.149292)
+
+[node name="SM_Prop_DiamondPlate_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_k8mlt")
+surface_material_override/0 = ExtResource("2_1vel2")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207031, 0.060760498, 0.002380371)
+shape = SubResource("BoxShape3D_k8mlt")

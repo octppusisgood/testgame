@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmhrl8gme6evp"]
+
+[ext_resource type="ArrayMesh" uid="uid://d0iuvrfmnbtxv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Motorway_Ramp_Middle_02.res" id="1_1yfby"]
+[ext_resource type="Material" uid="uid://cs5tr0n48vvsw" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Road_Standard_01_mat.tres" id="2_gikn4"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8xb7r"]
+data = PackedVector3Array(5, 0, 0, 5, -1.02, 0, 0, -1.02, 0, 0, -1.02, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 2.4938, -7.5154, 5, 2.4938, -7.5154, 5, 2.4938, -7.5154, 5, 0, 0, 0, 0, 0, 5, 1.4738, -7.5154, 5, 2.4938, -7.5154, 0, 2.4938, -7.5154, 0, 2.4938, -7.5154, 0, 1.4738, -7.5154, 5, 1.4738, -7.5154, 5, -1.02, 0, 5, 1.4738, -7.5154, 0, 1.4738, -7.5154, 0, 1.4738, -7.5154, 0, -1.02, 0, 5, -1.02, 0, 0, 1.4738, -7.5154, 0, 2.4938, -7.5154, 0, 0, 0, 0, 0, 0, 0, -1.02, 0, 0, 1.4738, -7.5154, 5, 1.4738, -7.5154, 5, -1.02, 0, 5, 0, 0, 5, 0, 0, 5, 2.4938, -7.5154, 5, 1.4738, -7.5154)
+
+[node name="SM_Env_Motorway_Ramp_Middle_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_1yfby")
+surface_material_override/0 = ExtResource("2_gikn4")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConcavePolygonShape3D_8xb7r")

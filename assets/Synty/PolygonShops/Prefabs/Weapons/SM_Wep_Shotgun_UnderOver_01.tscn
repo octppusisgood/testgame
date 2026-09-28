@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7wj8p5j77wul"]
+
+[ext_resource type="ArrayMesh" uid="uid://br3tlkmyoydfj" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Shotgun_UnderOver_01.res" id="1_rd3m7"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_pvj2c"]
+[ext_resource type="ArrayMesh" uid="uid://bqcv42uwvbc0q" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Shotgun_UnderOver_Barrels_01.res" id="3_pvj2c"]
+[ext_resource type="ArrayMesh" uid="uid://lyapwttb7yhd" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Shotgun_UnderOver_Leaver_01.res" id="4_b0vob"]
+[ext_resource type="ArrayMesh" uid="uid://dimpfgq2kni1b" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Shotgun_UnderOver_Trigger_01.res" id="5_c8cjk"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c1u8a"]
+points = PackedVector3Array(0.008269213, -0.12481564, -0.36794984, 0.026623502, -0.115649275, -0.37717244, 0.008269213, -0.042205185, 0.12746811, -0.008091215, -0.07523051, -0.035200536, -0.028428584, -0.115649275, -0.37717244, 0.026623502, 0.021978244, -0.38633847, 0.026623502, 0.0036266446, 0.07235882, 0.017446358, -0.0055397153, 0.19168687, -0.01925144, -0.0055397153, 0.19168687, -0.028428584, 0.021978244, -0.38633847, -0.028428584, 0.031163469, 0.07235882, -0.01925144, 0.031163469, -0.38633847, 0.008269213, 0.04032983, -0.32206315, 0.017446358, 0.06786665, 0.11824548, -0.018265288, 0.027938262, 0.18506694, -0.01925144, 0.06786665, 0.11824548)
+
+[node name="SM_Wep_Shotgun_UnderOver_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_rd3m7")
+surface_material_override/0 = ExtResource("2_pvj2c")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_c1u8a")
+
+[node name="SM_Wep_Shotgun_UnderOver_Barrels_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00083480834, 0.015804347, 0.1742394)
+gi_mode = 2
+mesh = ExtResource("3_pvj2c")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_pvj2c")
+
+[node name="SM_Wep_Shotgun_UnderOver_Leaver_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00083480834, 0.05617065, 0.0704918)
+gi_mode = 2
+mesh = ExtResource("4_b0vob")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_pvj2c")
+
+[node name="SM_Wep_Shotgun_UnderOver_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00083480834, 0.005226399, 0.085523635)
+gi_mode = 2
+mesh = ExtResource("5_c8cjk")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_pvj2c")

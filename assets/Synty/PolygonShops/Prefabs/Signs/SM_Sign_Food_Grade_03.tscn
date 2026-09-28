@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dneua0by3j1gp"]
+
+[ext_resource type="ArrayMesh" uid="uid://bk8shkxopuj18" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Sign_Food_Grade_03.res" id="1_xwl56"]
+[ext_resource type="Material" uid="uid://bnfbs4ne1yer1" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Signs_01_mat.tres" id="2_tr1cf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxcob"]
+size = Vector3(0.3710803, 0.5093058, 0.04074463)
+
+[node name="SM_Sign_Food_Grade_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_xwl56")
+surface_material_override/0 = ExtResource("2_tr1cf")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.109476e-07, 0, 0.020372314)
+shape = SubResource("BoxShape3D_dxcob")

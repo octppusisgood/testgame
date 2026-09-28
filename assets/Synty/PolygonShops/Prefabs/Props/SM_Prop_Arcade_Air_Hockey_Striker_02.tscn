@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://denjgrlst8y10"]
+
+[ext_resource type="ArrayMesh" uid="uid://b1r8h2in05bfr" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Air_Hockey_Striker_02.res" id="1_wd4c1"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_xbyrs"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_juh4t"]
+points = PackedVector3Array(-0.041026518, 0.03742298, -0.06706308, -0.039136134, 0.0009167264, -0.06394007, -0.07440313, 0.00048212818, 0.0028473288, -0.07724626, 0.03742298, 0.0029399619, -0.0112491995, 0.08739327, -0.015202604, 0.015836217, 0.080857255, -0.026609525, 0.04103124, 0.03742298, -0.06706308, 0.03912574, 0.0009167264, -0.06394007, 0.037310965, 0.00033726208, 0.065850064, -0.03733649, 0.00033726208, 0.065850064, -0.03862195, 0.03742298, 0.06812616, -0.017797489, 0.080260746, 0.024999522, 0.011148065, 0.08711206, 0.016159818, 0.07725099, 0.03742298, -0.0042720735, 0.06439638, 0.0009422911, -0.020165011, 0.038611554, 0.03742298, 0.06812616)
+
+[node name="SM_Prop_Arcade_Air_Hockey_Striker_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_wd4c1")
+surface_material_override/0 = ExtResource("2_xbyrs")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_juh4t")

@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://dbcsqj7m2rx8b"]
+
+[ext_resource type="ArrayMesh" uid="uid://djwakuu0k2vf7" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Caravan_01.res" id="1_cchv8"]
+[ext_resource type="Material" uid="uid://bj206v4v20ibu" path="res://Assets/Synty/PolygonApocalypse/Materials/Vehicles/Vehicle_Standard_01_mat.tres" id="2_g356b"]
+[ext_resource type="ArrayMesh" uid="uid://cw6p7p45oayb8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Caravan_Door_01.res" id="3_g356b"]
+[ext_resource type="ArrayMesh" uid="uid://clf4kwcuro4as" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Caravan_Glass_01.res" id="4_1a7mk"]
+[ext_resource type="Material" uid="uid://d1x3gd0sksyr6" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Vehicle_Glass_01_mat.tres" id="5_5hjja"]
+[ext_resource type="ArrayMesh" uid="uid://ba8metpd481ey" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Caravan_Interior_01.res" id="6_po20a"]
+[ext_resource type="ArrayMesh" uid="uid://b4fs2kl7wwkt4" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Caravan_Interior_Door_01.res" id="7_5hjja"]
+[ext_resource type="ArrayMesh" uid="uid://l7dwlx1e5u52" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Caravan_Stand_01.res" id="8_450x5"]
+[ext_resource type="ArrayMesh" uid="uid://cv3vqjwh3lh4y" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Caravan_Wheel_l.res" id="9_isyuf"]
+[ext_resource type="ArrayMesh" uid="uid://de7lxgt3hhed5" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Caravan_Wheel_r.res" id="10_wnjhq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8o6fq"]
+points = PackedVector3Array(-1.119301, 0.24268246, 0.078513384, -1.182745, 0.488575, -2.2050016, 1.182513, 0.43283242, -2.0011163, 0.9928756, 0.33072448, -0.06994057, 0.1248039, 0.24268246, 4.12245, -1.1535699, 0.41850606, 2.4690683, 1.1183743, 1.5927472, -2.386587, -1.1595902, 2.379916, 2.5754707, -1.1725569, 2.3877304, -2.1795158, 1.182513, 2.657587, -1.7099427, 1.182513, 0.43283242, 2.4493167, -0.08219957, 0.45002407, 4.12245, 1.182513, 2.5612097, 2.351834, 0.3017062, 2.90374, 1.1775825, -0.33782804, 2.8545094, 0.53406954, -1.1246265, 2.7398984, -1.2964379)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mbk6o"]
+radius = 0.3981574
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4xtrd"]
+radius = 0.3981574
+
+[node name="SM_Veh_Caravan_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_cchv8")
+surface_material_override/0 = ExtResource("2_g356b")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_8o6fq")
+
+[node name="SM_Veh_Caravan_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1667289, 1.5604349, 0.6667058)
+gi_mode = 2
+mesh = ExtResource("3_g356b")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_g356b")
+
+[node name="SM_Veh_Caravan_Glass_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("4_1a7mk")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_5hjja")
+
+[node name="SM_Veh_Caravan_Interior_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("6_po20a")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_g356b")
+
+[node name="SM_Veh_Caravan_Interior_Door_01" type="MeshInstance3D" parent="SM_Veh_Caravan_Interior_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4777794, 1.5348173, -0.48678377)
+gi_mode = 2
+mesh = ExtResource("7_5hjja")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_g356b")
+
+[node name="SM_Veh_Caravan_Stand_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11147308, 0.16075513, 3.5767238)
+gi_mode = 2
+mesh = ExtResource("8_450x5")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_g356b")
+
+[node name="SM_Veh_Caravan_Wheel_l" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99083525, 0.36922526, -0.005692959)
+gi_mode = 2
+mesh = ExtResource("9_isyuf")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_g356b")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_Caravan_Wheel_l"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Caravan_Wheel_l/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, 0, 2.9802322e-08)
+shape = SubResource("SphereShape3D_mbk6o")
+
+[node name="SM_Veh_Caravan_Wheel_r" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9908351, 0.36922526, -0.005692959)
+gi_mode = 2
+mesh = ExtResource("10_wnjhq")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_g356b")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_Caravan_Wheel_r"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Caravan_Wheel_r/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0, 2.9802322e-08)
+shape = SubResource("SphereShape3D_4xtrd")

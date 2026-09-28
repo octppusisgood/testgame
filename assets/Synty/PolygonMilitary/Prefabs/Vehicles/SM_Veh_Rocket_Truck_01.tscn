@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://cxj3i8emm4dbh"]
+
+[ext_resource type="ArrayMesh" uid="uid://cb2d8rv0njcwc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01.res" id="1_su51o"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_s5mj7"]
+[ext_resource type="ArrayMesh" uid="uid://qu0xe0sl5ujx" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Base.res" id="3_s5mj7"]
+[ext_resource type="ArrayMesh" uid="uid://bqvegpfyngbsi" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_Battery.res" id="4_vnsda"]
+[ext_resource type="ArrayMesh" uid="uid://kta712q5em6j" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_1.res" id="5_n1p8s"]
+[ext_resource type="ArrayMesh" uid="uid://cjotqvn2lufoe" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_2.res" id="6_83k05"]
+[ext_resource type="ArrayMesh" uid="uid://b681vkpvmu5a" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_3.res" id="7_xwxd4"]
+[ext_resource type="ArrayMesh" uid="uid://dl6qp8y45wfkc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_4.res" id="8_dwoyx"]
+[ext_resource type="ArrayMesh" uid="uid://blag6aekj38dr" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_5.res" id="9_4qpdk"]
+[ext_resource type="ArrayMesh" uid="uid://hv8s1w6u35e" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_6.res" id="10_t0ywg"]
+[ext_resource type="ArrayMesh" uid="uid://b45fetafnj6gp" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_7.res" id="11_7u716"]
+[ext_resource type="ArrayMesh" uid="uid://cykvk6wyc0c6h" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_8.res" id="12_18yg0"]
+[ext_resource type="ArrayMesh" uid="uid://bl0sln8lys6r2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_9.res" id="13_318qp"]
+[ext_resource type="ArrayMesh" uid="uid://bx5mknqnju3qg" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_10.res" id="14_5o3a5"]
+[ext_resource type="ArrayMesh" uid="uid://kn4rqy0qlfbu" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_11.res" id="15_rinf3"]
+[ext_resource type="ArrayMesh" uid="uid://m7vlue71whd2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Rocket_12.res" id="16_24mrd"]
+[ext_resource type="ArrayMesh" uid="uid://ha8pn3cw7fvl" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Glass.res" id="17_w5h5w"]
+[ext_resource type="Material" uid="uid://bsdrxux17jhqg" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_Alt_mat.tres" id="18_oqjba"]
+[ext_resource type="ArrayMesh" uid="uid://bgxqg3giuxy2r" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_SteeringW.res" id="19_gnyp4"]
+[ext_resource type="ArrayMesh" uid="uid://do2ssgxhjb5vn" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Wheel_fl.res" id="20_oqjba"]
+[ext_resource type="ArrayMesh" uid="uid://bmlha00ldindi" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Wheel_fr.res" id="21_rqwrd"]
+[ext_resource type="ArrayMesh" uid="uid://clu3yc0b62brh" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Wheel_rl1.res" id="22_nik7e"]
+[ext_resource type="ArrayMesh" uid="uid://wqdangkp725b" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Wheel_rl2.res" id="23_7mujd"]
+[ext_resource type="ArrayMesh" uid="uid://52tmskum3j15" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Wheel_rr1.res" id="24_dmo35"]
+[ext_resource type="ArrayMesh" uid="uid://ic2bupgll7hm" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Rocket_Truck_01_Wheel_rr2.res" id="25_vwlva"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_353xk"]
+points = PackedVector3Array(1.8159256, 2.8058882, 3.6120696, -1.8706071, 2.8058882, 3.6120696, 1.5207431, 1.3312466, 4.2027946, 1.5802848, 0.511472, 2.9792786, 1.6686952, 0.594323, -4.7932234, 1.6686952, 1.9207327, -4.9400096, 1.3731518, 3.101293, 1.9902625, -1.8706071, 1.7735597, 3.6120696, -1.3747873, 1.0615177, 4.023787, -1.4278336, 3.101293, 1.9902625, -1.7233768, 1.9207327, -4.9400096, 1.3731518, 0.5940583, 3.7597508, -1.5804768, 0.5517064, 2.8602386, 0.7264931, 0.3971218, -2.7113674, -0.8381903, 0.4466206, -4.9400096, -1.7233768, 0.594323, -4.7932234)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_su51o"]
+size = Vector3(3.1506348, 1.4213257, 4.486328)
+
+[node name="SM_Veh_Rocket_Truck_01" type="MeshInstance3D" unique_id=1698451234]
+gi_mode = 2
+mesh = ExtResource("1_su51o")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1402289119]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=852306929]
+shape = SubResource("ConvexPolygonShape3D_353xk")
+
+[node name="SM_Veh_Rocket_Truck_01_Base" type="MeshInstance3D" parent="." unique_id=1590892038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8368859, -2.841265)
+gi_mode = 2
+mesh = ExtResource("3_s5mj7")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_Battery" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base" unique_id=865124536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16789412, -1.5350811)
+gi_mode = 2
+mesh = ExtResource("4_vnsda")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=481787918]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery/MeshCollider" unique_id=1380873032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008422852, 0.8722229, 1.9189453)
+shape = SubResource("BoxShape3D_su51o")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_1" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=195109478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1692775, 0.5343828, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("5_n1p8s")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_2" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=689499171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7828668, 0.5343828, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("6_83k05")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_3" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=465237555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40192923, 0.5343828, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("7_xwxd4")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_4" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=461241886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40192923, 0.8822706, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("8_dwoyx")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_5" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=1333627885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7828668, 0.8822706, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("9_4qpdk")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_6" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=724555011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1692775, 0.8822706, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("10_t0ywg")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_7" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=970752763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40192923, 0.5343828, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("11_7u716")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_8" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=86656647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7828668, 0.5343828, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("12_18yg0")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_9" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=953808862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1692775, 0.5343828, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("13_318qp")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_10" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=2111359231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1692775, 0.8822706, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("14_5o3a5")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_11" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=888790086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7828668, 0.8822706, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("15_rinf3")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Rocket_12" type="MeshInstance3D" parent="SM_Veh_Rocket_Truck_01_Base/SM_Veh_Rocket_Truck_01_Rocket_Battery" unique_id=620610799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40192923, 0.8822706, 1.8721952)
+gi_mode = 2
+mesh = ExtResource("16_24mrd")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Glass" type="MeshInstance3D" parent="." unique_id=1520696671]
+gi_mode = 2
+mesh = ExtResource("17_w5h5w")
+surface_material_override/0 = ExtResource("18_oqjba")
+
+[node name="SM_Veh_Rocket_Truck_01_SteeringW" type="MeshInstance3D" parent="." unique_id=1969144811]
+transform = Transform3D(1, 0, 0, 0, 0.62932044, -0.7771459, 0, 0.7771459, 0.62932044, 0.71867293, 1.946146, 3.1559546)
+gi_mode = 2
+mesh = ExtResource("19_gnyp4")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Wheel_fl" type="MeshInstance3D" parent="." unique_id=562555256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.124367, 0.75105, 1.5216805)
+gi_mode = 2
+mesh = ExtResource("20_oqjba")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Wheel_fr" type="MeshInstance3D" parent="." unique_id=106990586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1243666, 0.75105, 1.5216805)
+gi_mode = 2
+mesh = ExtResource("21_rqwrd")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Wheel_rl1" type="MeshInstance3D" parent="." unique_id=1622003721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3297018, 0.75105, -1.8285946)
+gi_mode = 2
+mesh = ExtResource("22_nik7e")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Wheel_rl2" type="MeshInstance3D" parent="." unique_id=1341901792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3297018, 0.75105, -3.7167885)
+gi_mode = 2
+mesh = ExtResource("23_7mujd")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Wheel_rr1" type="MeshInstance3D" parent="." unique_id=667968987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3297018, 0.75105, -1.8285946)
+gi_mode = 2
+mesh = ExtResource("24_dmo35")
+surface_material_override/0 = ExtResource("2_s5mj7")
+
+[node name="SM_Veh_Rocket_Truck_01_Wheel_rr2" type="MeshInstance3D" parent="." unique_id=304607942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3297018, 0.75105, -3.7167885)
+gi_mode = 2
+mesh = ExtResource("25_vwlva")
+surface_material_override/0 = ExtResource("2_s5mj7")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d4bh4m23an2ii"]
+
+[ext_resource type="ArrayMesh" uid="uid://wwn6cp3bawo6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_TV_Antenna_03.res" id="1_qw48v"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_ucdel"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8th33"]
+points = PackedVector3Array(-0.070005074, 1.3402879, 1.0069697, 0.16050687, 1.429971, 0.99173784, -0.30593956, 1.6922617, 0.02964139, -0.24759308, 1.2259467, 0.99173784, 0.16050687, 1.2259467, 0.99173784, 0.21885335, 1.6922617, 0.02964139, 0.014640689, 1.779753, 0.02964139, 0.24802661, -0.086238325, 0.058997244, -0.13095436, 1.3132551, -0.40765, -0.294498, 1.433624, -0.18166533, -0.30593956, 0.9050239, 0.08793768, -0.24759308, -0.086238325, 0.058997244, 0.23349422, -0.03746976, -0.06548819, 0.19309631, 1.1601913, -0.17488027, 0.043813944, 1.2840304, -0.40765, -0.23213886, -0.020300299, -0.058010757)
+
+[node name="SM_Prop_TV_Antenna_03" type="MeshInstance3D" unique_id=483966809]
+gi_mode = 2
+mesh = ExtResource("1_qw48v")
+surface_material_override/0 = ExtResource("2_ucdel")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=7393615]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1647553930]
+shape = SubResource("ConvexPolygonShape3D_8th33")

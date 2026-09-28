@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr2pdcxqoh2lc"]
+
+[ext_resource type="ArrayMesh" uid="uid://dputx6ko708ig" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Kebab_Rotisserie_01.res" id="1_d1hqj"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_xasr6"]
+[ext_resource type="ArrayMesh" uid="uid://b8vqxxgbetkok" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Kebab_Rotisserie_01_Knob_1.res" id="3_xasr6"]
+[ext_resource type="ArrayMesh" uid="uid://duiqgcvsqrmag" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Kebab_Rotisserie_01_Knob_2.res" id="4_msu6c"]
+[ext_resource type="ArrayMesh" uid="uid://q36dgx3pb0j6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Kebab_Rotisserie_01_Knob_3.res" id="5_vmw0n"]
+[ext_resource type="ArrayMesh" uid="uid://dcbkc30u6rkgr" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Kebab_Rotisserie_01_Spit.res" id="6_vc84a"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fr5wq"]
+points = PackedVector3Array(-0.312485, 0, -0.4109667, 0.31552312, 0.001368926, -0.40950623, -0.312485, 0, 0.41094327, -0.31774554, 0.071792565, 0.417921, -0.31774554, 0.71161336, -0.36569268, -0.24391012, 0.75116014, -0.40390784, 0.2890952, 0.7295615, -0.4082892, 0.31007472, 0.6868966, -0.4024474, 0.32203618, 0.6985325, -0.36569268, 0.32203618, 0.071792565, 0.417921, 0.31546053, 0.0014449775, 0.40932053, -0.030545175, 0.77694154, 0.06522182, -0.2524272, 0.7377751, -0.05226344, 0.034710556, 0.77694154, 0.06522182, 0.28277, 0.75077987, -0.36569268, 0.25671783, 0.73769903, -0.05226344)
+
+[node name="SM_Prop_Kitchen_Kebab_Rotisserie_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_d1hqj")
+surface_material_override/0 = ExtResource("2_xasr6")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_fr5wq")
+
+[node name="SM_Prop_Kitchen_Kebab_Rotisserie_01_Knob_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.64917284, -0.7606409, 0, 0.7606409, 0.64917284, 0.2711086, 0.55428416, -0.182792)
+gi_mode = 2
+mesh = ExtResource("3_xasr6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_xasr6")
+
+[node name="SM_Prop_Kitchen_Kebab_Rotisserie_01_Knob_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.96028453, 0.27902266, 0, -0.27902266, 0.96028453, 0.2711086, 0.38933203, -0.182792)
+gi_mode = 2
+mesh = ExtResource("4_msu6c")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_xasr6")
+
+[node name="SM_Prop_Kitchen_Kebab_Rotisserie_01_Knob_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.921592, -0.38816008, 0, 0.38816008, 0.921592, 0.2711086, 0.21407591, -0.182792)
+gi_mode = 2
+mesh = ExtResource("5_vmw0n")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_xasr6")
+
+[node name="SM_Prop_Kitchen_Kebab_Rotisserie_01_Spit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7210816e-08, 0.104209974, 0.01689754)
+gi_mode = 2
+mesh = ExtResource("6_vc84a")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_xasr6")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxq3n7ygr83hc"]
+
+[ext_resource type="ArrayMesh" uid="uid://dqnulwpqxknv8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Playground_Swing_01.res" id="1_r1upp"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_cyhkb"]
+[ext_resource type="ArrayMesh" uid="uid://bh1imjx7ydvss" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Playground_Swing_Rope_01.res" id="3_cyhkb"]
+[ext_resource type="ArrayMesh" uid="uid://dh4kedmjdubd0" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Playground_Swing_Rope_02.res" id="4_0kasr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r1upp"]
+points = PackedVector3Array(-1.3512406, 0.62451786, 1.1694638, 1.3444405, -0.024965286, -1.4266651, 1.3444405, 0.07520795, -1.4266651, 1.4445354, 0.12529445, 1.2196089, 1.3444405, 2.771124, 0.1211503, -1.5511177, 2.7210374, -0.17832802, -1.4523836, 0.0202, -1.1874012, -1.4740186, 0, 1.3939428, 1.5443175, 1.2737273, -0.8772965, -1.4710447, 2.6512992, 0.11469332, 1.5443175, 2.3715262, 0.32061678, -1.5007573, 0.22519386, -1.1767749, 1.3977584, 0.0202, 1.1800901, 1.4226217, 2.7042418, -0.07474445, -1.601165, 0.8741296, 0.021138467, 1.49427, -0.024965286, -1.22692, -1.3512406, -0.024965286, 1.419354, -1.3512406, 0.07520795, 1.419354, 1.5443175, 0.52461845, -0.47780636, 1.4445354, 2.7210374, 0.17101692, -1.5007573, 0.62451786, 1.1694638, -1.3512406, 2.771124, -0.1284614, -1.443514, 2.717677, 0.06815085, 1.4675256, 0, -1.4012539, 1.5074083, 2.3642886, -0.12166898, -1.4513355, 2.7210374, -0.17832802, -1.601165, 0.974029, -0.028449573, 1.5443175, 0.72441727, -0.8274299, 1.4757453, 2.5284808, -0.1191957, 1.4445354, 1.2737273, -0.8772965)
+
+[node name="SM_Prop_Playground_Swing_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_r1upp")
+surface_material_override/0 = ExtResource("2_cyhkb")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_r1upp")
+
+[node name="SM_Prop_Playground_Swing_Rope_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28503418, 2.4192023, -0.0021850585)
+gi_mode = 2
+mesh = ExtResource("3_cyhkb")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_cyhkb")
+
+[node name="SM_Prop_Playground_Swing_Rope_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8430693, 2.4208307, -0.0018054199)
+gi_mode = 2
+mesh = ExtResource("4_0kasr")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_cyhkb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]

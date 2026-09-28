@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh0yo57j87b4v"]
+
+[ext_resource type="ArrayMesh" uid="uid://cxsyn5oriomyl" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Balcony_Railing_Corner_01.res" id="1_rtjyc"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_bfe6m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lsj8a"]
+size = Vector3(0.23632519, 1.7227696, 0.23632467)
+
+[node name="SM_Bld_Balcony_Railing_Corner_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_rtjyc")
+surface_material_override/0 = ExtResource("2_bfe6m")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037201695, 0.27099735, 0.037201438)
+shape = SubResource("BoxShape3D_lsj8a")

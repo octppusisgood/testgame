@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://biqjh01mriawm"]
+
+[ext_resource type="ArrayMesh" uid="uid://klr4m8r7oskw" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Attach_Plating_19.res" id="1_unaro"]
+[ext_resource type="Material" uid="uid://bj206v4v20ibu" path="res://Assets/Synty/PolygonApocalypse/Materials/Vehicles/Vehicle_Standard_01_mat.tres" id="2_7jwm3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_unaro"]
+size = Vector3(1.3244629, 0.31292725, 0.15319824)
+
+[node name="SM_Veh_Attach_Plating_19" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_unaro")
+surface_material_override/0 = ExtResource("2_7jwm3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015869141, -0.0013122559, 0.012756348)
+shape = SubResource("BoxShape3D_unaro")

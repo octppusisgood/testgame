@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://j4dki83nahpg"]
+
+[ext_resource type="ArrayMesh" uid="uid://bn1qx4yddmd1q" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_OfficeChair_01.res" id="1_67gub"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_cq5pq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n8e2l"]
+points = PackedVector3Array(-0.46917516, 0.72574997, 0.30572763, -0.031460524, 1.4630197, -0.31614116, -0.427105, 1.3214258, -0.34723902, -0.42636532, 1.2762486, -0.43470174, -0.2897066, 0.031348087, -0.27638537, -0.37689817, 0.1268987, 0.30572763, -0.30782914, 0.5412882, 0.4671361, 0.31397712, 0.5412882, 0.4671361, 0.4062541, 1.2323704, -0.13193935, 0.4330681, 1.2547424, -0.43532017, 0.32821625, 1.2289063, -0.4354085, -0.26169065, 0.12675437, -0.3391995, 0.2929883, 0.03827623, -0.27364665, 0.33709264, -0.01151979, 0.30572763, -0.29377493, 0.021821894, 0.35767516, 0.47541565, 0.72574997, 0.16755417)
+
+[node name="SM_Prop_OfficeChair_01" type="MeshInstance3D" unique_id=1279426346]
+gi_mode = 2
+mesh = ExtResource("1_67gub")
+surface_material_override/0 = ExtResource("2_cq5pq")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=561726680]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1150567273]
+shape = SubResource("ConvexPolygonShape3D_n8e2l")

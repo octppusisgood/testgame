@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://crbbq5mljv0du"]
+
+[ext_resource type="ArrayMesh" uid="uid://dylkrbi35hf2g" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Bunker_Ceiling_Corrugated_01.res" id="1_6vw1d"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_bgyoh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1jn7j"]
+size = Vector3(2.5, 0.25, 2.4999988)
+
+[node name="SM_Bld_Bunker_Ceiling_Corrugated_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_6vw1d")
+surface_material_override/0 = ExtResource("2_bgyoh")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.125, 1.2499994)
+shape = SubResource("BoxShape3D_1jn7j")

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://1gbmmoimvhhh"]
+
+[ext_resource type="ArrayMesh" uid="uid://culqooicmorw8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Motorbike_01.res" id="1_sugiw"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_45l2b"]
+[ext_resource type="ArrayMesh" uid="uid://d1hxssepm4j62" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Motorbike_01_HandleBars.res" id="3_45l2b"]
+[ext_resource type="ArrayMesh" uid="uid://eebtlm6qfcj8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Motorbike_01_Front_Shock.res" id="4_e4j56"]
+[ext_resource type="ArrayMesh" uid="uid://c8jt665rd7py2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Motorbike_01_Front_Wheel.res" id="5_jm1os"]
+[ext_resource type="ArrayMesh" uid="uid://bom4pu0ov2v4f" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Motorbike_01_Wheel_l.res" id="6_cxrbc"]
+[ext_resource type="ArrayMesh" uid="uid://c8fdum1a87w5y" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Motorbike_01_Wheel_r.res" id="7_822be"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lqok7"]
+points = PackedVector3Array(0.98100007, 1.3422298, -2.8713973, 0.97120535, 0.6276363, -2.8981752, -0.9717822, 0.6276363, -2.8981752, -0.98100066, 1.342115, -2.8710449, -0.9470075, 1.32238, -0.7066035, 0.9464307, 1.32238, -0.7066035, 0.97120535, 0.6272921, -1.013494, 0.68543243, 0.28445244, -1.6984483, -0.68600917, 0.28445244, -1.6984483, -0.9717822, 0.6272921, -1.013494, -0.91032565, 0.7452436, -0.7228112, -0.11446315, 0.85573715, 0.7013581, 0.17092574, 1.1415516, 0.47268772, 0.11388636, 0.28456718, 0.47268772, 0.22834921, 0.17017257, -1.013494, -0.17150253, 0.17017257, 0.07242632)
+
+[node name="SM_Veh_Motorbike_01" type="MeshInstance3D" unique_id=1169587875]
+gi_mode = 2
+mesh = ExtResource("1_sugiw")
+surface_material_override/0 = ExtResource("2_45l2b")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=905631118]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1377220718]
+shape = SubResource("ConvexPolygonShape3D_lqok7")
+
+[node name="SM_Veh_Motorbike_01_HandleBars" type="MeshInstance3D" parent="." unique_id=197832422]
+transform = Transform3D(1, 0, 0, 0, 0.83106667, 0.5561728, 0, -0.5561728, 0.83106667, 0, 0.9320012, 0.7259994)
+gi_mode = 2
+mesh = ExtResource("3_45l2b")
+surface_material_override/0 = ExtResource("2_45l2b")
+
+[node name="SM_Veh_Motorbike_01_Front_Shock" type="MeshInstance3D" parent="SM_Veh_Motorbike_01_HandleBars" unique_id=324964481]
+transform = Transform3D(1, 0, 0, 0, 0.9997306, -0.023209006, 0, 0.023209006, 0.9997306, 0, -0.649836, 0.006575346)
+gi_mode = 2
+mesh = ExtResource("4_e4j56")
+surface_material_override/0 = ExtResource("2_45l2b")
+
+[node name="SM_Veh_Motorbike_01_Front_Wheel" type="MeshInstance3D" parent="SM_Veh_Motorbike_01_HandleBars/SM_Veh_Motorbike_01_Front_Shock" unique_id=22684453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028681785, 0.0004659891)
+gi_mode = 2
+mesh = ExtResource("5_jm1os")
+surface_material_override/0 = ExtResource("2_45l2b")
+
+[node name="SM_Veh_Motorbike_01_Wheel_l" type="MeshInstance3D" parent="." unique_id=1763611935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8061485, 0.39926904, -1.733806)
+gi_mode = 2
+mesh = ExtResource("6_cxrbc")
+surface_material_override/0 = ExtResource("2_45l2b")
+
+[node name="SM_Veh_Motorbike_01_Wheel_r" type="MeshInstance3D" parent="." unique_id=60248323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8061495, 0.39926904, -1.733806)
+gi_mode = 2
+mesh = ExtResource("7_822be")
+surface_material_override/0 = ExtResource("2_45l2b")

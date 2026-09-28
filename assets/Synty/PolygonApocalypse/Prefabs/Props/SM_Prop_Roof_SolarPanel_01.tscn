@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://5ed0mghgjjkq"]
+
+[ext_resource type="ArrayMesh" uid="uid://dw8an5n2vxwsa" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Roof_SolarPanel_01.res" id="1_2cmul"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_3ertu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u3upy"]
+points = PackedVector3Array(-1.1120279, 0.5968145, -1.1517012, -1.25716, -0.66041636, 0.5407573, -1.5477271, -0.5152932, 0.8790672, -1.5477271, -0.3700327, 0.975857, -1.1120279, 0.69388366, -1.0065165, -0.91872054, 0.6454177, -1.1517012, -0.91872054, 0.5968145, -1.1517012, 1.3055267, 0.16185683, -0.95834875, -0.8217639, 0.16185683, -0.9581216, 1.3055267, -0.708745, 0.63754714, -0.48362732, -0.6118131, 1.1694367, 1.5476155, -0.41836134, 1.0728741, 1.5476155, 0.45196593, -0.5227946, 1.5476155, 0.69388366, -1.0551386, 1.5476155, 0.5486232, -1.0551386, 1.5476155, -0.5636218, 1.0728741)
+
+[node name="SM_Prop_Roof_SolarPanel_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_2cmul")
+surface_material_override/0 = ExtResource("2_3ertu")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_u3upy")

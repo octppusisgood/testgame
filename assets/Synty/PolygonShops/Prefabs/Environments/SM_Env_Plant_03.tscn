@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv2nk2v7oom7o"]
+
+[ext_resource type="ArrayMesh" uid="uid://b2pn28ac66maf" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Env_Plant_03.res" id="1_8xsix"]
+
+[node name="SM_Env_Plant_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8xsix")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp7utmrrhvrbt"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxws4tqr6oxaa" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Dumptser_03.res" id="1_tvike"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_vnpn0"]
+[ext_resource type="Material" uid="uid://bh08n74p5hnhf" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Wire_01_mat.tres" id="3_76ihs"]
+[ext_resource type="ArrayMesh" uid="uid://co38qaobe5yvy" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Dumptser_03_Lid_01.res" id="4_vnpn0"]
+[ext_resource type="ArrayMesh" uid="uid://xt5lcf3qteew" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Dumptser_03_Lid_02.res" id="5_76ihs"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_746pr"]
+points = PackedVector3Array(0.86658365, 1.3728828, 0.64042413, 0.8255698, 0.0006945927, 0.59465253, 0.9654327, 0.9502784, 0.30649972, 0.8883191, 1.3305687, -0.64638114, -0.8667726, 1.3728828, 0.64042413, 0.56909126, 1.3343298, 0.6597991, 0.8070473, 0.016142623, -0.6294769, 0.8361539, 0.045023724, -0.6294769, -0.8259477, 0.000560262, 0.5947826, 0.9654327, 0.9502784, -0.32663032, 0.8491953, 1.3234491, -0.6686168, -0.8488172, 1.3230461, -0.6683567, -0.8505182, 0.034142938, 0.59127176, -0.9654327, 0.9502784, -0.32663032, -0.9654327, 0.9502784, 0.30649972, -0.8072363, 0.016142623, -0.6294769)
+
+[node name="SM_Prop_Dumptser_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_tvike")
+surface_material_override/0 = ExtResource("2_vnpn0")
+surface_material_override/1 = ExtResource("3_76ihs")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_746pr")
+
+[node name="SM_Prop_Dumptser_03_Lid_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44479477, 1.3561115, 0.6358163)
+gi_mode = 2
+mesh = ExtResource("4_vnpn0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_vnpn0")
+
+[node name="SM_Prop_Dumptser_03_Lid_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4366529, 1.3561118, 0.6358163)
+gi_mode = 2
+mesh = ExtResource("5_76ihs")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_vnpn0")

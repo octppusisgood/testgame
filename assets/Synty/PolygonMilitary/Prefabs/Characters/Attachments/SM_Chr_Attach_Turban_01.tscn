@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://il4l61fimfcw"]
+
+[ext_resource type="ArrayMesh" uid="uid://b758r6660m1j7" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Turban_01.res" id="1_aeq84"]
+[ext_resource type="Material" uid="uid://cqc0ag28qge7d" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_04_C_mat.tres" id="2_6me5d"]
+
+[node name="SM_Chr_Attach_Turban_01" type="MeshInstance3D" unique_id=147813416]
+gi_mode = 2
+mesh = ExtResource("1_aeq84")
+surface_material_override/0 = ExtResource("2_6me5d")

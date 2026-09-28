@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjweqk5jc2ups"]
+
+[ext_resource type="ArrayMesh" uid="uid://d3snffo1drv8x" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Overgrowth_03.res" id="1_hqups"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_gfwy8"]
+[ext_resource type="Material" uid="uid://b7tshn0y5inss" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Overgrowth_01_mat.tres" id="3_88ku3"]
+
+[node name="SM_Env_Overgrowth_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_hqups")
+surface_material_override/0 = ExtResource("2_gfwy8")
+surface_material_override/1 = ExtResource("3_88ku3")

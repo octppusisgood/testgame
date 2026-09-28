@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://w6nmvuckqgm0"]
+
+[ext_resource type="ArrayMesh" uid="uid://d3xs3p4lrvv2j" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Decorative_Block_08.res" id="1_d4fh8"]
+[ext_resource type="Material" uid="uid://x5ibfbw04v6j" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Decorative_Blocks_01_mat.tres" id="2_p54sb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2j8m4"]
+size = Vector3(1.8193991, 3.4813585, 0.23562042)
+
+[node name="SM_Bld_Decorative_Block_08" type="MeshInstance3D" unique_id=1678945767]
+gi_mode = 2
+mesh = ExtResource("1_d4fh8")
+surface_material_override/0 = ExtResource("2_p54sb")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=1737940129]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=1352927092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90969956, 1.7406793, -0.11781021)
+shape = SubResource("BoxShape3D_2j8m4")

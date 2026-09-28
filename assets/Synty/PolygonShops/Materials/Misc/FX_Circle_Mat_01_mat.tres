@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://duqglssj5x6qj"]
+
+[ext_resource type="Texture2D" uid="uid://dyg2kk6q87jmm" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Circle_01.png" id="1_jq6w3"]
+
+[resource]
+resource_name = "FX_Circle_Mat_01_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_jq6w3")
+roughness = 0.5
+uv1_scale = Vector3(1, 1, 0)

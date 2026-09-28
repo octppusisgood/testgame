@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d1x3gd0sksyr6"]
+
+[ext_resource type="Texture2D" uid="uid://33l4iftglfwt" path="res://assets/Synty/PolygonApocalypse/Textures/Vehicle/Vehicle_01_Mud_Alt.png" id="1_j2ima"]
+
+[resource]
+resource_name = "Vehicle_Glass_01_mat"
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.6745098, 0.7490196, 0.8784314, 0.83137256)
+albedo_texture = ExtResource("1_j2ima")
+metallic = 0.19999996
+roughness = 0.493
+uv1_scale = Vector3(1, 1, 0)

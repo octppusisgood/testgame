@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dmhiu7um8j4lq"]
+
+[ext_resource type="ArrayMesh" uid="uid://d0dpa1exgq4q3" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Generic_Small_Rocks_02.res" id="1_6hi2n"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_ok7jy"]
+
+[node name="SM_Generic_Small_Rocks_02" type="MeshInstance3D" unique_id=485637552]
+gi_mode = 2
+mesh = ExtResource("1_6hi2n")
+surface_material_override/0 = ExtResource("2_ok7jy")

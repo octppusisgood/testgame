@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmysvaidxjmf6"]
+
+[ext_resource type="ArrayMesh" uid="uid://dfivvoylihgr6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_AirDuct_02.res" id="1_n0fa6"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_cn4s0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0fa6"]
+size = Vector3(0.9439697, 0.7102051, 2.499939)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cn4s0"]
+size = Vector3(0.9482422, 0.28051758, 0.8505249)
+
+[node name="SM_Prop_AirDuct_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_n0fa6")
+surface_material_override/0 = ExtResource("2_cn4s0")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0022583008, 0.01159668, 1.2616272)
+shape = SubResource("BoxShape3D_n0fa6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009277344, -0.48815918, 1.2406311)
+shape = SubResource("BoxShape3D_cn4s0")

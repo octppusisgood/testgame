@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dqhlg8ovp8tkg"]
+
+[ext_resource type="ArrayMesh" uid="uid://dwf7nl31mlgj6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Sign_Poster_02.res" id="1_7tqkd"]
+[ext_resource type="Material" uid="uid://dam822l3ba2cy" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Signs_01_mat.tres" id="2_tw638"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_10txk"]
+points = PackedVector3Array(-0.593027, -0.8065256, -0.027986772, -0.593027, -0.8065256, 0.022421077, -0.593027, 0.8065256, -0.027986772, 0.5915575, -0.8065256, -0.027986772, 0.5915575, -0.8065256, 0.022421077, -0.593027, 0.8065256, 0.022421077, 0.5915575, 0.8065256, -0.027986772, 0.5915575, 0.8065256, 0.022421077)
+
+[node name="SM_Prop_Sign_Poster_02" type="MeshInstance3D" unique_id=1367815928]
+gi_mode = 2
+mesh = ExtResource("1_7tqkd")
+surface_material_override/0 = ExtResource("2_tw638")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1894789718]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=779558016]
+shape = SubResource("ConvexPolygonShape3D_10txk")

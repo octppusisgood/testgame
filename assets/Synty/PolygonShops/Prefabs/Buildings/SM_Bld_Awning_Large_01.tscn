@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7iqbr8aqdjbr"]
+
+[ext_resource type="ArrayMesh" uid="uid://wp6lggy308j5" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Awning_Large_01.res" id="1_o42bh"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_a4swh"]
+[ext_resource type="Material" uid="uid://mrvtss0wp2l8" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Lines_01_mat.tres" id="3_t2m65"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b6yd0"]
+size = Vector3(5.1097326, 0.6464472, 3.3048663)
+
+[node name="SM_Bld_Awning_Large_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_o42bh")
+surface_material_override/0 = ExtResource("2_a4swh")
+surface_material_override/1 = ExtResource("3_t2m65")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5548663, 3.1767764, 1.6524332)
+shape = SubResource("BoxShape3D_b6yd0")

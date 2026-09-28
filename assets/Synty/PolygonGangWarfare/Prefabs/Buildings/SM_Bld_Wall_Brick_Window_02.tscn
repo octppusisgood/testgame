@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ci3n3l3tij5sf"]
+
+[ext_resource type="ArrayMesh" uid="uid://chf6y4u74k7ek" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Wall_Brick_Window_02.res" id="1_yowqu"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_kpv4a"]
+[ext_resource type="ArrayMesh" uid="uid://dum4j0qtmresc" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Wall_Brick_Glass_02.res" id="3_kpv4a"]
+[ext_resource type="Material" uid="uid://bgr664d17lip1" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Glass_mat.tres" id="4_5ov5w"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jrmk1"]
+points = PackedVector3Array(3.0030951, 3.0049973, 0.13214973, 3.0030951, 0.80832726, 0.2002323, 3.0030951, -0.0025062826, 0.13214973, 3.0028007, 0.08375887, -0.19585627, 3.0028007, 3.0049973, -0.003976643, -0.005291462, 3.0049973, 0.0022267848, 0.05713786, 2.9428744, 0.13273129, -0.004996984, 0.80832726, 0.2002323, 2.980126, 0.7088132, 0.19720814, 3.0028007, -0.002800703, 0.0022267848, 0.017972296, 0.7088132, 0.19720814, 0.056548905, 0.059321985, 0.13273129, -0.005291462, -0.002800703, 0.0022267848, 2.9792426, 0.020458503, -0.19279334, -0.005291462, 0.08375887, -0.19585627, 0.017972296, 0.020458503, -0.19279334)
+
+[node name="SM_Bld_Wall_Brick_Window_02" type="MeshInstance3D" unique_id=180847773]
+gi_mode = 2
+mesh = ExtResource("1_yowqu")
+surface_material_override/0 = ExtResource("2_kpv4a")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1117984974]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1463197452]
+shape = SubResource("ConvexPolygonShape3D_jrmk1")
+
+[node name="SM_Bld_Wall_Brick_Glass_02" type="MeshInstance3D" parent="." unique_id=607947735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4999995, 1.8682433, 0.09290777)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_kpv4a")
+surface_material_override/0 = ExtResource("4_5ov5w")

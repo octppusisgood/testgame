@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://hsrr2kmau1ei"]
+
+[ext_resource type="ArrayMesh" uid="uid://w0ut5im30ltu" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Bunk_01.res" id="1_elbr5"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_lycmv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_elbr5"]
+size = Vector3(2.5093994, 1.9341431, 1)
+
+[node name="SM_Prop_Bed_Bunk_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_elbr5")
+surface_material_override/0 = ExtResource("2_lycmv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00018310547, 0.969574, 0)
+shape = SubResource("BoxShape3D_elbr5")

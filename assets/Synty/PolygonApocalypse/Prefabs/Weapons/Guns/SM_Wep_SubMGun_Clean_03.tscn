@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c61lc67wihsrf"]
+
+[ext_resource type="ArrayMesh" uid="uid://c3sdcq8nwalrm" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_Clean_03.res" id="1_43l64"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_ufwtp"]
+[ext_resource type="ArrayMesh" uid="uid://2tpwegpjbgkh" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_Clean_03_Magazine_01.res" id="3_ufwtp"]
+[ext_resource type="ArrayMesh" uid="uid://bccqpyhpmguyv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_Clean_03_Slide_01.res" id="4_wji34"]
+[ext_resource type="ArrayMesh" uid="uid://cafel30kimuo3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_Clean_03_Trigger_01.res" id="5_b72bi"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vdjla"]
+points = PackedVector3Array(-0.015087446, -0.141238, 0.26602155, -0.02670652, -0.106380776, -0.27990997, 0.0081370585, -0.141238, 0.26602155, 0.01974931, -0.141238, 0.30087912, -0.02670652, -0.12958936, 0.30087912, -0.02670652, 0.056227148, -0.27990997, 0.019756135, 0.06784622, -0.26826653, 0.018302895, -0.09910777, -0.25676864, -0.038325597, 0.10267389, -0.0242638, 0.03137521, -0.025017686, 0.31252253, 0.01974931, 0.056227148, 0.46352333, -0.015087446, 0.02136992, 0.46352333, -0.02670652, 0.009780407, 0.35887796, -0.015087446, 0.16079882, 0.28923565, 0.01974931, 0.16079882, 0.32409316, 0.03137521, 0.079435736, 0.022164375)
+
+[node name="SM_Wep_SubMGun_Clean_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_43l64")
+surface_material_override/0 = ExtResource("2_ufwtp")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_vdjla")
+
+[node name="SM_Wep_SubMGun_Clean_03_Magazine_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1368684e-15, -0.10828379, 0.16149801)
+gi_mode = 2
+mesh = ExtResource("3_ufwtp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ufwtp")
+
+[node name="SM_Wep_SubMGun_Clean_03_Slide_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8948457, 1.8673915)
+gi_mode = 2
+mesh = ExtResource("4_wji34")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ufwtp")
+
+[node name="SM_Wep_SubMGun_Clean_03_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.700356e-05, 0.053896453, 0.057132076)
+gi_mode = 2
+mesh = ExtResource("5_b72bi")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ufwtp")

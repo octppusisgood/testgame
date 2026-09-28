@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://6nojfyr2xyxw"]
+
+[ext_resource type="ArrayMesh" uid="uid://c2ri70auohlc6" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Tent_Long_Damaged_01.res" id="1_n6s65"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_diyyo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ggq4t"]
+points = PackedVector3Array(1.0917537, 0.13466752, 1.4601865, 0.071642876, 1.0978115, 1.4601865, -0.041270137, 0.13466752, 2.140261, 1.0350809, -0.09185184, 1.4601865, 1.0917537, 0.13466752, -1.4858565, -0.09794295, 1.0978115, 1.4030402, 0.8648461, 0.24798542, -1.372629, -0.041270137, 1.0978115, 1.2330217, -0.041270137, -0.0919683, 2.0834696, -1.1180537, 0.13466752, 1.4030402, -1.0615971, -0.09185184, 1.4601865, 1.0348647, -0.0919683, -1.4858565, -1.0615971, 0.13466752, -1.4858565, -0.83447325, 0.24798542, -1.372629, -1.0615971, -0.0919683, -1.4858565, -1.1180537, 0.078066796, 1.4030402)
+
+[node name="SM_Prop_Tent_Long_Damaged_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_n6s65")
+surface_material_override/0 = ExtResource("2_diyyo")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ggq4t")

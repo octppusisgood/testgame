@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpgvjt86om3ww"]
+
+[ext_resource type="ArrayMesh" uid="uid://uchivgvh4cff" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_ATM_Back_01.res" id="1_vith4"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_qqmd4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vith4"]
+size = Vector3(1.1862793, 2.2149353, 0.7354126)
+
+[node name="SM_Prop_ATM_Back_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_vith4")
+surface_material_override/0 = ExtResource("2_qqmd4")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, 1.1122894, 0.33554077)
+shape = SubResource("BoxShape3D_vith4")

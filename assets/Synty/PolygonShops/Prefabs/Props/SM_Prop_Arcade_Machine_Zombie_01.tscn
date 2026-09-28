@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://7gkdfpxle5m1"]
+
+[ext_resource type="ArrayMesh" uid="uid://d1d8n52jy7eex" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Machine_Zombie_01.res" id="1_c2sv7"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_3a4os"]
+[ext_resource type="ArrayMesh" uid="uid://dy7au50tcj7l1" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Machine_Zombie_01_Joystick_02.res" id="3_3a4os"]
+[ext_resource type="ArrayMesh" uid="uid://bsfrdj8ltnom8" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Machine_Zombie_01_Joystick_01.res" id="4_jeyeo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ydx6r"]
+points = PackedVector3Array(0.44352382, 0.90608495, 0.4902716, -0.44369948, 0.90608495, 0.4902716, 0.44861877, 0.036895044, 0.380096, 0.44861877, 1.8899093, 0.09038195, 0.44167906, 1.8753986, 0.17449865, -0.44870657, 0.03707643, 0.37990436, -0.44185475, 1.8753986, 0.17449865, -0.44870657, 1.8895465, 0.09038195, 0.44861877, 0.036895044, -0.4884713, 0.44861877, 1.7738239, -0.40148044, -0.44870657, 1.8315037, -0.16992, -0.44870657, 0.03707643, -0.48837548, 0.44861877, 1.7448025, -0.48837548, -0.44870657, 1.4553143, -0.48837548, -0.44870657, 1.7736424, -0.40138465, -0.44870657, 1.744621, -0.4882797)
+
+[node name="SM_Prop_Arcade_Machine_Zombie_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_c2sv7")
+surface_material_override/0 = ExtResource("2_3a4os")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ydx6r")
+
+[node name="SM_Prop_Arcade_Machine_Zombie_01_Joystick_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31009075, 0.95902646, 0.3794679)
+gi_mode = 2
+mesh = ExtResource("3_3a4os")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3a4os")
+
+[node name="SM_Prop_Arcade_Machine_Zombie_01_Joystick_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08636251, 0.95902646, 0.3794679)
+gi_mode = 2
+mesh = ExtResource("4_jeyeo")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3a4os")

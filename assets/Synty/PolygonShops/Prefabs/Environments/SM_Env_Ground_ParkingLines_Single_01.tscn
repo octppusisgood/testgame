@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0gdifdhxfmb"]
+
+[ext_resource type="ArrayMesh" uid="uid://dsnxmpbejmnts" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Env_Ground_ParkingLines_Single_01.res" id="1_llclk"]
+[ext_resource type="Material" uid="uid://cg0wdvm0v6ps8" path="res://Assets/Synty/PolygonShops/Materials/Road/PolygonShops_Road_01_mat.tres" id="2_vwu3p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5pc7"]
+size = Vector3(10, 0, 10)
+
+[node name="SM_Env_Ground_ParkingLines_Single_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_llclk")
+surface_material_override/0 = ExtResource("2_vwu3p")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+shape = SubResource("BoxShape3D_f5pc7")

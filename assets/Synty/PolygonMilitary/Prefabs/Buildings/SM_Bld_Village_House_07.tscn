@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bmba6hbbggq51"]
+
+[ext_resource type="ArrayMesh" uid="uid://d4bm7ikd0hm2e" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_House_07.res" id="1_iasc4"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_47cy8"]
+[ext_resource type="Shape3D" uid="uid://by0uptxr1qn02" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Village_House_07_Collision.res" id="3_47cy8"]
+
+[node name="SM_Bld_Village_House_07" type="MeshInstance3D" unique_id=1719078117]
+gi_mode = 2
+mesh = ExtResource("1_iasc4")
+surface_material_override/0 = ExtResource("2_47cy8")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=83401735]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=603689086]
+shape = ExtResource("3_47cy8")

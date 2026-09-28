@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://41qrvvd5kjs"]
+
+[ext_resource type="ArrayMesh" uid="uid://cpujmayje0jcu" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01.res" id="1_ioxty"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_sx5kf"]
+[ext_resource type="ArrayMesh" uid="uid://cvcwnj0scx2v3" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Hatch.res" id="3_sx5kf"]
+[ext_resource type="ArrayMesh" uid="uid://cqs56ulqo40dg" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_L.res" id="4_en8n3"]
+[ext_resource type="Material" uid="uid://dy6oiiqdsx0rp" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Tank_Tracks_01_mat.tres" id="5_yxupm"]
+[ext_resource type="ArrayMesh" uid="uid://blqcaqbnbhwj2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_R.res" id="6_ytv0t"]
+[ext_resource type="ArrayMesh" uid="uid://d015yfbdbvooi" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_L_1.res" id="7_yxupm"]
+[ext_resource type="ArrayMesh" uid="uid://bg13pujwtcupd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_L_2.res" id="8_ewduk"]
+[ext_resource type="ArrayMesh" uid="uid://be8q3rj5gvkpo" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_L_3.res" id="9_42u24"]
+[ext_resource type="ArrayMesh" uid="uid://dwgoh185b3m3l" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_L_4.res" id="10_tdsci"]
+[ext_resource type="ArrayMesh" uid="uid://be7uiaippo35b" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_L_5.res" id="11_x8yh2"]
+[ext_resource type="ArrayMesh" uid="uid://bfehdy5gr5pta" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_L_6.res" id="12_ejg73"]
+[ext_resource type="ArrayMesh" uid="uid://coymt5hy3o3" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_L_7.res" id="13_mmsni"]
+[ext_resource type="ArrayMesh" uid="uid://bow5hmm2ltxd6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_R_1.res" id="14_nvho4"]
+[ext_resource type="ArrayMesh" uid="uid://bnujvoxiyo0gf" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_R_2.res" id="15_onidh"]
+[ext_resource type="ArrayMesh" uid="uid://d0omeadryl2xw" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_R_3.res" id="16_1ldqw"]
+[ext_resource type="ArrayMesh" uid="uid://73r1n4pk2ytq" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_R_4.res" id="17_nq1j1"]
+[ext_resource type="ArrayMesh" uid="uid://d1p24n4yhq1jo" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_R_5.res" id="18_3m23k"]
+[ext_resource type="ArrayMesh" uid="uid://dv3ovjfrtnqok" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_R_6.res" id="19_7xeu6"]
+[ext_resource type="ArrayMesh" uid="uid://hrp5cyci3g6p" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_01_Track_Wheel_R_7.res" id="20_bg8bq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yf2fm"]
+points = PackedVector3Array(1.5776353, 1.336665, 0.65201664, 1.235441, 1.8949058, 1.7875628, 1.3782363, 0.67303747, 2.7068386, 1.3782363, 0.42279917, -2.214706, 1.2113202, 2.1742468, -2.2982764, 0.3770604, 2.4247055, -0.54633415, -0.95730466, 2.2578065, 1.5383706, -1.3741128, 0.67303747, 2.7068386, -0.7070911, 0.1723404, 1.6219411, 0.9257293, 0.21401003, 1.5631886, 0.71121454, 0.1723404, -1.130315, -1.3744345, 0.42279917, -2.214706, 1.1367064, 1.9632528, -2.4674435, -1.4574101, 2.0909076, -2.214706, -1.4722043, 2.135223, 1.1534398, -1.7079453, 1.173514, 0.45397973)
+
+[node name="SM_Veh_APC_01" type="MeshInstance3D" unique_id=620529714]
+gi_mode = 2
+mesh = ExtResource("1_ioxty")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=2019198659]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=2043216910]
+shape = SubResource("ConvexPolygonShape3D_yf2fm")
+
+[node name="SM_Veh_APC_01_Hatch" type="MeshInstance3D" parent="." unique_id=1340234478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0693986, 0.06744682)
+gi_mode = 2
+mesh = ExtResource("3_sx5kf")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_L" type="MeshInstance3D" parent="." unique_id=1314650953]
+gi_mode = 2
+mesh = ExtResource("4_en8n3")
+surface_material_override/0 = ExtResource("5_yxupm")
+
+[node name="SM_Veh_APC_01_Track_R" type="MeshInstance3D" parent="." unique_id=16378219]
+gi_mode = 2
+mesh = ExtResource("6_ytv0t")
+surface_material_override/0 = ExtResource("5_yxupm")
+
+[node name="SM_Veh_APC_01_Track_Wheel_L_1" type="MeshInstance3D" parent="." unique_id=852899821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0986356, 0.6036199, 2.2092865)
+gi_mode = 2
+mesh = ExtResource("7_yxupm")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_L_2" type="MeshInstance3D" parent="." unique_id=1712539426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0986356, 0.3396251, 1.5404352)
+gi_mode = 2
+mesh = ExtResource("8_ewduk")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_L_3" type="MeshInstance3D" parent="." unique_id=590165915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0986356, 0.3396251, 0.9037081)
+gi_mode = 2
+mesh = ExtResource("9_42u24")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_L_4" type="MeshInstance3D" parent="." unique_id=747090171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0986356, 0.3396251, 0.2605387)
+gi_mode = 2
+mesh = ExtResource("10_tdsci")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_L_5" type="MeshInstance3D" parent="." unique_id=30317346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0986356, 0.3396251, -0.37915626)
+gi_mode = 2
+mesh = ExtResource("11_x8yh2")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_L_6" type="MeshInstance3D" parent="." unique_id=188745999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0986356, 0.3396251, -0.9944557)
+gi_mode = 2
+mesh = ExtResource("12_ejg73")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_L_7" type="MeshInstance3D" parent="." unique_id=1313402015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1683264, 0.36810058, -1.69702)
+gi_mode = 2
+mesh = ExtResource("13_mmsni")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_R_1" type="MeshInstance3D" parent="." unique_id=1027250824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1092302, 0.6036199, 2.2092865)
+gi_mode = 2
+mesh = ExtResource("14_nvho4")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_R_2" type="MeshInstance3D" parent="." unique_id=1872172285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1092302, 0.3396251, 1.5404352)
+gi_mode = 2
+mesh = ExtResource("15_onidh")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_R_3" type="MeshInstance3D" parent="." unique_id=761638756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1092302, 0.3396251, 0.9037081)
+gi_mode = 2
+mesh = ExtResource("16_1ldqw")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_R_4" type="MeshInstance3D" parent="." unique_id=1255815671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1092302, 0.3396251, 0.2605387)
+gi_mode = 2
+mesh = ExtResource("17_nq1j1")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_R_5" type="MeshInstance3D" parent="." unique_id=1144357654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1092302, 0.3396251, -0.37915626)
+gi_mode = 2
+mesh = ExtResource("18_3m23k")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_R_6" type="MeshInstance3D" parent="." unique_id=2084399029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1092302, 0.3396251, -0.9944557)
+gi_mode = 2
+mesh = ExtResource("19_7xeu6")
+surface_material_override/0 = ExtResource("2_sx5kf")
+
+[node name="SM_Veh_APC_01_Track_Wheel_R_7" type="MeshInstance3D" parent="." unique_id=1409769595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1789211, 0.36810058, -1.6970206)
+gi_mode = 2
+mesh = ExtResource("20_bg8bq")
+surface_material_override/0 = ExtResource("2_sx5kf")

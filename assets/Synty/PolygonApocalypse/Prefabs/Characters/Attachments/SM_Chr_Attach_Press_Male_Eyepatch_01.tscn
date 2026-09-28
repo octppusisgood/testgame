@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://6wvdl5sc2fxr"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddt0d5hosv7rq" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Press_Male_Eyepatch_01.res" id="1_yvjxx"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_q3n3f"]
+
+[node name="SM_Chr_Attach_Press_Male_Eyepatch_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_yvjxx")
+surface_material_override/0 = ExtResource("2_q3n3f")

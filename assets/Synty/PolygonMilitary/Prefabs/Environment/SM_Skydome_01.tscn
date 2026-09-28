@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cerry1lhqu1nk"]
+
+[ext_resource type="ArrayMesh" uid="uid://bhebc83dhstck" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Skydome_01.res" id="1_uo5qv"]
+[ext_resource type="Material" uid="uid://cp6w33o8shmy5" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/SkyBox_01_mat.tres" id="2_urp4k"]
+
+[node name="SM_Skydome_01" type="MeshInstance3D" unique_id=634336430]
+mesh = ExtResource("1_uo5qv")
+surface_material_override/0 = ExtResource("2_urp4k")

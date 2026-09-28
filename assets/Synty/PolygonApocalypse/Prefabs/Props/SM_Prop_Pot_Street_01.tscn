@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgqap5qee16ku"]
+
+[ext_resource type="ArrayMesh" uid="uid://cotk4bpw7230e" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Pot_Street_01.res" id="1_8w8wq"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_3qh4i"]
+[ext_resource type="ArrayMesh" uid="uid://1jyk0kilmbxq" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Pot_Street_Plant_01.res" id="3_3qh4i"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8w8wq"]
+points = PackedVector3Array(-8.395314e-05, 0.98102534, 0.43291932, 0.09009588, 0.98102534, 0.4087646, 0.0621351, 1.0154159, 0.38215214, -8.395314e-05, 1.0154159, 0.39876378, -0.19740486, 1.0154159, 0.3458777, -0.21839644, 0.9613452, 0.3723207, -0.30001172, 0, 0.28917783, 0.30614126, 0, 0.28917783, 0.15676516, 0.98102534, 0.39088172, 0.19732088, 1.0154159, 0.3458777, -0.34191093, 1.0154159, 0.20137346, -0.37146708, 0.98102534, 0.21840888, -0.30001172, 0, -0.28366923, -0.42890006, 0.98102534, 0.0039831996, 0.30614126, 0, -0.28366923, 0.42890006, 0.98102534, 0.0039831996, 0.37138313, 0.98102534, 0.21840888, 0.30614126, 0.10903595, 0.28917783, 0.21436608, 0.98102534, 0.37537187, 0.34182698, 1.0154159, 0.20137346, -0.39480972, 1.0154159, 0.0039831996, -0.37146708, 0.98102534, -0.21044245, -0.30001172, 0.10903595, -0.28366923, -0.214534, 0.98102534, -0.36749017, 0.0099080205, 0.9705889, -0.43291968, 0.21436608, 0.98102534, -0.36749017, 0.30614126, 0.10903595, -0.28366923, 0.37138313, 0.98102534, -0.21044245, 0.3947258, 1.0154159, 0.0039831996, -0.34191093, 1.0154159, -0.19340706, -0.19740486, 1.0154159, -0.3379113, -8.395314e-05, 1.0154159, -0.39079732, 0.19732088, 1.0154159, -0.3379113)
+
+[node name="SM_Prop_Pot_Street_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8w8wq")
+surface_material_override/0 = ExtResource("2_3qh4i")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_8w8wq")
+
+[node name="SM_Prop_Pot_Street_Plant_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_3qh4i")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3qh4i")

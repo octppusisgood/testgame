@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dfuj51lrpb4g8"]
+
+[ext_resource type="ArrayMesh" uid="uid://srkh0ttu1gem" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Mobile_Radar_01.res" id="1_tl4tv"]
+[ext_resource type="Material" uid="uid://de27syahh6u0s" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_01_Alt_mat.tres" id="2_e1qit"]
+[ext_resource type="ArrayMesh" uid="uid://dyqxax5tkl5o" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Mobile_Radar_01_Mid.res" id="3_e1qit"]
+[ext_resource type="ArrayMesh" uid="uid://cfln5seef4el8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Mobile_Radar_01_Top.res" id="4_v3151"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tnx3l"]
+points = PackedVector3Array(0.15599728, 0.11731307, -2.797585, 0.42133188, 1.4457368, -1.0437399, 1.1718082, 0.89852506, -0.843868, 2.5004401, 0.11716774, 0.953357, 2.5004401, -0.03907466, 0.953357, 0.14816451, -0.00012306497, -2.6946084, -0.2341721, -0.038929317, -2.7189336, -0.42215824, 1.4457368, -1.0437399, 0.73170495, 1.2549031, 0.9201126, 0.7811494, 1.3673975, -0.6103463, 2.3437848, 0.11716774, 1.3441815, -2.5007768, -0.03907466, 0.953357, -1.1716554, 1.0547675, -0.6877816, -0.73155236, 1.2549031, 0.9201126, -0.6669321, 1.1130495, 1.0895779, -2.3441217, 0.11731307, 1.3441815)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s8uxn"]
+points = PackedVector3Array(-0.07133615, 0.66010094, -0.42350698, -0.36101854, 0.03772619, -0.15941676, -1.0701575, 1.3734486, 0.82488966, -0.24972063, 1.3019505, 0.43277556, 0.8916323, 1.3376315, 0.6111883, 0.39211166, 0.66010094, -0.20947737, 0.20316923, 0.016481012, -0.34816986, 0.06789613, 0.013757274, -0.3854281, -0.39225233, -0.01783812, 0.18296492, -1.1416433, 0.66023713, 0.9675213, 0.10682845, 0.8740508, 1.2532771, 1.1054299, 1.3376315, 0.86050653, 1.1054299, 0.5888751, 0.96768546, 0.42796457, -0.01783812, 0.075950146, 0.035342693, -0.01783812, 0.43261147, -0.07133615, 0.66023713, 1.217332)
+
+[node name="SM_Prop_Mobile_Radar_01" type="MeshInstance3D" unique_id=1817905834]
+gi_mode = 2
+mesh = ExtResource("1_tl4tv")
+surface_material_override/0 = ExtResource("2_e1qit")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1964193169]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=7809161]
+shape = SubResource("ConvexPolygonShape3D_tnx3l")
+
+[node name="SM_Prop_Mobile_Radar_01_Mid" type="MeshInstance3D" parent="." unique_id=618050193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2608476e-18, 1.3078768, -2.2608476e-18)
+gi_mode = 2
+mesh = ExtResource("3_e1qit")
+surface_material_override/0 = ExtResource("2_e1qit")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Mobile_Radar_01_Mid" unique_id=1636652049]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Mobile_Radar_01_Mid/MeshCollider" unique_id=755878977]
+shape = SubResource("ConvexPolygonShape3D_s8uxn")
+
+[node name="SM_Prop_Mobile_Radar_01_Top" type="MeshInstance3D" parent="SM_Prop_Mobile_Radar_01_Mid" unique_id=493612725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.988567e-19, 0.62363195, 4.988567e-19)
+gi_mode = 2
+mesh = ExtResource("4_v3151")
+surface_material_override/0 = ExtResource("2_e1qit")

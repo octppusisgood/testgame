@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dbgm61c6wxmxi"]
+
+[ext_resource type="ArrayMesh" uid="uid://ndv3j1d7anm5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Window_Bars_02.res" id="1_4nirb"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_is2mu"]
+
+[node name="SM_Bld_Window_Bars_02" type="MeshInstance3D" unique_id=133412838]
+gi_mode = 2
+mesh = ExtResource("1_4nirb")
+surface_material_override/0 = ExtResource("2_is2mu")

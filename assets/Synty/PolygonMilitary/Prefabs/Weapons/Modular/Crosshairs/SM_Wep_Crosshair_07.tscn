@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://g8kyk42yiq6q"]
+
+[ext_resource type="ArrayMesh" uid="uid://cbph1a6otaunt" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Crosshair_07.res" id="1_0q8bq"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_o7m44"]
+
+[node name="SM_Wep_Crosshair_07" type="MeshInstance3D" unique_id=211120323]
+gi_mode = 2
+mesh = ExtResource("1_0q8bq")
+surface_material_override/0 = ExtResource("2_o7m44")

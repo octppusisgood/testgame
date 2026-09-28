@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cam3hrblrwn4g"]
+
+[ext_resource type="ArrayMesh" uid="uid://cuvf7imdqmpcg" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Torch_01.res" id="1_87gti"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_xhjcv"]
+
+[node name="SM_Chr_Attach_Torch_01" type="MeshInstance3D" unique_id=1056385967]
+gi_mode = 2
+mesh = ExtResource("1_87gti")
+surface_material_override/0 = ExtResource("2_xhjcv")

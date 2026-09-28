@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4bhck8o734i5"]
+
+[ext_resource type="ArrayMesh" uid="uid://b27dh6fbty15g" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_GasMask_01.res" id="1_1mxn6"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_07wun"]
+[ext_resource type="ArrayMesh" uid="uid://bxyvobn56wt7s" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_GasMask_Glass_01.res" id="3_07wun"]
+
+[node name="SM_Chr_Attach_GasMask_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_1mxn6")
+surface_material_override/0 = ExtResource("2_07wun")
+
+[node name="SM_Chr_Attach_GasMask_Glass_01" type="Node3D" parent="."]
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="SM_Chr_Attach_GasMask_Glass_01"]
+gi_mode = 2
+mesh = ExtResource("3_07wun")
+surface_material_override/0 = ExtResource("2_07wun")

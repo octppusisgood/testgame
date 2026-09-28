@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://dtkcdfi6phq6m"]
+
+[ext_resource type="ArrayMesh" uid="uid://coishd0k2jhrf" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Booth_01.res" id="1_b8cb5"]
+[ext_resource type="Material" uid="uid://dt1bpwt7jdstt" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Wood_01_mat.tres" id="2_435s7"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="3_1kdm8"]
+[ext_resource type="Material" uid="uid://buo25cdi05x6y" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_White_01_mat.tres" id="4_hn6q0"]
+[ext_resource type="Material" uid="uid://mrvtss0wp2l8" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Lines_01_mat.tres" id="5_q3hie"]
+[ext_resource type="Shape3D" uid="uid://dvn24e0xcbxmc" path="res://Assets/Synty/PolygonShops/Models/Collision/SM_Bld_Wall_Booth_01_Collision.res" id="6_1kdm8"]
+[ext_resource type="ArrayMesh" uid="uid://08cjsdaxrcwh" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Booth_01_Glass.res" id="6_435s7"]
+[ext_resource type="ArrayMesh" uid="uid://cjrgtm2r05nib" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Booth_01_Door.res" id="8_1kdm8"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="8_y5r1q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73gss"]
+size = Vector3(0.031233618, 0.009999999, 0.010000001)
+
+[node name="SM_Bld_Wall_Booth_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_b8cb5")
+surface_material_override/0 = ExtResource("2_435s7")
+surface_material_override/1 = ExtResource("3_1kdm8")
+surface_material_override/2 = ExtResource("4_hn6q0")
+surface_material_override/3 = ExtResource("5_q3hie")
+surface_material_override/4 = ExtResource("4_hn6q0")
+surface_material_override/5 = ExtResource("3_1kdm8")
+surface_material_override/6 = ExtResource("4_hn6q0")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = ExtResource("6_1kdm8")
+
+[node name="SM_Bld_Wall_Booth_01_Glass" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("6_435s7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_y5r1q")
+
+[node name="SM_Bld_Wall_Booth_01_Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.1033416, 0, 0, 0, 156.50214, 0, 0, 0, 81.883446, 7.6293944e-08, 0.36905798, -0.9862586)
+gi_mode = 2
+mesh = ExtResource("8_1kdm8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_1kdm8")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Wall_Booth_01_Door"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Wall_Booth_01_Door/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0049999994, 0.0050000004)
+shape = SubResource("BoxShape3D_73gss")

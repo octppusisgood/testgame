@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://wn8ftjvl15vu"]
+
+[ext_resource type="ArrayMesh" uid="uid://cib3y2wsgjpqy" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Rifle_Gold_01.res" id="1_punqa"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_6l863"]
+[ext_resource type="ArrayMesh" uid="uid://depkouq02cvmy" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Rifle_Gold_Mag_01.res" id="3_6l863"]
+[ext_resource type="ArrayMesh" uid="uid://c50fhig6ct0km" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Rifle_Gold_Slide_01.res" id="4_vg8yp"]
+[ext_resource type="ArrayMesh" uid="uid://bl18j1ha8nu38" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Rifle_Gold_Trigger_01.res" id="5_gn4r0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6rtda"]
+points = PackedVector3Array(0.0045372043, -0.106880285, -0.0028888807, -0.0061361603, -0.09617662, -0.056319438, 0.0365573, -0.085527286, -0.056319438, 0.0365573, -0.09617662, -0.0028888807, 0.0365573, 0.074593045, 0.6162101, -0.0061361603, 0.06391656, 0.6162101, -0.01681475, 0.031859882, -0.06695205, -0.01681475, 0.031887047, 0.22133222, 0.0365573, 0.10659539, -0.056319438, 0.0365573, 0.12792122, 0.46668476, 0.025878709, 0.17065439, 0.5200485, -0.0061361603, 0.15992355, 0.5200485, -0.01681475, 0.13862488, 0.2426643, -0.01681475, 0.10659539, -0.056319438, 0.0045372043, 0.12794837, -0.034920465, 0.0045372043, 0.17065439, 0.4880169)
+
+[node name="SM_Wep_Rifle_Gold_01" type="MeshInstance3D" unique_id=1708852665]
+gi_mode = 2
+mesh = ExtResource("1_punqa")
+surface_material_override/0 = ExtResource("2_6l863")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1551185836]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=66820189]
+shape = SubResource("ConvexPolygonShape3D_6rtda")
+
+[node name="SM_Wep_Rifle_Gold_Mag_01" type="MeshInstance3D" parent="." unique_id=968810002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011572051, -0.007476381, -0.0047711874)
+gi_mode = 2
+mesh = ExtResource("3_6l863")
+surface_material_override/0 = ExtResource("2_6l863")
+
+[node name="SM_Wep_Rifle_Gold_Slide_01" type="MeshInstance3D" parent="." unique_id=1066903630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075210375, 0.09792409, 0.18002445)
+gi_mode = 2
+mesh = ExtResource("4_vg8yp")
+surface_material_override/0 = ExtResource("2_6l863")
+
+[node name="SM_Wep_Rifle_Gold_Trigger_01" type="MeshInstance3D" parent="." unique_id=804234325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011572055, 0.028833406, 0.050247148)
+gi_mode = 2
+mesh = ExtResource("5_gn4r0")
+surface_material_override/0 = ExtResource("2_6l863")

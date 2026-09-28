@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bqegqg744qrbj"]
+
+[ext_resource type="Texture2D" uid="uid://bn4hofx1s2v22" path="res://Assets/Synty/PolygonMilitary/Textures/Air_Vehicle_01_Burnt.png" id="1_2dfnr"]
+
+[resource]
+resource_name = "Air_Vehicles_Burnt_01_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_2dfnr")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

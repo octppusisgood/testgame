@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://biu5nxbeso06s"]
+
+[ext_resource type="ArrayMesh" uid="uid://c00llvye7fnk" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Kettle_Bell_04.res" id="1_mlgpj"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_m56yx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sf7gi"]
+points = PackedVector3Array(-0.0031241886, 0.164438, 0.1226896, 0.024738416, 0.22267105, 0.09316064, -0.01851194, 0.23771341, 0.07379698, -0.05893804, 0.09484643, 0.035918765, -0.024983663, 0.009102624, 0.03384324, 0.06472125, 0.05482006, 0.03853675, 0.024738416, 0.24274327, -0.031228982, -0.0031495169, 0.2490247, 0.031531878, -0.018549934, 0.23787871, -0.072149724, -0.06434592, 0.03078062, -0.018209822, -0.023387898, 0.1985844, -0.11146665, 0.019203886, 0.007780219, -0.03615834, 0.06503787, 0.050687544, -0.036936663, 0.024738416, 0.21062772, -0.10743354, 0.019621827, 0.039210957, -0.06733829, 0.000675261, 0.13022077, -0.11825926)
+
+[node name="SM_Prop_Gym_Kettle_Bell_04" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_mlgpj")
+surface_material_override/0 = ExtResource("2_m56yx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_sf7gi")

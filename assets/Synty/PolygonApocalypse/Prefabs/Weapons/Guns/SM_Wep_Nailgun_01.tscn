@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5erdysr3jjs4"]
+
+[ext_resource type="ArrayMesh" uid="uid://c6lg4lnh4j8wd" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Nailgun_01.res" id="1_bb5th"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_x82l6"]
+[ext_resource type="ArrayMesh" uid="uid://cu71rnipx80ea" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Nailgun_01_Handle_01.res" id="3_x82l6"]
+[ext_resource type="ArrayMesh" uid="uid://c3u7kqwbitlum" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Nailgun_01_Magazine_01.res" id="4_1xbfp"]
+[ext_resource type="ArrayMesh" uid="uid://w6pgyyitda3w" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Nailgun_01_Sights_01.res" id="5_q2w0d"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vio0b"]
+points = PackedVector3Array(-0.013992194, -0.15899222, 0.05913472, 0.0075007193, -0.15899222, 0.05913472, -0.015300835, -0.06238643, 0.14748034, -0.044818927, -0.13318372, -0.005899459, 0.013151277, -0.15117922, -0.12065508, 0.03780746, -0.13318372, -0.005899459, 0.008289371, -0.015156224, 0.15929818, -0.027104605, 0.15010147, 0.14751637, 0.0023961514, 0.13236211, 0.18887883, -0.0376864, 0.16239731, -0.17711413, -0.044818927, -0.10366083, -0.10620704, -0.036949746, 0.075205564, -0.17920387, 0.030241612, 0.075205564, -0.17920387, 0.03261623, -0.104973674, -0.09694733, 0.043718014, 0.15010147, -0.005863428, 0.019434486, 0.16809697, -0.1770781)
+
+[node name="SM_Wep_Nailgun_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_bb5th")
+surface_material_override/0 = ExtResource("2_x82l6")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_vio0b")
+
+[node name="SM_Wep_Nailgun_01_Handle_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06717917, 0.09640641, 0.082531765)
+gi_mode = 2
+mesh = ExtResource("3_x82l6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_x82l6")
+
+[node name="SM_Wep_Nailgun_01_Magazine_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0033561885, -0.20228876, -0.0045667156)
+gi_mode = 2
+mesh = ExtResource("4_1xbfp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_x82l6")
+
+[node name="SM_Wep_Nailgun_01_Sights_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0023864019, 0.17861184, -0.018030126)
+gi_mode = 2
+mesh = ExtResource("5_q2w0d")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_x82l6")

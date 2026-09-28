@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bo7xw6yk21m7a"]
+
+[ext_resource type="ArrayMesh" uid="uid://c6pc5v1rgu7o8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_ForeGrip_06.res" id="1_dl6yd"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_7bgte"]
+[ext_resource type="ArrayMesh" uid="uid://dskikex5gx3d4" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_ForeGrip_Fold_06.res" id="3_7bgte"]
+
+[node name="SM_Wep_Mod_ForeGrip_06" type="MeshInstance3D" unique_id=1449424720]
+gi_mode = 2
+mesh = ExtResource("1_dl6yd")
+surface_material_override/0 = ExtResource("2_7bgte")
+
+[node name="SM_Wep_Mod_ForeGrip_Fold_06" type="MeshInstance3D" parent="." unique_id=1177578070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02592561, 0.008802795)
+gi_mode = 2
+mesh = ExtResource("3_7bgte")
+surface_material_override/0 = ExtResource("2_7bgte")

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://t3vmj6cbwytc"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1p4v5jn1t2u2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_B_Body_01.res" id="1_pfqlx"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_gfps8"]
+[ext_resource type="ArrayMesh" uid="uid://vphm4c1sfoxr" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_B_Body_Sight_01.res" id="3_gfps8"]
+[ext_resource type="ArrayMesh" uid="uid://byde18nn1afi7" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_B_Body_Slide_01.res" id="4_w1c1u"]
+[ext_resource type="ArrayMesh" uid="uid://t7w34np5uarq" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_B_Body_TriggerGuard_01.res" id="5_gbn68"]
+
+[node name="SM_Wep_Mod_B_Body_01" type="MeshInstance3D" unique_id=613212316]
+gi_mode = 2
+mesh = ExtResource("1_pfqlx")
+surface_material_override/0 = ExtResource("2_gfps8")
+
+[node name="SM_Wep_Mod_B_Body_Sight_01" type="MeshInstance3D" parent="." unique_id=2006284075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019629316, 0.15613504, 0.31047606)
+gi_mode = 2
+mesh = ExtResource("3_gfps8")
+surface_material_override/0 = ExtResource("2_gfps8")
+
+[node name="SM_Wep_Mod_B_Body_Slide_01" type="MeshInstance3D" parent="." unique_id=189365941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020771123, 0.11821374, 0.19275804)
+gi_mode = 2
+mesh = ExtResource("4_w1c1u")
+surface_material_override/0 = ExtResource("2_gfps8")
+
+[node name="SM_Wep_Mod_B_Body_TriggerGuard_01" type="MeshInstance3D" parent="." unique_id=2139640939]
+gi_mode = 2
+mesh = ExtResource("5_gbn68")
+surface_material_override/0 = ExtResource("2_gfps8")

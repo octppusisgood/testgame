@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c67k1biefec28"]
+
+[ext_resource type="ArrayMesh" uid="uid://bgtfhlkmpjaw1" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Bld_Escalator_Gap_01.res" id="1_agus7"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_lfko3"]
+[ext_resource type="Shape3D" uid="uid://di5ltwq1e42be" path="res://Assets/Synty/PolygonShops/Models/Collision/SM_Bld_Escalator_Gap_01_Collision.res" id="3_lfko3"]
+
+[node name="SM_Bld_Escalator_Gap_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_agus7")
+surface_material_override/0 = ExtResource("2_lfko3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = ExtResource("3_lfko3")

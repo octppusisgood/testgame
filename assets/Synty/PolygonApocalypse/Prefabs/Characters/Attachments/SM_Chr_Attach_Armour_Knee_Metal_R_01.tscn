@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw2q51hm1b4ei"]
+
+[ext_resource type="ArrayMesh" uid="uid://bin6pp8v7lb15" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Armour_Knee_Metal_R_01.res" id="1_oh8iy"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_r8ehr"]
+
+[node name="SM_Chr_Attach_Armour_Knee_Metal_R_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_oh8iy")
+surface_material_override/0 = ExtResource("2_r8ehr")

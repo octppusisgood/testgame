@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://du1u13o4q11ag"]
+
+[ext_resource type="ArrayMesh" uid="uid://ctpkemwg4c8c2" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Industrial_Small_01.res" id="1_x6gx8"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_x6gx8"]
+[ext_resource type="Material" uid="uid://bg11y7vdeg0pp" path="res://assets/Synty/PolygonApocalypse/Materials/Misc/PolygonApocalypse_01_Glass_mat.tres" id="3_x6gx8"]
+[ext_resource type="ArrayMesh" uid="uid://tx0y0t18w1n1" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Industrial_Small_01_Door_01.res" id="4_sot56"]
+[ext_resource type="ArrayMesh" uid="uid://h41enfcqae2q" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Industrial_Small_01_Barricades_01.res" id="5_x5rni"]
+
+[node name="SM_Bld_Industrial_Small_01" type="MeshInstance3D"]
+mesh = ExtResource("1_x6gx8")
+surface_material_override/0 = ExtResource("2_x6gx8")
+surface_material_override/1 = ExtResource("3_x6gx8")
+
+[node name="SM_Bld_Industrial_Small_01_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3045459, 0.13213147, 1.9482129)
+gi_mode = 2
+mesh = ExtResource("4_sot56")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_x6gx8")
+
+[node name="SM_Bld_Industrial_Small_01_Barricades_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("5_x5rni")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_x6gx8")

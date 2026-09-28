@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bvjqi7udwcac3"]
+
+[ext_resource type="ArrayMesh" uid="uid://cemikxf36uyhb" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Fountain_01.res" id="1_44h2q"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_0rvw1"]
+[ext_resource type="Shape3D" uid="uid://cmis4k4igtxxo" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Fountain_01_Collision.res" id="3_0rvw1"]
+
+[node name="SM_Bld_Fountain_01" type="MeshInstance3D" unique_id=1520572094]
+gi_mode = 2
+mesh = ExtResource("1_44h2q")
+surface_material_override/0 = ExtResource("2_0rvw1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1740963050]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=823465959]
+shape = ExtResource("3_0rvw1")

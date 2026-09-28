@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxt4sq80aumhk"]
+
+[ext_resource type="ArrayMesh" uid="uid://citgtqu2jaeir" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Freezer_01.res" id="1_dcyhf"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_fio3l"]
+[ext_resource type="ArrayMesh" uid="uid://b4m6qahvut3rx" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Freezer_01_Door_02.res" id="3_fio3l"]
+[ext_resource type="ArrayMesh" uid="uid://bx1p5tq1h0rcx" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Freezer_01_Door_02_Glass_01.res" id="4_x2jju"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="5_xpoom"]
+[ext_resource type="ArrayMesh" uid="uid://dev355xs763fs" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Freezer_01_Door_01.res" id="6_okem7"]
+[ext_resource type="ArrayMesh" uid="uid://bwoyfdafdeppn" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Freezer_01_Door_01_Glass_01.res" id="7_xpoom"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h8ryh"]
+points = PackedVector3Array(-1.3984667, 0.13427483, -0.7127689, -1.4255373, 0.12665494, 0.65406024, -1.3912106, 1.0491766, -0.7091382, 1.3981876, 0.13427483, -0.7127689, -1.3633027, -4.902518e-09, -0.6731102, -1.3987458, 1.0519568, 0.6856196, -1.3633027, -4.902518e-09, 0.6456816, -1.3814428, 0.12655196, 0.6988857, 1.3956759, 1.050927, 0.68436277, 1.385071, 1.0469111, -0.706066, 1.4255373, 0.12665494, 0.65406024, 1.3630238, -4.902518e-09, -0.6731102, -1.3236734, 0.9117096, 0.7127104, 1.3253479, 1.0406299, 0.7138276, 1.3630238, -4.902518e-09, 0.6456816, 1.3811638, 0.12655196, 0.6988857)
+
+[node name="SM_Prop_Market_Freezer_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_dcyhf")
+surface_material_override/0 = ExtResource("2_fio3l")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_h8ryh")
+
+[node name="SM_Prop_Market_Freezer_01_Door_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1754324, 1.0358578, -0.010870782)
+gi_mode = 2
+mesh = ExtResource("3_fio3l")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_fio3l")
+
+[node name="SM_Prop_Market_Freezer_01_Door_02_Glass_01" type="MeshInstance3D" parent="SM_Prop_Market_Freezer_01_Door_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49561524, -0.008584738, -0.0059688604)
+gi_mode = 2
+mesh = ExtResource("4_x2jju")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_xpoom")
+
+[node name="SM_Prop_Market_Freezer_01_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.67855376, 1.022404, -0.012176208)
+gi_mode = 2
+mesh = ExtResource("6_okem7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_fio3l")
+
+[node name="SM_Prop_Market_Freezer_01_Door_01_Glass_01" type="MeshInstance3D" parent="SM_Prop_Market_Freezer_01_Door_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, -0.021607041, -0.006263733)
+gi_mode = 2
+mesh = ExtResource("7_xpoom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_xpoom")

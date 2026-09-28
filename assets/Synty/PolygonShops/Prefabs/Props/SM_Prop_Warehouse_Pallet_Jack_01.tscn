@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbyo221xrqyb3"]
+
+[ext_resource type="ArrayMesh" uid="uid://24illykf1lg4" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Warehouse_Pallet_Jack_01.res" id="1_dyjyw"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_l6m7u"]
+[ext_resource type="ArrayMesh" uid="uid://n208o0rv3v86" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Warehouse_Pallet_Jack_01_Pivot_01.res" id="3_l6m7u"]
+[ext_resource type="ArrayMesh" uid="uid://dl1gwxfhg6280" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Warehouse_Pallet_Jack_01_Pivot_01_Handle_01.res" id="4_rphma"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wjeso"]
+points = PackedVector3Array(0.4005869, 0.16516948, 0.4574716, 0.37052643, -0.015005231, -0.71259403, 0.4005869, 0.16505198, -0.77256364, 0.3104055, 0.34499168, 0.69772613, 0.35125285, 0.074289046, 0.6364405, -0.3494969, -0.015005231, -0.71259403, -0.37963665, 0.04503342, -0.98255134, 0.37052643, 0.13503265, -0.98255134, 0.1002996, 0.5851463, 0.4875505, -0.07942864, 0.5851463, 0.81766534, 0.07031843, 0.37506977, 0.93798065, -0.33403042, 0.074289046, 0.6364405, -0.40969712, 0.16516948, 0.69772613, -0.37963665, 0.13503265, -0.98255134, -0.40969712, 0.16505198, -0.77256364, -0.07942864, 0.5851463, 0.4875505)
+
+[node name="SM_Prop_Warehouse_Pallet_Jack_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_dyjyw")
+surface_material_override/0 = ExtResource("2_l6m7u")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_wjeso")
+
+[node name="SM_Prop_Warehouse_Pallet_Jack_01_Pivot_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.947598e-16, 0.29040748, 0.82342094)
+gi_mode = 2
+mesh = ExtResource("3_l6m7u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_l6m7u")
+
+[node name="SM_Prop_Warehouse_Pallet_Jack_01_Pivot_01_Handle_01" type="MeshInstance3D" parent="SM_Prop_Warehouse_Pallet_Jack_01_Pivot_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24955434, 0.07813984)
+gi_mode = 2
+mesh = ExtResource("4_rphma")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_l6m7u")

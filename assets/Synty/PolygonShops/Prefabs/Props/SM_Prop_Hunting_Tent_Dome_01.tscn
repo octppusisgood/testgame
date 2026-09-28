@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwt0onndpol4a"]
+
+[ext_resource type="ArrayMesh" uid="uid://bfi0b53vgcklh" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Hunting_Tent_Dome_01.res" id="1_asg6l"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_xas4a"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_01ced"]
+points = PackedVector3Array(1.6880399, -0.02958586, 0.989156, 1.621863, -0.095689595, 0.9230468, 1.621863, -0.095689595, -2.0448341, 1.621863, 0.10227461, -2.11053, 0.68617046, 1.3632772, 0.1768415, 0.5182594, 1.2524102, 1.2048366, 0.56698644, 0.16820484, 2.11053, -0.55439615, -0.029759355, 2.0444207, -1.6754495, -0.095689595, 0.85735106, -1.6092727, -0.095689595, -2.0448341, -1.6092727, 0.10227461, -2.11053, -0.7601695, 1.2591767, -1.2870597, 0.2782452, 1.6767929, -0.7858708, -0.50599825, 1.2524102, 1.2048366, -0.43521225, 1.5962884, -0.058671713, -1.6754495, 0.10227461, 0.989156)
+
+[node name="SM_Prop_Hunting_Tent_Dome_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_asg6l")
+surface_material_override/0 = ExtResource("2_xas4a")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_01ced")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwj5oyx3wepvs"]
+
+[ext_resource type="ArrayMesh" uid="uid://bdkvoyvyqxi1o" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Toilet_Pneumatic_01.res" id="1_87guh"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_stocn"]
+[ext_resource type="ArrayMesh" uid="uid://dijtysianapig" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Toilet_Pneumatic_Lid_01.res" id="3_stocn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5iwk1"]
+points = PackedVector3Array(0.6005013, -0.00056765974, 0.095965564, 0.59714097, 0.44283992, 0.13588005, 0.13221076, 0.49439895, 0.3209293, -0.07087308, 9.229779e-05, 0.17332464, 0.5650025, -0.20036918, -0.60372376, 0.54889023, 0.07309988, -0.6519373, 0.5328641, 0.5875352, -0.16960418, 0.42016417, 0.6423115, 0.027004361, -0.13075568, 0.48119986, 0.32517755, -0.16453117, -7.2687864e-05, 0.07986146, 0.4685011, -0.20036918, -0.68414557, 0.53277797, 0.018158585, -0.6627064, -0.22294903, 0.45892638, -0.34635428, -0.11016296, 0.5221996, -0.32116073, -0.27972978, 0.49332654, 0.13568246, -0.15040061, 0.010074124, -0.09491271)
+
+[node name="SM_Prop_Toilet_Pneumatic_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_87guh")
+surface_material_override/0 = ExtResource("2_stocn")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_5iwk1")
+
+[node name="SM_Prop_Toilet_Pneumatic_Lid_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51018506, -0.32382092)
+gi_mode = 2
+mesh = ExtResource("3_stocn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_stocn")

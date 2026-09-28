@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://4x3jvniyduxx"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2urf5bmd2g1g" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Hospital_01.res" id="1_vx3ee"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_qnbkx"]
+[ext_resource type="ArrayMesh" uid="uid://cro063swftgtj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Hospital_Wheels_f.res" id="3_qnbkx"]
+[ext_resource type="ArrayMesh" uid="uid://crl6mld6rus2" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Hospital_Wheels_r.res" id="4_xd0x8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vx3ee"]
+size = Vector3(1.2666016, 0.32733154, 2.2103271)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnbkx"]
+size = Vector3(1.2424316, 0.89920044, 0.09301758)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xd0x8"]
+size = Vector3(1.2370605, 1.2099609, 0.087402344)
+
+[node name="SM_Prop_Bed_Hospital_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_vx3ee")
+surface_material_override/0 = ExtResource("2_qnbkx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009277344, 0.74069214, 0.0045776367)
+shape = SubResource("BoxShape3D_vx3ee")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024609726, 0.6429932, 1.1553379)
+shape = SubResource("BoxShape3D_qnbkx")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02722168, 0.78759766, -1.1418457)
+shape = SubResource("BoxShape3D_xd0x8")
+
+[node name="SM_Prop_Bed_Hospital_Wheels_f" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017163437, 0.10028389, 1.1456944)
+gi_mode = 2
+mesh = ExtResource("3_qnbkx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_qnbkx")
+
+[node name="SM_Prop_Bed_Hospital_Wheels_r" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017163437, 0.10028389, -1.1438683)
+gi_mode = 2
+mesh = ExtResource("4_xd0x8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_qnbkx")

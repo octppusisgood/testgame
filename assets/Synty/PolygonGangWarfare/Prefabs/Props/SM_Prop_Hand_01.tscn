@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c7buyciewwj0y"]
+
+[ext_resource type="ArrayMesh" uid="uid://doy40sh60st7c" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Box_01.res" id="1_e0ues"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_w4038"]
+[ext_resource type="ArrayMesh" uid="uid://tbnf88uomf8y" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Hand_01.res" id="3_74qge"]
+
+[node name="SM_Prop_Hand_01" type="MeshInstance3D" unique_id=526288778]
+gi_mode = 2
+mesh = ExtResource("1_e0ues")
+surface_material_override/0 = ExtResource("2_w4038")
+
+[node name="SM_Prop_Hand_01" type="MeshInstance3D" parent="." unique_id=439888653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01393815, 0.09831508, 0.0010957577)
+gi_mode = 2
+mesh = ExtResource("3_74qge")
+surface_material_override/0 = ExtResource("2_w4038")

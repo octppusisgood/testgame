@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cippboydl1c4r"]
+
+[ext_resource type="ArrayMesh" uid="uid://bhe64fg7iifvc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Archway_Pillar_01.res" id="1_qdef0"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_u5c3b"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w1hrk"]
+points = PackedVector3Array(-0.36161822, -0.034069538, -0.3198161, -0.36161822, -0.034069538, 0.361617, -0.2934681, 4.326843, -0.25159767, -0.30972034, 2.3807387, -0.33600006, 0.33599883, 2.3807387, -0.33600006, 0.29673398, 0.129422, -0.29680347, 0.31974655, -0.034069538, 0.361617, -0.2934681, 4.326843, 0.29339853, 0.18330973, 4.326843, 0.29339853, 0.23507106, 4.1761575, -0.23520887, 0.25145984, 4.2585435, 0.29339853, 0.30909383, 2.3611026, 0.2827458)
+
+[node name="SM_Bld_Village_Archway_Pillar_01" type="MeshInstance3D" unique_id=1995070640]
+gi_mode = 2
+mesh = ExtResource("1_qdef0")
+surface_material_override/0 = ExtResource("2_u5c3b")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=628738714]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1158972074]
+shape = SubResource("ConvexPolygonShape3D_w1hrk")

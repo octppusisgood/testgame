@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cgh0xah04s4a3"]
+
+[ext_resource type="ArrayMesh" uid="uid://chi1jvf0lshg5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01.res" id="1_uwd5f"]
+[ext_resource type="Material" uid="uid://vrss6mi5uqae" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Helicopters_01_A_mat.tres" id="2_31iu1"]
+[ext_resource type="ArrayMesh" uid="uid://bl2rkc8qts8i2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Blades_Back.res" id="3_31iu1"]
+[ext_resource type="ArrayMesh" uid="uid://0wf5kqv3xs6n" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Blades_Main.res" id="4_npweh"]
+[ext_resource type="ArrayMesh" uid="uid://bndnibnw17tqg" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Camera.res" id="5_d0mtj"]
+[ext_resource type="ArrayMesh" uid="uid://bhxnhy88glpq6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Glass.res" id="6_m33sg"]
+[ext_resource type="Material" uid="uid://bsdrxux17jhqg" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_Alt_mat.tres" id="7_8ufa7"]
+[ext_resource type="ArrayMesh" uid="uid://d0vl4vfapx7r5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Gun_Horizontal.res" id="8_yg680"]
+[ext_resource type="ArrayMesh" uid="uid://cvst3274i6xjx" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Gun_Vertical.res" id="9_8ufa7"]
+[ext_resource type="ArrayMesh" uid="uid://hp123efw53kc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Gun.res" id="10_e0k7h"]
+[ext_resource type="ArrayMesh" uid="uid://dvhpf3qqlspfk" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Stick_1.res" id="11_lrwqu"]
+[ext_resource type="ArrayMesh" uid="uid://c0ae0donjuvgd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Stick_2.res" id="12_i2wl5"]
+[ext_resource type="ArrayMesh" uid="uid://dydgk1vmdtqyp" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Stick_3.res" id="13_tuh5h"]
+[ext_resource type="ArrayMesh" uid="uid://b6jsyyc55c23a" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Helicopter_Attack_01_Stick_4.res" id="14_yfvvc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3pb0p"]
+points = PackedVector3Array(0.91077197, 0.3248489, -0.74658394, -0.32163352, 0.5593061, -1.7125645, -0.38862133, 1.191747, -7.892399, 0.26090574, 1.191747, -8.3251915, 0.91077197, 2.7068155, -9.190775, 0.91077197, 3.3564696, -8.540909, 0.69403684, 2.2738116, 2.7171087, 0.69403684, 1.1914502, 3.8011236, 0.69403684, 0.3248489, 3.1512575, -0.8217524, 0.54149926, 2.7171087, -0.6937125, 2.2097068, -3.5522695, -0.17188615, 3.3564696, -9.190775, 0.47747135, 3.3567665, -0.74658394, -0.6051869, 3.3567665, 0.33607483, -0.38862133, 2.490165, 2.9355392, -0.38862133, 1.6247509, 4.6694202)
+
+[node name="SM_Veh_Helicopter_Attack_01" type="MeshInstance3D" unique_id=1354809442]
+gi_mode = 2
+mesh = ExtResource("1_uwd5f")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=661580320]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=132212344]
+shape = SubResource("ConvexPolygonShape3D_3pb0p")
+
+[node name="SM_Veh_Helicopter_Attack_01_Blades_Back" type="MeshInstance3D" parent="." unique_id=1039103072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74321675, 3.0242128, -8.852186)
+gi_mode = 2
+mesh = ExtResource("3_31iu1")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="SM_Veh_Helicopter_Attack_01_Blades_Main" type="MeshInstance3D" parent="." unique_id=788554548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.684342e-16, 3.230587, 6.2968772e-09)
+gi_mode = 2
+mesh = ExtResource("4_npweh")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="SM_Veh_Helicopter_Attack_01_Camera" type="MeshInstance3D" parent="." unique_id=707605875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.190158, 4.30588)
+gi_mode = 2
+mesh = ExtResource("5_d0mtj")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="SM_Veh_Helicopter_Attack_01_Glass" type="MeshInstance3D" parent="." unique_id=346473911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0024834, 0)
+gi_mode = 2
+mesh = ExtResource("6_m33sg")
+surface_material_override/0 = ExtResource("7_8ufa7")
+
+[node name="SM_Veh_Helicopter_Attack_01_Gun_Horizontal" type="MeshInstance3D" parent="." unique_id=1305584275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6924666, 3.2134793)
+gi_mode = 2
+mesh = ExtResource("8_yg680")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="SM_Veh_Helicopter_Attack_01_Gun_Vertical" type="MeshInstance3D" parent="SM_Veh_Helicopter_Attack_01_Gun_Horizontal" unique_id=1412680898]
+gi_mode = 2
+mesh = ExtResource("9_8ufa7")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="SM_Veh_Helicopter_Attack_01_Gun" type="MeshInstance3D" parent="SM_Veh_Helicopter_Attack_01_Gun_Horizontal/SM_Veh_Helicopter_Attack_01_Gun_Vertical" unique_id=646796214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0547992, 0.19649124)
+gi_mode = 2
+mesh = ExtResource("10_e0k7h")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="SM_Veh_Helicopter_Attack_01_Stick_1" type="MeshInstance3D" parent="." unique_id=487087066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40499005, 1.6017299, 1.7980217)
+gi_mode = 2
+mesh = ExtResource("11_lrwqu")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="SM_Veh_Helicopter_Attack_01_Stick_2" type="MeshInstance3D" parent="." unique_id=177718370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40499005, 1.6017299, 1.7980217)
+gi_mode = 2
+mesh = ExtResource("12_i2wl5")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="SM_Veh_Helicopter_Attack_01_Stick_3" type="MeshInstance3D" parent="." unique_id=1465289448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3755461, 1.3492981, 3.2438905)
+gi_mode = 2
+mesh = ExtResource("13_tuh5h")
+surface_material_override/0 = ExtResource("2_31iu1")
+
+[node name="SM_Veh_Helicopter_Attack_01_Stick_4" type="MeshInstance3D" parent="." unique_id=2058493555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3755461, 1.3492981, 3.2438905)
+gi_mode = 2
+mesh = ExtResource("14_yfvvc")
+surface_material_override/0 = ExtResource("2_31iu1")

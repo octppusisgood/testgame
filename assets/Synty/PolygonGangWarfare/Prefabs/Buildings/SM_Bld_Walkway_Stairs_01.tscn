@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://uajqt57eni8a"]
+
+[ext_resource type="ArrayMesh" uid="uid://bvvveb1r0oad7" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Walkway_Stairs_01.res" id="1_64ehw"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_2fov0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rg38d"]
+points = PackedVector3Array(0.03380768, -1.5663167, 3.89434, 0.30046964, -2.6328602, 3.89434, 0.2337389, -1.4331032, 3.7604215, 0.03380768, -1.4331032, 3.7604215, -0.03285781, 1.2332551, 0.094113484, 0.03380768, -2.6996756, 3.8265977, 0.10044055, -3.0329182, 3.5607188, 0.2337389, -3.0329182, 3.5607188, 0.30046964, -2.7660737, 3.427192, 0.30046964, -0.10055041, 0.56126136, 0.2337389, 1.2332551, 0.094113484, 0.2337389, 1.2332551, -0.10598087, -0.03289044, 0.033080816, -0.039021708, 0.10044055, -0.23376393, -0.039021708, 0.2337389, -0.23376393, -0.039021708, 0.30046964, -0.23376393, 0.09450506)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wq6uk"]
+points = PackedVector3Array(1.5672097, -1.5663167, 3.89434, 1.4339328, -1.4331032, 3.7604215, 1.4339328, -1.5663167, 3.89434, 1.5672097, -3.0329182, 3.89434, 1.6371775, 1.1489007, 0.04986562, 1.633901, 1.2332551, 0.094113484, 1.3672414, -2.4996467, 3.89434, 1.4339063, 1.1664398, 0.22764024, 1.3672414, 0.16629434, 0.29420784, 1.3672414, -3.0329182, 3.5607188, 1.5672097, -3.0329182, 3.5607188, 1.6345615, 0.7083354, 0.017756537, 1.633901, 1.0996239, -0.10598087, 1.4339063, 1.0996239, -0.10598087, 1.3672414, -0.23376393, -0.039021708, 1.5672097, -0.23376393, -0.039021708)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3gnvb"]
+points = PackedVector3Array(3.1005507, 1.2336208, 0.09403524, 3.1005507, 1.1002637, 0.09403524, 3.1005507, 1.2336208, -0.10598081, 1.6340536, 1.2336208, 0.09403524, 1.6340536, 1.1002637, 0.09403524, 3.0336566, 0.7004012, 0.027330592, 3.1005507, 1.1002637, -0.10598081, 1.6340536, 1.2336208, -0.10598081, 1.6340536, 0.7004012, 0.027330592, 3.0336566, 0.7004012, -0.03929574, 1.6340536, 1.1002637, -0.10598081, 1.6340536, 0.7004012, -0.03929574)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_64ehw"]
+points = PackedVector3Array(0.30312324, -2.7638936, 3.4331033, 1.3814286, -2.4269161, 2.962143, 1.3814286, -2.7638936, 3.4331033, 1.3596414, -2.70943, 3.8272269, 0.30312324, -2.6289415, 3.9052107, 0.30312324, -0.87697995, 0.8730207, 1.3814286, -0.87697995, 0.8730207, 1.3995667, -0.16278052, -9.0954774e-05, 1.3814286, -2.6289415, 3.9052107, 1.3814286, -2.2922323, 3.5003834, 0.30312324, -1.0116637, 1.815706, 0.30312324, -0.20329309, 0.06413092, 1.3995667, -0.022999287, -9.0954774e-05, 1.3814286, -0.06834102, 0.5358559, 0.30312324, -0.06834102, 0.5358559, 0.32372984, -0.1198535, 0.13752735)
+
+[node name="SM_Bld_Walkway_Stairs_01" type="MeshInstance3D" unique_id=1423242386]
+gi_mode = 2
+mesh = ExtResource("1_64ehw")
+surface_material_override/0 = ExtResource("2_2fov0")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=338180420]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=456529155]
+shape = SubResource("ConvexPolygonShape3D_rg38d")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=2130673013]
+shape = SubResource("ConvexPolygonShape3D_wq6uk")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider" unique_id=1313298099]
+shape = SubResource("ConvexPolygonShape3D_3gnvb")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshCollider" unique_id=558949050]
+shape = SubResource("ConvexPolygonShape3D_64ehw")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://f1tmld1ihkec"]
+
+[ext_resource type="ArrayMesh" uid="uid://dnefsw2d2lyu1" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Warehouse_Grate_01.res" id="1_q3w2a"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_cxpx5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ne8pg"]
+points = PackedVector3Array(0.29287505, 0.05476302, 1.3601131, 0.29287505, -0.115251124, 1.3601131, 0.29287505, 0.05476302, -1.3601131, -0.3019415, 0.05476302, 1.3601131, -0.3019415, -0.115251124, 1.3601131, 0.29287505, -0.115251124, -1.3601131, -0.3019415, 0.05476302, -1.3601131, -0.3019415, -0.115251124, -1.3601131)
+
+[node name="SM_Prop_Warehouse_Grate_01" type="MeshInstance3D" unique_id=1007150418]
+gi_mode = 2
+mesh = ExtResource("1_q3w2a")
+surface_material_override/0 = ExtResource("2_cxpx5")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1150779199]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=709588545]
+shape = SubResource("ConvexPolygonShape3D_ne8pg")

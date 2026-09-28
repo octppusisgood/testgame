@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk8wivooc0b5o"]
+
+[ext_resource type="ArrayMesh" uid="uid://cnirxmo6grogo" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_14.res" id="1_m83o6"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_0g20m"]
+[ext_resource type="ArrayMesh" uid="uid://d0bqdmj3ut272" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_14_Magazine.res" id="3_0g20m"]
+[ext_resource type="ArrayMesh" uid="uid://dqaw6o6swkr3m" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_14_Slide.res" id="4_apaga"]
+[ext_resource type="ArrayMesh" uid="uid://ylqqth22i03e" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_14_Top.res" id="5_ma782"]
+[ext_resource type="ArrayMesh" uid="uid://b3gh40hj0j7mw" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Body_14_Trigger.res" id="6_f1lel"]
+
+[node name="SM_Wep_Mod_Body_14" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_m83o6")
+surface_material_override/0 = ExtResource("2_0g20m")
+
+[node name="SM_Wep_Mod_Body_14_Magazine" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.008461151, 0.115338326)
+gi_mode = 2
+mesh = ExtResource("3_0g20m")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_0g20m")
+
+[node name="SM_Wep_Mod_Body_14_Slide" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04280297, 0.084601715, 0.1313531)
+gi_mode = 2
+mesh = ExtResource("4_apaga")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_0g20m")
+
+[node name="SM_Wep_Mod_Body_14_Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00040759443, 0.12954031, 0.16704404)
+gi_mode = 2
+mesh = ExtResource("5_ma782")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_0g20m")
+
+[node name="SM_Wep_Mod_Body_14_Trigger" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0861626e-09, 0.014435359, 0.03594704)
+gi_mode = 2
+mesh = ExtResource("6_f1lel")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_0g20m")

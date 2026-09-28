@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://i6v7cnrjp3ka"]
+
+[ext_resource type="ArrayMesh" uid="uid://703ehekyx2nc" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_ShoppingCart_Small_01.res" id="1_bdxtb"]
+[ext_resource type="Material" uid="uid://bh08n74p5hnhf" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Wire_01_mat.tres" id="2_vc0iu"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="3_1bbib"]
+[ext_resource type="ArrayMesh" uid="uid://chbgksewowc50" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_ShoppingCart_Small_01_Basket_01.res" id="4_vc0iu"]
+[ext_resource type="ArrayMesh" uid="uid://bh6pnl6oap7dr" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_ShoppingCart_Small_Wheel_Guard_fl.res" id="5_1bbib"]
+[ext_resource type="ArrayMesh" uid="uid://cr2gd8vt2lxs6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_ShoppingCart_Small_Wheel_fl.res" id="6_4hj1b"]
+[ext_resource type="ArrayMesh" uid="uid://dsxnvcceefnxp" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_ShoppingCart_Small_Wheel_Guard_fr.res" id="7_24j8o"]
+[ext_resource type="ArrayMesh" uid="uid://cvjnjj40k88fv" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_ShoppingCart_Small_Wheel_fr.res" id="8_y7hrf"]
+[ext_resource type="ArrayMesh" uid="uid://dg5oy06ad5syx" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_ShoppingCart_Small_Wheel_rl.res" id="9_5yk1j"]
+[ext_resource type="ArrayMesh" uid="uid://up4x7drx3pit" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_ShoppingCart_Small_Wheel_rr.res" id="10_fuogd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_22xk2"]
+points = PackedVector3Array(0.38027865, 0.05771494, 0.022382379, -0.3779238, 0.05771494, 0.03927037, -0.36560374, 0.075233355, -0.017726585, 0.36684537, 0.07671081, -0.016776636, 0.31281525, 1.1189511, -0.16285771, 0.34650987, 0.9504155, -0.011288032, 0.27912068, 0.20925981, 0.79732984, 0.24542612, 0.20925981, 0.83110577, -0.23423937, 0.17443404, 0.81168455, -0.26340672, 0.8533255, 0.5965739, -0.3273077, 1.0515158, -0.21341611, -0.31892115, 0.20292784, -0.085595176, 0.31971747, 0.2047219, -0.08390638, 0.2117315, 1.0682955, -0.24719208, -0.19245511, 1.1358364, -0.16285771, 0.2645741, 0.884141, 0.56322014)
+
+[node name="SM_Prop_ShoppingCart_Small_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_bdxtb")
+surface_material_override/0 = ExtResource("2_vc0iu")
+surface_material_override/1 = ExtResource("3_1bbib")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_22xk2")
+
+[node name="SM_Prop_ShoppingCart_Small_01_Basket_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6899595e-08, 0.8717221, 0.34202933)
+gi_mode = 2
+mesh = ExtResource("4_vc0iu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_1bbib")
+surface_material_override/1 = ExtResource("2_vc0iu")
+
+[node name="SM_Prop_ShoppingCart_Small_Wheel_Guard_fl" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.376997, 0.12897629, 0.8708543)
+gi_mode = 2
+mesh = ExtResource("5_1bbib")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_1bbib")
+
+[node name="SM_Prop_ShoppingCart_Small_Wheel_fl" type="MeshInstance3D" parent="SM_Prop_ShoppingCart_Small_Wheel_Guard_fl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.056956097, -0.030919313)
+gi_mode = 2
+mesh = ExtResource("6_4hj1b")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_1bbib")
+
+[node name="SM_Prop_ShoppingCart_Small_Wheel_Guard_fr" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27884552, 0.12897629, 0.8708543)
+gi_mode = 2
+mesh = ExtResource("7_24j8o")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_1bbib")
+
+[node name="SM_Prop_ShoppingCart_Small_Wheel_fr" type="MeshInstance3D" parent="SM_Prop_ShoppingCart_Small_Wheel_Guard_fr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.056956097, -0.030919313)
+gi_mode = 2
+mesh = ExtResource("8_y7hrf")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_1bbib")
+
+[node name="SM_Prop_ShoppingCart_Small_Wheel_rl" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43061027, 0.07202019, -0.007265268)
+gi_mode = 2
+mesh = ExtResource("9_5yk1j")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_1bbib")
+
+[node name="SM_Prop_ShoppingCart_Small_Wheel_rr" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3324588, 0.07202019, -0.007265268)
+gi_mode = 2
+mesh = ExtResource("10_fuogd")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_1bbib")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dume35uyqnvku"]
+
+[ext_resource type="ArrayMesh" uid="uid://c03nn3qtwkout" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Money_Coin_01.res" id="1_tii7r"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_j56g1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_62a6b"]
+points = PackedVector3Array(0.0016788375, 0.00800501, -0.026967023, 0.019375287, 0.00800501, -0.019380568, 0.0053004846, -8.6736174e-19, -0.022754084, 0.0015098974, -8.6736174e-19, -0.024274543, -0.019380571, 0.00800501, -0.019380568, 0.026967019, 0.00800501, 0.0016841199, 0.02426926, -8.6736174e-19, -0.001515178, 0.017432477, -8.6736174e-19, -0.01743776, -0.017443042, -8.6736174e-19, -0.01743776, -0.026967026, 0.00800501, -0.0016788393, 0.019375287, 0.00800501, 0.01937529, 0.017432477, -8.6736174e-19, 0.01743776, -0.024274547, -8.6736174e-19, 0.0015151799, -0.019380571, 0.00800501, 0.01937529, -0.0016894005, 0.00800501, 0.026967023, -0.017443042, -8.6736174e-19, 0.01743776)
+
+[node name="SM_Prop_Money_Coin_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_tii7r")
+surface_material_override/0 = ExtResource("2_j56g1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_62a6b")

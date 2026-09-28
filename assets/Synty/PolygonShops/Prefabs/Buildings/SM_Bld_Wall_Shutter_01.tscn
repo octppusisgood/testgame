@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://d13lvcnhsylj7"]
+
+[ext_resource type="ArrayMesh" uid="uid://kav0ea1jwat7" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Shutter_01.res" id="1_s4jw7"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_oc0wv"]
+[ext_resource type="ArrayMesh" uid="uid://bhxqh76mna0dn" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Shutter_01_Bars.res" id="3_oc0wv"]
+[ext_resource type="Material" uid="uid://xnnl1hucfecc" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Shutter_01_mat.tres" id="4_dlrb4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4trkf"]
+size = Vector3(2.5, 0.19852638, 0.20126082)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oi5qp"]
+size = Vector3(2.4177516, 2.9335163, 0.033998)
+
+[node name="SM_Bld_Wall_Shutter_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_s4jw7")
+surface_material_override/0 = ExtResource("2_oc0wv")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 2.9240885, 0.1608483)
+shape = SubResource("BoxShape3D_4trkf")
+
+[node name="SM_Bld_Wall_Shutter_01_Bars" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.9335163, 0.16084833)
+gi_mode = 2
+mesh = ExtResource("3_oc0wv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_dlrb4")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Wall_Shutter_01_Bars"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Wall_Shutter_01_Bars/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2500001, -1.4667581, 0)
+shape = SubResource("BoxShape3D_oi5qp")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://hcudmxbx03qt"]
+
+[ext_resource type="ArrayMesh" uid="uid://bj8pw2h5crhyc" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_BoxingGlove_l_01.res" id="1_deksy"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_jwgoc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ick52"]
+points = PackedVector3Array(0.1217989, 0.008757696, 0.23533583, 0.08080217, 0.008776121, 0.3024151, 0.09556292, -0.08327232, 0.24505976, 0.08930591, 0.008573487, -0.013533357, 0.090030655, 0.09010369, 0.19373009, -0.07257929, 0.049246483, 0.2850395, -0.0117002055, -0.057778016, 0.29638943, 0.018787652, -0.098082595, 0.24965075, -0.049653, -0.059288517, -0.006455602, 0.060774878, -0.032633707, -0.023289181, -0.06837573, 0.055067442, -0.011429159, -0.0015053824, 0.07905125, 0.012035832, -0.072289385, 0.08956949, 0.19851238, -0.12319106, -0.02176547, 0.17329389, -0.12500294, -0.027181163, 0.17374021, -0.08217016, -0.08756435, 0.23967174)
+
+[node name="SM_Prop_Sport_BoxingGlove_l_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_deksy")
+surface_material_override/0 = ExtResource("2_jwgoc")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ick52")

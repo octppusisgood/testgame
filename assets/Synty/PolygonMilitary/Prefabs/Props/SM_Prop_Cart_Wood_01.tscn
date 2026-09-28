@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bcgj20yos2gjf"]
+
+[ext_resource type="ArrayMesh" uid="uid://be5dw6mld4e8i" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Wood_01.res" id="1_up5pa"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_bqtem"]
+[ext_resource type="ArrayMesh" uid="uid://dioyq0v8h8pr1" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Wood_WHeel_l.res" id="3_bqtem"]
+[ext_resource type="ArrayMesh" uid="uid://dw1tcuykusqbl" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Cart_Wood_WHeel_r.res" id="4_fsmfe"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b6a2d"]
+points = PackedVector3Array(1.1766241, 0.89557135, -2.4655132, 1.1766241, 0.8339742, -2.6512792, 1.1766241, 1.0190922, -2.6512792, 0.92890525, 1.0810158, 1.1166735, 0.92890525, 0.33989087, -0.057135105, 0.52676404, 0.001106441, -1.897379, -1.1709611, 1.0190922, -2.5278223, -1.0473315, 1.0810158, 1.1166735, 0.6202905, 0.8954625, 1.3024395, 0.6202905, 0.27818486, 0.06632185, -0.55304253, -0.030780435, -1.7247715, -1.1709611, 0.9573862, -2.3420563, -1.1709611, 0.89557135, -2.3420563, -1.0473315, 0.8954625, 1.2405176, -0.738487, 0.40170568, 0.56053686, -0.9855166, 0.33989087, -0.057135105)
+
+[node name="SM_Prop_Cart_Wood_01" type="MeshInstance3D" unique_id=193893277]
+gi_mode = 2
+mesh = ExtResource("1_up5pa")
+surface_material_override/0 = ExtResource("2_bqtem")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1030210906]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1143070866]
+shape = SubResource("ConvexPolygonShape3D_b6a2d")
+
+[node name="SM_Prop_Cart_Wood_Wheel_l" type="MeshInstance3D" parent="." unique_id=598746145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85674816, 0.39758292, -1.0025533e-07)
+gi_mode = 2
+mesh = ExtResource("3_bqtem")
+surface_material_override/0 = ExtResource("2_bqtem")
+
+[node name="SM_Prop_Cart_Wood_Wheel_r" type="MeshInstance3D" parent="." unique_id=1399042877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.93205184, 0.39758292, -1.0025533e-07)
+gi_mode = 2
+mesh = ExtResource("4_fsmfe")
+surface_material_override/0 = ExtResource("2_bqtem")

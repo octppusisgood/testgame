@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bktygkbvtbpvw"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4s3kkp1f2fh3" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Warehouse_Venting_Corner_01.res" id="1_6ycvv"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_1w18o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ycvv"]
+size = Vector3(1.2821045, 2.210022, 0.94885254)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1w18o"]
+size = Vector3(2.1817627, 1.2958984, 0.97924805)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yl8h7"]
+points = PackedVector3Array(-2.5557406, 0.7996833, 0.30559283, -2.1410928, 0.38507026, 0.30559283, -2.5557406, 0.7996833, -0.28664523, -3.3847928, 0.6811893, 0.30559283, -2.1410928, -0.38479286, 0.30559283, -2.2018635, -0.32691604, -0.25770682, -3.3847928, 0.6811893, -0.28664523, -3.2069302, 0.2074452, 0.30559283, -2.1738791, 0.3757052, -0.27103272, -2.4965749, -0.3255459, -0.28664523, -3.3847928, 0.7996833, 0.30559283, -2.7333598, -0.2070519, 0.30559283, -3.2069302, 0.2074452, -0.28664523, -3.3310983, 0.7485457, -0.26107645, -2.2596679, -0.38479286, -0.28664523, -2.4965749, -0.3255459, 0.30559283, -3.3255053, 0.44431725, -0.28664523, -3.3255053, 0.44431725, 0.30559283, -2.2596679, -0.38479286, 0.30559283, -2.8357015, -0.08419853, -0.2336261)
+
+[node name="SM_Prop_Warehouse_Venting_Corner_01" type="MeshInstance3D" unique_id=1712816030]
+gi_mode = 2
+mesh = ExtResource("1_6ycvv")
+surface_material_override/0 = ExtResource("2_1w18o")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=902069178]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1077750888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9940796, 1.9107361, -0.20281982)
+shape = SubResource("BoxShape3D_6ycvv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=1179398523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0050659, 0.0014648438, -0.18444824)
+shape = SubResource("BoxShape3D_1w18o")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider" unique_id=294298598]
+shape = SubResource("ConvexPolygonShape3D_yl8h7")

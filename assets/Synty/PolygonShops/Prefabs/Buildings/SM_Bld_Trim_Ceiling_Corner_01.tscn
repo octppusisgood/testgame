@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca3p8roerthmg"]
+
+[ext_resource type="ArrayMesh" uid="uid://c5yc5hkapw3qc" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Trim_Ceiling_Corner_01.res" id="1_upims"]
+[ext_resource type="Material" uid="uid://buo25cdi05x6y" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_White_01_mat.tres" id="2_4l3rv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_id2gr"]
+size = Vector3(0.27854827, 0.3585322, 0.2785485)
+
+[node name="SM_Bld_Trim_Ceiling_Corner_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_upims")
+surface_material_override/0 = ExtResource("2_4l3rv")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13927414, 2.820732, 0.13927425)
+shape = SubResource("BoxShape3D_id2gr")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnc7gcihidy7q"]
+
+[ext_resource type="ArrayMesh" uid="uid://cf0wwc2f5x4ds" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Clippers_Head_01.res" id="1_k8xv8"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_ehprg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_84301"]
+points = PackedVector3Array(0.039071314, 0.027106628, 0.17484723, -0.038327076, 0.028829478, 0.17999679, 0.028744966, 0.02366805, 0.18518944, 0.037813663, 0.02264288, 0.18340111, 0.037775785, -0.043893248, 0.10190237, 0.039071314, -0.017594889, 0.07513115, -0.038327076, -0.012433462, 0.085451804, -0.03708458, 0.02264288, 0.18340111, -0.038327076, -0.017594889, 0.07514192, -0.037039123, -0.043893248, 0.10190237, 0.028744966, 0.018506624, 0.18518944, 0.035881735, -0.0326093, 0.13014951, 0.028744966, -0.021040585, 0.07513115, -0.035145074, -0.0326093, 0.13014951, -0.035182957, 0.016342383, 0.18069705, 0.028744966, -0.019331975, 0.14733267)
+
+[node name="SM_Prop_Barber_Clippers_Head_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_k8xv8")
+surface_material_override/0 = ExtResource("2_ehprg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_84301")

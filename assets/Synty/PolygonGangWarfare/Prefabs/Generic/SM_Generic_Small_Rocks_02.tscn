@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://0uaf6ct2cmev"]
+
+[ext_resource type="ArrayMesh" uid="uid://cb4hikw1g50ev" path="res://assets/Synty/PolygonGangWarfare/Models/Generic/extracted/SM_Generic_Small_Rocks_02.res" id="1_cslai"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_d57hd"]
+
+[node name="SM_Generic_Small_Rocks_02" type="MeshInstance3D" unique_id=916683670]
+gi_mode = 2
+mesh = ExtResource("1_cslai")
+surface_material_override/0 = ExtResource("2_d57hd")

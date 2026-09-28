@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2akgdbshhy0y"]
+
+[ext_resource type="ArrayMesh" uid="uid://cs7q55s8c7yib" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Speed_Ball_01.res" id="1_l8pjx"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_8ovii"]
+[ext_resource type="ArrayMesh" uid="uid://brn0b88g3bmis" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Speed_Ball_01_Bag_01.res" id="3_8ovii"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_liijb"]
+points = PackedVector3Array(-0.32796326, -0.33498722, 0.046462294, 0.32931295, -0.33498722, 0.046462294, 0.029881328, -0.06973237, 0.7958572, -0.20709537, -0.026398659, 0.797538, -0.32789806, 0.00038945675, 0.67677087, -0.332266, -0.06973237, 0.49188036, -0.32796326, 0.33576614, 0.046462294, -0.32137877, -0.3282902, 0.0013321983, 0.32168534, -0.3272397, 0.002592815, 0.32931295, 0.33576614, 0.046462294, 0.3337461, -0.06973237, 0.43347177, 0.32931295, 0.00038945675, 0.67677087, 0.20851025, -0.026398659, 0.797538, 0.03418407, -0.026398659, 0.8512403, 0.23543498, 0.33576614, -0.00732404, -0.32059646, 0.3282156, 0.002340692)
+
+[node name="SM_Prop_Gym_Speed_Ball_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_l8pjx")
+surface_material_override/0 = ExtResource("2_8ovii")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_liijb")
+
+[node name="SM_Prop_Gym_Speed_Ball_01_Bag_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.768371e-09, -0.19182868, 0.46818638)
+gi_mode = 2
+mesh = ExtResource("3_8ovii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_8ovii")

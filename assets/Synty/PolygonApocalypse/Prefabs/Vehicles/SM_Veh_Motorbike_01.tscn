@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1s4jxrkrwded"]
+
+[ext_resource type="ArrayMesh" uid="uid://d4lv8bk4bwclw" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Motorbike_01.res" id="1_y1815"]
+[ext_resource type="Material" uid="uid://bj206v4v20ibu" path="res://Assets/Synty/PolygonApocalypse/Materials/Vehicles/Vehicle_Standard_01_mat.tres" id="2_bt1fb"]
+[ext_resource type="ArrayMesh" uid="uid://4g6bs3bemayl" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Motorbike_HandleBars_01.res" id="3_bt1fb"]
+[ext_resource type="ArrayMesh" uid="uid://dl3l37aohtj2e" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Motorbike_Front_Shock_01.res" id="4_40651"]
+[ext_resource type="ArrayMesh" uid="uid://2qokmnhxsqfo" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Motorbike_Front_Wheel_01.res" id="5_eprcv"]
+[ext_resource type="ArrayMesh" uid="uid://df15thow1fc14" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Motorbike_Rear_Shock_01.res" id="6_db6dg"]
+[ext_resource type="ArrayMesh" uid="uid://bm6808fr7gcbg" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Motorbike_Rear_Wheel_01.res" id="7_nm34t"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_in57r"]
+points = PackedVector3Array(0.20148468, 0.21360351, -0.8946272, 0.3304364, 0.30511317, -0.07804239, 0.24205947, 0.2756257, 0.15782297, -0.21364613, 0.21862265, -0.8876195, -0.2583418, 0.42279404, -1.1963284, 0.27153957, 0.42279404, -1.1079941, 0.18309921, 1.0998399, 0.24597287, 0.06536892, 0.8643886, 0.68764424, -0.10225566, 0.30547166, 0.3446343, -0.31723863, 0.36390877, -0.07804239, -0.19931816, 1.0409547, 0.21665108, -0.14999443, 0.89486194, -0.9851745, 0.14049569, 0.9008669, -1.0047224, -0.14048472, 1.1292378, 0.21665108, -0.04862085, 1.0187271, 0.6306603, -0.14048472, 0.83490115, 0.6286317)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hlbsk"]
+radius = 0.37339553
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7cep6"]
+radius = 0.3999582
+
+[node name="SM_Veh_Motorbike_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_y1815")
+surface_material_override/0 = ExtResource("2_bt1fb")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_in57r")
+
+[node name="SM_Veh_Motorbike_HandleBars_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.83106667, 0.5561728, 0, -0.5561728, 0.83106667, 0, 0.9320012, 0.7259994)
+gi_mode = 2
+mesh = ExtResource("3_bt1fb")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bt1fb")
+
+[node name="SM_Veh_Motorbike_Front_Shock_01" type="MeshInstance3D" parent="SM_Veh_Motorbike_HandleBars_01"]
+transform = Transform3D(1, 0, 0, 0, 0.9997306, -0.023209006, 0, 0.023209006, 0.9997306, 0, -0.649836, 0.006575346)
+gi_mode = 2
+mesh = ExtResource("4_40651")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bt1fb")
+
+[node name="SM_Veh_Motorbike_Front_Wheel_01" type="MeshInstance3D" parent="SM_Veh_Motorbike_HandleBars_01/SM_Veh_Motorbike_Front_Shock_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028681785, 0.0004659891)
+gi_mode = 2
+mesh = ExtResource("5_eprcv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bt1fb")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_Motorbike_HandleBars_01/SM_Veh_Motorbike_Front_Shock_01/SM_Veh_Motorbike_Front_Wheel_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Motorbike_HandleBars_01/SM_Veh_Motorbike_Front_Shock_01/SM_Veh_Motorbike_Front_Wheel_01/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4703484e-07, -6.854534e-07)
+shape = SubResource("SphereShape3D_hlbsk")
+
+[node name="SM_Veh_Motorbike_Rear_Shock_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48908123, -0.24454549)
+gi_mode = 2
+mesh = ExtResource("6_db6dg")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bt1fb")
+
+[node name="SM_Veh_Motorbike_Rear_Wheel_01" type="MeshInstance3D" parent="SM_Veh_Motorbike_Rear_Shock_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09097797, -0.60748446)
+gi_mode = 2
+mesh = ExtResource("7_nm34t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_bt1fb")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_Motorbike_Rear_Shock_01/SM_Veh_Motorbike_Rear_Wheel_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Motorbike_Rear_Shock_01/SM_Veh_Motorbike_Rear_Wheel_01/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.917383e-07)
+shape = SubResource("SphereShape3D_7cep6")

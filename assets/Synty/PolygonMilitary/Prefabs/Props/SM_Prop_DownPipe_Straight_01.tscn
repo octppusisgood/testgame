@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dxrivfgm5dxj7"]
+
+[ext_resource type="ArrayMesh" uid="uid://giy1pntwkahv" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_DownPipe_Straight_01.res" id="1_0murd"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_gopyc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2cpex"]
+points = PackedVector3Array(-0.074038245, 5.0153303, 0.08744809, 0.11580109, 5.0153303, 0.055796325, -0.074038245, 5.0153303, -0.10242534, -0.074038245, -0.015330315, 0.08744809, 0.11580109, -0.015330315, 0.055796325, 0.11580109, 5.0153303, -0.03914039, 0.08413642, 5.0153303, -0.10242534, -0.074038245, -0.015330315, -0.10242534, 0.11580109, -0.015330315, -0.03914039, 0.08413642, -0.015330315, -0.10242534)
+
+[node name="SM_Prop_DownPipe_Straight_01" type="MeshInstance3D" unique_id=914090980]
+gi_mode = 2
+mesh = ExtResource("1_0murd")
+surface_material_override/0 = ExtResource("2_gopyc")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1852124988]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=829424732]
+shape = SubResource("ConvexPolygonShape3D_2cpex")

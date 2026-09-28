@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://brcgw1fvmf2ea"]
+
+[ext_resource type="ArrayMesh" uid="uid://bn3h8nopdh3yt" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Barrel_Coloured_01.res" id="1_bpnvb"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_x8mfs"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0v4lq"]
+points = PackedVector3Array(-0.34358817, 1.0311363, 0.00377962, -0.18591982, 1.034442, 0.2916512, -0.2966758, 1.0325387, -0.20321813, -0.328263, 0.013308236, -0.09163189, -0.31180018, 0.030236978, 0.16264594, 0.14942661, 1.0331397, 0.3068437, 0.34008753, 1.0319377, 0.051518083, 0.2602495, 1.0314368, -0.21873806, -0.05783102, 0.012206366, 0.32288748, 0.0854491, 1.0157101, -0.34610617, -0.1379367, 0.011104495, -0.31585217, 0.16501945, 0.02943562, 0.30605787, 0.2905652, 0.03234055, 0.19355482, 0.33312762, 0.06098919, -0.026474416, 0.2874868, 0.06239157, -0.13033345, 0.08498067, 0.016012829, -0.3286872)
+
+[node name="SM_Prop_Barrel_Coloured_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_bpnvb")
+surface_material_override/0 = ExtResource("2_x8mfs")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_0v4lq")

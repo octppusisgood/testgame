@@ -1,0 +1,216 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://5huoqrui1ofr"
+path="res://.godot/imported/SM_Prop_Arcade_Claw_01.fbx-097dac2fcd39938848780716d3d7fc10.scn"
+
+[deps]
+
+source_file="res://assets/Synty/PolygonShops/Models/SM_Prop_Arcade_Claw_01.fbx"
+dest_files=["res://.godot/imported/SM_Prop_Arcade_Claw_01.fbx-097dac2fcd39938848780716d3d7fc10.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=1
+meshes/generate_lods=true
+meshes/create_shadow_meshes=false
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=false
+animation/fps=24.0
+animation/trimming=true
+animation/remove_immutable_tracks=false
+animation/import_rest_as_RESET=true
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"animations": {},
+"materials": {},
+"meshes": {
+"Root Scene_SM_Prop_Arcade_Claw_01": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://q33xtlxuvcn4"
+},
+"Root Scene_SM_Prop_Arcade_Claw_01_Claw_1": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_1.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://btmxjd1t2p4m5"
+},
+"Root Scene_SM_Prop_Arcade_Claw_01_Claw_2": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_2.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bg3ukrn7ulucd"
+},
+"Root Scene_SM_Prop_Arcade_Claw_01_Claw_3": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_3.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://d3chfe2ipeguk"
+},
+"Root Scene_SM_Prop_Arcade_Claw_01_Claw_Base": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_Base.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dovjwqq85nors"
+},
+"Root Scene_SM_Prop_Arcade_Claw_01_Door": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Door.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dno5incr1301b"
+},
+"Root Scene_SM_Prop_Arcade_Claw_01_Glass": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Glass.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bko07h0pc56gq"
+},
+"Root Scene_SM_Prop_Arcade_Claw_01_Insert": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Insert.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://8h3of5rjtta2"
+},
+"Root Scene_SM_Prop_Arcade_Claw_01_Rail": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Rail.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://brekcaqr2uw8v"
+},
+"Root Scene_SM_Prop_Arcade_Claw_01_Stick": {
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Stick.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://whki4nmxtark"
+},
+"SM_Prop_Arcade_Claw_01": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://q33xtlxuvcn4"
+},
+"SM_Prop_Arcade_Claw_01_Claw_1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_1.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://btmxjd1t2p4m5"
+},
+"SM_Prop_Arcade_Claw_01_Claw_2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_2.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bg3ukrn7ulucd"
+},
+"SM_Prop_Arcade_Claw_01_Claw_3": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_3.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://d3chfe2ipeguk"
+},
+"SM_Prop_Arcade_Claw_01_Claw_Base": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Claw_Base.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dovjwqq85nors"
+},
+"SM_Prop_Arcade_Claw_01_Door": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Door.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://dno5incr1301b"
+},
+"SM_Prop_Arcade_Claw_01_Glass": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Glass.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://bko07h0pc56gq"
+},
+"SM_Prop_Arcade_Claw_01_Insert": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Insert.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://8h3of5rjtta2"
+},
+"SM_Prop_Arcade_Claw_01_Rail": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Rail.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://brekcaqr2uw8v"
+},
+"SM_Prop_Arcade_Claw_01_Stick": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Arcade_Claw_01_Stick.mesh",
+"save_to_file/make_streamable": "",
+"save_to_file/path": "uid://whki4nmxtark"
+}
+},
+"nodes": {
+"PATH:AnimationPlayer": {
+"optimizer/enabled": true,
+"optimizer/max_angular_error": 0.00277777777777777,
+"optimizer/max_linear_error": 0.5
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

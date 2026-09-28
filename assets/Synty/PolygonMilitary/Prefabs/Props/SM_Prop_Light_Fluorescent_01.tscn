@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bckslp3vxu0wq"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2dxwmgrsmj7g" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Light_Fluorescent_01.res" id="1_rogva"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_6w2y1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yb2gq"]
+points = PackedVector3Array(0.8250485, 0.11758043, 0.10704141, 0.8250485, 0.11758043, 0.027178928, -0.8250485, 0.11758043, 0.10704141, 0.8250485, -0.12196793, 0.10704141, 0.8250485, 0.09091964, -0.05264707, -0.8250485, 0.11758043, 0.027178928, -0.8250485, -0.12196793, 0.10704141, 0.8250485, -0.12196793, 0.027178928, 0.8250485, 0.06432922, -0.07927398, -0.8250485, 0.09091964, -0.05264707, -0.8250485, -0.12196793, 0.027178928, 0.8250485, -0.09530716, -0.05264707, 0.8250485, -0.06871672, -0.07927398, -0.8250485, 0.06432922, -0.07927398, -0.8250485, -0.09530716, -0.05264707, -0.8250485, -0.06871672, -0.07927398)
+
+[node name="SM_Prop_Light_Fluorescent_01" type="MeshInstance3D" unique_id=454175809]
+gi_mode = 2
+mesh = ExtResource("1_rogva")
+surface_material_override/0 = ExtResource("2_6w2y1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=2064025196]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1853395612]
+shape = SubResource("ConvexPolygonShape3D_yb2gq")

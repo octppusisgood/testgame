@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://wbtn6yaphi2u"]
+
+[ext_resource type="ArrayMesh" uid="uid://dbara5nhb842k" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Attach_Plating_39.res" id="1_hs8eo"]
+[ext_resource type="Material" uid="uid://bj206v4v20ibu" path="res://Assets/Synty/PolygonApocalypse/Materials/Vehicles/Vehicle_Standard_01_mat.tres" id="2_05278"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d86xf"]
+points = PackedVector3Array(1.0661426, 0.56106895, -0.1235939, 1.1008401, 0.21702951, -0.054798126, 1.0661426, -0.36770427, -0.1235939, 0.99437666, 0.52284235, -0.24391073, -1.0320915, 0.56106895, -0.1235939, 0.4127072, 0.49217218, 0.1515387, 0.7221838, 0.28581518, 0.22033447, 0.82541454, -0.53972405, 0.08274293, 0.9930835, -0.34292367, -0.24360767, -1.0316604, -0.36781543, -0.26123595, -0.95881706, 0.52073103, -0.24295102, -1.1008401, 0.18269223, 0.08274293, -0.6877018, 0.32015246, 0.25478286, 0.48167133, 0.21702951, 0.25478286, 0.5502045, -0.57417244, 0.08274293, -0.85989666, -0.57417244, 0.08274293)
+
+[node name="SM_Veh_Attach_Plating_39" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_hs8eo")
+surface_material_override/0 = ExtResource("2_05278")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_d86xf")

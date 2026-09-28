@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cqvsmui5vtkhe"]
+
+[ext_resource type="ArrayMesh" uid="uid://cedaxrf77kcsd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Attach_Cloth_04.res" id="1_5dfg4"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_hf6pi"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3hijx"]
+points = PackedVector3Array(-0.103260934, -0.18737827, 1.0002542, 0.027181983, -0.18737827, 1.0002542, -0.14677171, -0.14385472, 1.2174163, -0.103260934, -0.013386264, -1.3048805, 0.027181983, -0.10036524, -1.3917999, 0.114173755, -0.10036524, 1.3917999, 0.15768452, -0.05687575, -0.7392234, -0.14677171, 0.030069172, 1.3046081, -0.14677171, 0.11704816, 0.56511223, -0.103260934, 0.07355867, -1.2615571, -0.059779964, 0.16053765, -1.3048805, 0.114173755, 0.16053765, -1.1740928, 0.15768452, 0.11704816, -0.69589996, 0.114173755, 0.16053765, 0.6523042, 0.07069276, 0.11704816, 1.2612846, -0.016269177, 0.16053765, 0.782547)
+
+[node name="SM_Veh_Attach_Cloth_04" type="MeshInstance3D" unique_id=1530584361]
+gi_mode = 2
+mesh = ExtResource("1_5dfg4")
+surface_material_override/0 = ExtResource("2_hf6pi")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=663553902]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=280863799]
+shape = SubResource("ConvexPolygonShape3D_3hijx")

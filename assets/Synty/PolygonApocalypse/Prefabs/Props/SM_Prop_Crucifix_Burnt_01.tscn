@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwfob21b53c7f"]
+
+[ext_resource type="ArrayMesh" uid="uid://la4kommiy1y8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Crucifix_Burnt_01.res" id="1_wlu28"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_60qr7"]
+[ext_resource type="ArrayMesh" uid="uid://c17lo2mp12q0l" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Crucifix_BurntBody_01.res" id="3_60qr7"]
+[ext_resource type="ArrayMesh" uid="uid://c3l84i0lrs6n8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Crucifix_Burnt_Pile_01.res" id="4_mbtx3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5vor0"]
+points = PackedVector3Array(-1.098455, 3.0926366, 0.042013943, -0.97801274, 3.0323713, 0.25273183, -0.16497767, 3.9961948, 0.01190044, -1.0683945, 2.9122622, -0.10855357, -1.0683945, 2.9122622, 0.042013943, 0.82842016, 3.0323713, 0.16239133, 0.015385032, 3.9658518, 0.01190044, -0.16497767, -0.30919266, 0.01190044, -0.07479632, 1.6176115, 0.22261834, 0.015385032, 3.9658518, -0.13866708, 0.015385032, -0.30919266, -0.13866708, -0.1555587, -0.080774486, -0.11790179, 0.015385032, -0.30919266, 0.01190044, 0.9488623, 2.9725275, 0.042013943, 0.9488623, 3.12298, 0.042013943, 0.9488623, 2.9725275, -0.10855357)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o1lv8"]
+points = PackedVector3Array(0.022658348, 0.119185865, -1.544908, -1.5308337, -0.21878934, -0.26066327, -1.4635115, 0.119185865, -0.73376495, -0.044663906, 1.6057765, -0.32819343, 1.4427762, 0.1865308, -1.4769875, 0.05017996, -0.0038928539, -1.3403656, -1.4639349, -0.15126576, 1.4962931, -1.8695619, -0.08374217, 0.41541946, 1.3750305, -0.21914661, -0.6662348, -0.24747741, 1.6057765, -0.058072686, 1.5774207, 0.2540544, 1.9018645, 2.4559968, 0.11900723, -0.39572358, -1.4639349, 0.05148363, 1.4962931, 0.42828536, -0.08374217, 2.4428868, 0.15814948, 0.11900723, 2.3745759, 1.4423528, -0.08392081, 2.0365345)
+
+[node name="SM_Prop_Crucifix_Burnt_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_wlu28")
+surface_material_override/0 = ExtResource("2_60qr7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_5vor0")
+
+[node name="SM_Prop_Crucifix_BurntBody_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.084175035, 2.474704, 0.13104476)
+gi_mode = 2
+mesh = ExtResource("3_60qr7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_60qr7")
+
+[node name="SM_Prop_Crucifix_Burnt_Pile_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("4_mbtx3")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_60qr7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Crucifix_Burnt_Pile_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Crucifix_Burnt_Pile_01/MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_o1lv8")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3vljfibk7rv8"]
+
+[ext_resource type="ArrayMesh" uid="uid://qv4m5yhhbnpw" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Backwash_Chair_01.res" id="1_qy082"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_rqjv1"]
+[ext_resource type="ArrayMesh" uid="uid://dggcpxy8ebawp" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Backwash_Chair_01_Pipe_01.res" id="3_rqjv1"]
+[ext_resource type="ArrayMesh" uid="uid://oxqygwp0oxcd" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Backwash_Chair_01_Tap_01.res" id="4_qfgqu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tl7gl"]
+points = PackedVector3Array(-0.19644997, 0.51139015, 1.1100287, -0.37661842, 0.37707686, 0.8787038, -0.15198612, 0.016166907, 0.8846937, 0.1824778, -0.012005389, 0.8787038, 0.33129022, 0.76585454, 0.89496213, -0.2792949, 1.2519407, 0.39266485, -0.3065386, 0.03855246, 0.09730491, -0.42510882, 1.3248842, 0.027992994, -0.1035814, 0.04936453, -0.34694725, 0.30670235, 0.03961844, 0.09773275, 0.45011744, 1.2763062, 0.22238004, -0.15772617, 1.5437145, -0.11776163, -0.1745179, 0.99884707, -0.32954797, 0.12225029, 0.055760406, -0.29517725, 0.28399923, 0.90199524, -0.19748457, 0.2466462, 1.3529043, -0.2177362)
+
+[node name="SM_Prop_Barber_Backwash_Chair_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_qy082")
+surface_material_override/0 = ExtResource("2_rqjv1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_tl7gl")
+
+[node name="SM_Prop_Barber_Backwash_Chair_01_Pipe_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.068085e-06, 1.2918241, -0.14126343)
+gi_mode = 2
+mesh = ExtResource("3_rqjv1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_rqjv1")
+
+[node name="SM_Prop_Barber_Backwash_Chair_01_Tap_01" type="MeshInstance3D" parent="SM_Prop_Barber_Backwash_Chair_01_Pipe_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17583942, 0)
+gi_mode = 2
+mesh = ExtResource("4_qfgqu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_rqjv1")

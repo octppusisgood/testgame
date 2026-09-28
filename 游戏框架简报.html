@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>《回响之城》框架简报 v3</title>
+<style>
+  body { font-family: "Microsoft YaHei", sans-serif; max-width: 980px; margin: 0 auto; padding: 32px 24px; color: #222; background: #fafafa; line-height: 1.7; }
+  h1 { font-size: 28px; border-bottom: 3px solid #4a90d9; padding-bottom: 10px; }
+  h2 { font-size: 20px; color: #2f6db3; margin-top: 36px; border-left: 5px solid #4a90d9; padding-left: 10px; }
+  .meta { color: #666; font-size: 14px; background: #f0f0f0; border-radius: 8px; padding: 12px 16px; }
+  .concept { font-size: 17px; background: #fff8e6; border: 1px solid #d9a44a; border-radius: 8px; padding: 14px 18px; }
+  figure { margin: 18px 0; text-align: center; background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 12px; }
+  svg { max-width: 100%; height: auto; }
+  table { border-collapse: collapse; width: 100%; margin: 14px 0; background: #fff; }
+  th, td { border: 1px solid #ccc; padding: 8px 12px; font-size: 14px; text-align: left; }
+  th { background: #eef4fb; }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  .todo { background: #fdf0f0; border: 1px solid #c0504d; border-radius: 8px; padding: 12px 18px; }
+  .footer { margin-top: 40px; color: #999; font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+
+<h1>《回响之城》框架简报</h1>
+<div class="meta">
+  版本 v3（2026-09-25）· 详细数值与论证见《游戏框架设计.md》<br>
+  适用范围：以肉鸽模式为主轴，正常/测试模式复用子系统。<br>
+  <b>注意</b>：Boss、武器配件、技能树节点库、怪物谱系、特殊任务均为方向性设定，未完待续，后续会持续扩充。
+</div>
+
+<h2>一句话概念</h2>
+<p class="concept"><b>局内打成绩，局外攒家底</b>：在城市里种田、割草、打 Boss，死亡或撤离后回系统空间结算点数，兑换永久图纸和当局技能树，下一局更强——没有破产，只有赚多赚少。</p>
+
+<h2>1. 双区域 · 双层闭环</h2>
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" font-family="Microsoft YaHei, sans-serif">
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555"/></marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="36" font-size="22" font-weight="bold" text-anchor="middle" fill="#222">双层闭环：局内跑循环 · 局外攒家底</text>
+  <rect x="40" y="70" width="540" height="430" rx="12" fill="#f5f7fa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="310" y="102" font-size="18" font-weight="bold" text-anchor="middle" fill="#2f6db3">城市（局内 · 单局）</text>
+  <g font-size="15" fill="#222">
+    <rect x="80" y="118" width="460" height="44" rx="8" fill="#ffffff" stroke="#4a90d9"/>
+    <text x="310" y="146" text-anchor="middle">搜刮物资 · 拯救市民</text>
+    <rect x="80" y="178" width="460" height="44" rx="8" fill="#ffffff" stroke="#4a90d9"/>
+    <text x="310" y="206" text-anchor="middle">建设营地 → 生产线制造（弹药/食物/医疗）</text>
+    <rect x="80" y="238" width="460" height="44" rx="8" fill="#ffffff" stroke="#4a90d9"/>
+    <text x="310" y="266" text-anchor="middle">武装自己：武器/配件 + 属性点 + 每10级异变</text>
+    <rect x="80" y="298" width="460" height="44" rx="8" fill="#ffffff" stroke="#4a90d9"/>
+    <text x="310" y="326" text-anchor="middle">挑战能量场 Boss（必须打赢才能拆场）</text>
+    <rect x="80" y="358" width="460" height="44" rx="8" fill="#ffffff" stroke="#4a90d9"/>
+    <text x="310" y="386" text-anchor="middle">摧毁能量场 → 发育期（建设黄金窗口）</text>
+    <rect x="80" y="418" width="460" height="44" rx="8" fill="#ffffff" stroke="#4a90d9"/>
+    <text x="310" y="446" text-anchor="middle">下一个更强能量场（下一关）↩ 循环</text>
+  </g>
+  <g stroke="#555" stroke-width="2">
+    <line x1="310" y1="162" x2="310" y2="176" marker-end="url(#a1)"/>
+    <line x1="310" y1="222" x2="310" y2="236" marker-end="url(#a1)"/>
+    <line x1="310" y1="282" x2="310" y2="296" marker-end="url(#a1)"/>
+    <line x1="310" y1="342" x2="310" y2="356" marker-end="url(#a1)"/>
+    <line x1="310" y1="402" x2="310" y2="416" marker-end="url(#a1)"/>
+  </g>
+  <rect x="640" y="70" width="280" height="430" rx="12" fill="#fdf6ec" stroke="#d9a44a" stroke-width="2"/>
+  <text x="780" y="102" font-size="18" font-weight="bold" text-anchor="middle" fill="#a9761f">系统空间（局外 · 跨局）</text>
+  <g font-size="15" fill="#222">
+    <rect x="670" y="125" width="220" height="60" rx="8" fill="#ffffff" stroke="#d9a44a"/>
+    <text x="780" y="150" text-anchor="middle">成绩结算</text>
+    <text x="780" y="172" text-anchor="middle">天数/拆场/救人/营地/掉落回收</text>
+    <rect x="670" y="205" width="220" height="52" rx="8" fill="#ffffff" stroke="#d9a44a"/>
+    <text x="780" y="237" text-anchor="middle">兑换 · 图纸（永久）</text>
+    <rect x="670" y="275" width="220" height="60" rx="8" fill="#ffffff" stroke="#d9a44a"/>
+    <text x="780" y="301" text-anchor="middle">兑换 · 大技能树（当局）</text>
+    <text x="780" y="323" text-anchor="middle">定成长空间 · 结束清空</text>
+    <rect x="670" y="400" width="220" height="52" rx="8" fill="#ffffff" stroke="#d9a44a"/>
+    <text x="780" y="432" text-anchor="middle">下一局更强 ↩</text>
+  </g>
+  <line x1="664" y1="170" x2="586" y2="170" stroke="#d9a44a" stroke-width="3" marker-end="url(#a1)"/>
+  <text x="625" y="158" font-size="14" text-anchor="middle" fill="#a9761f">开局带入</text>
+  <line x1="586" y1="350" x2="664" y2="350" stroke="#4a90d9" stroke-width="3" marker-end="url(#a1)"/>
+  <text x="625" y="340" font-size="14" text-anchor="middle" fill="#2f6db3">死亡/撤离 → 结算</text>
+  <text x="480" y="535" font-size="14" text-anchor="middle" fill="#666">接口只有两处：开局带入（大技能树/图纸）与结束结算（成绩→点数）；局内物资不带出城市</text>
+</svg>
+</figure>
+<ul>
+  <li><b>系统空间（局外）</b>：死亡结算 + 点数消费。只卖两样，自由单选无套餐：<b>图纸（永久）</b>、<b>大技能树（当局，决定成长空间）</b>。另设<b>顶级商品层</b>：很贵但很强的图纸/技能，需多局积累——失败或撤离也永远有值得攒的目标。</li>
+  <li><b>城市（局内）</b>：搜刮 → 建营地 → 生产 → 武装 → 打能量场 Boss → 下一关。其余升级（属性/异变/武器/营地）全在城里完成。</li>
+  <li>两条环接口只有两处：开局带入、结束结算。局内物资不带出城市。</li>
+</ul>
+
+<h2>2. 目标与结局</h2>
+<p>目标二选一即通关：<b>存活 100 天</b>（种田防守路线）或 <b>击败追踪 Boss</b>（进攻路线，第 30 天/第 3 关后开始追杀玩家）。</p>
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" font-family="Microsoft YaHei, sans-serif">
+  <rect width="960" height="480" fill="#ffffff"/>
+  <text x="480" y="36" font-size="22" font-weight="bold" text-anchor="middle" fill="#222">单局结局与结算：位置与信号决定一切</text>
+  <g font-size="14" fill="#222">
+    <rect x="30" y="70" width="215" height="140" rx="12" fill="#f0faf2" stroke="#4aa96c" stroke-width="2.5"/>
+    <text x="137" y="102" font-size="16" font-weight="bold" text-anchor="middle" fill="#2e7d4f">回营地撤离 ×150%</text>
+    <text x="137" y="132" text-anchor="middle" fill="#666">自身 + 营地全部顶格</text>
+    <text x="137" y="154" text-anchor="middle" fill="#666">营地未受攻击即可</text>
+    <text x="137" y="176" text-anchor="middle" fill="#666">不要求打过 Boss</text>
+    <rect x="270" y="70" width="215" height="140" rx="12" fill="#f5f7fa" stroke="#4a90d9" stroke-width="2.5"/>
+    <text x="377" y="102" font-size="16" font-weight="bold" text-anchor="middle" fill="#2f6db3">信号区撤离</text>
+    <text x="377" y="132" text-anchor="middle" fill="#666">自身 ×100% + 营地 ×50%</text>
+    <text x="377" y="154" text-anchor="middle" fill="#666">荒野脱战跑路</text>
+    <text x="377" y="176" text-anchor="middle" fill="#666">营地投入打折</text>
+    <rect x="510" y="70" width="215" height="140" rx="12" fill="#fdf6ec" stroke="#d9a44a" stroke-width="2.5"/>
+    <text x="617" y="102" font-size="16" font-weight="bold" text-anchor="middle" fill="#a9761f">战斗中撤离 ×50%</text>
+    <text x="617" y="132" text-anchor="middle" fill="#666">被仇恨锁定/近5秒交战</text>
+    <text x="617" y="154" text-anchor="middle" fill="#666">全部减半</text>
+    <text x="617" y="176" text-anchor="middle" fill="#666">自杀不再能保全额</text>
+    <rect x="745" y="70" width="185" height="140" rx="12" fill="#fdf0f0" stroke="#c0504d" stroke-width="2.5"/>
+    <text x="837" y="102" font-size="16" font-weight="bold" text-anchor="middle" fill="#a03c3a">死亡</text>
+    <text x="837" y="132" text-anchor="middle" fill="#666">信号强度 ×50% 封顶</text>
+    <text x="837" y="154" text-anchor="middle" fill="#666">弱信号按比例递减</text>
+    <text x="837" y="176" text-anchor="middle" fill="#666">无信号 = 0%（白死）</text>
+  </g>
+  <g font-size="15" fill="#333">
+    <rect x="60" y="245" width="410" height="180" rx="10" fill="#fff8e6" stroke="#d9a44a"/>
+    <text x="80" y="277" font-weight="bold" fill="#8a6420">无破产设计</text>
+    <text x="80" y="307">点数与图纸只增不减，永久安全</text>
+    <text x="80" y="335">每次回归都是净成长，理论无限变强</text>
+    <text x="80" y="363">破产感真实存在：全押在当局大技能树</text>
+    <text x="80" y="391">顶级节点 = 这个游戏的"六套满配枪"</text>
+    <text x="80" y="419">保护存款，从不保护赌注</text>
+    <rect x="510" y="245" width="390" height="180" rx="10" fill="#f5f7fa" stroke="#4a90d9"/>
+    <text x="530" y="277" font-weight="bold" fill="#2f6db3">信号 = 生命线（三层）</text>
+    <text x="530" y="307">① 解锁支援（无人机/炮击/雷达）</text>
+    <text x="530" y="335">② 显示地图（无信号区小地图黑屏）</text>
+    <text x="530" y="363">③ 决定死亡的代价（0~50% 结算）</text>
+    <text x="530" y="391">Boss 不挂钩倍率，只给稀有掉落/经验/积分</text>
+    <text x="530" y="419">营地被毁 ≠ 结束：功能瘫痪，可重建</text>
+  </g>
+</svg>
+</figure>
+
+<h2>3. 三条成长线</h2>
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" font-family="Microsoft YaHei, sans-serif">
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="36" font-size="22" font-weight="bold" text-anchor="middle" fill="#222">三条成长线</text>
+  <g font-size="15" fill="#222">
+    <rect x="40" y="70" width="270" height="290" rx="12" fill="#fdf6ec" stroke="#d9a44a" stroke-width="2"/>
+    <text x="175" y="102" font-size="17" font-weight="bold" text-anchor="middle" fill="#a9761f">系统空间线（局外）</text>
+    <text x="60" y="140">图纸 —— 永久解锁</text>
+    <text x="60" y="168" fill="#666">强力武器/配件，城市内没有</text>
+    <text x="60" y="206">大技能树 —— 当局生效</text>
+    <text x="60" y="234" fill="#666">结束清空、下局重买</text>
+    <text x="60" y="262" fill="#666">决定成长空间，不是开局强度</text>
+    <text x="60" y="300">定位：输了也有积累</text>
+    <text x="60" y="328" fill="#666">唯一的赌注 = 技能树押注</text>
+    <rect x="345" y="70" width="270" height="290" rx="12" fill="#f5f7fa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="480" y="102" font-size="17" font-weight="bold" text-anchor="middle" fill="#2f6db3">角色线（局内）</text>
+    <text x="365" y="140">升级 → 属性点（六维）</text>
+    <text x="365" y="168" fill="#666">体魄/耐力/力量/敏捷/精准/意志</text>
+    <text x="365" y="206">每 10 级 → 异变（三选一）</text>
+    <text x="365" y="234" fill="#666">同名最多叠 3 次 · 按流派构筑</text>
+    <text x="365" y="272">全部当局生效</text>
+    <text x="365" y="300" fill="#666">死亡清零，成绩折算系统点数</text>
+    <text x="365" y="328">定位：每局构筑不同</text>
+    <rect x="650" y="70" width="270" height="290" rx="12" fill="#f0faf2" stroke="#4aa96c" stroke-width="2"/>
+    <text x="785" y="102" font-size="17" font-weight="bold" text-anchor="middle" fill="#2e7d4f">营地线（局内）</text>
+    <text x="670" y="140">武器升级 + 配件改装</text>
+    <text x="670" y="168" fill="#666">武器制造台 · 弹种/弹夹/镜/枪口</text>
+    <text x="670" y="206">营地等级 Lv1 → Lv5</text>
+    <text x="670" y="234" fill="#666">生产力 / NPC / 支援能力</text>
+    <text x="670" y="272">当局生效</text>
+    <text x="670" y="300" fill="#666">营地被毁失去加成，可重建</text>
+    <text x="670" y="328">定位：建设转化为战力</text>
+  </g>
+  <rect x="140" y="385" width="680" height="40" rx="8" fill="#fff" stroke="#999"/>
+  <text x="480" y="411" font-size="15" text-anchor="middle" fill="#333">完整战力 = 图纸武器 × 大技能树 × 属性/异变 × 武器配件 × 营地等级与支援</text>
+</svg>
+</figure>
+<ul>
+  <li>大技能树买的是<b>成长潜力</b>（属性收益/异变质量/上限），不是即时战力。难度曲线平缓：买树跑赢难度，裸奔靠技术（闪避/爆头/硬直）也能补。</li>
+</ul>
+
+<h2>4. 能量场与关卡递进</h2>
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" font-family="Microsoft YaHei, sans-serif">
+  <defs>
+    <marker id="a3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555"/></marker>
+  </defs>
+  <rect width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="36" font-size="22" font-weight="bold" text-anchor="middle" fill="#222">能量场生命周期 = 关卡递进主轴</text>
+  <g font-size="15" fill="#222">
+    <rect x="30" y="110" width="200" height="90" rx="10" fill="#f5f7fa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="130" y="146" text-anchor="middle" font-weight="bold">① 涌现</text>
+    <text x="130" y="172" text-anchor="middle" fill="#666">随机位置出现 · 涌怪</text>
+    <rect x="275" y="110" width="200" height="90" rx="10" fill="#fdf0f0" stroke="#c0504d" stroke-width="2"/>
+    <text x="375" y="140" text-anchor="middle" font-weight="bold">② 活跃 · Boss 守关</text>
+    <text x="375" y="164" text-anchor="middle" fill="#666">打赢 Boss 才能拆场</text>
+    <text x="375" y="186" text-anchor="middle" fill="#666">周边信号干扰（禁支援）</text>
+    <rect x="520" y="110" width="200" height="90" rx="10" fill="#f0faf2" stroke="#4aa96c" stroke-width="2"/>
+    <text x="620" y="146" text-anchor="middle" font-weight="bold">③ 发育期 2~3 天</text>
+    <text x="620" y="172" text-anchor="middle" fill="#666">建设黄金窗口 · 备战</text>
+    <rect x="765" y="110" width="170" height="90" rx="10" fill="#f5f7fa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="850" y="146" text-anchor="middle" font-weight="bold">④ 下一关</text>
+    <text x="850" y="172" text-anchor="middle" fill="#666">更强能量场/Boss</text>
+  </g>
+  <g stroke="#555" stroke-width="2.5">
+    <line x1="230" y1="155" x2="268" y2="155" marker-end="url(#a3)"/>
+    <line x1="475" y1="155" x2="513" y2="155" marker-end="url(#a3)"/>
+    <line x1="720" y1="155" x2="758" y2="155" marker-end="url(#a3)"/>
+    <path d="M850,200 L850,300 L130,300 L130,206" fill="none" marker-end="url(#a3)"/>
+  </g>
+  <text x="490" y="292" font-size="14" text-anchor="middle" fill="#666">怪物每关 ×1.15 · 高手可速推跳关，稳健可攒够再打</text>
+  <rect x="90" y="330" width="780" height="46" rx="8" fill="#fff8e6" stroke="#d9a44a"/>
+  <text x="480" y="359" font-size="15" text-anchor="middle" fill="#8a6420">反龟缩：不推关，能量场逐日变强 —— 不建设的苟必败；但顶防龟缩（巨量资源+配置得当）是合法终局路线</text>
+</svg>
+</figure>
+<table>
+  <tr><th>关卡</th><th>刷怪构成</th><th>守关 Boss</th><th>发育期</th></tr>
+  <tr><td>1</td><td>普通丧尸为主 + 少量猎犬</td><td>尸王（按手枪+药最低配置可过）</td><td>3 天</td></tr>
+  <tr><td>2</td><td>+ 撕裂者、暴食者、狼蛛</td><td>尸皇</td><td>3 天</td></tr>
+  <tr><td>3</td><td>全谱系，精英比例上升</td><td>尸神</td><td>2 天</td></tr>
+  <tr><td>N</td><td>属性 ×1.15/关 阶梯成长</td><td>Boss 同步成长</td><td>2 天</td></tr>
+</table>
+<ul>
+  <li><b>Boss 池轮换</b>：每局守关/最终 Boss 阵容不同，专属掉落解锁对应图纸——全解锁需打遍全部 Boss，是数十局的长期追求（Endgame 骨架）。</li>
+  <li><b>任务点与随机事件</b>：城市持续刷新限时任务（巢穴清剿/护送/空投/悬赏）与遭遇事件，可去可不去、做了有额外收益——割草层的目标感来源，发育期和自动化阶段的内容填充。</li>
+</ul>
+
+<h2>5. 营地系统</h2>
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" font-family="Microsoft YaHei, sans-serif">
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="36" font-size="22" font-weight="bold" text-anchor="middle" fill="#222">营地系统：城市中的主基地</text>
+  <rect x="385" y="250" width="190" height="90" rx="12" fill="#fdf6ec" stroke="#d9a44a" stroke-width="2.5"/>
+  <text x="480" y="288" font-size="19" font-weight="bold" text-anchor="middle" fill="#a9761f">营地</text>
+  <text x="480" y="316" font-size="14" text-anchor="middle" fill="#666">被毁 ≠ 结束 · 可重建</text>
+  <g font-size="14" fill="#222">
+    <rect x="40" y="80" width="230" height="110" rx="10" fill="#f0faf2" stroke="#4aa96c" stroke-width="2"/>
+    <text x="155" y="108" font-weight="bold" text-anchor="middle">生产（六机器）</text>
+    <text x="155" y="134" text-anchor="middle" fill="#666">工作台→转换器→武器/食品/医疗</text>
+    <text x="155" y="156" text-anchor="middle" fill="#666">无人 30% 自转 · 市民全速</text>
+    <text x="155" y="178" text-anchor="middle" fill="#666">产能必须快过搜刮</text>
+    <rect x="40" y="250" width="230" height="110" rx="10" fill="#f5f7fa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="155" y="278" font-weight="bold" text-anchor="middle">市民（人口经济）</text>
+    <text x="155" y="304" text-anchor="middle" fill="#666">生产/采集/协从/车队/驻防/维修</text>
+    <text x="155" y="326" text-anchor="middle" fill="#666">吃食物 · 要住房 · 会死</text>
+    <text x="155" y="348" text-anchor="middle" fill="#666">管理界面按编制批量编排</text>
+    <rect x="40" y="420" width="230" height="110" rx="10" fill="#fdf0f0" stroke="#c0504d" stroke-width="2"/>
+    <text x="155" y="448" font-weight="bold" text-anchor="middle">防御</text>
+    <text x="155" y="474" text-anchor="middle" fill="#666">围墙 / 机枪塔 / 警戒灯</text>
+    <text x="155" y="496" text-anchor="middle" fill="#666">可被攻击 · 可修复</text>
+    <text x="155" y="518" text-anchor="middle" fill="#666">怪物优先攻城</text>
+    <rect x="690" y="80" width="230" height="110" rx="10" fill="#f5f7fa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="805" y="108" font-weight="bold" text-anchor="middle">远程支援</text>
+    <text x="805" y="134" text-anchor="middle" fill="#666">无人机补给/回收 · 炮火打击</text>
+    <text x="805" y="156" text-anchor="middle" fill="#666">雷达侦察 · 需信号覆盖</text>
+    <text x="805" y="178" text-anchor="middle" fill="#666">营地被毁则全部中断</text>
+    <rect x="690" y="250" width="230" height="110" rx="10" fill="#f0faf2" stroke="#4aa96c" stroke-width="2"/>
+    <text x="805" y="278" font-weight="bold" text-anchor="middle">信号系统</text>
+    <text x="805" y="304" text-anchor="middle" fill="#666">主天线 + 信号塔链（可被打爆）</text>
+    <text x="805" y="326" text-anchor="middle" fill="#666">强度分级解锁支援功能</text>
+    <text x="805" y="348" text-anchor="middle" fill="#666">NPC 维修队可代修（要护送）</text>
+    <rect x="690" y="420" width="230" height="110" rx="10" fill="#fdf6ec" stroke="#d9a44a" stroke-width="2"/>
+    <text x="805" y="448" font-weight="bold" text-anchor="middle">营地等级</text>
+    <text x="805" y="474" text-anchor="middle" fill="#666">Lv1 落脚点 → Lv5 要塞</text>
+    <text x="805" y="496" text-anchor="middle" fill="#666">解锁建筑/编制 · 放大产能</text>
+    <text x="805" y="518" text-anchor="middle" fill="#666">与生产线抢资源是中期决策</text>
+  </g>
+  <g stroke="#999" stroke-width="2">
+    <line x1="270" y1="160" x2="400" y2="268"/>
+    <line x1="270" y1="305" x2="380" y2="300"/>
+    <line x1="270" y1="475" x2="400" y2="325"/>
+    <line x1="690" y1="160" x2="560" y2="268"/>
+    <line x1="690" y1="305" x2="580" y2="300"/>
+    <line x1="690" y1="475" x2="560" y2="325"/>
+  </g>
+</svg>
+</figure>
+<ul>
+  <li>信号强度分级：0% 无支援+<b>小地图黑屏+死亡 0% 结算</b> → 40% 无人机 → 70% 炮击+雷达；<b>能量场周边 25m 信号干扰</b>，Boss 战叫不来支援。</li>
+  <li>断粮有警告 + 捐粮 + 逐个流失的缓冲，不会一夜雪崩。</li>
+  <li>市民有<b>熟练度</b>：干得越久等级越高，老员工死了越可惜。</li>
+  <li><b>后期自动化</b>：配置得当的营地实现自动生产+自动防御+补给/收集车队，玩家职责只剩割草和打 Boss——前期经营是投入，后期自动化是回报。</li>
+  <li><b>蓝图系统</b>：营地布局可保存为蓝图一键重建，市民建筑队按图自行施工。</li>
+  <li><b>市民觉醒</b>：干活中概率觉醒技能（常见~传说，建筑/生产/战斗/外勤类；潜力指示可引导方向，稀有靠脸但非必须），可登记进局外<b>基因库</b>跨局召唤——进场 1 级但天赋保留，随升级解锁，宝可梦式收集线。</li>
+  <li><b>反干扰信号塔</b>：昂贵、限时压制干扰区——Boss 战中抢支援输出窗口的战术决策。<b>联机排行榜</b>：结算/天数/通关时间榜。</li>
+</ul>
+
+<h2>6. 武器与怪物（方向性 · 未完）</h2>
+<ul>
+  <li><b>武器</b>：近战/手枪/冲锋枪/霰弹/步枪/狙击/重机枪各有克制场景（狼蛛怕近战、装甲怕穿甲、猎犬怕霰弹），每把枪有右键技能；配件四槽（弹药/弹夹/镜/枪口）+ 武器升级——<b>细化中</b>。</li>
+  <li><b>怪物</b>：9 档（普通/猎犬/撕裂/暴食/狼蛛/装甲/尸王/尸皇/尸神），感染走暴露值累积 + 防护服耐久抵挡——<b>Boss 招式与新变体待设计</b>。</li>
+  <li><b>玩法层</b>：种田（营地）、割草（清怪）、类魂（Boss 战 + 完美闪避子弹时间）三层咬合。</li>
+</ul>
+
+<h2>7. 已定调的设计原则</h2>
+<ul>
+  <li><b>无破产</b>：点数/图纸只增不减，失败也是进度。</li>
+  <li><b>赌注只在当局</b>：大技能树当局清空，苟或 all in 每局自决。</li>
+  <li><b>技术可补数值</b>：操作永远能弥补装备差距。</li>
+  <li><b>运营流合法</b>：可以纯靠经营通关，但 Boss 终究要自己想办法。</li>
+  <li><b>反龟缩</b>：不建设的苟必败；顶防龟缩（巨量资源+配置得当）是合法终局路线。</li>
+</ul>
+
+<h2>待完善清单（后续补充）</h2>
+<div class="todo">
+  <ul>
+    <li>Boss 招式库与追踪 Boss 详细机制</li>
+    <li>武器配件数值与弹药经济</li>
+    <li>大技能树节点库、异变池全表</li>
+    <li>怪物新变体 / 特殊攻城事件 / 限时任务</li>
+    <li><b>联机模式</b>（确定会做）：共建营地、分工协作、组队 Boss、联机排行榜</li>
+  </ul>
+</div>
+
+<p class="footer">《回响之城》框架简报 v3 · 2026-09-25 · 详版见《游戏框架设计.md》</p>
+
+</body>
+</html>

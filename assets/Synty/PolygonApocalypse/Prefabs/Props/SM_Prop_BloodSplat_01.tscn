@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cepm1fssffogs"]
+
+[ext_resource type="ArrayMesh" uid="uid://crf75dpqk3cts" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_BloodSplat_01.res" id="1_ptbg8"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_dgjhw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b2t76"]
+points = PackedVector3Array(-0.3942743, 0.10893524, -0.010623314, -0.3942743, 0.10893524, 0.004958031, -0.20724323, 0.4828875, 0.004958031, -0.19168323, 0.49860305, -0.010623314, -0.33195654, -0.29596013, -0.010623314, -0.33195654, -0.29596013, 0.004958031, -0.0046521723, 0.49860305, 0.004958031, 0.10434556, 0.46726954, -0.010623314, -0.0046521723, -0.49860305, -0.010623314, -0.12928769, -0.46736714, 0.004958031, 0.40052992, 0.29586256, 0.004958031, 0.40052992, 0.29586256, -0.010623314, -0.0046521723, -0.49860305, 0.004958031, 0.22898108, -0.31167573, -0.010623314, 0.22898108, -0.31167573, 0.004958031, 0.36925435, 0.015422761, -0.010623314)
+
+[node name="SM_Prop_BloodSplat_01" type="MeshInstance3D"]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("1_ptbg8")
+surface_material_override/0 = ExtResource("2_dgjhw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_b2t76")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbcob5lyyhnm6"]
+
+[ext_resource type="ArrayMesh" uid="uid://drjv1amdq5lsj" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Hunting_Kayak_01.res" id="1_gsq8h"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_6k6dw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gb8k8"]
+points = PackedVector3Array(0.46139637, 0.19454852, 1.0246174, 0.11497983, 0.36774492, 3.0162296, 0.37477103, -0.15184432, 1.5443285, 0.37477103, -0.15184432, -0.96699476, 0.37477103, 0.28111708, 0.33254528, -0.14481139, 0.36774492, 3.0162296, 0.11497983, -0.06527577, 2.8428178, -0.14481139, 0.36774492, 0.5916126, -0.14481139, -0.23841286, 1.6305091, -0.14481139, -0.15184432, -1.9191852, 0.11497983, 0.19454852, -2.35219, -0.40451786, 0.19454852, 1.6305091, -0.23135197, -0.06527577, 2.496519, -0.23135197, 0.19454852, -1.9191852, -0.40451786, -0.15184432, -0.79358256, -0.4029074, 0.09985119, 0.48861623)
+
+[node name="SM_Prop_Hunting_Kayak_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_gsq8h")
+surface_material_override/0 = ExtResource("2_6k6dw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_gb8k8")

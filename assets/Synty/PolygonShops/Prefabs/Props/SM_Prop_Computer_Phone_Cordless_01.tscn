@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://y55g8hlmd6tf"]
+
+[ext_resource type="ArrayMesh" uid="uid://bw1i04usaob87" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Computer_Phone_Cordless_01.res" id="1_xg640"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_8an3x"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gg614"]
+points = PackedVector3Array(0.0695557, 0.08006121, -0.02321221, 0.050992593, 0.058318853, 0.055498928, 0.06710242, 0.00027675022, 0.055961773, 0.06710242, 0.00027675022, -0.05597579, 0.0514151, 0.07862422, -0.07164228, -0.0696812, 0.08006121, -0.02321221, -0.05107721, 0.058295425, 0.055428803, -0.05107721, 0.016169602, 0.07095504, 0.0514151, 0.00027675022, 0.07164228, 0.0514151, 0.00027675022, -0.07164228, -0.051513344, 0.07858517, -0.071572155, -0.06717341, 0.000315799, 0.05590567, -0.06660098, 0.016169602, 0.055428803, -0.06717341, 0.07858517, -0.05591969, -0.06717341, 0.000315799, -0.05591969, -0.051513344, 0.000315799, -0.071572155)
+
+[node name="SM_Prop_Computer_Phone_Cordless_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_xg640")
+surface_material_override/0 = ExtResource("2_8an3x")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_gg614")

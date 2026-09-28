@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dqd7w5a4qfl3l"]
+
+[ext_resource type="Texture2D" uid="uid://unuurmn7f68v" path="res://Assets/Synty/PolygonMilitary/Textures/Vehicles/Land_Vehicles_08.png" id="1_eundq"]
+
+[resource]
+resource_name = "Land_Vehicles_08_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_eundq")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cxiagtwiaeu3h"]
+
+[ext_resource type="Texture2D" uid="uid://d0cry58bdqcsq" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Building_ArcadeCarpet_01.png" id="1_x83bf"]
+
+[resource]
+resource_name = "PolygonShops_Mat_Arcade_02_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_x83bf")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dy6oiiqdsx0rp"]
+
+[ext_resource type="Texture2D" uid="uid://c5b73yquopvag" path="res://Assets/Synty/PolygonMilitary/Textures/Tank_Tracks_01.png" id="1_fu6pd"]
+
+[resource]
+resource_name = "Tank_Tracks_01_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_fu6pd")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

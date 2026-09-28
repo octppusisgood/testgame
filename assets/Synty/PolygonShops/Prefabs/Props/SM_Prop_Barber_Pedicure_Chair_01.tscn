@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbv2u4hqxy6my"]
+
+[ext_resource type="ArrayMesh" uid="uid://chxyqonb2w2h8" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Pedicure_Chair_01.res" id="1_bjkgq"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_3gxfc"]
+[ext_resource type="ArrayMesh" uid="uid://bkac151dakh87" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Pedicure_Chair_01_Foot_Spa_01.res" id="3_3gxfc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_72x88"]
+points = PackedVector3Array(-0.27491355, 1.1876746, -0.37758756, -0.2634784, 1.1146514, -0.529695, -0.8001473, 0.68735594, -0.32760066, -0.75017726, 0.68735594, 0.3724205, -0.5108223, 0.7269246, 0.3225358, 0.749864, 0.68735594, 0.3724205, 0.32504022, 1.1626414, -0.35264522, 0.26332176, 1.1146514, -0.529695, -0.5781801, 0.00915136, -0.48461476, -0.8001473, 0.61248696, 0.32233137, -0.575987, 0.01134321, 0.5015277, -0.18797505, 0.5639202, 0.51461226, 0.8001473, 0.6123716, 0.32233137, 0.7749274, 0.68735594, -0.35264522, 0.575987, 0.01134321, 0.5015277, 0.57802343, 0.00926672, -0.48441032)
+
+[node name="SM_Prop_Barber_Pedicure_Chair_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_bjkgq")
+surface_material_override/0 = ExtResource("2_3gxfc")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_72x88")
+
+[node name="SM_Prop_Barber_Pedicure_Chair_01_Foot_Spa_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8271256e-16, 0.15771225, 0.34317142)
+gi_mode = 2
+mesh = ExtResource("3_3gxfc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_3gxfc")

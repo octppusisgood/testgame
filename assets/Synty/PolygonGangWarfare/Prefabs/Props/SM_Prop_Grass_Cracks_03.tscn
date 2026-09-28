@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://miv536bd3u77"]
+
+[ext_resource type="ArrayMesh" uid="uid://jl5x20w8obqe" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Grass_Cracks_03.res" id="1_e5fob"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_24wyo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aufkn"]
+points = PackedVector3Array(0.06429359, -0.0026587136, -0.05319719, 0.0057477206, -0.0026587136, -0.17025769, 0.01638674, 0.0345774, -0.13835937, 0.040202647, 0.036752593, -0.03976457, 0.011060983, 0.018624423, 0.1276266, 0.038177356, 4.6213623e-05, 0.0424311, -0.010192059, -0.0026587136, 0.17025769, -0.04744739, -0.0026587136, -0.13835937, -0.04213413, 0.0345774, -0.12769327, -0.04213413, 0.03990756, -0.10639439, -0.015517823, 0.04523303, -0.06919635, 0.011048481, 0.03990756, 0.07446274, -0.015517823, 0.007982855, 0.15959159, -0.052785654, -0.0026587136, 0.042531103, -0.06342468, -0.0026587136, -0.05853024, -0.030770004, 0.032420956, 0.066829816)
+
+[node name="SM_Prop_Grass_Cracks_03" type="MeshInstance3D" unique_id=1055841089]
+gi_mode = 2
+mesh = ExtResource("1_e5fob")
+surface_material_override/0 = ExtResource("2_24wyo")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=555140317]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=465711826]
+shape = SubResource("ConvexPolygonShape3D_aufkn")

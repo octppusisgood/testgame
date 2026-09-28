@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://slqk00lg2nsd"]
+
+[ext_resource type="ArrayMesh" uid="uid://bh3wv5lu8g2rx" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Bunker_Floor_Concrete_Rust_Open_01.res" id="1_17o7q"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_41j8e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gkncd"]
+size = Vector3(2.501189, 0.5442108, 0.74625444)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qad6c"]
+size = Vector3(0.7237601, 0.5442108, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qp1jq"]
+size = Vector3(2.501189, 0.5442108, 0.7216511)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7jh2h"]
+size = Vector3(0.6895499, 0.5442108, 2.5)
+
+[node name="SM_Bld_Bunker_Floor_Concrete_Rust_Open_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_17o7q")
+surface_material_override/0 = ExtResource("2_41j8e")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2505945, 0.022105396, 0.3731296)
+shape = SubResource("BoxShape3D_gkncd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36188006, 0.022105396, 1.2500024)
+shape = SubResource("BoxShape3D_qad6c")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2505945, 0.022105396, 2.1391768)
+shape = SubResource("BoxShape3D_qp1jq")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1564143, 0.022105396, 1.2500024)
+shape = SubResource("BoxShape3D_7jh2h")

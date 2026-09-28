@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cpdpl46q3d2f5"]
+
+[ext_resource type="ArrayMesh" uid="uid://cp4lrne81drob" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Env_Sidewalk_Corner_01.res" id="1_5pb23"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_kahm5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y6812"]
+points = PackedVector3Array(0.02334508, -1, 0.0073298593, -0.00942302, -0.99764997, 1.3838273, 0.003253691, 0.0025026798, 0.025765093, 0.9798388, -1, 0.0073298593, 0.9798388, -1, 2.417855, 0.33619675, -0.99594086, 2.0288243, 0.2924262, -0.0057224035, 2.0342603, 0.026215278, -0.0062565207, 1.4606408, 0.11112533, 0.04832828, 0.71921355, 2.417091, -0.011490703, 0.06216286, 1.7830161, -1, 0.0075662085, 2.4338336, -1, 2.4176185, 0.9712282, 0.09126985, 2.4216366, 0.56485593, -0.009247482, 2.2174308, 2.4237878, 0.028993964, 2.4079282, 2.4338336, -1, 0.04585477)
+
+[node name="SM_Env_Sidewalk_Corner_01" type="MeshInstance3D" unique_id=1340128956]
+gi_mode = 2
+mesh = ExtResource("1_5pb23")
+surface_material_override/0 = ExtResource("2_kahm5")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1116241401]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=47060491]
+shape = SubResource("ConvexPolygonShape3D_y6812")

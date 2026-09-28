@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://xnnl1hucfecc"]
+
+[ext_resource type="Texture2D" uid="uid://bn2cgu5pw65x1" path="res://Assets/Synty/PolygonShops/Textures/Shutter_Transparent.png" id="1_rg853"]
+
+[resource]
+resource_name = "PolygonShops_Shutter_01_mat"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+depth_draw_mode = 1
+albedo_color = Color(0.6911765, 0.6911765, 0.6911765, 1)
+albedo_texture = ExtResource("1_rg853")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

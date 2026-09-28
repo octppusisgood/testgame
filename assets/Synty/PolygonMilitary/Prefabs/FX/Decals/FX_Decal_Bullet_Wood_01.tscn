@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cqffr12mavbyn"]
+
+[ext_resource type="ArrayMesh" uid="uid://dpt68geyh2be4" path="res://assets/Synty/PolygonMilitary/Models/extracted/FX_Decal_Bullet_Wood_01.res" id="1_i7mwu"]
+[ext_resource type="Material" uid="uid://bnaaabx6rfe78" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Decal_Bullet_Holes_01_mat.tres" id="2_i1nn1"]
+
+[node name="FX_Decal_Bullet_Wood_01" type="MeshInstance3D" unique_id=478885580]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("1_i7mwu")
+surface_material_override/0 = ExtResource("2_i1nn1")

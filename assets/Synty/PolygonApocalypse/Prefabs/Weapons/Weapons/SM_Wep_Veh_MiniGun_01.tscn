@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://hwccw0xtund6"]
+
+[ext_resource type="ArrayMesh" uid="uid://c6qu8vuali88g" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Veh_MiniGun_01.res" id="1_gaswq"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_pv7ho"]
+[ext_resource type="ArrayMesh" uid="uid://bjixa3aldaey3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Veh_MiniGun_Barrel_01.res" id="3_pv7ho"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_atxos"]
+points = PackedVector3Array(0.048150927, 0.009889673, -0.20418185, -0.2916123, 0.053828765, -0.069814324, -0.24572556, 0.053515285, -0.17103198, -0.016963154, 0.14933491, -0.38031822, 0.1493223, 0.100118935, -0.23777373, 0.023888975, 0.015323283, 0.08532709, -0.30359942, 0.16129929, -0.0937559, -0.01686725, 0.3405039, 0.32444823, -0.07661112, 0.4838676, 0.3125143, -0.076563165, 0.3405039, -0.4281277, 0.078694135, 0.3405039, -0.4281277, 0.18624267, 0.36438042, 0.04952523, 0.18624267, 0.31652287, 0.13313657, -0.18415965, 0.36438042, 0.04952523, 0.066707015, 0.44802666, 0.3125143, 0.018950284, 0.5436373, 0.30050665)
+
+[node name="SM_Wep_Veh_MiniGun_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_gaswq")
+surface_material_override/0 = ExtResource("2_pv7ho")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_atxos")
+
+[node name="SM_Wep_Veh_MiniGun_Barrel_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.535823e-08, 0.22260223, 0.114001125)
+gi_mode = 2
+mesh = ExtResource("3_pv7ho")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_pv7ho")

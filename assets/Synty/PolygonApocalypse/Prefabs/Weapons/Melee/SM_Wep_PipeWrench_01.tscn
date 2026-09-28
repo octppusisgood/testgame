@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsxk0r1sj1oqy"]
+
+[ext_resource type="ArrayMesh" uid="uid://dk657atmqjlh6" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_PipeWrench_01.res" id="1_srgx5"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_6qehv"]
+[ext_resource type="ArrayMesh" uid="uid://ctbq20drj6qsi" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_PipeWrench_Knife_01.res" id="3_6qehv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nq7js"]
+points = PackedVector3Array(-0.026666468, -0.043915987, 0.28160933, 0.021812532, -0.043915987, 0.28160933, -0.026666468, -0.043915987, 0.34948638, -0.036370244, 0.06277238, 0.2040095, -0.016969338, -0.03421221, -0.2421439, 0.021812532, -0.043915987, 0.34948638, 0.021819178, -0.03421221, -0.14509854, 0.0315296, 0.072449565, 0.21373227, -0.007265562, 0.05305531, 0.3786547, -0.016962692, 0.091883704, 0.29121056, -0.016962692, 0.091883704, 0.18462473, -0.016969338, 0.033674337, -0.2421439, 0.01212205, 0.033674337, -0.2421439, 0.012115404, 0.072449565, 0.35920915, 0.021812532, 0.091883704, 0.18462473, 0.010899108, 0.086181074, 0.27249423)
+
+[node name="SM_Wep_PipeWrench_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_srgx5")
+surface_material_override/0 = ExtResource("2_6qehv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_nq7js")
+
+[node name="SM_Wep_PipeWrench_Knife_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_6qehv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6qehv")

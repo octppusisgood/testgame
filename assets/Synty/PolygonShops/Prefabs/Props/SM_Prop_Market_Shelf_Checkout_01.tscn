@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxalo6byqt574"]
+
+[ext_resource type="ArrayMesh" uid="uid://dmljbb5o14maw" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Shelf_Checkout_01.res" id="1_xg6fn"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_062rj"]
+[ext_resource type="ArrayMesh" uid="uid://wqdclac00laa" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Shelf_Checkout_Shopping_Bag_01.res" id="3_062rj"]
+[ext_resource type="ArrayMesh" uid="uid://c2x0uatm0x588" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Shelf_Checkout_Shopping_Bag_02.res" id="4_b11ts"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mynwq"]
+points = PackedVector3Array(-0.5857443, 1.4752277, -0.06338689, -0.5705137, 1.402691, -0.37809855, -0.91638017, 0.6726214, -0.39381748, -0.91638017, 0.6726214, 0.3614406, -0.5616416, 0.898497, 0.43230063, -0.09023416, 1.3806022, 0.054546803, 0.54693484, 1.3334321, -0.06338689, 0.54634345, 1.4048287, -0.37942925, 0.54959655, 0.0782196, -0.38150847, -0.5455239, 0.0193637, -0.35273197, -0.5422707, 0.025349045, 0.39021707, -0.5617895, 0.09745821, 0.43230063, 0.59425306, 0.5073119, 0.45583743, 0.5708897, 0.35425803, 0.42024112, 0.5112983, 0.025349045, 0.39021707, 0.5170653, 0.0193637, -0.35273197)
+
+[node name="SM_Prop_Market_Shelf_Checkout_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_xg6fn")
+surface_material_override/0 = ExtResource("2_062rj")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_mynwq")
+
+[node name="SM_Prop_Market_Shelf_Checkout_Shopping_Bag_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032844085, 0.7770817, 0.1856708)
+gi_mode = 2
+mesh = ExtResource("3_062rj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_062rj")
+
+[node name="SM_Prop_Market_Shelf_Checkout_Shopping_Bag_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09611204, 0.7770817, 0.1856708)
+gi_mode = 2
+mesh = ExtResource("4_b11ts")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_062rj")

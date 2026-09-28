@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwy1v5lnxbjxu"]
+
+[ext_resource type="ArrayMesh" uid="uid://bx3h057hvkjbe" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_02.res" id="1_ifcqk"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_6yalj"]
+[ext_resource type="ArrayMesh" uid="uid://lt3g1pq254rm" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_02_Door_1.res" id="3_6yalj"]
+[ext_resource type="Shape3D" uid="uid://ofgcawc3la46" path="res://Assets/Synty/PolygonShops/Models/Collision/SM_Veh_Food_Trailer_02_Collision.res" id="3_75gqr"]
+[ext_resource type="ArrayMesh" uid="uid://br235x03njchw" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_02_Door_2.res" id="4_75gqr"]
+[ext_resource type="ArrayMesh" uid="uid://b5bwpi450g6gy" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_02_Glass.res" id="5_44cmy"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="6_k6c1n"]
+[ext_resource type="ArrayMesh" uid="uid://b1cnwch25lmky" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_02_Stand.res" id="7_6ea8f"]
+[ext_resource type="ArrayMesh" uid="uid://c7bwffh7vtcc1" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_02_Wheel_l.res" id="8_k6c1n"]
+[ext_resource type="ArrayMesh" uid="uid://b6e0fu2yy8jls" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_02_Wheel_r.res" id="9_cqjxx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3x4rt"]
+size = Vector3(0.070998535, 1.9978864, 0.73105717)
+
+[node name="SM_Veh_Food_Trailer_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ifcqk")
+surface_material_override/0 = ExtResource("2_6yalj")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = ExtResource("3_75gqr")
+
+[node name="SM_Veh_Food_Trailer_02_Door_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1827446, 1.5808893, 0.6035518)
+gi_mode = 2
+mesh = ExtResource("3_6yalj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6yalj")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Veh_Food_Trailer_02_Door_1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Food_Trailer_02_Door_1/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02059738, 0, 0.36552852)
+shape = SubResource("BoxShape3D_3x4rt")
+
+[node name="SM_Veh_Food_Trailer_02_Door_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.25881904, 0.9659258, 0, -0.9659258, -0.25881904, 0, 0, 0, 1, -1.182745, 2.2615373, 0.2743547)
+gi_mode = 2
+mesh = ExtResource("4_75gqr")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6yalj")
+
+[node name="SM_Veh_Food_Trailer_02_Glass" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.020454424, 0)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("5_44cmy")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_k6c1n")
+
+[node name="SM_Veh_Food_Trailer_02_Stand2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.020454424, 0)
+gi_mode = 2
+mesh = ExtResource("7_6ea8f")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6yalj")
+
+[node name="SM_Veh_Food_Trailer_02_Wheel_l" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99433935, 0.38967964, 1.2177144e-16)
+gi_mode = 2
+mesh = ExtResource("8_k6c1n")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6yalj")
+
+[node name="SM_Veh_Food_Trailer_02_Wheel_r" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99433935, 0.38967964, 0)
+gi_mode = 2
+mesh = ExtResource("9_cqjxx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6yalj")

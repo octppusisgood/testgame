@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm0rjohchsgpx"]
+
+[ext_resource type="ArrayMesh" uid="uid://c58w6vwbtxw4r" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sign_Toilets_Female_01.res" id="1_vxssf"]
+[ext_resource type="Material" uid="uid://bnfbs4ne1yer1" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Signs_01_mat.tres" id="2_7nq45"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lntrq"]
+points = PackedVector3Array(-0.11726496, -0.1324623, -0.010369283, -0.11726496, -0.1324623, 0.010327949, -0.11726496, 0.1324623, -0.010369283, 0.118683495, -0.1324623, -0.010369283, 0.118683495, -0.1324623, 0.010327949, -0.11726496, 0.1324623, 0.010327949, 0.118683495, 0.1324623, -0.010369283, 0.118683495, 0.1324623, 0.010327949)
+
+[node name="SM_Prop_Sign_Toilets_Female_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_vxssf")
+surface_material_override/0 = ExtResource("2_7nq45")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_lntrq")

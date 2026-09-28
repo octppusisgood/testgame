@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnyxooexwgln1"]
+
+[ext_resource type="ArrayMesh" uid="uid://dsrmnh2to1sm3" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Squat_Rack_01.res" id="1_xycqt"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_8tdwl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bh6kk"]
+points = PackedVector3Array(-0.4238862, -0.013635278, -0.8964504, 0.58435714, 0.042327072, -0.8964504, 0.5652716, 0.0146913435, -0.86732036, 0.41627276, -0.013635278, 0.8962749, -0.5759125, 0.010373261, 0.8445077, -0.5921023, 0.042499796, -0.8683733, -0.45205384, 1.1626104, -0.532325, 0.66846514, 0.7705285, -0.61603, 0.5652716, 0.01503679, 0.86696935, 0.52841675, 0.686585, 0.81186795, -0.53603023, 0.68675774, 0.8120434, -0.6760787, 1.2465539, -0.27998173, -0.53603023, 1.750906, -8.773804e-05, 0.58448875, 1.750906, 0.027813911, 0.58448875, 1.6384631, 0.22382736, -0.5639346, 1.6386359, 0.22365189)
+
+[node name="SM_Prop_Gym_Squat_Rack_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_xycqt")
+surface_material_override/0 = ExtResource("2_8tdwl")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_bh6kk")

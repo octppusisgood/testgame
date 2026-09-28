@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4kasxtn8ptyu"]
+
+[ext_resource type="ArrayMesh" uid="uid://b3yjdjsq6m0lk" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_DeadBody_Hanging_Male_01.res" id="1_kecps"]
+[ext_resource type="Material" uid="uid://bme3jmvtikxls" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_B_mat.tres" id="2_7n7qb"]
+[ext_resource type="ArrayMesh" uid="uid://basd32hn0vy07" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_HangingRope_Male_01.res" id="3_7n7qb"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="4_sbmqg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3qjql"]
+points = PackedVector3Array(-0.38130218, -0.94753534, -0.15589952, -0.2362156, -1.4988296, -0.21384859, -0.26520792, -1.6440601, -0.010864943, -0.3522474, -0.3677039, -0.010864943, -0.29420024, -0.10632539, -0.15579161, -0.17816848, -0.22247338, -0.24293105, 0.08288738, -1.4988296, -0.2428771, 0.11194217, -1.6440601, -0.09789647, 0.11194217, -1.6149777, -0.010864943, -0.03320688, 0.038541555, 0.30828667, -0.09106654, 0.21285462, 0.19222663, 0.16992682, 0.12560725, -0.010757029, 0.15405601, -0.14794958, -0.17106125, 0.22797394, -0.91881645, -0.24293105, 0.25702876, -0.628719, -0.09789647, 0.25702876, 0.038541555, 0.22120117)
+
+[node name="SM_Prop_DeadBody_Hanging_Male_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_kecps")
+surface_material_override/0 = ExtResource("2_7n7qb")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_3qjql")
+
+[node name="SM_Prop_HangingRope_Male_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_7n7qb")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_sbmqg")

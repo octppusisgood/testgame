@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c0x6ksfbydieo"]
+
+[ext_resource type="ArrayMesh" uid="uid://by3o8ln5jojpb" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Attach_Mark_01.res" id="1_uvof1"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_xy8qh"]
+
+[node name="SM_Veh_Attach_Mark_01" type="MeshInstance3D" unique_id=599464667]
+gi_mode = 2
+mesh = ExtResource("1_uvof1")
+surface_material_override/0 = ExtResource("2_xy8qh")

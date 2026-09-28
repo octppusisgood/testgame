@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bekv7y38jxbas"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1mbxdvo1w6s4" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Lab_Clamp_01.res" id="1_jjwu7"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_f1d1o"]
+[ext_resource type="ArrayMesh" uid="uid://kbgxmq3hkjtv" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Lab_Clamp_01_Arm_01.res" id="3_f1d1o"]
+[ext_resource type="ArrayMesh" uid="uid://qbmxr2s6xwsg" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Lab_Clamp_01_Arm_02.res" id="4_j66gi"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x3hvl"]
+points = PackedVector3Array(-0.08232639, 0.02150878, -0.083699234, -0.08232639, 0.027658029, 0.082326315, -0.020846881, 0.7348932, -0.003774248, -0.014671303, 0.7348932, -0.016076647, 0.08369916, 0.02150878, -0.083699234, -0.0792711, 0.010497333, -0.080643944, -0.08065248, 0.0044195857, 0.080636166, 0.08369916, 0.02150878, 0.082326315, 0.016027823, 0.72867244, 0.020814307, -0.014671303, 0.72867244, 0.020814307, -0.014671303, 0.7348932, 0.014671229, 0.022187151, 0.72867244, -0.009901069, 0.016027823, 0.72867244, -0.016076647, 0.08062763, 0.010497333, -0.080643944, 0.08062763, 0.010497333, 0.07925478, 0.022187151, 0.72867244, 0.008511908)
+
+[node name="SM_Prop_Lab_Clamp_01" type="MeshInstance3D" unique_id=1295325834]
+gi_mode = 2
+mesh = ExtResource("1_jjwu7")
+surface_material_override/0 = ExtResource("2_f1d1o")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1234206120]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1468727860]
+shape = SubResource("ConvexPolygonShape3D_x3hvl")
+
+[node name="SM_Prop_Lab_Clamp_01_Arm_01" type="MeshInstance3D" parent="." unique_id=505259437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3951832, -1.1920929e-09)
+gi_mode = 2
+mesh = ExtResource("3_f1d1o")
+surface_material_override/0 = ExtResource("2_f1d1o")
+
+[node name="SM_Prop_Lab_Clamp_01_Arm_02" type="MeshInstance3D" parent="." unique_id=811399930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58861405, -1.1920929e-09)
+gi_mode = 2
+mesh = ExtResource("4_j66gi")
+surface_material_override/0 = ExtResource("2_f1d1o")

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://mn7qlvd71iy2"]
+
+[ext_resource type="Texture2D" uid="uid://b4jtwi0o6ab5c" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Building_Concrete_Blocks_02.png" id="1_tlo3x"]
+
+[resource]
+resource_name = "PolygonShops_Mat_Concrete_Blocks_02_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_tlo3x")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

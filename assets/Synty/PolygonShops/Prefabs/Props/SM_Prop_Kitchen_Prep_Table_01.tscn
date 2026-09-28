@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://8d5yaeknnjha"]
+
+[ext_resource type="ArrayMesh" uid="uid://bf8onep56v80j" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Prep_Table_01.res" id="1_vaidx"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_oa6gt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vaidx"]
+size = Vector3(1.7148438, 1.0371094, 1.0185547)
+
+[node name="SM_Prop_Kitchen_Prep_Table_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_vaidx")
+surface_material_override/0 = ExtResource("2_oa6gt")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0029296875, 0.5214844, 0.009277344)
+shape = SubResource("BoxShape3D_vaidx")

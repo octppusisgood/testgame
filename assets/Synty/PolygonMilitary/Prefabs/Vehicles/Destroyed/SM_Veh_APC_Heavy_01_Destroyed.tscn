@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bbmpi3rr5baqj"]
+
+[ext_resource type="ArrayMesh" uid="uid://cl0egcoj4e5b6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_APC_Heavy_01_Destroyed.res" id="1_ddyjb"]
+[ext_resource type="Material" uid="uid://kc8splxgww8w" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_01_Burnt_mat.tres" id="2_g8q4m"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f8odd"]
+points = PackedVector3Array(1.6229374, 2.7866716, -0.7521894, -1.5168583, 2.544955, -0.39054704, 0.89827657, 2.7866716, 0.57559824, 1.1394284, 1.6995144, 3.5935726, 1.5212519, 0.19247404, 2.2597322, 1.400676, 0.1961622, -2.323594, 1.1812279, 1.3403441, -3.4864483, 0.77770066, 2.3032384, -3.891972, -0.91357696, 2.182664, -4.0137806, -1.2753047, 1.5786562, 3.7153811, -2.483073, 1.9409473, -2.0807338, 0.65712476, 0.73378295, 3.5935726, -1.5168583, -0.11165762, 1.6620388, 1.0192542, -0.11165762, -2.3213243, -1.3339849, 0.098284006, -2.069385, -2.483073, 1.6995144, -2.0807338)
+
+[node name="SM_Veh_APC_Heavy_01_Destroyed" type="MeshInstance3D" unique_id=190385118]
+gi_mode = 2
+mesh = ExtResource("1_ddyjb")
+surface_material_override/0 = ExtResource("2_g8q4m")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1071432028]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1576345041]
+shape = SubResource("ConvexPolygonShape3D_f8odd")

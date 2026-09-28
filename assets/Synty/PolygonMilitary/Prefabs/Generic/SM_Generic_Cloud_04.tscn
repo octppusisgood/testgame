@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://di6o3s650ypmb"]
+
+[ext_resource type="ArrayMesh" uid="uid://ma44pk7vhud1" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Generic_Cloud_04.res" id="1_281qx"]
+[ext_resource type="Material" uid="uid://dpy1cughg6d7b" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Clouds_01_mat.tres" id="2_ixvh2"]
+
+[node name="SM_Generic_Cloud_04" type="MeshInstance3D" unique_id=1540282965]
+gi_mode = 2
+mesh = ExtResource("1_281qx")
+surface_material_override/0 = ExtResource("2_ixvh2")

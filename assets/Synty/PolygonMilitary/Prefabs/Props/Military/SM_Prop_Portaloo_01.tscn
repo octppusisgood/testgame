@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cmqltl62676q2"]
+
+[ext_resource type="ArrayMesh" uid="uid://3yevg4jgenlr" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Portaloo_01.res" id="1_s2xrr"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_i2bbh"]
+[ext_resource type="ArrayMesh" uid="uid://bm026oqnxrr0r" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Portaloo_Door_01.res" id="3_i2bbh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0lbh3"]
+points = PackedVector3Array(-0.85477775, 2.8156354, -0.7480183, -0.85477775, 2.8156354, 0.747173, -0.6000465, 2.9827144, -0.41052702, 0.28206617, 3.1143157, -0.72411835, 0.8091188, 2.7704544, -0.72076935, 0.7024378, 0.3391664, -0.7579132, -0.7178027, 0.3391664, -0.7579132, -0.71812844, 0.33855993, 0.7576768, 0.28206617, 3.1143157, 0.7232731, -0.5555826, 2.7164795, 0.7972563, 0.74413306, 0.2548688, 0.70424455, 0.8091188, 2.7704544, 0.71992403, 0.6714923, 0.01774393, -0.67936313, -0.67936504, 0.033815052, -0.6723606, -0.67936504, 0.033815052, 0.6716675, 0.6719809, 0.016531015, 0.679279)
+
+[node name="SM_Prop_Portaloo_01" type="MeshInstance3D" unique_id=1486514010]
+gi_mode = 2
+mesh = ExtResource("1_s2xrr")
+surface_material_override/0 = ExtResource("2_i2bbh")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1948579329]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=2029261624]
+shape = SubResource("ConvexPolygonShape3D_0lbh3")
+
+[node name="SM_Prop_Portaloo_Door_01" type="MeshInstance3D" parent="." unique_id=280363694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52340776, 0.2985144, 0.7697877)
+gi_mode = 2
+mesh = ExtResource("3_i2bbh")
+surface_material_override/0 = ExtResource("2_i2bbh")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://de8gvl17rsjah"]
+
+[ext_resource type="ArrayMesh" uid="uid://cese5lyw833fi" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Cigarette_Pack_01.res" id="1_oeert"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_h247v"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ooha7"]
+points = PackedVector3Array(-0.046714365, -0.06474574, 0.020213012, 0.046357624, -0.06474574, 0.020213012, -0.046714365, 0.064745724, 0.020213012, -0.04662326, -0.06461898, -0.020213012, 0.046257406, -0.06461898, -0.020213012, 0.046357624, 0.064745724, 0.020213012, -0.04662326, 0.064606294, -0.020213012, 0.046257406, 0.064606294, -0.020213012)
+
+[node name="SM_Prop_Cigarette_Pack_01" type="MeshInstance3D" unique_id=254621424]
+gi_mode = 2
+mesh = ExtResource("1_oeert")
+surface_material_override/0 = ExtResource("2_h247v")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1202359544]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1275832184]
+shape = SubResource("ConvexPolygonShape3D_ooha7")

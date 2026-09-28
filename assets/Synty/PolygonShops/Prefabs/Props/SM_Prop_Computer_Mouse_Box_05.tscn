@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://wy304ktkqbh6"]
+
+[ext_resource type="ArrayMesh" uid="uid://dw0m2t520rn3m" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Computer_Mouse_Box_05.res" id="1_3ewvg"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_j6rtd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ewvg"]
+size = Vector3(0.29089355, 0.4515381, 0.045898438)
+
+[node name="SM_Prop_Computer_Mouse_Box_05" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3ewvg")
+surface_material_override/0 = ExtResource("2_j6rtd")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00091552734, -0.0134887695, -0.0034179688)
+shape = SubResource("BoxShape3D_3ewvg")

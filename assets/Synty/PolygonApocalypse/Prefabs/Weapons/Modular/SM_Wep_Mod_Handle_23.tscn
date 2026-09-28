@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ond33myrlom3"]
+
+[ext_resource type="ArrayMesh" uid="uid://4w3y7ra3alis" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Handle_23.res" id="1_oa2jo"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_ypuss"]
+[ext_resource type="ArrayMesh" uid="uid://6sbawp8osrby" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Handle_23_Trigger.res" id="3_ypuss"]
+
+[node name="SM_Wep_Mod_Handle_23" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_oa2jo")
+surface_material_override/0 = ExtResource("2_ypuss")
+
+[node name="SM_Wep_Mod_Handle_23_Trigger" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5161455e-07, -0.009999084, 0.04610788)
+gi_mode = 2
+mesh = ExtResource("3_ypuss")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ypuss")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://4wmn3mw4mli3"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqt0oryunrw7d" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Sidewalk_Overgrown_02.res" id="1_d6a5t"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_pseik"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sqbip"]
+points = PackedVector3Array(1.4426622, -0.28746805, 0.8046731, 0.70680404, -0.28746805, -0.58465457, 1.3605072, -0.1238278, 0.39601713, 1.2788966, -0.28746805, 4.0744324, -1.0916283, -0.28746805, -0.42129463, -0.7643686, 0.03949237, -0.17548656, 0.6249211, 0.03949237, -0.2579347, 0.70680404, 0.121272475, 0.5598892, 1.0335197, -0.042247742, 3.991472, 0.6249211, 0.03949237, 4.319216, 0.70680404, -0.28746805, 4.6469603, -1.3364611, -0.12394783, 1.459137, -1.2548501, -0.28746805, 3.828624, -0.8459795, 0.03949237, 3.991472, 0.54331017, 0.121272475, 2.7670407, -0.76409656, -0.28746805, 4.646448)
+
+[node name="SM_Env_Sidewalk_Overgrown_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_d6a5t")
+surface_material_override/0 = ExtResource("2_pseik")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_sqbip")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://xdnignhgehmd"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2oltbqala6pn" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Flower_Bouquet_04.res" id="1_s1oib"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_qydgx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v7h2d"]
+points = PackedVector3Array(0.059320062, 0.49913734, 0.21947826, 0.009102315, 0.8007478, 0.08544211, -0.074622974, 0.4823404, 0.21947826, 0.04256633, -0.15436937, 0.08544211, 0.1765964, 0.44885147, 0.11891793, -0.041158974, 0.6331981, -0.2328882, -0.09142025, 0.81754476, 0.06865992, 0.1765964, 0.49913734, -0.13232788, -0.057912737, -0.25494117, 0.018401906, -0.25895786, 0.5158293, 0.05192201, 0.10962486, -0.23803923, -0.048549756, 0.1843423, 0.2514872, 0.015612245, 0.18560427, 0.2512772, -0.014188334, -0.074622974, -0.12077545, -0.06533195, -0.2422041, 0.53262633, -0.082069874, -0.2092623, 0.6201805, 0.031774506)
+
+[node name="SM_Prop_Flower_Bouquet_04" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_s1oib")
+surface_material_override/0 = ExtResource("2_qydgx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_v7h2d")

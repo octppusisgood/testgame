@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://7g6a12oqv72e"]
+
+[ext_resource type="ArrayMesh" uid="uid://dt0g5wioyx6bo" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Wood_Plinth_01.res" id="1_erdum"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_0g22c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_erdum"]
+size = Vector3(2.0115967, 0.40820313, 2.0116577)
+
+[node name="SM_Prop_Wood_Plinth_01" type="MeshInstance3D" unique_id=133038043]
+gi_mode = 2
+mesh = ExtResource("1_erdum")
+surface_material_override/0 = ExtResource("2_0g22c")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=67853195]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=238343969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00579834, 0.1953125, -0.0059509277)
+shape = SubResource("BoxShape3D_erdum")

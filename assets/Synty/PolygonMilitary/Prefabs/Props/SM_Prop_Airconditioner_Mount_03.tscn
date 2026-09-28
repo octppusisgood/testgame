@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://jiuh1hrkupk6"]
+
+[ext_resource type="ArrayMesh" uid="uid://duqcdim34w4uo" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Airconditioner_Mount_03.res" id="1_te66e"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_sixfh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hqup6"]
+points = PackedVector3Array(0.5587592, 0.83081686, -0.29303822, 0.5444373, 0.81976086, 0.29313874, 0.5760132, 0.7178755, 0.30991405, 0.5760132, 0.7178755, -0.30214483, -0.55733544, 0.82954115, -0.29219946, -0.55519277, 0.82792526, 0.19470367, -0.50365645, 0.7178755, 0.30991405, 0.35994393, -0.038015366, 0.25575376, 0.38621956, -0.0085043255, 0.23891854, 0.3843025, -0.006548263, -0.21335554, 0.32374448, -0.038015366, -0.23007095, -0.5760554, 0.7178755, -0.28417128, -0.5760554, 0.7178755, 0.20189309, -0.41242468, -0.018029504, 0.24437052, -0.41411626, -0.019645382, -0.06513378, -0.38445747, -0.0064632148, -0.21335554)
+
+[node name="SM_Prop_Airconditioner_Mount_03" type="MeshInstance3D" unique_id=77747403]
+gi_mode = 2
+mesh = ExtResource("1_te66e")
+surface_material_override/0 = ExtResource("2_sixfh")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=557767801]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=853617051]
+shape = SubResource("ConvexPolygonShape3D_hqup6")

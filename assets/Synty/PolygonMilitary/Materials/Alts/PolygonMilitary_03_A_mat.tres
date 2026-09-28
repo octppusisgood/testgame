@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://2fnd3ccrpo3u"]
+
+[ext_resource type="Texture2D" uid="uid://d2pweetues4iq" path="res://Assets/Synty/PolygonMilitary/Textures/Alts/PolygonMilitary_03_A.png" id="1_47ut8"]
+[ext_resource type="Texture2D" uid="uid://b16ul6y2he2ut" path="res://Assets/Synty/PolygonMilitary/Textures/PolygonMilitary_01_A_Normals.png" id="2_r75mu"]
+
+[resource]
+resource_name = "PolygonMilitary_03_A_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_47ut8")
+roughness = 0.8
+normal_enabled = true
+normal_texture = ExtResource("2_r75mu")
+uv1_scale = Vector3(1, 1, 0)

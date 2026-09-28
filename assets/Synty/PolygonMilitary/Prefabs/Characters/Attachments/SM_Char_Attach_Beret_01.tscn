@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://buauf7pobr674"]
+
+[ext_resource type="ArrayMesh" uid="uid://be27vmkp8b2hs" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Char_Attach_Beret_01.res" id="1_yi181"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_fyvk4"]
+
+[node name="SM_Char_Attach_Beret_01" type="MeshInstance3D" unique_id=231769997]
+gi_mode = 2
+mesh = ExtResource("1_yi181")
+surface_material_override/0 = ExtResource("2_fyvk4")

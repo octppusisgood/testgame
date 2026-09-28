@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://slxb6e2urie4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cdcrmqpdahglt" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Window_Shutter_01.res" id="1_pdv0q"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_4m65i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gqo5y"]
+size = Vector3(1.1885242, 1.5257919, 0.16522156)
+
+[node name="SM_Bld_Village_Window_Shutter_01" type="MeshInstance3D" unique_id=2127432678]
+gi_mode = 2
+mesh = ExtResource("1_pdv0q")
+surface_material_override/0 = ExtResource("2_4m65i")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=1399574019]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=622590173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5395868, -2.9802322e-08, 0.029366761)
+shape = SubResource("BoxShape3D_gqo5y")

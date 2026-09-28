@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://1gbh3j14d88r"]
+
+[ext_resource type="ArrayMesh" uid="uid://chdmplmcxmh2h" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Washingline_Small_03.res" id="1_qid0o"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_iaa2a"]
+[ext_resource type="ArrayMesh" uid="uid://dvefue1jxnckg" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Washingline_Small_Poles_03.res" id="3_iaa2a"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nn4y2"]
+points = PackedVector3Array(3.8852599, 0.036557674, 0.09935929, 3.8852599, -0.089105844, 0.09935929, 3.9482145, -0.15193772, 0.036539793, 3.8852599, 0.036557674, -0.08906229, -0.008490726, 0.036557674, 0.09935929, 2.7548287, -1.7220436, 0.09935929, 3.3198476, -1.4078847, -0.0262428, 3.3198476, -1.4078847, -0.08906229, -0.008490726, 0.036557674, -0.08906229, -0.071445465, -0.15193772, 0.036539793, -0.008490726, -0.089105844, 0.09935929, 1.813262, -1.7220436, 0.09935929, 2.7548287, -1.7220436, -0.0262428, 2.7548287, -1.4078847, -0.08906229, 0.68243754, -0.842743, -0.08906229, 1.813262, -1.7220436, -0.0262428)
+
+[node name="SM_Prop_Washingline_Small_03" type="MeshInstance3D" unique_id=2088451409]
+gi_mode = 2
+mesh = ExtResource("1_qid0o")
+surface_material_override/0 = ExtResource("2_iaa2a")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1031312372]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=767758832]
+shape = SubResource("ConvexPolygonShape3D_nn4y2")
+
+[node name="SM_Prop_Washingline_Small_Poles_03" type="MeshInstance3D" parent="." unique_id=1961474967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9386452, -2.339589, 0.00031918343)
+gi_mode = 2
+mesh = ExtResource("3_iaa2a")
+surface_material_override/0 = ExtResource("2_iaa2a")

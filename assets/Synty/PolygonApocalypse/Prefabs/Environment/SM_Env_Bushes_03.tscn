@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw4p2lgm7b2hw"]
+
+[ext_resource type="ArrayMesh" uid="uid://caydo2n5kun8b" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Bushes_03.res" id="1_ia4bv"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_p0dmm"]
+
+[node name="SM_Env_Bushes_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ia4bv")
+surface_material_override/0 = ExtResource("2_p0dmm")

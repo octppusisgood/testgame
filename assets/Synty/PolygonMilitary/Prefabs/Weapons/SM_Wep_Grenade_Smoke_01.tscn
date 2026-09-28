@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bj3we2tv7nfqw"]
+
+[ext_resource type="ArrayMesh" uid="uid://bavyjqpjo01fo" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Grenade_Smoke_01.res" id="1_6jyob"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_7hmp4"]
+[ext_resource type="ArrayMesh" uid="uid://c7v6xpi8b31im" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Grenade_Clip_01.res" id="3_7hmp4"]
+[ext_resource type="ArrayMesh" uid="uid://nfnm2haapn0h" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Grenade_Pin_01.res" id="4_tx7om"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pxbia"]
+points = PackedVector3Array(-0.006115306, 0.056238968, 0.029803127, -0.031559587, 0.056071196, 0.0018660761, -0.022543658, -0.055894487, 0.022996165, 0.022088211, -0.05642831, 0.023181748, 0.022088211, 0.056757543, 0.023181748, -0.014114674, 0.09938717, 0.012305189, -0.014114674, 0.09938717, -0.030379182, -0.014114674, 0.0742517, -0.0379086, -0.021938562, -0.053850703, -0.023254074, -0.031559587, -0.055040367, 0.0018660761, 0.016684704, -0.05351516, -0.025421433, 0.030257002, -0.053423647, -0.0050204247, 0.012194894, 0.091791615, -0.027767748, 0.030257002, 0.055247586, -0.0050204247, 0.013495848, 0.06671716, -0.0379086, -0.0059519317, -0.053286377, -0.029875454)
+
+[node name="SM_Wep_Grenade_Smoke_01" type="MeshInstance3D" unique_id=1361408732]
+gi_mode = 2
+mesh = ExtResource("1_6jyob")
+surface_material_override/0 = ExtResource("2_7hmp4")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1832679563]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=848014799]
+shape = SubResource("ConvexPolygonShape3D_pxbia")
+
+[node name="SM_Wep_Grenade_Clip_01" type="MeshInstance3D" parent="." unique_id=2086762591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101331525, 0.013009371)
+gi_mode = 2
+mesh = ExtResource("3_7hmp4")
+surface_material_override/0 = ExtResource("2_7hmp4")
+
+[node name="SM_Wep_Grenade_Pin_01" type="MeshInstance3D" parent="." unique_id=76033527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00042637653, 0.10080267, 0)
+gi_mode = 2
+mesh = ExtResource("4_tx7om")
+surface_material_override/0 = ExtResource("2_7hmp4")

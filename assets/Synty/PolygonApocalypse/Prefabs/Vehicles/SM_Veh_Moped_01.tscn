@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dp3hulup8dbuy"]
+
+[ext_resource type="ArrayMesh" uid="uid://dom7ry6xraet7" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Moped_01.res" id="1_1gdbx"]
+[ext_resource type="Material" uid="uid://bj206v4v20ibu" path="res://Assets/Synty/PolygonApocalypse/Materials/Vehicles/Vehicle_Standard_01_mat.tres" id="2_mr002"]
+[ext_resource type="ArrayMesh" uid="uid://joviobw0pv36" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Moped_FrontWheel_Cover_01.res" id="3_mr002"]
+[ext_resource type="ArrayMesh" uid="uid://0g76350epsfq" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Moped_Wheel_Armour_01.res" id="4_m1ybe"]
+[ext_resource type="ArrayMesh" uid="uid://cf5x4ueylfaif" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Moped_FrontWheel_01.res" id="5_u1eep"]
+[ext_resource type="ArrayMesh" uid="uid://mg1ewl1a41rw" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Moped_Armour_01.res" id="6_oqwb1"]
+[ext_resource type="ArrayMesh" uid="uid://cuawasnlq4kub" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Moped_Handles_01.res" id="7_canpk"]
+[ext_resource type="ArrayMesh" uid="uid://dy3vw5ujogrfm" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Moped_RearWheel_01.res" id="8_46pqw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1gdbx"]
+points = PackedVector3Array(-0.06891027, 0.16091442, 0.2708174, 0.06886728, 0.16091442, 0.2708174, -0.06416567, 0.1797471, 0.36385083, -0.16845466, 0.24522553, 0.41882515, -0.17347564, 0.2372914, 0.24795055, -0.16744125, 0.20834488, -0.7716588, 0.07577689, 0.16379164, -0.7312503, 0.17343263, 0.2372914, 0.24795055, 0.16841166, 0.24522553, 0.41882515, 0.06412269, 0.1797471, 0.36385083, 0.13317268, 0.16379164, -0.7312503, -0.1720016, 0.36868423, 0.53644824, -0.21484114, 0.32352066, 0.38953686, -0.2238697, 0.4189919, 0.47552228, -0.19236189, 0.2320601, -0.7639843, -0.182366, 0.24566148, -0.8202116, -0.17283075, 0.23920953, -0.82256097, 0.07577689, 0.17686988, -0.77980316, 0.21369262, 0.3163712, 0.24795055, 0.21479817, 0.32352066, 0.38953686, 0.16744433, 0.1947435, -0.7312503, 0.22382672, 0.4189919, 0.47552228, 0.17195861, 0.36868423, 0.53644824, 0.13317268, 0.17686988, -0.77980316, -0.17310713, 0.60540056, 0.6806972, -0.1822278, 0.50216955, 0.61742187, -0.23064111, 0.5158581, 0.5361351, -0.21373561, 0.3163712, 0.24795055, -0.22032277, 0.38402936, -0.14892966, -0.19987033, 0.2835884, -0.75944227, -0.18508378, 0.25935006, -0.81927186, -0.04698378, 0.6286798, -0.90149844, -0.16205177, 0.24461523, -0.82475364, 0.07577689, 0.21244273, -0.8153563, 0.21825297, 0.3312804, 0.023824453, 0.16744433, 0.22787505, -0.78873056, 0.2192203, 0.43494734, -0.3121298, 0.22027977, 0.38402936, -0.14892966, 0.23059814, 0.5158581, 0.5361351, 0.18218483, 0.50216955, 0.61742187, 0.17306413, 0.60540056, 0.6806972, 0.13317268, 0.21244273, -0.8153563, -4.452467e-05, 0.657452, 0.6983955, -0.096226245, 0.6511744, 0.69620275, -0.2238697, 0.8039284, 0.5118586, -0.23160847, 0.7126422, 0.56072474, -0.23529358, 0.6177813, 0.5807723, -0.2192633, 0.43494734, -0.3121298, -0.22161256, 0.7730637, -0.5682068, -0.19987033, 0.8115137, -0.7440933, -0.12146934, 0.836188, -0.838693, -4.452467e-05, 0.8428144, -0.86610186, -0.020450905, 0.69590205, -0.891318, 0.04694079, 0.6286798, -0.90149844, 0.07577689, 0.2610938, -0.82851255, 0.13317268, 0.2610938, -0.82851255, 0.16744433, 0.29431257, -0.78873056, 0.19982733, 0.8115137, -0.7440933, 0.22156958, 0.7730637, -0.5682068, 0.23529665, 0.6177813, 0.5807723, 0.096183255, 0.6511744, 0.69620275, 0.23156546, 0.7126422, 0.56072474, 0.22382672, 0.8039284, 0.5118586, -4.452467e-05, 0.75745696, 0.6341804, -0.203233, 0.8980046, 0.4586072, -0.07628052, 0.760247, 0.6246265, -0.09350847, 1.0441322, 0.42117453, -0.17771353, 0.9835363, 0.41177714, -0.09650263, 0.91413444, -0.6800349, -0.05826947, 0.9217198, -0.72623837, 0.12142636, 0.836188, -0.838693, 0.0204079, 0.69590205, -0.891318, -4.452467e-05, 0.92642796, -0.72999734, 0.05822648, 0.9217198, -0.72623837, 0.09645964, 0.91413444, -0.6800349, 0.17767055, 0.9835363, 0.41177714, 0.20319001, 0.8980046, 0.4586072, 0.076237515, 0.760247, 0.6246265, 0.09346546, 1.0441322, 0.42117453, -4.452467e-05, 0.9226789, 0.5196897, -0.06646888, 0.9381112, 0.5019914, -4.452467e-05, 1.0516305, 0.42258406, -0.04048875, 0.9397678, -0.677529, -0.071950495, 0.9393318, -0.6554452, 0.04044576, 0.9397678, -0.677529, 0.071907505, 0.9393318, -0.6554452, 0.066425875, 0.9381112, 0.5019914)
+
+[node name="SM_Veh_Moped_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_1gdbx")
+surface_material_override/0 = ExtResource("2_mr002")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_1gdbx")
+
+[node name="SM_Veh_Moped_FrontWheel_Cover_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000587286, 0.58679456, 0.5674579)
+gi_mode = 2
+mesh = ExtResource("3_mr002")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_mr002")
+
+[node name="SM_Veh_Moped_Wheel_Armour_01" type="MeshInstance3D" parent="SM_Veh_Moped_FrontWheel_Cover_01"]
+gi_mode = 2
+mesh = ExtResource("4_m1ybe")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_mr002")
+
+[node name="SM_Veh_Moped_FrontWheel_01" type="MeshInstance3D" parent="SM_Veh_Moped_FrontWheel_Cover_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000587286, -0.32565165, 0.19397193)
+gi_mode = 2
+mesh = ExtResource("5_u1eep")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_mr002")
+
+[node name="SM_Veh_Moped_Armour_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("6_oqwb1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_mr002")
+
+[node name="SM_Veh_Moped_Handles_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.91587365, 0.40146664, 0, -0.40146664, 0.91587365, 0, 1.0226563, 0.33243823)
+gi_mode = 2
+mesh = ExtResource("7_canpk")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_mr002")
+
+[node name="SM_Veh_Moped_RearWheel_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005571212, 0.26114288, -0.7311067)
+gi_mode = 2
+mesh = ExtResource("8_46pqw")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_mr002")

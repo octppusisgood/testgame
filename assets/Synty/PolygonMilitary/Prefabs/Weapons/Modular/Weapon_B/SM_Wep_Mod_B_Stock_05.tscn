@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ccopu2rcewolj"]
+
+[ext_resource type="ArrayMesh" uid="uid://ikqj4l5hhdoc" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_B_Stock_05.res" id="1_ekj2s"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_4cjhb"]
+[ext_resource type="ArrayMesh" uid="uid://cfxrdkeujq5mf" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_B_Stock_Fold_05.res" id="3_4cjhb"]
+
+[node name="SM_Wep_Mod_B_Stock_05" type="MeshInstance3D" unique_id=409812315]
+gi_mode = 2
+mesh = ExtResource("1_ekj2s")
+surface_material_override/0 = ExtResource("2_4cjhb")
+
+[node name="SM_Wep_Mod_B_Stock_Fold_05" type="MeshInstance3D" parent="." unique_id=1511433114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.960464e-09, -0.055707015, -0.33488974)
+gi_mode = 2
+mesh = ExtResource("3_4cjhb")
+surface_material_override/0 = ExtResource("2_4cjhb")

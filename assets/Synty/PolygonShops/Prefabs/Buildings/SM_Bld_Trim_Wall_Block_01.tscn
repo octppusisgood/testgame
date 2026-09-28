@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch0ypiec3lbtr"]
+
+[ext_resource type="ArrayMesh" uid="uid://cbkbog6j4y6uc" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Trim_Wall_Block_01.res" id="1_1wiy6"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_f3rps"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhd6o"]
+size = Vector3(2.4999914, 2.999998, 0.9)
+
+[node name="SM_Bld_Trim_Wall_Block_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_1wiy6")
+surface_material_override/0 = ExtResource("2_f3rps")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2499957, 1.499999, 0)
+shape = SubResource("BoxShape3D_xhd6o")

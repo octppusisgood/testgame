@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdx8u7icdbntn"]
+
+[ext_resource type="ArrayMesh" uid="uid://cobs2sbru3wmw" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Warehouse_Pallet_Stacked_01.res" id="1_st61x"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_3n6pr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xthp1"]
+points = PackedVector3Array(1.1346006, 0.11888529, -0.78956574, 1.1443906, 0.14908947, 0.6339055, 0.95975065, -0.01832366, 0.6541496, 0.92264056, -0.01832366, -0.7855169, -1.0706044, 0.7569676, -0.7855169, 0.53127694, 1.323258, -0.7887871, 1.106142, 0.23863956, -0.7696331, 0.5249022, 1.3165797, 0.62051326, 0.1758852, 0.26368323, 0.8013086, -1.117732, -0.00011008233, 0.7109888, -1.1008846, 0.011425182, -0.6486357, -1.1814795, 1.494921, 0.35889727, -1.0601317, 1.4988673, -0.7160641, 0.36894882, 1.5322589, -0.52670395, -0.42561722, 1.5017511, 0.6997767, -1.0799389, 1.2792419, 0.68716305)
+
+[node name="SM_Prop_Warehouse_Pallet_Stacked_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_st61x")
+surface_material_override/0 = ExtResource("2_3n6pr")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_xthp1")

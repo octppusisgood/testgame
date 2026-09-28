@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnbw68i3ytr3i"]
+
+[ext_resource type="ArrayMesh" uid="uid://swy36bw56dy0" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Armour_Wrist_Metal_L_01.res" id="1_pqr2q"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_niw5d"]
+
+[node name="SM_Chr_Attach_Armour_Wrist_Metal_L_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_pqr2q")
+surface_material_override/0 = ExtResource("2_niw5d")

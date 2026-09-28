@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm8tnik7ule2p"]
+
+[ext_resource type="ArrayMesh" uid="uid://cy815ufidb3sh" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_RubbishBin_03.res" id="1_oy55h"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_prlt2"]
+[ext_resource type="ArrayMesh" uid="uid://bgcv5pvahtrte" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_RubbishBin_03_Lid.res" id="2_r4ejv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_40omx"]
+points = PackedVector3Array(0.28161544, 1.0044123, 0.7249974, 0.23219663, 1.1125807, -0.25835332, -0.23575361, 1.1125807, -0.25835332, -0.2840543, 1.0027914, 0.7232151, -0.21629918, 0.008637039, 0.63895047, 0.2258609, 0.018146342, 0.63172215, 0.37903672, 0.9651864, 0.66964614, 0.37903672, 0.98280025, -0.073783204, 0.31143063, 0.06709764, -0.06061378, -0.24074768, 1.0537959, -0.28657353, -0.38244462, 0.9651864, -0.05605893, -0.38244462, 0.9651864, 0.66964614, -0.26474893, 0.014796474, 0.60033333, -0.29851472, 0.015120654, -0.010312498, 0.31143063, 0.016309317, -0.009817392, -0.29851472, 0.06601704, -0.06120789)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oy55h"]
+points = PackedVector3Array(0.3915359, -0.026425157, 0.91375357, 0.317184, 0.029708825, 0.8433159, 0.2846838, -0.026425157, 1.0022627, 0.3915359, -0.06968233, 0.91375357, 0.3915359, -0.026425157, 0.17138554, 0.2306445, 0.029708825, 0.9149857, 0.317184, 0.029708825, 0.24182324, 0.24099246, 0.066179186, 0.6382662, -0.28475988, -0.026425157, 1.0022627, 0.2846838, -0.06968233, 1.0022627, 0.3915359, -0.06968233, 0.17138554, 0.1889461, 0.015006408, -0.046704307, 0.1889461, 0.026280582, -0.033458736, -0.23072061, 0.029708825, 0.9149857, 0.17522553, 0.066179186, 0.6797485, 0.24099246, 0.066179186, 0.29069835, 0.1889461, 0.07268728, 0.19366685, 0.1889461, 0.07268728, 0.23535447, -0.28475988, -0.06968233, 1.0022627, -0.31726012, 0.029708825, 0.8433159, -0.39153537, -0.026425157, 0.91375357, 0.2846838, -0.06968233, 0.08297907, 0.1889461, -0.02277394, -0.046704307, -0.18902223, 0.015006408, -0.046704307, -0.18902223, 0.026280582, -0.033458736, -0.17530161, 0.066179186, 0.6797485, -0.24106856, 0.066179186, 0.6382662, -0.18902223, 0.07268728, 0.19366685, -0.18902223, 0.07268728, 0.23535447, -0.39153537, -0.06968233, 0.91375357, -0.31726012, 0.029708825, 0.24182324, -0.39153537, -0.026425157, 0.17138554, -0.28475988, -0.06968233, 0.08297907, 0.1889461, -0.03404812, -0.033458736, -0.18902223, -0.02277394, -0.046704307, -0.24106856, 0.066179186, 0.29069835, -0.39153537, -0.06968233, 0.17138554, -0.18902223, -0.03404812, -0.033458736)
+
+[node name="SM_Prop_RubbishBin_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_oy55h")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_40omx")
+
+[node name="SM_Prop_RubbishBin_03_Lid" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8033812e-08, 1.0809581, -0.23948953)
+gi_mode = 2
+mesh = ExtResource("2_r4ejv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_prlt2")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_RubbishBin_03_Lid"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_RubbishBin_03_Lid/MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_oy55h")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://0lfi67n5awjx"]
+
+[ext_resource type="ArrayMesh" uid="uid://dd7fqgs8tic6j" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Lighter_01.res" id="1_fvx4i"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_a5rl5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bd145"]
+points = PackedVector3Array(-0.022081088, -0.0009381175, 0.011477662, -0.018233528, 0.0047978414, -0.011654788, 0.017849077, 0.0033403435, -0.011972146, 0.019192737, -0.0009381175, 0.013357019, -0.02020423, -0.0009381175, 0.013357019, -0.022081088, 0.1153796, 0.011477662, -0.019986685, 0.11013731, -0.009986177, -0.018233528, 0.10999627, -0.011654788, 0.002173042, 0.11135973, -0.011972146, 0.021496154, 0.0029289532, -0.008553105, 0.021496154, 0.097689815, -0.008553105, 0.021167703, 0.0037987502, 0.008859456, 0.021167703, 0.097090356, 0.008859456, 0.017213505, 0.09599724, 0.011971056, -0.02020423, 0.1153796, 0.013357019, 0.0079315845, 0.119140886, 0.0077214297)
+
+[node name="SM_Prop_Lighter_01" type="MeshInstance3D" unique_id=1791933828]
+gi_mode = 2
+mesh = ExtResource("1_fvx4i")
+surface_material_override/0 = ExtResource("2_a5rl5")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=759778272]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=236061733]
+shape = SubResource("ConvexPolygonShape3D_bd145")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dl7utf45gnsmp"]
+
+[ext_resource type="ArrayMesh" uid="uid://d2itxewu0rocl" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Chair_02.res" id="1_d71jk"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_jw3cx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vrfj1"]
+points = PackedVector3Array(0.19755313, 0.4385069, 0.31102455, -0.202436, 0.4385069, 0.31102455, 0.24369192, -0.0076933503, 0.29554152, 0.21291566, 0.50000525, 0.29554152, -0.24862601, -0.0076933503, 0.29554152, -0.21779853, 0.50000525, 0.29554152, 0.19755313, -0.0076933503, -0.30444074, 0.25910568, 0.31551024, 0.033956736, 0.24369192, 0.50000525, 0.2493937, 0.24369192, 0.9770511, -0.22744733, -0.23326348, 0.50000525, 0.26481646, -0.26403975, 0.31551024, 0.033956736, -0.2024872, -0.0076933503, -0.30444074, -0.24862601, 0.9615319, -0.2120848, -0.22578704, 0.96114635, -0.2796197, 0.23176038, 0.95314574, -0.27486032)
+
+[node name="SM_Prop_Chair_02" type="MeshInstance3D" unique_id=1626093279]
+gi_mode = 2
+mesh = ExtResource("1_d71jk")
+surface_material_override/0 = ExtResource("2_jw3cx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=472440826]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1601504431]
+shape = SubResource("ConvexPolygonShape3D_vrfj1")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://o400wljbpahx"]
+
+[ext_resource type="ArrayMesh" uid="uid://y4aap2juatca" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Crosshair_Sniper_Block_01.res" id="1_7ph7m"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_yysay"]
+
+[node name="SM_Wep_Crosshair_Sniper_Block_01" type="MeshInstance3D" unique_id=67945918]
+gi_mode = 2
+mesh = ExtResource("1_7ph7m")
+surface_material_override/0 = ExtResource("2_yysay")

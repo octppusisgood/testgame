@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dgxhv6t4ham0h"]
+
+[ext_resource type="ArrayMesh" uid="uid://0y8ewxhvrrqe" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Walkway_Rail_01.res" id="1_wmodk"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_vxdkl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ipvv"]
+points = PackedVector3Array(3.078196, 1.2116702, 0.09449218, 3.078196, 1.100251, 0.09449218, 3.078196, 1.100251, -0.083786964, 2.9221406, 1.2116702, -0.083786964, 2.9221406, 1.2116702, 0.09449218, -0.018784378, 1.1224425, 0.07220729, -0.041383386, 0.030904591, 0.04992239, 1.5405471, 0.030904591, 0.04992239, 2.9887161, 0.6990728, 0.027637497, 2.9887161, 0.6990728, -0.039217178, 1.5405471, 0.030904591, -0.039217178, -0.041383386, 0.030904591, -0.039217178, -0.018784378, 1.1224425, -0.06150207, -0.018784378, 1.1893632, -0.06150207, -0.018784378, 1.1893632, 0.07220729, -0.041383386, 1.0778286, 0.04992239)
+
+[node name="SM_Bld_Walkway_Rail_01" type="MeshInstance3D" unique_id=153564272]
+gi_mode = 2
+mesh = ExtResource("1_wmodk")
+surface_material_override/0 = ExtResource("2_vxdkl")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=216329316]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1161620354]
+shape = SubResource("ConvexPolygonShape3D_3ipvv")

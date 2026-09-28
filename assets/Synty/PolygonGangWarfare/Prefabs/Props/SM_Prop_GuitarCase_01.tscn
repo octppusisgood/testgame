@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://svg61phiq3j7"]
+
+[ext_resource type="ArrayMesh" uid="uid://ogn24alaxdkk" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_GuitarCase_01.res" id="1_j2p5b"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_50pyk"]
+[ext_resource type="ArrayMesh" uid="uid://cjsemncl64mqw" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_GuitarCase_01_Lid.res" id="3_50pyk"]
+[ext_resource type="ArrayMesh" uid="uid://bw4gj03nl4dfm" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_GuitarCase_Lid_WeaponPacked_01.res" id="4_775g4"]
+[ext_resource type="ArrayMesh" uid="uid://cwvx0t7xidbhv" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_GuitarCase_WeaponPacked_01.res" id="5_6kd2p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hyau2"]
+points = PackedVector3Array(0.15156686, -0.010822408, -0.21863683, 0.13940933, -0.010822408, -0.3278857, 0.13940933, 0.062044322, -0.3278857, 0.10296646, 0.062044322, 0.03637865, 0.005765632, -0.010822408, 0.3763739, 0.030080706, -0.010822408, -0.38859642, -0.0063027292, 0.062044322, -0.38859642, 0.005765632, 0.062044322, 0.36427742, -0.06706067, 0.062044322, 0.38862252, -0.115661085, -0.010822408, 0.36427742, -0.067030944, -0.010822408, -0.38859642, -0.12781861, 0.062044322, -0.35215476, -0.115661085, 0.062044322, 0.36427742, -0.15210396, -0.010822408, 0.024206072, -0.15210396, -0.010822408, -0.3036166, -0.15210396, 0.062044322, 0.012033492)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j2p5b"]
+points = PackedVector3Array(0.014242828, -0.006069055, -0.1170214, 0.29361668, 0.042516664, 0.016611934, 0.29361668, -0.006069055, 0.016611934, 0.038529746, 0.042516664, 0.62397385, 0.147806, -0.006069055, 0.6117977, -0.010073811, 0.042516664, -0.06839286, 0.026371427, -0.006069055, 0.6117977, 0.2207262, 0.042516664, -0.1412976, 0.147806, 0.042516664, 0.6117977, 0.2449834, -0.006069055, -0.12912144, -0.010073811, -0.006069055, 0.2715502, -0.010073811, 0.042516664, 0.2715502, 0.074974984, 0.042516664, -0.15347375, 0.2449834, 0.042516664, 0.2715502, 0.28145838, 0.042516664, -0.092669085, 0.17209291, -0.006069055, -0.15347375, -0.010073811, -0.006069055, -0.06839286, 0.29361668, -0.006069055, -0.056292817, 0.026371427, 0.042516664, 0.6117977, 0.074974984, -0.006069055, -0.15347375, 0.12360827, -0.006069055, 0.62397385, 0.026371427, 0.042516664, -0.12912144, 0.17209291, 0.042516664, -0.15347375, 0.12360827, 0.042516664, 0.62397385, 0.038529746, -0.006069055, 0.62397385, 0.29361668, 0.042516664, -0.056292817, 0.28145838, -0.006069055, -0.092669085, 0.2449834, 0.042516664, -0.12912144, 0.2207262, -0.006069055, -0.1412976, 0.014242828, 0.042516664, -0.1170214, 0.026371427, -0.006069055, -0.12912144)
+
+[node name="SM_Prop_GuitarCase_01" type="MeshInstance3D" unique_id=699646137]
+gi_mode = 2
+mesh = ExtResource("1_j2p5b")
+surface_material_override/0 = ExtResource("2_50pyk")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=218696197]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=554649167]
+shape = SubResource("ConvexPolygonShape3D_hyau2")
+
+[node name="SM_Prop_GuitarCase_01_Lid" type="MeshInstance3D" parent="." unique_id=1923137084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14144516, 0.050380707, -0.23523237)
+gi_mode = 2
+mesh = ExtResource("3_50pyk")
+surface_material_override/0 = ExtResource("2_50pyk")
+
+[node name="SM_Prop_GuitarCase_Lid_WeaponPacked_01" type="MeshInstance3D" parent="SM_Prop_GuitarCase_01_Lid" unique_id=1791494655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14465778, 0.02145508, 0.21585369)
+gi_mode = 2
+mesh = ExtResource("4_775g4")
+surface_material_override/0 = ExtResource("2_50pyk")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_GuitarCase_01_Lid" unique_id=825632890]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_GuitarCase_01_Lid/MeshCollider" unique_id=2017201852]
+shape = SubResource("ConvexPolygonShape3D_j2p5b")
+
+[node name="SM_Prop_GuitarCase_WeaponPacked_01" type="MeshInstance3D" parent="." unique_id=1271559929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011485793, 0.010677185, -0.053809796)
+gi_mode = 2
+mesh = ExtResource("5_6kd2p")
+surface_material_override/0 = ExtResource("2_50pyk")

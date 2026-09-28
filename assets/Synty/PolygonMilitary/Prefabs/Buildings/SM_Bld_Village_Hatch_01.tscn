@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b37i71g50k14b"]
+
+[ext_resource type="ArrayMesh" uid="uid://dd80llgcsgaxd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Hatch_01.res" id="1_gjv30"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_whwo3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ldc3b"]
+size = Vector3(1.6188207, 0.52568483, 1.7086669)
+
+[node name="SM_Bld_Village_Hatch_01" type="MeshInstance3D" unique_id=1527328571]
+gi_mode = 2
+mesh = ExtResource("1_gjv30")
+surface_material_override/0 = ExtResource("2_whwo3")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=2031600133]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=1951358964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2218952e-06, -0.070366815, 0)
+shape = SubResource("BoxShape3D_ldc3b")

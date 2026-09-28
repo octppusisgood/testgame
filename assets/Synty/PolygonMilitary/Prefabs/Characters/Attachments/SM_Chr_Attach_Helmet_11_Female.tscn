@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dlfwl3c5ftory"]
+
+[ext_resource type="ArrayMesh" uid="uid://bdigyx1td0kd3" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Helmet_11_Female.res" id="1_mivow"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_diwh5"]
+
+[node name="SM_Chr_Attach_Helmet_11_Female" type="MeshInstance3D" unique_id=428581765]
+gi_mode = 2
+mesh = ExtResource("1_mivow")
+surface_material_override/0 = ExtResource("2_diwh5")

@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://cbxjrigwmi2ov"]
+
+[ext_resource type="ArrayMesh" uid="uid://b2t7txdkrtspq" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01.res" id="1_iy7ag"]
+[ext_resource type="Material" uid="uid://dqd7w5a4qfl3l" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_08_mat.tres" id="2_v6v6y"]
+[ext_resource type="ArrayMesh" uid="uid://c4bssoc6y5mhs" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Glass.res" id="3_v6v6y"]
+[ext_resource type="Material" uid="uid://bsdrxux17jhqg" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_Alt_mat.tres" id="4_fumd3"]
+[ext_resource type="ArrayMesh" uid="uid://d3anm6r7uuju2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Gun_Base.res" id="5_jvh62"]
+[ext_resource type="Material" uid="uid://bsqlc02sx7mat" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_04_mat.tres" id="6_ffhc7"]
+[ext_resource type="ArrayMesh" uid="uid://ckn5iybxfy2ho" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Gun.res" id="7_fumd3"]
+[ext_resource type="ArrayMesh" uid="uid://0osn7lru5ia5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Gun_Mag.res" id="8_5cdub"]
+[ext_resource type="ArrayMesh" uid="uid://cd883tp61dtdr" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Gun_Belt.res" id="9_ffhc7"]
+[ext_resource type="ArrayMesh" uid="uid://ivqv2mohf0d6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Gun_Handle.res" id="10_clkww"]
+[ext_resource type="ArrayMesh" uid="uid://cnkcbsc6hjx12" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_SteeringW.res" id="11_felej"]
+[ext_resource type="ArrayMesh" uid="uid://bnmflpbaf41a4" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Wheel_fl.res" id="12_gic4v"]
+[ext_resource type="ArrayMesh" uid="uid://xxrjgxwp32ge" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Wheel_fr.res" id="13_q26ay"]
+[ext_resource type="ArrayMesh" uid="uid://beotgwp26qty" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Wheel_rl.res" id="14_aq75f"]
+[ext_resource type="ArrayMesh" uid="uid://cqiglfdaqbtt0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Pickup_Technical_01_Wheel_rr.res" id="15_4nfio"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ponq"]
+points = PackedVector3Array(1.2247064, 1.6761148, 0.75328636, 0.9452026, 1.3966638, 2.3359995, 0.95044184, 0.6152432, 2.3748293, 1.1317663, 0.65253, -2.224555, 0.9452026, 1.3966638, -3.1559167, 0.76866186, 1.9649879, 0.32561493, -0.90334964, 1.2938241, 2.1598997, -0.9418469, 0.6022128, 2.4311595, -1.0092741, 2.2348166, 0.6603143, -0.26438612, 0.18684506, 1.7765265, 1.0383706, 0.28006226, -2.318074, -1.102442, 0.65253, -3.0629447, -1.0090463, 1.3966638, -3.0629447, -0.078278065, 2.1415992, -1.4802314, -1.0905967, 1.3804259, 1.3521361, -1.0090463, 0.28006226, -2.318074)
+
+[node name="SM_Veh_Pickup_Technical_01" type="MeshInstance3D" unique_id=1156399496]
+gi_mode = 2
+mesh = ExtResource("1_iy7ag")
+surface_material_override/0 = ExtResource("2_v6v6y")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1921972895]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=399997982]
+shape = SubResource("ConvexPolygonShape3D_3ponq")
+
+[node name="SM_Veh_Pickup_Technical_01_Glass" type="MeshInstance3D" parent="." unique_id=829422411]
+gi_mode = 2
+mesh = ExtResource("3_v6v6y")
+surface_material_override/0 = ExtResource("4_fumd3")
+
+[node name="SM_Veh_Pickup_Technical_01_Gun_Base" type="MeshInstance3D" parent="." unique_id=97639464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03394408, 1.9703568, -1.3530357)
+gi_mode = 2
+mesh = ExtResource("5_jvh62")
+surface_material_override/0 = ExtResource("6_ffhc7")
+
+[node name="SM_Veh_Pickup_Technical_01_Gun" type="MeshInstance3D" parent="SM_Veh_Pickup_Technical_01_Gun_Base" unique_id=1552868157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2019633, -0.08528042)
+gi_mode = 2
+mesh = ExtResource("7_fumd3")
+surface_material_override/0 = ExtResource("6_ffhc7")
+
+[node name="SM_Veh_Pickup_Technical_01_Gun_Mag" type="MeshInstance3D" parent="SM_Veh_Pickup_Technical_01_Gun_Base/SM_Veh_Pickup_Technical_01_Gun" unique_id=1567521171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21856296, -0.028687477, 0.14578283)
+gi_mode = 2
+mesh = ExtResource("8_5cdub")
+surface_material_override/0 = ExtResource("6_ffhc7")
+
+[node name="SM_Veh_Pickup_Technical_01_Gun_Belt" type="MeshInstance3D" parent="SM_Veh_Pickup_Technical_01_Gun_Base/SM_Veh_Pickup_Technical_01_Gun/SM_Veh_Pickup_Technical_01_Gun_Mag" unique_id=188248883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16554873, 0.080311775, -0.0010080338)
+gi_mode = 2
+mesh = ExtResource("9_ffhc7")
+surface_material_override/0 = ExtResource("6_ffhc7")
+
+[node name="SM_Veh_Pickup_Technical_01_Gun_Handle" type="MeshInstance3D" parent="SM_Veh_Pickup_Technical_01_Gun_Base/SM_Veh_Pickup_Technical_01_Gun" unique_id=1489125906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0892969, 0.09637165, -0.13229704)
+gi_mode = 2
+mesh = ExtResource("10_clkww")
+surface_material_override/0 = ExtResource("6_ffhc7")
+
+[node name="SM_Veh_Pickup_Technical_01_SteeringW" type="MeshInstance3D" parent="." unique_id=907603545]
+transform = Transform3D(1, 0, 0, 0, 0.9060948, -0.42307478, 0, 0.42307478, 0.9060948, 0.4473868, 1.336505, 0.62557507)
+gi_mode = 2
+mesh = ExtResource("11_felej")
+surface_material_override/0 = ExtResource("6_ffhc7")
+
+[node name="SM_Veh_Pickup_Technical_01_Wheel_fl" type="MeshInstance3D" parent="." unique_id=1949048737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7838671, 0.43986803, 1.6946212)
+gi_mode = 2
+mesh = ExtResource("12_gic4v")
+surface_material_override/0 = ExtResource("6_ffhc7")
+
+[node name="SM_Veh_Pickup_Technical_01_Wheel_fr" type="MeshInstance3D" parent="." unique_id=1055605716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7838671, 0.43986803, 1.6946212)
+gi_mode = 2
+mesh = ExtResource("13_q26ay")
+surface_material_override/0 = ExtResource("6_ffhc7")
+
+[node name="SM_Veh_Pickup_Technical_01_Wheel_rl" type="MeshInstance3D" parent="." unique_id=1965664430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9072642, 0.43986818, -1.7070369)
+gi_mode = 2
+mesh = ExtResource("14_aq75f")
+surface_material_override/0 = ExtResource("6_ffhc7")
+
+[node name="SM_Veh_Pickup_Technical_01_Wheel_rr" type="MeshInstance3D" parent="." unique_id=1269319752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9072642, 0.43986818, -1.7070369)
+gi_mode = 2
+mesh = ExtResource("15_4nfio")
+surface_material_override/0 = ExtResource("6_ffhc7")

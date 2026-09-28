@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cm4y2hmapo8mw"]
+
+[ext_resource type="ArrayMesh" uid="uid://bossmxvak40ck" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Rifle_01.res" id="1_i1jnk"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_fm3gr"]
+[ext_resource type="ArrayMesh" uid="uid://duvvpblq4n2jk" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Rifle_01_Mag.res" id="3_fm3gr"]
+[ext_resource type="ArrayMesh" uid="uid://cwx3eoyas20vd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Rifle_01_Sight.res" id="4_vwwf7"]
+[ext_resource type="ArrayMesh" uid="uid://cwxofcfbd8553" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Rifle_01_Sight_Glass_01.res" id="5_2xfqe"]
+[ext_resource type="Material" uid="uid://dufyylglufax8" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_Glass_mat.tres" id="6_g7iqv"]
+[ext_resource type="ArrayMesh" uid="uid://cxfypa2upvac8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Rifle_01_Sight_Glass_02.res" id="7_hvcki"]
+[ext_resource type="ArrayMesh" uid="uid://y13o5e115ebk" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Rifle_01_Slide.res" id="8_g7iqv"]
+[ext_resource type="ArrayMesh" uid="uid://coqj1a3he3r2t" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Preset_B_Rifle_01_Trigger.res" id="9_0pbc7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wsowg"]
+points = PackedVector3Array(0.011261888, -0.10369835, -0.039069295, 0.020389602, -0.0945313, -0.011721402, 0.020389602, 0.08797882, 0.75492793, -0.016106948, 0.08797882, 0.7733112, -0.016106948, -0.0945313, -0.011721402, -0.025234658, -0.08541785, -0.36758468, 0.020382453, -0.08541785, -0.36758468, 0.04778703, 0.06967152, 0.13432324, 0.011261888, 0.17013386, 0.7457363, -0.016106948, 0.17013386, 0.7457363, -0.025234658, 0.06972513, 0.48099494, -0.025234658, 0.051391028, -0.37677628, 0.020382453, 0.051391028, -0.3859679, 0.038645018, 0.13354605, 0.14351487, 0.020389602, 0.1609936, 0.33517724, -0.025234658, 0.1609936, 0.24382836)
+
+[node name="SM_Wep_Preset_B_Rifle_01" type="MeshInstance3D" unique_id=774475688]
+gi_mode = 2
+mesh = ExtResource("1_i1jnk")
+surface_material_override/0 = ExtResource("2_fm3gr")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1176010495]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1678951559]
+shape = SubResource("ConvexPolygonShape3D_wsowg")
+
+[node name="SM_Wep_Preset_B_Rifle_01_Mag" type="MeshInstance3D" parent="." unique_id=289159107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4168482e-08, 0.0043094414, 0.17819242)
+gi_mode = 2
+mesh = ExtResource("3_fm3gr")
+surface_material_override/0 = ExtResource("2_fm3gr")
+
+[node name="SM_Wep_Preset_B_Rifle_01_Sight" type="MeshInstance3D" parent="." unique_id=112991712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7742e-10, 0.15543212, 0.08285629)
+gi_mode = 2
+mesh = ExtResource("4_vwwf7")
+surface_material_override/0 = ExtResource("2_fm3gr")
+
+[node name="SM_Wep_Preset_B_Rifle_01_Sight_Glass_01" type="MeshInstance3D" parent="SM_Wep_Preset_B_Rifle_01_Sight" unique_id=1346324158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8775463e-08, 0.05065781, -0.025246527)
+gi_mode = 2
+mesh = ExtResource("5_2xfqe")
+surface_material_override/0 = ExtResource("6_g7iqv")
+
+[node name="SM_Wep_Preset_B_Rifle_01_Sight_Glass_02" type="MeshInstance3D" parent="SM_Wep_Preset_B_Rifle_01_Sight" unique_id=1859078060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9157305e-08, 0.107787415, -0.07859001)
+gi_mode = 2
+mesh = ExtResource("7_hvcki")
+surface_material_override/0 = ExtResource("6_g7iqv")
+
+[node name="SM_Wep_Preset_B_Rifle_01_Slide" type="MeshInstance3D" parent="." unique_id=688974087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020771123, 0.11821374, 0.19275804)
+gi_mode = 2
+mesh = ExtResource("8_g7iqv")
+surface_material_override/0 = ExtResource("2_fm3gr")
+
+[node name="SM_Wep_Preset_B_Rifle_01_Trigger" type="MeshInstance3D" parent="." unique_id=1894431206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0584256e-08, 0.039635357, 0.05563442)
+gi_mode = 2
+mesh = ExtResource("9_0pbc7")
+surface_material_override/0 = ExtResource("2_fm3gr")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dkwipi4ds02cu"]
+
+[ext_resource type="ArrayMesh" uid="uid://7pgse1fhrq6f" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Toilet_Ground_01.res" id="1_pqwew"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_4vemi"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kdhyn"]
+points = PackedVector3Array(0.8835412, -0.01380533, -0.8835412, 0.8835412, 0.09661029, -0.8835412, 0.8835412, -0.01380533, 0.8835412, -0.8835412, -0.01380533, -0.88336825, -0.8835412, 0.096626505, -0.88336825, -0.027329564, 0.15185864, -0.5798023, 0.22088528, 0.15185864, -0.4969487, 0.303393, 0.15185864, -0.22088528, 0.8835412, 0.09661029, 0.8835412, -0.8835412, -0.01380533, 0.88336825, -0.8835412, 0.096626505, 0.88336825, -0.30339295, 0.15185864, -0.3312415, -0.2207123, 0.15185864, -0.4969487, 0.22088528, 0.15185864, 0.16518831, 0.05535108, 0.15185864, 0.30322003, -0.1930368, 0.15185864, 0.22036648)
+
+[node name="SM_Prop_Toilet_Ground_01" type="MeshInstance3D" unique_id=1272572565]
+gi_mode = 2
+mesh = ExtResource("1_pqwew")
+surface_material_override/0 = ExtResource("2_4vemi")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1396245258]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1192564236]
+shape = SubResource("ConvexPolygonShape3D_kdhyn")

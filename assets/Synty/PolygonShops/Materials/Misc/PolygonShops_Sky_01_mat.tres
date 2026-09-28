@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b62geru7oy3bm"]
+
+[ext_resource type="Texture2D" uid="uid://s0ekocn6obg1" path="res://Assets/Synty/PolygonShops/Textures/SimpleSky.png" id="1_51pyg"]
+
+[resource]
+resource_name = "PolygonShops_Sky_01_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_51pyg")
+uv1_scale = Vector3(1, 1, 0)

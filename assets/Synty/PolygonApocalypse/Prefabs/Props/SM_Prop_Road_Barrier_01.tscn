@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://detn4rqds5eb7"]
+
+[ext_resource type="ArrayMesh" uid="uid://bdefqu2vu5a5f" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Road_Barrier_01.res" id="1_x0kva"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_7tfkb"]
+[ext_resource type="ArrayMesh" uid="uid://b2vcjqoj32f6o" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Road_Barrier_Arm_01.res" id="3_7tfkb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4ckei"]
+points = PackedVector3Array(8.024175, 0.111356966, 0.2035674, 7.610931, 0.111356966, 0.2035674, 7.6205583, 0.012366707, 0.1938969, 8.008237, 0.030501444, 0.18762521, 8.024175, 0.111356966, -0.2097963, 7.9605055, 1.1923952, 0.13996054, 7.9605055, 1.1286348, 0.17176397, 7.6744385, 1.1286348, 0.17176397, 7.6744385, 1.1923952, 0.13996054, 7.610931, 0.111356966, -0.2097963, 7.6267877, 0.030501444, -0.19393504, 8.008237, 0.030501444, -0.19389458, 7.9605055, 1.1286348, -0.17803332, 7.9605055, 1.1923952, -0.14614896, 7.6744385, 1.1923952, -0.14614896, 7.6744385, 1.1286348, -0.17803332)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7tfkb"]
+points = PackedVector3Array(-0.21445468, 0.09522472, -0.21294893, -0.21445468, 0.09522472, 0.20617823, -0.13822737, 1.2002277, -0.13668059, -0.13822737, 1.1618805, -0.17479426, 0.20467249, 0.09522472, -0.21294893, -0.19541836, 0.03625571, -0.19391263, -0.19541836, 0.03625571, 0.18710087, 0.19236451, 0.016676607, 0.19387026, 0.20467249, 0.09522472, 0.20617823, -0.13822737, 1.1618805, 0.16802354, -0.13822737, 1.2002277, 0.12990989, 0.12844515, 1.1618805, -0.17479426, 0.18559512, 0.03625571, -0.19391263, 0.12844515, 1.1618805, 0.16802354)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x0kva"]
+points = PackedVector3Array(-1.2256036, -0.013937704, -0.11296987, -0.21157372, -0.027847365, -0.11296987, -0.53224987, -0.023450337, -0.11296987, -1.2256036, -0.10473546, -0.06150539, -1.2256036, -0.013937704, 0.1129696, -1.1851579, 0.066491954, -0.038416035, 13.531275, 0.066491954, -0.038416035, 13.531275, -1.0937452e-05, -0.07680982, -0.21157372, -0.10827703, -0.06150539, 13.531275, -0.06651383, -0.038416035, -1.2256036, -0.10473546, 0.061483003, -0.52791643, -0.10718205, 0.061483003, -1.1851579, 0.066491954, 0.038393654, -0.21157372, -0.027847365, 0.1129696, -0.51058257, -0.023741193, 0.1129696, 13.531275, -1.0937452e-05, 0.076787435, 13.531275, 0.066491954, 0.038393654, -0.21157372, -0.10827703, 0.061483003, 13.531275, -0.06651383, 0.038393654)
+
+[node name="SM_Prop_Road_Barrier_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_x0kva")
+surface_material_override/0 = ExtResource("2_7tfkb")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_4ckei")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014448643, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_7tfkb")
+
+[node name="SM_Prop_Road_Barrier_Arm_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120911054, 1.1667343, 2.6245456e-07)
+gi_mode = 2
+mesh = ExtResource("3_7tfkb")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_7tfkb")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Road_Barrier_Arm_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Road_Barrier_Arm_01/MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_x0kva")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cqcriofbhc4sy"]
+
+[ext_resource type="ArrayMesh" uid="uid://c8s3gtplwf2sn" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Helmet_01_Goggles_01.res" id="1_iyva4"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_nxlh3"]
+[ext_resource type="ArrayMesh" uid="uid://8hhjwajkm554" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Helmet_01_Goggles_01_Glass.res" id="3_nxlh3"]
+[ext_resource type="Material" uid="uid://cfqslifgwex8v" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_mat.tres" id="4_nxlh3"]
+
+[node name="SM_Chr_Attach_Helmet_01_Goggles_01" type="MeshInstance3D" unique_id=12591474]
+gi_mode = 2
+mesh = ExtResource("1_iyva4")
+surface_material_override/0 = ExtResource("2_nxlh3")
+
+[node name="SM_Chr_Attach_Helmet_01_Goggles_01_Glass" type="MeshInstance3D" parent="." unique_id=1259029157]
+gi_mode = 2
+mesh = ExtResource("3_nxlh3")
+surface_material_override/0 = ExtResource("4_nxlh3")

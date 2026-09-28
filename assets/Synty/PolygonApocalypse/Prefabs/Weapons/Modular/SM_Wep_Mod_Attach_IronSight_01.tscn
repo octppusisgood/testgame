@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwe7vhhikf5ck"]
+
+[ext_resource type="ArrayMesh" uid="uid://d3ho13js6ton8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Attach_IronSight_01.res" id="1_gxsqy"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_0nylr"]
+
+[node name="SM_Wep_Mod_Attach_IronSight_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_gxsqy")
+surface_material_override/0 = ExtResource("2_0nylr")

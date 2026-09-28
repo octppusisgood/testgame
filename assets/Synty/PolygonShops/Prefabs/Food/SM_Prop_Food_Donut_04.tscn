@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c48c8abqrjplx"]
+
+[ext_resource type="ArrayMesh" uid="uid://dumbwdcmy73cg" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Donut_04.res" id="1_m8j61"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_70wug"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a3x2b"]
+points = PackedVector3Array(0.099957764, 0.056846727, 6.22794e-05, 0.05141516, 0.069155835, 0.05196312, 0.079672515, 0.033402804, 0.0702149, 0.087299764, 0.00092102203, -0.009667829, 0.069671884, 0.06013894, -0.06677751, -0.056644358, 0.07190983, 0.042128846, -0.0038215742, 0.03672997, 0.10626005, -0.00051507354, 0.0034373642, 0.096634105, 0.058758423, 0.0005016317, -0.0690694, -0.06544815, 0.0009769407, 0.061755747, 0.006158769, 0.026741488, -0.10659386, 0.0060776323, 0.033430766, -0.105385415, -0.07376511, 0.05672091, -0.069861144, -0.07654418, 0.033423774, 0.07606962, -0.107276335, 0.023400344, -0.0032505393, -0.062202513, 0.0009699509, -0.06813181)
+
+[node name="SM_Prop_Food_Donut_04" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_m8j61")
+surface_material_override/0 = ExtResource("2_70wug")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_a3x2b")

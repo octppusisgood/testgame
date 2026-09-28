@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvyvh0novhkmm"]
+
+[ext_resource type="ArrayMesh" uid="uid://5nsu737iiyta" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Booth_Wall_02.res" id="1_l1dqk"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_8j4mi"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ijcdr"]
+points = PackedVector3Array(1.0096557, 1.7826736, 0.5287834, 1.0096557, 0.11044651, 0.5287834, 1.0096557, 1.7826736, 0.24487324, -1.0096405, 1.7826736, 0.5287834, -1.0096405, 0.11044651, 0.5287834, -0.92128634, 0.008165851, 0.46353072, 0.94936943, 0.010278361, 0.4633362, 0.97783244, -0.015775919, 0.27641574, 1.0096557, 0.11044651, 0.24487324, -1.0096405, 1.7826736, 0.24487324, -0.9463892, -0.015775919, 0.27641574, -1.0096405, 0.11044651, 0.24487324)
+
+[node name="SM_Prop_Cafe_Booth_Wall_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_l1dqk")
+surface_material_override/0 = ExtResource("2_8j4mi")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ijcdr")

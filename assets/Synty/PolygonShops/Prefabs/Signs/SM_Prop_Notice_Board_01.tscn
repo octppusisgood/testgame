@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3equk0f58eod"]
+
+[ext_resource type="ArrayMesh" uid="uid://yrei8q1a1x3b" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Notice_Board_01.res" id="1_j688b"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_38uwj"]
+[ext_resource type="ArrayMesh" uid="uid://bggjekv8xhg14" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Notice_Board_01_Notices.res" id="3_38uwj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tsrbt"]
+size = Vector3(1.4999987, 1.0000008, 0.049999997)
+
+[node name="SM_Prop_Notice_Board_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_j688b")
+surface_material_override/0 = ExtResource("2_38uwj")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+shape = SubResource("BoxShape3D_tsrbt")
+
+[node name="SM_Prop_Notice_Board_01_Notices" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_38uwj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_38uwj")

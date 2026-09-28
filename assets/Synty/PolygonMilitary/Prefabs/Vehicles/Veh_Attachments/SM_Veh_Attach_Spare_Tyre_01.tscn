@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bo5adswkkkk7m"]
+
+[ext_resource type="ArrayMesh" uid="uid://dk778autrt55u" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Attach_Spare_Tyre_01.res" id="1_o6lma"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_260ge"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o3fg6"]
+points = PackedVector3Array(0.3920739, 0.07320478, 0.14432612, 0.33853415, 0.31103683, 0.17053619, 0.25814548, 0.244582, 0.32731256, 0.29818186, 0.007732488, 0.2359403, 0.36182943, 0.008655472, -0.11890331, 0.36561987, 0.2451477, -0.19946894, -0.13605896, 0.31032225, 0.35368386, 0.12705985, 0.31070933, -0.35680982, -0.25608915, 0.31139413, -0.2790668, 0.07502046, 0.07281772, 0.41070077, -0.27898964, 0.008953208, 0.26005355, -0.29541484, 0.007226336, -0.23898561, 0.06175396, 0.07278795, -0.41310093, -0.37327653, 0.31059024, 0.064647615, -0.41465536, 0.23189841, 0.038437575, -0.12374008, 0.24520725, -0.39810073)
+
+[node name="SM_Veh_Attach_Spare_Tyre_01" type="MeshInstance3D" unique_id=1533768261]
+gi_mode = 2
+mesh = ExtResource("1_o6lma")
+surface_material_override/0 = ExtResource("2_260ge")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1153384901]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1088918168]
+shape = SubResource("ConvexPolygonShape3D_o3fg6")

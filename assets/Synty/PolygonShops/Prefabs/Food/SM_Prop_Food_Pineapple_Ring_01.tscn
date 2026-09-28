@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnkfgsmclnvi4"]
+
+[ext_resource type="ArrayMesh" uid="uid://doynuvjhfjano" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Pineapple_Ring_01.res" id="1_lpwjm"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_v853t"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yfii7"]
+points = PackedVector3Array(0.005391367, 0.024264243, -0.086329624, 0.062042966, 0.024264243, -0.06206002, 0.018844426, -3.469447e-18, -0.08081995, 0.0053744614, -3.469447e-18, -0.08622822, -0.06205987, 0.024264243, -0.06206002, 0.086329475, 0.024264243, -0.005391516, 0.061958462, -3.469447e-18, -0.061975516, -0.061975367, -3.469447e-18, -0.061975516, -0.086329475, 0.024264243, -0.005391516, 0.06733292, -3.469447e-18, 0.05117558, 0.062042966, 0.024264243, 0.062042817, -0.08622807, -3.469447e-18, 0.0053743124, -0.06205987, 0.024264243, 0.062042817, 0.0053744614, -3.469447e-18, 0.08621101, -0.005391367, 0.024264243, 0.086329326, -0.061975367, -3.469447e-18, 0.061958313)
+
+[node name="SM_Prop_Food_Pineapple_Ring_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_lpwjm")
+surface_material_override/0 = ExtResource("2_v853t")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_yfii7")

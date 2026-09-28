@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://culyiple0e67s"]
+
+[ext_resource type="ArrayMesh" uid="uid://cje0fme4b1xm6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Generic_TreeDead_01.res" id="1_yau1f"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_elv7e"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4ei2v"]
+points = PackedVector3Array(0.96979296, 3.310039, 0.16451311, 0.9266124, 3.310039, 0.16451311, 1.0129735, 3.2232141, 0.16451311, 1.4892819, 3.526187, -0.74443156, 1.2728281, 3.9592955, -0.8310045, 0.84014106, 3.6130118, -1.2637255, 0.36394286, 2.2282844, -0.22513747, 0.36394286, 1.8820007, -0.13856447, 1.1861365, 2.5743644, -0.18192303, 1.2362568, 2.997713, -0.14562285, 1.4892819, 3.4395652, -0.8310045, 1.142956, 3.1369991, -1.3070841, 1.0131938, 3.1803098, -1.3070841, 0.36394286, 1.9255149, -0.31156647, 0.36394286, 2.2282844, -0.35478097, 1.0129735, 2.4446352, -0.35478097)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hll4j"]
+points = PackedVector3Array(0.96979296, 3.310039, 0.16451311, 0.9266124, 3.310039, 0.16451311, 1.0129735, 3.2232141, 0.16451311, 1.4892819, 3.526187, -0.74443156, 1.2728281, 3.9592955, -0.8310045, 0.84014106, 3.6130118, -1.2637255, 0.36394286, 2.2282844, -0.22513747, 0.36394286, 1.8820007, -0.13856447, 1.1861365, 2.5743644, -0.18192303, 1.2362568, 2.997713, -0.14562285, 1.4892819, 3.4395652, -0.8310045, 1.142956, 3.1369991, -1.3070841, 1.0131938, 3.1803098, -1.3070841, 0.36394286, 1.9255149, -0.31156647, 0.36394286, 2.2282844, -0.35478097, 1.0129735, 2.4446352, -0.35478097)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_upm0w"]
+points = PackedVector3Array(0.19071329, 4.3050795, 0.5540536, 0.27731884, 4.131425, 0.5540536, 0.27731884, 4.3050795, 0.46737045, -0.15544812, 5.171314, 0.034717202, -0.15544812, 4.477715, 0.2076599, -0.24192326, -0.02252731, 0.2076599, -0.06877734, -0.02252731, 0.29434305, 0.3809455, 2.1667385, -0.24304177, 0.23401606, 0.020758944, 0.2509591, 0.3205564, -0.02252731, 0.0779317, -0.06884256, 5.0837226, 0.034717202, 0.3204912, 2.1850715, -0.3115918, -0.06877734, -0.02252731, -0.3115918, -0.28529125, 0.1506177, -0.18169415, 0.10228169, -0.03118456, -0.21482526, 0.19064805, -0.02252731, -0.26820785)
+
+[node name="SM_Generic_TreeDead_01" type="MeshInstance3D" unique_id=494916411]
+gi_mode = 2
+mesh = ExtResource("1_yau1f")
+surface_material_override/0 = ExtResource("2_elv7e")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1746904910]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1385290194]
+shape = SubResource("ConvexPolygonShape3D_4ei2v")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=1205471966]
+shape = SubResource("ConvexPolygonShape3D_hll4j")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider" unique_id=1791330345]
+shape = SubResource("ConvexPolygonShape3D_upm0w")

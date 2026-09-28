@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbt7fwfpwbkw4"]
+
+[ext_resource type="ArrayMesh" uid="uid://b8b4xgio8mymv" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Rifle_Scope_01.res" id="1_keggo"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_b5t1k"]
+[ext_resource type="ArrayMesh" uid="uid://h6yg7r7tigtc" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Wep_Rifle_Scope_Glass_01.res" id="3_b5t1k"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_cvyl3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_coing"]
+points = PackedVector3Array(-0.025975622, 0.0034769624, -0.053316236, -0.025975622, 0.057997845, -0.18964896, 0.014913779, 0.030737404, -0.18964896, 0.019617163, 0.009080617, -0.07547618, 0.0149071105, 0.02392763, 0.24654743, -0.02596895, 0.030748077, 0.24654743, -0.032793857, 0.057997845, 0.24654743, -0.02596895, 0.1056876, -0.012412161, -0.012345821, 0.078427166, -0.18964896, 0.021725345, 0.07160672, -0.18964896, 0.03536182, 0.023938304, -0.005623266, 0.02854358, 0.071617395, 0.24654743, -0.005527584, 0.08524761, 0.24654743, -0.0055209137, 0.11251873, 0.014828771, 0.021725345, 0.11251873, 0.0011656135, 0.03536182, 0.078427166, 0.0011656135)
+
+[node name="SM_Wep_Rifle_Scope_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_keggo")
+surface_material_override/0 = ExtResource("2_b5t1k")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_coing")
+
+[node name="SM_Wep_Rifle_Scope_Glass_01" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_b5t1k")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_cvyl3")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://du6asek6sxd85"]
+
+[ext_resource type="ArrayMesh" uid="uid://bq2u6kkj3hty3" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Fries_Station_01.res" id="1_x42xv"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_srvtg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t7y1b"]
+points = PackedVector3Array(1.111738, 2.2624724, -0.5607955, 1.1732972, 2.2508159, 0.23249495, 1.1282763, 2.2081487, -0.5861369, -1.1119678, 2.2624724, -0.5607955, 1.0997937, 0.8579756, 0.7091485, 1.129195, 0.9741006, -0.62192833, -1.1732972, 2.2508159, 0.23249495, -1.1285061, 2.2081487, -0.5861369, 1.0274389, 0.016949065, 0.40283096, -1.0997938, 0.8579756, 0.7091485, -1.0288172, 0.05103879, 0.43862247, 1.0274389, 0.051918525, -0.6248021, -1.0288172, 0.05103879, -0.6253246, -1.1294248, 0.9741006, -0.62192833, -1.0260608, 0.0184886, -0.58809626, -1.0288172, 0.015629463, 0.40322292)
+
+[node name="SM_Prop_Kitchen_Fries_Station_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_x42xv")
+surface_material_override/0 = ExtResource("2_srvtg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_t7y1b")

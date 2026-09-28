@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://d0h60vrhi3qmi"]
+
+[ext_resource type="ArrayMesh" uid="uid://fp5s3ritcc1k" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Barracks_01.res" id="1_odous"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_dwljl"]
+[ext_resource type="ArrayMesh" uid="uid://ckuamn0vdex3n" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Barracks_Door_01.res" id="3_dwljl"]
+[ext_resource type="Shape3D" uid="uid://bdxey1okeienq" path="res://assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Barracks_01_Collision.res" id="3_k4xy4"]
+[ext_resource type="ArrayMesh" uid="uid://bf836lp2d0cuh" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Barracks_Door_02.res" id="4_k4xy4"]
+[ext_resource type="ArrayMesh" uid="uid://c2c0amugo06ax" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Barracks_Door_03.res" id="5_78hx3"]
+[ext_resource type="ArrayMesh" uid="uid://pcgb604g6e3h" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Barracks_Door_04.res" id="6_2jne3"]
+[ext_resource type="ArrayMesh" uid="uid://3p5y7o8mnjc5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Barracks_Glass_01.res" id="7_wxb3x"]
+[ext_resource type="Material" uid="uid://bsdrxux17jhqg" path="res://assets/Synty/PolygonMilitary/Materials/Misc/PolygonMilitary_01_A_Glass_Alt_mat.tres" id="8_k0l00"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vcaq0"]
+size = Vector3(1.0252984, 2.2243476, 0.43236938)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1q36d"]
+size = Vector3(1.025298, 2.2243476, 0.43236938)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8tkd"]
+size = Vector3(1.0252984, 2.2243476, 0.4323706)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ad6n"]
+size = Vector3(1.025298, 2.2243476, 0.4323706)
+
+[node name="SM_Bld_Barracks_01" type="MeshInstance3D" unique_id=1002613507]
+gi_mode = 2
+mesh = ExtResource("1_odous")
+surface_material_override/0 = ExtResource("2_dwljl")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1930242137]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1353654840]
+shape = ExtResource("3_k4xy4")
+
+[node name="SM_Bld_Barracks_Door_01" type="MeshInstance3D" parent="." unique_id=1458332877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0252979, 0.5275091, -0.14198609)
+gi_mode = 2
+mesh = ExtResource("3_dwljl")
+surface_material_override/0 = ExtResource("2_dwljl")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Barracks_Door_01" unique_id=302769992]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Barracks_Door_01/BoxCollider" unique_id=327026756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5126488, 1.1121738, 0)
+shape = SubResource("BoxShape3D_vcaq0")
+
+[node name="SM_Bld_Barracks_Door_02" type="MeshInstance3D" parent="." unique_id=1707902499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0252979, 0.5275091, -0.14198609)
+gi_mode = 2
+mesh = ExtResource("4_k4xy4")
+surface_material_override/0 = ExtResource("2_dwljl")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Barracks_Door_02" unique_id=60668232]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Barracks_Door_02/BoxCollider" unique_id=1381121425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51264864, 1.1121738, 0)
+shape = SubResource("BoxShape3D_1q36d")
+
+[node name="SM_Bld_Barracks_Door_03" type="MeshInstance3D" parent="." unique_id=1709451938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0252979, 0.5275091, -11.790846)
+gi_mode = 2
+mesh = ExtResource("5_78hx3")
+surface_material_override/0 = ExtResource("2_dwljl")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Barracks_Door_03" unique_id=687360956]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Barracks_Door_03/BoxCollider" unique_id=457563522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5126488, 1.1121738, 0)
+shape = SubResource("BoxShape3D_y8tkd")
+
+[node name="SM_Bld_Barracks_Door_04" type="MeshInstance3D" parent="." unique_id=874689526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0252979, 0.5275091, -11.790846)
+gi_mode = 2
+mesh = ExtResource("6_2jne3")
+surface_material_override/0 = ExtResource("2_dwljl")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Barracks_Door_04" unique_id=881462050]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Barracks_Door_04/BoxCollider" unique_id=1638167308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51264864, 1.1121738, 0)
+shape = SubResource("BoxShape3D_7ad6n")
+
+[node name="SM_Bld_Barracks_Glass_01" type="MeshInstance3D" parent="." unique_id=1630386803]
+gi_mode = 2
+mesh = ExtResource("7_wxb3x")
+surface_material_override/0 = ExtResource("8_k0l00")

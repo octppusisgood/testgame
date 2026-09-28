@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://n4xakw5exmte"]
+
+[ext_resource type="ArrayMesh" uid="uid://dolgkpa74k8jg" path="res://Assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Ceiling_Light_01.res" id="1_cl74u"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_20j1k"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cl74u"]
+points = PackedVector3Array(-0.5097572, 0.04483013, -0.5097534, -0.47921968, -0.044830322, -0.4792161, -0.5097572, 0.04483013, 0.5097534, 0.5097572, 0.04483013, -0.5097534, -0.47921968, -0.044830322, 0.47911632, 0.4791199, -0.044830322, -0.4792161, 0.5097572, 0.04483013, 0.5097534, 0.4791199, -0.044830322, 0.47911632)
+
+[node name="SM_Bld_Ceiling_Light_01" type="MeshInstance3D" unique_id=1349528199]
+gi_mode = 2
+mesh = ExtResource("1_cl74u")
+surface_material_override/0 = ExtResource("2_20j1k")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=262786924]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1276075178]
+shape = SubResource("ConvexPolygonShape3D_cl74u")

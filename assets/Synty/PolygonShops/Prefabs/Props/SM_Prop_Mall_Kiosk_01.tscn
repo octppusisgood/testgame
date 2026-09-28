@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://y5v8elpv7mgj"]
+
+[ext_resource type="ArrayMesh" uid="uid://ch1qj5yc22vov" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Mall_Kiosk_01.res" id="1_1q0s3"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_hm3dg"]
+[ext_resource type="ArrayMesh" uid="uid://c7pxck6ou7fla" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Mall_Kiosk_01_Door_01.res" id="3_hm3dg"]
+[ext_resource type="ArrayMesh" uid="uid://cpcikey64n224" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Mall_Kiosk_01_Frame_01.res" id="4_20j7a"]
+[ext_resource type="ArrayMesh" uid="uid://cgnbtkbbb2ak2" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Mall_Kiosk_01_Glass_01.res" id="5_c466u"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="6_y6xsr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1osi0"]
+points = PackedVector3Array(1.6417708, 1.2174108, -1.7543149, 2.2646952, 1.2383839, -1.036009, 2.0718327, 0, -1.3780925, 1.7304435, 0.13553727, -1.7062421, -1.6422143, 1.2172896, -1.7536182, 2.175579, 1.2135314, 1.2488449, 2.1219325, 0.3184762, 1.7229548, -1.6422143, 1.2174108, 1.804121, 1.6413276, 1.2174108, 1.804121, 2.0709457, 0, 1.4282472, -1.804485, 0, -1.6456285, -2.2646952, 0.3184762, -1.390285, -2.165382, 1.2103794, -1.1924199, -2.176466, 1.2135314, 1.2488449, -1.7920709, 0.13699205, 1.7504747, -2.0718324, 0, 1.4282472)
+
+[node name="SM_Prop_Mall_Kiosk_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_1q0s3")
+surface_material_override/0 = ExtResource("2_hm3dg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_1osi0")
+
+[node name="SM_Prop_Mall_Kiosk_01_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7481775, 0.5941267, -1.4882748)
+gi_mode = 2
+mesh = ExtResource("3_hm3dg")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_hm3dg")
+
+[node name="SM_Prop_Mall_Kiosk_01_Frame_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0151089905, 1.0044233, -1.592236)
+gi_mode = 2
+mesh = ExtResource("4_20j7a")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_hm3dg")
+
+[node name="SM_Prop_Mall_Kiosk_01_Glass_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4246244e-07, 0.7364116, 0.028316071)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("5_c466u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_y6xsr")

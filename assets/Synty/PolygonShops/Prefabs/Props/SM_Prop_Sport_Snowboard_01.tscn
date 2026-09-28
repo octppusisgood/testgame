@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://g4cpabku7acl"]
+
+[ext_resource type="ArrayMesh" uid="uid://cxqci8j2xxxto" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Snowboard_01.res" id="1_kr2dk"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_wc72c"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_glfx7"]
+points = PackedVector3Array(0.18562889, 0.02887766, 0.7917213, 0.10359439, 0.056218937, 0.8462787, 0.15830901, -0.025708657, 0.81900007, 0.18562889, -0.053017855, 0.73716384, 0.18562889, 0.02887766, -0.79179245, -0.08749515, 0.056218937, 0.8738943, 0.10359439, 0.056218937, -0.8463499, -0.19669986, -0.053017855, 0.73716384, 0.18562889, -0.053017855, -0.73723495, 0.15830901, -0.025708657, -0.81923956, -0.1694174, 0.02887766, 0.81900007, -0.11477761, 0.056218937, -0.8463499, -0.19669986, 0.0016005412, 0.73716384, -0.19669986, -0.053017855, -0.73723495, -0.1694174, -0.025708657, -0.81923956, -0.19669986, 0.0016005412, -0.73723495)
+
+[node name="SM_Prop_Sport_Snowboard_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_kr2dk")
+surface_material_override/0 = ExtResource("2_wc72c")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_glfx7")

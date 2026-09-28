@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://djsl0k23tv1ck"]
+
+[ext_resource type="ArrayMesh" uid="uid://dy8slmiue1i3t" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Medical_Shelf_01.res" id="1_pjkes"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_a8etp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fp133"]
+points = PackedVector3Array(-0.3780452, 0.0006120013, -0.24947476, 0.37870598, 0.0032170815, -0.24788216, 0.3707059, 0.014366825, 0.2565141, -0.3681932, 0.014366825, 0.2565141, -0.37041548, 1.029202, 0.27370116, -0.3753785, 1.0195111, -0.28, -0.3732303, 0.056152318, -0.27807558, 0.37574297, 0.056152318, -0.27807558, 0.37789118, 1.0195111, -0.28, 0.3770023, 1.0510846, 0.24344137, 0.30196422, 0.41763327, 0.39620027, -0.30093303, 0.544136, 0.3979256, 0.31989038, 1.0482712, 0.28173062, -0.3173777, 1.065152, 0.26507446, -0.37456366, 1.0511888, -0.2302306, 0.31989038, 1.065152, -0.25484985)
+
+[node name="SM_Prop_Medical_Shelf_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_pjkes")
+surface_material_override/0 = ExtResource("2_a8etp")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_fp133")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://qtllr8pu8fwq"]
+
+[ext_resource type="ArrayMesh" uid="uid://bt4otr71ltag2" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_TrashPile_05.res" id="1_hvw0r"]
+[ext_resource type="Material" uid="uid://dih81x3j3aip0" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Rubble_01_mat.tres" id="2_hvw0r"]
+[ext_resource type="ArrayMesh" uid="uid://dk6x0i2ahistc" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Grass_05.res" id="3_snpog"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="4_r0mxb"]
+[ext_resource type="ArrayMesh" uid="uid://0e1vxcd1rgcj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Trash_05.res" id="5_jvhcx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eqagm"]
+points = PackedVector3Array(0.43760705, -0.034872934, -1.5783861, 1.8469257, -0.034872934, -1.4372901, -1.4648845, -0.035121262, -1.5076655, 0.08527756, 1.2333398, -1.155098, 1.2826684, 1.021764, -0.94397134, 2.3405404, -0.034872934, -1.0847224, -2.1699853, -0.035121262, -1.155098, -1.8878567, 0.24697971, -1.155098, 1.776283, -0.035121262, 1.3108056, -2.0287004, 0.105805054, 0.46560907, -1.1125549, 0.31713244, 1.1000237, 0.29676366, 0.9512388, 0.04266596, 1.2826684, 0.105805054, 1.5929976, 2.1992555, 0.035528146, 0.18376207, -0.69002426, -0.035121262, 1.9459102, -0.54918075, 0.105805054, 1.9459102)
+
+[node name="SM_Prop_TrashPile_05" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_hvw0r")
+surface_material_override/0 = ExtResource("2_hvw0r")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_eqagm")
+
+[node name="SM_Prop_Grass_05" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.710715, 0.72675675, 1.5936944)
+gi_mode = 2
+mesh = ExtResource("3_snpog")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_r0mxb")
+
+[node name="SM_Prop_Trash_05" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09861391, 0.6442692, 0.45724833)
+mesh = ExtResource("5_jvhcx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_r0mxb")
+surface_material_override/1 = ExtResource("4_r0mxb")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bb4pfqck5d37w"]
+
+[ext_resource type="ArrayMesh" uid="uid://bffr5nhxem5yl" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Archway_02.res" id="1_g0nux"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_ph5v2"]
+[ext_resource type="Shape3D" uid="uid://dp2g16g70uq5t" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Archway_02_Collision.res" id="3_ph5v2"]
+
+[node name="SM_Bld_Archway_02" type="MeshInstance3D" unique_id=1889900734]
+gi_mode = 2
+mesh = ExtResource("1_g0nux")
+surface_material_override/0 = ExtResource("2_ph5v2")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=347765782]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=63089889]
+shape = ExtResource("3_ph5v2")

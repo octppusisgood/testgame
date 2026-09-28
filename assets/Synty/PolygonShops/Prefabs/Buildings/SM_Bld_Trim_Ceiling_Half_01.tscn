@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://i1vafh6txw8m"]
+
+[ext_resource type="ArrayMesh" uid="uid://be80flun5pdxk" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Trim_Ceiling_Half_01.res" id="1_8n1fa"]
+[ext_resource type="Material" uid="uid://buo25cdi05x6y" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_White_01_mat.tres" id="2_5yxdj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y6hlk"]
+size = Vector3(1.2499962, 0.3585322, 0.16604942)
+
+[node name="SM_Bld_Trim_Ceiling_Half_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8n1fa")
+surface_material_override/0 = ExtResource("2_5yxdj")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6249981, 2.820732, 0.1955238)
+shape = SubResource("BoxShape3D_y6hlk")

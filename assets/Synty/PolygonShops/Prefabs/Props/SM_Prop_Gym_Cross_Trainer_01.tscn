@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://cd4scpawnxxlb"]
+
+[ext_resource type="ArrayMesh" uid="uid://diu6cxaex81ia" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Cross_Trainer_01.res" id="1_lo8di"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_2u6ys"]
+[ext_resource type="ArrayMesh" uid="uid://npkd3hbjeu3p" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Cross_Trainer_01_Arm_L.res" id="3_2u6ys"]
+[ext_resource type="ArrayMesh" uid="uid://b8mdlfjurqgc" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Cross_Trainer_01_Arm_R.res" id="4_xyd34"]
+[ext_resource type="ArrayMesh" uid="uid://cxvto6wuypk74" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Cross_Trainer_01_Pedal_Crank_01.res" id="5_8paxx"]
+[ext_resource type="ArrayMesh" uid="uid://behj5jal71o5q" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_CrossTrainer_01_Pedal_L.res" id="6_tectl"]
+[ext_resource type="ArrayMesh" uid="uid://6oau0fn2rgi4" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_CrossTrainer_01_Pedal_R.res" id="7_65sw7"]
+[ext_resource type="ArrayMesh" uid="uid://dp115ud4fe7qv" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Cross_Trainer_01_Propeller_01.res" id="8_qdnbe"]
+[ext_resource type="ArrayMesh" uid="uid://jfkswdaeb6m6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Cross_Trainer_01_Seat_01.res" id="9_hal0g"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_co08o"]
+points = PackedVector3Array(-0.32764256, 0.0030983076, -0.4865138, -0.3571498, 0.09650561, -0.50276816, 0.35047004, 0.07507688, -0.52412724, 0.33523157, 0.034307335, -0.49470815, 0.3368247, 0.011120345, -0.47711045, 0.33509305, 0.01386762, 0.46953952, -0.3385173, 0.019252276, 0.4664498, -0.3571498, 0.09650561, 0.48351026, -0.24992628, 1.0399193, 0.44065773, -0.05688238, 0.71815866, -0.3954355, 0.046462268, 0.7071696, -0.35688174, 0.24317726, 1.0399193, 0.44065773, 0.24317726, 0.37529892, 0.8482263, -0.24223778, 0.23540775, 0.8270016, -0.24992628, 0.37529892, 0.8482263, 0.07160577, 1.1256342, 0.48351026)
+
+[node name="SM_Prop_Gym_Cross_Trainer_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_lo8di")
+surface_material_override/0 = ExtResource("2_2u6ys")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_co08o")
+
+[node name="SM_Prop_Gym_Cross_Trainer_01_Arm_L" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17686759, 1.0160569, 0.48054197)
+gi_mode = 2
+mesh = ExtResource("3_2u6ys")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2u6ys")
+
+[node name="SM_Prop_Gym_Cross_Trainer_01_Arm_R" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17686759, 1.0160569, 0.48054197)
+gi_mode = 2
+mesh = ExtResource("4_xyd34")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2u6ys")
+
+[node name="SM_Prop_Gym_Cross_Trainer_01_Pedal_Crank_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40155587, -0.12838684)
+gi_mode = 2
+mesh = ExtResource("5_8paxx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2u6ys")
+
+[node name="SM_Prop_Gym_CrossTrainer_01_Pedal_L" type="MeshInstance3D" parent="SM_Prop_Gym_Cross_Trainer_01_Pedal_Crank_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28238055, 0.18588296, 5.9604645e-08)
+gi_mode = 2
+mesh = ExtResource("6_tectl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2u6ys")
+
+[node name="SM_Prop_Gym_CrossTrainer_01_Pedal_R" type="MeshInstance3D" parent="SM_Prop_Gym_Cross_Trainer_01_Pedal_Crank_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28238055, -0.185546, 5.9604645e-08)
+gi_mode = 2
+mesh = ExtResource("7_65sw7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2u6ys")
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4818332, 0.41425043)
+gi_mode = 2
+mesh = ExtResource("8_qdnbe")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2u6ys")
+
+[node name="SM_Prop_Gym_Cross_Trainer_01_Seat_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1126355, -0.3913452)
+gi_mode = 2
+mesh = ExtResource("9_hal0g")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2u6ys")

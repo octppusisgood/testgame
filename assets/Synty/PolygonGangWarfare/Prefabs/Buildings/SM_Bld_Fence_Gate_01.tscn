@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bddfo5pb0iofk"]
+
+[ext_resource type="ArrayMesh" uid="uid://co4eohsux07t6" path="res://Assets/Synty/PolygonGangWarfare/Models/extracted/SM_Bld_Fence_Gate_01.res" id="1_knp1u"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_gf5mu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u7x05"]
+points = PackedVector3Array(2.2225733, 3.4764233, 0.09414363, 0.118539676, 3.380486, -0.28811857, 0.118539676, 3.380486, 0.28544325, 1.8403485, 3.380486, 0.38103688, 5.760249, 3.2845488, 0.47674286, 5.664993, 3.380486, -0.19252494, -0.07257271, 0.22529519, -0.19252494, 4.1348953, 2.71135, -0.57512414, 0.21439543, 3.093367, -0.38382453, -0.07257271, -0.061823726, 0.094255984, 0.21439543, 2.71135, 0.47674286, 2.318429, 2.9025316, 0.57244885, 6.0478163, -0.061823726, 0.094255984, 6.0478163, 3.1893044, -0.09693131, 5.5691366, 2.9025316, -0.3837122, 5.856105, -0.061823726, -0.19252494)
+
+[node name="SM_Bld_Fence_Gate_01" type="MeshInstance3D" unique_id=490521115]
+gi_mode = 2
+mesh = ExtResource("1_knp1u")
+surface_material_override/0 = ExtResource("2_gf5mu")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=372374938]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=2040059973]
+shape = SubResource("ConvexPolygonShape3D_u7x05")

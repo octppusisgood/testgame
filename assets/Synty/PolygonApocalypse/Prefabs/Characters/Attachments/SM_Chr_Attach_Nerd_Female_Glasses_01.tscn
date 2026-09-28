@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cruqkf7i0175c"]
+
+[ext_resource type="ArrayMesh" uid="uid://d4ed5y3a8raxh" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Nerd_Female_Glasses_01.res" id="1_s8bhs"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_m2q82"]
+
+[node name="SM_Chr_Attach_Nerd_Female_Glasses_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_s8bhs")
+surface_material_override/0 = ExtResource("2_m2q82")

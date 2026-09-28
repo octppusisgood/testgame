@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://de0sy3qo5eslf"]
+
+[ext_resource type="ArrayMesh" uid="uid://c68ijslnxqkf2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Gunlocker_01.res" id="1_i6bfx"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_xlm3o"]
+[ext_resource type="Material" uid="uid://w7i3udc7qosk" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Fence_Wire_01_mat.tres" id="4_it4qp"]
+[ext_resource type="ArrayMesh" uid="uid://dy27xos74vm1v" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Gunlocker_Door_01.res" id="4_xlm3o"]
+[ext_resource type="ArrayMesh" uid="uid://bkvsd1ug4s61o" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Gunlocker_Door_02.res" id="5_d7lyu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_it4qp"]
+points = PackedVector3Array(-0.7048926, 0.014800473, 0.3074177, -0.05621028, 0.021567823, -0.36488008, -0.056622684, 0.014631289, 0.3074177, -0.7048926, 1.7430125, 0.3074177, -0.69925666, 0.021737006, -0.36488008, 0.693644, 0.021567823, -0.36488008, 0.6994173, 0.014631289, 0.3074177, 0.691582, 1.733369, 0.3036666, 0.693644, 1.7359067, -0.36488008, -0.69925666, 1.7359067, -0.36488008)
+
+[node name="SM_Prop_Gunlocker_01" type="MeshInstance3D" unique_id=2129571133]
+gi_mode = 2
+mesh = ExtResource("1_i6bfx")
+surface_material_override/0 = ExtResource("2_xlm3o")
+surface_material_override/1 = ExtResource("4_it4qp")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=96220146]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=244118657]
+shape = SubResource("ConvexPolygonShape3D_it4qp")
+
+[node name="SM_Prop_Gunlocker_Door_01" type="MeshInstance3D" parent="." unique_id=2138360299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6672917, 0.041397877, 0.28136012)
+gi_mode = 2
+mesh = ExtResource("4_xlm3o")
+surface_material_override/0 = ExtResource("4_it4qp")
+surface_material_override/1 = ExtResource("2_xlm3o")
+
+[node name="SM_Prop_Gunlocker_Door_02" type="MeshInstance3D" parent="." unique_id=1342632415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6672917, 0.041397877, 0.28136012)
+gi_mode = 2
+mesh = ExtResource("5_d7lyu")
+surface_material_override/0 = ExtResource("2_xlm3o")
+surface_material_override/1 = ExtResource("4_it4qp")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://4qorjl3nlnp"]
+
+[ext_resource type="ArrayMesh" uid="uid://by83qb6r5ctpw" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Shop_Payment_Terminal_01.res" id="1_3gopj"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_d0xln"]
+[ext_resource type="ArrayMesh" uid="uid://cg5wosmlxyptv" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Shop_Payment_Terminal_01_Handpiece.res" id="3_d0xln"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s50ms"]
+points = PackedVector3Array(0.060188442, 0.035901736, 0.09999409, -0.06161268, 0.035901736, 0.09999409, 0.05840005, 0.011441326, 0.097059295, 0.05841198, 0.011441326, -0.09698903, 0.060188442, 0.05777754, -0.031112768, -0.06161268, 0.05777754, -0.031132333, -0.05842935, 7.670108e-08, -0.08577813, -0.05842935, 7.670108e-08, 0.08586797, 0.057005107, 7.670108e-08, 0.08588754, -0.04287038, 0.048394922, -0.09988469, 0.057493933, 0.047495686, -0.095482506, 0.057005107, 7.670108e-08, -0.0857977, 0.036557876, 0.005746152, -0.09241076, -0.058632035, 0.011775006, -0.094993375, 0.05643283, 0.055950787, -0.08495639, -0.057868987, 0.055950787, -0.08495639)
+
+[node name="SM_Prop_Shop_Payment_Terminal_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3gopj")
+surface_material_override/0 = ExtResource("2_d0xln")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_s50ms")
+
+[node name="SM_Prop_Shop_Payment_Terminal_01_Handpiece" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_d0xln")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_d0xln")

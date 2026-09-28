@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://shnxla8t4sv1"]
+
+[ext_resource type="Texture2D" uid="uid://bblmtl30jvp3y" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Building_Tile_05.png" id="1_yi3oq"]
+
+[resource]
+resource_name = "PolygonShops_Mat_Base_Tile_01_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_yi3oq")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

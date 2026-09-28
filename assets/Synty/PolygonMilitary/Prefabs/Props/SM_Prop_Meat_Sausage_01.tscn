@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://duek1trx0uyg3"]
+
+[ext_resource type="ArrayMesh" uid="uid://c6scpinexpjhh" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Meat_Sausage_01.res" id="1_0a8qw"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_h44lt"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_arnjv"]
+points = PackedVector3Array(-0.057339605, -0.32331893, 0.010390885, -0.024801295, -0.30915835, 0.054849185, -0.038092386, -0.08467704, 0.049182303, -0.0572944, -0.08504012, 0.0039434694, -0.037414268, -0.30884066, -0.046866022, -0.013815802, -0.41826737, -0.031854123, -0.021049049, -0.42552918, 0.026076391, 0.029640194, -0.43274564, 0.011588417, 0.025661904, -0.088444114, 0.05385481, 0.029640194, 0.023660392, -0.010127511, -0.0283049, 0.030922204, -0.017366152, 0.026780803, -0.32490745, -0.048234627, 0.00066199526, -0.08417779, -0.05438266, 0.04916996, -0.3040297, -0.02048828, 0.058121104, -0.2966771, -0.008833747, 0.039540697, -0.08431396, -0.0478604)
+
+[node name="SM_Prop_Meat_Sausage_01" type="MeshInstance3D" unique_id=153487268]
+gi_mode = 2
+mesh = ExtResource("1_0a8qw")
+surface_material_override/0 = ExtResource("2_h44lt")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1044196021]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=44367047]
+shape = SubResource("ConvexPolygonShape3D_arnjv")

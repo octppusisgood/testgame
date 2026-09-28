@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cixn1x208fg4s"]
+
+[ext_resource type="ArrayMesh" uid="uid://cd36n7qdxbkq" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Pizza_Oven_02.res" id="1_j4x5n"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_x5o56"]
+[ext_resource type="ArrayMesh" uid="uid://m0pqlpxmwr48" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Pizza_Oven_02_Door_01.res" id="3_x5o56"]
+[ext_resource type="ArrayMesh" uid="uid://dcp14joia1xpk" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Pizza_Oven_02_Door_02.res" id="4_fcs8b"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jnc3c"]
+points = PackedVector3Array(1.1672983, 1.982666, 0.82266045, 1.1455886, 0.22164534, 0.7963089, 1.1670697, 0.20714578, 0.58533514, 1.1672983, 1.982666, -0.8188529, -1.1672983, 1.982666, 0.82266045, 1.0541792, 0.015751507, 0.71082675, -1.1458172, 0.22164534, 0.7963089, -1.1028547, 0.041657396, 0.7554959, 1.145817, 0.22164534, -0.7929833, 1.0630915, 0.007631751, -0.7497602, 1.0486946, 0.05731693, -0.81210434, -1.1672983, 1.982666, -0.8188529, -1.1526728, 0.63768625, -0.8085693, -1.090743, 0.015751507, 0.71082675, -1.0998839, 0.007631751, -0.7497602, -1.0850298, 0.05731693, -0.81210434)
+
+[node name="SM_Prop_Kitchen_Pizza_Oven_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_j4x5n")
+surface_material_override/0 = ExtResource("2_x5o56")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_jnc3c")
+
+[node name="SM_Prop_Kitchen_Pizza_Oven_02_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111271895, 1.3706567, 0.77801377)
+gi_mode = 2
+mesh = ExtResource("3_x5o56")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_x5o56")
+
+[node name="SM_Prop_Kitchen_Pizza_Oven_02_Door_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111271895, 0.8016293, 0.77801377)
+gi_mode = 2
+mesh = ExtResource("4_fcs8b")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_x5o56")

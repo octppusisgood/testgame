@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0wntmirb4h2f"]
+
+[ext_resource type="ArrayMesh" uid="uid://cuv4yv128cve3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Toilet_01.res" id="1_bvrvt"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_nu0od"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xrae8"]
+points = PackedVector3Array(0.07849932, 0.46586776, 0.43705717, 0.062144637, 0.46586776, 0.43705717, -0.08486512, -0.0081733465, 0.15900674, 0.2121943, 0.022446288, 0.1653665, 0.29098865, 0.35137695, 0.20801958, 0.30734333, 0.9888593, -0.15143633, 0.1274418, 1.0380145, -0.08605757, -0.23199648, 0.5149206, 0.37150887, 0.05928713, 0.10877522, -0.39455026, -0.3137699, 0.5149206, 0.22438547, -0.15022306, 0.53120327, -0.39650062, 0.16021195, 0.15526791, -0.4129513, 0.28454402, 0.5451306, -0.36716074, 0.10628405, 1.0155874, -0.39505905, -0.23193568, 1.0380145, -0.15143633, -0.19922632, 0.9724742, -0.4292324)
+
+[node name="SM_Prop_Toilet_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_bvrvt")
+surface_material_override/0 = ExtResource("2_nu0od")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_xrae8")

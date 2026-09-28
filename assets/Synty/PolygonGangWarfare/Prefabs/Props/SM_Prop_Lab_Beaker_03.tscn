@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ctdto6xibokkg"]
+
+[ext_resource type="ArrayMesh" uid="uid://dtnl6ft3dhseh" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Lab_Beaker_03.res" id="1_ps7sf"]
+[ext_resource type="Material" uid="uid://bgr664d17lip1" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Glass_mat.tres" id="2_nsaqj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8xm33"]
+points = PackedVector3Array(0.009251155, 0.2203536, 0.027634041, 0.023125011, 0.20645191, 0.010275075, 0.026598569, 0.2203536, -0.003594704, -0.0011542384, 0.2203536, 0.027634041, 0.00578269, 0.00869979, 0.020693714, 0.019661639, 0.00869979, 0.0033347514, 0.016193174, 0.012138957, -0.010529593, 0.009251155, 0.20645191, -0.027888557, -0.0011542384, 0.2203536, -0.027888557, -0.021965023, 0.2203536, 0.020693714, -0.015028096, 0.012138957, 0.0172154, 0.00578269, 0.00869979, -0.020942798, -0.025433488, 0.20645191, -0.017475352, -0.015028096, 0.012138957, -0.017469916, -0.025433488, 0.20645191, 0.017220834, -0.017126491, 0.0127190575, 0.009525066)
+
+[node name="SM_Prop_Lab_Beaker_03" type="MeshInstance3D" unique_id=1698758391]
+gi_mode = 2
+mesh = ExtResource("1_ps7sf")
+surface_material_override/0 = ExtResource("2_nsaqj")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=395543018]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=308733929]
+shape = SubResource("ConvexPolygonShape3D_8xm33")

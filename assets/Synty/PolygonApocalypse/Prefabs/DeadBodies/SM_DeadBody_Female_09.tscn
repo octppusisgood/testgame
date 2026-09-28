@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://8gdusu54jtdj"]
+
+[ext_resource type="ArrayMesh" uid="uid://dxlvy1xcpvss3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_DeadBody_Female_09.res" id="1_tmicq"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_2eoyi"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_psdpc"]
+points = PackedVector3Array(0.86546516, -0.025135703, -0.36719584, 0.79848194, 0.14170405, -0.33373833, -0.30290914, -0.025135703, 1.06813, -0.26941752, -0.058482096, 0.06670582, 0.26444888, -0.025171638, -1.06813, 0.7316654, 0.20846872, -0.36719584, -0.26941752, 0.07501127, 0.9343002, -0.43637574, 0.04162895, 1.0344634, -0.8034505, -0.058482096, 0.2670325, 0.16430736, 0.04162895, -1.06813, 0.19763231, 0.17508638, -0.9677576, -0.77012557, 0.008246623, -0.06649673, -0.6030007, 0.30861568, 0.33373833, -0.26941752, 0.27523333, 0.33373833, -0.83677554, 0.27523333, 0.30028093, -0.8339429, 0.14098538, 0.31972802)
+
+[node name="SM_DeadBody_Female_09" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_tmicq")
+surface_material_override/0 = ExtResource("2_2eoyi")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_psdpc")

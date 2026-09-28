@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnw68gw0aeasm"]
+
+[ext_resource type="ArrayMesh" uid="uid://d1pw4w780co61" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Computer_Tower_03.res" id="1_cplum"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_retpv"]
+[ext_resource type="ArrayMesh" uid="uid://dyq3vmafvn8wh" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Computer_Tower_03_Glass_01.res" id="3_retpv"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="4_xxeqj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a7b26"]
+points = PackedVector3Array(-0.12244108, 0.0069952174, 0.29371208, -0.1290609, 0.6168556, 0.2746836, -0.1290609, 0.016409872, 0.2746836, -0.1290609, 0.016348338, -0.32579273, 0.11716056, 0.011241042, -0.3311547, 0.11716056, 0.0113025755, 0.27926087, 0.077062726, 0.037638996, 0.3367387, -0.09085804, 0.038869668, 0.3353001, -0.09012531, 0.55021465, 0.3324883, 0.11716056, 0.62171674, 0.27926087, -0.09070644, 0.6356234, -0.25111735, -0.1290609, 0.6168556, -0.32579273, 0.11716056, 0.6218398, -0.33128548, 0.12865677, 0.53033924, -0.20874463, 0.12903577, 0.10188016, 0.020905018, 0.07630472, 0.5508915, 0.33346915)
+
+[node name="SM_Prop_Computer_Tower_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_cplum")
+surface_material_override/0 = ExtResource("2_retpv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_a7b26")
+
+[node name="SM_Prop_Computer_Tower_03_Glass_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12906128, 0.31403303, -0.029531859)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("3_retpv")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_xxeqj")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dvir25f6bmm7c"]
+
+[ext_resource type="ArrayMesh" uid="uid://cnkyud147aqav" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Drone_Control_Room_01.res" id="1_mr3k2"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_vgy6t"]
+[ext_resource type="Shape3D" uid="uid://7pthltr5ljsd" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Prop_Drone_Control_Room_01_Collision.res" id="3_fm5sq"]
+
+[node name="SM_Prop_Drone_Control_Room_01" type="MeshInstance3D" unique_id=1584292831]
+gi_mode = 2
+mesh = ExtResource("1_mr3k2")
+surface_material_override/0 = ExtResource("2_vgy6t")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=600541709]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=212019828]
+shape = ExtResource("3_fm5sq")

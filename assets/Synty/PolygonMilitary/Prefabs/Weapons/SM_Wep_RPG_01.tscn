@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cd31c3xpecsah"]
+
+[ext_resource type="ArrayMesh" uid="uid://drocwyop5n3xb" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RPG_01.res" id="1_y04tg"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_valba"]
+[ext_resource type="ArrayMesh" uid="uid://b2x6at3a44ymp" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RPG_Rocket_01.res" id="3_valba"]
+[ext_resource type="ArrayMesh" uid="uid://cgg8hobl1tg0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RPG_Sight_01.res" id="4_wxloo"]
+[ext_resource type="ArrayMesh" uid="uid://gua3obr8b4re" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RPG_Sight_02.res" id="5_6u5ef"]
+[ext_resource type="ArrayMesh" uid="uid://bbhc7gj2n7t31" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RPG_Trigger_01.res" id="6_yurn5"]
+[ext_resource type="ArrayMesh" uid="uid://bist6surs0x27" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RPG_Trigger_02.res" id="7_2jw2q"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rbpof"]
+points = PackedVector3Array(-0.02656959, -0.14120373, -0.048848808, 0.013201058, -0.14120373, -0.048848808, 0.033103913, -0.14120373, 0.030723691, -0.046489984, 0.05785212, 0.2698152, -0.0862957, 0.0180659, -0.98426163, -0.06637531, -0.001796037, -1.0043418, 0.053024314, -0.001796037, -1.0043418, 0.053024314, 0.05785212, 0.2698152, 0.09284756, 0.037990198, -1.0043418, -0.046489984, 0.117593825, 0.2698152, -0.0862957, 0.15738004, -1.0043418, 0.09284756, 0.13748693, -0.96443087, 0.053024314, 0.117593825, 0.2698152, 0.053024314, 0.17730436, -1.0043418, 0.033103913, 0.15741125, 0.2299043, -0.02656959, 0.17733553, -0.10859048)
+
+[node name="SM_Wep_RPG_01" type="MeshInstance3D" unique_id=1404194740]
+gi_mode = 2
+mesh = ExtResource("1_y04tg")
+surface_material_override/0 = ExtResource("2_valba")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1589985776]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1017604687]
+shape = SubResource("ConvexPolygonShape3D_rbpof")
+
+[node name="SM_Wep_RPG_Rocket_01" type="MeshInstance3D" parent="." unique_id=1613091286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8146972e-08, 0.08791877, 0.25986084)
+gi_mode = 2
+mesh = ExtResource("3_valba")
+surface_material_override/0 = ExtResource("2_valba")
+
+[node name="SM_Wep_RPG_Sight_01" type="MeshInstance3D" parent="." unique_id=1689390058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683715e-09, 0.15296923, -0.2198925)
+gi_mode = 2
+mesh = ExtResource("4_wxloo")
+surface_material_override/0 = ExtResource("2_valba")
+
+[node name="SM_Wep_RPG_Sight_02" type="MeshInstance3D" parent="." unique_id=233398406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683715e-09, 0.14518417, 0.21517536)
+gi_mode = 2
+mesh = ExtResource("5_6u5ef")
+surface_material_override/0 = ExtResource("2_valba")
+
+[node name="SM_Wep_RPG_Trigger_01" type="MeshInstance3D" parent="." unique_id=153934016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683715e-09, -1.2182351, 3.201041)
+gi_mode = 2
+mesh = ExtResource("6_yurn5")
+surface_material_override/0 = ExtResource("2_valba")
+
+[node name="SM_Wep_RPG_Trigger_02" type="MeshInstance3D" parent="." unique_id=745366829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683715e-09, -1.2182351, 3.201041)
+gi_mode = 2
+mesh = ExtResource("7_2jw2q")
+surface_material_override/0 = ExtResource("2_valba")

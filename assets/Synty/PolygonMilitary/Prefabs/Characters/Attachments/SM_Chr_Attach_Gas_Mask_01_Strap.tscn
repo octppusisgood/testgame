@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://kcxklshu4n2s"]
+
+[ext_resource type="ArrayMesh" uid="uid://dps3snq5ljf33" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Gas_Mask_01_Strap.res" id="1_4gijk"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_s1uow"]
+
+[node name="SM_Chr_Attach_Gas_Mask_01_Strap" type="MeshInstance3D" unique_id=1743526926]
+gi_mode = 2
+mesh = ExtResource("1_4gijk")
+surface_material_override/0 = ExtResource("2_s1uow")

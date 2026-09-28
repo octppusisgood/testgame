@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c53iko7mc74r5"]
+
+[ext_resource type="ArrayMesh" uid="uid://doy40sh60st7c" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Box_01.res" id="1_05ssk"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_gi7ri"]
+[ext_resource type="ArrayMesh" uid="uid://b3fpgaw757wwo" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_BoxLid_01.res" id="3_xxrad"]
+
+[node name="SM_Prop_BoxLid_02" type="MeshInstance3D" unique_id=1330012824]
+gi_mode = 2
+mesh = ExtResource("1_05ssk")
+surface_material_override/0 = ExtResource("2_gi7ri")
+
+[node name="SM_Prop_BoxLid_01" type="MeshInstance3D" parent="." unique_id=1828234057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01192521, 0.12458458, -0.10923962)
+gi_mode = 2
+mesh = ExtResource("3_xxrad")
+surface_material_override/0 = ExtResource("2_gi7ri")

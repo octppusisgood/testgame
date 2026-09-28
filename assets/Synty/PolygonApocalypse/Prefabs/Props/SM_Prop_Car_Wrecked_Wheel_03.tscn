@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://brhiwyyqtk0ys"]
+
+[ext_resource type="ArrayMesh" uid="uid://dk6diocmknqmd" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Car_Wrecked_Wheel_03.res" id="1_jbbyp"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_q2h5j"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8yj5s"]
+points = PackedVector3Array(-0.27208027, 0.01694882, -0.15596834, -0.22424783, 0.12449774, 0.12976623, -0.14919671, 0.2458432, -0.10801445, 0.016885191, 0.27210453, -0.15596834, -0.016991675, -0.27208564, -0.15596834, -0.14919671, -0.24587758, -0.10801445, -0.22424783, -0.124585375, 0.12976623, 0.066581935, 0.2414752, 0.13015836, 0.24582043, 0.1492143, -0.10801445, 0.27208033, -0.017036438, -0.15596834, -0.033237666, -0.24944656, 0.12993428, 0.2449682, -0.118193164, -0.15510002, 0.14925003, -0.24577104, -0.10801445, 0.2493892, -0.03328331, 0.12993428, 0.22414136, 0.12449774, 0.12973821, 0.124534816, -0.22419733, 0.12973821)
+
+[node name="SM_Prop_Car_Wrecked_Wheel_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_jbbyp")
+surface_material_override/0 = ExtResource("2_q2h5j")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_8yj5s")

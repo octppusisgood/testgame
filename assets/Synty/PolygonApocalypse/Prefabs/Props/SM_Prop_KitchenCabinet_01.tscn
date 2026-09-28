@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://va37hv6vmmiu"]
+
+[ext_resource type="ArrayMesh" uid="uid://dotrrc0d1u2i" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_KitchenCabinet_01.res" id="1_7shhc"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_6xb0i"]
+[ext_resource type="ArrayMesh" uid="uid://d258dwlkk2mc1" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_KitchenCabinet_01_Door_01.res" id="3_6xb0i"]
+[ext_resource type="ArrayMesh" uid="uid://diajodoxctfdm" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_KitchenCabinet_01_Door_02.res" id="4_gkhh4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ltw2a"]
+points = PackedVector3Array(-0.46600336, 0.011210471, 0.18676779, -0.45510048, 0.022675697, -0.45801207, 0.51788574, 0.022675697, -0.45801207, 0.5283992, 0.01161632, 0.18650326, 0.5260629, 1.0358768, 0.21758494, -0.45957842, 1.0320213, 0.21500584, -0.45510048, 1.0434865, -0.45801207, 0.51788574, 1.0434865, -0.45801207, 0.52119553, 1.0469362, 0.13386276, 0.48975235, 1.0477479, 0.21467516, -0.37790406, 1.0467333, 0.21401384, -0.4570474, 1.0455157, 0.16514286)
+
+[node name="SM_Prop_KitchenCabinet_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_7shhc")
+surface_material_override/0 = ExtResource("2_6xb0i")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ltw2a")
+
+[node name="SM_Prop_KitchenCabinet_01_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8914306, 0, 0.45315722, 0, 1, 0, -0.45315722, 0, 0.8914306, 0.5023247, 0.033606723, 0.19022766)
+gi_mode = 2
+mesh = ExtResource("3_6xb0i")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6xb0i")
+
+[node name="SM_Prop_KitchenCabinet_01_Door_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9792497, 0.07158107, -0.18959515, -0.07092587, 0.99742895, 0.010247627, 0.18984123, 0.003412215, 0.9818089, -0.51983446, 0.033606723, 0.19022766)
+gi_mode = 2
+mesh = ExtResource("4_gkhh4")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6xb0i")

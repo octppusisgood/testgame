@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp88tux6nnu1c"]
+
+[ext_resource type="ArrayMesh" uid="uid://c6l745x0br76o" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Wall_Quarantine_Door_01.res" id="1_us8l4"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_omtfj"]
+[ext_resource type="ArrayMesh" uid="uid://bfycjmwsjnlal" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Wall_Quarantine_Door_02.res" id="3_omtfj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lkv5l"]
+size = Vector3(0.9533615, 5.0352526, 1.1892695)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l3wqd"]
+size = Vector3(0.90675354, 2.6674047, 4.999998)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wwac"]
+size = Vector3(0.888504, 5.0352526, 2.6586423)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ut0on"]
+size = Vector3(0.23995605, 2.2243478, 1.2149438)
+
+[node name="SM_Prop_Wall_Quarantine_Door_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_us8l4")
+surface_material_override/0 = ExtResource("2_omtfj")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35095417, 2.5125895, -0.53754115)
+shape = SubResource("BoxShape3D_lkv5l")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39823723, 3.6965134, -2.4429054)
+shape = SubResource("BoxShape3D_l3wqd")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40360826, 2.5125895, -3.6135833)
+shape = SubResource("BoxShape3D_7wwac")
+
+[node name="SM_Prop_Wall_Quarantine_Door_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010820479, 0, -1.1118437)
+gi_mode = 2
+mesh = ExtResource("3_omtfj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_omtfj")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Prop_Wall_Quarantine_Door_02"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Wall_Quarantine_Door_02/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055695802, 1.1121739, -0.6074719)
+shape = SubResource("BoxShape3D_ut0on")

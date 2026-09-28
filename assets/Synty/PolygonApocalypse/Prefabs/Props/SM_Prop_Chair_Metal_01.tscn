@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy2ihfnbbjnll"]
+
+[ext_resource type="ArrayMesh" uid="uid://sbnmt80hllf8" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Chair_Metal_01.res" id="1_aqa4h"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_80icg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqa4h"]
+size = Vector3(0.5419922, 0.5136719, 0.5463867)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80icg"]
+size = Vector3(0.55908203, 0.6038513, 0.05114746)
+
+[node name="SM_Prop_Chair_Metal_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_aqa4h")
+surface_material_override/0 = ExtResource("2_80icg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024414063, -0.3017578, 0.1027832)
+shape = SubResource("BoxShape3D_aqa4h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 0.80919135, 0.5875452, 0, -0.5875452, 0.80919135, 0.0011940002, 0.18755747, -0.11963009)
+shape = SubResource("BoxShape3D_80icg")

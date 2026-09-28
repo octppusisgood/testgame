@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://caea5321bi5f8"]
+
+[ext_resource type="ArrayMesh" uid="uid://dobe7ymy2fdv3" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Attach_Wire_01.res" id="1_x1cw8"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_4vwxh"]
+
+[node name="SM_Veh_Attach_Wire_01" type="MeshInstance3D" unique_id=1187590295]
+gi_mode = 2
+mesh = ExtResource("1_x1cw8")
+surface_material_override/0 = ExtResource("2_4vwxh")

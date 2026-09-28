@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://daur4udcikwea"]
+
+[ext_resource type="ArrayMesh" uid="uid://dm4r10bhbawkg" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Generic_Cloud_01.res" id="1_vxviq"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_7v3ae"]
+
+[node name="SM_Generic_Cloud_01" type="MeshInstance3D"]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("1_vxviq")
+surface_material_override/0 = ExtResource("2_7v3ae")

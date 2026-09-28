@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cmwqfbo3fgr1h"]
+
+[ext_resource type="ArrayMesh" uid="uid://exkgnojtc3wu" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_MachineGun_Bandit_01.res" id="1_n72qb"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_p30r5"]
+[ext_resource type="ArrayMesh" uid="uid://bnwxf7s8yid5w" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_MachineGun_Bandit_Bipod_01.res" id="3_p30r5"]
+[ext_resource type="ArrayMesh" uid="uid://0hh0p3r3hmlp" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_MachineGun_Bandit_Bipod_Leg_L_01.res" id="4_g1myk"]
+[ext_resource type="ArrayMesh" uid="uid://78kxe087144w" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_MachineGun_Bandit_Bipod_Leg_R_01.res" id="5_wvrgq"]
+[ext_resource type="ArrayMesh" uid="uid://cqoc35xfotkdo" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_MachineGun_Bandit_Handle_01.res" id="6_r66ta"]
+[ext_resource type="ArrayMesh" uid="uid://ng7b766ywad8" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_MachineGun_Bandit_Mag_01.res" id="7_56jss"]
+[ext_resource type="ArrayMesh" uid="uid://50u0rkjsukho" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_MachineGun_Bandit_Belt_01.res" id="8_5fl3u"]
+[ext_resource type="ArrayMesh" uid="uid://ba76r5n8d42fh" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_MachineGun_Bandit_Top_01.res" id="9_7uvmg"]
+[ext_resource type="ArrayMesh" uid="uid://d12lcdp3perip" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_MachineGun_Bandit_Trigger_01.res" id="10_b46of"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7d8ni"]
+points = PackedVector3Array(-0.0067667365, -0.104984336, -0.042257726, 0.010582648, -0.104984336, -0.042257726, -0.015449926, 0.08593198, 0.86028004, -0.024124619, -0.087604366, -0.016355962, -0.024124619, -0.04423345, -0.40689406, 0.027949028, -0.04423345, -0.40689406, 0.019265838, -0.09629435, -0.007680148, 0.019265838, 0.1032856, 0.86028004, -0.015449926, 0.16403648, 0.8167752, -0.05884888, 0.04256106, 0.24404466, -0.05884888, 0.04256106, 0.14861053, -0.024124619, 0.12061291, -0.42424572, 0.027949028, 0.12061291, -0.42424572, 0.027949028, 0.04256106, 0.3220014, 0.010574155, 0.16403648, 0.8167752, 0.010582648, 0.12930289, -0.41556987)
+
+[node name="SM_Wep_MachineGun_Bandit_01" type="MeshInstance3D" unique_id=1268241879]
+gi_mode = 2
+mesh = ExtResource("1_n72qb")
+surface_material_override/0 = ExtResource("2_p30r5")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=749435348]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1021892385]
+shape = SubResource("ConvexPolygonShape3D_7d8ni")
+
+[node name="SM_Wep_MachineGun_Bandit_Bipod_01" type="MeshInstance3D" parent="." unique_id=822615118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.062213235, 0.57619625)
+gi_mode = 2
+mesh = ExtResource("3_p30r5")
+surface_material_override/0 = ExtResource("2_p30r5")
+
+[node name="SM_Wep_MachineGun_Bandit_Bipod_Leg_L_01" type="MeshInstance3D" parent="SM_Wep_MachineGun_Bandit_Bipod_01" unique_id=101822543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02527819, -0.027436465, -0.0014625788)
+gi_mode = 2
+mesh = ExtResource("4_g1myk")
+surface_material_override/0 = ExtResource("2_p30r5")
+
+[node name="SM_Wep_MachineGun_Bandit_Bipod_Leg_R_01" type="MeshInstance3D" parent="SM_Wep_MachineGun_Bandit_Bipod_01" unique_id=311900084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02527819, -0.027436465, -0.0014625788)
+gi_mode = 2
+mesh = ExtResource("5_wvrgq")
+surface_material_override/0 = ExtResource("2_p30r5")
+
+[node name="SM_Wep_MachineGun_Bandit_Handle_01" type="MeshInstance3D" parent="." unique_id=122123578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0051306444, 0.097852215, 0.3337595)
+gi_mode = 2
+mesh = ExtResource("6_r66ta")
+surface_material_override/0 = ExtResource("2_p30r5")
+
+[node name="SM_Wep_MachineGun_Bandit_Mag_01" type="MeshInstance3D" parent="." unique_id=157110135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03277905, -0.021587104, 0.19526081)
+gi_mode = 2
+mesh = ExtResource("7_56jss")
+surface_material_override/0 = ExtResource("2_p30r5")
+
+[node name="SM_Wep_MachineGun_Bandit_Belt_01" type="MeshInstance3D" parent="SM_Wep_MachineGun_Bandit_Mag_01" unique_id=1070890023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014970541, 0.07845664, 0.0061980635)
+gi_mode = 2
+mesh = ExtResource("8_5fl3u")
+surface_material_override/0 = ExtResource("2_p30r5")
+
+[node name="SM_Wep_MachineGun_Bandit_Top_01" type="MeshInstance3D" parent="." unique_id=1976471299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.168987e-05, 0.10237011, 0.2547564)
+gi_mode = 2
+mesh = ExtResource("9_7uvmg")
+surface_material_override/0 = ExtResource("2_p30r5")
+
+[node name="SM_Wep_MachineGun_Bandit_Trigger_01" type="MeshInstance3D" parent="." unique_id=352299295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0861626e-09, 0.03516702, 0.05385019)
+gi_mode = 2
+mesh = ExtResource("10_b46of")
+surface_material_override/0 = ExtResource("2_p30r5")

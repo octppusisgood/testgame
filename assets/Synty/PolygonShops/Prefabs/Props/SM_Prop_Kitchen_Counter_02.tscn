@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://b7mxgq2rtfldj"]
+
+[ext_resource type="ArrayMesh" uid="uid://cki6263cjuuxg" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02.res" id="1_b6232"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_e3xkk"]
+[ext_resource type="ArrayMesh" uid="uid://lafxkh6mlk7o" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02_Container_01.res" id="3_e3xkk"]
+[ext_resource type="ArrayMesh" uid="uid://bfg1d18pxrg4g" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02_Container_02.res" id="4_amu8p"]
+[ext_resource type="ArrayMesh" uid="uid://de45o5q3wjhsf" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02_Container_03.res" id="5_6csgr"]
+[ext_resource type="ArrayMesh" uid="uid://dhwv045g3kkn6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02_Container_04.res" id="6_3ddls"]
+[ext_resource type="ArrayMesh" uid="uid://8uy2wxrt71qf" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02_Container_05.res" id="7_vi2bs"]
+[ext_resource type="ArrayMesh" uid="uid://ds61kst27t108" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02_Container_06.res" id="8_ur6vs"]
+[ext_resource type="ArrayMesh" uid="uid://dync6agk1c75r" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02_Container_07.res" id="9_ipn5l"]
+[ext_resource type="ArrayMesh" uid="uid://dncndsu5uvhof" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02_Glass_01.res" id="10_2yfcw"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="11_ej0ul"]
+[ext_resource type="ArrayMesh" uid="uid://cnn3jcsniubkf" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Counter_02_Top_01.res" id="12_tb1hd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jg3mr"]
+points = PackedVector3Array(0.047616113, 1.0231507, -0.9841976, 0.047616113, 1.0231507, -0.007000804, 0.13912508, 1.0515721, 0.3293606, 2.452375, 1.0231507, -0.9841976, 0.065436274, -1.9628555e-05, -0.9566818, 0.019922614, -0.019841194, 0.011771619, 0.13912508, 0.93253785, 0.3293606, 2.3606253, 1.0515721, 0.3293606, 2.4343143, -1.9628555e-05, -0.9566818, 2.452375, 1.0231507, -0.007000804, 2.4800687, -0.019841194, 0.011771619, 0.13310474, 0.034589455, 0.039801717, 2.3606253, 0.93253785, 0.3293606, 2.3666458, 0.034589455, 0.039801717)
+
+[node name="SM_Prop_Kitchen_Counter_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_b6232")
+surface_material_override/0 = ExtResource("2_e3xkk")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_jg3mr")
+
+[node name="SM_Prop_Kitchen_Counter_02_Container_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1247547, 0.7358943, -0.29219052)
+gi_mode = 2
+mesh = ExtResource("3_e3xkk")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_e3xkk")
+
+[node name="SM_Prop_Kitchen_Counter_02_Container_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1247547, 0.7358943, -0.7078097)
+gi_mode = 2
+mesh = ExtResource("4_amu8p")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_e3xkk")
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.714508, 0.7358943, -0.29219046)
+gi_mode = 2
+mesh = ExtResource("5_6csgr")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_e3xkk")
+
+[node name="MeshRenderer2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.714508, 0.7358943, -0.70780957)
+gi_mode = 2
+mesh = ExtResource("6_3ddls")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_e3xkk")
+
+[node name="SM_Prop_Kitchen_Counter_02_Container_05" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2154212, 0.7358943, -0.49964485)
+gi_mode = 2
+mesh = ExtResource("7_vi2bs")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_e3xkk")
+
+[node name="SM_Prop_Kitchen_Counter_02_Container_06" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8047935, 0.7358943, -0.49964485)
+gi_mode = 2
+mesh = ExtResource("8_ur6vs")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_e3xkk")
+
+[node name="SM_Prop_Kitchen_Counter_02_Container_07" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39568186, 0.7358943, -0.49964485)
+gi_mode = 2
+mesh = ExtResource("9_ipn5l")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_e3xkk")
+
+[node name="MeshRenderer3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5132624, 1.0081937, -0.059258465)
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("10_2yfcw")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_ej0ul")
+
+[node name="SM_Prop_Kitchen_Counter_02_Top_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("12_tb1hd")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_e3xkk")

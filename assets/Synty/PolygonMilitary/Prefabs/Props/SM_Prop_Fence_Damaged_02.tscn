@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b7webppbvy714"]
+
+[ext_resource type="ArrayMesh" uid="uid://ba02qex7b8fv6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Fence_Damaged_02.res" id="1_8cvie"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_hy1cw"]
+[ext_resource type="Material" uid="uid://w7i3udc7qosk" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Fence_Wire_01_mat.tres" id="3_b74oq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vadgq"]
+points = PackedVector3Array(1.5551223, 0.23879492, -2.2599034, -0.16677979, -0.014469862, -2.1081095, -0.21725589, 0.18827397, -1.9558486, -0.21789081, 0.3909235, -1.4997663, 2.0109944, 0.3909235, -2.006758, 2.4675016, 0.036239684, -2.2599034, -0.2686844, 0.2895987, -1.4490905, 2.974485, -0.52118796, 0.07095027, -0.11598621, -0.52118796, 0.07095027, -0.06582756, 0.44172722, -0.9934752, 2.721152, 0.34030825, -1.4997663, 2.9236915, 0.036239684, -0.94279945, 0.036394477, 0.08694917, 0.07095027, 2.9230566, 0.08694917, 0.07095027, 2.912263, -0.35652342, 0.1258297, 2.8732154, 0.18827397, -0.3853655)
+
+[node name="SM_Prop_Fence_Damaged_02" type="MeshInstance3D" unique_id=1472412566]
+gi_mode = 2
+mesh = ExtResource("1_8cvie")
+surface_material_override/0 = ExtResource("2_hy1cw")
+surface_material_override/1 = ExtResource("3_b74oq")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=421107888]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1244223736]
+shape = SubResource("ConvexPolygonShape3D_vadgq")

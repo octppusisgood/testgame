@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cp6w33o8shmy5"]
+
+[ext_resource type="Texture2D" uid="uid://bxojjxnrvedjy" path="res://Assets/Synty/PolygonMilitary/Textures/SkyBox_01.png" id="1_vsfw0"]
+
+[resource]
+resource_name = "SkyBox_01_mat"
+depth_draw_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_vsfw0")
+uv1_scale = Vector3(1, 1, 0)

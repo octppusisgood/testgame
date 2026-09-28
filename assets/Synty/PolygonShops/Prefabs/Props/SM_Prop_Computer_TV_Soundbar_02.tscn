@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7jh11n834xq6"]
+
+[ext_resource type="ArrayMesh" uid="uid://cgpgf7jdhi6pc" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Computer_TV_Soundbar_02.res" id="1_4dudc"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_drs7w"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_puqlx"]
+points = PackedVector3Array(-0.7800816, 0.01218163, -0.09549199, -0.7800816, 0.10967991, -0.09549199, 0.7800816, 0.01218163, -0.09549199, -0.7800816, -0.012188762, -0.07109535, -0.7800816, 0.134067, -0.07109535, 0.7800816, 0.10967991, -0.09549199, 0.7800816, -0.012188762, -0.07109535, -0.7800816, -0.012188762, 0.09952842, -0.7800816, 0.15845409, 0.0020182133, 0.7800816, 0.134067, -0.07109535, 0.7800816, -0.012188762, 0.09952842, -0.7800816, 0.10967991, 0.09952842, -0.7800816, 0.15845409, 0.075131774, 0.7800816, 0.15845409, 0.0020182133, 0.7800816, 0.10967991, 0.09952842, 0.7800816, 0.15845409, 0.075131774)
+
+[node name="SM_Prop_Computer_TV_Soundbar_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_4dudc")
+surface_material_override/0 = ExtResource("2_drs7w")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_puqlx")

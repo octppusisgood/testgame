@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl08ti62ioc7"]
+
+[ext_resource type="ArrayMesh" uid="uid://s2l3567x3msl" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sign_Toilets_Disabled_01.res" id="1_ms2pn"]
+[ext_resource type="Material" uid="uid://bnfbs4ne1yer1" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Signs_01_mat.tres" id="2_8o0c7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xv2dy"]
+points = PackedVector3Array(-0.122092925, -0.1324623, -0.010369283, -0.122092925, -0.1324623, 0.010327949, -0.122092925, 0.062081978, -0.010369283, 0.122134425, -0.1324623, -0.010369283, 0.122134425, -0.1324623, 0.010327949, -0.122069016, 0.1324623, 0.010327949, -0.122069016, 0.1324623, -0.010369283, 0.122134425, 0.1324623, -0.010369283, 0.122134425, 0.1324623, 0.010327949)
+
+[node name="SM_Prop_Sign_Toilets_Disabled_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ms2pn")
+surface_material_override/0 = ExtResource("2_8o0c7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_xv2dy")

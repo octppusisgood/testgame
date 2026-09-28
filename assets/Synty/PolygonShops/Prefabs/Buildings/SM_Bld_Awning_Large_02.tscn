@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://twgkrl2ie5ng"]
+
+[ext_resource type="ArrayMesh" uid="uid://eb5ocjuefgbm" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Awning_Large_02.res" id="1_cspox"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_d2b4e"]
+[ext_resource type="Material" uid="uid://mrvtss0wp2l8" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Lines_01_mat.tres" id="3_gpl76"]
+[ext_resource type="ArrayMesh" uid="uid://djbtduwtao80a" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Awning_Large_02_Pillars.res" id="4_d2b4e"]
+[ext_resource type="Material" uid="uid://buo25cdi05x6y" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_White_01_mat.tres" id="5_2gf70"]
+[ext_resource type="Material" uid="uid://ucwt6adpdc14" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Blank_01_mat.tres" id="6_lq4tu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhwdp"]
+size = Vector3(5.1097326, 0.6464472, 6.3048663)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_laedn"]
+size = Vector3(0.4374385, 2.9610424, 0.42820168)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i4k6l"]
+size = Vector3(0.4510243, 2.9610424, 0.42820168)
+
+[node name="SM_Bld_Awning_Large_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_cspox")
+surface_material_override/0 = ExtResource("2_d2b4e")
+surface_material_override/1 = ExtResource("3_gpl76")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5548663, 3.1767764, 3.1524332)
+shape = SubResource("BoxShape3D_nhwdp")
+
+[node name="SM_Bld_Awning_Large_02_Pillars" type="Node3D" parent="."]
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="SM_Bld_Awning_Large_02_Pillars"]
+gi_mode = 2
+mesh = ExtResource("4_d2b4e")
+surface_material_override/0 = ExtResource("5_2gf70")
+surface_material_override/1 = ExtResource("6_lq4tu")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Bld_Awning_Large_02_Pillars"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Awning_Large_02_Pillars/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.550247, 1.4805212, 5.999999)
+shape = SubResource("BoxShape3D_laedn")
+
+[node name="BoxCollider2" type="StaticBody3D" parent="SM_Bld_Awning_Large_02_Pillars"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Awning_Large_02_Pillars/BoxCollider2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5662776, 1.4805212, 5.999999)
+shape = SubResource("BoxShape3D_i4k6l")

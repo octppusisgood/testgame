@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dr3f1enpn7bu"]
+
+[ext_resource type="ArrayMesh" uid="uid://cxwxm2quk07lk" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Fridge_01.res" id="1_js103"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_n64sv"]
+[ext_resource type="ArrayMesh" uid="uid://23hevsst4322" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Fridge_Door_01.res" id="3_n64sv"]
+[ext_resource type="ArrayMesh" uid="uid://c83umu1u25n8j" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Fridge_Door_02.res" id="4_y5g2h"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ft8q4"]
+points = PackedVector3Array(-0.4491601, 0.17156067, 0.512969, 0.46525556, 0.17156067, 0.512969, -0.37871715, 2.2818692, 0.512969, -0.44880205, 2.2457628, 0.5126262, -0.44531125, 2.2374651, -0.187535, -0.44531125, 0.17985837, -0.187535, -0.37361518, 0.045973778, -0.1162915, -0.36314273, 0.0762492, 0.46490192, 0.36939228, 4.7683715e-09, 0.12514101, 0.4614067, 0.17985837, -0.187535, 0.46525556, 2.2112265, 0.512969, 0.39803493, 2.2910638, 0.1258267, -0.37558436, 2.27245, -0.187535, 0.42658806, 0.14487346, -0.187535, 0.3641113, 0.01704394, -0.12355985, 0.4614067, 2.202256, -0.187535)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n8lhy"]
+points = PackedVector3Array(-0.84143084, 0.76719826, 0.0012265444, -0.80784446, 0.21495838, -0.1338886, -0.9218757, 0.67671025, 0.08721578, -0.8281588, 0.75368136, 0.086574346, -0.09268862, 0.76712316, 0.0012265444, -0.10009205, 0.59005195, -0.05412501, -0.78987753, 0.12567183, -0.12377666, -0.9241329, 0.0068734265, 0.08732897, -0.126275, 0.21495838, -0.1338886, -0.68920857, 0.15563427, 0.25157255, -0.8201233, 0.7316789, 0.09955385, -0.08934802, 0.6583873, 0.14279372, -0.012243748, 0.6767853, 0.08721578, -0.001770556, 3.988946e-05, 0.0006605834, -0.08366001, 0.02309369, 0.1724504, -0.49401012, 0.13445781, 0.23523498)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0lkr5"]
+points = PackedVector3Array(-0.9441197, -1.4102186, -0.0070263892, -0.78638303, -1.3084102, -0.18187934, 0.0116558075, -1.4102186, -0.0070263892, -0.09443754, -1.4554509, 0.0841994, -0.8242735, -1.3634069, 0.14722583, -0.82764155, -0.17516291, 0.20265362, -0.9441197, 0.011509776, -0.0070263892, -0.14617443, -0.38136458, -0.18183713, -0.13214087, -1.3161643, -0.15532635, -0.78638303, -0.38122094, -0.18187934, 0.0116558075, 0.011509776, -0.0070263892, -0.081994474, -0.031712174, 0.17061272, -0.08629811, -1.3421549, 0.14731026, -0.4547245, -0.10523248, 0.24938521, -0.7110699, -0.10523248, 0.24938521, -0.081620276, -0.058564305, -0.10027848)
+
+[node name="SM_Prop_Fridge_01" type="MeshInstance3D" unique_id=1311523406]
+gi_mode = 2
+mesh = ExtResource("1_js103")
+surface_material_override/0 = ExtResource("2_n64sv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1098771137]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1213233392]
+shape = SubResource("ConvexPolygonShape3D_ft8q4")
+
+[node name="SM_Prop_Fridge_Door_01" type="MeshInstance3D" parent="." unique_id=1307716838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46700132, 1.5449243, 0.5129665)
+gi_mode = 2
+mesh = ExtResource("3_n64sv")
+surface_material_override/0 = ExtResource("2_n64sv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Fridge_Door_01" unique_id=505318166]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Fridge_Door_01/MeshCollider" unique_id=899382153]
+shape = SubResource("ConvexPolygonShape3D_n8lhy")
+
+[node name="SM_Prop_Fridge_Door_02" type="MeshInstance3D" parent="." unique_id=698074448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4670001, 1.544924, 0.51296896)
+gi_mode = 2
+mesh = ExtResource("4_y5g2h")
+surface_material_override/0 = ExtResource("2_n64sv")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Fridge_Door_02" unique_id=315315286]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Fridge_Door_02/MeshCollider" unique_id=950959725]
+shape = SubResource("ConvexPolygonShape3D_0lkr5")

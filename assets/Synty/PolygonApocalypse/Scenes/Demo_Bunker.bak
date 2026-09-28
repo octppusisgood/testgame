@@ -1,0 +1,1648 @@
+[gd_scene load_steps=127 format=3 uid="uid://qfe2rq4ifi52"]
+
+[ext_resource type="PackedScene" uid="uid://cxmsp7g4q0i48" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Crate_Wall_01.tscn" id="1_uikon"]
+[ext_resource type="PackedScene" uid="uid://cojg4kcvdlt7o" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Pipe_Valve_01.tscn" id="2_khimd"]
+[ext_resource type="PackedScene" uid="uid://odx80e8b5rel" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Pipe_Valve_02.tscn" id="3_nn5ym"]
+[ext_resource type="PackedScene" uid="uid://c4cpebweu6tb3" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Pipes_Valves_01.tscn" id="4_57iqv"]
+[ext_resource type="PackedScene" uid="uid://e5pqlb60u51k" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Pipes_01.tscn" id="5_1ajll"]
+[ext_resource type="PackedScene" uid="uid://y2ytw16fny57" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_PowerBoxes_02.tscn" id="6_xw3yn"]
+[ext_resource type="PackedScene" uid="uid://cpq83g1hysh5e" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_PowerBoxes_01.tscn" id="7_h6bbv"]
+[ext_resource type="PackedScene" uid="uid://ctq6dx1xxubje" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Sign_MissingPapers_01.tscn" id="8_n1k2d"]
+[ext_resource type="PackedScene" uid="uid://cm3148bfe3qsb" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_MedicalBox_01.tscn" id="9_57ssu"]
+[ext_resource type="PackedScene" uid="uid://cyyo4hm5f446f" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Medical_Shelf_02.tscn" id="10_odsq3"]
+[ext_resource type="PackedScene" uid="uid://djsl0k23tv1ck" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Medical_Shelf_01.tscn" id="11_fgghi"]
+[ext_resource type="PackedScene" uid="uid://dggj4qbftv7i1" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Medical_IVStand_01.tscn" id="12_vk5mn"]
+[ext_resource type="PackedScene" uid="uid://dxar68wucpox3" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Medical_Container_Broken_01.tscn" id="13_0fh06"]
+[ext_resource type="PackedScene" uid="uid://dwtmox4vop1o6" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_SupplyPile_04.tscn" id="14_yew4i"]
+[ext_resource type="PackedScene" uid="uid://cjkhd75pedeoj" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_SupplyPile_02.tscn" id="15_kiv5t"]
+[ext_resource type="PackedScene" uid="uid://bsd0jkvea32o2" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Decontamination_Shower_01.tscn" id="16_wajux"]
+[ext_resource type="ArrayMesh" uid="uid://crphn4x0vvoyl" path="res://Assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Hospital_01.mesh" id="17_i7iy0"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="18_to1nh"]
+[ext_resource type="PackedScene" uid="uid://ddcb2aj764tn1" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Toy_Bear_01.tscn" id="19_kpbsg"]
+[ext_resource type="PackedScene" uid="uid://644x6nqhjoo0" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Papers_03.tscn" id="20_x10j6"]
+[ext_resource type="PackedScene" uid="uid://d3qpm1gpd7fnj" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Papers_02.tscn" id="21_8pjkb"]
+[ext_resource type="PackedScene" uid="uid://c6110nimpnkma" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Papers_01.tscn" id="22_j2sva"]
+[ext_resource type="PackedScene" uid="uid://bls0qv61a14n8" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Bunker_RoofWire_01.tscn" id="23_lqmwb"]
+[ext_resource type="PackedScene" uid="uid://bgbc87xs7e617" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Bunker_RoofWire_02.tscn" id="24_flxdx"]
+[ext_resource type="PackedScene" uid="uid://c8olbw6n0kjc3" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Crate_01.tscn" id="25_synjj"]
+[ext_resource type="PackedScene" uid="uid://glgnwn01368b" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Generator_01.tscn" id="26_mtb7q"]
+[ext_resource type="PackedScene" uid="uid://drxr7ldjdlrs0" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_CardboardBox_02.tscn" id="27_uhjsb"]
+[ext_resource type="PackedScene" uid="uid://b3yu7m4ciegjw" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_CardboardBox_01.tscn" id="28_ootfo"]
+[ext_resource type="PackedScene" uid="uid://bronlfjtqty7g" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Barrel_Warning_01.tscn" id="29_a5qsd"]
+[ext_resource type="PackedScene" uid="uid://dhn201cjigdai" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_CarBattery_Table.tscn" id="30_gw8cm"]
+[ext_resource type="PackedScene" uid="uid://b54wdo5x4eia4" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Cupboard_Broken_01.tscn" id="31_dywyb"]
+[ext_resource type="PackedScene" uid="uid://btf6tybylbb1l" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_CardboardBox_03.tscn" id="32_4aiuj"]
+[ext_resource type="PackedScene" uid="uid://dspkrro6uln4b" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Drill_01.tscn" id="33_6fgby"]
+[ext_resource type="PackedScene" uid="uid://d0mqcedfnxxif" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Vice_01.tscn" id="34_s0ju1"]
+[ext_resource type="PackedScene" uid="uid://dqtmld48maj75" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Anvil_01.tscn" id="35_u6b6h"]
+[ext_resource type="PackedScene" uid="uid://c0t85up7fh7hq" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Workbench_01.tscn" id="36_m8i4c"]
+[ext_resource type="PackedScene" uid="uid://ctis7gqg7y0op" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_GasCan_01.tscn" id="37_xva5e"]
+[ext_resource type="PackedScene" uid="uid://dxy3nk3dbc2fk" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Propane_01.tscn" id="38_r8gt1"]
+[ext_resource type="PackedScene" uid="uid://cu1dnsplkur1t" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Chair_Folding_01.tscn" id="39_eftes"]
+[ext_resource type="PackedScene" uid="uid://dxbtx80ghu706" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Sign_Quarantine_01.tscn" id="40_ckymr"]
+[ext_resource type="PackedScene" uid="uid://c80sc8476av37" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Sign_Radioactive_01.tscn" id="41_tk0eb"]
+[ext_resource type="PackedScene" uid="uid://bsx3ubei8tfgv" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Sign_Military_01.tscn" id="42_fqi1o"]
+[ext_resource type="PackedScene" uid="uid://dnjnckdavc5ya" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_JunkPile_01.tscn" id="43_lmnbd"]
+[ext_resource type="PackedScene" uid="uid://dgvp7n0qxvvan" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Wall_Junk_07.tscn" id="44_n4w7x"]
+[ext_resource type="ArrayMesh" uid="uid://friivyppj24p" path="res://Assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Toilet_Portable_01.mesh" id="45_5yc8w"]
+[ext_resource type="PackedScene" uid="uid://v1lob0uht2w2" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Gas_Table_01.tscn" id="46_cljvy"]
+[ext_resource type="PackedScene" uid="uid://brsm77dgkao4o" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_BarrelStack_02.tscn" id="47_xano8"]
+[ext_resource type="PackedScene" uid="uid://trasawptn1jd" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Couch_02.tscn" id="48_pn7g2"]
+[ext_resource type="PackedScene" uid="uid://dtqgmrtndddbl" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Blackboard_01.tscn" id="49_0hddh"]
+[ext_resource type="PackedScene" uid="uid://b1vm6y54ipqub" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Sign_Caution_01.tscn" id="50_ygrdo"]
+[ext_resource type="PackedScene" uid="uid://gmikg3smweaa" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Rug_02.tscn" id="51_de1ge"]
+[ext_resource type="PackedScene" uid="uid://dnm61sa8w7qsj" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Bedframe_02.tscn" id="52_1jryr"]
+[ext_resource type="PackedScene" uid="uid://hsrr2kmau1ei" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Bed_Bunk_01.tscn" id="53_1ppb2"]
+[ext_resource type="PackedScene" uid="uid://t3r7u8h3f6rc" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Bedframe_01.tscn" id="54_kufjw"]
+[ext_resource type="PackedScene" uid="uid://op88rp48mhi2" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Rug_01.tscn" id="55_sxfrs"]
+[ext_resource type="PackedScene" uid="uid://datatw4k6lbh6" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Tool_Bucket_02.tscn" id="56_ggv1w"]
+[ext_resource type="PackedScene" uid="uid://df5fcpteso81j" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Curtain_01.tscn" id="57_savl0"]
+[ext_resource type="ArrayMesh" uid="uid://bfhqixewyf5mw" path="res://Assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Toilet_Pneumatic_01.mesh" id="58_1kt7x"]
+[ext_resource type="PackedScene" uid="uid://cfwgs2pshd256" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Bunker_Light_01.tscn" id="59_kd60r"]
+[ext_resource type="PackedScene" uid="uid://cnxtx5n7l7glb" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Crate_03.tscn" id="60_lo1m6"]
+[ext_resource type="PackedScene" uid="uid://bhlahwh5qpdah" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Crate_04.tscn" id="61_3ida4"]
+[ext_resource type="PackedScene" uid="uid://ca8niijoxry4v" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_Crate_Large_02.tscn" id="62_brcgq"]
+[ext_resource type="ArrayMesh" uid="uid://c31fsms0x1fvq" path="res://Assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Hospital_Wheels_f.mesh" id="63_hm0qj"]
+[ext_resource type="ArrayMesh" uid="uid://ba4mplpu3qq60" path="res://Assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Bed_Hospital_Wheels_r.mesh" id="64_nm0bp"]
+[ext_resource type="PackedScene" uid="uid://dlktoutyb108f" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_BedMatress_01.tscn" id="65_m8u2p"]
+[ext_resource type="PackedScene" uid="uid://deovycaijoboj" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_BedMatress_02.tscn" id="66_7v8i7"]
+[ext_resource type="PackedScene" uid="uid://ds707oiwe2dbx" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Props/SM_Prop_CautionLine_01.tscn" id="67_lbo1u"]
+[ext_resource type="ArrayMesh" uid="uid://b6soctvojsjy0" path="res://Assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Toilet_Pneumatic_Lid_01.mesh" id="68_dv5ad"]
+[ext_resource type="ArrayMesh" uid="uid://cixy6vfxapwod" path="res://Assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Toilet_Portable_Lid_01.mesh" id="69_qk7tn"]
+[ext_resource type="PackedScene" uid="uid://bfy2ijef5cqqg" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Characters/Attachments/SM_Chr_Attach_Canteen_01.tscn" id="70_lssmb"]
+[ext_resource type="PackedScene" uid="uid://fxujx1bf5rmi" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Characters/Attachments/SM_Chr_Attach_SupplyBag_01.tscn" id="71_5i7ee"]
+[ext_resource type="PackedScene" uid="uid://cq3h21lwhdkkx" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_01.tscn" id="72_404n2"]
+[ext_resource type="PackedScene" uid="uid://d2aq85pva8yuq" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_02.tscn" id="73_luvxy"]
+[ext_resource type="PackedScene" uid="uid://dcmrbi6n23fvr" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_03.tscn" id="74_u3gqg"]
+[ext_resource type="PackedScene" uid="uid://dqg4d1wc4nqdp" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_04.tscn" id="75_xqle8"]
+[ext_resource type="PackedScene" uid="uid://dw33ip8sfwmhq" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_05.tscn" id="76_32irm"]
+[ext_resource type="PackedScene" uid="uid://di4c43a3a2jhk" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_06.tscn" id="77_ioop4"]
+[ext_resource type="PackedScene" uid="uid://cx5iblml1xoh6" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_07.tscn" id="78_ovkbt"]
+[ext_resource type="PackedScene" uid="uid://cx5325hpbdx3b" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_08.tscn" id="79_cjj8x"]
+[ext_resource type="PackedScene" uid="uid://wffap8uqa3yv" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_Broken_01.tscn" id="80_ma15d"]
+[ext_resource type="PackedScene" uid="uid://b06yg0u8s2crh" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_Broken_02.tscn" id="81_sv7a6"]
+[ext_resource type="PackedScene" uid="uid://dm7nhr0rr2obb" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Alcohol_Broken_03.tscn" id="82_it8hj"]
+[ext_resource type="PackedScene" uid="uid://bmbylpy21xnvd" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Can_01.tscn" id="83_orxx5"]
+[ext_resource type="PackedScene" uid="uid://bsxk1vw8pgrad" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Can_02.tscn" id="84_ergfb"]
+[ext_resource type="PackedScene" uid="uid://dlqraagrnc84m" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Can_03.tscn" id="85_cyeek"]
+[ext_resource type="PackedScene" uid="uid://b02sui1kedfd1" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Item/SM_Item_Can_04.tscn" id="86_i3yw3"]
+[ext_resource type="PackedScene" uid="uid://bsxk0r1sj1oqy" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Weapons/Melee/SM_Wep_PipeWrench_01.tscn" id="87_4t1nb"]
+[ext_resource type="Material" uid="uid://cx4qsgovtjsdn" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Background_Bunker_01_mat.tres" id="88_cq3vc"]
+[ext_resource type="PackedScene" uid="uid://mvuaew85pr6p" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Beam_End_Curved_Concrete_01.tscn" id="89_hh3p5"]
+[ext_resource type="PackedScene" uid="uid://cbomyb1h2tdr0" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Ceiling_Concrete_01.tscn" id="90_nj1bx"]
+[ext_resource type="PackedScene" uid="uid://buffpk7g7t1ek" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Ceiling_Concrete_02.tscn" id="91_r83yw"]
+[ext_resource type="PackedScene" uid="uid://d2bj7shkr1be2" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Ceiling_Wood_01.tscn" id="92_83ly5"]
+[ext_resource type="PackedScene" uid="uid://bvivh1u72qri2" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Floor_Concrete_Open_01.tscn" id="93_wucgc"]
+[ext_resource type="PackedScene" uid="uid://slqk00lg2nsd" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Floor_Concrete_Rust_Open_01.tscn" id="94_jklb7"]
+[ext_resource type="PackedScene" uid="uid://1r1rgvne71qt" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Floor_Container_01.tscn" id="95_2rmym"]
+[ext_resource type="Material" uid="uid://b6kpylvtr0e71" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_02_A_mat.tres" id="96_yph8t"]
+[ext_resource type="Material" uid="uid://iaihubwd6yfk" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_03_A_mat.tres" id="97_sxp6a"]
+[ext_resource type="PackedScene" uid="uid://cqf8uurgxrduk" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Floor_Pallet_01.tscn" id="98_kbjs4"]
+[ext_resource type="PackedScene" uid="uid://ccx4ell2whj3i" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Floor_Pallet_02.tscn" id="99_n4y83"]
+[ext_resource type="PackedScene" uid="uid://bnxr2u6oel35e" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Floor_Stone_01.tscn" id="100_p4wk6"]
+[ext_resource type="PackedScene" uid="uid://bhvdtjkf6ut0g" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Floor_Wood_01.tscn" id="101_b301n"]
+[ext_resource type="PackedScene" uid="uid://dk4iqqlxuayd8" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Floor_Wood_02.tscn" id="102_82nv3"]
+[ext_resource type="PackedScene" uid="uid://bofye6tjofoi5" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Ladder_01.tscn" id="103_d2gdp"]
+[ext_resource type="PackedScene" uid="uid://dhlr6pvtjnaoo" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Ladder_Rust_01.tscn" id="104_aebb3"]
+[ext_resource type="PackedScene" uid="uid://b8rfjqhqqokry" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Stairs_Double_01.tscn" id="105_g85uj"]
+[ext_resource type="PackedScene" uid="uid://cpn2lexrv182x" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Concrete_Door_01.tscn" id="106_xmkft"]
+[ext_resource type="PackedScene" uid="uid://164r1o4vignf" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Concrete_x1_01.tscn" id="107_nopwo"]
+[ext_resource type="PackedScene" uid="uid://cn73r7uyvc8f3" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Concrete_x1_02.tscn" id="108_7bocn"]
+[ext_resource type="PackedScene" uid="uid://ck84ixue2788v" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Container_Door_01.tscn" id="109_7ahpa"]
+[ext_resource type="PackedScene" uid="uid://kl5ywnhoe3v4" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Container_x1_01.tscn" id="110_bro5m"]
+[ext_resource type="Material" uid="uid://diau1mevihnst" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_04_A_mat.tres" id="111_kalx2"]
+[ext_resource type="PackedScene" uid="uid://jbarrp1mgbd3" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Container_x2_01.tscn" id="112_bjadk"]
+[ext_resource type="PackedScene" uid="uid://daxtcbb7474tq" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Curved_Concrete_01.tscn" id="113_xfa7j"]
+[ext_resource type="PackedScene" uid="uid://bemw0ch3yurm0" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Curved_Corrugated_01.tscn" id="114_18r22"]
+[ext_resource type="PackedScene" uid="uid://dyf3qo81gcgd2" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Curved_End_Concrete_Door_x2_01.tscn" id="115_h3820"]
+[ext_resource type="PackedScene" uid="uid://yvmh21v0jgsw" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Curved_End_Concrete_x2_01.tscn" id="116_ox2gx"]
+[ext_resource type="PackedScene" uid="uid://d1mm6yq4eb7iq" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Metal_Door_x1_01.tscn" id="117_eh876"]
+[ext_resource type="PackedScene" uid="uid://bydm4mc3wmbr4" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Slab_x1_01.tscn" id="118_71rxl"]
+[ext_resource type="PackedScene" uid="uid://dmvlsg3bu5cou" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wall_Slab_x2_01.tscn" id="119_wgj5y"]
+[ext_resource type="PackedScene" uid="uid://bussbaytuqcnk" path="res://Assets/Synty/PolygonApocalypse/Prefabs/Buildings/SM_Bld_Bunker_Wood_Floor_Raised_x2_01.tscn" id="120_eoa4f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hbon4"]
+resource_name = "Default-Skybox"
+sky_top_color = Color(0.454902, 0.678431, 0.87451, 1)
+sky_horizon_color = Color(0.894118, 0.952941, 1, 1)
+sky_curve = 0.0731028
+ground_bottom_color = Color(0.454902, 0.470588, 0.490196, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_7saem"]
+sky_material = SubResource("ProceduralSkyMaterial_hbon4")
+
+[sub_resource type="Environment" id="Environment_3ev36"]
+background_mode = 1
+background_color = Color(0.14489618, 0.20292674, 0.29411763, 0)
+sky = SubResource("Sky_7saem")
+ambient_light_color = Color(0.31617647, 0.26531887, 0.17436202, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hr0n4"]
+data = PackedVector3Array(5, 0, 5, 4.0909, 0, 5, 5, 0, 4.0909, 4.0909, 0, 5, 4.0909, 0, 4.0909, 5, 0, 4.0909, 4.0909, 0, 5, 3.1818, 0, 5, 4.0909, 0, 4.0909, 3.1818, 0, 5, 3.1818, 0, 4.0909, 4.0909, 0, 4.0909, 3.1818, 0, 5, 2.2726998, 0, 5, 3.1818, 0, 4.0909, 2.2726998, 0, 5, 2.2726998, 0, 4.0909, 3.1818, 0, 4.0909, 2.2726998, 0, 5, 1.3636, 0, 5, 2.2726998, 0, 4.0909, 1.3636, 0, 5, 1.3636, 0, 4.0909, 2.2726998, 0, 4.0909, 1.3636, 0, 5, 0.4545, 0, 5, 1.3636, 0, 4.0909, 0.4545, 0, 5, 0.4545, 0, 4.0909, 1.3636, 0, 4.0909, 0.4545, 0, 5, -0.4545, 0, 5, 0.4545, 0, 4.0909, -0.4545, 0, 5, -0.4545, 0, 4.0909, 0.4545, 0, 4.0909, -0.4545, 0, 5, -1.3636, 0, 5, -0.4545, 0, 4.0909, -1.3636, 0, 5, -1.3636, 0, 4.0909, -0.4545, 0, 4.0909, -1.3636, 0, 5, -2.2726998, 0, 5, -1.3636, 0, 4.0909, -2.2726998, 0, 5, -2.2726998, 0, 4.0909, -1.3636, 0, 4.0909, -2.2726998, 0, 5, -3.1818, 0, 5, -2.2726998, 0, 4.0909, -3.1818, 0, 5, -3.1818, 0, 4.0909, -2.2726998, 0, 4.0909, -3.1818, 0, 5, -4.0909, 0, 5, -3.1818, 0, 4.0909, -4.0909, 0, 5, -4.0909, 0, 4.0909, -3.1818, 0, 4.0909, -4.0909, 0, 5, -5, 0, 5, -4.0909, 0, 4.0909, -5, 0, 5, -5, 0, 4.0909, -4.0909, 0, 4.0909, 5, 0, 4.0909, 4.0909, 0, 4.0909, 5, 0, 3.1818, 4.0909, 0, 4.0909, 4.0909, 0, 3.1818, 5, 0, 3.1818, 4.0909, 0, 4.0909, 3.1818, 0, 4.0909, 4.0909, 0, 3.1818, 3.1818, 0, 4.0909, 3.1818, 0, 3.1818, 4.0909, 0, 3.1818, 3.1818, 0, 4.0909, 2.2726998, 0, 4.0909, 3.1818, 0, 3.1818, 2.2726998, 0, 4.0909, 2.2726998, 0, 3.1818, 3.1818, 0, 3.1818, 2.2726998, 0, 4.0909, 1.3636, 0, 4.0909, 2.2726998, 0, 3.1818, 1.3636, 0, 4.0909, 1.3636, 0, 3.1818, 2.2726998, 0, 3.1818, 1.3636, 0, 4.0909, 0.4545, 0, 4.0909, 1.3636, 0, 3.1818, 0.4545, 0, 4.0909, 0.4545, 0, 3.1818, 1.3636, 0, 3.1818, 0.4545, 0, 4.0909, -0.4545, 0, 4.0909, 0.4545, 0, 3.1818, -0.4545, 0, 4.0909, -0.4545, 0, 3.1818, 0.4545, 0, 3.1818, -0.4545, 0, 4.0909, -1.3636, 0, 4.0909, -0.4545, 0, 3.1818, -1.3636, 0, 4.0909, -1.3636, 0, 3.1818, -0.4545, 0, 3.1818, -1.3636, 0, 4.0909, -2.2726998, 0, 4.0909, -1.3636, 0, 3.1818, -2.2726998, 0, 4.0909, -2.2726998, 0, 3.1818, -1.3636, 0, 3.1818, -2.2726998, 0, 4.0909, -3.1818, 0, 4.0909, -2.2726998, 0, 3.1818, -3.1818, 0, 4.0909, -3.1818, 0, 3.1818, -2.2726998, 0, 3.1818, -3.1818, 0, 4.0909, -4.0909, 0, 4.0909, -3.1818, 0, 3.1818, -4.0909, 0, 4.0909, -4.0909, 0, 3.1818, -3.1818, 0, 3.1818, -4.0909, 0, 4.0909, -5, 0, 4.0909, -4.0909, 0, 3.1818, -5, 0, 4.0909, -5, 0, 3.1818, -4.0909, 0, 3.1818, 5, 0, 3.1818, 4.0909, 0, 3.1818, 5, 0, 2.2726998, 4.0909, 0, 3.1818, 4.0909, 0, 2.2726998, 5, 0, 2.2726998, 4.0909, 0, 3.1818, 3.1818, 0, 3.1818, 4.0909, 0, 2.2726998, 3.1818, 0, 3.1818, 3.1818, 0, 2.2726998, 4.0909, 0, 2.2726998, 3.1818, 0, 3.1818, 2.2726998, 0, 3.1818, 3.1818, 0, 2.2726998, 2.2726998, 0, 3.1818, 2.2726998, 0, 2.2726998, 3.1818, 0, 2.2726998, 2.2726998, 0, 3.1818, 1.3636, 0, 3.1818, 2.2726998, 0, 2.2726998, 1.3636, 0, 3.1818, 1.3636, 0, 2.2726998, 2.2726998, 0, 2.2726998, 1.3636, 0, 3.1818, 0.4545, 0, 3.1818, 1.3636, 0, 2.2726998, 0.4545, 0, 3.1818, 0.4545, 0, 2.2726998, 1.3636, 0, 2.2726998, 0.4545, 0, 3.1818, -0.4545, 0, 3.1818, 0.4545, 0, 2.2726998, -0.4545, 0, 3.1818, -0.4545, 0, 2.2726998, 0.4545, 0, 2.2726998, -0.4545, 0, 3.1818, -1.3636, 0, 3.1818, -0.4545, 0, 2.2726998, -1.3636, 0, 3.1818, -1.3636, 0, 2.2726998, -0.4545, 0, 2.2726998, -1.3636, 0, 3.1818, -2.2726998, 0, 3.1818, -1.3636, 0, 2.2726998, -2.2726998, 0, 3.1818, -2.2726998, 0, 2.2726998, -1.3636, 0, 2.2726998, -2.2726998, 0, 3.1818, -3.1818, 0, 3.1818, -2.2726998, 0, 2.2726998, -3.1818, 0, 3.1818, -3.1818, 0, 2.2726998, -2.2726998, 0, 2.2726998, -3.1818, 0, 3.1818, -4.0909, 0, 3.1818, -3.1818, 0, 2.2726998, -4.0909, 0, 3.1818, -4.0909, 0, 2.2726998, -3.1818, 0, 2.2726998, -4.0909, 0, 3.1818, -5, 0, 3.1818, -4.0909, 0, 2.2726998, -5, 0, 3.1818, -5, 0, 2.2726998, -4.0909, 0, 2.2726998, 5, 0, 2.2726998, 4.0909, 0, 2.2726998, 5, 0, 1.3636, 4.0909, 0, 2.2726998, 4.0909, 0, 1.3636, 5, 0, 1.3636, 4.0909, 0, 2.2726998, 3.1818, 0, 2.2726998, 4.0909, 0, 1.3636, 3.1818, 0, 2.2726998, 3.1818, 0, 1.3636, 4.0909, 0, 1.3636, 3.1818, 0, 2.2726998, 2.2726998, 0, 2.2726998, 3.1818, 0, 1.3636, 2.2726998, 0, 2.2726998, 2.2726998, 0, 1.3636, 3.1818, 0, 1.3636, 2.2726998, 0, 2.2726998, 1.3636, 0, 2.2726998, 2.2726998, 0, 1.3636, 1.3636, 0, 2.2726998, 1.3636, 0, 1.3636, 2.2726998, 0, 1.3636, 1.3636, 0, 2.2726998, 0.4545, 0, 2.2726998, 1.3636, 0, 1.3636, 0.4545, 0, 2.2726998, 0.4545, 0, 1.3636, 1.3636, 0, 1.3636, 0.4545, 0, 2.2726998, -0.4545, 0, 2.2726998, 0.4545, 0, 1.3636, -0.4545, 0, 2.2726998, -0.4545, 0, 1.3636, 0.4545, 0, 1.3636, -0.4545, 0, 2.2726998, -1.3636, 0, 2.2726998, -0.4545, 0, 1.3636, -1.3636, 0, 2.2726998, -1.3636, 0, 1.3636, -0.4545, 0, 1.3636, -1.3636, 0, 2.2726998, -2.2726998, 0, 2.2726998, -1.3636, 0, 1.3636, -2.2726998, 0, 2.2726998, -2.2726998, 0, 1.3636, -1.3636, 0, 1.3636, -2.2726998, 0, 2.2726998, -3.1818, 0, 2.2726998, -2.2726998, 0, 1.3636, -3.1818, 0, 2.2726998, -3.1818, 0, 1.3636, -2.2726998, 0, 1.3636, -3.1818, 0, 2.2726998, -4.0909, 0, 2.2726998, -3.1818, 0, 1.3636, -4.0909, 0, 2.2726998, -4.0909, 0, 1.3636, -3.1818, 0, 1.3636, -4.0909, 0, 2.2726998, -5, 0, 2.2726998, -4.0909, 0, 1.3636, -5, 0, 2.2726998, -5, 0, 1.3636, -4.0909, 0, 1.3636, 5, 0, 1.3636, 4.0909, 0, 1.3636, 5, 0, 0.4545, 4.0909, 0, 1.3636, 4.0909, 0, 0.4545, 5, 0, 0.4545, 4.0909, 0, 1.3636, 3.1818, 0, 1.3636, 4.0909, 0, 0.4545, 3.1818, 0, 1.3636, 3.1818, 0, 0.4545, 4.0909, 0, 0.4545, 3.1818, 0, 1.3636, 2.2726998, 0, 1.3636, 3.1818, 0, 0.4545, 2.2726998, 0, 1.3636, 2.2726998, 0, 0.4545, 3.1818, 0, 0.4545, 2.2726998, 0, 1.3636, 1.3636, 0, 1.3636, 2.2726998, 0, 0.4545, 1.3636, 0, 1.3636, 1.3636, 0, 0.4545, 2.2726998, 0, 0.4545, 1.3636, 0, 1.3636, 0.4545, 0, 1.3636, 1.3636, 0, 0.4545, 0.4545, 0, 1.3636, 0.4545, 0, 0.4545, 1.3636, 0, 0.4545, 0.4545, 0, 1.3636, -0.4545, 0, 1.3636, 0.4545, 0, 0.4545, -0.4545, 0, 1.3636, -0.4545, 0, 0.4545, 0.4545, 0, 0.4545, -0.4545, 0, 1.3636, -1.3636, 0, 1.3636, -0.4545, 0, 0.4545, -1.3636, 0, 1.3636, -1.3636, 0, 0.4545, -0.4545, 0, 0.4545, -1.3636, 0, 1.3636, -2.2726998, 0, 1.3636, -1.3636, 0, 0.4545, -2.2726998, 0, 1.3636, -2.2726998, 0, 0.4545, -1.3636, 0, 0.4545, -2.2726998, 0, 1.3636, -3.1818, 0, 1.3636, -2.2726998, 0, 0.4545, -3.1818, 0, 1.3636, -3.1818, 0, 0.4545, -2.2726998, 0, 0.4545, -3.1818, 0, 1.3636, -4.0909, 0, 1.3636, -3.1818, 0, 0.4545, -4.0909, 0, 1.3636, -4.0909, 0, 0.4545, -3.1818, 0, 0.4545, -4.0909, 0, 1.3636, -5, 0, 1.3636, -4.0909, 0, 0.4545, -5, 0, 1.3636, -5, 0, 0.4545, -4.0909, 0, 0.4545, 5, 0, 0.4545, 4.0909, 0, 0.4545, 5, 0, -0.4545, 4.0909, 0, 0.4545, 4.0909, 0, -0.4545, 5, 0, -0.4545, 4.0909, 0, 0.4545, 3.1818, 0, 0.4545, 4.0909, 0, -0.4545, 3.1818, 0, 0.4545, 3.1818, 0, -0.4545, 4.0909, 0, -0.4545, 3.1818, 0, 0.4545, 2.2726998, 0, 0.4545, 3.1818, 0, -0.4545, 2.2726998, 0, 0.4545, 2.2726998, 0, -0.4545, 3.1818, 0, -0.4545, 2.2726998, 0, 0.4545, 1.3636, 0, 0.4545, 2.2726998, 0, -0.4545, 1.3636, 0, 0.4545, 1.3636, 0, -0.4545, 2.2726998, 0, -0.4545, 1.3636, 0, 0.4545, 0.4545, 0, 0.4545, 1.3636, 0, -0.4545, 0.4545, 0, 0.4545, 0.4545, 0, -0.4545, 1.3636, 0, -0.4545, 0.4545, 0, 0.4545, -0.4545, 0, 0.4545, 0.4545, 0, -0.4545, -0.4545, 0, 0.4545, -0.4545, 0, -0.4545, 0.4545, 0, -0.4545, -0.4545, 0, 0.4545, -1.3636, 0, 0.4545, -0.4545, 0, -0.4545, -1.3636, 0, 0.4545, -1.3636, 0, -0.4545, -0.4545, 0, -0.4545, -1.3636, 0, 0.4545, -2.2726998, 0, 0.4545, -1.3636, 0, -0.4545, -2.2726998, 0, 0.4545, -2.2726998, 0, -0.4545, -1.3636, 0, -0.4545, -2.2726998, 0, 0.4545, -3.1818, 0, 0.4545, -2.2726998, 0, -0.4545, -3.1818, 0, 0.4545, -3.1818, 0, -0.4545, -2.2726998, 0, -0.4545, -3.1818, 0, 0.4545, -4.0909, 0, 0.4545, -3.1818, 0, -0.4545, -4.0909, 0, 0.4545, -4.0909, 0, -0.4545, -3.1818, 0, -0.4545, -4.0909, 0, 0.4545, -5, 0, 0.4545, -4.0909, 0, -0.4545, -5, 0, 0.4545, -5, 0, -0.4545, -4.0909, 0, -0.4545, 5, 0, -0.4545, 4.0909, 0, -0.4545, 5, 0, -1.3636, 4.0909, 0, -0.4545, 4.0909, 0, -1.3636, 5, 0, -1.3636, 4.0909, 0, -0.4545, 3.1818, 0, -0.4545, 4.0909, 0, -1.3636, 3.1818, 0, -0.4545, 3.1818, 0, -1.3636, 4.0909, 0, -1.3636, 3.1818, 0, -0.4545, 2.2726998, 0, -0.4545, 3.1818, 0, -1.3636, 2.2726998, 0, -0.4545, 2.2726998, 0, -1.3636, 3.1818, 0, -1.3636, 2.2726998, 0, -0.4545, 1.3636, 0, -0.4545, 2.2726998, 0, -1.3636, 1.3636, 0, -0.4545, 1.3636, 0, -1.3636, 2.2726998, 0, -1.3636, 1.3636, 0, -0.4545, 0.4545, 0, -0.4545, 1.3636, 0, -1.3636, 0.4545, 0, -0.4545, 0.4545, 0, -1.3636, 1.3636, 0, -1.3636, 0.4545, 0, -0.4545, -0.4545, 0, -0.4545, 0.4545, 0, -1.3636, -0.4545, 0, -0.4545, -0.4545, 0, -1.3636, 0.4545, 0, -1.3636, -0.4545, 0, -0.4545, -1.3636, 0, -0.4545, -0.4545, 0, -1.3636, -1.3636, 0, -0.4545, -1.3636, 0, -1.3636, -0.4545, 0, -1.3636, -1.3636, 0, -0.4545, -2.2726998, 0, -0.4545, -1.3636, 0, -1.3636, -2.2726998, 0, -0.4545, -2.2726998, 0, -1.3636, -1.3636, 0, -1.3636, -2.2726998, 0, -0.4545, -3.1818, 0, -0.4545, -2.2726998, 0, -1.3636, -3.1818, 0, -0.4545, -3.1818, 0, -1.3636, -2.2726998, 0, -1.3636, -3.1818, 0, -0.4545, -4.0909, 0, -0.4545, -3.1818, 0, -1.3636, -4.0909, 0, -0.4545, -4.0909, 0, -1.3636, -3.1818, 0, -1.3636, -4.0909, 0, -0.4545, -5, 0, -0.4545, -4.0909, 0, -1.3636, -5, 0, -0.4545, -5, 0, -1.3636, -4.0909, 0, -1.3636, 5, 0, -1.3636, 4.0909, 0, -1.3636, 5, 0, -2.2726998, 4.0909, 0, -1.3636, 4.0909, 0, -2.2726998, 5, 0, -2.2726998, 4.0909, 0, -1.3636, 3.1818, 0, -1.3636, 4.0909, 0, -2.2726998, 3.1818, 0, -1.3636, 3.1818, 0, -2.2726998, 4.0909, 0, -2.2726998, 3.1818, 0, -1.3636, 2.2726998, 0, -1.3636, 3.1818, 0, -2.2726998, 2.2726998, 0, -1.3636, 2.2726998, 0, -2.2726998, 3.1818, 0, -2.2726998, 2.2726998, 0, -1.3636, 1.3636, 0, -1.3636, 2.2726998, 0, -2.2726998, 1.3636, 0, -1.3636, 1.3636, 0, -2.2726998, 2.2726998, 0, -2.2726998, 1.3636, 0, -1.3636, 0.4545, 0, -1.3636, 1.3636, 0, -2.2726998, 0.4545, 0, -1.3636, 0.4545, 0, -2.2726998, 1.3636, 0, -2.2726998, 0.4545, 0, -1.3636, -0.4545, 0, -1.3636, 0.4545, 0, -2.2726998, -0.4545, 0, -1.3636, -0.4545, 0, -2.2726998, 0.4545, 0, -2.2726998, -0.4545, 0, -1.3636, -1.3636, 0, -1.3636, -0.4545, 0, -2.2726998, -1.3636, 0, -1.3636, -1.3636, 0, -2.2726998, -0.4545, 0, -2.2726998, -1.3636, 0, -1.3636, -2.2726998, 0, -1.3636, -1.3636, 0, -2.2726998, -2.2726998, 0, -1.3636, -2.2726998, 0, -2.2726998, -1.3636, 0, -2.2726998, -2.2726998, 0, -1.3636, -3.1818, 0, -1.3636, -2.2726998, 0, -2.2726998, -3.1818, 0, -1.3636, -3.1818, 0, -2.2726998, -2.2726998, 0, -2.2726998, -3.1818, 0, -1.3636, -4.0909, 0, -1.3636, -3.1818, 0, -2.2726998, -4.0909, 0, -1.3636, -4.0909, 0, -2.2726998, -3.1818, 0, -2.2726998, -4.0909, 0, -1.3636, -5, 0, -1.3636, -4.0909, 0, -2.2726998, -5, 0, -1.3636, -5, 0, -2.2726998, -4.0909, 0, -2.2726998, 5, 0, -2.2726998, 4.0909, 0, -2.2726998, 5, 0, -3.1818, 4.0909, 0, -2.2726998, 4.0909, 0, -3.1818, 5, 0, -3.1818, 4.0909, 0, -2.2726998, 3.1818, 0, -2.2726998, 4.0909, 0, -3.1818, 3.1818, 0, -2.2726998, 3.1818, 0, -3.1818, 4.0909, 0, -3.1818, 3.1818, 0, -2.2726998, 2.2726998, 0, -2.2726998, 3.1818, 0, -3.1818, 2.2726998, 0, -2.2726998, 2.2726998, 0, -3.1818, 3.1818, 0, -3.1818, 2.2726998, 0, -2.2726998, 1.3636, 0, -2.2726998, 2.2726998, 0, -3.1818, 1.3636, 0, -2.2726998, 1.3636, 0, -3.1818, 2.2726998, 0, -3.1818, 1.3636, 0, -2.2726998, 0.4545, 0, -2.2726998, 1.3636, 0, -3.1818, 0.4545, 0, -2.2726998, 0.4545, 0, -3.1818, 1.3636, 0, -3.1818, 0.4545, 0, -2.2726998, -0.4545, 0, -2.2726998, 0.4545, 0, -3.1818, -0.4545, 0, -2.2726998, -0.4545, 0, -3.1818, 0.4545, 0, -3.1818, -0.4545, 0, -2.2726998, -1.3636, 0, -2.2726998, -0.4545, 0, -3.1818, -1.3636, 0, -2.2726998, -1.3636, 0, -3.1818, -0.4545, 0, -3.1818, -1.3636, 0, -2.2726998, -2.2726998, 0, -2.2726998, -1.3636, 0, -3.1818, -2.2726998, 0, -2.2726998, -2.2726998, 0, -3.1818, -1.3636, 0, -3.1818, -2.2726998, 0, -2.2726998, -3.1818, 0, -2.2726998, -2.2726998, 0, -3.1818, -3.1818, 0, -2.2726998, -3.1818, 0, -3.1818, -2.2726998, 0, -3.1818, -3.1818, 0, -2.2726998, -4.0909, 0, -2.2726998, -3.1818, 0, -3.1818, -4.0909, 0, -2.2726998, -4.0909, 0, -3.1818, -3.1818, 0, -3.1818, -4.0909, 0, -2.2726998, -5, 0, -2.2726998, -4.0909, 0, -3.1818, -5, 0, -2.2726998, -5, 0, -3.1818, -4.0909, 0, -3.1818, 5, 0, -3.1818, 4.0909, 0, -3.1818, 5, 0, -4.0909, 4.0909, 0, -3.1818, 4.0909, 0, -4.0909, 5, 0, -4.0909, 4.0909, 0, -3.1818, 3.1818, 0, -3.1818, 4.0909, 0, -4.0909, 3.1818, 0, -3.1818, 3.1818, 0, -4.0909, 4.0909, 0, -4.0909, 3.1818, 0, -3.1818, 2.2726998, 0, -3.1818, 3.1818, 0, -4.0909, 2.2726998, 0, -3.1818, 2.2726998, 0, -4.0909, 3.1818, 0, -4.0909, 2.2726998, 0, -3.1818, 1.3636, 0, -3.1818, 2.2726998, 0, -4.0909, 1.3636, 0, -3.1818, 1.3636, 0, -4.0909, 2.2726998, 0, -4.0909, 1.3636, 0, -3.1818, 0.4545, 0, -3.1818, 1.3636, 0, -4.0909, 0.4545, 0, -3.1818, 0.4545, 0, -4.0909, 1.3636, 0, -4.0909, 0.4545, 0, -3.1818, -0.4545, 0, -3.1818, 0.4545, 0, -4.0909, -0.4545, 0, -3.1818, -0.4545, 0, -4.0909, 0.4545, 0, -4.0909, -0.4545, 0, -3.1818, -1.3636, 0, -3.1818, -0.4545, 0, -4.0909, -1.3636, 0, -3.1818, -1.3636, 0, -4.0909, -0.4545, 0, -4.0909, -1.3636, 0, -3.1818, -2.2726998, 0, -3.1818, -1.3636, 0, -4.0909, -2.2726998, 0, -3.1818, -2.2726998, 0, -4.0909, -1.3636, 0, -4.0909, -2.2726998, 0, -3.1818, -3.1818, 0, -3.1818, -2.2726998, 0, -4.0909, -3.1818, 0, -3.1818, -3.1818, 0, -4.0909, -2.2726998, 0, -4.0909, -3.1818, 0, -3.1818, -4.0909, 0, -3.1818, -3.1818, 0, -4.0909, -4.0909, 0, -3.1818, -4.0909, 0, -4.0909, -3.1818, 0, -4.0909, -4.0909, 0, -3.1818, -5, 0, -3.1818, -4.0909, 0, -4.0909, -5, 0, -3.1818, -5, 0, -4.0909, -4.0909, 0, -4.0909, 5, 0, -4.0909, 4.0909, 0, -4.0909, 5, 0, -5, 4.0909, 0, -4.0909, 4.0909, 0, -5, 5, 0, -5, 4.0909, 0, -4.0909, 3.1818, 0, -4.0909, 4.0909, 0, -5, 3.1818, 0, -4.0909, 3.1818, 0, -5, 4.0909, 0, -5, 3.1818, 0, -4.0909, 2.2726998, 0, -4.0909, 3.1818, 0, -5, 2.2726998, 0, -4.0909, 2.2726998, 0, -5, 3.1818, 0, -5, 2.2726998, 0, -4.0909, 1.3636, 0, -4.0909, 2.2726998, 0, -5, 1.3636, 0, -4.0909, 1.3636, 0, -5, 2.2726998, 0, -5, 1.3636, 0, -4.0909, 0.4545, 0, -4.0909, 1.3636, 0, -5, 0.4545, 0, -4.0909, 0.4545, 0, -5, 1.3636, 0, -5, 0.4545, 0, -4.0909, -0.4545, 0, -4.0909, 0.4545, 0, -5, -0.4545, 0, -4.0909, -0.4545, 0, -5, 0.4545, 0, -5, -0.4545, 0, -4.0909, -1.3636, 0, -4.0909, -0.4545, 0, -5, -1.3636, 0, -4.0909, -1.3636, 0, -5, -0.4545, 0, -5, -1.3636, 0, -4.0909, -2.2726998, 0, -4.0909, -1.3636, 0, -5, -2.2726998, 0, -4.0909, -2.2726998, 0, -5, -1.3636, 0, -5, -2.2726998, 0, -4.0909, -3.1818, 0, -4.0909, -2.2726998, 0, -5, -3.1818, 0, -4.0909, -3.1818, 0, -5, -2.2726998, 0, -5, -3.1818, 0, -4.0909, -4.0909, 0, -4.0909, -3.1818, 0, -5, -4.0909, 0, -4.0909, -4.0909, 0, -5, -3.1818, 0, -5, -4.0909, 0, -4.0909, -5, 0, -4.0909, -4.0909, 0, -5, -5, 0, -4.0909, -5, 0, -5, -4.0909, 0, -5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3ffou"]
+resource_name = "Plane"
+size = Vector2(10, 10)
+subdivide_width = 10
+subdivide_depth = 10
+
+[sub_resource type="Environment" id="Environment_mm22j"]
+background_mode = 1
+background_color = Color(0.14489618, 0.20292674, 0.29411763, 0)
+sky = SubResource("Sky_7saem")
+ambient_light_color = Color(0.31617647, 0.26531887, 0.17436202, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="RootNode3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3ev36")
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="SM_Prop_Crate_Wall_01" parent="Props" instance=ExtResource("1_uikon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.749, -5.733, 0.716)
+
+[node name="SM_Prop_Pipe_Valve_01" parent="Props" instance=ExtResource("2_khimd")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 9.879, -2.904, 1.011)
+
+[node name="SM_Prop_Pipe_Valve_02" parent="Props" instance=ExtResource("3_nn5ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.276, -9, 0.097)
+
+[node name="SM_Prop_Pipes_Valves_01" parent="Props" instance=ExtResource("4_57iqv")]
+transform = Transform3D(0.90051705, 0, 0, 0, 0.90051705, 0, 0, 0, 0.90051705, 7.526, -8.828, -2.231)
+
+[node name="SM_Prop_Pipes_01" parent="Props" instance=ExtResource("5_1ajll")]
+transform = Transform3D(1, 0, 0, 0, 0.8625088, 0, 0, 0, 0.8529066, 7.09, -2.78, -0.005)
+
+[node name="SM_Prop_PowerBoxes_02" parent="Props" instance=ExtResource("6_xw3yn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -3, 0.144)
+
+[node name="SM_Prop_PowerBoxes_01" parent="Props" instance=ExtResource("7_h6bbv")]
+transform = Transform3D(9.099629e-07, 0, -1, 0, 1, 0, 1, 0, 9.099629e-07, 9.898, -9, 1.245)
+
+[node name="SM_Prop_Sign_MissingPapers_01" parent="Props" instance=ExtResource("8_n1k2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72, 1.79, -0.072)
+
+[node name="SM_Prop_MedicalBox_02 (1)" parent="Props" instance=ExtResource("9_57ssu")]
+transform = Transform3D(1, 0, 0, 0, 5.9604645e-08, -1, 0, 1, 5.9604645e-08, 2.751, -7.677, 0.124)
+
+[node name="SM_Prop_MedicalBox_01" parent="Props" instance=ExtResource("9_57ssu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63, -1.79, -4.4)
+
+[node name="SM_Prop_Medical_Shelf_02" parent="Props" instance=ExtResource("10_odsq3")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 6.688, -2.738, -2.006)
+
+[node name="SM_Prop_Medical_Shelf_01" parent="Props" instance=ExtResource("11_fgghi")]
+transform = Transform3D(0.9609708, 0, 0.27664974, 0, 1, 0, -0.27664974, 0, 0.9609708, 2.706, -2.765, -4.405)
+
+[node name="SM_Prop_Medical_IVStand_01" parent="Props" instance=ExtResource("12_vk5mn")]
+transform = Transform3D(0.49970746, 0, -0.86619425, 0, 1, 0, 0.86619425, 0, 0.49970746, 6.789, -2.769, -2.715)
+
+[node name="SM_Prop_Medical_Container_Broken_01" parent="Props" instance=ExtResource("13_0fh06")]
+transform = Transform3D(0.2927347, 0, 0.9561937, 0, 1, 0, -0.9561937, 0, 0.2927347, 3.738, -2.733, -4.546)
+
+[node name="SM_Prop_SupplyPile_04" parent="Props" instance=ExtResource("14_yew4i")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, 3.26, -5.698, -0.835)
+
+[node name="SM_Prop_SupplyPile_02" parent="Props" instance=ExtResource("15_kiv5t")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, 3.798, -5.707, -5.807)
+
+[node name="SM_Prop_Decontamination_Shower_01" parent="Props" instance=ExtResource("16_wajux")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, -3.068, -2.797, -3.73)
+
+[node name="SM_Prop_Bed_Hospital_01" type="Node3D" parent="Props"]
+transform = Transform3D(-0.13499314, 0, -0.9908465, 0, 1, 0, 0.9908465, 0, -0.13499314, 5.537, -2.75, -3.927)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Bed_Hospital_01"]
+gi_mode = 2
+mesh = ExtResource("17_i7iy0")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Prop_Toy_Bear_01" parent="Props" instance=ExtResource("19_kpbsg")]
+transform = Transform3D(0.96168417, 0, 0.27415973, 0, 1, 0, -0.27415973, 0, 0.96168417, 4.035, -8.225, 0.95)
+
+[node name="SM_Prop_Papers_03" parent="Props" instance=ExtResource("20_x10j6")]
+transform = Transform3D(0.21044308, 0, 0.9776061, 0, 1, 0, -0.9776061, 0, 0.21044308, -0.701, -8.717, 1.653)
+
+[node name="SM_Prop_Papers_02" parent="Props" instance=ExtResource("21_8pjkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.172, -8.717, -0.716)
+
+[node name="SM_Prop_Papers_01 (1)" parent="Props" instance=ExtResource("22_j2sva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.723, -8.717, 1.467)
+
+[node name="SM_Prop_Bunker_RoofWire_01" parent="Props" instance=ExtResource("23_lqmwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -3, 1.5)
+
+[node name="SM_Prop_Bunker_RoofWire_02" parent="Props" instance=ExtResource("24_flxdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1)
+
+[node name="SM_Prop_Crate_01" parent="Props" instance=ExtResource("25_synjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.371, -5.719, 0.554)
+
+[node name="SM_Prop_Generator_01" parent="Props" instance=ExtResource("26_mtb7q")]
+transform = Transform3D(0.9308155, 0, 0.36548933, 0, 1, 0, -0.36548933, 0, 0.9308155, 1.916, -2.712, 0.684)
+
+[node name="SM_Prop_CardboardBox_02 (1)" parent="Props" instance=ExtResource("27_uhjsb")]
+transform = Transform3D(0.9944005, 0, -0.10567733, 0, 1, 0, 0.10567733, 0, 0.9944005, 1.039, -2.493, 0.619)
+
+[node name="SM_Prop_CardboardBox_01" parent="Props" instance=ExtResource("28_ootfo")]
+transform = Transform3D(0.20263465, 0, -0.9792544, 0, 1, 0, 0.9792544, 0, 0.20263465, 0.048, -2.726, 0.607)
+
+[node name="SM_Prop_Barrel_Warning_01" parent="Props" instance=ExtResource("29_a5qsd")]
+transform = Transform3D(0.75540733, 0, 0.6552555, 0, 1, 0, -0.6552555, 0, 0.75540733, -2.602, -2.24, 0.663)
+
+[node name="SM_Prop_CarBattery_Table" parent="Props" instance=ExtResource("30_gw8cm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.555, -2.744, -1.65)
+
+[node name="SM_Prop_Cupboard_Broken_01" parent="Props" instance=ExtResource("31_dywyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.229, -2.734, -1.918)
+
+[node name="SM_Prop_CardboardBox_02" parent="Props" instance=ExtResource("27_uhjsb")]
+transform = Transform3D(0.9034175, 0, -0.42876193, 0, 1, 0, 0.42876193, 0, 0.9034175, -6.458, -2.497, -0.447)
+
+[node name="SM_Prop_CardboardBox_03" parent="Props" instance=ExtResource("32_4aiuj")]
+transform = Transform3D(-1, 0, 7.152557e-07, 0, 1, 0, -7.152557e-07, 0, -1, -5.88, -2.487, 1.749)
+
+[node name="SM_Prop_Drill_01" parent="Props" instance=ExtResource("33_6fgby")]
+transform = Transform3D(-0.7388035, 0, -0.6739209, 0, 1, 0, 0.6739209, 0, -0.7388035, 1.53, 1.112, 0.724)
+
+[node name="SM_Prop_Vice_01" parent="Props" instance=ExtResource("34_s0ju1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.961, 1.097, 1)
+
+[node name="SM_Prop_Anvil_01" parent="Props" instance=ExtResource("35_u6b6h")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 0.503, 1.108, 0.667)
+
+[node name="SM_Prop_Workbench_01" parent="Props" instance=ExtResource("36_m8i4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22, 0.246, 0.505)
+
+[node name="SM_Prop_GasCan_01" parent="Props" instance=ExtResource("37_xva5e")]
+transform = Transform3D(0.8992795, 0, -0.4373745, 0, 1, 0, 0.4373745, 0, 0.8992795, 0.109, 0.27, 1.006)
+
+[node name="SM_Prop_Propane_01 (1)" parent="Props" instance=ExtResource("38_r8gt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.205, 0.272, 0.448)
+
+[node name="SM_Prop_Chair_Folding_01" parent="Props" instance=ExtResource("39_eftes")]
+transform = Transform3D(0.9633411, 0, 0.26827958, 0, 1, 0, -0.26827958, 0, 0.9633411, 3.008, 0.24, 0.756)
+
+[node name="SM_Prop_Sign_Quarantine_01" parent="Props" instance=ExtResource("40_ckymr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004, -1.743, 0.134)
+
+[node name="SM_Prop_Sign_Radioactive_01" parent="Props" instance=ExtResource("41_tk0eb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.876, 0.87, 0.141)
+
+[node name="SM_Prop_Sign_Military_01" parent="Props" instance=ExtResource("42_fqi1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.309, 1.364, 0.134)
+
+[node name="SM_Prop_JunkPile_01" parent="Props" instance=ExtResource("43_lmnbd")]
+transform = Transform3D(0.85986316, 0, 0.5105245, 0, 1, 0, -0.5105245, 0, 0.85986316, 8.673, 0.272, 0.964)
+
+[node name="SM_Prop_Wall_Junk_07" parent="Props" instance=ExtResource("44_n4w7x")]
+transform = Transform3D(0.40437302, 0, 0.83748597, 0, 0.9299999, 0, -0.8374861, 0, 0.40437296, 4.855, 0.27, 1.072)
+
+[node name="SM_Prop_Toilet_Portable_01" type="Node3D" parent="Props"]
+transform = Transform3D(0.17728356, 0, -0.9841598, 0, 1, 0, 0.9841598, 0, 0.17728356, 9.325, -8.747, 1.379)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Toilet_Portable_01"]
+gi_mode = 2
+mesh = ExtResource("45_5yc8w")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Prop_Gas_Table_01" parent="Props" instance=ExtResource("46_cljvy")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 8.811, -8.759, -0.847)
+
+[node name="SM_Prop_BarrelStack_02" parent="Props" instance=ExtResource("47_xano8")]
+transform = Transform3D(-8.34465e-07, 0, 1, 0, 1, 0, -1, 0, -8.34465e-07, 6.071, -8.754, -0.824)
+
+[node name="SM_Prop_Couch_02" parent="Props" instance=ExtResource("48_pn7g2")]
+transform = Transform3D(0.9668461, 0, -0.25535983, 0, 1, 0, 0.25535983, 0, 0.9668461, 4.356, -8.735, 0.659)
+
+[node name="SM_Prop_Blackboard_01" parent="Props" instance=ExtResource("49_0hddh")]
+transform = Transform3D(0.96500903, 0, 0.26221663, 0, 1, 0, -0.26221663, 0, 0.96500903, 5.386, -8.768, 0.615)
+
+[node name="SM_Prop_Sign_Caution_01" parent="Props" instance=ExtResource("50_ygrdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.244, 1.632, 0.124)
+
+[node name="SM_Prop_Rug_02" parent="Props" instance=ExtResource("51_de1ge")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, -4.732, -2.746, 0.385)
+
+[node name="SM_Prop_Bedframe_02" parent="Props" instance=ExtResource("52_1jryr")]
+transform = Transform3D(0.99719155, 0, 0.07489321, 0, 1, 0, -0.07489321, 0, 0.99719155, -6.672, -2.732, 1.25)
+
+[node name="SM_Prop_Bed_Bunk_01" parent="Props" instance=ExtResource("53_1ppb2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.612, -8.744, 0.764)
+
+[node name="SM_Prop_Bedframe_01" parent="Props" instance=ExtResource("54_kufjw")]
+transform = Transform3D(-1, 0, 1.1622905e-06, 0, 1, 0, -1.1622905e-06, 0, -1, -4.189, -8.737, 1.231)
+
+[node name="SM_Prop_Rug_01" parent="Props" instance=ExtResource("55_sxfrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.329, -8.737, 1.268)
+
+[node name="SM_Prop_Papers_01" parent="Props" instance=ExtResource("22_j2sva")]
+transform = Transform3D(0.9058443, 0, -0.42361087, 0, 1, 0, 0.42361087, 0, 0.9058443, -1.283, -5.727, 1.478)
+
+[node name="SM_Prop_Propane_01" parent="Props" instance=ExtResource("38_r8gt1")]
+transform = Transform3D(0.66588455, 0, -0.7460548, 0, 1, 0, 0.7460548, 0, 0.66588455, -2, -5.728, 0.747)
+
+[node name="SM_Prop_Tool_Bucket_02" parent="Props" instance=ExtResource("56_ggv1w")]
+transform = Transform3D(0.7514993, 0, 0.2958546, 0, 0.8076393, 0, -0.2958546, 0, 0.7514993, -0.429, -5.732, 1.334)
+
+[node name="SM_Prop_Curtain_01" parent="Props" instance=ExtResource("57_savl0")]
+transform = Transform3D(0.085893005, 0, 0.7953758, 0, 0.79999995, 0, -0.7953758, 0, 0.085893005, -0.158, -5.734, 1.15)
+
+[node name="SM_Prop_Toilet_Pneumatic_01" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.287, -5.743, 0.916)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Toilet_Pneumatic_01"]
+gi_mode = 2
+mesh = ExtResource("58_1kt7x")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Prop_Rug_02 (1)" parent="Props" instance=ExtResource("51_de1ge")]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 7.243, -8.76, 1.077)
+
+[node name="SM_Prop_Sign_Caution_01 (1)" parent="Props" instance=ExtResource("50_ygrdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.765, -7.888, 0.124)
+
+[node name="SM_Prop_Sign_Quarantine_01 (1)" parent="Props" instance=ExtResource("40_ckymr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, -7.752, 0.134)
+
+[node name="SM_Prop_Chair_Folding_01 (1)" parent="Props" instance=ExtResource("39_eftes")]
+transform = Transform3D(0.8891089, 0, -0.4576957, 0, 1, 0, 0.4576957, 0, 0.8891089, -3.34, -2.745, 0.092)
+
+[node name="SM_Prop_Bunker_RoofWire_02 (1)" parent="Props" instance=ExtResource("24_flxdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="SM_Prop_Bunker_RoofWire_02 (2)" parent="Props" instance=ExtResource("24_flxdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
+
+[node name="SM_Prop_Bunker_RoofWire_02 (3)" parent="Props" instance=ExtResource("24_flxdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 1)
+
+[node name="SM_Prop_Bunker_RoofWire_01 (1)" parent="Props" instance=ExtResource("23_lqmwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -3, 1.5)
+
+[node name="SM_Prop_Bunker_Light_01" parent="Props" instance=ExtResource("59_kd60r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1.5)
+
+[node name="SM_Prop_Bunker_RoofWire_01 (2)" parent="Props" instance=ExtResource("23_lqmwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1.5)
+
+[node name="SM_Prop_Bunker_RoofWire_01 (3)" parent="Props" instance=ExtResource("23_lqmwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -3, 1.5)
+
+[node name="SM_Prop_Papers_03 (1)" parent="Props" instance=ExtResource("20_x10j6")]
+transform = Transform3D(0.21044308, 0, 0.9776061, 0, 1, 0, -0.9776061, 0, 0.21044308, -3.379, -2.722, 1.466)
+
+[node name="SM_Prop_Papers_02 (1)" parent="Props" instance=ExtResource("21_8pjkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.345, -2.722, 1.661)
+
+[node name="SM_Prop_Papers_01 (2)" parent="Props" instance=ExtResource("22_j2sva")]
+transform = Transform3D(-0.31464416, 0, -0.9492097, 0, 1, 0, 0.9492097, 0, -0.31464416, 6.422, 0.278, 1.317)
+
+[node name="SM_Prop_Bunker_Light_01 (1)" parent="Props" instance=ExtResource("59_kd60r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -3, 1.5)
+
+[node name="SM_Prop_Bunker_Light_01 (2)" parent="Props" instance=ExtResource("59_kd60r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -3, 1.5)
+
+[node name="SM_Prop_Bed_Hospital_01 (1)" type="Node3D" parent="Props"]
+transform = Transform3D(-8.781764e-07, 0, 1, 0, 1, 0, -1, 0, -8.781764e-07, 1.398, -2.744, -0.993)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Bed_Hospital_01 (1)"]
+gi_mode = 2
+mesh = ExtResource("17_i7iy0")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Prop_Propane_01 (2)" parent="Props" instance=ExtResource("38_r8gt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.976, -2.695, 0.595)
+
+[node name="SM_Prop_Medical_IVStand_01 (1)" parent="Props" instance=ExtResource("12_vk5mn")]
+transform = Transform3D(0.31676227, 0, 0.948505, 0, 1, 0, -0.948505, 0, 0.31676227, 0.429, -2.769, -2.043)
+
+[node name="SM_Prop_PowerBoxes_01 (1)" parent="Props" instance=ExtResource("7_h6bbv")]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, 3.789, 0, 0.139)
+
+[node name="SM_Prop_Pipe_Valve_01 (1)" parent="Props" instance=ExtResource("2_khimd")]
+transform = Transform3D(-2.8212997e-07, 0, 1, 0, 1, 0, -1, 0, -2.8212997e-07, -2.324, -5.802, 1.619)
+
+[node name="SM_Prop_Pipe_Valve_02 (1)" parent="Props" instance=ExtResource("3_nn5ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -3, -5)
+
+[node name="SM_Prop_Bunker_Light_01 (3)" parent="Props" instance=ExtResource("59_kd60r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.08, 0, -2.846)
+
+[node name="SM_Prop_PowerBoxes_02 (1)" parent="Props" instance=ExtResource("6_xw3yn")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, -7.363, -3, -3.796)
+
+[node name="SM_Prop_PowerBoxes_01 (2)" parent="Props" instance=ExtResource("7_h6bbv")]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, -1.227, -2.96, -4.865)
+
+[node name="SM_Prop_Sign_Military_01 (1)" parent="Props" instance=ExtResource("42_fqi1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.398, -4.69, 0.134)
+
+[node name="SM_Prop_Bunker_RoofWire_01 (4)" parent="Props" instance=ExtResource("23_lqmwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -3, 1.5)
+
+[node name="SM_Prop_Bunker_Light_01 (4)" parent="Props" instance=ExtResource("59_kd60r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -3, 1.5)
+
+[node name="SM_Prop_Bunker_Light_01 (5)" parent="Props" instance=ExtResource("59_kd60r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.97, -3, 1.5)
+
+[node name="SM_Prop_Bunker_RoofWire_01 (5)" parent="Props" instance=ExtResource("23_lqmwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.97, -3, 1.5)
+
+[node name="SM_Prop_Bunker_RoofWire_01 (6)" parent="Props" instance=ExtResource("23_lqmwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.46, -3, 1.5)
+
+[node name="SM_Prop_Bunker_Light_01 (6)" parent="Props" instance=ExtResource("59_kd60r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.46, -3, 1.5)
+
+[node name="SM_Prop_Gas_Table_01 (1)" parent="Props" instance=ExtResource("46_cljvy")]
+transform = Transform3D(1, 0, -9.536742e-07, 0, 1, 0, 9.536742e-07, 0, 1, 13.638, -5.727, 0.571)
+
+[node name="SM_Prop_Crate_03" parent="Props" instance=ExtResource("60_lo1m6")]
+transform = Transform3D(0.9860444, 0, -0.16648261, 0, 1, 0, 0.16648261, 0, 0.9860444, 11.356, -5.71, 1.274)
+
+[node name="SM_Prop_Crate_04" parent="Props" instance=ExtResource("61_3ida4")]
+transform = Transform3D(0.50365716, 0, -0.86390364, 0, 1, 0, 0.86390364, 0, 0.50365716, 12.88, -5.707, 1.606)
+
+[node name="SM_Prop_Crate_Large_02" parent="Props" instance=ExtResource("62_brcgq")]
+transform = Transform3D(0.25545114, 0, -0.96682197, 0, 1, 0, 0.96682197, 0, 0.25545114, 14.242, -5.737, 1.57)
+
+[node name="SM_Prop_Bed_Hospital_Wheels_f" type="Node3D" parent="Props"]
+transform = Transform3D(-0.13499314, 0, -0.9908465, 0, 1, 0, 0.9908465, 0, -0.13499314, 4.399476, -2.6497161, -4.0646544)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Bed_Hospital_Wheels_f"]
+gi_mode = 2
+mesh = ExtResource("63_hm0qj")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Prop_Bed_Hospital_Wheels_f2" type="Node3D" parent="Props"]
+transform = Transform3D(-8.781764e-07, 0, 1, 0, 1, 0, -1, 0, -8.781764e-07, 2.5436945, -2.643716, -1.0101643)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Bed_Hospital_Wheels_f2"]
+gi_mode = 2
+mesh = ExtResource("63_hm0qj")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Prop_Bed_Hospital_Wheels_r" type="Node3D" parent="Props"]
+transform = Transform3D(-8.781764e-07, 0, 1, 0, 1, 0, -1, 0, -8.781764e-07, 0.25413167, -2.643716, -1.0101624)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Bed_Hospital_Wheels_r"]
+gi_mode = 2
+mesh = ExtResource("64_nm0bp")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Prop_Bed_Hospital_Wheels_r2" type="Node3D" parent="Props"]
+transform = Transform3D(-0.13499314, 0, -0.9908465, 0, 1, 0, 0.9908465, 0, -0.13499314, 6.6680813, -2.6497161, -3.7555795)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Bed_Hospital_Wheels_r2"]
+gi_mode = 2
+mesh = ExtResource("64_nm0bp")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Prop_BedMatress_01" parent="Props" instance=ExtResource("65_m8u2p")]
+transform = Transform3D(-1, 0, 1.1622905e-06, 0, 1, 0, -1.1622905e-06, 0, -1, -4.189, -8.291, 1.231)
+
+[node name="SM_Prop_BedMatress_02" parent="Props" instance=ExtResource("66_7v8i7")]
+transform = Transform3D(0.99719155, 0, 0.07489321, 0, 1, 0, -0.07489321, 0, 0.99719155, -6.672, -2.732, 1.25)
+
+[node name="SM_Prop_CautionLine_01" parent="Props" instance=ExtResource("67_lbo1u")]
+transform = Transform3D(0.65134186, 0, 0.31319615, 0, 0.7421273, 0, -0.35567784, 0, 0.57354647, 2.7024212, -1.5906135, 0.021107258)
+
+[node name="SM_Prop_CautionLine_01 (1)" parent="Props" instance=ExtResource("67_lbo1u")]
+transform = Transform3D(0.356582, 0, -0.5731129, 0, 0.74213, 0, 0.65085053, 0, 0.31399184, 4.3964076, -1.5906135, -0.8152251)
+
+[node name="SM_Prop_Toilet_Pneumatic_Lid_01" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.287, -5.232815, 0.59217906)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Toilet_Pneumatic_Lid_01"]
+gi_mode = 2
+mesh = ExtResource("68_dv5ad")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Prop_Toilet_Portable_Lid_01" type="Node3D" parent="Props"]
+transform = Transform3D(0.17728356, 0, -0.9841598, 0, 1, 0, 0.9841598, 0, 0.17728356, 9.551581, -8.205761, 1.3381842)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Props/SM_Prop_Toilet_Portable_Lid_01"]
+gi_mode = 2
+mesh = ExtResource("69_qk7tn")
+surface_material_override/0 = ExtResource("18_to1nh")
+
+[node name="SM_Chr_Attach_Canteen_01" parent="Props" instance=ExtResource("70_lssmb")]
+transform = Transform3D(0.83113337, 0, 0.55607307, 0, 1, 0, -0.55607307, 0, 0.83113337, -6.321, -2.522, 0.414)
+
+[node name="SM_Chr_Attach_SupplyBag_01" parent="Props" instance=ExtResource("71_5i7ee")]
+transform = Transform3D(0.9933493, 0, -0.1151396, 0, 1, 0, 0.1151396, 0, 0.9933493, 1.063, -2.536, 1.006)
+
+[node name="SM_Item_Alcohol_01" parent="Props" instance=ExtResource("72_404n2")]
+transform = Transform3D(0.8005315, 0, -0.59929067, 0, 1, 0, 0.59929067, 0, 0.8005315, 3.634, -8.72, 0.962)
+
+[node name="SM_Item_Alcohol_01 (1)" parent="Props" instance=ExtResource("72_404n2")]
+transform = Transform3D(-0.04361827, -0.96634936, 0.2535081, 0.99851453, -0.03387436, 0.042677186, -0.03265365, 0.25499302, 0.9663914, -1.933, -8.04, 0.829)
+
+[node name="SM_Item_Alcohol_01 (2)" parent="Props" instance=ExtResource("72_404n2")]
+transform = Transform3D(0.87791884, 0, 0.4788095, 0, 1, 0, -0.4788095, 0, 0.87791884, 6.516, -4.961, 0.612)
+
+[node name="SM_Item_Alcohol_02" parent="Props" instance=ExtResource("73_luvxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51, -8.72, 0.786)
+
+[node name="SM_Item_Alcohol_03" parent="Props" instance=ExtResource("74_u3gqg")]
+transform = Transform3D(0.83138764, 0, 0.5556929, 0, 1, 0, -0.5556929, 0, 0.83138764, 3.59, -8.72, 0.632)
+
+[node name="SM_Item_Alcohol_04" parent="Props" instance=ExtResource("75_xqle8")]
+transform = Transform3D(0.5446423, 0, 0.83866847, 0, 1, 0, -0.83866847, 0, 0.5446423, 5.367, -8.72, 1.09)
+
+[node name="SM_Item_Alcohol_05" parent="Props" instance=ExtResource("76_32irm")]
+transform = Transform3D(0.9453289, 0, -0.32611847, 0, 1, 0, 0.32611847, 0, 0.9453289, -2.91, -8.72, 1.39)
+
+[node name="SM_Item_Alcohol_06" parent="Props" instance=ExtResource("77_ioop4")]
+transform = Transform3D(0.8018738, 0, 0.5974934, 0, 1, 0, -0.5974934, 0, 0.8018738, -2.682, -8.72, 1.432)
+
+[node name="SM_Item_Alcohol_07" parent="Props" instance=ExtResource("78_ovkbt")]
+transform = Transform3D(0.90214217, 0, 0.4314388, 0, 1, 0, -0.4314388, 0, 0.90214217, -5.397, -2.725, 2.044)
+
+[node name="SM_Item_Alcohol_08" parent="Props" instance=ExtResource("79_cjj8x")]
+transform = Transform3D(0.93129593, 0, -0.36426345, 0, 1, 0, 0.36426345, 0, 0.93129593, 0.426, -2.725, 1.146)
+
+[node name="SM_Item_Alcohol_08 (1)" parent="Props" instance=ExtResource("79_cjj8x")]
+transform = Transform3D(0.5964129, 0, 0.80267775, 0, 1, 0, -0.80267775, 0, 0.5964129, 0.625, -2.725, 1.112)
+
+[node name="SM_Item_Alcohol_Broken_01" parent="Props" instance=ExtResource("80_ma15d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.643, -8.734, 0.543)
+
+[node name="SM_Item_Alcohol_Broken_02" parent="Props" instance=ExtResource("81_sv7a6")]
+transform = Transform3D(0.7827728, 0, 0.6223076, 0, 1, 0, -0.6223076, 0, 0.7827728, -1.998, -5.727, 1.946)
+
+[node name="SM_Item_Alcohol_Broken_03" parent="Props" instance=ExtResource("82_it8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.065, -2.725, 0.794)
+
+[node name="SM_Item_Can_01" parent="Props" instance=ExtResource("83_orxx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.403, -2.728, 1.847)
+
+[node name="SM_Item_Can_02" parent="Props" instance=ExtResource("84_ergfb")]
+transform = Transform3D(0.8124558, 0, 0.5830229, 0, 1, 0, -0.5830229, 0, 0.8124558, -5.266, -2.728, 1.957)
+
+[node name="SM_Item_Can_03" parent="Props" instance=ExtResource("85_cyeek")]
+transform = Transform3D(0.9635164, 0, 0.2676492, 0, 1, 0, -0.2676492, 0, 0.9635164, 8.976, -8.728, 0.819)
+
+[node name="SM_Item_Can_04" parent="Props" instance=ExtResource("86_i3yw3")]
+transform = Transform3D(-0.45523834, 0, -0.89036965, 0, 1, 0, 0.89036965, 0, -0.45523834, 8.83, -8.588, 0.74)
+
+[node name="SM_Item_Can_04 (1)" parent="Props" instance=ExtResource("86_i3yw3")]
+transform = Transform3D(-0.45523834, 0, -0.89036965, 0, 1, 0, 0.89036965, 0, -0.45523834, 6.6146, -5.542, 1.0569)
+
+[node name="SM_Wep_PipeWrench_01" parent="Props" instance=ExtResource("87_4t1nb")]
+transform = Transform3D(-1.01109656e-07, -0.8696283, 0.49370697, -1, 7.54979e-08, -7.181292e-08, 2.5176707e-08, -0.49370697, -0.8696283, 0.912, 1.132, 0.632)
+
+[node name="SM_Wep_PipeWrench_Knife_01" parent="Props/SM_Wep_PipeWrench_01" index="2"]
+visible = false
+
+[node name="Background" type="Node3D" parent="."]
+transform = Transform3D(9.388192, 0, 0, 0, -3.1975003e-07, -7.3150277, 0, 7.3150277, -3.1975003e-07, 3.9, -7.4, -23.71)
+
+[node name="MeshCollider" type="StaticBody3D" parent="Background"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background/MeshCollider"]
+shape = SubResource("ConcavePolygonShape3D_hr0n4")
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Background"]
+cast_shadow = 0
+gi_mode = 2
+mesh = SubResource("PlaneMesh_3ffou")
+surface_material_override/0 = ExtResource("88_cq3vc")
+
+[node name="Global Volume" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.979963, 9.8169775, 12.997557)
+
+[node name="Main Camera" type="Node3D" parent="."]
+transform = Transform3D(-0.9999567, 0.0017320872, -0.009138237, 0.0024527593, 0.9968357, -0.07945152, 0.008971703, -0.0794705, -0.99679685, 3.89, -0.49, 32.96)
+
+[node name="Camera" type="Camera3D" parent="Main Camera"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+cull_mask = 16777215
+environment = SubResource("Environment_mm22j")
+current = true
+fov = 26.0
+near = 0.3
+far = 251.9
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="SM_Bld_Bunker_Beam_End_Curved_Concrete_01" parent="Building" instance=ExtResource("89_hh3p5")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, -2.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Beam_End_Curved_Concrete_01 (1)" parent="Building" instance=ExtResource("89_hh3p5")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, 5, -9, 0)
+
+[node name="SM_Bld_Bunker_Beam_End_Curved_Concrete_01 (2)" parent="Building" instance=ExtResource("89_hh3p5")]
+transform = Transform3D(-1.5934321e-06, 0, -1, 0, 1, 0, 1, 0, -1.5934321e-06, 10, -9, 0)
+
+[node name="SM_Bld_Bunker_Beam_End_Curved_Concrete_01 (3)" parent="Building" instance=ExtResource("89_hh3p5")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, -2.5, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Beam_End_Curved_Concrete_01 (4)" parent="Building" instance=ExtResource("89_hh3p5")]
+transform = Transform3D(-2.3841858e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -2.3841858e-07, -7.5, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_01" parent="Building" instance=ExtResource("90_nj1bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_01 (1)" parent="Building" instance=ExtResource("90_nj1bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_01 (2)" parent="Building" instance=ExtResource("90_nj1bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_01 (3)" parent="Building" instance=ExtResource("90_nj1bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_01 (4)" parent="Building" instance=ExtResource("90_nj1bx")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, -2.5, 0, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_01 (5)" parent="Building" instance=ExtResource("90_nj1bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4999998, -6, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_01 (6)" parent="Building" instance=ExtResource("90_nj1bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -6, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_01 (7)" parent="Building" instance=ExtResource("90_nj1bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_01 (8)" parent="Building" instance=ExtResource("90_nj1bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -6, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_02" parent="Building" instance=ExtResource("91_r83yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_02 (1)" parent="Building" instance=ExtResource("91_r83yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_02 (2)" parent="Building" instance=ExtResource("91_r83yw")]
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_02 (3)" parent="Building" instance=ExtResource("91_r83yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -6, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_02 (4)" parent="Building" instance=ExtResource("91_r83yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -6, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_02 (5)" parent="Building" instance=ExtResource("91_r83yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -5)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_02 (6)" parent="Building" instance=ExtResource("91_r83yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
+
+[node name="SM_Bld_Bunker_Ceiling_Concrete_02 (7)" parent="Building" instance=ExtResource("91_r83yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -5)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -3, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01 (1)" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01 (2)" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01 (3)" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01 (4)" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01 (5)" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -5)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01 (6)" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01 (7)" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2.5)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01 (8)" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -2.5)
+
+[node name="SM_Bld_Bunker_Ceiling_Wood_01 (9)" parent="Building" instance=ExtResource("92_83ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+
+[node name="SM_Bld_Bunker_Floor_Concrete_Open_01" parent="Building" instance=ExtResource("93_wucgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+
+[node name="SM_Bld_Bunker_Floor_Concrete_Rust_Open_01" parent="Building" instance=ExtResource("94_jklb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Floor_Concrete_Rust_Open_01 (1)" parent="Building" instance=ExtResource("94_jklb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+
+[node name="SM_Bld_Bunker_Floor_Concrete_Rust_Open_01 (2)" parent="Building" instance=ExtResource("94_jklb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -3, 0)
+
+[node name="SM_Bld_Bunker_Floor_Concrete_Rust_Open_01 (3)" parent="Building" instance=ExtResource("94_jklb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Floor_Container_01" parent="Building" instance=ExtResource("95_2rmym")]
+transform = Transform3D(-1, -1.1622905e-06, 0, 1.1622905e-06, -1, 0, 0, 0, 1, 5, -3, -2.5)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Floor_Container_01" index="0"]
+surface_material_override/0 = ExtResource("96_yph8t")
+
+[node name="SM_Bld_Bunker_Floor_Container_01 (1)" parent="Building" instance=ExtResource("95_2rmym")]
+transform = Transform3D(-1, -1.1622905e-06, 0, 1.1622905e-06, -1, 0, 0, 0, 1, 5, -3, -5)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Floor_Container_01 (1)" index="0"]
+surface_material_override/0 = ExtResource("97_sxp6a")
+
+[node name="SM_Bld_Bunker_Floor_Container_01 (2)" parent="Building" instance=ExtResource("95_2rmym")]
+transform = Transform3D(-1, -1.1622905e-06, 0, 1.1622905e-06, -1, 0, 0, 0, 1, 5, -3, -7.5)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Floor_Container_01 (2)" index="0"]
+surface_material_override/0 = ExtResource("97_sxp6a")
+
+[node name="SM_Bld_Bunker_Floor_Pallet_01" parent="Building" instance=ExtResource("98_kbjs4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_01 (1)" parent="Building" instance=ExtResource("98_kbjs4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -6, 0)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_01 (2)" parent="Building" instance=ExtResource("98_kbjs4")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 5, -6, -2.5)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_01 (3)" parent="Building" instance=ExtResource("98_kbjs4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_01 (4)" parent="Building" instance=ExtResource("98_kbjs4")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 5, -6, -7.5)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_02" parent="Building" instance=ExtResource("99_n4y83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -3, 0)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_02 (1)" parent="Building" instance=ExtResource("99_n4y83")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 5, -6, 0)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_02 (2)" parent="Building" instance=ExtResource("99_n4y83")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, 7.5, -6, 2.5)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_02 (3)" parent="Building" instance=ExtResource("99_n4y83")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 5, -6, -5)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_02 (4)" parent="Building" instance=ExtResource("99_n4y83")]
+transform = Transform3D(1, 0, -6.258487e-07, 0, 1, 0, 6.258487e-07, 0, 1, 10, -6, 0)
+
+[node name="SM_Bld_Bunker_Floor_Pallet_02 (5)" parent="Building" instance=ExtResource("99_n4y83")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, 12.5, -6, 2.5)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01" parent="Building" instance=ExtResource("100_p4wk6")]
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (1)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (2)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (3)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (4)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (5)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -6, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (6)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -9, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (7)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -9, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (8)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -3, -5)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (9)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -9, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (10)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -9, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (11)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -9, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (12)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -9, -2.5)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (13)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -9, -2.5)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (14)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (15)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Floor_Stone_01 (16)" parent="Building" instance=ExtResource("100_p4wk6")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -3, -5)
+
+[node name="SM_Bld_Bunker_Floor_Wood_01" parent="Building" instance=ExtResource("101_b301n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -5)
+
+[node name="SM_Bld_Bunker_Floor_Wood_01 (1)" parent="Building" instance=ExtResource("101_b301n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Floor_Wood_01 (2)" parent="Building" instance=ExtResource("101_b301n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Floor_Wood_02" parent="Building" instance=ExtResource("102_82nv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Ladder_01" parent="Building" instance=ExtResource("103_d2gdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+
+[node name="SM_Bld_Bunker_Ladder_01 (1)" parent="Building" instance=ExtResource("103_d2gdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 0)
+
+[node name="SM_Bld_Bunker_Ladder_Rust_01" parent="Building" instance=ExtResource("104_aebb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Ladder_Rust_01 (1)" parent="Building" instance=ExtResource("104_aebb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 0)
+
+[node name="SM_Bld_Bunker_Ladder_Rust_01 (2)" parent="Building" instance=ExtResource("104_aebb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="SM_Bld_Bunker_Ladder_Rust_01 (3)" parent="Building" instance=ExtResource("104_aebb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+
+[node name="SM_Bld_Bunker_Stairs_Double_01" parent="Building" instance=ExtResource("105_g85uj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 6, 0)
+
+[node name="SM_Bld_Bunker_Stairs_Double_Wall_01" parent="Building/SM_Bld_Bunker_Stairs_Double_01" index="2"]
+visible = false
+
+[node name="SM_Bld_Bunker_Wall_Concrete_Door_01" parent="Building" instance=ExtResource("106_xmkft")]
+transform = Transform3D(1, 0, 2.235174e-06, 0, 1, 0, -2.235174e-06, 0, 1, 2.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_Door_L" parent="Building/SM_Bld_Bunker_Wall_Concrete_Door_01" index="5"]
+transform = Transform3D(0.8776697, 0, 0.47926596, 0, 1, 0, -0.47926596, 0, 0.8776697, 0.15050049, 1.4093865, 0.09503504)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_Door_R" parent="Building/SM_Bld_Bunker_Wall_Concrete_Door_01" index="6"]
+transform = Transform3D(0.48048246, 0, -0.8770043, 0, 1, 0, 0.8770043, 0, 0.48048246, 2.3494995, 1.4093865, 0.09503504)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, -2.5, 0, 2.5)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (1)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (3)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 10, -3, 0)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (5)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (6)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 10, -9, 0)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (7)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, -5, -9, 2.5)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (8)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(9.099629e-07, 0, -1, 0, 1, 0, 1, 0, 9.099629e-07, 7.5, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (9)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(9.099629e-07, 0, -1, 0, 1, 0, 1, 0, 9.099629e-07, 7.5, -3, -5)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (10)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, 5, -3, -5)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (11)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, 2.5, -3, -5)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (12)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, 0, -3, -5)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (14)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(-8.34465e-07, 0, 1, 0, 1, 0, -1, 0, -8.34465e-07, 0, -3, 0)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_01 (15)" parent="Building" instance=ExtResource("107_nopwo")]
+transform = Transform3D(-1, 0, 3.2782552e-07, 0, 1, 0, -3.2782552e-07, 0, -1, 0, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_02" parent="Building" instance=ExtResource("108_7bocn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="SM_Bld_Bunker_Wall_Concrete_x1_02 (1)" parent="Building" instance=ExtResource("108_7bocn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -3, 0)
+
+[node name="SM_Bld_Bunker_Wall_Container_Door_01" parent="Building" instance=ExtResource("109_7ahpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -6, -2.5)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_Door_01" index="0"]
+surface_material_override/0 = ExtResource("97_sxp6a")
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_Door_01/SM_Bld_Bunker_Wall_Container_Door_L" index="0"]
+surface_material_override/0 = ExtResource("97_sxp6a")
+
+[node name="SM_Bld_Bunker_Wall_Container_Door_R" parent="Building/SM_Bld_Bunker_Wall_Container_Door_01" index="3"]
+transform = Transform3D(0.480942, 0, 0.8767524, 0, 1, 0, -0.8767524, 0, 0.480942, 2.361699, 0.35003218, 0.08687317)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_Door_01/SM_Bld_Bunker_Wall_Container_Door_R" index="0"]
+surface_material_override/0 = ExtResource("97_sxp6a")
+
+[node name="SM_Bld_Bunker_Wall_Container_x1_01" parent="Building" instance=ExtResource("110_bro5m")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, -2.5, -6, 2.5)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_x1_01" index="0"]
+surface_material_override/0 = ExtResource("96_yph8t")
+
+[node name="SM_Bld_Bunker_Wall_Container_x1_01 (1)" parent="Building" instance=ExtResource("110_bro5m")]
+transform = Transform3D(1, 0, 9.536742e-07, 0, 1, 0, -9.536742e-07, 0, 1, -2.5, -6, 0)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_x1_01 (1)" index="0"]
+surface_material_override/0 = ExtResource("96_yph8t")
+
+[node name="SM_Bld_Bunker_Wall_Container_x1_01 (2)" parent="Building" instance=ExtResource("110_bro5m")]
+transform = Transform3D(1, 0, 9.536742e-07, 0, 1, 0, -9.536742e-07, 0, 1, 0, -6, 0)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_x1_01 (2)" index="0"]
+surface_material_override/0 = ExtResource("111_kalx2")
+
+[node name="SM_Bld_Bunker_Wall_Container_x1_01 (3)" parent="Building" instance=ExtResource("110_bro5m")]
+transform = Transform3D(-8.781764e-07, 0, 1, 0, 1, 0, -1, 0, -8.781764e-07, 2.5, -6, 0)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_x1_01 (3)" index="0"]
+surface_material_override/0 = ExtResource("111_kalx2")
+
+[node name="SM_Bld_Bunker_Wall_Container_x1_01 (4)" parent="Building" instance=ExtResource("110_bro5m")]
+transform = Transform3D(8.940697e-07, 0, -1, 0, 1, 0, 1, 0, 8.940697e-07, 5, -6, -2.5)
+
+[node name="SM_Bld_Bunker_Wall_Container_x1_01 (5)" parent="Building" instance=ExtResource("110_bro5m")]
+transform = Transform3D(8.940697e-07, 0, -1, 0, 1, 0, 1, 0, 8.940697e-07, 15, -6, 0)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_x1_01 (5)" index="0"]
+surface_material_override/0 = ExtResource("111_kalx2")
+
+[node name="SM_Bld_Bunker_Wall_Container_x1_01 (6)" parent="Building" instance=ExtResource("110_bro5m")]
+transform = Transform3D(1, 0, 1.8477438e-06, 0, 1, 0, -1.8477438e-06, 0, 1, 2.5, -6, -7.5)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_x1_01 (6)" index="0"]
+surface_material_override/0 = ExtResource("97_sxp6a")
+
+[node name="SM_Bld_Bunker_Wall_Container_x2_01" parent="Building" instance=ExtResource("112_bjadk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -6, 0)
+
+[node name="SM_Bld_Bunker_Wall_Container_x2_01 (1)" parent="Building" instance=ExtResource("112_bjadk")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 5, -6, -7.5)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_x2_01 (1)" index="0"]
+surface_material_override/0 = ExtResource("97_sxp6a")
+
+[node name="SM_Bld_Bunker_Wall_Container_x2_01 (2)" parent="Building" instance=ExtResource("112_bjadk")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, 2.5, -6, -2.5)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_x2_01 (2)" index="0"]
+surface_material_override/0 = ExtResource("97_sxp6a")
+
+[node name="SM_Bld_Bunker_Wall_Container_x2_01 (3)" parent="Building" instance=ExtResource("112_bjadk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -6, 0)
+
+[node name="MeshRenderer" parent="Building/SM_Bld_Bunker_Wall_Container_x2_01 (3)" index="0"]
+surface_material_override/0 = ExtResource("97_sxp6a")
+
+[node name="SM_Bld_Bunker_Wall_Curved_Concrete_01" parent="Building" instance=ExtResource("113_xfa7j")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, -7.5, -3, 2.5)
+
+[node name="SM_Bld_Bunker_Wall_Curved_Concrete_01 (1)" parent="Building" instance=ExtResource("113_xfa7j")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, -7.5, -3, 0)
+
+[node name="SM_Bld_Bunker_Wall_Curved_Concrete_01 (2)" parent="Building" instance=ExtResource("113_xfa7j")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, -2.5, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Wall_Curved_Corrugated_01" parent="Building" instance=ExtResource("114_18r22")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, 5, -9, 0)
+
+[node name="SM_Bld_Bunker_Wall_Curved_Corrugated_01 (1)" parent="Building" instance=ExtResource("114_18r22")]
+transform = Transform3D(5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, 5.9604645e-08, 10, -9, -2.5)
+
+[node name="SM_Bld_Bunker_Wall_Curved_End_Concrete_Door_x2_01" parent="Building" instance=ExtResource("115_h3820")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, -7.5, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Wall_Curved_End_Concrete_Door_01" parent="Building/SM_Bld_Bunker_Wall_Curved_End_Concrete_Door_x2_01" index="2"]
+transform = Transform3D(0.99999917, 0, 0.0012997983, 0, 1, 0, -0.0012997983, 0, 0.99999917, -0.08804592, 1.4513618, 2.0021582)
+
+[node name="SM_Bld_Bunker_Wall_Curved_End_Concrete_x2_01" parent="Building" instance=ExtResource("116_ox2gx")]
+transform = Transform3D(-7.5896713e-07, 0, -1, 0, 1, 0, 1, 0, -7.5896713e-07, 7.5, -9, -2.5)
+
+[node name="SM_Bld_Bunker_Wall_Metal_Door_x1_01" parent="Building" instance=ExtResource("117_eh876")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, 0, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Wall_Metal_Door_x1_Opening_01" parent="Building/SM_Bld_Bunker_Wall_Metal_Door_x1_01" index="5"]
+transform = Transform3D(-0.65010023, 0, -0.75984836, 0, 1, 0, 0.75984836, 0, -0.65010023, 0.77027225, 1.2117325, 0.08804505)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01" parent="Building" instance=ExtResource("118_71rxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01 (1)" parent="Building" instance=ExtResource("118_71rxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01 (2)" parent="Building" instance=ExtResource("118_71rxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01 (3)" parent="Building" instance=ExtResource("118_71rxl")]
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01 (4)" parent="Building" instance=ExtResource("118_71rxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01 (5)" parent="Building" instance=ExtResource("118_71rxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -3, -5)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01 (6)" parent="Building" instance=ExtResource("118_71rxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -9, 0)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01 (7)" parent="Building" instance=ExtResource("118_71rxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -3, -5)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01 (8)" parent="Building" instance=ExtResource("118_71rxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -3, -5)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x1_01 (9)" parent="Building" instance=ExtResource("118_71rxl")]
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, -7.5, -3, -2.5)
+
+[node name="SM_Bld_Bunker_Wall_Slab_x2_01" parent="Building" instance=ExtResource("119_wgj5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -9, 0)
+
+[node name="SM_Bld_Bunker_Wood_Floor_Raised_x2_01" parent="Building" instance=ExtResource("120_eoa4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -3, -5)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Spotlight" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, -5.157786e-06, 2.2545397e-13, 0, -4.371139e-08, -1, 5.157786e-06, -1, 4.371139e-08, 0.28, -0.27, 1.13)
+
+[node name="Light" type="SpotLight3D" parent="Lights/Spotlight"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_energy = 7.89
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 3.52
+spot_attenuation = 0.333
+spot_angle = 58.75
+spot_angle_attenuation = 0.5
+
+[node name="Point light (10)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, -1.19, -0.582, 2.513)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (10)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 1.85
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 3.67
+
+[node name="Spotlight (3)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, -5.157786e-06, 2.2545397e-13, 0, -4.371139e-08, -1, 5.157786e-06, -1, 4.371139e-08, -3.365, -6.39, 1.21)
+
+[node name="Light" type="SpotLight3D" parent="Lights/Spotlight (3)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(0.7205882, 0.9421906, 1, 1)
+light_energy = 4.43
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 4.55
+spot_attenuation = 0.333
+spot_angle = 48.35
+spot_angle_attenuation = 0.5
+
+[node name="Spotlight (2)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, -5.157786e-06, 2.2545397e-13, 0, -4.371139e-08, -1, 5.157786e-06, -1, 4.371139e-08, 7.76, -0.4, 1.13)
+
+[node name="Light" type="SpotLight3D" parent="Lights/Spotlight (2)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_energy = 7.89
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 3.52
+spot_attenuation = 0.333
+spot_angle = 58.75
+spot_angle_attenuation = 0.5
+
+[node name="Point light (13)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, -5.78, -1.67, 0.92)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (13)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 0.53
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 10.0
+
+[node name="Spotlight (1)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, -5.157786e-06, 2.2545397e-13, 0, -4.371139e-08, -1, 5.157786e-06, -1, 4.371139e-08, 3.75, -0.4, 1.13)
+
+[node name="Light" type="SpotLight3D" parent="Lights/Spotlight (1)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_energy = 7.89
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 3.52
+spot_attenuation = 0.333
+spot_angle = 58.75
+spot_angle_attenuation = 0.5
+
+[node name="Point light (9)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, -1.48, 1.98, 1.94)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (9)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 2.11
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 3.66
+
+[node name="Spotlight (4)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, -4.957856e-06, -2.94747e-07, -1.2515842e-07, 0.08448242, -0.996425, 4.9650325e-06, -0.996425, -0.08448242, 1.36, 3, 1.39)
+
+[node name="Light" type="SpotLight3D" parent="Lights/Spotlight (4)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_energy = 9.08
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 3.05
+spot_attenuation = 0.333
+spot_angle = 59.15
+spot_angle_attenuation = 0.5
+
+[node name="Point light (3)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, -3.979, -0.797, -1.716)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (3)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 2.12
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 10.0
+
+[node name="Point light (5)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 7.52, -6.83, -1.04)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (5)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(0.89111155, 0.8956583, 0.9852941, 1)
+light_energy = 4.6
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.8
+
+[node name="Point light (1)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 2.42, -3.9, 1.713)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (1)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 5.94
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.67
+
+[node name="Point light (11)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 4.51, -7.18, 1.94)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (11)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 4.6
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.8
+
+[node name="Point light (12)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 5.8, -7.62, 1.74)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (12)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_energy = 4.6
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.23
+
+[node name="Point light (2)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 5.07, -3.9, 1.713)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (2)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 5.94
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.67
+
+[node name="Point light" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 0.02, -3.9, 1.713)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 5.94
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.67
+
+[node name="Point light (14)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 11.71, 5.38, 1.94)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (14)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.7550709, 0.22794116, 1)
+light_energy = 5.6
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 16.2
+
+[node name="Point light (4)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 4.07, -0.852, -2.858)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (4)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 7.49
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 4.06
+
+[node name="Point light (15)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 1.17, -5.69, 1.94)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (15)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 3.08
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 3.67
+
+[node name="Point light (7)" type="Node3D" parent="Lights"]
+transform = Transform3D(-0.9718642, 0, -0.23554175, 0, 1, 0, 0.23554175, 0, -0.9718642, 3.473, -4.198, 3.128)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (7)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 7.49
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.67
+
+[node name="Point light (16)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, -1.19, -1.671, 2.792)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (16)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 3.08
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 3.67
+
+[node name="Point light (8)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, -4.944, -0.852, -3.803)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (8)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 4.0
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 4.06
+
+[node name="Point light (17)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, -1.077, -0.852, -3.803)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (17)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 4.0
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 4.06
+
+[node name="Point light (18)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 7.57, -3.9, 1.71)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (18)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 5.94
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.67
+
+[node name="Point light (19)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 10.04, -3.9, 1.71)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (19)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 5.94
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.67
+
+[node name="Point light (20)" type="Node3D" parent="Lights"]
+transform = Transform3D(-1, 0, -5.157786e-06, 0, 1, 0, 5.157786e-06, 0, -1, 12.53, -3.9, 1.71)
+
+[node name="Light" type="OmniLight3D" parent="Lights/Point light (20)"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_color = Color(1, 0.80730224, 0.7205882, 1)
+light_energy = 5.94
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 2.67
+
+[node name="Directional light" type="Node3D" parent="Lights"]
+transform = Transform3D(-0.04848867, 0.9940136, 0.09790715, 0.9928437, 0.058676455, -0.10401209, -0.10913427, 0.09216308, -0.98974526, 1.35, 7.47, 8.94)
+
+[node name="Light" type="DirectionalLight3D" parent="Lights/Directional light"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_energy = 0.15
+light_bake_mode = 0
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 0.4
+
+[editable path="Props/SM_Prop_Crate_Wall_01"]
+[editable path="Props/SM_Prop_Pipe_Valve_01"]
+[editable path="Props/SM_Prop_Pipe_Valve_02"]
+[editable path="Props/SM_Prop_Pipes_Valves_01"]
+[editable path="Props/SM_Prop_Pipes_01"]
+[editable path="Props/SM_Prop_PowerBoxes_02"]
+[editable path="Props/SM_Prop_PowerBoxes_01"]
+[editable path="Props/SM_Prop_Sign_MissingPapers_01"]
+[editable path="Props/SM_Prop_MedicalBox_02 (1)"]
+[editable path="Props/SM_Prop_MedicalBox_01"]
+[editable path="Props/SM_Prop_Medical_Shelf_02"]
+[editable path="Props/SM_Prop_Medical_Shelf_01"]
+[editable path="Props/SM_Prop_Medical_IVStand_01"]
+[editable path="Props/SM_Prop_Medical_Container_Broken_01"]
+[editable path="Props/SM_Prop_SupplyPile_04"]
+[editable path="Props/SM_Prop_SupplyPile_02"]
+[editable path="Props/SM_Prop_Decontamination_Shower_01"]
+[editable path="Props/SM_Prop_Toy_Bear_01"]
+[editable path="Props/SM_Prop_Papers_03"]
+[editable path="Props/SM_Prop_Papers_02"]
+[editable path="Props/SM_Prop_Papers_01 (1)"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_01"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_02"]
+[editable path="Props/SM_Prop_Crate_01"]
+[editable path="Props/SM_Prop_Generator_01"]
+[editable path="Props/SM_Prop_CardboardBox_02 (1)"]
+[editable path="Props/SM_Prop_CardboardBox_01"]
+[editable path="Props/SM_Prop_Barrel_Warning_01"]
+[editable path="Props/SM_Prop_CarBattery_Table"]
+[editable path="Props/SM_Prop_Cupboard_Broken_01"]
+[editable path="Props/SM_Prop_CardboardBox_02"]
+[editable path="Props/SM_Prop_CardboardBox_03"]
+[editable path="Props/SM_Prop_Drill_01"]
+[editable path="Props/SM_Prop_Vice_01"]
+[editable path="Props/SM_Prop_Anvil_01"]
+[editable path="Props/SM_Prop_Workbench_01"]
+[editable path="Props/SM_Prop_GasCan_01"]
+[editable path="Props/SM_Prop_Propane_01 (1)"]
+[editable path="Props/SM_Prop_Chair_Folding_01"]
+[editable path="Props/SM_Prop_Sign_Quarantine_01"]
+[editable path="Props/SM_Prop_Sign_Radioactive_01"]
+[editable path="Props/SM_Prop_Sign_Military_01"]
+[editable path="Props/SM_Prop_JunkPile_01"]
+[editable path="Props/SM_Prop_Wall_Junk_07"]
+[editable path="Props/SM_Prop_Gas_Table_01"]
+[editable path="Props/SM_Prop_BarrelStack_02"]
+[editable path="Props/SM_Prop_Couch_02"]
+[editable path="Props/SM_Prop_Blackboard_01"]
+[editable path="Props/SM_Prop_Sign_Caution_01"]
+[editable path="Props/SM_Prop_Rug_02"]
+[editable path="Props/SM_Prop_Bedframe_02"]
+[editable path="Props/SM_Prop_Bed_Bunk_01"]
+[editable path="Props/SM_Prop_Bedframe_01"]
+[editable path="Props/SM_Prop_Rug_01"]
+[editable path="Props/SM_Prop_Papers_01"]
+[editable path="Props/SM_Prop_Propane_01"]
+[editable path="Props/SM_Prop_Tool_Bucket_02"]
+[editable path="Props/SM_Prop_Curtain_01"]
+[editable path="Props/SM_Prop_Rug_02 (1)"]
+[editable path="Props/SM_Prop_Sign_Caution_01 (1)"]
+[editable path="Props/SM_Prop_Sign_Quarantine_01 (1)"]
+[editable path="Props/SM_Prop_Chair_Folding_01 (1)"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_02 (1)"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_02 (2)"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_02 (3)"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_01 (1)"]
+[editable path="Props/SM_Prop_Bunker_Light_01"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_01 (2)"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_01 (3)"]
+[editable path="Props/SM_Prop_Papers_03 (1)"]
+[editable path="Props/SM_Prop_Papers_02 (1)"]
+[editable path="Props/SM_Prop_Papers_01 (2)"]
+[editable path="Props/SM_Prop_Bunker_Light_01 (1)"]
+[editable path="Props/SM_Prop_Bunker_Light_01 (2)"]
+[editable path="Props/SM_Prop_Propane_01 (2)"]
+[editable path="Props/SM_Prop_Medical_IVStand_01 (1)"]
+[editable path="Props/SM_Prop_PowerBoxes_01 (1)"]
+[editable path="Props/SM_Prop_Pipe_Valve_01 (1)"]
+[editable path="Props/SM_Prop_Pipe_Valve_02 (1)"]
+[editable path="Props/SM_Prop_Bunker_Light_01 (3)"]
+[editable path="Props/SM_Prop_PowerBoxes_02 (1)"]
+[editable path="Props/SM_Prop_PowerBoxes_01 (2)"]
+[editable path="Props/SM_Prop_Sign_Military_01 (1)"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_01 (4)"]
+[editable path="Props/SM_Prop_Bunker_Light_01 (4)"]
+[editable path="Props/SM_Prop_Bunker_Light_01 (5)"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_01 (5)"]
+[editable path="Props/SM_Prop_Bunker_RoofWire_01 (6)"]
+[editable path="Props/SM_Prop_Bunker_Light_01 (6)"]
+[editable path="Props/SM_Prop_Gas_Table_01 (1)"]
+[editable path="Props/SM_Prop_Crate_03"]
+[editable path="Props/SM_Prop_Crate_04"]
+[editable path="Props/SM_Prop_Crate_Large_02"]
+[editable path="Props/SM_Prop_BedMatress_01"]
+[editable path="Props/SM_Prop_BedMatress_02"]
+[editable path="Props/SM_Prop_CautionLine_01"]
+[editable path="Props/SM_Prop_CautionLine_01 (1)"]
+[editable path="Props/SM_Chr_Attach_Canteen_01"]
+[editable path="Props/SM_Chr_Attach_SupplyBag_01"]
+[editable path="Props/SM_Item_Alcohol_01"]
+[editable path="Props/SM_Item_Alcohol_01 (1)"]
+[editable path="Props/SM_Item_Alcohol_01 (2)"]
+[editable path="Props/SM_Item_Alcohol_02"]
+[editable path="Props/SM_Item_Alcohol_03"]
+[editable path="Props/SM_Item_Alcohol_04"]
+[editable path="Props/SM_Item_Alcohol_05"]
+[editable path="Props/SM_Item_Alcohol_06"]
+[editable path="Props/SM_Item_Alcohol_07"]
+[editable path="Props/SM_Item_Alcohol_08"]
+[editable path="Props/SM_Item_Alcohol_08 (1)"]
+[editable path="Props/SM_Item_Alcohol_Broken_01"]
+[editable path="Props/SM_Item_Alcohol_Broken_02"]
+[editable path="Props/SM_Item_Alcohol_Broken_03"]
+[editable path="Props/SM_Item_Can_01"]
+[editable path="Props/SM_Item_Can_02"]
+[editable path="Props/SM_Item_Can_03"]
+[editable path="Props/SM_Item_Can_04"]
+[editable path="Props/SM_Item_Can_04 (1)"]
+[editable path="Props/SM_Wep_PipeWrench_01"]
+[editable path="Building/SM_Bld_Bunker_Beam_End_Curved_Concrete_01"]
+[editable path="Building/SM_Bld_Bunker_Beam_End_Curved_Concrete_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Beam_End_Curved_Concrete_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Beam_End_Curved_Concrete_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Beam_End_Curved_Concrete_01 (4)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_01"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_01 (4)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_01 (5)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_01 (6)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_01 (7)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_01 (8)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_02"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_02 (1)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_02 (2)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_02 (3)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_02 (4)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_02 (5)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_02 (6)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Concrete_02 (7)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01 (4)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01 (5)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01 (6)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01 (7)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01 (8)"]
+[editable path="Building/SM_Bld_Bunker_Ceiling_Wood_01 (9)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Concrete_Open_01"]
+[editable path="Building/SM_Bld_Bunker_Floor_Concrete_Rust_Open_01"]
+[editable path="Building/SM_Bld_Bunker_Floor_Concrete_Rust_Open_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Concrete_Rust_Open_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Concrete_Rust_Open_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Container_01"]
+[editable path="Building/SM_Bld_Bunker_Floor_Container_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Container_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_01"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_01 (4)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_02"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_02 (1)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_02 (2)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_02 (3)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_02 (4)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Pallet_02 (5)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (4)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (5)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (6)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (7)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (8)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (9)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (10)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (11)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (12)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (13)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (14)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (15)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Stone_01 (16)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Wood_01"]
+[editable path="Building/SM_Bld_Bunker_Floor_Wood_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Wood_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Floor_Wood_02"]
+[editable path="Building/SM_Bld_Bunker_Ladder_01"]
+[editable path="Building/SM_Bld_Bunker_Ladder_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Ladder_Rust_01"]
+[editable path="Building/SM_Bld_Bunker_Ladder_Rust_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Ladder_Rust_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Ladder_Rust_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Stairs_Double_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_Door_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (5)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (6)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (7)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (8)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (9)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (10)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (11)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (12)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (14)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_01 (15)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_02"]
+[editable path="Building/SM_Bld_Bunker_Wall_Concrete_x1_02 (1)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_Door_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x1_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x1_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x1_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x1_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x1_01 (4)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x1_01 (5)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x1_01 (6)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x2_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x2_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x2_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Container_x2_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Curved_Concrete_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Curved_Concrete_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Curved_Concrete_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Curved_Corrugated_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Curved_Corrugated_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Curved_End_Concrete_Door_x2_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Curved_End_Concrete_x2_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Metal_Door_x1_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01 (1)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01 (2)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01 (3)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01 (4)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01 (5)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01 (6)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01 (7)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01 (8)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x1_01 (9)"]
+[editable path="Building/SM_Bld_Bunker_Wall_Slab_x2_01"]
+[editable path="Building/SM_Bld_Bunker_Wood_Floor_Raised_x2_01"]
+

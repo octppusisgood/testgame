@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw0if1p31f325"]
+
+[ext_resource type="ArrayMesh" uid="uid://dqduidhlg5gh2" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Drinks_Fridge_03.res" id="1_fhhot"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_me5f5"]
+[ext_resource type="ArrayMesh" uid="uid://qc4hgbkyv8ad" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Drinks_Fridge_03_Door_01.res" id="3_me5f5"]
+[ext_resource type="ArrayMesh" uid="uid://b688tg6hhuyvi" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Drinks_Fridge_03_Door_01_Glass_01.res" id="4_lpx51"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="5_wm6ts"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhhot"]
+size = Vector3(0.569458, 1.0378418, 0.66186523)
+
+[node name="SM_Prop_Market_Drinks_Fridge_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_fhhot")
+surface_material_override/0 = ExtResource("2_me5f5")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006286621, 0.52648926, -0.030883789)
+shape = SubResource("BoxShape3D_fhhot")
+
+[node name="SM_Prop_Market_Drinks_Fridge_03_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24643582, 0.5561677, 0.274821)
+gi_mode = 2
+mesh = ExtResource("3_me5f5")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_me5f5")
+
+[node name="SM_Prop_Market_Drinks_Fridge_03_Door_01_Glass_01" type="MeshInstance3D" parent="SM_Prop_Market_Drinks_Fridge_03_Door_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25419697, -0.040059566, 0.0021638274)
+gi_mode = 2
+mesh = ExtResource("4_lpx51")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_wm6ts")

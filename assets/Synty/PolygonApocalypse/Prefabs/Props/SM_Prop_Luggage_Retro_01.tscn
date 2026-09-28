@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5bimxm3f4trv"]
+
+[ext_resource type="ArrayMesh" uid="uid://3hfumnt0twa3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Luggage_Retro_01.res" id="1_46yia"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_41e7v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_46yia"]
+size = Vector3(0.77734375, 0.296875, 0.49169922)
+
+[node name="SM_Prop_Luggage_Retro_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_46yia")
+surface_material_override/0 = ExtResource("2_41e7v")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14941406, -0.040771484)
+shape = SubResource("BoxShape3D_46yia")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://djj5b8l4112mt"]
+
+[ext_resource type="ArrayMesh" uid="uid://ds7sk01mm75wa" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_StormCanal_Divider_02.res" id="1_yvdc6"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_71a25"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r4lxi"]
+points = PackedVector3Array(-0.32926506, -2.5405042, -5.144042, -0.32926506, 0.37580132, -5.144042, 0.3188029, -2.5405042, -5.144042, -0.32926506, -2.5405042, 0.040501595, 0.3188029, 0.37580132, -5.144042, -0.32926506, 0.37580132, -3.9285975, 0.3188029, -2.5405042, 0.040501595, -0.32926506, -2.13543, 0.040501595, 0.3188029, 0.37580132, -3.9285975, -0.32926506, 0.29472923, -3.7672148, 0.3188029, -2.13543, 0.040501595, -0.32926506, -1.9732862, -0.12189627, 0.3188029, 0.29472923, -3.7672148, -0.32926506, 0.051513672, -3.3612208, 0.3188029, -1.9732862, -0.12189627, 0.3188029, 0.051513672, -3.3612208)
+
+[node name="SM_Env_StormCanal_Divider_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_yvdc6")
+surface_material_override/0 = ExtResource("2_71a25")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_r4lxi")

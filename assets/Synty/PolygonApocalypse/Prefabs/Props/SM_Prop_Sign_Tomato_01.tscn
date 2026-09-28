@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctdv3ybylc0w"]
+
+[ext_resource type="ArrayMesh" uid="uid://38ktl88trd7a" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Sign_Tomato_01.res" id="1_7u6dg"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_sh04y"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pidmf"]
+points = PackedVector3Array(-0.28259182, 1.5290229, 0.6909503, 1.6374185, 0.97141266, 0.6909503, 0.7080684, 1.4050448, 0.38130826, -0.28259182, 1.5290229, 0.38130826, -1.5212079, 1.0331106, 0.6909503, 1.8232884, -0.70083547, 0.6909503, 2.0091586, 0.22812665, 0.38130826, -1.6449919, 0.84743476, 0.38130826, -1.955034, 0.042450666, 0.38130826, -1.893336, -0.26720345, 0.6909503, 0.83224034, -1.4441216, 0.6909503, 1.7612026, -0.8245225, 0.38130826, -1.2115538, -1.1341765, 0.38130826, -1.769164, -0.70083547, 0.6909503, 0.83224034, -1.4441216, 0.38130826, -0.7164179, -1.4441216, 0.6909503)
+
+[node name="SM_Prop_Sign_Tomato_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_7u6dg")
+surface_material_override/0 = ExtResource("2_sh04y")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_pidmf")

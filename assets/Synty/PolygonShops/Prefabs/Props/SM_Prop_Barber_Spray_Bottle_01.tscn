@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt2hnf3cakdqg"]
+
+[ext_resource type="ArrayMesh" uid="uid://gd6aig26qrwk" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Spray_Bottle_01.res" id="1_d4sba"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_a30x3"]
+[ext_resource type="ArrayMesh" uid="uid://dg1cpp83hyag0" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Barber_Spray_Bottle_01_Trigger_01.res" id="3_a30x3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7fov1"]
+points = PackedVector3Array(-0.06374116, 0.06859102, 0.0011753328, -0.007941205, 0.1944451, 0.06843014, -0.011145633, 0.19123958, -0.047282297, -0.034648985, 0.05595529, -0.05626588, -0.06207587, 0.04061723, 0.0011143051, -0.03128055, 0.02954699, 0.04894943, 0.008106172, 0.1944451, 0.06843014, 0.0113106, 0.1944451, -0.044059925, 0.029527903, 0.026881931, 0.050621647, 0.034738258, 0.056048475, -0.05614382, 0.02923774, 0.027627403, -0.051090553, -0.029060159, 0.027627403, -0.051090553, -0.03350094, 0.007779246, 0.0012241565, 0.06514248, 0.052861586, -0.0019005649, 0.016785882, 0.0040518926, -0.029278519, 0.06176144, 0.047102824, -0.004878819)
+
+[node name="SM_Prop_Barber_Spray_Bottle_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_d4sba")
+surface_material_override/0 = ExtResource("2_a30x3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_7fov1")
+
+[node name="SM_Prop_Barber_Spray_Bottle_01_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17519508, 0.028121127)
+gi_mode = 2
+mesh = ExtResource("3_a30x3")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_a30x3")

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c8xeqm6ge3ccq"]
+
+[ext_resource type="ArrayMesh" uid="uid://cn1l2cfatxp6f" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Window_01.res" id="1_ce0ue"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_1w4vu"]
+[ext_resource type="ArrayMesh" uid="uid://bl0pp1tospa3q" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Window_Fold_L_01.res" id="3_1w4vu"]
+[ext_resource type="ArrayMesh" uid="uid://dpxrsw2yntljf" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Window_Fold_R_01.res" id="4_piewp"]
+[ext_resource type="ArrayMesh" uid="uid://txnxyxrn3l8o" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Window_Shutter_L_01.res" id="5_7xidr"]
+[ext_resource type="ArrayMesh" uid="uid://mvs0txaq4chs" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Village_Window_Shutter_R_01.res" id="6_6414l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4hmpj"]
+size = Vector3(1.378955, 1.7952722, 0.49084958)
+
+[node name="SM_Bld_Village_Window_01" type="MeshInstance3D" unique_id=1221830980]
+gi_mode = 2
+mesh = ExtResource("1_ce0ue")
+surface_material_override/0 = ExtResource("2_1w4vu")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=308691420]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=1031858217]
+shape = SubResource("BoxShape3D_4hmpj")
+
+[node name="SM_Bld_Village_Window_Fold_L_01" type="MeshInstance3D" parent="." unique_id=1432857076]
+transform = Transform3D(0.9830097, 0, 0, 0, 1, 0, 0, 0, 1, 0.5015805, -0.6802218, 0.06708557)
+gi_mode = 2
+mesh = ExtResource("3_1w4vu")
+surface_material_override/0 = ExtResource("2_1w4vu")
+
+[node name="SM_Bld_Village_Window_Fold_R_01" type="MeshInstance3D" parent="." unique_id=685865651]
+transform = Transform3D(0.9830097, 0, 0, 0, 1, 0, 0, 0, 1, -0.50158876, -0.6802218, 0.06708557)
+gi_mode = 2
+mesh = ExtResource("4_piewp")
+surface_material_override/0 = ExtResource("2_1w4vu")
+
+[node name="SM_Bld_Village_Window_Shutter_L_01" type="MeshInstance3D" parent="." unique_id=1861016464]
+transform = Transform3D(-1, -1.224647e-16, -8.742278e-08, -1.2246469e-16, 1, -1.2246469e-16, 8.742278e-08, -1.2246467e-16, -1, 0.6802774, -0.8976361, 0.23706298)
+gi_mode = 2
+mesh = ExtResource("5_7xidr")
+surface_material_override/0 = ExtResource("2_1w4vu")
+
+[node name="SM_Bld_Village_Window_Shutter_R_01" type="MeshInstance3D" parent="." unique_id=109113442]
+transform = Transform3D(-1, -1.2246467e-16, 8.742278e-08, -1.2246469e-16, 1, -1.2246469e-16, -8.742278e-08, -1.224647e-16, -1, -0.6802771, -0.8976361, 0.23706298)
+gi_mode = 2
+mesh = ExtResource("6_6414l")
+surface_material_override/0 = ExtResource("2_1w4vu")

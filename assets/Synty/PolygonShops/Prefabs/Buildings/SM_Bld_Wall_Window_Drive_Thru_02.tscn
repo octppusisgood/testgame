@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://caprx4vyqu0ip"]
+
+[ext_resource type="ArrayMesh" uid="uid://blxyhe63pvc7o" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Window_Drive_Thru_02.res" id="1_ickrq"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_m8wc7"]
+[ext_resource type="Material" uid="uid://r07p7hgiwjxe" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Brick_Coloured_01_mat.tres" id="3_nb2bb"]
+[ext_resource type="ArrayMesh" uid="uid://gtdetkks7g4p" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Window_Drive_Thru_02_Glass.res" id="4_m8wc7"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="6_e1u52"]
+[ext_resource type="ArrayMesh" uid="uid://dmapeobm45ied" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Window_Drive_Thru_02_Door.res" id="6_nb2bb"]
+[ext_resource type="ArrayMesh" uid="uid://dnc5rkd68xqqy" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Wall_Window_Drive_Thru_02_Door_Glass.res" id="7_fgj0q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7otpv"]
+size = Vector3(2.4999914, 3.0057428, 0.225)
+
+[node name="SM_Bld_Wall_Window_Drive_Thru_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ickrq")
+surface_material_override/0 = ExtResource("2_m8wc7")
+surface_material_override/1 = ExtResource("3_nb2bb")
+surface_material_override/2 = ExtResource("3_nb2bb")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2499957, 1.5028714, 0)
+shape = SubResource("BoxShape3D_7otpv")
+
+[node name="SM_Bld_Wall_Window_Drive_Thru_02_Glass" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("4_m8wc7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_e1u52")
+
+[node name="SM_Bld_Wall_Window_Drive_Thru_02_Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2528152, 0.79278016, 0.020820523)
+gi_mode = 2
+mesh = ExtResource("6_nb2bb")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_m8wc7")
+
+[node name="SM_Bld_Wall_Window_Drive_Thru_02_Door_Glass" type="MeshInstance3D" parent="SM_Bld_Wall_Window_Drive_Thru_02_Door"]
+gi_mode = 2
+mesh = ExtResource("7_fgj0q")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_e1u52")

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://nmi37lvj7xov"]
+
+[ext_resource type="ArrayMesh" uid="uid://dv82jm770i1tj" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Shelf_01.res" id="1_5yhyk"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_2pjmn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5yhyk"]
+size = Vector3(1.2070204, 1.9290596, 0.5083537)
+
+[node name="SM_Prop_Shelf_01" type="MeshInstance3D" unique_id=631532641]
+gi_mode = 2
+mesh = ExtResource("1_5yhyk")
+surface_material_override/0 = ExtResource("2_2pjmn")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1984065375]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=398424399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0.9645298, 0)
+shape = SubResource("BoxShape3D_5yhyk")

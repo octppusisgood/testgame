@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfynaptq1sou0"]
+
+[ext_resource type="ArrayMesh" uid="uid://cmplvyf0xjiem" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Nailgun_Clean_01.res" id="1_oittf"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_gvrnx"]
+[ext_resource type="ArrayMesh" uid="uid://f4u52vd04ca0" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Nailgun_Clean_01_Trigger_01.res" id="3_gvrnx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_be6b1"]
+points = PackedVector3Array(0.016742729, -0.13468935, 0.14339894, 0.028552275, 0.12500368, 0.19652423, 0.010837957, 0.15447678, 0.26147538, -0.012142129, -0.1260189, 0.13976023, -0.01731083, -0.121845424, -0.04726994, 0.015666928, -0.12440127, -0.049234845, 0.040361825, -0.105151564, 0.06673114, 0.032386336, 0.18634392, 0.11148737, -0.0064153075, 0.15095036, 0.24742994, -0.024558332, 0.17220591, 0.22013953, -0.042272653, -0.09926343, 0.06673114, -0.042272653, -0.09334293, -0.03358835, -0.034280986, 0.10293932, -0.1050528, 0.040361825, 0.095498264, -0.110256165, 0.040361825, 0.19582318, -0.10436144, -0.034733955, 0.18828507, -0.10177795)
+
+[node name="SM_Wep_Nailgun_Clean_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_oittf")
+surface_material_override/0 = ExtResource("2_gvrnx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_be6b1")
+
+[node name="SM_Wep_Nailgun_Clean_01_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1140108e-06, 0.06480824, 0.05166094)
+gi_mode = 2
+mesh = ExtResource("3_gvrnx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_gvrnx")

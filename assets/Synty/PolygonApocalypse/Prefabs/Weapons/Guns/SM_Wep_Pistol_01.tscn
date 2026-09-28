@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcb41x600xjsi"]
+
+[ext_resource type="ArrayMesh" uid="uid://cf7b661sqp31e" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Pistol_01.res" id="1_32fgw"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_7g1gw"]
+[ext_resource type="ArrayMesh" uid="uid://b7uuo6nesgo76" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Pistol_01_Magazine_01.res" id="3_7g1gw"]
+[ext_resource type="ArrayMesh" uid="uid://ctkpbh0uvnpdk" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Pistol_01_Silencer_01.res" id="4_ua3gg"]
+[ext_resource type="ArrayMesh" uid="uid://cwbcji1ay7nji" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Pistol_01_Slide_01.res" id="5_sqwkj"]
+[ext_resource type="ArrayMesh" uid="uid://cd2ax7piyfsir" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Pistol_01_Stock_01.res" id="6_g1bhx"]
+[ext_resource type="ArrayMesh" uid="uid://biayuy6rxhuyc" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Pistol_01_Trigger_01.res" id="7_pbouc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iu8ud"]
+points = PackedVector3Array(0.016810762, -0.100905344, 0.017617442, 0.012513189, 0.006451227, 0.19368762, -0.021832088, -0.09658418, 0.009049296, -0.008661943, -0.09374263, -0.05497382, 0.02110329, -0.09658418, -0.046749454, 0.025400864, -0.07084214, 0.013359815, 0.016810762, 0.04510632, 0.2065663, -0.017539559, 0.023651823, 0.2065663, -0.026129661, -0.062250253, -0.046749454, -0.021832088, 0.04510632, -0.051059972, 0.02110329, 0.04510632, -0.051059972, 0.025400864, 0.023618191, 0.026212037, 0.012513189, 0.07086517, 0.21518734, -0.013241986, 0.06656082, 0.21518734, -0.008949457, 0.07086517, -0.003855817, -0.013241986, 0.06657764, 0.03483308)
+
+[node name="SM_Wep_Pistol_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_32fgw")
+surface_material_override/0 = ExtResource("2_7g1gw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_iu8ud")
+
+[node name="SM_Wep_Pistol_01_Magazine_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7001173e-05, -0.000772337, -0.0064765178)
+gi_mode = 2
+mesh = ExtResource("3_7g1gw")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_7g1gw")
+
+[node name="SM_Wep_Pistol_01_Silencer_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.215128e-17, 0.06091711, 0.2045235)
+gi_mode = 2
+mesh = ExtResource("4_ua3gg")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_7g1gw")
+
+[node name="SM_Wep_Pistol_01_Slide_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05164688, 0.07638999)
+gi_mode = 2
+mesh = ExtResource("5_sqwkj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_7g1gw")
+
+[node name="SM_Wep_Pistol_01_Stock_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00017475664, -0.07873299, -0.062390037)
+gi_mode = 2
+mesh = ExtResource("6_g1bhx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_7g1gw")
+
+[node name="SM_Wep_Pistol_01_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5527136e-17, 0.01389303, 0.05571175)
+gi_mode = 2
+mesh = ExtResource("7_pbouc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_7g1gw")

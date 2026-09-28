@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c3ii7alcj5kqk"]
+
+[ext_resource type="ArrayMesh" uid="uid://cycwaj6ykj0rq" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_AirVent_02.res" id="1_ht74h"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_ej27t"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hygix"]
+points = PackedVector3Array(0.5264994, 0.8108728, 0.16966578, 0.6193824, 0.12584852, 0.2714157, 0.5264994, 0.8108728, -0.1876791, -0.5266192, 0.8108728, 0.16966578, -0.30872005, 0.70606077, 0.20011649, 0.6193824, 0.12584852, -0.21245345, -0.61938095, 0.12584852, 0.2714157, 0.5952523, 0.0064463965, 0.2608587, 0.6193824, 0.08704677, -0.27054322, -0.5266192, 0.8108728, -0.1876791, 0.5611789, 0.12584852, -0.27054322, -0.61938095, 0.12584852, -0.27054322, -0.59731215, 0.0051845512, -0.26088813, -0.595372, 0.0064463965, 0.2608587, 0.5971923, 0.0051845512, -0.26088813)
+
+[node name="SM_Prop_AirVent_02" type="MeshInstance3D" unique_id=88567571]
+gi_mode = 2
+mesh = ExtResource("1_ht74h")
+surface_material_override/0 = ExtResource("2_ej27t")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=461120582]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=286328934]
+shape = SubResource("ConvexPolygonShape3D_hygix")

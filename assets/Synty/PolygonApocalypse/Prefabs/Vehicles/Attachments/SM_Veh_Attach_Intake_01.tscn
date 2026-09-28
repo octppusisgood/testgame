@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm02myash3q4w"]
+
+[ext_resource type="ArrayMesh" uid="uid://b02s0q1yfp5md" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Attach_Intake_01.res" id="1_rpo6l"]
+[ext_resource type="Material" uid="uid://bj206v4v20ibu" path="res://Assets/Synty/PolygonApocalypse/Materials/Vehicles/Vehicle_Standard_01_mat.tres" id="2_xiu3i"]
+[ext_resource type="ArrayMesh" uid="uid://ckhimythsiv6b" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Attach_Intake_Plug_01.res" id="3_xiu3i"]
+[ext_resource type="ArrayMesh" uid="uid://cruut8pwlqbqs" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_Attach_Intake_Valve_01.res" id="4_m5i4m"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2ik4e"]
+points = PackedVector3Array(-0.12767379, -0.15035369, -0.15335235, -0.24311945, 0.35470402, -0.2568289, -0.1348592, 0.2478248, -0.36541268, 0.13022271, -0.14667876, -0.15150191, 0.13022271, -0.14667876, 0.23301935, -0.11911118, -0.1297741, 0.2202143, -0.30377632, 0.2539497, 0.33027846, -0.13893095, 0.40302932, -0.35260764, -0.2224015, 0.47536415, 0.3781678, 0.14369535, 0.36879122, -0.37799567, 0.15339568, 0.27281433, -0.37274042, 0.30794197, 0.26619947, 0.33027846, 0.24728507, 0.31979215, -0.2685237, 0.1780656, 0.42618138, -0.26993, 0.29830152, 0.41687155, 0.35544443, 0.21069938, 0.4693005, 0.32443106)
+
+[node name="SM_Veh_Attach_Intake_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_rpo6l")
+surface_material_override/0 = ExtResource("2_xiu3i")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_2ik4e")
+
+[node name="SM_Veh_Attach_Intake_Plug_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2636184e-06, 0.34093583, 0.24203795)
+gi_mode = 2
+mesh = ExtResource("3_xiu3i")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_xiu3i")
+
+[node name="SM_Veh_Attach_Intake_Valve_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2397766e-06, 0.34269172, 0.2498169)
+gi_mode = 2
+mesh = ExtResource("4_m5i4m")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_xiu3i")

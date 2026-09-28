@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7yy8hryam2hy"]
+
+[ext_resource type="ArrayMesh" uid="uid://hk0l1enyo4xg" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Hunter_Male_Hat_02.res" id="1_r60av"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_di6l6"]
+
+[node name="SM_Chr_Attach_Hunter_Male_Hat_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_r60av")
+surface_material_override/0 = ExtResource("2_di6l6")

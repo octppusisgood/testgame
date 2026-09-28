@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn05yjtarkpos"]
+
+[ext_resource type="ArrayMesh" uid="uid://b537eryd2cma5" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Baseball_Glove_01.res" id="1_oyyew"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_tn6u4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cxp5d"]
+points = PackedVector3Array(-0.058051497, 0.3684365, -0.06317712, -0.17880699, 0.32834315, -0.011413485, -0.08978925, 0.36105454, -0.043517355, 0.15457243, 0.30224404, 0.1213787, 0.056812555, 0.35913035, -0.09998893, 0.0001026988, 0.2619758, -0.10013088, -0.1944288, 0.30896124, 0.067675106, -0.08040095, 0.15093206, -0.053501017, -0.13209358, 0.049789175, 0.0455549, 0.14784479, 0.20820321, 0.14155895, 0.19387403, 0.20040146, 0.07683074, 0.08779013, 0.13141018, -0.09267862, -0.07500364, 0.03848888, 0.08272158, -0.025477543, 0.011025318, -0.017375298, 0.062323898, 0.012669633, 0.026723154, 0.1023857, 0.021520946, -0.037106045)
+
+[node name="SM_Prop_Sport_Baseball_Glove_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_oyyew")
+surface_material_override/0 = ExtResource("2_tn6u4")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_cxp5d")

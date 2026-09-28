@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://sbd2prxee867"]
+
+[ext_resource type="ArrayMesh" uid="uid://cyyaxuwud8i6g" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Tractor_Tire_01.res" id="1_kjywc"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_vulb4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l0cv8"]
+points = PackedVector3Array(0.13234127, 0.1277377, -0.84676075, 0.46504283, 0.51856166, -0.6205034, 0.5871676, 0.0045861322, -0.48516595, 0.15634733, 0.07745419, -0.8084365, -0.58735746, 0.0045861322, -0.48500562, -0.2601338, 0.4160197, -0.8063519, 0.6514524, 0.5206885, 0.4168166, 0.83592856, 0.41672865, -0.13046634, -0.6798372, 0.5215493, -0.36634478, 0.58700657, 0.004535494, 0.4849664, -0.12801987, 0.004231666, 0.7415303, -0.80985665, 0.10322892, 0.23497689, 0.34291804, 0.20728996, 0.79139996, -0.75684994, 0.5209923, 0.1565646, 0.05178398, 0.51881486, 0.7501894, -0.57269603, 0.416121, 0.6244731)
+
+[node name="SM_Prop_Tractor_Tire_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_kjywc")
+surface_material_override/0 = ExtResource("2_vulb4")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_l0cv8")

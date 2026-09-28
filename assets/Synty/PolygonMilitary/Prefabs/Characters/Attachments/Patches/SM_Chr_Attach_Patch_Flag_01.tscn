@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bis22xufkumnj"]
+
+[ext_resource type="ArrayMesh" uid="uid://baayf8y7ebhnn" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Patch_Flag_01.res" id="1_rt872"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_v5deh"]
+
+[node name="SM_Chr_Attach_Patch_Flag_01" type="MeshInstance3D" unique_id=506284085]
+gi_mode = 2
+mesh = ExtResource("1_rt872")
+surface_material_override/0 = ExtResource("2_v5deh")

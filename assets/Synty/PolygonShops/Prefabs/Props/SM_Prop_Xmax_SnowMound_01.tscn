@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://lui7knapu4jl"]
+
+[ext_resource type="ArrayMesh" uid="uid://csem77od3km2q" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Xmax_SnowMound_01.res" id="1_n7np3"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_2wk2a"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i2yxg"]
+points = PackedVector3Array(1.4900017, -0.02390778, -0.7177204, 0.6768935, -0.02390778, -1.5300984, 1.1072431, 0.119576395, -1.1955017, 1.3939493, 0.119576395, -0.47838044, 1.1545436, 0.119576395, 1.0996461, 0.9160087, -0.02390778, 1.3386865, -0.61386496, -0.02390778, -1.48247, 0.103481054, 0.3107638, -1.0999454, 0.7247746, 0.31072637, 0.6215651, -0.61386496, 0.26294824, 1.0996461, -0.61386496, -0.02390778, 1.5300984, -1.4745641, 0.07176082, -0.38282418, -1.0920956, 0.1195015, -1.051718, -1.4745641, -0.02390778, 0.66979265, -0.709337, 0.35861683, 0.2390405, -1.4745641, 0.07172337, 0.66979265)
+
+[node name="SM_Prop_Xmax_SnowMound_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_n7np3")
+surface_material_override/0 = ExtResource("2_2wk2a")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_i2yxg")

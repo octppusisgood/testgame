@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bfie0nshw617r"]
+
+[ext_resource type="ArrayMesh" uid="uid://cewch1tm82r7w" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_A_Handguard_03.res" id="1_71gqi"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_qco7j"]
+
+[node name="SM_Wep_Mod_A_Handguard_03" type="MeshInstance3D" unique_id=1100268153]
+gi_mode = 2
+mesh = ExtResource("1_71gqi")
+surface_material_override/0 = ExtResource("2_qco7j")

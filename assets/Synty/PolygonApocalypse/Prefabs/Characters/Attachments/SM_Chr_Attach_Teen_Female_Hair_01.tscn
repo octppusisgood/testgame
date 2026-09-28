@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqmf5usbtwhdx"]
+
+[ext_resource type="ArrayMesh" uid="uid://c01xbdx7lbvky" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Teen_Female_Hair_01.res" id="1_xuqg6"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_rn3mx"]
+
+[node name="SM_Chr_Attach_Teen_Female_Hair_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_xuqg6")
+surface_material_override/0 = ExtResource("2_rn3mx")

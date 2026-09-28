@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bshmav52cb271"]
+
+[ext_resource type="ArrayMesh" uid="uid://b551h8kspqfwj" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_Tennis_Racket_01.res" id="1_ioy63"]
+[ext_resource type="Material" uid="uid://bh08n74p5hnhf" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Wire_01_mat.tres" id="2_57e33"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="3_m231v"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kw0m5"]
+points = PackedVector3Array(-0.17974004, 0.59845203, -0.01839123, -0.17974004, 0.59845203, 0.019941151, -0.12602708, 0.7670179, -0.01839123, 0.027241305, 0.16148534, -0.026061907, 0.01957789, -0.15286218, -0.026061907, -0.03406605, -0.15286218, -0.010725803, -0.12602708, 0.7670179, 0.019941151, -0.018704683, -0.15286218, 0.027611833, 0.01957789, 0.16148534, 0.027611833, -0.018324971, 0.80294335, 0.012023542, 0.10391, 0.78252256, -0.01839123, 0.17291531, 0.5524107, -0.01839123, 0.027241305, -0.16042542, 0.019935898, 0.0579295, 0.8054014, 0.019941151, 0.17291531, 0.56006855, 0.019941151, 0.16525188, 0.6980978, 0.019941151)
+
+[node name="SM_Prop_Sport_Tennis_Racket_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ioy63")
+surface_material_override/0 = ExtResource("2_57e33")
+surface_material_override/1 = ExtResource("3_m231v")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_kw0m5")

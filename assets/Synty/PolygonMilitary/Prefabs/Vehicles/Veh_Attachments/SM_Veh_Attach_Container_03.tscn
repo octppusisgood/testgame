@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b38hlbimy80ic"]
+
+[ext_resource type="ArrayMesh" uid="uid://cmfaqbbyievf7" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Attach_Container_03.res" id="1_hpquv"]
+[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_f74fx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hpquv"]
+size = Vector3(0.38452148, 0.24588013, 1.4362793)
+
+[node name="SM_Veh_Attach_Container_03" type="MeshInstance3D" unique_id=1457963862]
+gi_mode = 2
+mesh = ExtResource("1_hpquv")
+surface_material_override/0 = ExtResource("2_f74fx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1454359311]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1771485912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015869141, 0.1181488, -0.004760742)
+shape = SubResource("BoxShape3D_hpquv")

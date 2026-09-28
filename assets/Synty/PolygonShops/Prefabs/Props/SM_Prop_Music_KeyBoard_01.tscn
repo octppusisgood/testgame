@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwj3qv50urkow"]
+
+[ext_resource type="ArrayMesh" uid="uid://dejshmwel70mt" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Music_KeyBoard_01.res" id="1_yaydr"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_5e7km"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p6c6h"]
+points = PackedVector3Array(0.94601446, 0.92569536, -0.28506303, 0.9516757, 0.8390862, 0.30808723, 0.99716085, 0.7322067, 0.3230121, 0.99716085, 0.7322067, -0.3002441, 0.37383765, 0.7322067, -0.33137488, -0.94620985, 0.92569536, -0.28506303, 0.8685139, 0.91620517, -0.13453354, -0.9518711, 0.8390862, 0.30808723, -0.9971611, 0.7322067, 0.3230121, 0.61102456, 0.016391035, 0.27221638, 0.6231279, -0.015580654, -0.26904926, -0.3738379, 0.7322067, -0.33137488, -0.9290309, 0.91731083, -0.19288774, -0.9971611, 0.7322067, -0.3002441, -0.6231281, -0.015580654, -0.26904926, -0.61122, 0.016391035, 0.27221638)
+
+[node name="SM_Prop_Music_KeyBoard_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_yaydr")
+surface_material_override/0 = ExtResource("2_5e7km")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_p6c6h")

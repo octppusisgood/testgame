@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ceoa5fm1qiwyu"]
+
+[ext_resource type="Texture2D" uid="uid://c3ovcbdtl71xo" path="res://assets/Synty/PolygonApocalypse/Textures/Misc/Wire_01_Alpha.tga" id="1_66a1l"]
+
+[resource]
+resource_name = "Fence_01_mat"
+transparency = 1
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_66a1l")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://6141ydh5wl8j"]
+
+[ext_resource type="ArrayMesh" uid="uid://d32pniqfthb0p" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_ShopShelf_Wall_01.res" id="1_2jx4h"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_s2obu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2jx4h"]
+size = Vector3(0.9519043, 0.5352173, 0.2267456)
+
+[node name="SM_Prop_ShopShelf_Wall_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_2jx4h")
+surface_material_override/0 = ExtResource("2_s2obu")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, 0.26864624, -0.0038757324)
+shape = SubResource("BoxShape3D_2jx4h")

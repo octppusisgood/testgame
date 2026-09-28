@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq4fdr0omq1iv"]
+
+[ext_resource type="ArrayMesh" uid="uid://bobtqd25mhqba" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Bld_ShopFront_04.res" id="1_8venh"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_0tasn"]
+[ext_resource type="Material" uid="uid://6eheh00uofxa" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Wood_02_mat.tres" id="3_udsah"]
+[ext_resource type="Material" uid="uid://5d2avydyfst7" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_Red_01_mat.tres" id="4_o6h30"]
+[ext_resource type="Shape3D" uid="uid://bcbywc5pqpkl2" path="res://Assets/Synty/PolygonShops/Models/Collision/SM_Bld_ShopFront_04_Collision.res" id="5_0tasn"]
+
+[node name="SM_Bld_ShopFront_04" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8venh")
+surface_material_override/0 = ExtResource("2_0tasn")
+surface_material_override/1 = ExtResource("3_udsah")
+surface_material_override/2 = ExtResource("4_o6h30")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = ExtResource("5_0tasn")
+
+[node name="SM_Bld_ShopFront_04_Glass" type="MeshInstance3D" parent="."]
+gi_mode = 2
+skeleton = NodePath("")

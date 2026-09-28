@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://lq2otmvqhd23"]
+
+[ext_resource type="ArrayMesh" uid="uid://dfneeq3y03k10" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Gastank_01.res" id="1_s5s7n"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_63x0y"]
+[ext_resource type="ArrayMesh" uid="uid://c1vathrf1id2i" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Gastank_Base_01.res" id="3_63x0y"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ckqy7"]
+points = PackedVector3Array(0.44562006, 2.8859036, 0.3886627, 2.3535078, 1.6279345, 0.9361063, 3.6027772, 1.3582702, -0.12008977, 0.44562006, 2.8859036, -0.4257133, -2.0992324, 2.580307, 0.083039165, -0.39584732, 2.741129, 0.35573792, -2.3368163, 1.6310742, 0.94168675, 3.5841315, -0.6124084, 0.07950485, 1.4945974, 0.007156968, 0.83993626, 3.7050283, -0.67799306, -0.12008977, 2.3252385, 1.6202598, -0.9586477, -2.439669, 1.6321208, -0.8842415, -2.4053845, 0.5440439, -0.83308727, -1.461666, 0.007156968, 0.83993626, 1.4494865, 0.05390346, -0.84015584, -1.379865, 0.05390346, -0.84015584)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s5s7n"]
+size = Vector3(5.9959908, 0.627419, 2.4347982)
+
+[node name="SM_Prop_Gastank_01" type="MeshInstance3D" unique_id=2092846115]
+gi_mode = 2
+mesh = ExtResource("1_s5s7n")
+surface_material_override/0 = ExtResource("2_63x0y")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1053862786]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=891500252]
+shape = SubResource("ConvexPolygonShape3D_ckqy7")
+
+[node name="SM_Prop_Gastank_Base_01" type="MeshInstance3D" parent="." unique_id=1824158523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5895686e-06)
+gi_mode = 2
+mesh = ExtResource("3_63x0y")
+surface_material_override/0 = ExtResource("2_63x0y")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Prop_Gastank_Base_01" unique_id=854249554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2915344e-06, -0.3137095, 1.9073486e-06)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Gastank_Base_01/MeshCollider" unique_id=727515513]
+shape = SubResource("BoxShape3D_s5s7n")

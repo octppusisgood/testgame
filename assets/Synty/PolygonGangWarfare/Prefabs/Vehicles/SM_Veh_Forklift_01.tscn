@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b78vtwcq7tmpy"]
+
+[ext_resource type="ArrayMesh" uid="uid://bv7mv7lxdwwy0" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Forklift_01.res" id="1_po1pj"]
+[ext_resource type="Material" uid="uid://dwf6scgufvavd" path="res://Assets/Synty/PolygonGangWarfare/Materials/Vehicle/Vehicle_01_mat.tres" id="2_5h2ab"]
+[ext_resource type="ArrayMesh" uid="uid://cqlkvbqq252l8" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Forklift_Beams_01.res" id="3_5h2ab"]
+[ext_resource type="ArrayMesh" uid="uid://cwfbjced5pbbj" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Forklift_Platform_01.res" id="4_a4avx"]
+[ext_resource type="ArrayMesh" uid="uid://b3itfvfo6r2xh" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Forklift_SteeringW_01.res" id="5_048r0"]
+[ext_resource type="ArrayMesh" uid="uid://po7ky2ti6j2e" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Forklift_Wheel_fl.res" id="6_076ed"]
+[ext_resource type="ArrayMesh" uid="uid://cgg1bs1bnt7k2" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Forklift_Wheel_fr.res" id="7_didsf"]
+[ext_resource type="ArrayMesh" uid="uid://bpwi1eoki8wac" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Forklift_Wheel_rl.res" id="8_5wm1e"]
+[ext_resource type="ArrayMesh" uid="uid://c6fj4atd1mhqd" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Forklift_Wheel_rr.res" id="9_pimxt"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w4sal"]
+points = PackedVector3Array(0.35434538, 2.3989782, 1.13296, -0.35445595, 2.3916864, 1.1260082, 0.35434538, 0.22766244, 1.1327492, 0.5704324, 0.6430584, 0.8333987, 0.5077661, 2.3689, 0.19741046, 0.5079899, 2.4071813, -0.6696738, -0.50810045, 2.4019403, -0.66630316, -0.5727811, 0.6430584, 0.8333987, -0.35445595, 0.23472625, 1.1257974, -0.4832577, 0.079323016, 0.50855815, 0.49914944, 0.12717445, -0.3600008, 0.5704324, 0.9978426, -0.74319476, 0.4297688, 0.4138273, -0.85231763, -0.13904032, 1.0372632, -1.0191618, -0.5398812, 0.42203042, -0.76973814, 0.13109648, 0.10256514, -0.97492284)
+
+[node name="SM_Veh_Forklift_01" type="MeshInstance3D" unique_id=2027754685]
+gi_mode = 2
+mesh = ExtResource("1_po1pj")
+surface_material_override/0 = ExtResource("2_5h2ab")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1262112398]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=757841392]
+shape = SubResource("ConvexPolygonShape3D_w4sal")
+
+[node name="SM_Veh_Forklift_Beams_01" type="MeshInstance3D" parent="." unique_id=878956755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3567452, 1.0692703)
+gi_mode = 2
+mesh = ExtResource("3_5h2ab")
+surface_material_override/0 = ExtResource("2_5h2ab")
+
+[node name="SM_Veh_Forklift_Platform_01" type="MeshInstance3D" parent="SM_Veh_Forklift_Beams_01" unique_id=590902575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8471895, 0.11880422)
+gi_mode = 2
+mesh = ExtResource("4_a4avx")
+surface_material_override/0 = ExtResource("2_5h2ab")
+
+[node name="SM_Veh_Forklift_SteeringW_01" type="MeshInstance3D" parent="." unique_id=2063736408]
+transform = Transform3D(1, 0, 0, 0, 0.6097916, -0.7925618, 0, 0.7925618, 0.6097916, 0, 1.4281464, 0.21429327)
+gi_mode = 2
+mesh = ExtResource("5_048r0")
+surface_material_override/0 = ExtResource("2_5h2ab")
+
+[node name="SM_Veh_Forklift_Wheel_fl" type="MeshInstance3D" parent="." unique_id=869607643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3006441, 0.25041682, 0.8197072)
+gi_mode = 2
+mesh = ExtResource("6_076ed")
+surface_material_override/0 = ExtResource("2_5h2ab")
+
+[node name="SM_Veh_Forklift_Wheel_fr" type="MeshInstance3D" parent="." unique_id=689197218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30064413, 0.25041682, 0.8197072)
+gi_mode = 2
+mesh = ExtResource("7_didsf")
+surface_material_override/0 = ExtResource("2_5h2ab")
+
+[node name="SM_Veh_Forklift_Wheel_rl" type="MeshInstance3D" parent="." unique_id=956639884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30064407, 0.1999834, -0.63042134)
+gi_mode = 2
+mesh = ExtResource("8_5wm1e")
+surface_material_override/0 = ExtResource("2_5h2ab")
+
+[node name="SM_Veh_Forklift_Wheel_rr" type="MeshInstance3D" parent="." unique_id=2007450332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3006441, 0.1999834, -0.63042134)
+gi_mode = 2
+mesh = ExtResource("9_pimxt")
+surface_material_override/0 = ExtResource("2_5h2ab")

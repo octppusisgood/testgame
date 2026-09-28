@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dqjmmmwcvw11j"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxy8ak0f5irrt" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01.res" id="1_tmnlh"]
+[ext_resource type="Material" uid="uid://dwf6scgufvavd" path="res://Assets/Synty/PolygonGangWarfare/Materials/Vehicle/Vehicle_01_mat.tres" id="2_khwus"]
+[ext_resource type="ArrayMesh" uid="uid://gxneaplxtiyp" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01_Glass.res" id="3_cs4b0"]
+[ext_resource type="Material" uid="uid://bgr664d17lip1" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Glass_mat.tres" id="5_8ou3e"]
+[ext_resource type="ArrayMesh" uid="uid://drpie0qcchhfj" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01_Plates.res" id="5_khwus"]
+[ext_resource type="ArrayMesh" uid="uid://bxwp1bkgccej1" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01_SteeringW.res" id="6_sqeig"]
+[ext_resource type="ArrayMesh" uid="uid://dkxgv6jxi1yr" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01_Sus_F.res" id="7_t4ab7"]
+[ext_resource type="ArrayMesh" uid="uid://dmmfjsth3ajh5" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01_Wheel_fl.res" id="8_8ou3e"]
+[ext_resource type="ArrayMesh" uid="uid://cwofdjom1cw27" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01_Wheel_fr.res" id="9_hefx6"]
+[ext_resource type="ArrayMesh" uid="uid://dy231x2kjalny" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01_Sus_R.res" id="10_ceqju"]
+[ext_resource type="ArrayMesh" uid="uid://536irg3h65av" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01_Wheel_rl.res" id="11_5rwsm"]
+[ext_resource type="ArrayMesh" uid="uid://bkkee7fs17uvv" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_LowCar_01_Wheel_rr.res" id="12_y7j3g"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_78idq"]
+points = PackedVector3Array(1.2704605, 1.1781615, 0.3996699, -0.08782828, 1.1781615, 1.8546069, 0.97904575, 0.9838217, 2.8253462, 1.1734046, 0.40184712, 2.728624, 1.0763487, 0.3049622, -2.8994374, 0.978058, 1.0452771, -2.8167837, 0.97904575, 1.1781615, -2.220037, -1.2524992, 1.1781615, 0.3996699, -0.9613315, 0.9838217, 2.8253462, 0.4937663, 0.20779228, 2.9220684, 0.9575602, 0.2617439, -1.0335777, -0.6699168, 0.20779228, -1.9286978, -1.1554433, 0.3049622, -2.6080983, -1.1087675, 0.5067108, -3.0659168, -0.9613315, 1.1781615, -2.220037, -1.0583874, 0.20779228, 2.6313155)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jt44w"]
+points = PackedVector3Array(0.97933084, 1.6632986, -2.1230464, 0.97933084, 1.6632986, -2.220074, -0.9613696, 1.6632986, -2.1230464, 0.88225776, 1.275265, -2.0260189, 0.97933084, 1.3723209, -2.1230464, 0.97933084, 1.3723209, -2.220074, -0.9613696, 1.6632986, -2.220074, -0.9613696, 1.275265, -2.0260189, 0.88225776, 1.1782091, -2.0260189, 0.88225776, 1.1782091, -2.220074, -0.9613696, 1.1782091, -2.220074, -0.9613696, 1.1782091, -2.0260189)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ms4c"]
+points = PackedVector3Array(0.9793498, 1.2751985, 0.59399664, -0.9613885, 1.2751985, 0.59399664, 0.9793498, 1.1781615, 0.59399664, 0.9793498, 1.2751985, -1.3464377, 0.8822748, 1.4692342, -1.3464377, 0.7850099, 1.5663091, 0.30265796, -0.5730889, 1.5663091, 0.39977086, -0.87970126, 1.194499, 0.49574387, -0.8643136, 1.5663091, -0.27933562, -0.9613885, 1.2751985, -1.4437786, -0.790795, 1.194499, -1.6368647, 0.7954584, 1.1974245, -1.6193113, 0.8822748, 1.2751985, -1.7348894, 0.49416512, 1.5663091, -1.5408915, -0.7670487, 1.5663091, -1.4437786, -0.8643136, 1.2751985, -1.7348894)
+
+[node name="SM_Veh_LowCar_01" type="MeshInstance3D" unique_id=1080995693]
+gi_mode = 2
+mesh = ExtResource("1_tmnlh")
+surface_material_override/0 = ExtResource("2_khwus")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=401126421]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1373225055]
+shape = SubResource("ConvexPolygonShape3D_78idq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=1488762087]
+shape = SubResource("ConvexPolygonShape3D_jt44w")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider" unique_id=1263512147]
+shape = SubResource("ConvexPolygonShape3D_3ms4c")
+
+[node name="SM_Veh_LowCar_01_Glass" type="MeshInstance3D" parent="." unique_id=1501477874]
+gi_mode = 2
+mesh = ExtResource("3_cs4b0")
+surface_material_override/0 = ExtResource("5_8ou3e")
+
+[node name="SM_Veh_LowCar_01_Plates" type="MeshInstance3D" parent="." unique_id=1334612685]
+gi_mode = 2
+mesh = ExtResource("5_khwus")
+surface_material_override/0 = ExtResource("2_khwus")
+
+[node name="SM_Veh_LowCar_01_SteeringW" type="MeshInstance3D" parent="." unique_id=801745342]
+transform = Transform3D(1, 0, 0, 0, 0.94576937, -0.32483885, 0, 0.32483885, 0.94576937, 0.45999104, 0.95541584, 0.5136021)
+gi_mode = 2
+mesh = ExtResource("6_sqeig")
+surface_material_override/0 = ExtResource("2_khwus")
+
+[node name="SM_Veh_LowCar_01_Sus_F" type="MeshInstance3D" parent="." unique_id=1305912297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39624226, 1.7597325)
+gi_mode = 2
+mesh = ExtResource("7_t4ab7")
+surface_material_override/0 = ExtResource("2_khwus")
+
+[node name="SM_Veh_LowCar_01_Wheel_fl" type="MeshInstance3D" parent="SM_Veh_LowCar_01_Sus_F" unique_id=1713425044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8762861, -2.9802322e-08, -0.0024975538)
+gi_mode = 2
+mesh = ExtResource("8_8ou3e")
+surface_material_override/0 = ExtResource("2_khwus")
+
+[node name="SM_Veh_LowCar_01_Wheel_fr" type="MeshInstance3D" parent="SM_Veh_LowCar_01_Sus_F" unique_id=2121987966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8762861, -2.9802322e-08, -0.0024975538)
+gi_mode = 2
+mesh = ExtResource("9_hefx6")
+surface_material_override/0 = ExtResource("2_khwus")
+
+[node name="SM_Veh_LowCar_01_Sus_R" type="MeshInstance3D" parent="." unique_id=394002294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41367567, -1.5169809)
+gi_mode = 2
+mesh = ExtResource("10_ceqju")
+surface_material_override/0 = ExtResource("2_khwus")
+
+[node name="SM_Veh_LowCar_01_Wheel_rl" type="MeshInstance3D" parent="SM_Veh_LowCar_01_Sus_R" unique_id=37172384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8762861, -0.017433494, 5.4955482e-05)
+gi_mode = 2
+mesh = ExtResource("11_5rwsm")
+surface_material_override/0 = ExtResource("2_khwus")
+
+[node name="SM_Veh_LowCar_01_Wheel_rr" type="MeshInstance3D" parent="SM_Veh_LowCar_01_Sus_R" unique_id=1600522528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8762861, -0.017433494, 5.4955482e-05)
+gi_mode = 2
+mesh = ExtResource("12_y7j3g")
+surface_material_override/0 = ExtResource("2_khwus")

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cxcvw7wsl3w5o"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddpg1s7uf1tdi" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Jet_Attach_Bomb_01.res" id="1_2godh"]
+[ext_resource type="Material" uid="uid://cdanjirwv7lk8" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Air_Large_02_mat.tres" id="2_kxbp1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hqti"]
+size = Vector3(0.43381688, 0.33400315, 2.9797838)
+
+[node name="SM_Veh_Jet_Attach_Bomb_01" type="MeshInstance3D" unique_id=819625788]
+gi_mode = 2
+mesh = ExtResource("1_2godh")
+surface_material_override/0 = ExtResource("2_kxbp1")
+
+[node name="BoxCollider" type="StaticBody3D" parent="." unique_id=1841143486]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider" unique_id=856470490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0075637847, 0.00046217442, -0.27903748)
+shape = SubResource("BoxShape3D_3hqti")

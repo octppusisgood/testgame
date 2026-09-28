@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dr3mafolfmopg"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccur0pirrd22j" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Prop_Ad_Screen_01.res" id="1_q0xg4"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_0dup6"]
+[ext_resource type="ArrayMesh" uid="uid://k78mqw2qj441" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Prop_Ad_Screen_Video_01.res" id="3_0dup6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gw2bj"]
+points = PackedVector3Array(-0.75145197, 2.3051634, 0.2867441, 0.7480955, 2.3051634, 0.2867441, -0.66602355, 2.3617873, 0.20847374, -0.70154536, 2.230364, -0.25683823, -0.70154536, 0.34103853, -0.25683823, -0.676592, -0.01874423, 0.24917856, -0.67174816, 0.37669057, 0.25678745, 0.66824484, 0.37669057, 0.25678745, 0.6730888, -0.01874423, 0.24917856, 0.69804204, 0.34103853, -0.25683823, 0.69804204, 2.230364, -0.25683823, 0.6625203, 2.3617873, 0.20847374, -0.61597013, 2.2730067, -0.21623982, -0.6096584, 0.09986291, -0.21395184, 0.60615516, 0.09986291, -0.21395184, 0.61246693, 2.2730067, -0.21623982)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ihugd"]
+viewport_path = NodePath("SM_Prop_Ad_Screen_Video_01/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihugd"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ihugd")
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_ihugd"]
+resource_local_to_scene = true
+file = "res://Assets/Synty/PolygonShops/Textures/Polygon_Sign_Video_01.ogv"
+
+[node name="SM_Prop_Ad_Screen_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_q0xg4")
+surface_material_override/0 = ExtResource("2_0dup6")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_gw2bj")
+
+[node name="SM_Prop_Ad_Screen_Video_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_0dup6")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ihugd")
+
+[node name="SubViewport" type="SubViewport" parent="SM_Prop_Ad_Screen_Video_01"]
+handle_input_locally = false
+size = Vector2i(366, 480)
+render_target_update_mode = 4
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SM_Prop_Ad_Screen_Video_01/SubViewport"]
+offset_right = 366.0
+offset_bottom = 480.0
+stream = SubResource("VideoStreamTheora_ihugd")
+autoplay = true
+loop = true

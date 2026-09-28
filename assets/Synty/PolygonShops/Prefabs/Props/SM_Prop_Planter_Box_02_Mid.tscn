@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh6ww1ac8ids4"]
+
+[ext_resource type="ArrayMesh" uid="uid://7jhjj4dx34i6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Planter_Box_02_Mid.res" id="1_hq2oj"]
+[ext_resource type="Material" uid="uid://dt1bpwt7jdstt" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Wood_01_mat.tres" id="2_txx5k"]
+[ext_resource type="ArrayMesh" uid="uid://dnw64b4tevgif" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Planter_Box_01_Mid_Dirt.res" id="3_txx5k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hq2oj"]
+size = Vector3(2.5088196, 0.68359375, 0.7876587)
+
+[node name="SM_Prop_Planter_Box_02_Mid" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_hq2oj")
+surface_material_override/0 = ExtResource("2_txx5k")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2398529, 0.3388672, 0.5184021)
+shape = SubResource("BoxShape3D_hq2oj")
+
+[node name="SM_Prop_Planter_Box_01_Mid_Dirt" type="Node3D" parent="."]
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="SM_Prop_Planter_Box_01_Mid_Dirt"]
+gi_mode = 2
+mesh = ExtResource("3_txx5k")
+surface_material_override/0 = ExtResource("2_txx5k")

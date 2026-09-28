@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://drp4kyk1pklas"]
+
+[ext_resource type="ArrayMesh" uid="uid://jqdbqlt3qk0b" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Glasses_01.res" id="1_ueh2b"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_vfe6a"]
+
+[node name="SM_Prop_Glasses_01" type="MeshInstance3D" unique_id=1465051612]
+gi_mode = 2
+mesh = ExtResource("1_ueh2b")
+surface_material_override/0 = ExtResource("2_vfe6a")

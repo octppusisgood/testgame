@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bnaaabx6rfe78"]
+
+[ext_resource type="Texture2D" uid="uid://by7mi7w8xc6dh" path="res://Assets/Synty/PolygonMilitary/Textures/Decals/Bullet_Decal_Atlas_01.png" id="1_cyrkw"]
+[ext_resource type="Texture2D" uid="uid://co5ws5qxqqcl5" path="res://Assets/Synty/PolygonMilitary/Textures/Decals/Bullet_Decal_Atlas_01_Normals.png" id="2_je3xd"]
+
+[resource]
+resource_name = "Decal_Bullet_Holes_01_mat"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_cyrkw")
+roughness = 0.777
+normal_enabled = true
+normal_texture = ExtResource("2_je3xd")
+uv1_scale = Vector3(1, 1, 0)

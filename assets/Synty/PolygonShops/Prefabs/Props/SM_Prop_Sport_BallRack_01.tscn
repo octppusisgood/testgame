@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cao3se7707vli"]
+
+[ext_resource type="ArrayMesh" uid="uid://bhuuuhywkonip" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sport_BallRack_01.res" id="1_csv61"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_p4sy1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5j71b"]
+points = PackedVector3Array(0.12136185, -0.0094162, 0.6855599, 0.115281984, 0.08693613, 0.69038135, -0.12511411, -0.0094162, 0.6855599, 0.08772956, -0.054269493, 0.6631504, 0.09894836, -0.11028676, 0.024615642, 0.12136185, 0.091366634, 0.6631504, -0.12511411, 0.091366634, 0.6631504, -0.11577717, 0.08454542, 0.6808064, -0.1026765, -0.11028676, 0.024615642, -0.09148182, -0.054269493, 0.6631504, 0.093905926, -0.1046938, 0.008928995, 0.09735601, 0.11202766, -0.003362274, 0.07651074, 0.1137823, 0.06943463, -0.1026765, 0.1137823, 0.024615642, -0.09823723, 0.108825415, 0.00682386, -0.097658195, -0.1046938, 0.008928995)
+
+[node name="SM_Prop_Sport_BallRack_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_csv61")
+surface_material_override/0 = ExtResource("2_p4sy1")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_5j71b")

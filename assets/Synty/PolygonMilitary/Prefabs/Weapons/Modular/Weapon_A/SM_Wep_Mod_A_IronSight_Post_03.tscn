@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b3j8jw80qeygg"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1htm671ortlm" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_A_IronSight_Post_03.res" id="1_hd4q6"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_igaoe"]
+[ext_resource type="ArrayMesh" uid="uid://dxely7ctl3rs2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_A_IronSight_Post_Loop_03.res" id="3_igaoe"]
+
+[node name="SM_Wep_Mod_A_IronSight_Post_03" type="MeshInstance3D" unique_id=1084584925]
+gi_mode = 2
+mesh = ExtResource("1_hd4q6")
+surface_material_override/0 = ExtResource("2_igaoe")
+
+[node name="SM_Wep_Mod_A_IronSight_Post_Loop_03" type="MeshInstance3D" parent="." unique_id=485351868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6637358e-17, -0.018348174, 0.0054345857)
+gi_mode = 2
+mesh = ExtResource("3_igaoe")
+surface_material_override/0 = ExtResource("2_igaoe")

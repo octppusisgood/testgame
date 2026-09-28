@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bih2mvwb7npc7"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4xoatv8gvfcm" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Lighting_Wall_03.res" id="1_cgv7a"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_6s2bq"]
+[ext_resource type="ArrayMesh" uid="uid://bvow3wwgiji40" path="res://assets/Synty/PolygonShops/Models/extracted/Wall_Light_05_Lamp_01.res" id="3_6s2bq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h0r54"]
+points = PackedVector3Array(-0.12923132, 0.008068219, 0.10666329, 0.09373331, 0.09373218, 0.1078303, -0.008022882, 0.12924752, 0.106710926, -0.028198458, 0.120889425, 0.10644893, -0.09678507, 0.09679066, 0.04023917, -0.080665275, 0.0040078163, -0.13547869, -0.09678507, -0.09679036, 0.04023917, -0.008022882, -0.12927358, 0.106710926, 0.10083738, -0.07662018, 0.10656802, 0.13467862, 0.00841099, 0.04023917, 0.0967816, 0.09679066, 0.04023917, -0.0083587095, 0.13467896, 0.04023917, 0.0805068, 0.0040078163, -0.13528816, 0.080170974, -0.02404587, -0.122736886, 0.008406907, -0.13467866, 0.04023917, 0.0967816, -0.09676399, 0.04023917)
+
+[node name="SM_Prop_Lighting_Wall_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_cgv7a")
+surface_material_override/0 = ExtResource("2_6s2bq")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_h0r54")
+
+[node name="Wall_Light_05_Lamp_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0016501886, 0.0016314697, -0.09410156)
+gi_mode = 2
+mesh = ExtResource("3_6s2bq")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6s2bq")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpnocmu7e10ga"]
+
+[ext_resource type="ArrayMesh" uid="uid://ifle5v3jpdyh" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Homeless_Male_Beard_01.res" id="1_btrvq"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_s42a7"]
+
+[node name="SM_Chr_Attach_Homeless_Male_Beard_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_btrvq")
+surface_material_override/0 = ExtResource("2_s42a7")

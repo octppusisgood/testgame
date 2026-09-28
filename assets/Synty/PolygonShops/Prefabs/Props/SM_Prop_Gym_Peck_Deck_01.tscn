@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://ca6kaf0hn426o"]
+
+[ext_resource type="ArrayMesh" uid="uid://48pncyfsb8tn" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Peck_Deck_01.res" id="1_fqicj"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_puf06"]
+[ext_resource type="ArrayMesh" uid="uid://b0vbcneusd8gy" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Peck_Deck_01_Arm_l_01.res" id="3_puf06"]
+[ext_resource type="ArrayMesh" uid="uid://co1browuxguhs" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Peck_Deck_01_Arm_r_01.res" id="4_kcwqe"]
+[ext_resource type="ArrayMesh" uid="uid://c73y6tvxp8tf6" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Peck_Deck_01_Plate_01.res" id="5_foc7t"]
+[ext_resource type="ArrayMesh" uid="uid://bc4bjyu48vowy" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Gym_Peck_Deck_01_Seat_01.res" id="6_vvyjh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eco7d"]
+points = PackedVector3Array(0.34272015, 0.08701299, 0.9495471, -0.35304907, 0.08701299, 0.9495471, 0.37755734, -0.017142773, 0.9495471, -0.14417595, 2.2089143, 0.91490406, -0.3878113, -0.017142773, 0.9495471, 0.37755734, -0.017142773, -0.51107997, 0.30593514, 1.8733497, -0.20921707, 0.25701326, 1.8166959, 0.8615349, 0.13392198, 2.2089143, 0.8102258, -0.07465145, 2.2089143, 0.7407523, -0.07465145, 1.999949, -0.61575824, -0.28801972, 1.8814119, -0.2425493, -0.3878113, -0.017142773, -0.51107997, 0.09923467, -0.017142773, -0.96349984, 0.06432259, 1.999949, -0.61575824, -0.07465145, 0.05236703, -0.96349984)
+
+[node name="SM_Prop_Gym_Peck_Deck_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_fqicj")
+surface_material_override/0 = ExtResource("2_puf06")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_eco7d")
+
+[node name="SM_Prop_Gym_Peck_Deck_01_Arm_l_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08782223, 1.7793792, 0.86041343)
+gi_mode = 2
+mesh = ExtResource("3_puf06")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_puf06")
+
+[node name="SM_Prop_Gym_Peck_Deck_01_Arm_r_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08782223, 1.7793792, 0.86041343)
+gi_mode = 2
+mesh = ExtResource("4_kcwqe")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_puf06")
+
+[node name="SM_Prop_Gym_Peck_Deck_01_Plate_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2737367e-15, 0.6818764, -0.09976623)
+gi_mode = 2
+mesh = ExtResource("5_foc7t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_puf06")
+
+[node name="SM_Prop_Gym_Peck_Deck_01_Seat_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7816684e-16, 0.52865803, 0.76997197)
+gi_mode = 2
+mesh = ExtResource("6_vvyjh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_puf06")

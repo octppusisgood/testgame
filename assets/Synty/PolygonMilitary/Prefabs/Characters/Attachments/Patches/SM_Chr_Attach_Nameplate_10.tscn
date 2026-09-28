@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://8yv0cu8f3yyu"]
+
+[ext_resource type="ArrayMesh" uid="uid://cpn7qg70w8v5k" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Nameplate_10.res" id="1_wnprj"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_pxv86"]
+
+[node name="SM_Chr_Attach_Nameplate_10" type="MeshInstance3D" unique_id=1979377594]
+gi_mode = 2
+mesh = ExtResource("1_wnprj")
+surface_material_override/0 = ExtResource("2_pxv86")

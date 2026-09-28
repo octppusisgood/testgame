@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cseqo8l5ehcjp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cmdhpfgtxu7g0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Helmet_11_Male.res" id="1_bh5wt"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_i1uks"]
+
+[node name="SM_Chr_Attach_Helmet_11_Male" type="MeshInstance3D" unique_id=977091935]
+gi_mode = 2
+mesh = ExtResource("1_bh5wt")
+surface_material_override/0 = ExtResource("2_i1uks")

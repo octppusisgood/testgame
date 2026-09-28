@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfvbm47moq5vd"]
+
+[ext_resource type="ArrayMesh" uid="uid://ci6bsdvbic4ad" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Shrimp_Tray_01.res" id="1_fo1gm"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_30dci"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_syohl"]
+points = PackedVector3Array(-0.24979387, 0.03748545, -0.26643276, -0.2507849, -1.3877788e-17, -0.22726066, -0.26643288, 0.03748545, 0.24144828, -0.19153124, 0.104090385, -0.16649437, 0.16649437, 0.10407694, -0.19147897, 0.24974161, 0.03748545, -0.26643276, 0.2351368, -1.3877788e-17, -0.25083694, -0.23513693, -1.3877788e-17, 0.25073272, 0.24974161, 0.03748545, 0.26643288, -0.12492305, 0.07908663, 0.23310271, 0.0082933605, 0.1374063, 0.0749017, 0.08413386, 0.12399654, -0.11475174, 0.1831334, 0.120728165, 0.091540694, 0.26643276, 0.03748545, 0.24144828, 0.2507848, -1.3877788e-17, -0.22731283, 0.2351368, -1.3877788e-17, 0.25078493)
+
+[node name="SM_Prop_Food_Shrimp_Tray_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_fo1gm")
+surface_material_override/0 = ExtResource("2_30dci")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_syohl")

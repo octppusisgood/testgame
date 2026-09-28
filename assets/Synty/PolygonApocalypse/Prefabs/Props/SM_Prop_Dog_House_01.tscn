@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://hdtjpqilh7wm"]
+
+[ext_resource type="ArrayMesh" uid="uid://bn5v33m0eg0xk" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Dog_House_01.res" id="1_8y4dw"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_h23xd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_61ho3"]
+points = PackedVector3Array(-0.5584832, 0.67189294, 0.6181829, -0.44090348, 0.014371164, -0.5439209, -0.43003955, 0.0020089722, 0.5473392, 0.4716686, 0.006782492, 0.5432006, 0.5644649, 0.69196624, 0.5979767, 0.041297615, 1.2272124, 0.5914035, -0.3805859, 0.9193816, 0.5907949, -0.5701393, 0.7656498, 0.5691279, -0.57862675, 0.79221016, 0.53760123, 0.47110283, 0.00751688, -0.54988533, -0.56448096, 0.7643034, -0.5520764, 0.022964716, 1.1131375, -0.6253545, 0.577479, 0.76577216, -0.5781254, 0.5765736, 0.7656498, 0.5698583, 0.002934277, 1.2524264, -0.5853072, -0.016190827, 1.2438585, 0.5508692)
+
+[node name="SM_Prop_Dog_House_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8y4dw")
+surface_material_override/0 = ExtResource("2_h23xd")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_61ho3")

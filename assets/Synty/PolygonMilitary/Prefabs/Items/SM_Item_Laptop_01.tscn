@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://4uyo5ve0nbvq"]
+
+[ext_resource type="ArrayMesh" uid="uid://iiiyvva04uro" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Item_Laptop_01.res" id="1_u6sms"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_2k5ce"]
+[ext_resource type="ArrayMesh" uid="uid://b5b8empetl6s2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Item_Laptop_Lid_01.res" id="3_2k5ce"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fxcsu"]
+points = PackedVector3Array(-0.26109415, -0.0036277398, -0.21270049, -0.2350253, 0.000445568, 0.19277257, -0.26109415, 0.077966206, 0.21148741, -0.26109415, 0.077966206, -0.21270049, 0.2611007, -0.0036277398, -0.21270049, -0.08975536, 0.037169233, 0.26054442, 0.23498073, 0.000445568, 0.19277257, -0.08638175, 0.060722537, 0.2516502, 0.2611007, 0.077966206, 0.21158007, 0.2611007, 0.077966206, -0.21270049, 0.08965966, 0.037169233, 0.26054442, 0.08633718, 0.060722537, 0.2516502)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qanbi"]
+points = PackedVector3Array(0.22838715, 0.37335598, -0.21065906, 0.2611007, 0.35703638, -0.19434586, 0.2611007, 0.32435808, -0.25142968, 0.22056657, 0.35864094, -0.23925048, -0.22842695, 0.37335598, -0.21065906, 0.2611007, 0.04700335, -0.014900655, -0.26108938, 0.35703638, -0.19434586, -0.2529621, 0.10410234, -0.04750231, 0.2611007, -0.02645436, -0.04750231, -0.2529621, 0.11228171, -0.1290683, -0.26108938, 0.32435808, -0.25142968, -0.22065748, 0.35864094, -0.23925048, 0.2611007, 0.014364179, 0.0014620423, -0.26108938, 0.014364179, 0.0014620423, -0.24994633, -0.002307631, -0.003959179, -0.26108938, -0.02645436, -0.04750231)
+
+[node name="SM_Item_Laptop_01" type="MeshInstance3D" unique_id=97958590]
+gi_mode = 2
+mesh = ExtResource("1_u6sms")
+surface_material_override/0 = ExtResource("2_2k5ce")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=119565778]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=952291301]
+shape = SubResource("ConvexPolygonShape3D_fxcsu")
+
+[node name="SM_Item_Laptop_Lid_01" type="MeshInstance3D" parent="." unique_id=1593848523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07137513, -0.20862079)
+gi_mode = 2
+mesh = ExtResource("3_2k5ce")
+surface_material_override/0 = ExtResource("2_2k5ce")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Item_Laptop_Lid_01" unique_id=1408487851]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Item_Laptop_Lid_01/MeshCollider" unique_id=923484995]
+shape = SubResource("ConvexPolygonShape3D_qanbi")

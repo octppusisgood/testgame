@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c1w44jgukqw2y"]
+
+[ext_resource type="ArrayMesh" uid="uid://jsvgwvgarbej" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Shop_08.res" id="1_ekh2r"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_c0gd3"]
+[ext_resource type="Shape3D" uid="uid://co73xodkcd3ve" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Shop_08_Collision.res" id="3_3da4v"]
+[ext_resource type="ArrayMesh" uid="uid://7jdp3mbxr170" path="res://Assets/Synty/PolygonMilitary/Models/extracted/SM_Bld_Shop_08_Stairs.res" id="3_c0gd3"]
+[ext_resource type="Shape3D" uid="uid://d3o5ltipqbr2m" path="res://Assets/Synty/PolygonMilitary/Models/CollisionCustom/extracted/SM_Bld_Shop_08_Stairs_Collision.res" id="5_3da4v"]
+
+[node name="SM_Bld_Shop_08" type="MeshInstance3D" unique_id=1584479050]
+gi_mode = 2
+mesh = ExtResource("1_ekh2r")
+surface_material_override/0 = ExtResource("2_c0gd3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1895889861]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=115972377]
+shape = ExtResource("3_3da4v")
+
+[node name="SM_Bld_Shop_08_Stairs" type="MeshInstance3D" parent="." unique_id=1197548028]
+gi_mode = 2
+mesh = ExtResource("3_c0gd3")
+surface_material_override/0 = ExtResource("2_c0gd3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="SM_Bld_Shop_08_Stairs" unique_id=868007430]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_Shop_08_Stairs/MeshCollider" unique_id=885525479]
+shape = ExtResource("5_3da4v")

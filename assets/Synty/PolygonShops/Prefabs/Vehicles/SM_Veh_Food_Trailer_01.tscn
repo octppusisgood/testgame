@@ -1,0 +1,106 @@
+[gd_scene load_steps=17 format=3 uid="uid://c1cha2iipofsj"]
+
+[ext_resource type="ArrayMesh" uid="uid://ssbqp1i4uswi" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01.res" id="1_x0lni"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_2h6gc"]
+[ext_resource type="ArrayMesh" uid="uid://b3feoipq0qjnx" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01_Door_1.res" id="3_2h6gc"]
+[ext_resource type="Shape3D" uid="uid://c7kjxiuoteqfl" path="res://Assets/Synty/PolygonShops/Models/Collision/SM_Veh_Food_Trailer_01_Collision.res" id="3_ih177"]
+[ext_resource type="Material" uid="uid://6eheh00uofxa" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Wood_02_mat.tres" id="4_c2ob0"]
+[ext_resource type="ArrayMesh" uid="uid://crqyy70bfif88" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01_Door_2.res" id="5_ih177"]
+[ext_resource type="ArrayMesh" uid="uid://20c0dg1d7lce" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01_Door_3.res" id="6_c2ob0"]
+[ext_resource type="ArrayMesh" uid="uid://cpgguovyxh5ut" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01_Glass.res" id="7_f8yi1"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="8_u8s0g"]
+[ext_resource type="ArrayMesh" uid="uid://bxas2f3by0jm0" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01_Stand.res" id="9_cw4sc"]
+[ext_resource type="ArrayMesh" uid="uid://ierffua6bxxv" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01_Wheel_l1.res" id="10_241se"]
+[ext_resource type="ArrayMesh" uid="uid://bv68u7dsriplr" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01_Wheel_l2.res" id="11_u8s0g"]
+[ext_resource type="ArrayMesh" uid="uid://csgs1dh6cng5d" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01_Wheel_r1.res" id="12_kwdg1"]
+[ext_resource type="ArrayMesh" uid="uid://djsg8xsn5kosd" path="res://Assets/Synty/PolygonShops/Models/extracted/SM_Veh_Food_Trailer_01_Wheel_r2.res" id="13_apqr7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ton8p"]
+size = Vector3(0.80180556, 2.299907, 0.040000305)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wkdt"]
+size = Vector3(0.80180556, 2.299907, 0.040000305)
+
+[node name="SM_Veh_Food_Trailer_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_x0lni")
+surface_material_override/0 = ExtResource("2_2h6gc")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = ExtResource("3_ih177")
+
+[node name="SM_Veh_Food_Trailer_01_Door_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.80180556, 0.47302464, -1.6962779)
+gi_mode = 2
+mesh = ExtResource("3_2h6gc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_c2ob0")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Veh_Food_Trailer_01_Door_1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Food_Trailer_01_Door_1/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40090278, 1.1499535, -0.00032319594)
+shape = SubResource("BoxShape3D_ton8p")
+
+[node name="SM_Veh_Food_Trailer_01_Door_2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80180556, 0.47302464, -1.6962779)
+gi_mode = 2
+mesh = ExtResource("5_ih177")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_c2ob0")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Veh_Food_Trailer_01_Door_2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Food_Trailer_01_Door_2/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40090278, 1.1499535, -0.00032319594)
+shape = SubResource("BoxShape3D_5wkdt")
+
+[node name="SM_Veh_Food_Trailer_01_Door_3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.25881904, 0.9659258, 0, -0.9659258, -0.25881904, 0, 0, 0, 1, -0.8515277, 2.2615373, -0.5514696)
+gi_mode = 2
+mesh = ExtResource("6_c2ob0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2h6gc")
+
+[node name="SM_Veh_Food_Trailer_01_Glass" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("7_f8yi1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_u8s0g")
+
+[node name="SM_Veh_Food_Trailer_01_Stand" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("9_cw4sc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2h6gc")
+
+[node name="SM_Veh_Food_Trailer_01_Wheel_l1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99433935, 0.38967964, 0.0009594459)
+gi_mode = 2
+mesh = ExtResource("10_241se")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2h6gc")
+
+[node name="SM_Veh_Food_Trailer_01_Wheel_l2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99433935, 0.38967964, -1.0249572)
+gi_mode = 2
+mesh = ExtResource("11_u8s0g")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2h6gc")
+
+[node name="SM_Veh_Food_Trailer_01_Wheel_r1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99433935, 0.38967964, 0.0009594459)
+gi_mode = 2
+mesh = ExtResource("12_kwdg1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2h6gc")
+
+[node name="SM_Veh_Food_Trailer_01_Wheel_r2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99433935, 0.38967964, -1.0249572)
+gi_mode = 2
+mesh = ExtResource("13_apqr7")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_2h6gc")

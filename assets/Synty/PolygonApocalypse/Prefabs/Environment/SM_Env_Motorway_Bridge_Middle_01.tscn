@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4t8whe6luv0w"]
+
+[ext_resource type="ArrayMesh" uid="uid://c3h5ayfrf5x4b" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Motorway_Bridge_Middle_01.res" id="1_vsvbx"]
+[ext_resource type="Material" uid="uid://cs5tr0n48vvsw" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Road_Standard_01_mat.tres" id="2_er40t"]
+
+[node name="SM_Env_Motorway_Bridge_Middle_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_vsvbx")
+surface_material_override/0 = ExtResource("2_er40t")

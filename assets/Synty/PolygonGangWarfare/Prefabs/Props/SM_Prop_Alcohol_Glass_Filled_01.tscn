@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dq6fai3dsqv6d"]
+
+[ext_resource type="ArrayMesh" uid="uid://cssl51r7fh8i7" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Alcohol_Glass_Filled_01.res" id="1_4d273"]
+[ext_resource type="Material" uid="uid://bgr664d17lip1" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Glass_mat.tres" id="2_e3dnx"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="3_bci02"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6jtvw"]
+points = PackedVector3Array(0.06520181, 0.12922454, -7.4729323e-06, 0.062317006, 0.0017086182, -0.0020142868, 0.04671859, 0.12904897, -0.04673399, -0.065201916, 0.12922454, -7.4729323e-06, 0.04671859, 0.12903644, 0.046719044, 0.04463795, 0.0011192537, 0.044637904, 0.04463795, 0.0011192537, -0.044652853, 0.0039952844, 0.11816455, -0.0641883, 0.0040080473, 0.12843454, -0.06441128, -0.046731457, 0.12904897, -0.04673399, -0.06232987, 0.0017086182, -0.0020142868, -0.04465082, 0.0011192537, 0.044637904, -0.046731457, 0.12903644, 0.046719044, -0.008029021, 0.10208869, 0.06212938, -0.04465082, 0.0011192537, -0.044652853, -0.0020041019, 0.0017211579, -0.062330145)
+
+[node name="SM_Prop_Alcohol_Glass_Filled_01" type="MeshInstance3D" unique_id=249870262]
+gi_mode = 2
+mesh = ExtResource("1_4d273")
+surface_material_override/0 = ExtResource("2_e3dnx")
+surface_material_override/1 = ExtResource("3_bci02")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1626321432]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1424183182]
+shape = SubResource("ConvexPolygonShape3D_6jtvw")

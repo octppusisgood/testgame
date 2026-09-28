@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cq84ssej7sfh4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqyjte5g4osjs" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Crate_Stack_Cover_01.res" id="1_3xepo"]
+[ext_resource type="Material" uid="uid://cl8n6n82e8j85" path="res://Assets/Synty/PolygonMilitary/Materials/Misc/Mesh_01_mat.tres" id="2_hadvm"]
+
+[node name="SM_Prop_Crate_Stack_Cover_01" type="MeshInstance3D" unique_id=527792945]
+gi_mode = 2
+mesh = ExtResource("1_3xepo")
+surface_material_override/0 = ExtResource("2_hadvm")

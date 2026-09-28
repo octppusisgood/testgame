@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://r2tpmehuylsr"]
+
+[ext_resource type="ArrayMesh" uid="uid://b2te26i4qnk05" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Kitchen_Self_Serve_Machine_01.res" id="1_4rg71"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_2pplg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vgbp8"]
+points = PackedVector3Array(-0.33241653, -0.016217232, -0.15662256, -0.33241653, -0.016217232, 0.16772303, -0.33241653, 0.081103206, -0.15662256, 0.31627464, -0.016217232, -0.15662256, 0.31627464, -0.016217232, 0.16772303, -0.33241653, 0.081103206, 0.16772303, -0.30003276, 2.0594103, -0.059344277, -0.26758552, 1.8322616, -0.12420705, 0.25125313, 1.8322616, -0.12420705, 0.31627464, 2.0266993, -0.059344277, 0.31627464, 0.081103206, 0.16772303, -0.26758552, 2.0594103, 0.07041301, -0.30003276, 2.0266993, 0.07041301, 0.2837639, 2.0594103, -0.059344277, 0.31627464, 1.9943945, 0.07041301, 0.25125313, 2.0594103, 0.07041301)
+
+[node name="SM_Prop_Kitchen_Self_Serve_Machine_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_4rg71")
+surface_material_override/0 = ExtResource("2_2pplg")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_vgbp8")

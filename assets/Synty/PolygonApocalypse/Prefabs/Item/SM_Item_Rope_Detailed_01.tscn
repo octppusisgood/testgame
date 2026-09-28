@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://xovers6evnes"]
+
+[ext_resource type="ArrayMesh" uid="uid://bteii8eixnloi" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Item_Rope_Detailed_01.res" id="1_w58mu"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_4dx03"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_seng2"]
+points = PackedVector3Array(0.011091091, -0.08955778, -0.1739725, -0.047496572, -0.07001199, -0.2716271, 0.020865902, -0.060256295, -0.29109973, 0.05015973, -0.07001199, -0.1739725, 0.06969405, -0.079784885, 0.2752387, -0.06703089, -0.079784885, 0.2752387, -0.06703089, 0.07644382, -0.28142172, -0.0768057, -0.04072771, -0.1739725, 0.07946887, 0.047142327, -0.2716271, 0.07946887, -0.050483402, -0.18370882, 0.07946887, 0.047142327, 0.2069096, 0.0013315827, 0.056915224, 0.30450588, -0.0768057, 0.056915224, 0.2752387, -0.01820274, 0.08621672, 0.2069096, 0.011091091, 0.08621672, -0.1739725, 0.020865902, 0.08621672, 0.2069096)
+
+[node name="SM_Item_Rope_Detailed_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_w58mu")
+surface_material_override/0 = ExtResource("2_4dx03")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_seng2")

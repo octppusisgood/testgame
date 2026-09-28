@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b561j8w0dot5q"]
+
+[ext_resource type="ArrayMesh" uid="uid://cplcx8wuykd6r" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Food_Display_02_Insert_02.res" id="1_03srw"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_27gh7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ip4n1"]
+points = PackedVector3Array(0.42405605, 0.9480727, 0.14062083, 0.40611953, 0.48006383, 0.28466442, 0.5680883, 0.6780788, 0.15857694, 0.5222746, 0.9316739, -0.00085762143, -0.4216609, 0.93003404, -0.09325272, -0.51771843, 0.93208385, 0.06721777, -0.4398135, 0.93003404, 0.17663172, -0.50486034, 0.34975228, 0.20504579, 0.40125722, 0.35367626, 0.25373453, 0.5861329, 0.6420601, -0.12388666, 0.5258403, 0.3502208, 0.016013235, 0.45992905, 0.9119954, -0.12926362, 0.22610617, 0.4441037, -0.21929088, -0.4918942, 0.35683888, -0.016939208, -0.48508698, 0.91580224, 0.13573715, 0.43475312, 0.3539691, -0.15318868)
+
+[node name="SM_Prop_Market_Food_Display_02_Insert_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_03srw")
+surface_material_override/0 = ExtResource("2_27gh7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ip4n1")

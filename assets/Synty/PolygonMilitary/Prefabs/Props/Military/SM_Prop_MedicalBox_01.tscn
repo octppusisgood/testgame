@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://3k62kyvgeyej"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqxwf3m1i77up" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_MedicalBox_01.res" id="1_ofd15"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_h7cac"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_predu"]
+points = PackedVector3Array(0.23809585, 0.13268939, -0.14055291, 0.2223332, -1.3877788e-17, -0.12486227, 0.14519879, 0.03867806, -0.25150135, 0.13442609, 0.06938233, -0.2610901, 0.21431196, 0.17632087, -0.12035847, 0.22951499, 0.17147101, 0.22570771, 0.23748958, 0.109216765, 0.23364988, -0.222612, -1.3877788e-17, -0.12486227, 0.2223332, -1.3877788e-17, 0.21854037, -0.15112042, 0.06938233, -0.2610901, -0.22513029, 0.16981412, -0.1296082, -0.21459076, 0.17632087, 0.2106466, -0.22918753, 0.1712639, 0.22512656, -0.23758185, 0.14035252, 0.2334562, -0.222612, -1.3877788e-17, 0.21854037, -0.23832801, 0.13268939, -0.14055291)
+
+[node name="SM_Prop_MedicalBox_01" type="MeshInstance3D" unique_id=1190001213]
+gi_mode = 2
+mesh = ExtResource("1_ofd15")
+surface_material_override/0 = ExtResource("2_h7cac")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1316764428]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1908493430]
+shape = SubResource("ConvexPolygonShape3D_predu")

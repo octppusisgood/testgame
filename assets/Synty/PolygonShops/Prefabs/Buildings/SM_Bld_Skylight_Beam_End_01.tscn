@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cloauwt0lwqbg"]
+
+[ext_resource type="ArrayMesh" uid="uid://co57pf127owgq" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Skylight_Beam_End_01.res" id="1_r6tpj"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_pvu6a"]
+
+[node name="SM_Bld_Skylight_Beam_End_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_r6tpj")
+surface_material_override/0 = ExtResource("2_pvu6a")

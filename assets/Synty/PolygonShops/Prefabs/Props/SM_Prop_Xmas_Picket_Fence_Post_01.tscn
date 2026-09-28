@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://crv8u3aomx0qe"]
+
+[ext_resource type="ArrayMesh" uid="uid://cvi7c3ur5nt2n" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Xmas_Picket_Fence_Post_01.res" id="1_ejdi4"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_vfrjb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ah4nf"]
+points = PackedVector3Array(-0.06142226, 0.59704816, 0.059739675, -0.05067302, -0.0053788424, -0.058594618, -0.05067302, -0.0053788424, 0.059739675, -0.06142226, 0.6614841, 0.059739675, -0.06142226, 0.6614841, -0.058594618, 0.056912035, -0.0053788424, -0.058594618, 0.056912035, -0.0053788424, 0.059739675, 0.056912035, 0.6614841, 0.059739675, 0.04330174, 0.66292334, -0.044995904, 0.056912035, 0.6614841, -0.058594618)
+
+[node name="SM_Prop_Xmas_Picket_Fence_Post_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ejdi4")
+surface_material_override/0 = ExtResource("2_vfrjb")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ah4nf")

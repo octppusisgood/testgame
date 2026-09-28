@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://b3vuoqg1oj25h"]
+
+[ext_resource type="ArrayMesh" uid="uid://cq7b83s4o1yy0" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_01.res" id="1_18h1j"]
+[ext_resource type="Material" uid="uid://dwf6scgufvavd" path="res://Assets/Synty/PolygonGangWarfare/Materials/Vehicle/Vehicle_01_mat.tres" id="2_u2xsl"]
+[ext_resource type="ArrayMesh" uid="uid://vedfibdc625s" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Attachment_Delivery_01.res" id="3_u2xsl"]
+[ext_resource type="ArrayMesh" uid="uid://bwar3fa6vcnf7" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Attachment_Delivery_Door_L.res" id="4_4wwfe"]
+[ext_resource type="ArrayMesh" uid="uid://bcaubjjvh1xhs" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Attachment_Delivery_Door_R.res" id="5_08htf"]
+[ext_resource type="ArrayMesh" uid="uid://c8q4ikkxw0fj4" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Glass.res" id="6_2ujji"]
+[ext_resource type="Material" uid="uid://bgr664d17lip1" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Glass_mat.tres" id="7_0wmqo"]
+[ext_resource type="ArrayMesh" uid="uid://guwccfklf6xp" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_SteeringW.res" id="8_ot20a"]
+[ext_resource type="ArrayMesh" uid="uid://bgoem6o371hcn" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Wheel_fl.res" id="9_0wmqo"]
+[ext_resource type="ArrayMesh" uid="uid://c2j7cnicx320n" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Wheel_fr.res" id="10_86onf"]
+[ext_resource type="ArrayMesh" uid="uid://2neqicqkyd0n" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Wheel_rl_01.res" id="11_mfydk"]
+[ext_resource type="ArrayMesh" uid="uid://qbjn11qgvw7h" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Wheel_rl_02.res" id="12_486m4"]
+[ext_resource type="ArrayMesh" uid="uid://cqw0lj8vuqerm" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Wheel_rr_01.res" id="13_a2md1"]
+[ext_resource type="ArrayMesh" uid="uid://brvi12a2k1ry" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Veh_Truck_Wheel_rr_02.res" id="14_c5f8e"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_80ygo"]
+points = PackedVector3Array(1.4348363, 2.4090915, 3.4055538, 0.70693433, 2.04502, 3.769847, 1.1920122, 0.22566056, 3.5267358, 1.1920122, 0.4682917, -3.6289675, 1.1920122, 1.0744956, -3.3858562, 1.3134242, 2.5302825, 2.7996454, 0.94947326, 2.7731628, 2.314919, -1.2342325, 2.6517227, 3.4055538, -1.4767715, 2.4090915, 3.4055538, -1.2342325, 0.22566056, 3.5267358, -0.5060456, 0.22566056, -3.2654223, -1.2342325, 0.4682917, -3.6289675, 0.46354032, 1.0744956, -3.872079, -0.86999655, 2.7731628, 2.314919, -1.2342325, 1.0744956, -3.3858562, -1.4767715, 1.5597578, 3.1631904)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xlxdj"]
+size = Vector3(2.71741, 2.8492572, 6.428291)
+
+[node name="SM_Veh_Truck_01" type="MeshInstance3D" unique_id=1312523256]
+gi_mode = 2
+mesh = ExtResource("1_18h1j")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1706359828]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=386165612]
+shape = SubResource("ConvexPolygonShape3D_80ygo")
+
+[node name="SM_Veh_Truck_Attachment_Delivery_01" type="MeshInstance3D" parent="." unique_id=604196185]
+gi_mode = 2
+mesh = ExtResource("3_u2xsl")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Veh_Truck_Attachment_Delivery_01" unique_id=970781343]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_Truck_Attachment_Delivery_01/BoxCollider" unique_id=486341291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7881393e-07, 2.2983727, -1.2307537)
+shape = SubResource("BoxShape3D_xlxdj")
+
+[node name="SM_Veh_Truck_Attachment_Delivery_Door_L" type="MeshInstance3D" parent="." unique_id=116344895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1437627, 1.3322189, -4.2425694)
+gi_mode = 2
+mesh = ExtResource("4_4wwfe")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="SM_Veh_Truck_Attachment_Delivery_Door_R" type="MeshInstance3D" parent="." unique_id=562615865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1437627, 1.3322189, -4.2425694)
+gi_mode = 2
+mesh = ExtResource("5_08htf")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="SM_Veh_Truck_Glass" type="MeshInstance3D" parent="." unique_id=803791824]
+gi_mode = 2
+mesh = ExtResource("6_2ujji")
+surface_material_override/0 = ExtResource("7_0wmqo")
+
+[node name="SM_Veh_Truck_SteeringW" type="MeshInstance3D" parent="." unique_id=1584456139]
+transform = Transform3D(1, 0, 0, 0, 0.84013915, -0.54237086, 0, 0.54237086, 0.84013915, 0.46398243, 1.8105785, 3.205877)
+gi_mode = 2
+mesh = ExtResource("8_ot20a")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="SM_Veh_Truck_Wheel_fl" type="MeshInstance3D" parent="." unique_id=1170488412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8414552, 0.48867783, 2.5354874)
+gi_mode = 2
+mesh = ExtResource("9_0wmqo")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="SM_Veh_Truck_Wheel_fr" type="MeshInstance3D" parent="." unique_id=1974971572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83087003, 0.48867783, 2.5354874)
+gi_mode = 2
+mesh = ExtResource("10_86onf")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="SM_Veh_Truck_Wheel_rl_01" type="MeshInstance3D" parent="." unique_id=938229469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8670078, 0.48867783, -0.7045754)
+gi_mode = 2
+mesh = ExtResource("11_mfydk")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="SM_Veh_Truck_Wheel_rl_02" type="MeshInstance3D" parent="." unique_id=1868512267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8670078, 0.48867783, -1.9333347)
+gi_mode = 2
+mesh = ExtResource("12_486m4")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="SM_Veh_Truck_Wheel_rr_01" type="MeshInstance3D" parent="." unique_id=1450757668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8670078, 0.48867783, -0.7045754)
+gi_mode = 2
+mesh = ExtResource("13_a2md1")
+surface_material_override/0 = ExtResource("2_u2xsl")
+
+[node name="SM_Veh_Truck_Wheel_rr_02" type="MeshInstance3D" parent="." unique_id=1716039493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8670078, 0.48867783, -1.9333347)
+gi_mode = 2
+mesh = ExtResource("14_c5f8e")
+surface_material_override/0 = ExtResource("2_u2xsl")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn6p4tn3q4u1d"]
+
+[ext_resource type="ArrayMesh" uid="uid://brs22xtasb8fq" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Sidewalk_Corner_End_01.res" id="1_fjboc"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_l17ge"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gbp56"]
+size = Vector3(5, 0.079353094, 5)
+
+[node name="SM_Env_Sidewalk_Corner_End_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_fjboc")
+surface_material_override/0 = ExtResource("2_l17ge")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.039676547, -2.5)
+shape = SubResource("BoxShape3D_gbp56")

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dg5om823njbry"]
+
+[ext_resource type="ArrayMesh" uid="uid://2q2pkdkpibvw" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Warehouse_Firehose_01.res" id="1_yi3bk"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_08gjc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yi3bk"]
+size = Vector3(0.82158434, 0.805439, 0.39825898)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_08gjc"]
+size = Vector3(0.3671875, 1.0204468, 0.18054199)
+
+[node name="SM_Prop_Warehouse_Firehose_01" type="MeshInstance3D" unique_id=42990814]
+gi_mode = 2
+mesh = ExtResource("1_yi3bk")
+surface_material_override/0 = ExtResource("2_08gjc")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=86922652]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=748295577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5762787e-07, 1.4483929, 0.095745094)
+shape = SubResource("BoxShape3D_yi3bk")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=987481409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0087890625, 0.5189514, -0.008728027)
+shape = SubResource("BoxShape3D_08gjc")

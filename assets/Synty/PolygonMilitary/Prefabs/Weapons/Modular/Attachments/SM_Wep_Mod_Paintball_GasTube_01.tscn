@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ta4laqeoc1k"]
+
+[ext_resource type="ArrayMesh" uid="uid://bcefcvxfalmkp" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Paintball_GasTube_01.res" id="1_ww2i5"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_66x88"]
+[ext_resource type="ArrayMesh" uid="uid://trac4spswy83" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Paintball_GasTube_Canister_01.res" id="3_66x88"]
+
+[node name="SM_Wep_Mod_Paintball_GasTube_01" type="MeshInstance3D" unique_id=1158476380]
+gi_mode = 2
+mesh = ExtResource("1_ww2i5")
+surface_material_override/0 = ExtResource("2_66x88")
+
+[node name="SM_Wep_Mod_Paintball_GasTube_Canister_01" type="MeshInstance3D" parent="." unique_id=914363318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920928e-08, -0.10263038, -0.2527607)
+gi_mode = 2
+mesh = ExtResource("3_66x88")
+surface_material_override/0 = ExtResource("2_66x88")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://2vefoxt74ixp"]
+
+[ext_resource type="ArrayMesh" uid="uid://j3q0oip70o3m" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Drinks_Fridge_01.res" id="1_3670s"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_lenrn"]
+[ext_resource type="ArrayMesh" uid="uid://cowvieh5qdqwt" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Drinks_Fridge_01_Door_01.res" id="3_lenrn"]
+[ext_resource type="ArrayMesh" uid="uid://btr6ppogw055y" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Drinks_Fridge_01_Door_01_Glass_01.res" id="4_mffe2"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="5_evym5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3670s"]
+size = Vector3(0.91607666, 2.295166, 1.0625)
+
+[node name="SM_Prop_Market_Drinks_Fridge_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_3670s")
+surface_material_override/0 = ExtResource("2_lenrn")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0047912598, 1.1361084, -0.0234375)
+shape = SubResource("BoxShape3D_3670s")
+
+[node name="SM_Prop_Market_Drinks_Fridge_01_Door_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42792174, 1.345844, 0.5010864)
+gi_mode = 2
+mesh = ExtResource("3_lenrn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_lenrn")
+
+[node name="SM_Prop_Market_Drinks_Fridge_01_Door_01_Glass_01" type="MeshInstance3D" parent="SM_Prop_Market_Drinks_Fridge_01_Door_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.03865087)
+gi_mode = 2
+mesh = ExtResource("4_mffe2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_evym5")

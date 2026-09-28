@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b2akjansvgt7"]
+
+[ext_resource type="ArrayMesh" uid="uid://bmja3epsa8inf" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Item_Earmuffs_01.res" id="1_h66sg"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_168cx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_82xs6"]
+points = PackedVector3Array(0.09654454, 0.014025949, -0.06438236, 0.006553419, 0.0023849318, -0.13610415, 0.0725581, 0.049617026, -0.12321323, 0.09129926, 0.09175231, -0.020214275, 0.09549921, 0.049975783, -0.03259161, 0.07257677, -0.006534487, 0.012526616, -0.06781386, 0.049617026, -0.12321323, -0.06314723, -0.006534487, 0.07803406, -0.06008593, 0.0054405434, -0.11730704, -0.08653634, 0.09644088, -0.006193474, 0.04450237, 0.11984663, 0.08735557, 0.046294354, 0.06764143, 0.12623377, 0.03287316, 0.0063065067, 0.11226432, -0.094152264, 0.0062693944, 0.0072110295, -0.086760335, 0.06775276, 0.12307523, -0.06116859, 0.117867276, 0.10728258)
+
+[node name="SM_Item_Earmuffs_01" type="MeshInstance3D" unique_id=987749216]
+gi_mode = 2
+mesh = ExtResource("1_h66sg")
+surface_material_override/0 = ExtResource("2_168cx")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=807652294]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=540932422]
+shape = SubResource("ConvexPolygonShape3D_82xs6")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ucpcwl18ju02"]
+
+[ext_resource type="ArrayMesh" uid="uid://bogirkvt6y2sp" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Desk_02.res" id="1_p77s0"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_7exsd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p77s0"]
+size = Vector3(1.9668579, 0.86938477, 0.86291504)
+
+[node name="SM_Prop_Desk_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_p77s0")
+surface_material_override/0 = ExtResource("2_7exsd")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1552734e-05, 0.43688965, -0.0016479492)
+shape = SubResource("BoxShape3D_p77s0")

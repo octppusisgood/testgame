@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cpy6um1k7qcwc"]
+
+[ext_resource type="ArrayMesh" uid="uid://cwulbchflq6j6" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Blender_01.res" id="1_bo0sl"]
+[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_mk4i3"]
+[ext_resource type="ArrayMesh" uid="uid://dl8mo7sukkfxl" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Blender_Jug_01.res" id="3_mk4i3"]
+[ext_resource type="Material" uid="uid://bgr664d17lip1" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Glass_mat.tres" id="4_g7im4"]
+[ext_resource type="ArrayMesh" uid="uid://orgq20qxef40" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Blender_Lid_01.res" id="5_jwb3m"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p6vbh"]
+points = PackedVector3Array(0.11690233, 2.3337485e-05, 0.11703454, 0.11292907, 0.08336133, 0.16240047, -0.11635595, 2.3337485e-05, 0.11703454, -0.061072707, 0.0007327857, -0.12439306, 0.11516688, 0.0016861067, -0.08711214, 0.114687346, 0.12776835, -0.08666298, 0.08664612, 0.1284113, 0.1424125, -0.11238268, 0.08336133, 0.16240047, -0.114140965, 0.12776835, -0.08666298, -0.114848845, 0.001464404, -0.087336734, -0.060296323, 0.12776835, -0.12254024, 0.06081987, 0.12776835, -0.12254024, 0.06990815, 0.00197432, -0.11830123, 0.021269865, 0.22651467, 0.0070446134, -0.084455624, 0.10992129, 0.1469884, -0.044106394, 0.21715882, 0.0070446134)
+
+[node name="SM_Prop_Blender_01" type="MeshInstance3D" unique_id=1432061403]
+gi_mode = 2
+mesh = ExtResource("1_bo0sl")
+surface_material_override/0 = ExtResource("2_mk4i3")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1802065625]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1120249630]
+shape = SubResource("ConvexPolygonShape3D_p6vbh")
+
+[node name="SM_Prop_Blender_Jug_01" type="MeshInstance3D" parent="." unique_id=948906362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033984374, 0.29761142, 4.7683715e-09)
+gi_mode = 2
+mesh = ExtResource("3_mk4i3")
+surface_material_override/0 = ExtResource("4_g7im4")
+
+[node name="SM_Prop_Blender_Lid_01" type="MeshInstance3D" parent="SM_Prop_Blender_Jug_01" unique_id=51669041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03398441, 0.13101351, 1.5739374e-09)
+gi_mode = 2
+mesh = ExtResource("5_jwb3m")
+surface_material_override/0 = ExtResource("2_mk4i3")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://chled6f1dwxuc"]
+
+[ext_resource type="ArrayMesh" uid="uid://dyrkorhh8cj87" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_RebarClub_01.res" id="1_a02e2"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_ia5ug"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7h7fx"]
+points = PackedVector3Array(0.06206496, -0.11547163, 0.83071965, -0.017621767, -0.035700172, -0.23972562, 0.016535103, -0.035700172, -0.23972562, 0.11904362, -0.058513045, 0.83071965, 0.11333817, -0.03305094, 0.93458086, 0.016573012, -0.024342798, 1.104131, -0.063227445, -0.11547163, 0.8649803, -0.07460043, -0.104065195, 0.85365003, -0.017621767, 0.032591254, -0.27385145, 0.016535103, 0.032591254, -0.27385145, 0.11904362, 0.10090722, 0.88777584, -0.029013708, -0.024342798, 1.104131, 0.08486779, 0.13512653, 0.933232, -0.040424604, 0.13512653, 0.9446972, -0.07460043, 0.06676151, 0.8080589, -0.07460043, 0.10090722, 0.933232)
+
+[node name="SM_Wep_RebarClub_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_a02e2")
+surface_material_override/0 = ExtResource("2_ia5ug")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_7h7fx")

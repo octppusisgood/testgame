@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://6eheh00uofxa"]
+
+[ext_resource type="Texture2D" uid="uid://dbu0m4xkrp8rd" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Building_Wood_02.png" id="1_nfhrq"]
+
+[resource]
+resource_name = "PolygonShops_Mat_Base_Wood_02_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_nfhrq")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

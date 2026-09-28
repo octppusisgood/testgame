@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfmarvxfgre8p"]
+
+[ext_resource type="ArrayMesh" uid="uid://ca7o0yftyi5xg" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_CrossBow_Clean_01.res" id="1_v5h1c"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_u45hc"]
+[ext_resource type="ArrayMesh" uid="uid://bcwd53mgbdup" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_CrossBow_Clean_01_Arrow_01.res" id="3_u45hc"]
+[ext_resource type="ArrayMesh" uid="uid://ffxhtgjdqwce" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_CrossBow_Clean_01_Quiver_01.res" id="4_8p5yw"]
+[ext_resource type="ArrayMesh" uid="uid://b72ea222cbmf3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_CrossBow_Clean_01_Quiver_Arrow_01.res" id="5_rv8ph"]
+[ext_resource type="ArrayMesh" uid="uid://d0dawxbywl6ub" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_CrossBow_Clean_01_Quiver_Arrow_02.res" id="6_yen2g"]
+[ext_resource type="ArrayMesh" uid="uid://82oubbknl2kq" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_CrossBow_Clean_01_Quiver_Arrow_03.res" id="7_musro"]
+[ext_resource type="ArrayMesh" uid="uid://dih02g8cp5nc3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_CrossBow_Clean_01_Sights_01.res" id="8_f8u7v"]
+[ext_resource type="ArrayMesh" uid="uid://bxmdf7olvw140" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_CrossBow_Clean_01_String_01.res" id="9_t42dc"]
+[ext_resource type="ArrayMesh" uid="uid://dgcwirqvcj4fh" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_CrossBow_Clean_01_Trigger_01.res" id="10_2pob6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wv4y2"]
+points = PackedVector3Array(0.35402608, 0.09943628, 0.51040876, 0.19880462, 0.09576294, 0.70743656, 0.35402608, 0.04485181, 0.51040876, 0.02635181, -0.06433859, -0.3267316, 0.02635181, 0.11767407, -0.30848828, -0.008666813, 0.118726656, 0.08454123, -0.1495056, 0.0962785, 0.72784626, 0.02635181, -0.009711161, 0.83810437, 0.02635181, -0.10072823, 0.019093335, -0.02812162, -0.06433859, -0.3267316, -0.02812162, 0.11767407, -0.30848828, -0.32821175, 0.09305628, 0.5409663, -0.28735667, 0.09565553, 0.6200967, -0.02812162, -0.009711161, 0.83810437, -0.02812162, -0.10072823, 0.019093335, -0.35579586, 0.04485181, 0.51040876)
+
+[node name="SM_Wep_CrossBow_Clean_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_v5h1c")
+surface_material_override/0 = ExtResource("2_u45hc")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_wv4y2")
+
+[node name="SM_Wep_CrossBow_Clean_01_Arrow_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4408918e-17, 0.09776763, 0.68214685)
+gi_mode = 2
+mesh = ExtResource("3_u45hc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_u45hc")
+
+[node name="SM_Wep_CrossBow_Clean_01_Quiver_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.082838394, -0.007946458, 0.7238204)
+gi_mode = 2
+mesh = ExtResource("4_8p5yw")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_u45hc")
+
+[node name="SM_Wep_CrossBow_Clean_01_Quiver_Arrow_01" type="MeshInstance3D" parent="SM_Wep_CrossBow_Clean_01_Quiver_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10834404, 0.007037749, -0.0008738041)
+gi_mode = 2
+mesh = ExtResource("5_rv8ph")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_u45hc")
+
+[node name="SM_Wep_CrossBow_Clean_01_Quiver_Arrow_02" type="MeshInstance3D" parent="SM_Wep_CrossBow_Clean_01_Quiver_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10834404, 0.012555404, -0.018455446)
+gi_mode = 2
+mesh = ExtResource("6_yen2g")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_u45hc")
+
+[node name="SM_Wep_CrossBow_Clean_01_Quiver_Arrow_03" type="MeshInstance3D" parent="SM_Wep_CrossBow_Clean_01_Quiver_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10834404, 0.012896633, 0.018690169)
+gi_mode = 2
+mesh = ExtResource("7_musro")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_u45hc")
+
+[node name="SM_Wep_CrossBow_Clean_01_Sights_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.105427e-17, 0.11872665, 0.17343576)
+gi_mode = 2
+mesh = ExtResource("8_f8u7v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_u45hc")
+
+[node name="SM_Wep_CrossBow_Clean_01_String_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09808881, 0.23127994)
+gi_mode = 2
+mesh = ExtResource("9_t42dc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_u45hc")
+
+[node name="SM_Wep_CrossBow_Clean_01_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011453862, 0.028831294, 0.060022485)
+gi_mode = 2
+mesh = ExtResource("10_2pob6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_u45hc")

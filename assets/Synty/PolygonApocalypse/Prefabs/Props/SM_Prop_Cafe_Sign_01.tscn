@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://hg5t82r5ymrp"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4lrgtituxpa1" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Cafe_Sign_01.res" id="1_en0aa"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_0vamp"]
+[ext_resource type="ArrayMesh" uid="uid://2lsgoo802vwm" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Cafe_Sign_Stand_01.res" id="3_0vamp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_igftg"]
+points = PackedVector3Array(0.5200784, 1.4708508, -1.9771385, 0.4981804, 1.3414406, -1.8930833, -1.2598464, 1.404764, -1.6465214, 0.36142206, 2.5745227, -0.73272145, 1.8393216, 1.2069644, -1.0537322, 0.6039512, 0.67090166, -0.84959817, -2.0498223, 0.95781493, -0.3788892, -2.1171687, 1.9983937, 0.13344717, 1.1125603, 2.4621522, -0.11911857, -1.1801052, 2.2074764, 0.80829024, 2.1037486, 0.87699103, 0.5289068, 1.198086, 0.38974506, 1.7160864, -0.25584984, 0.22211036, 1.0008166, -1.7217675, 0.6133348, 1.3202264, 0.30523133, 1.9679984, 1.6316309, -0.46863103, 0.34967855, 2.111946)
+
+[node name="SM_Prop_Cafe_Sign_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_en0aa")
+surface_material_override/0 = ExtResource("2_0vamp")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_igftg")
+
+[node name="SM_Prop_Cafe_Sign_Stand_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.052280195)
+gi_mode = 2
+mesh = ExtResource("3_0vamp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_0vamp")

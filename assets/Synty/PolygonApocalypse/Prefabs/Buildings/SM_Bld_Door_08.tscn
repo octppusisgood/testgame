@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxcsr7yptfy77"]
+
+[ext_resource type="ArrayMesh" uid="uid://b5qy2jpplnsgi" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Door_08.res" id="1_nk7qf"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_54r4o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nk7qf"]
+size = Vector3(1.0429688, 2.227539, 0.123046875)
+
+[node name="SM_Bld_Door_08" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_nk7qf")
+surface_material_override/0 = ExtResource("2_54r4o")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5185547, 1.1108398, 0.0029296875)
+shape = SubResource("BoxShape3D_nk7qf")

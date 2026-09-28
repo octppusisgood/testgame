@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dasy66t0lpaxx"]
+
+[ext_resource type="ArrayMesh" uid="uid://crosrlasq0lyf" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Planter_Box_02.res" id="1_ldc0h"]
+[ext_resource type="Material" uid="uid://dt1bpwt7jdstt" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Wood_01_mat.tres" id="2_r131y"]
+[ext_resource type="ArrayMesh" uid="uid://bllw7fk1owyk7" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Planter_Box_01_Dirt.res" id="3_r131y"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u8hfn"]
+points = PackedVector3Array(0.13834643, -5.551115e-17, 0.117948875, 0.13834643, -5.551115e-17, 0.89595455, -0.0054330826, 0.5687446, 0.9952233, 0.077147976, 0.66327566, 0.122586, 2.361399, -5.551115e-17, 0.117948875, 2.361399, -5.551115e-17, 0.89595455, 2.5054243, 0.5687446, 0.9952233, 0.077147976, 0.66327566, 0.9654255, 2.4225974, 0.66327566, 0.122586, 2.4225974, 0.66327566, 0.9654255)
+
+[node name="SM_Prop_Planter_Box_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ldc0h")
+surface_material_override/0 = ExtResource("2_r131y")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_u8hfn")
+
+[node name="SM_Prop_Planter_Box_01_Dirt" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("3_r131y")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_r131y")

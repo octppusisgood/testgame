@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://loqye3am7wx2"]
+
+[ext_resource type="ArrayMesh" uid="uid://deq8fb0u7p2ig" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_02.res" id="1_rke7b"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_ml30e"]
+[ext_resource type="ArrayMesh" uid="uid://du6myurgjqmfx" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_02_Magazine_01.res" id="3_ml30e"]
+[ext_resource type="ArrayMesh" uid="uid://dquylk3wevsn6" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_02_Sight_01.res" id="4_q2vqn"]
+[ext_resource type="ArrayMesh" uid="uid://ic5hpg4yhcvl" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_02_Silencer_01.res" id="5_owjef"]
+[ext_resource type="ArrayMesh" uid="uid://1xcgejxpbshv" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_02_Slide_01.res" id="6_j8y1u"]
+[ext_resource type="ArrayMesh" uid="uid://cdga6pchxl3nh" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_02_Stock_01.res" id="7_nxx75"]
+[ext_resource type="ArrayMesh" uid="uid://b5jstwrewgss7" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_SubMGun_02_Trigger_01.res" id="8_5w4nn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ovguy"]
+points = PackedVector3Array(0.0032580066, -0.10315231, -0.018258054, -0.02003854, -0.06837885, -0.06552792, 0.02097825, -0.05079054, -0.06552792, 0.014074996, -0.088915356, -0.020357382, 0.02097825, -0.03325262, 0.2274333, -0.025903981, -0.02738145, 0.2274333, -0.025903981, 0.10148194, -0.059684794, 0.026843693, 0.07804764, -0.059684794, 0.026843693, 0.0019240081, 0.23331141, 0.02097825, 0.042921416, 0.29191765, -0.025903981, 0.08391882, 0.29191765, -0.014173097, 0.15422168, -0.030364178, 0.009257693, 0.15422168, -0.030364178, -0.014173097, 0.15427208, 0.28603953, 0.015117973, 0.15427208, 0.28603953, 0.026843693, 0.08978998, 0.2684402)
+
+[node name="SM_Wep_SubMGun_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_rke7b")
+surface_material_override/0 = ExtResource("2_ml30e")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_ovguy")
+
+[node name="SM_Wep_SubMGun_02_Magazine_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0052872174, 0.14299467)
+gi_mode = 2
+mesh = ExtResource("3_ml30e")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ml30e")
+
+[node name="SM_Wep_SubMGun_02_Sight_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.105427e-17, 0.12530139, 0.114576645)
+gi_mode = 2
+mesh = ExtResource("4_q2vqn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ml30e")
+
+[node name="SM_Wep_SubMGun_02_Silencer_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3094477e-16, 0.083107755, 0.29486138)
+gi_mode = 2
+mesh = ExtResource("5_owjef")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ml30e")
+
+[node name="SM_Wep_SubMGun_02_Slide_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008589783, 0.11461532, 0.20682766)
+gi_mode = 2
+mesh = ExtResource("6_j8y1u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ml30e")
+
+[node name="SM_Wep_SubMGun_02_Stock_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06887342, -0.13852902)
+gi_mode = 2
+mesh = ExtResource("7_nxx75")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ml30e")
+
+[node name="SM_Wep_SubMGun_02_Trigger_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6645352e-17, 0.012769287, 0.04575001)
+gi_mode = 2
+mesh = ExtResource("8_5w4nn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ml30e")

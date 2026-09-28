@@ -1,0 +1,163 @@
+[gd_scene load_steps=23 format=3 uid="uid://05kih4wq5pwx"]
+
+[ext_resource type="ArrayMesh" uid="uid://ci1mgkjhbyebf" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_01.res" id="1_ot1eo"]
+[ext_resource type="Material" uid="uid://bj206v4v20ibu" path="res://assets/Synty/PolygonApocalypse/Materials/Vehicles/Vehicle_Standard_01_mat.tres" id="2_05j1o"]
+[ext_resource type="ArrayMesh" uid="uid://bj2otnyckv62y" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_01_SteeringW.res" id="3_05j1o"]
+[ext_resource type="ArrayMesh" uid="uid://c0p4nlc0hbhef" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Armour_01.res" id="4_y4ie8"]
+[ext_resource type="ArrayMesh" uid="uid://utsscoc4oeun" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Glass_01.res" id="5_rr3rw"]
+[ext_resource type="Material" uid="uid://d1x3gd0sksyr6" path="res://assets/Synty/PolygonApocalypse/Materials/Misc/Vehicle_Glass_01_mat.tres" id="6_8emas"]
+[ext_resource type="ArrayMesh" uid="uid://cg5s33vmji6wy" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Glass_Armour_01.res" id="7_ymxea"]
+[ext_resource type="ArrayMesh" uid="uid://ccldg85yt8q20" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Intake_01.res" id="8_8emas"]
+[ext_resource type="ArrayMesh" uid="uid://dpltf1onh6epn" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Intake_Plug_01.res" id="9_wibah"]
+[ext_resource type="ArrayMesh" uid="uid://gh8om08ed3qe" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Intake_Valve_01.res" id="10_bl2vh"]
+[ext_resource type="ArrayMesh" uid="uid://y27ru82dgxtq" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Ram_01.res" id="11_2rcc3"]
+[ext_resource type="ArrayMesh" uid="uid://dwuep7s72gs0n" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Suspension_L.res" id="12_bm5ht"]
+[ext_resource type="ArrayMesh" uid="uid://ccachh6x5jbb2" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Wheel_fl.res" id="13_7jl0m"]
+[ext_resource type="ArrayMesh" uid="uid://b7vlshugadj7j" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Suspension_R.res" id="14_7tik2"]
+[ext_resource type="ArrayMesh" uid="uid://luf0jiompxvj" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Wheel_fr.res" id="15_ef5kd"]
+[ext_resource type="ArrayMesh" uid="uid://15jam7v1vvgd" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Wheel_rl.res" id="16_x18js"]
+[ext_resource type="ArrayMesh" uid="uid://dpywxmw5udxaa" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Veh_HotRod_Wheel_rr.res" id="17_bq5t0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5881f"]
+points = PackedVector3Array(1.2192826, 0.31030142, -1.3946211, -0.6512422, 0.23848239, -2.0418513, 0.7152561, 0.38228294, -2.329312, 1.0033054, 1.1012859, -1.5383514, 0.9314728, 1.533175, 0.1877439, 0.6436628, 0.5260835, 2.2026308, -0.21928799, 0.09451932, 1.9861481, -0.8669799, 0.8136847, -2.1855817, -1.226862, 0.31030142, -1.3946211, 0.39440322, 1.7544816, -1.0956264, -0.59353656, 1.7437575, 0.031148672, 0.2837807, 1.3172305, 2.0580132, -0.6512422, 0.8858287, 2.2026308, -1.226862, 0.454102, -1.3946211, -0.6617777, 1.7473323, -1.0215431, -0.9390521, 1.533175, 0.1877439)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hf237"]
+radius = 0.48324203
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fg82x"]
+radius = 0.48324203
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4btl8"]
+radius = 0.58196104
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_75mkw"]
+radius = 0.58196104
+
+[node name="SM_Veh_HotRod_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_ot1eo")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_5881f")
+
+[node name="SM_Veh_HotRod_01_SteeringW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9385316, -0.34519333, 0, 0.34519333, 0.9385316, 0.32274675, 1.1290181, 0.3434722)
+gi_mode = 2
+mesh = ExtResource("3_05j1o")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SM_Veh_HotRod_Armour_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01008606, 1.1301483, -0.051721953)
+gi_mode = 2
+mesh = ExtResource("4_y4ie8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SM_Veh_HotRod_Glass_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("5_rr3rw")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_8emas")
+
+[node name="SM_Veh_HotRod_Glass_Armour_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("7_ymxea")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SM_Veh_HotRod_Intake_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1444091e-06, 1.0817814, 1.3057579)
+gi_mode = 2
+mesh = ExtResource("8_8emas")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SM_Veh_HotRod_Intake_Plug_01" type="MeshInstance3D" parent="SM_Veh_HotRod_Intake_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2636184e-06, 0.34093583, 0.24203789)
+gi_mode = 2
+mesh = ExtResource("9_wibah")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SM_Veh_HotRod_Intake_Valve_01" type="MeshInstance3D" parent="SM_Veh_HotRod_Intake_01/SM_Veh_HotRod_Intake_Plug_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3841856e-08, 0.0017559528, 0.007778883)
+gi_mode = 2
+mesh = ExtResource("10_bl2vh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SM_Veh_HotRod_Ram_01" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("11_2rcc3")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SM_Veh_HotRod_Suspension_L" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1596e-08, 0.3956177, 1.9438506)
+gi_mode = 2
+mesh = ExtResource("12_bm5ht")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SM_Veh_HotRod_Wheel_fl" type="MeshInstance3D" parent="SM_Veh_HotRod_Suspension_L"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9564634, -0.00072309375, -0.079016924)
+gi_mode = 2
+mesh = ExtResource("13_7jl0m")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_HotRod_Suspension_L/SM_Veh_HotRod_Wheel_fl"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_HotRod_Suspension_L/SM_Veh_HotRod_Wheel_fl/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8312206e-07, -2.9802322e-08, 0)
+shape = SubResource("SphereShape3D_hf237")
+
+[node name="SM_Veh_HotRod_Suspension_R" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1596e-08, 0.3956177, 1.9438506)
+gi_mode = 2
+mesh = ExtResource("14_7tik2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SM_Veh_HotRod_Wheel_fr" type="MeshInstance3D" parent="SM_Veh_HotRod_Suspension_R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9564634, -0.00072309375, -0.079016924)
+gi_mode = 2
+mesh = ExtResource("15_ef5kd")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_HotRod_Suspension_R/SM_Veh_HotRod_Wheel_fr"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_HotRod_Suspension_R/SM_Veh_HotRod_Wheel_fr/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8312206e-07, -2.9802322e-08, 0)
+shape = SubResource("SphereShape3D_fg82x")
+
+[node name="SM_Veh_HotRod_Wheel_rl" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2310073, 0.46206278, -1.5172607)
+gi_mode = 2
+mesh = ExtResource("16_x18js")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_HotRod_Wheel_rl"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_HotRod_Wheel_rl/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.9802322e-08, 0)
+shape = SubResource("SphereShape3D_4btl8")
+
+[node name="SM_Veh_HotRod_Wheel_rr" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2310073, 0.46206278, -1.5172607)
+gi_mode = 2
+mesh = ExtResource("17_bq5t0")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_05j1o")
+
+[node name="SphereCollider" type="StaticBody3D" parent="SM_Veh_HotRod_Wheel_rr"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Veh_HotRod_Wheel_rr/SphereCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.9802322e-08, 0)
+shape = SubResource("SphereShape3D_75mkw")

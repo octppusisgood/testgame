@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://bebpah42ma8iw"]
+
+[ext_resource type="ArrayMesh" uid="uid://eybakhebhbo5" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Wall_Quarantine_Gate_01.res" id="1_xrukk"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_g223l"]
+[ext_resource type="ArrayMesh" uid="uid://b8gbtbj2kh0y1" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Wall_Quarantine_GateDoor_01.res" id="3_g223l"]
+[ext_resource type="ArrayMesh" uid="uid://c4areiicfdqw3" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Wall_Quarantine_GateDoor_02.res" id="4_55o3i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38gia"]
+size = Vector3(1.2844551, 5.0352526, 0.7869835)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l8en5"]
+size = Vector3(1.2844551, 1.7533312, 4.999998)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6nqdd"]
+size = Vector3(1.2844551, 5.0352526, 0.6908703)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ne2v"]
+size = Vector3(0.23995605, 3.287075, 1.7413418)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0260"]
+size = Vector3(0.23995605, 3.287075, 1.7413418)
+
+[node name="SM_Prop_Wall_Quarantine_Gate_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_xrukk")
+surface_material_override/0 = ExtResource("2_g223l")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46599424, 2.5125895, -0.33639818)
+shape = SubResource("BoxShape3D_38gia")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46599424, 4.1535506, -2.4429054)
+shape = SubResource("BoxShape3D_l8en5")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46599424, 2.5125895, -4.5974693)
+shape = SubResource("BoxShape3D_6nqdd")
+
+[node name="SM_Prop_Wall_Quarantine_GateDoor_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010820479, 0, -0.7586585)
+gi_mode = 2
+mesh = ExtResource("3_g223l")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_g223l")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Prop_Wall_Quarantine_GateDoor_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Wall_Quarantine_GateDoor_01/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08480224, 1.6435375, -0.8706709)
+shape = SubResource("BoxShape3D_0ne2v")
+
+[node name="SM_Prop_Wall_Quarantine_GateDoor_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010820479, 0, -4.2413416)
+gi_mode = 2
+mesh = ExtResource("4_55o3i")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_g223l")
+
+[node name="BoxCollider" type="StaticBody3D" parent="SM_Prop_Wall_Quarantine_GateDoor_02"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Prop_Wall_Quarantine_GateDoor_02/BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08480224, 1.6435375, 0.8706709)
+shape = SubResource("BoxShape3D_m0260")

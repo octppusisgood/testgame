@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dm6t8nlbcx3ta"]
+
+[ext_resource type="ArrayMesh" uid="uid://bx0v6rksicucr" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Stereo_Speaker_01.res" id="1_aiowm"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_1mgdk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aiowm"]
+size = Vector3(0.37890625, 0.70532227, 0.48529053)
+
+[node name="SM_Prop_Stereo_Speaker_01" type="MeshInstance3D" unique_id=1194296755]
+gi_mode = 2
+mesh = ExtResource("1_aiowm")
+surface_material_override/0 = ExtResource("2_1mgdk")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1409775840]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=2129437003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3499756, -0.0015563965)
+shape = SubResource("BoxShape3D_aiowm")

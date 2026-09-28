@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnfbs4ne1yer1"]
+
+[ext_resource type="Texture2D" uid="uid://dbpmssiblt28q" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Signs_01.png" id="1_c1gl8"]
+
+[resource]
+resource_name = "PolygonShops_Signs_01_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_c1gl8")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

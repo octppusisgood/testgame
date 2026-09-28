@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl432guos1rac"]
+
+[ext_resource type="ArrayMesh" uid="uid://cs6jymhm3h2g5" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Music_Flute_Case_01.res" id="1_8gfe0"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_wrii6"]
+[ext_resource type="ArrayMesh" uid="uid://bnm6ijwu4at77" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Music_Flute_Case_01_Lid.res" id="3_wrii6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_up8xe"]
+points = PackedVector3Array(0.1565202, 0.054968156, 0.29254445, -0.0015142709, 0.06628842, 0.21414897, 0.14672726, 0.054968156, 0.31209692, 0.15139912, -0.0050991103, 0.30584756, 0.1565202, 0.054968156, -0.29260635, 0.01885771, 0.06628842, -0.10196982, -0.07293974, 0.06628842, 0.17331156, -0.048367582, 0.054982133, 0.31228253, -0.042325616, -0.0050991103, 0.31605694, 0.15139912, -0.0050991103, -0.30590945, 0.14672726, 0.054968156, -0.31215882, -0.07293974, 0.06628842, -0.17337345, -0.052522838, -0.0050991103, 0.30584756, 0.1412019, -0.0050991103, -0.31605694, -0.048367582, 0.054982133, -0.31234443, -0.052522838, -0.0050991103, -0.30590945)
+
+[node name="SM_Prop_Music_Flute_Case_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_8gfe0")
+surface_material_override/0 = ExtResource("2_wrii6")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_up8xe")
+
+[node name="SM_Prop_Music_Flute_Case_01_Lid" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.17364807, -0.9848078, 0, 0.9848078, -0.17364807, 0, 0, 0, 1, -0.059727173, 0.05588745, 0.009380863)
+gi_mode = 2
+mesh = ExtResource("3_wrii6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_wrii6")

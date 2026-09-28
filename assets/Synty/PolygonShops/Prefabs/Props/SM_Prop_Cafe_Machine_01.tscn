@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjr1ypesbvyl8"]
+
+[ext_resource type="ArrayMesh" uid="uid://ctjosvuo2se0p" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Machine_01.res" id="1_hi47t"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_gjmvw"]
+[ext_resource type="ArrayMesh" uid="uid://tjy3kb4q3400" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Machine_Portafilter_01.res" id="3_gjmvw"]
+[ext_resource type="ArrayMesh" uid="uid://p7bkxhgw8co0" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Machine_Portafilter_02.res" id="4_whcr3"]
+[ext_resource type="ArrayMesh" uid="uid://da841mgeekurk" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Machine_01_SteamWand_01.res" id="5_diqje"]
+[ext_resource type="ArrayMesh" uid="uid://6ia3d7wy26v4" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Machine_01_SteamWand_02.res" id="6_bomld"]
+[ext_resource type="ArrayMesh" uid="uid://5rjmu1ddyl57" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Machine_01_Steam_Handle_01.res" id="7_ndt2w"]
+[ext_resource type="ArrayMesh" uid="uid://dmhu2o76lhydy" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Cafe_Machine_01_Steam_Handle_02.res" id="8_fuxh1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wiy3m"]
+points = PackedVector3Array(0.39911762, 0.5951864, -0.23728624, 0.42525926, 0.20592183, 0.259898, 0.40785924, 0.056819603, -0.17117977, 0.38096836, 0.31128973, -0.25109264, -0.39645353, 0.56743973, -0.26125497, -0.3932899, 0.5907261, -0.005502999, 0.39104202, 0.5512783, 0.18373188, 0.40935782, 0.08155412, 0.26308018, -0.42525926, 0.20592183, 0.259898, 0.38404873, 0.0045121773, 0.22489446, 0.3855473, 0.0034115782, -0.14695442, -0.38563055, 0.0034115782, -0.14695442, -0.3810516, 0.31128973, -0.25109264, -0.3911253, 0.5512783, 0.18373188, -0.40944108, 0.08155412, 0.26308018, -0.384132, 0.0045121773, 0.22489446)
+
+[node name="SM_Prop_Cafe_Machine_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_hi47t")
+surface_material_override/0 = ExtResource("2_gjmvw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_wiy3m")
+
+[node name="SM_Prop_Cafe_Machine_Portafilter_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.078438826, 0.3410651, 0.21800399)
+gi_mode = 2
+mesh = ExtResource("3_gjmvw")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_gjmvw")
+
+[node name="SM_Prop_Cafe_Machine_Portafilter_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18291184, 0.3410651, 0.20847052)
+gi_mode = 2
+mesh = ExtResource("4_whcr3")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_gjmvw")
+
+[node name="SM_Prop_Cafe_Machine_01_SteamWand_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31072485, 0.40685546, 0.081302404)
+gi_mode = 2
+mesh = ExtResource("5_diqje")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_gjmvw")
+
+[node name="SM_Prop_Cafe_Machine_01_SteamWand_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3184157, 0.40685546, 0.081302404)
+gi_mode = 2
+mesh = ExtResource("6_bomld")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_gjmvw")
+
+[node name="SM_Prop_Cafe_Machine_01_Steam_Handle_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44482714, 0.47331986, 0.11258931)
+gi_mode = 2
+mesh = ExtResource("7_ndt2w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_gjmvw")
+
+[node name="SM_Prop_Cafe_Machine_01_Steam_Handle_02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4448271, 0.47331986, 0.11258931)
+gi_mode = 2
+mesh = ExtResource("8_fuxh1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_gjmvw")

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d0076fwpbu77y"]
+
+[ext_resource type="ArrayMesh" uid="uid://bi553rk7n86o2" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_LightPole_01.res" id="1_gr03h"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_ctgrq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kld0j"]
+points = PackedVector3Array(-0.10624028, 7.6430135, 0.16432773, 0.14942195, 7.6430135, 0.11317961, 0.103563115, 9.308435, 0.11845292, -0.11155594, 9.308435, 0.11845292, -0.15738474, -0.025567055, 0.062031478, -0.10624028, 7.4902563, 0.16432773, -0.05509582, -0.025567055, 0.16432773, 0.1063561, 9.4900675, -0.09946002, 0.14942195, -0.025567055, 0.11317961, 0.14942195, 7.6430135, -0.09135191, -0.11434892, 9.4900675, -0.09946002, -0.10624028, -0.025567055, -0.14250003, -0.10624028, 7.6430135, -0.14250003, 0.04863462, 9.263726, -0.14707227, 0.14942195, -0.025567055, -0.09135191, -0.05509582, 9.126804, -0.14250003)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8t3sq"]
+points = PackedVector3Array(0.04713303, 9.127638, -0.14251898, -0.10621023, 9.127638, -0.091344506, 0.14930183, 9.38322, -0.29588228, 0.09824747, 9.2298565, -0.19369347, 0.3028253, 9.2298565, 0.2663964, 0.3028253, 9.2298565, 0.3687454, -0.20849915, 9.485439, -0.14251898, -0.31078807, 9.2298565, 0.3687454, 0.14930183, 9.638732, -0.29588228, 0.3028253, 9.740951, 0.52226883, 0.2005364, 9.84338, -0.040170014, 0.3028253, 9.587587, 0.52226883, -0.25961357, 9.38322, 0.47109437, -0.20849915, 9.740951, -0.091344506, -0.31078807, 9.740951, 0.52226883, -0.20849915, 9.84338, 0.11319327)
+
+[node name="SM_Prop_LightPole_01" type="MeshInstance3D" unique_id=847914141]
+gi_mode = 2
+mesh = ExtResource("1_gr03h")
+surface_material_override/0 = ExtResource("2_ctgrq")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1192247876]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1077874701]
+shape = SubResource("ConvexPolygonShape3D_kld0j")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider" unique_id=1303676011]
+shape = SubResource("ConvexPolygonShape3D_8t3sq")

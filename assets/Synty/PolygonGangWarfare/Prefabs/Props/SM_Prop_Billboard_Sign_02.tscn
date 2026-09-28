@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://42x0o7p2pug4"]
+
+[ext_resource type="ArrayMesh" uid="uid://c77nnvph7hi1v" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Billboard_Sign_02.res" id="1_56yh1"]
+[ext_resource type="Material" uid="uid://b2spkf8k4fh7k" path="res://Assets/Synty/PolygonGangWarfare/Materials/FX/Billboards_01_mat.tres" id="2_l65e7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mjnff"]
+points = PackedVector3Array(2.1296263, 2.8530347, 0.351132, 2.1296263, 2.8530347, 0.15151863, -2.1296263, 2.8530347, 0.351132, 2.1296263, 0.7899592, 0.351132, 2.1296263, 0.7899592, 0.15151863, -2.1296263, 2.8530347, 0.15151863, -2.1296263, 0.7899592, 0.351132, -2.1296263, 0.7899592, 0.15151863)
+
+[node name="SM_Prop_Billboard_Sign_02" type="MeshInstance3D" unique_id=927456165]
+gi_mode = 2
+mesh = ExtResource("1_56yh1")
+surface_material_override/0 = ExtResource("2_l65e7")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1659416687]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=418468515]
+shape = SubResource("ConvexPolygonShape3D_mjnff")

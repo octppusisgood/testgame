@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://w1k0vujfro"]
+
+[ext_resource type="ArrayMesh" uid="uid://bn7j8etxv46hs" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Base_Wall_Window_Double_01.res" id="1_yjw3x"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_g5xxc"]
+[ext_resource type="Material" uid="uid://buo25cdi05x6y" path="res://Assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_White_01_mat.tres" id="3_kyuvg"]
+[ext_resource type="ArrayMesh" uid="uid://d4e6f4mfygyxm" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Base_Wall_Window_Double_01_Glass.res" id="4_g5xxc"]
+[ext_resource type="Material" uid="uid://cg0ilik1tmchi" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_01_mat.tres" id="5_nveja"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tkug8"]
+size = Vector3(2.4999914, 3.0057428, 0.225)
+
+[node name="SM_Bld_Base_Wall_Window_Double_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_yjw3x")
+surface_material_override/0 = ExtResource("2_g5xxc")
+surface_material_override/1 = ExtResource("3_kyuvg")
+surface_material_override/2 = ExtResource("3_kyuvg")
+
+[node name="BoxCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2499957, 1.5028714, 0)
+shape = SubResource("BoxShape3D_tkug8")
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+gi_mode = 2
+mesh = ExtResource("4_g5xxc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_nveja")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://djsoclyc442nk"]
+
+[ext_resource type="ArrayMesh" uid="uid://c4342dilcygth" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Wall_Quarantine_Column_Tall_02.res" id="1_mmnwj"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_nk2fy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mmnwj"]
+size = Vector3(0.7780762, 7.8210144, 1)
+
+[node name="SM_Prop_Wall_Quarantine_Column_Tall_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_mmnwj")
+surface_material_override/0 = ExtResource("2_nk2fy")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207031, 3.9419098, 0)
+shape = SubResource("BoxShape3D_mmnwj")

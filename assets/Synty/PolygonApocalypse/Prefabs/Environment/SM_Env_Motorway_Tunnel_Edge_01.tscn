@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8vscxrbhjw5h"]
+
+[ext_resource type="ArrayMesh" uid="uid://cuiw8bc7sc5qi" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Motorway_Tunnel_Edge_01.res" id="1_42ejs"]
+[ext_resource type="Material" uid="uid://cs5tr0n48vvsw" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Road_Standard_01_mat.tres" id="2_mr5ho"]
+
+[node name="SM_Env_Motorway_Tunnel_Edge_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_42ejs")
+surface_material_override/0 = ExtResource("2_mr5ho")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://blxhlu21brmm2"]
+
+[ext_resource type="ArrayMesh" uid="uid://dygibe8650kiv" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_ShopFront_05.res" id="1_r71yn"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_38g1n"]
+[ext_resource type="Material" uid="uid://dt1bpwt7jdstt" path="res://assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Wood_01_mat.tres" id="3_ewmys"]
+[ext_resource type="Material" uid="uid://5d2avydyfst7" path="res://assets/Synty/PolygonShops/Materials/Building_Mats/PolygonShops_Mat_Base_Brick_Red_01_mat.tres" id="4_c16lh"]
+[ext_resource type="ArrayMesh" uid="uid://crr7qmq43q6qs" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_ShopFront_05_Glass.res" id="5_38g1n"]
+[ext_resource type="Shape3D" uid="uid://bo0toiibbj12k" path="res://assets/Synty/PolygonShops/Models/Collision/SM_Bld_ShopFront_05_Collision.res" id="5_ewmys"]
+[ext_resource type="Material" uid="uid://dhwgo1hredpob" path="res://assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Glass_02_mat.tres" id="6_gt262"]
+
+[node name="SM_Bld_ShopFront_05" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_r71yn")
+surface_material_override/0 = ExtResource("2_38g1n")
+surface_material_override/1 = ExtResource("3_ewmys")
+surface_material_override/2 = ExtResource("4_c16lh")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = ExtResource("5_ewmys")
+
+[node name="SM_Bld_ShopFront_05_Glass" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource("5_38g1n")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_gt262")

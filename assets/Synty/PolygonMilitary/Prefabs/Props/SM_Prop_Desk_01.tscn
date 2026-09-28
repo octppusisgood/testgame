@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b0cxfq80t1qd8"]
+
+[ext_resource type="ArrayMesh" uid="uid://c02w8yjbfhatm" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Desk_01.res" id="1_ikaoh"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_8pibq"]
+[ext_resource type="ArrayMesh" uid="uid://bvcyc1dmafr0q" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Desk_Drawer_01.res" id="3_8pibq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_57l18"]
+points = PackedVector3Array(1.1684557, 0.8580212, -0.569891, 1.1275581, 0.9145065, 0.5420325, 1.1235133, 0, 0.50480866, 1.1235133, 0, -0.51307577, -1.0883272, 0, -0.51307577, -1.1065289, 0.90582335, -0.5398508, 1.112727, 0.90850884, -0.54300714, -1.1272024, 0.91432744, 0.5418148, -1.0883272, 0, 0.50480866)
+
+[node name="SM_Prop_Desk_01" type="MeshInstance3D" unique_id=207148026]
+gi_mode = 2
+mesh = ExtResource("1_ikaoh")
+surface_material_override/0 = ExtResource("2_8pibq")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=2071694161]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=1918798313]
+shape = SubResource("ConvexPolygonShape3D_57l18")
+
+[node name="SM_Prop_Desk_Drawer_01" type="MeshInstance3D" parent="." unique_id=1577898608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6905358, 0.54356676, 0.47809654)
+gi_mode = 2
+mesh = ExtResource("3_8pibq")
+surface_material_override/0 = ExtResource("2_8pibq")

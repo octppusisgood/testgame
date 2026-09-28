@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://6oj1v8wpnukq"]
+
+[ext_resource type="ArrayMesh" uid="uid://csd03k2o1o7jh" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_RocketLauncher_Missile_01.res" id="1_3vq8l"]
+[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_nll7u"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oeg4k"]
+points = PackedVector3Array(0.055160724, 0.026437297, 0.2494686, 0.034732163, 0.04683292, 0.25962898, 0.014325559, -0.014353935, 0.43312204, 0.019520566, -0.044118132, 0.22135186, 0.04411173, -0.019526973, 0.065751284, 0.055160724, 0.006019719, -0.21969748, 0.014336541, 0.057047196, -0.21969748, -0.036647007, 0.04683292, 0.25962898, -0.016240407, 0.006019719, 0.43312204, -0.026432721, -0.05515615, 0.2494686, 0.014336541, -0.05515615, -0.21969748, -0.006048087, 0.057047196, -0.21969748, -0.046850305, 0.036618635, 0.25962898, -0.046850305, -0.034738567, 0.25962898, -0.05704262, -0.014364917, -0.18908857, -0.05704262, 0.006019719, -0.18908857)
+
+[node name="SM_Wep_RocketLauncher_Missile_01" type="MeshInstance3D" unique_id=1784811]
+gi_mode = 2
+mesh = ExtResource("1_3vq8l")
+surface_material_override/0 = ExtResource("2_nll7u")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=792687773]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=521318895]
+shape = SubResource("ConvexPolygonShape3D_oeg4k")

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bg83cqkqoxv0b"]
+
+[ext_resource type="Texture2D" uid="uid://bswlf72o4sy0d" path="res://assets/Synty/PolygonApocalypse/Textures/Alt/PolygonApocalypse_01_A.png" id="1_yecmj"]
+[ext_resource type="Texture2D" uid="uid://db2hbbuew63ho" path="res://assets/Synty/PolygonApocalypse/Textures/Misc/PolygonApocalypse_01_Emissive.png" id="2_cj23v"]
+
+[resource]
+resource_name = "PolygonApocalypse_Chr_01_A_mat"
+transparency = 1
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_yecmj")
+roughness = 0.5
+emission_enabled = true
+emission_texture = ExtResource("2_cj23v")
+uv1_scale = Vector3(1, 1, 0)

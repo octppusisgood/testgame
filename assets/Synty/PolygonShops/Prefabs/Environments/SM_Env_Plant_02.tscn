@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhxhm0tpwo5kg"]
+
+[ext_resource type="ArrayMesh" uid="uid://c4n6iyi0n5xro" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Env_Plant_02.res" id="1_myxcp"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_b4cp8"]
+
+[node name="SM_Env_Plant_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_myxcp")
+surface_material_override/0 = ExtResource("2_b4cp8")

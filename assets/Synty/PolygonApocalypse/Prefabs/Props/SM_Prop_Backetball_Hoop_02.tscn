@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://djlhsyj7k2o63"]
+
+[ext_resource type="ArrayMesh" uid="uid://qt8yax0lf4y" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Backetball_Hoop_02.res" id="1_f0c4x"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_w78bs"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_edduo"]
+points = PackedVector3Array(-0.19996741, 3.6566734, 1.9000971, -0.19983777, 2.44738, 2.072904, 0.3178391, 3.5989075, 1.9000971, 0.37566125, 3.5989075, 1.7272902, -0.19996741, 3.6566734, 1.7848926, -0.5453446, 3.4837313, 1.6698457, -0.5453446, 3.4262023, 1.8424948, 0.20284301, 2.5050275, 2.0151439, -0.66072965, 3.1384387, 1.7272902, -0.66072965, 2.7929094, 1.4396732, -0.25753027, 2.44738, 1.9000182, 0.6637349, 3.1384387, 1.7272902, 0.6637349, 3.2533784, 1.6122434, 0.030024767, 2.9658515, 1.2667873, 0.6060424, 2.677733, 1.3820708, 0.030024767, 2.7929094, 1.2667873)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d7pmp"]
+points = PackedVector3Array(0.087880746, 2.5624042, 0.34542057, 0.087880746, 2.5624042, 0.17257413, -0.084875494, 2.5624042, 0.34542057, -0.027267538, 2.3891985, 0.34542057, 0.087880746, -0.02832508, 0.115078904, -0.084875494, 2.5624042, 0.17257413, 0.087880746, 2.3316324, 0.115123995, -0.027267538, 2.101368, 0.057538576, -0.14246091, -0.02832508, 0.057538576, -0.084875494, -0.02832508, 0.115078904, 0.087880746, -0.02832508, -0.115262754, -0.084875494, 1.353262, -0.05763225, -0.14246091, -0.02832508, -0.05763225, 0.087880746, 1.6986587, -1.7434359e-06, 0.087880746, 0.08655357, -0.115262754, -0.084875494, -0.02832508, -0.115262754)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_agahr"]
+points = PackedVector3Array(0.087880746, 2.5624042, 0.34542057, 0.087880746, 2.5624042, 0.17257413, -0.084875494, 2.5624042, 0.34542057, -0.027267538, 2.3891985, 0.34542057, 0.087880746, -0.02832508, 0.115078904, -0.084875494, 2.5624042, 0.17257413, 0.087880746, 2.3316324, 0.115123995, -0.027267538, 2.101368, 0.057538576, -0.14246091, -0.02832508, 0.057538576, -0.084875494, -0.02832508, 0.115078904, 0.087880746, -0.02832508, -0.115262754, -0.084875494, 1.353262, -0.05763225, -0.14246091, -0.02832508, -0.05763225, 0.087880746, 1.6986587, -1.7434359e-06, 0.087880746, 0.08655357, -0.115262754, -0.084875494, -0.02832508, -0.115262754)
+
+[node name="SM_Prop_Backetball_Hoop_02" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_f0c4x")
+surface_material_override/0 = ExtResource("2_w78bs")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_edduo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_d7pmp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_agahr")

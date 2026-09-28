@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bsdrxux17jhqg"]
+
+[ext_resource type="Texture2D" uid="uid://bslklnrmmkhqw" path="res://assets/Synty/PolygonMilitary/Textures/Alts/PolygonMilitary_01_A.png" id="1_jehs2"]
+
+[resource]
+resource_name = "PolygonMilitary_01_A_Glass_Alt_mat"
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(1, 1, 1, 0.559)
+albedo_texture = ExtResource("1_jehs2")
+metallic = 0.08599999
+roughness = 0.376
+uv1_scale = Vector3(1, 1, 0)

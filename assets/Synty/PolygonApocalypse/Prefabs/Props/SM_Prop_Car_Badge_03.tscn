@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://diphyitwx5qaw"]
+
+[ext_resource type="ArrayMesh" uid="uid://cl3d0etar3lte" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Prop_Car_Badge_03.res" id="1_siiqx"]
+[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_rw6hq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sti13"]
+points = PackedVector3Array(0.07357383, 0.064898685, -0.03616348, 0.07084192, 0.057684205, 0.034800723, 0.08721633, 0.02127365, -0.03616348, -0.07357398, 0.064898685, -0.03616348, -0.06833211, 0.060226806, 0.034800723, 0.08098416, 0.012130305, 0.034800723, 0.046903506, -0.057860132, -0.034558866, -0.051786948, -0.057734884, -0.03616348, -0.076322965, 0.06215568, -0.03616348, -0.07087621, 0.057684205, 0.034800723, 0.045554623, -0.05619429, 0.034800723, -0.007581137, -0.06126697, 0.034800723, -0.007820182, -0.06305806, -0.03455192, -0.04808179, -0.05365169, 0.034800723, -0.08100137, 0.012130305, 0.034800723, -0.08721648, 0.02127365, -0.03616348)
+
+[node name="SM_Prop_Car_Badge_03" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_siiqx")
+surface_material_override/0 = ExtResource("2_rw6hq")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_sti13")

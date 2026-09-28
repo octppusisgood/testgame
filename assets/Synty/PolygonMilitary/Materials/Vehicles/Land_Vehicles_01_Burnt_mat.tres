@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://kc8splxgww8w"]
+
+[ext_resource type="Texture2D" uid="uid://c84ec6jd0fpmk" path="res://Assets/Synty/PolygonMilitary/Textures/Land_Vehicle_01_Burnt.png" id="1_dw0cl"]
+
+[resource]
+resource_name = "Land_Vehicles_01_Burnt_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_dw0cl")
+roughness = 0.8

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdeggarg2n0y5"]
+
+[ext_resource type="ArrayMesh" uid="uid://eeoonmkvvodw" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Food_Watermelon_01.res" id="1_rkj1v"]
+[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_2f0mo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y2mb7"]
+points = PackedVector3Array(0.13264054, -0.0054739714, 0.104630604, 0.04159899, 0.12068954, 0.11098842, 0.0072152615, -0.01705163, 0.18085219, 0.04107845, -0.124417275, 0.10957958, 0.110037684, -0.0797787, -0.10665856, 0.12118843, -0.02827461, -0.1064057, 0.10428423, 0.07450558, -0.106586315, -0.06768922, 0.0463088, 0.16914801, -0.03881236, 0.12674436, -0.10145671, -0.12388127, 0.08562723, -0.0037413388, -0.106757894, -0.08514953, 0.10441385, -0.038839757, -0.13206816, -0.08426169, 0.0072152615, -0.01127547, -0.18819039, -0.14725125, 0.005951673, 0.019125134, -0.078922145, -0.011224799, -0.16445693, -0.14642933, 0.011575833, 0.013273045)
+
+[node name="SM_Prop_Food_Watermelon_01" type="MeshInstance3D"]
+gi_mode = 2
+mesh = ExtResource("1_rkj1v")
+surface_material_override/0 = ExtResource("2_2f0mo")
+
+[node name="MeshCollider" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider"]
+shape = SubResource("ConvexPolygonShape3D_y2mb7")

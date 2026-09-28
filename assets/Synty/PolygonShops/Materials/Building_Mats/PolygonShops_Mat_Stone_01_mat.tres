@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bmy5okdqyenqr"]
+
+[ext_resource type="Texture2D" uid="uid://dntwx718g1flj" path="res://Assets/Synty/PolygonShops/Textures/PolygonShops_Building_Marble_01.png" id="1_usq4w"]
+
+[resource]
+resource_name = "PolygonShops_Mat_Stone_01_mat"
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_usq4w")
+roughness = 0.8
+uv1_scale = Vector3(1, 1, 0)

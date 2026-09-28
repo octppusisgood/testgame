@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cqk8ammoe2hi4"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddo68fx4w5brb" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Electronics_Speaker_03.res" id="1_pbshw"]
+[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_uchdw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pbshw"]
+size = Vector3(0.30541992, 0.48449707, 0.2956543)
+
+[node name="SM_Prop_Electronics_Speaker_03" type="MeshInstance3D" unique_id=1588524800]
+gi_mode = 2
+mesh = ExtResource("1_pbshw")
+surface_material_override/0 = ExtResource("2_uchdw")
+
+[node name="MeshCollider" type="StaticBody3D" parent="." unique_id=1349712578]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshCollider" unique_id=769823567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010986328, 0.24127197, -0.009887695)
+shape = SubResource("BoxShape3D_pbshw")

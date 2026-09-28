@@ -2441,12 +2441,11 @@ func _refresh_backpack() -> void:
 		return
 	for child in _inv_list.get_children():
 		child.queue_free()
-	# 5 个分区竖排，每区「标题 + 分隔线 + 该类物品 chip 流（横向 wrap）」
+	# 魔兽式单一网格：全部分区物品按顺序排进一个方形格阵列
+	var cells: Array = []
 	for group in GameState.BACKPACK_GROUPS:
-		var gid := String(group["id"])
-		_inv_list.add_child(
-			_build_inv_section(String(group["title"]), GameState.backpack_group_items(gid))
-		)
+		cells.append_array(GameState.backpack_group_items(String(group["id"])))
+	_inv_list.add_child(_build_inv_grid(cells))
 
 	var slot1 := GameState.weapon_at_slot(0)
 	var slot2 := GameState.weapon_at_slot(1)
@@ -2521,28 +2520,142 @@ func _build_inv_section(title: String, items: Array) -> VBoxContainer:
 
 
 # 物品 chip：固定 1 格大小，不随物品种类变化
+# 物品数量（从 id 反查资源）
+func _inv_qty(item: Dictionary) -> int:
+	var id := String(item.get("id", ""))
+	if id == "cash":
+		return GameState.money
+	if id == "food":
+		return int(GameState.resources.get("food", 0))
+	if id == "meds":
+		return int(GameState.resources.get("meds", 0))
+	if id.begins_with("ammo_"):
+		return GameState.ammo_count(id.trim_prefix("ammo_"))
+	if item.has("loot_id"):
+		return GameState.loot_count(String(item["loot_id"]))
+	return 1
+
+
+# 物品图标形状与颜色（物品类别 → ResIcon kind）
+func _inv_icon(item: Dictionary) -> Array:
+	if bool(item.get("weapon", false)):
+		return ["gun", item["color"]]
+	var id := String(item.get("id", ""))
+	if id == "cash":
+		return ["coin", Color(0.95, 0.85, 0.3)]
+	if id == "food":
+		return ["circle", Color(0.4, 0.9, 0.5)]
+	if id == "meds":
+		return ["cross", Color(0.95, 0.4, 0.4)]
+	if id.begins_with("ammo_"):
+		return ["bullet", Color(0.9, 0.85, 0.4)]
+	if item.has("loot_id"):
+		var cat := String(
+			GameState.LOOT_ITEMS.get(String(item["loot_id"]), {}).get("cat", "")
+		)
+		match cat:
+			"food", "drink":
+				return ["circle", Color(0.4, 0.9, 0.5)]
+			"meds", "medical":
+				return ["cross", Color(0.95, 0.4, 0.4)]
+			"ammo":
+				return ["bullet", Color(0.9, 0.85, 0.4)]
+			"valuable":
+				return ["coin", Color(0.95, 0.85, 0.3)]
+			"armor":
+				return ["hex", Color(0.7, 0.78, 0.88)]
+			"attach":
+				return ["gear", Color(0.6, 0.75, 0.9)]
+			"crystal":
+				return ["diamond", Color(0.8, 0.5, 0.95)]
+			"fuel":
+				return ["drop", Color(0.95, 0.6, 0.3)]
+			"tool":
+				return ["square", Color(0.8, 0.7, 0.5)]
+	return ["square", item["color"]]
+
+
+# 魔兽式方形物品格：深色格底 + 边框 + 类别图标 + 右下角数量
 func _make_inv_chip(item: Dictionary) -> ItemChip:
 	var chip := ItemChip.new()
 	chip.hud = self
 	chip.item = item
-	chip.custom_minimum_size = Vector2(96, 26)
-	chip.tooltip_text = "双击入武器槽 · 右键改装" if bool(item.get("weapon", false)) else "点击使用"
+	chip.custom_minimum_size = Vector2(36, 36)
+	chip.tooltip_text = (
+		"%s\n双击入武器槽 · 右键改装" % String(item["label"])
+		if bool(item.get("weapon", false))
+		else "%s\n点击使用" % String(item["label"])
+	)
 	chip.mouse_filter = Control.MOUSE_FILTER_STOP
 	var chip_bg := ColorRect.new()
 	chip_bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	chip_bg.color = item["color"]
+	chip_bg.color = Color(0.07, 0.09, 0.08, 0.95)
 	chip_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	chip.add_child(chip_bg)
-	var chip_label := Label.new()
-	chip_label.set_anchors_preset(Control.PRESET_FULL_RECT)
-	chip_label.text = String(item["label"])
-	chip_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	chip_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	chip_label.add_theme_font_size_override("font_size", 10)
-	chip_label.add_theme_color_override("font_color", Color(0.06, 0.06, 0.06))
-	chip_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	chip.add_child(chip_label)
+	var border := ReferenceRect.new()
+	border.set_anchors_preset(Control.PRESET_FULL_RECT)
+	border.border_color = Color(0.28, 0.34, 0.28)
+	border.border_width = 1.0
+	border.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	chip.add_child(border)
+	var icon_def: Array = _inv_icon(item)
+	var glyph := ResIcon.new()
+	glyph.kind = String(icon_def[0])
+	glyph.tint = icon_def[1]
+	glyph.set_anchors_preset(Control.PRESET_CENTER)
+	glyph.custom_minimum_size = Vector2(22, 22)
+	glyph.size = Vector2(22, 22)
+	glyph.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	chip.add_child(glyph)
+	var qty := _inv_qty(item)
+	if qty > 1:
+		var qty_label := Label.new()
+		qty_label.text = str(qty)
+		qty_label.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+		qty_label.offset_left = -26
+		qty_label.offset_top = -15
+		qty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		qty_label.add_theme_font_size_override("font_size", 9)
+		qty_label.add_theme_color_override("font_color", Color(1.0, 0.95, 0.7))
+		qty_label.add_theme_constant_override("outline_size", 2)
+		qty_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+		qty_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		chip.add_child(qty_label)
 	return chip
+
+
+# 空槽（补齐整行的暗格，凑出魔兽式网格感）
+func _make_empty_cell() -> Control:
+	var cell := Control.new()
+	cell.custom_minimum_size = Vector2(36, 36)
+	cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var bg := ColorRect.new()
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.color = Color(0.06, 0.075, 0.065, 0.9)
+	cell.add_child(bg)
+	var border := ReferenceRect.new()
+	border.set_anchors_preset(Control.PRESET_FULL_RECT)
+	border.border_color = Color(0.24, 0.3, 0.24)
+	border.border_width = 1.0
+	cell.add_child(border)
+	return cell
+
+
+# 整包一个连续网格：物品按分区顺序排，末尾空槽补齐整行
+func _build_inv_grid(items: Array) -> Control:
+	var wrap := HFlowContainer.new()
+	wrap.add_theme_constant_override("h_separation", 3)
+	wrap.add_theme_constant_override("v_separation", 3)
+	wrap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	for item in items:
+		wrap.add_child(_make_inv_chip(item))
+	var cols := 8
+	var pad := 0
+	if items.size() % cols != 0:
+		pad = cols - items.size() % cols
+	for i in pad:
+		wrap.add_child(_make_empty_cell())
+	return wrap
 
 
 func _refresh_echo_list() -> void:
@@ -3608,6 +3721,12 @@ class ResIcon extends Control:
 					),
 					tint
 				)
+			"gun":
+				# 简易枪械：枪身横条 + 枪管 + 握把
+				var gw := size.x * 0.72
+				draw_rect(Rect2(c.x - gw * 0.5, c.y - size.y * 0.16, gw, size.y * 0.2), tint)
+				draw_rect(Rect2(c.x - gw * 0.5, c.y - size.y * 0.3, gw * 0.32, size.y * 0.14), tint)
+				draw_rect(Rect2(c.x + gw * 0.1, c.y, gw * 0.16, size.y * 0.3), tint)
 
 
 # 中毒状态图标：紫色水滴 + 外圈逆时针倒计时（progress 归零中毒结束）

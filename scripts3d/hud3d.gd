@@ -2554,12 +2554,32 @@ func _inv_icon(item: Dictionary) -> Array:
 	return ["square", item["color"]]
 
 
-# 魔兽式方形物品格：深色格底 + 边框 + 类别图标 + 右下角数量
+# 物品纯名称（不带数量）
+func _inv_name(item: Dictionary) -> String:
+	if item.has("loot_id"):
+		return GameState.loot_name(String(item["loot_id"]))
+	var id := String(item.get("id", ""))
+	if id == "cash":
+		return "现金"
+	if id == "food":
+		return "食物"
+	if id == "meds":
+		return "医疗包"
+	if id.begins_with("ammo_"):
+		return GameState.caliber_name(id.trim_prefix("ammo_"))
+	if bool(item.get("weapon", false)):
+		return String(GameState.WEAPONS.get(id, {}).get("name", id))
+	return String(item.get("label", id))
+
+
+# 魔兽式方形物品格：深色格底 + 边框 + 类别图标 + 格内名称文字（限 2 行裁切）+ 右上数量
 func _make_inv_chip(item: Dictionary) -> ItemChip:
 	var chip := ItemChip.new()
 	chip.hud = self
 	chip.item = item
-	chip.custom_minimum_size = Vector2(36, 36)
+	chip.custom_minimum_size = Vector2(38, 50)
+	# 裁剪一切子内容，保证图标/文字/数量不越出格子边界
+	chip.clip_contents = true
 	chip.tooltip_text = (
 		"%s\n双击入武器槽 · 右键改装" % String(item["label"])
 		if bool(item.get("weapon", false))
@@ -2577,36 +2597,58 @@ func _make_inv_chip(item: Dictionary) -> ItemChip:
 	border.border_width = 1.0
 	border.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	chip.add_child(border)
-	var icon_def: Array = _inv_icon(item)
-	var glyph := ResIcon.new()
-	glyph.kind = String(icon_def[0])
-	glyph.tint = icon_def[1]
-	glyph.set_anchors_preset(Control.PRESET_CENTER)
-	glyph.custom_minimum_size = Vector2(22, 22)
-	glyph.size = Vector2(22, 22)
-	glyph.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	chip.add_child(glyph)
 	var qty := _inv_qty(item)
 	if qty > 1:
+		var qty_bg := ColorRect.new()
+		qty_bg.position = Vector2(22, 1)
+		qty_bg.size = Vector2(14, 9)
+		qty_bg.color = Color(0.0, 0.0, 0.0, 0.55)
+		qty_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		chip.add_child(qty_bg)
 		var qty_label := Label.new()
 		qty_label.text = str(qty)
-		qty_label.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-		qty_label.offset_left = -26
-		qty_label.offset_top = -15
+		qty_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		qty_label.offset_left = -20
+		qty_label.offset_top = 1
 		qty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		qty_label.add_theme_font_size_override("font_size", 9)
+		qty_label.add_theme_font_size_override("font_size", 7)
 		qty_label.add_theme_color_override("font_color", Color(1.0, 0.95, 0.7))
 		qty_label.add_theme_constant_override("outline_size", 2)
 		qty_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
 		qty_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		chip.add_child(qty_label)
+	var icon_def: Array = _inv_icon(item)
+	var glyph := ResIcon.new()
+	glyph.kind = String(icon_def[0])
+	glyph.tint = icon_def[1]
+	glyph.position = Vector2(8, 4)
+	glyph.size = Vector2(22, 22)
+	glyph.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	chip.add_child(glyph)
+	var name_label := Label.new()
+	# 按每行 2 字手动断行：小字号下 Label 居中度量异常会右偏，2 字行已验证居中正常
+	var raw_name := _inv_name(item)
+	var name_lines: Array = []
+	for i in range(0, raw_name.length(), 2):
+		name_lines.append(raw_name.substr(i, 2))
+	name_label.text = "\n".join(name_lines)
+	name_label.position = Vector2(1, 28)
+	name_label.size = Vector2(36, 20)
+	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+	name_label.add_theme_font_size_override("font_size", 6)
+	name_label.add_theme_color_override("font_color", Color(0.88, 0.92, 0.88))
+	name_label.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
+	name_label.clip_contents = true
+	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	chip.add_child(name_label)
 	return chip
 
 
 # 空槽（补齐整行的暗格，凑出魔兽式网格感）
 func _make_empty_cell() -> Control:
 	var cell := Control.new()
-	cell.custom_minimum_size = Vector2(36, 36)
+	cell.custom_minimum_size = Vector2(38, 50)
 	cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var bg := ColorRect.new()
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)

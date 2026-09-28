@@ -2129,18 +2129,15 @@ class Fabricator extends DefenseBase:
 	func _process(delta: float) -> void:
 		if GameState.is_run_over():
 			return
+		# 齿轮默认隐藏：只有真正在制造（有任务 + 有人 + 有电）时才显示并转动
+		if _gear != null:
+			_gear.visible = false
 		if _job == "":
 			_show_progress(0.0)
-			if _gear != null:
-				_gear.visible = false
 			# 队列续做：材料够即自动开工；不齐则等待，料/电恢复后继续
 			if _queue_inf or _queue_left > 0:
 				_try_start_next()
 			return
-		if _gear != null:
-			# 工作中：齿轮转动
-			_gear.visible = true
-			_gear.rotation.y += delta * 2.2
 		var ops := GameState.defense_operator_count(global_position)
 		if ops <= 0 and not _operator_nearby():
 			return
@@ -2152,6 +2149,10 @@ class Fabricator extends DefenseBase:
 				_no_power_notify = Time.get_ticks_msec() + 5000
 				GameState.notify("制造台缺电，制造暂停（需要电力驱动）")
 			return
+		# 正在制造：齿轮显示并转动
+		if _gear != null:
+			_gear.visible = true
+			_gear.rotation.y += delta * 2.2
 		_job_left -= delta * (1.0 + 0.25 * ops)
 		_show_progress(clampf(1.0 - _job_left / _job_total, 0.0, 1.0))
 		if _job_left <= 0.0:

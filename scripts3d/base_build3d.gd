@@ -1992,12 +1992,18 @@ class Fabricator extends DefenseBase:
 	}
 
 	var _job := ""
+	var _job_recipe := ""
 	var _job_left := 0.0
 	var _job_total := 1.0
 	var _no_power_notify := 0
 	var _progress_bg: MeshInstance3D = null
 	var _progress_fill: MeshInstance3D = null
 	var _gear: Node3D = null
+	# 制作数量（菜单滑条设置）：999 = 持续制作直到材料/电力断
+	var qty_sel := 1
+	var _queue_left := 0
+	var _queue_inf := false
+	var _wait_notify := 0
 
 
 	func _recipes() -> Dictionary:
@@ -2127,6 +2133,9 @@ class Fabricator extends DefenseBase:
 			_show_progress(0.0)
 			if _gear != null:
 				_gear.visible = false
+			# 队列续做：材料够即自动开工；不齐则等待，料/电恢复后继续
+			if _queue_inf or _queue_left > 0:
+				_try_start_next()
 			return
 		if _gear != null:
 			# 工作中：齿轮转动
@@ -2209,11 +2218,16 @@ class Fabricator extends DefenseBase:
 	func fabricator_choose(id: String) -> void:
 		if id.begins_with("fab_make:"):
 			var recipe_id := id.trim_prefix("fab_make:")
+			var r: Dictionary = _recipes()[recipe_id]
+			_job_recipe = recipe_id
+			# 队列：qty_sel=999 视为持续制作直到材料/电力断；其余做 qty_sel 个
+			_queue_inf = qty_sel >= 999
+			_queue_left = qty_sel
 			var check := recipe_check(recipe_id)
 			if not check[0]:
-				GameState.notify(String(check[1]))
+				# 材料/电力不齐：排队等待，恢复后自动续做
+				GameState.notify("排队等待材料/电力：%s" % String(check[1]))
 				return
-			var r: Dictionary = _recipes()[recipe_id]
 			if int(r.get("craft", 0)) > 0 and not GameState.test_mode:
 				GameState.remove_loot("craft_mat", int(r["craft"]))
 			_job = recipe_id
@@ -2237,6 +2251,29 @@ class Fabricator extends DefenseBase:
 		GameState.notify("制造完成：%s" % String(r["name"]))
 		_job = ""
 		_show_progress(0.0)
+		# 队列递减；持续模式（999）不清
+		if _queue_left > 0:
+			_queue_left -= 1
+
+
+	# 队列续做：材料够即开工，不够则等待（料/电恢复后自动继续）
+	func _try_start_next() -> void:
+		if _job_recipe == "" or not _recipes().has(_job_recipe):
+			_queue_left = 0
+			_queue_inf = false
+			return
+		var check := recipe_check(_job_recipe)
+		if not check[0]:
+			if Time.get_ticks_msec() > _wait_notify:
+				_wait_notify = Time.get_ticks_msec() + 5000
+				GameState.notify("等待材料/电力继续制作：%s" % String(check[1]))
+			return
+		var r: Dictionary = _recipes()[_job_recipe]
+		if int(r.get("craft", 0)) > 0 and not GameState.test_mode:
+			GameState.remove_loot("craft_mat", int(r["craft"]))
+		_job = _job_recipe
+		_job_total = float(r["time"])
+		_job_left = _job_total
 
 
 	func _show_progress(ratio: float) -> void:

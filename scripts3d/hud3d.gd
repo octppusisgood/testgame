@@ -120,6 +120,10 @@ var _echo_list: Label
 var _menu_panel: PanelContainer
 var _menu_title: Label
 var _menu_box: VBoxContainer
+# 制作台数量滑条（仅制作台交互菜单显示）
+var _qty_row: HBoxContainer = null
+var _qty_slider: HSlider = null
+var _qty_label: Label = null
 var _menu_target: Node = null
 var _menu_options: Array = []
 var _menu_index := 0
@@ -1301,6 +1305,15 @@ func _update_interact_menu() -> void:
 	_refresh_interact_menu()
 
 
+# 制作数量滑条回调：写入目标台子的 qty_sel（999 = 持续制作）
+func _on_qty_changed(value: float) -> void:
+	var qty := int(value)
+	if _menu_target != null and _menu_target.has_method("fabricator_choose"):
+		_menu_target.set("qty_sel", qty)
+	if _qty_label != null:
+		_qty_label.text = "持续" if qty >= 999 else "×%d" % qty
+
+
 func _refresh_interact_menu() -> void:
 	if _menu_panel == null or _menu_target == null:
 		return
@@ -1312,6 +1325,15 @@ func _refresh_interact_menu() -> void:
 	_menu_render_key = key
 	_last_menu_index = _menu_index
 	_menu_title.text = _interact_title(_menu_target)
+	# 制作数量滑条：仅制作台显示；打开时读台子的上次选择
+	var is_fab := _menu_target.has_method("fabricator_choose")
+	if _qty_row != null:
+		_qty_row.visible = is_fab
+		if is_fab and _qty_slider != null:
+			var qty := int(_menu_target.get("qty_sel"))
+			if _qty_slider.value != float(qty):
+				_qty_slider.set_value_no_signal(float(qty))
+				_qty_label.text = "持续" if qty >= 999 else "×%d" % qty
 	for child in _menu_box.get_children():
 		_menu_box.remove_child(child)
 		child.queue_free()
@@ -1393,6 +1415,32 @@ func _build_interact_menu() -> void:
 	_menu_title.add_theme_color_override("font_color", Color(0.95, 0.9, 0.7))
 	_menu_title.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.add_child(_menu_title)
+	# 制造数量滑条（仅制作台显示）：拖到 999 = 持续制作
+	_qty_row = HBoxContainer.new()
+	_qty_row.visible = false
+	_qty_row.add_theme_constant_override("separation", 4)
+	box.add_child(_qty_row)
+	var qty_name := Label.new()
+	qty_name.text = "制作数量"
+	qty_name.add_theme_font_size_override("font_size", 11)
+	qty_name.add_theme_color_override("font_color", Color(0.85, 0.88, 0.85))
+	_qty_row.add_child(qty_name)
+	_qty_slider = HSlider.new()
+	_qty_slider.min_value = 1.0
+	_qty_slider.max_value = 999.0
+	_qty_slider.step = 1.0
+	_qty_slider.value = 1.0
+	_qty_slider.custom_minimum_size = Vector2(120, 0)
+	_qty_slider.mouse_filter = Control.MOUSE_FILTER_STOP
+	_qty_slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_qty_row.add_child(_qty_slider)
+	_qty_label = Label.new()
+	_qty_label.text = "×1"
+	_qty_label.custom_minimum_size = Vector2(34, 0)
+	_qty_label.add_theme_font_size_override("font_size", 11)
+	_qty_label.add_theme_color_override("font_color", Color(1.0, 0.9, 0.5))
+	_qty_row.add_child(_qty_label)
+	_qty_slider.value_changed.connect(_on_qty_changed)
 	_menu_box = VBoxContainer.new()
 	_menu_box.add_theme_constant_override("separation", 2)
 	_menu_box.mouse_filter = Control.MOUSE_FILTER_IGNORE

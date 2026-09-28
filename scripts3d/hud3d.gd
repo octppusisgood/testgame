@@ -51,7 +51,6 @@ var _backpack_panel: Control
 var _backpack_dim: ColorRect
 var _inv_list: VBoxContainer
 var _backpack_scroll: ScrollContainer
-var _inv_echo_title: Label
 var _inv_slots := {}
 var _res_labels := {}
 var _res_row: HBoxContainer
@@ -116,7 +115,6 @@ var _slowmo_overlay: ColorRect
 var _stopwatch: Control
 # 中毒状态：人物身旁的紫色水滴倒计时图标
 var _poison_icon: Control
-var _echo_list: Label
 var _menu_panel: PanelContainer
 var _menu_title: Label
 var _menu_box: VBoxContainer
@@ -785,12 +783,6 @@ func _fit_backpack_panel() -> void:
 	_backpack_panel.offset_bottom = h * 0.5
 	var list_h := maxf(90.0, h - 144.0)
 	_backpack_scroll.size = Vector2(INV_LIST_W, list_h)
-	var echo_y := INV_GRID_Y + list_h
-	if _inv_echo_title != null:
-		_inv_echo_title.position = Vector2(INV_PAD_X, echo_y + 6)
-	if _echo_list != null:
-		_echo_list.position = Vector2(INV_PAD_X, echo_y + 24)
-		_echo_list.size = Vector2(INV_LIST_W, maxf(24.0, h - echo_y - 32.0))
 	if _res_row != null:
 		_res_row.position = Vector2(INV_PAD_X, h - 30)
 
@@ -2192,19 +2184,6 @@ func _build_backpack_panel() -> void:
 		eq_box.add_child(slot)
 		_inv_slots[slot_data["id"]] = slot
 
-	_inv_echo_title = Label.new()
-	_inv_echo_title.text = "回响（本局）"
-	_inv_echo_title.position = Vector2(INV_PAD_X, INV_GRID_Y + INV_LIST_H + 8)
-	_inv_echo_title.add_theme_font_size_override("font_size", 12)
-	_inv_echo_title.add_theme_color_override("font_color", Color(0.85, 0.75, 1.0))
-	_backpack_panel.add_child(_inv_echo_title)
-	_echo_list = Label.new()
-	_echo_list.position = Vector2(INV_PAD_X, INV_GRID_Y + INV_LIST_H + 26)
-	_echo_list.size = Vector2(INV_LIST_W, 44)
-	_echo_list.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_echo_list.add_theme_font_size_override("font_size", 10)
-	_echo_list.add_theme_color_override("font_color", Color(0.75, 0.68, 0.9))
-	_backpack_panel.add_child(_echo_list)
 	# 改装入口按钮：从背包进入武器改装面板
 	var gunmod_btn := Button.new()
 	gunmod_btn.text = "改装当前武器"
@@ -2488,7 +2467,7 @@ func _refresh_backpack() -> void:
 	_set_res_label("fuel", "%d/%d" % [
 		int(GameState.resources.get("fuel", 0)), int(GameState.CAPS.get("fuel", 60)),
 	])
-	_refresh_echo_list()
+	# 回响区已删（批次 164）
 
 
 # 单个背包分区：标题 + 分隔线 + 物品 chip 横向 wrap 排布
@@ -2656,24 +2635,6 @@ func _build_inv_grid(items: Array) -> Control:
 	for i in pad:
 		wrap.add_child(_make_empty_cell())
 	return wrap
-
-
-func _refresh_echo_list() -> void:
-	if _echo_list == null:
-		return
-	var names: Array = []
-	var tips: Array = []
-	for id in GameState.run_echoes:
-		var info := GameState.echo_info(String(id))
-		names.append(String(info.get("name", id)))
-		tips.append("%s（%s）：%s" % [
-			String(info.get("name", id)),
-			String(info.get("school", "")),
-			String(info.get("desc", "")),
-		])
-	_echo_list.text = "（尚未铭刻回响）" if names.is_empty() else "、".join(names)
-	_echo_list.tooltip_text = "\n".join(tips)
-
 
 func _set_slot_text(slot_id: String, text: String) -> void:
 	var slot = _inv_slots.get(slot_id)

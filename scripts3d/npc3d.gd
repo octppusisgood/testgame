@@ -882,10 +882,11 @@ func _wander_or_flee(delta: float) -> void:
 		velocity.x = 0.0
 		velocity.z = 0.0
 		return
-	# 躲在建筑内部：室内漫步，滞留计时到点出来探头
+	# 藏在建筑里：模型已隐藏，静止等待，滞留计时到点出来探头
 	if not sheltered.is_empty():
+		velocity.x = 0.0
+		velocity.z = 0.0
 		_shelter_timer -= delta
-		_idle_wander(delta)
 		if _shelter_timer <= 0.0:
 			_leave_shelter()
 		return
@@ -1279,6 +1280,11 @@ func _die(from: Node3D) -> void:
 	if _dying:
 		return
 	_dying = true
+	# 藏匿中死亡（极端情况）：先释放建筑计数并恢复组员身份
+	if not sheltered.is_empty():
+		var interiors_root := get_tree().get_first_node_in_group("building_interiors")
+		if interiors_root != null:
+			interiors_root.npc_leave(self)
 	Network.unregister_entity(self)
 	if bank_guard and not GameState.vault_key:
 		GameState.take_vault_key()

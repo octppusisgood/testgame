@@ -706,7 +706,8 @@ func _find_target() -> Node3D:
 		detect = GUARD_LEASH + GUARD_ROAM_RADIUS
 	var best_dist := detect
 	var player = get_tree().get_first_node_in_group("player")
-	if player != null and not GameState.is_bad_zombie():
+	# 玩家藏匿在建筑里时不可被发现（藏匿市民已移出 npcs 组，哈希天然查不到）
+	if player != null and not GameState.is_bad_zombie() and GameState.player_in_building.is_empty():
 		var player_dist := global_position.distance_to(player.global_position)
 		if player_dist < best_dist:
 			best_dist = player_dist

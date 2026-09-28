@@ -2168,6 +2168,7 @@ func attack_blocked_by_ui() -> bool:
 		or base_build_mode
 		or mortar_command != null
 		or strike_dial_open
+		or not player_in_building.is_empty()
 	)
 
 
@@ -4957,6 +4958,9 @@ func _update_mutations_regen(delta: float) -> void:
 
 func damage_player(amount: int) -> void:
 	if test_mode and not training_ground:
+		return
+	# 藏在建筑里：不可被发现与攻击
+	if not player_in_building.is_empty():
 		return
 	_last_damage_msec = Time.get_ticks_msec()
 	var reduction := mut_value("tough_skin") / 100.0

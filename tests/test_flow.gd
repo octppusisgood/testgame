@@ -956,20 +956,6 @@ func _test_material_transport() -> void:
 	pump.queue_free()
 	fake_player.queue_free()
 
-	# —— 用电设备：无电力概念，信号塔覆盖内才能启动，离开覆盖自动关闭 ——
-	var old_cov := GameState.in_coverage
-	GameState.jammer_on = false
-	GameState.in_coverage = false
-	GameState.use_jammer()
-	_check(not GameState.jammer_on, "无信号覆盖时屏蔽器无法启动")
-	GameState.in_coverage = true
-	GameState.use_jammer()
-	_check(GameState.jammer_on, "信号覆盖内屏蔽器可启动")
-	GameState.in_coverage = false
-	GameState._process(0.1)
-	_check(not GameState.jammer_on, "离开覆盖屏蔽器自动关闭")
-	GameState.in_coverage = old_cov
-
 	# —— 异能量：击杀积累 / 应急治疗 / 结算折算 ——
 	var old_anomaly := GameState.anomaly
 	GameState.anomaly = 0

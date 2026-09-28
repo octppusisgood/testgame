@@ -24,12 +24,16 @@ const BUILDING_SIZES := {
 	"prison": Vector2(18.0, 12.0),
 }
 
-# 旧版医疗物品 → 现存医疗物品（读取旧自定义地图时迁移）
+# 旧版已下架物品 → 现存物品（读取旧自定义地图时迁移）
 const LEGACY_LOOT_MAP := {
 	"pills": "bandage",
 	"medkit": "heal_potion",
 	"painkiller": "heal_potion",
 	"serum": "heal_potion",
+	"jammer": "money_bag",
+	"mask": "money_bag",
+	"sat_phone": "money_bag",
+	"charger": "money_bag",
 }
 
 const ITEM_CHOICES := [

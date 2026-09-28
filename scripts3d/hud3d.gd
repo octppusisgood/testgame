@@ -341,7 +341,7 @@ func _ready() -> void:
 	_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_hint.add_theme_font_size_override("font_size", 9)
 	_hint.add_theme_color_override("font_color", Color(0.8, 0.8, 0.8, 0.75))
-	_hint.text = "WASD 移动 · 双击方向 疾跑 · Shift 冲刺 · 空格 跳跃 · 左键 攻击 · 右键 开镜 · 1~2 武器槽 · R 换弹 · V 近战 · G 手雷 · B 背包 · C 能力\nE 交互 · Q 炮击指挥 · M 地图 · H 医疗 · U 车斗卸货 · J 随从 · T 手电 · N 摘面具 · Esc 鼠标"
+	_hint.text = "WASD 移动 · 双击方向 疾跑 · Shift 冲刺 · 空格 跳跃 · 左键 攻击 · 右键 开镜 · 1~2 武器槽 · R 换弹 · V 近战 · G 手雷 · B 背包 · C 能力\nE 交互 · Q 炮击指挥 · M 地图 · H 医疗 · U 车斗卸货 · J 随从 · T 手电 · Esc 鼠标"
 	_hint.visible = false
 	add_child(_hint)
 
@@ -700,12 +700,6 @@ func _refresh_res_strip() -> void:
 func _refresh_signal() -> void:
 	var percent := int(round(GameState.reception_strength() * 100.0))
 	var status := ""
-	if GameState.is_jammer_active():
-		status += " · 干扰开启中"
-	if GameState.is_mask_active():
-		status += " · 面具 %ds" % int(ceil(GameState.mask_seconds_left()))
-	if GameState.is_sat_phone_active():
-		status += " · 卫星通话中"
 	if GameState.base_signal_strength() > 0.0:
 		status += " · 据点信号覆盖中"
 	_signal_value.text = "信号强度 %d%%%s" % [percent, status]

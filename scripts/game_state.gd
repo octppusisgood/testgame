@@ -327,10 +327,6 @@ const LOOT_ITEMS := {
 	"scope_2x": {"name": "二倍镜", "cat": "attach", "model": APO_MOD + "SM_Wep_Mod_Attach_Scope_01.tscn", "value": 260, "view": 35.0},
 	"scope_4x": {"name": "四倍镜", "cat": "attach", "model": APO_MOD + "SM_Wep_Mod_Attach_Scope_03.tscn", "value": 420, "view": 50.0},
 	"scope_8x": {"name": "八倍镜", "cat": "attach", "model": APO_MOD + "SM_Wep_Mod_Attach_Scope_06.tscn", "value": 680, "view": 70.0},
-	"jammer": {"name": "信号屏蔽器", "cat": "tool", "model": APO_ITEM + "SM_Item_WalkieTalkie_01.tscn", "value": 360},
-	"mask": {"name": "面具", "cat": "tool", "model": APO_ITEM + "SM_Item_Duffle_Bag_01.tscn", "value": 200},
-	"sat_phone": {"name": "卫星电话", "cat": "tool", "model": APO_ITEM + "SM_Item_SmartPhone_01.tscn", "value": 520},
-	"charger": {"name": "充电器", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_01.tscn", "value": 180},
 	"power_bank": {"name": "充电宝", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_02.tscn", "value": 90},
 	"hazmat": {"name": "防化服", "cat": "tool", "model": APO_ITEM + "SM_Item_Shop_Goods_01.tscn", "value": 300},
 	"anomaly_crystal": {"name": "异能结晶", "cat": "tool", "model": APO_ITEM + "SM_Item_Jar_01.tscn", "value": 150},
@@ -355,9 +351,9 @@ const LOOT_ITEMS := {
 const LOOT_TABLES := {
 	"house": ["bread", "can", "water", "soda", "apple", "banana", "cookie", "bandage", "plank", "hammer", "money_bag", "craft_mat", "craft_mat"],
 	"market": ["can", "bread", "cheese", "meat", "water", "soda_big", "coffee", "cookie", "chocolate", "money_bag", "craft_mat", "craft_mat"],
-	"gun": ["pistol_loot", "smg_loot", "shotgun_loot", "rifle_loot", "sniper_loot", "lmg_loot", "grenade_loot", "rpg_loot", "suppressor", "scope_rds", "scope_2x", "scope_4x", "scope_8x", "hammer", "axe", "vest", "money_bag", "jammer", "mask", "charger", "craft_mat", "craft_mat", "craft_mat"],
+	"gun": ["pistol_loot", "smg_loot", "shotgun_loot", "rifle_loot", "sniper_loot", "lmg_loot", "grenade_loot", "rpg_loot", "suppressor", "scope_rds", "scope_2x", "scope_4x", "scope_8x", "hammer", "axe", "vest", "money_bag", "craft_mat", "craft_mat", "craft_mat"],
 	"medical": ["bandage", "bandage", "heal_potion", "water", "money_bag", "hazmat", "craft_mat", "craft_mat"],
-	"office": ["coffee", "soda", "cookie", "money_bag", "gold_box", "plank", "vest", "sat_phone", "mask", "charger", "power_bank", "flashlight", "craft_mat", "craft_mat"],
+	"office": ["coffee", "soda", "cookie", "money_bag", "gold_box", "plank", "vest", "power_bank", "flashlight", "craft_mat", "craft_mat"],
 	"warehouse": ["plank", "wood", "stone", "bucket", "hammer", "shovel", "pickaxe", "axe", "vest", "flashlight", "power_bank", "craft_mat", "craft_mat", "craft_mat"],
 	"valuable": ["gold_box", "money_bag", "gold_box", "heal_potion", "vest", "craft_mat"],
 }
@@ -379,16 +375,10 @@ const SHOP := {
 	"scope_2x": {"name": "二倍镜 ×1", "cost": 260},
 	"scope_4x": {"name": "四倍镜 ×1", "cost": 420},
 	"scope_8x": {"name": "八倍镜 ×1", "cost": 680},
-	"jammer": {"name": "信号屏蔽器 ×1", "cost": 360},
-	"mask": {"name": "面具 ×1", "cost": 200},
-	"sat_phone": {"name": "卫星电话 ×1", "cost": 520},
-	"charger": {"name": "充电器 ×1", "cost": 180},
 	"clothes": {"name": "换洗衣物 ×1", "cost": 260},
 	"revival_stone": {"name": "复活石", "cost": REVIVE_STONE_COST},
 }
 
-const MASK_SECONDS := 60.0
-const DEVICE_MAX := {"jammer": 60.0, "sat_phone": 180.0}
 # 能源系统：玩家不再用电（设备由信号塔供能）；异能量（击杀丧尸积累，应急治疗/局末折算 SP）
 const ANOMALY_MAX := 100
 const ANOMALY_HEAL_COST := 15
@@ -881,11 +871,6 @@ var infinite_reserve := false
 var _crime_reports: Array = []
 var _gunshot_alerts: Array = []
 var _last_gunshot_notice := 0
-var _last_jammer_notice := 0
-var mask_until_msec := 0
-var jammer_on := false
-var sat_phone_on := false
-var device_charge := {"jammer": 60.0, "sat_phone": 180.0}
 # 异能量：击杀丧尸积累，可应急治疗（H），撤离/败北结算时 1:1 折算 SP
 var anomaly := 0
 # 发电机状态：燃烧累积秒数 / 断油提醒只发一次
@@ -1183,9 +1168,6 @@ func apply_test_loadout() -> void:
 	melee_item_damage = int(LOOT_ITEMS["axe"]["damage"])
 	for id in weapons.keys():
 		suppressors[id] = true
-	for tool_id in ["jammer", "mask", "sat_phone", "charger"]:
-		add_loot(tool_id, 3)
-	device_charge = {"jammer": DEVICE_MAX["jammer"], "sat_phone": DEVICE_MAX["sat_phone"]}
 	revival_stone = true
 	hp = max_hp()
 	skills_changed.emit()
@@ -1232,10 +1214,7 @@ func load_meta() -> void:
 	melee_item_damage = int(data.get("melee_damage", melee_item_damage))
 	suppressors = data.get("suppressors", suppressors)
 	scopes = data.get("scopes", scopes)
-	device_charge = data.get("device_charge", device_charge)
 	hazmat_durability = float(data.get("hazmat_durability", HAZMAT_MAX_DURABILITY))
-	jammer_on = false
-	sat_phone_on = false
 
 
 func save_meta() -> void:
@@ -1269,7 +1248,6 @@ func save_meta() -> void:
 		"melee_damage": melee_item_damage,
 		"suppressors": suppressors,
 		"scopes": scopes,
-		"device_charge": device_charge,
 		"hazmat_durability": hazmat_durability,
 	}))
 	file.close()
@@ -1365,7 +1343,7 @@ func buy_shop_item(id: String) -> bool:
 			if not spend_energy(cost):
 				return false
 			add_loot(id)
-		"jammer", "mask", "sat_phone", "clothes", "charger":
+		"clothes":
 			if not spend_energy(cost):
 				return false
 			add_loot(id)
@@ -1505,21 +1483,6 @@ func _process(delta: float) -> void:
 		_slowmo_cd_until = Time.get_ticks_msec() + SLOWMO_CD_MSEC
 		slowmo_changed.emit(false)
 	_update_reload()
-	# 用电设备离开信号塔覆盖范围自动关闭（玩家不再有电力，设备由信号塔供能）
-	if jammer_on and not in_coverage:
-		jammer_on = false
-		notify("离开信号塔覆盖范围，信号屏蔽器自动关闭")
-	if sat_phone_on and not in_coverage:
-		sat_phone_on = false
-		_recompute_signal()
-		notify("离开信号塔覆盖范围，卫星电话自动断线")
-	if mask_until_msec != 0 and Time.get_ticks_msec() >= mask_until_msec:
-		mask_until_msec = 0
-		wanted = 0
-		crime_points = 0
-		_crime_reports.clear()
-		set_wanted(0)
-		notify("面具到时间自动摘下，通缉消除")
 	_tick_generator(delta)
 	if not Network.is_server():
 		return
@@ -2453,18 +2416,8 @@ func use_loot(id: String) -> bool:
 			notify("获得枪械：%s" % loot_name(id))
 		"tool":
 			match id:
-				"jammer":
-					consume = false
-					use_jammer()
-				"mask":
-					use_mask()
-				"sat_phone":
-					consume = false
-					use_sat_phone()
 				"clothes":
 					use_clothes()
-				"charger":
-					use_charger()
 				"power_bank":
 					notify("玩家不再需要电力，充电宝没用了（可以拿去出售）")
 				"hazmat":
@@ -4102,10 +4055,6 @@ func reset_run(reload_scene := false) -> void:
 	_crime_reports.clear()
 	_gunshot_alerts.clear()
 	_last_gunshot_notice = 0
-	_last_jammer_notice = 0
-	mask_until_msec = 0
-	jammer_on = false
-	sat_phone_on = false
 	anomaly = 0
 	grid_repaired = false
 	zones_destroyed.clear()
@@ -5146,55 +5095,6 @@ func camera_watching(pos: Vector3) -> bool:
 	return false
 
 
-func use_mask() -> void:
-	mask_until_msec = Time.get_ticks_msec() + int(MASK_SECONDS * 1000.0)
-	notify(
-		"戴上面具：期间作案照样会被通缉，但摘下（N）或到时间自动摘后通缉全部消除，且不计被指认杀人"
-	)
-
-
-func remove_mask() -> void:
-	if not is_mask_active():
-		return
-	mask_until_msec = 0
-	wanted = 0
-	crime_points = 0
-	_crime_reports.clear()
-	set_wanted(0)
-	notify("摘下面具：通缉消除（面具替你顶下了所有罪）")
-
-
-func use_jammer() -> void:
-	if is_jammer_active():
-		jammer_on = false
-		notify("关闭信号屏蔽器")
-		return
-	if not in_coverage:
-		notify("不在信号塔覆盖范围内，信号屏蔽器无法工作")
-		return
-	jammer_on = true
-	notify("启动信号屏蔽器（由信号塔供能，离开覆盖范围会自动关闭）")
-
-
-func use_sat_phone() -> void:
-	if is_sat_phone_active():
-		sat_phone_on = false
-		_recompute_signal()
-		notify("收起卫星电话")
-		return
-	if not in_coverage:
-		notify("不在信号塔覆盖范围内，卫星电话无法工作")
-		return
-	sat_phone_on = true
-	_recompute_signal()
-	notify("卫星电话上线：信号拉满（由信号塔供能）")
-
-
-# 玩家已不需要电力：充电器/充电宝失去用途（保留可出售）
-func use_charger() -> void:
-	notify("玩家不再需要电力，充电器没用了（可以拿去出售）")
-
-
 # 击杀丧尸积累异能量：+1/只（尸神另算），满 15 解锁应急治疗提示
 # 完美闪避触发（丧尸前摇结算时被冲刺闪过 → 由 zombie3d 调用）；CD 从缓速退出后才起计
 func trigger_slowmo() -> void:
@@ -5600,30 +5500,8 @@ func use_clothes() -> void:
 	notify("换上干净衣服：换了张脸，身上的通缉全部作废")
 
 
-func is_mask_active() -> bool:
-	return Time.get_ticks_msec() < mask_until_msec
-
-
-func is_jammer_active() -> bool:
-	return jammer_on
-
-
-func is_sat_phone_active() -> bool:
-	return sat_phone_on
-
-
 func reception_strength() -> float:
-	return 1.0 if is_sat_phone_active() else signal_strength
-
-
-func mask_seconds_left() -> float:
-	return maxf(0.0, float(mask_until_msec - Time.get_ticks_msec()) / 1000.0)
-
-
-func _jammer_notice() -> void:
-	if Time.get_ticks_msec() - _last_jammer_notice > 6000:
-		_last_jammer_notice = Time.get_ticks_msec()
-		notify("信号屏蔽器压住了这次报警")
+	return signal_strength
 
 
 func report_crime(severity := 1, witness: Node = null, is_kill := false) -> void:

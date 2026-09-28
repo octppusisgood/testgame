@@ -798,8 +798,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				GameState.select_weapon(GameState.weapon_at_slot(1))
 			KEY_R:
 				GameState.start_reload()
-			KEY_N:
-				GameState.remove_mask()
 			KEY_T:
 				_toggle_flashlight()
 			KEY_V:

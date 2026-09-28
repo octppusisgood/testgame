@@ -9,8 +9,6 @@ extends Node3D
 const TICK := 0.5
 # 信号干扰区半径：能量场周边 25m 内信号强制 <10%（设计文档 5.5）
 const JAM_RADIUS := 25.0
-# 玩家场内感染判定概率（每 0.5s 一次）；穿防化服完全免疫
-const INFECT_CHANCE_PLAYER := 0.02
 const ZONE_HP := 240
 const SPAWN_INTERVAL := 10.0
 const SPAWN_VIEW_DIST := 100.0
@@ -225,12 +223,7 @@ func _tick_effects() -> void:
 				continue
 			npc.set_meta("anomaly_touched", true)
 			npc._infect(1.0)
-		if _player_inside and not GameState.has_hazmat() and randf() < INFECT_CHANCE_PLAYER:
-			GameState.try_infect_player()
 		_tick_spawner()
-	elif player != null and _player_inside and randf() < INFECT_CHANCE_PLAYER * 0.3:
-		# 灾变前能量场活性低，但站进去仍不是好主意
-		pass
 
 
 # 巢穴：持续刷丧尸，永不耗尽——只能打爆核心

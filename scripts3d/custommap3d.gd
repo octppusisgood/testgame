@@ -34,6 +34,9 @@ const LEGACY_LOOT_MAP := {
 	"mask": "money_bag",
 	"sat_phone": "money_bag",
 	"charger": "money_bag",
+	"clothes": "money_bag",
+	"power_bank": "money_bag",
+	"hazmat": "money_bag",
 }
 
 const ITEM_CHOICES := [

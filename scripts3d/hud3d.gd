@@ -78,7 +78,6 @@ var _mutation_panel: Control
 var _mutation_dim: ColorRect
 var _mutation_title: Label
 var _mutation_box: VBoxContainer
-var _infection_overlay: ColorRect
 var _nv_overlay: ColorRect
 var _news_box: Control
 var _news_label: Label
@@ -357,12 +356,6 @@ func _ready() -> void:
 	_build_pause_panel()
 	_build_echo_panel()
 	_build_rogue_ui()
-	_infection_overlay = ColorRect.new()
-	_infection_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_infection_overlay.color = Color(0.2, 0.9, 0.3, 0.0)
-	_infection_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_infection_overlay.z_index = 5
-	add_child(_infection_overlay)
 	# 夜视回响：夜晚+回响时的全屏绿色滤镜
 	_nv_overlay = ColorRect.new()
 	_nv_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -416,7 +409,6 @@ func _ready() -> void:
 	GameState.echo_offered.connect(_on_echo_offered)
 	GameState.rogue_levelup_offered.connect(_on_rogue_offered)
 	GameState.faction_changed.connect(_on_faction_changed)
-	GameState.infection_changed.connect(_on_infection_changed)
 	GameState.skill_points_changed.connect(_on_skill_points_changed)
 	GameState.pause_toggled.connect(_on_pause_toggled)
 	GameState.resources_changed.connect(_on_inventory_changed)
@@ -522,10 +514,6 @@ func _process(delta: float) -> void:
 		_cargo_label.text = "%s · 车斗建材 %d/%d" % [fuel_text, vehicle.cargo, vehicle.cargo_cap()]
 	else:
 		_cargo_label.visible = false
-	if GameState.infected:
-		_infection_overlay.color.a = 0.12 + 0.08 * sin(Time.get_ticks_msec() * 0.006)
-	else:
-		_infection_overlay.color.a = 0.0
 	_nv_overlay.visible = GameState.is_night() and GameState.has_echo("e_night_vision")
 	# 完美闪避：缓速变暗 + 玩家身旁逆时针秒表 + CD 倒计时
 	_slowmo_overlay.visible = GameState.slowmo_active
@@ -566,8 +554,6 @@ func _process(delta: float) -> void:
 	_dodge_icon.queue_redraw()
 	if GameState.reloading:
 		_extract.text = "换弹中 %d%%" % int(GameState.reload_progress() * 100.0)
-	elif GameState.infected:
-		_extract.text = "感染中 %d 秒 · 按 H 用医疗包治疗" % int(ceil(GameState.infection_timer))
 	elif GameState.jail_active:
 		_extract.text = "坐牢中 %d 秒…" % int(ceil(GameState.jail_timer))
 	else:
@@ -856,7 +842,7 @@ func _build_help_panel() -> void:
 		+ "异变雨降临后活过 7 天并撤离：白天搜刮，夜晚守家。\n"
 		+ "击杀丧尸攒异能量与物资；加油站给车加油；第 3 天全城断电后，\n"
 		+ "靠发电机（烧燃料）/太阳能/风力给据点设备供电，或修复发电厂。\n"
-		+ "紫色异能量场会不断刷怪——打爆核心掉结晶（收集要穿防化服）。\n"
+		+ "紫色异能量场会不断刷怪——打爆核心掉结晶（拾取可吸收异能量）。\n"
 		+ "走近市民按 E 招募随从，J 打开随从面板指派拾荒/巡逻/防守。"
 	)
 	intro.add_theme_font_size_override("font_size", 12)
@@ -946,11 +932,6 @@ func _on_skills_toggled(open: bool) -> void:
 func _on_skill_points_changed(_value: int) -> void:
 	if GameState.skills_open:
 		_refresh_skills()
-
-
-func _on_infection_changed(_infected: bool) -> void:
-	if not GameState.infected:
-		_infection_overlay.color.a = 0.0
 
 
 func _on_faction_changed(_faction: String, _alignment: String) -> void:

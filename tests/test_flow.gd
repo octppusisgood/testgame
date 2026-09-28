@@ -1124,17 +1124,15 @@ func _test_material_transport() -> void:
 	GameState.home_base["defenses"] = []
 	GameState.home_base["power"] = 0.0
 
-	# —— 能源标记 + 充电宝（玩家不再用电，充电宝仅可出售）——
+	# —— 能源标记（玩家不再用电）——
 	_check(GameState.energy_tag_text("generator") == "［燃料+电］", "发电机标记燃料+电")
 	_check(GameState.energy_tag_text("flashlight") == "", "手电筒不再标记电")
 	_check(GameState.energy_tag_text("bread") == "", "面包无能源标记")
-	GameState.add_loot("power_bank")
-	_check(GameState.use_loot("power_bank"), "充电宝可消耗（不再回电）")
 
-	# —— 异能结晶：道具化拾取，无防护触发泄漏，吸收 +5 ——
+	# —— 异能结晶：道具化拾取（已无结晶感染设定），吸收 +5 ——
 	GameState.anomaly = 0
 	for leftover in GameState.loot_items.duplicate():
-		if String(leftover["id"]) in ["anomaly_crystal", "hazmat"]:
+		if String(leftover["id"]) == "anomaly_crystal":
 			GameState.loot_items.erase(leftover)
 	var crystal = load("res://scenes3d/pickup3d.tscn").instantiate()
 	crystal.kind = "anomaly"
@@ -1150,16 +1148,10 @@ func _test_material_transport() -> void:
 		"异能结晶拾取进入背包"
 	)
 	_check(GameState.anomaly == 0, "未吸收的结晶不加异能量")
-	_check(not GameState.has_hazmat(), "初始没有防化服")
-	GameState.add_loot("hazmat")
-	_check(GameState.has_hazmat(), "防化服提供防护")
 	_check(GameState.use_loot("anomaly_crystal"), "吸收异能结晶")
 	_check(GameState.anomaly == 5, "吸收结晶异能量 +5（%d）" % GameState.anomaly)
-	GameState.remove_loot("hazmat")
 	looter2.remove_from_group("player")
 	looter2.queue_free()
-	GameState.infected = false
-	GameState.infection_timer = 0.0
 	GameState.add_anomaly(999)
 	_check(GameState.anomaly == GameState.ANOMALY_MAX, "异能量上限 100")
 	GameState.anomaly = old_anomaly
@@ -1184,8 +1176,6 @@ func _test_material_transport() -> void:
 	_check(bool(civ.get("_infected")), "异能量场感染场内市民")
 	civ.queue_free()
 	zone.queue_free()
-	GameState.infected = false
-	GameState.infection_timer = 0.0
 
 	# —— 结晶掉落：受异能影响必掉，越强大掉越多 ——
 	var zb = load("res://scenes3d/zombie3d.tscn").instantiate()

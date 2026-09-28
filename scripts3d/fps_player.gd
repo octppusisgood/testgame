@@ -810,10 +810,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				if hud != null and hud.has_method("quick_mortar_command"):
 					hud.quick_mortar_command()
 			KEY_H:
-				if GameState.infected:
-					GameState.cure_infection()
-				else:
-					GameState.use_medkit()
+				GameState.use_medkit()
 			KEY_M:
 				GameState.toggle_map()
 			KEY_B:

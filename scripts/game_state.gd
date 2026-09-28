@@ -40,7 +40,6 @@ signal mutation_offered()
 signal mutations_changed()
 signal jailed(active: bool)
 signal faction_changed(faction: String, alignment: String)
-signal infection_changed(infected: bool)
 signal disguise_changed()
 signal pause_toggled(open: bool)
 signal police_alerted(pos: Vector3)
@@ -327,11 +326,8 @@ const LOOT_ITEMS := {
 	"scope_2x": {"name": "二倍镜", "cat": "attach", "model": APO_MOD + "SM_Wep_Mod_Attach_Scope_01.tscn", "value": 260, "view": 35.0},
 	"scope_4x": {"name": "四倍镜", "cat": "attach", "model": APO_MOD + "SM_Wep_Mod_Attach_Scope_03.tscn", "value": 420, "view": 50.0},
 	"scope_8x": {"name": "八倍镜", "cat": "attach", "model": APO_MOD + "SM_Wep_Mod_Attach_Scope_06.tscn", "value": 680, "view": 70.0},
-	"power_bank": {"name": "充电宝", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_02.tscn", "value": 90},
-	"hazmat": {"name": "防化服", "cat": "tool", "model": APO_ITEM + "SM_Item_Shop_Goods_01.tscn", "value": 300},
 	"anomaly_crystal": {"name": "异能结晶", "cat": "tool", "model": APO_ITEM + "SM_Item_Jar_01.tscn", "value": 150},
 	"flashlight": {"name": "手电筒", "cat": "tool", "model": APO_PROP_S + "SM_Prop_Flashlight_01.tscn", "value": 140},
-	"clothes": {"name": "换洗衣物", "cat": "tool", "model": APO_ITEM + "SM_Item_Shop_Goods_02.tscn", "value": 260},
 	"vest": {"name": "防弹插板", "cat": "armor", "model": APO_MISC + "SM_Wep_Sign_Shield_01.tscn", "value": 180, "resist": 0.12},
 	"plank": {"name": "木板", "cat": "junk", "model": APO_MELEE + "SM_Wep_Plank_01.tscn", "value": 10},
 	"wood": {"name": "木料", "cat": "junk", "model": APO_ITEM + "SM_Item_Log_01.tscn", "value": 8},
@@ -352,9 +348,9 @@ const LOOT_TABLES := {
 	"house": ["bread", "can", "water", "soda", "apple", "banana", "cookie", "bandage", "plank", "hammer", "money_bag", "craft_mat", "craft_mat"],
 	"market": ["can", "bread", "cheese", "meat", "water", "soda_big", "coffee", "cookie", "chocolate", "money_bag", "craft_mat", "craft_mat"],
 	"gun": ["pistol_loot", "smg_loot", "shotgun_loot", "rifle_loot", "sniper_loot", "lmg_loot", "grenade_loot", "rpg_loot", "suppressor", "scope_rds", "scope_2x", "scope_4x", "scope_8x", "hammer", "axe", "vest", "money_bag", "craft_mat", "craft_mat", "craft_mat"],
-	"medical": ["bandage", "bandage", "heal_potion", "water", "money_bag", "hazmat", "craft_mat", "craft_mat"],
-	"office": ["coffee", "soda", "cookie", "money_bag", "gold_box", "plank", "vest", "power_bank", "flashlight", "craft_mat", "craft_mat"],
-	"warehouse": ["plank", "wood", "stone", "bucket", "hammer", "shovel", "pickaxe", "axe", "vest", "flashlight", "power_bank", "craft_mat", "craft_mat", "craft_mat"],
+	"medical": ["bandage", "bandage", "heal_potion", "water", "money_bag", "craft_mat", "craft_mat"],
+	"office": ["coffee", "soda", "cookie", "money_bag", "gold_box", "plank", "vest", "flashlight", "craft_mat", "craft_mat"],
+	"warehouse": ["plank", "wood", "stone", "bucket", "hammer", "shovel", "pickaxe", "axe", "vest", "flashlight", "craft_mat", "craft_mat", "craft_mat"],
 	"valuable": ["gold_box", "money_bag", "gold_box", "heal_potion", "vest", "craft_mat"],
 }
 const SHOP := {
@@ -375,7 +371,6 @@ const SHOP := {
 	"scope_2x": {"name": "二倍镜 ×1", "cost": 260},
 	"scope_4x": {"name": "四倍镜 ×1", "cost": 420},
 	"scope_8x": {"name": "八倍镜 ×1", "cost": 680},
-	"clothes": {"name": "换洗衣物 ×1", "cost": 260},
 	"revival_stone": {"name": "复活石", "cost": REVIVE_STONE_COST},
 }
 
@@ -827,8 +822,6 @@ var jail_timer := 0.0
 var jail_active := false
 var faction := FACTION_HUMAN
 var alignment := ALIGN_GOOD
-var infected := false
-var infection_timer := 0.0
 var zombie_redeem := 0
 var skill_points := 0
 var skills := {}
@@ -944,12 +937,6 @@ var reload_haste_until_msec := 0
 var _hot_left := 0.0
 var _hot_rate := 0.0
 var _hot_accum := 0.0
-# —— 感染累积：暴露值满 100 才感染（缓慢衰减）；防护服完全阻挡但耗耐久 ——
-var infection_exposure := 0.0
-var hazmat_durability := 100.0
-const INFECTION_EXPOSURE_MAX := 100.0
-const HAZMAT_MAX_DURABILITY := 100.0
-const EXPOSURE_DECAY := 1.5
 # —— 中毒（狼蛛毒液）：持续扣血 + 移速 -15% ——
 var poison_timer := 0.0
 var poison_total := 0.0
@@ -1214,7 +1201,6 @@ func load_meta() -> void:
 	melee_item_damage = int(data.get("melee_damage", melee_item_damage))
 	suppressors = data.get("suppressors", suppressors)
 	scopes = data.get("scopes", scopes)
-	hazmat_durability = float(data.get("hazmat_durability", HAZMAT_MAX_DURABILITY))
 
 
 func save_meta() -> void:
@@ -1248,7 +1234,6 @@ func save_meta() -> void:
 		"melee_damage": melee_item_damage,
 		"suppressors": suppressors,
 		"scopes": scopes,
-		"hazmat_durability": hazmat_durability,
 	}))
 	file.close()
 
@@ -1340,10 +1325,6 @@ func buy_shop_item(id: String) -> bool:
 				return false
 			add_loot("suppressor")
 		"scope_rds", "scope_2x", "scope_4x", "scope_8x":
-			if not spend_energy(cost):
-				return false
-			add_loot(id)
-		"clothes":
 			if not spend_energy(cost):
 				return false
 			add_loot(id)
@@ -2329,14 +2310,10 @@ func add_loot(id: String, qty := 1) -> void:
 	for entry in loot_items:
 		if String(entry["id"]) == id:
 			entry["qty"] = int(entry["qty"]) + qty
-			if id == "hazmat":
-				hazmat_durability = HAZMAT_MAX_DURABILITY
 			notify("获得 %s ×%d" % [loot_name(id), int(entry["qty"])])
 			resources_changed.emit()
 			return
 	loot_items.append({"id": id, "qty": qty})
-	if id == "hazmat":
-		hazmat_durability = HAZMAT_MAX_DURABILITY
 	notify("获得 %s" % loot_name(id))
 	resources_changed.emit()
 
@@ -2416,13 +2393,6 @@ func use_loot(id: String) -> bool:
 			notify("获得枪械：%s" % loot_name(id))
 		"tool":
 			match id:
-				"clothes":
-					use_clothes()
-				"power_bank":
-					notify("玩家不再需要电力，充电宝没用了（可以拿去出售）")
-				"hazmat":
-					consume = false
-					notify("防化服已穿戴：可以安全收集/保存异能结晶")
 				"anomaly_crystal":
 					add_anomaly(5)
 					notify("吸收异能结晶：异能量 +5（当前 %d/%d）" % [anomaly, ANOMALY_MAX])
@@ -4063,9 +4033,6 @@ func reset_run(reload_scene := false) -> void:
 	jail_timer = 0.0
 	faction = FACTION_HUMAN
 	alignment = ALIGN_GOOD
-	infected = false
-	infection_timer = 0.0
-	infection_exposure = 0.0
 	zombie_redeem = 0
 	stamina = max_stamina()
 	satiety = MAX_SATIETY
@@ -5323,25 +5290,6 @@ func base_has_containment() -> bool:
 	return false
 
 
-# 防护：穿着防化服才能安全接触异能结晶
-func has_hazmat() -> bool:
-	return loot_count("hazmat") > 0
-
-
-# 异能量泄漏爆发：无防护接触结晶的后果——周围市民感染尸变，玩家也有感染风险
-func anomaly_burst(pos: Vector3) -> void:
-	post_message("观测到局部异能量异常波动", Vector2(pos.x, pos.z) / WORLD_SCALE_3D, "anomaly", true)
-	notify("异能量泄漏！周围的人和物正在异常化……")
-	for npc in entities_in_group_in_radius(pos, "npcs", 10.0):
-		if npc.is_queued_for_deletion() or bool(npc.get("_dying")):
-			continue
-		if npc.has_method("_infect"):
-			npc.set_meta("anomaly_touched", true)
-			npc._infect(1.0)
-	if zombies_active() and randf() < 0.3:
-		try_infect_player()
-
-
 # 发电机运转中 = 有据点、有发电机、仓库有燃料
 func generator_running() -> bool:
 	if not base_has_generator():
@@ -5468,7 +5416,6 @@ func _tick_generator(delta: float) -> void:
 # —— 能源标记：物品/设施用什么能源一目了然（可叠加多种）——
 
 const ENERGY_TAGS := {
-	"hazmat": ["异"],
 	"anomaly_crystal": ["异"],
 	"turret": ["电"],
 	"lamp": ["电"],
@@ -5489,15 +5436,6 @@ func energy_tag_text(id: String) -> String:
 	if tags.is_empty():
 		return ""
 	return "［%s］" % "+".join(tags)
-
-
-func use_clothes() -> void:
-	wanted = 0
-	crime_points = 0
-	_crime_reports.clear()
-	set_wanted(0)
-	disguise_changed.emit()
-	notify("换上干净衣服：换了张脸，身上的通缉全部作废")
 
 
 func reception_strength() -> float:
@@ -5657,24 +5595,6 @@ func try_infect_player(chance := INFECTION_BITE_CHANCE) -> void:
 	if randf() >= chance:
 		return
 	damage_player(INFECTION_DAMAGE)
-
-
-# 感染机制已删除：不再有感染暴露值（保留签名避免调用点报错）
-func add_infection_exposure(_amount: float) -> void:
-	pass
-
-
-func _remove_hazmat_item() -> void:
-	for i in range(loot_items.size() - 1, -1, -1):
-		if String(loot_items[i].get("id", "")) == "hazmat":
-			loot_items.remove_at(i)
-			break
-	resources_changed.emit()
-
-
-# 感染机制已删除：无感染可治疗（保留签名避免调用点报错）
-func cure_infection() -> bool:
-	return false
 
 
 # 尸变机制已删除：玩家不再尸变成丧尸（保留签名避免调用点报错）

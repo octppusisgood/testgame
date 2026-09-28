@@ -94,11 +94,7 @@ func apply_effect() -> void:
 			])
 		"anomaly":
 			GameState.add_loot("anomaly_crystal", maxi(1, amount))
-			if GameState.has_hazmat():
-				GameState.notify("穿着防化服，安全收集了异能结晶（背包可吸收或存进储存仓）")
-			else:
-				GameState.notify("徒手收集异能结晶！")
-				GameState.anomaly_burst(global_position)
+			GameState.notify("收集了异能结晶（背包可吸收或存进储存仓）")
 		"relic":
 			GameState.collect_boss_relic(item_name)
 			GameState.notify("获得 Boss 专属材料：%s" % item_name)

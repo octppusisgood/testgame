@@ -34,6 +34,8 @@ var _target_prop: Node3D = null
 var _hold := 0.0
 # Z 触发后本轮自动进行（true 时不再要求准星保持对准）
 var _running := false
+# 建筑血量标记：pos_px -> Label3D（满血不显示，受损挂楼顶，坍塌隐藏）
+var _hp_labels := {}
 # 已拆塔楼记录在 GameState.demolished_towers（像素中心坐标，与 demolished_buildings 同构），
 # 这样小地图也能读到；节点本地不再各存一份，避免两份状态不同步。
 
@@ -357,6 +359,7 @@ func damage_structure_at(pos: Vector3, dmg: int) -> void:
 			continue
 		if GameState.damage_building_hp(s["pos"], dmg):
 			_collapse_structure(s, GameState.demolish_yield(s["size"], 1))
+		_refresh_hp_label(s)
 		return
 	for index in GameState.TOWERS.size():
 		if _tower_demolished(index):
@@ -368,6 +371,7 @@ func damage_structure_at(pos: Vector3, dmg: int) -> void:
 			continue
 		if GameState.damage_building_hp(s["pos"], dmg):
 			_collapse_structure(s, GameState.demolish_yield(s["size"], int(s["floors"])))
+		_refresh_hp_label(s)
 		return
 	for index in _model_list().size():
 		var s := _descriptor("model", index)
@@ -379,7 +383,47 @@ func damage_structure_at(pos: Vector3, dmg: int) -> void:
 			continue
 		if GameState.damage_building_hp(s["pos"], dmg):
 			_collapse_structure(s, GameState.demolish_yield(s["size"], 1))
+		_refresh_hp_label(s)
 		return
+
+
+# 建筑血量标记：满血不显示（避免全城满屏标签）；受损后楼顶挂 HP x/y，
+# 颜色随血量变化（<30% 红 / <70% 黄 / 其余浅绿）；坍塌/归零后隐藏
+func _refresh_hp_label(s: Dictionary) -> void:
+	if s.is_empty():
+		return
+	var pos_px: Vector2 = s["pos"]
+	var hp := GameState.building_hp_at(pos_px)
+	var collapsed: bool = (
+		hp <= 0
+		or GameState.demolished_buildings.has(pos_px)
+		or GameState.demolished_towers.has(pos_px)
+	)
+	var label: Label3D = _hp_labels.get(pos_px, null)
+	if hp >= GameState.BUILDING_HP or collapsed:
+		if label != null:
+			label.visible = false
+		return
+	if label == null:
+		label = Label3D.new()
+		label.font_size = 48
+		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		var size_px: Vector2 = s["size"]
+		var floors := int(s["floors"])
+		var height := 10.0 if GameState.demolish_is_big(size_px, floors) else 5.0
+		add_child(label)
+		label.global_position = Vector3(pos_px.x * SCALE, height, pos_px.y * SCALE)
+		_hp_labels[pos_px] = label
+	var ratio := float(hp) / float(GameState.BUILDING_HP)
+	if ratio < 0.3:
+		label.modulate = Color(1.0, 0.35, 0.3)
+	elif ratio < 0.7:
+		label.modulate = Color(1.0, 0.8, 0.3)
+	else:
+		label.modulate = Color(0.8, 0.95, 0.8)
+	label.text = "HP %d/%d" % [hp, GameState.BUILDING_HP]
+	label.visible = true
+
 
 
 # 每次拆卸：从建筑库存提取一次建材并在门口掉堆；库存取尽才触发最终坍塌
@@ -503,6 +547,10 @@ func _collapse_structure(s: Dictionary, drop_pile := 0) -> void:
 		if node != null and is_instance_valid(node) and not node.is_in_group("npcs"):
 			node.queue_free()
 	_leave_rubble(center, maxf(size_px.x, size_px.y) * SCALE / 2.0)
+	# 坍塌成废墟：隐藏血量标记
+	var hp_label: Label3D = _hp_labels.get(pos_px, null)
+	if hp_label != null:
+		hp_label.visible = false
 	var noun := _structure_noun(kind)
 	if drop_pile > 0:
 		_drop_material_pile(door_pos, drop_pile)

@@ -24,6 +24,14 @@ const BUILDING_SIZES := {
 	"prison": Vector2(18.0, 12.0),
 }
 
+# 旧版医疗物品 → 现存医疗物品（读取旧自定义地图时迁移）
+const LEGACY_LOOT_MAP := {
+	"pills": "bandage",
+	"medkit": "heal_potion",
+	"painkiller": "heal_potion",
+	"serum": "heal_potion",
+}
+
 const ITEM_CHOICES := [
 	{"id": "bread", "kind": "loot"},
 	{"id": "can", "kind": "loot"},
@@ -31,8 +39,7 @@ const ITEM_CHOICES := [
 	{"id": "water", "kind": "loot"},
 	{"id": "soda", "kind": "loot"},
 	{"id": "bandage", "kind": "loot"},
-	{"id": "pills", "kind": "loot"},
-	{"id": "medkit", "kind": "loot"},
+	{"id": "heal_potion", "kind": "loot"},
 	{"id": "axe", "kind": "loot"},
 	{"id": "pistol_loot", "kind": "loot"},
 	{"id": "shotgun_loot", "kind": "loot"},
@@ -413,6 +420,8 @@ func _build_items() -> void:
 			pickup.global_position = pos
 		else:
 			var loot_id := String(entry.get("id", "can"))
+			# 旧版医疗物品已下架，读旧地图时迁移为现存两种医疗物品
+			loot_id = String(LEGACY_LOOT_MAP.get(loot_id, loot_id))
 			if not GameState.LOOT_ITEMS.has(loot_id):
 				continue
 			var item = LOOT_ITEM_SCENE.instantiate()

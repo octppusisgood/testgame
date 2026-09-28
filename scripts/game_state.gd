@@ -308,12 +308,8 @@ const LOOT_ITEMS := {
 	"soda_big": {"name": "大瓶汽水", "cat": "drink", "model": APO_ITEM + "SM_Item_Drink_Bottle_01.tscn", "value": 12, "satiety": 35.0, "stamina": 25.0},
 	"coffee": {"name": "咖啡", "cat": "drink", "model": APO_ITEM + "SM_Item_BeerCup_01.tscn", "value": 14, "satiety": 10.0, "stamina": 45.0},
 	"water_big": {"name": "桶装水", "cat": "drink", "model": APO_PROP_S + "SM_Prop_Barrel_Water_01.tscn", "value": 18, "satiety": 50.0},
-	"bandage": {"name": "绷带", "cat": "med", "model": APO_PROP_S + "SM_Prop_MedicalBox_01.tscn", "value": 15, "heal": 20},
-	"pills": {"name": "止痛药", "cat": "med", "model": APO_ITEM + "SM_Item_Pills_01.tscn", "value": 20, "heal": 12, "regen": 24},
-	"heal_potion": {"name": "恢复药水", "cat": "med", "model": APO_ITEM + "SM_Item_Pills_01.tscn", "value": 60, "heal_pct": 15.0},
-	"painkiller": {"name": "止疼药", "cat": "med", "model": APO_ITEM + "SM_Item_Pills_01.tscn", "value": 45, "regen_pct": 5.0, "regen_ticks": 10, "regen_interval": 3.0},
-	"medkit": {"name": "急救包", "cat": "med", "model": APO_PROP_S + "SM_Prop_MedicalBox_01.tscn", "value": 40, "heal": 45},
-	"serum": {"name": "再生血清", "cat": "med", "model": APO_ITEM + "SM_Item_Bottle_02.tscn", "value": 60, "regen": 60},
+	"bandage": {"name": "绷带", "cat": "med", "model": APO_PROP_S + "SM_Prop_MedicalBox_01.tscn", "value": 15, "heal": 50},
+	"heal_potion": {"name": "恢复药水", "cat": "med", "model": APO_ITEM + "SM_Item_Pills_01.tscn", "value": 60, "hot_total": 100, "hot_duration": 10.0},
 	"axe": {"name": "消防斧", "cat": "melee", "model": APO_MELEE + "SM_Wep_FireAxe_01.tscn", "value": 130, "damage": 48},
 	"pickaxe": {"name": "镐", "cat": "melee", "model": APO_MELEE + "SM_Wep_PipeWrench_01.tscn", "value": 100, "damage": 42},
 	"shovel": {"name": "工兵铲", "cat": "melee", "model": APO_MELEE + "SM_Wep_Spade_01.tscn", "value": 80, "damage": 36},
@@ -360,10 +356,10 @@ const LOOT_TABLES := {
 	"house": ["bread", "can", "water", "soda", "apple", "banana", "cookie", "bandage", "plank", "hammer", "money_bag", "craft_mat", "craft_mat"],
 	"market": ["can", "bread", "cheese", "meat", "water", "soda_big", "coffee", "cookie", "chocolate", "money_bag", "craft_mat", "craft_mat"],
 	"gun": ["pistol_loot", "smg_loot", "shotgun_loot", "rifle_loot", "sniper_loot", "lmg_loot", "grenade_loot", "rpg_loot", "suppressor", "scope_rds", "scope_2x", "scope_4x", "scope_8x", "hammer", "axe", "vest", "money_bag", "jammer", "mask", "charger", "craft_mat", "craft_mat", "craft_mat"],
-	"medical": ["bandage", "pills", "medkit", "serum", "water", "money_bag", "hazmat", "craft_mat", "craft_mat"],
+	"medical": ["bandage", "bandage", "heal_potion", "water", "money_bag", "hazmat", "craft_mat", "craft_mat"],
 	"office": ["coffee", "soda", "cookie", "money_bag", "gold_box", "plank", "vest", "sat_phone", "mask", "charger", "power_bank", "flashlight", "craft_mat", "craft_mat"],
 	"warehouse": ["plank", "wood", "stone", "bucket", "hammer", "shovel", "pickaxe", "axe", "vest", "flashlight", "power_bank", "craft_mat", "craft_mat", "craft_mat"],
-	"valuable": ["gold_box", "money_bag", "gold_box", "serum", "vest", "craft_mat"],
+	"valuable": ["gold_box", "money_bag", "gold_box", "heal_potion", "vest", "craft_mat"],
 }
 const SHOP := {
 	"skill_point": {"name": "SP ×1", "cost": 10},
@@ -766,8 +762,7 @@ const BUILDINGS := {
 		"clerks": 1,
 		"cops": 0,
 		"items": [
-			{"kind": "meds", "name": "急救包", "price": 60, "cash": 0},
-			{"kind": "meds", "name": "止痛药", "price": 25, "cash": 0},
+			{"kind": "meds", "name": "恢复药水", "price": 60, "cash": 0},
 			{"kind": "meds", "name": "绷带", "price": 15, "cash": 0},
 		],
 	},
@@ -787,7 +782,7 @@ const BUILDINGS := {
 		"items": [
 			{"kind": "ammo", "name": "警用弹药", "price": 0, "cash": 0},
 			{"kind": "weapon", "name": "警用步枪", "weapon": "rifle", "price": 0, "cash": 0},
-			{"kind": "meds", "name": "警用急救包", "price": 0, "cash": 0},
+			{"kind": "meds", "name": "警用恢复药水", "price": 0, "cash": 0},
 		],
 	},
 	"house": {
@@ -960,11 +955,10 @@ var no_skill_cd := false
 var shotgun_breach_left := 0
 # 冲锋枪技能：5 秒换弹加速
 var reload_haste_until_msec := 0
-# 止疼药缓回状态
-var _pk_ticks_left := 0
-var _pk_interval := 3.0
-var _pk_pct := 5.0
-var _pk_next_msec := 0
+# 恢复药水持续回复状态（hot_total 总量按 hot_duration 秒均匀回完）
+var _hot_left := 0.0
+var _hot_rate := 0.0
+var _hot_accum := 0.0
 # —— 感染累积：暴露值满 100 才感染（缓慢衰减）；防护服完全阻挡但耗耐久 ——
 var infection_exposure := 0.0
 var hazmat_durability := 100.0
@@ -1493,11 +1487,17 @@ func _process(delta: float) -> void:
 			var tick := int(_poison_accum)
 			_poison_accum -= float(tick)
 			damage_player(tick)
-	# 止疼药缓回
-	if _pk_ticks_left > 0 and Time.get_ticks_msec() >= _pk_next_msec:
-		_pk_ticks_left -= 1
-		_pk_next_msec = Time.get_ticks_msec() + int(_pk_interval * 1000.0)
-		heal_player(int(max_hp() * _pk_pct / 100.0))
+	# 恢复药水持续回复：按每秒速率均匀回完剩余总量
+	if _hot_left > 0.0:
+		var hot_gain := _hot_rate * delta
+		if hot_gain >= _hot_left:
+			hot_gain = _hot_left
+		_hot_left -= hot_gain
+		_hot_accum += hot_gain
+		if _hot_accum >= 1.0:
+			var tick := int(_hot_accum)
+			_hot_accum -= float(tick)
+			heal_player(tick)
 	# 完美闪避缓速结束：恢复正常速度，40 秒 CD 从此刻起计
 	if slowmo_active and Time.get_ticks_msec() >= _slowmo_until:
 		slowmo_active = false
@@ -2337,10 +2337,9 @@ func mine_scavenge_pool(key: Vector2, want: int) -> int:
 	return got
 
 
-# 携带上限（恢复药水 10 瓶 / 止疼药 5 瓶 / 异能宝石 3 颗 / 炮弹 20+10）
+# 携带上限（恢复药水 10 瓶 / 异能宝石 3 颗 / 炮弹 20+10）
 const LOOT_CAPS := {
 	"heal_potion": 10,
-	"painkiller": 5,
 	"anomaly_gem": 3,
 	"mortar_shell": 20,
 	"cannon_shell": 10,
@@ -2405,17 +2404,12 @@ func use_loot(id: String) -> bool:
 				regen_stamina(float(info["stamina"]))
 			notify("食用 %s" % loot_name(id))
 		"med":
+			if info.has("hot_total"):
+				start_hot_regen(int(info["hot_total"]), float(info.get("hot_duration", 10.0)))
 			if float(info.get("heal_pct", 0.0)) > 0.0:
 				heal_player(int(max_hp() * float(info["heal_pct"]) / 100.0))
 			else:
 				heal_player(int(info.get("heal", 0)))
-			if info.has("regen"):
-				_serum_until = Time.get_ticks_msec() + 8000
-				_serum_rate = float(info["regen"]) / 8.0
-			if info.has("regen_pct"):
-				start_painkiller_regen(
-					int(info["regen_ticks"]), float(info["regen_interval"]), float(info["regen_pct"])
-				)
 			notify("使用 %s" % loot_name(id))
 		"armor":
 			if not armor_id.is_empty():
@@ -4071,7 +4065,9 @@ func reset_run(reload_scene := false) -> void:
 	rogue_phase = "prep"
 	rogue_dev_left = 0.0
 	training_ground = false
-	_pk_ticks_left = 0
+	_hot_left = 0.0
+	_hot_rate = 0.0
+	_hot_accum = 0.0
 	slowmo_active = false
 	_slowmo_until = 0
 	_slowmo_cd_until = 0
@@ -5280,12 +5276,11 @@ func defense_cost_text(type: String) -> String:
 	return parts_text
 
 
-# 止疼药缓回：每 interval 秒恢复 pct% 最大生命，共 ticks 次
-func start_painkiller_regen(ticks: int, interval: float, pct: float) -> void:
-	_pk_ticks_left = ticks
-	_pk_interval = interval
-	_pk_pct = pct
-	_pk_next_msec = Time.get_ticks_msec() + int(interval * 1000.0)
+# 恢复药水持续回复：duration 秒内均匀回完 total 点生命
+func start_hot_regen(total: int, duration: float) -> void:
+	_hot_left = float(total)
+	_hot_rate = float(total) / maxf(duration, 0.1)
+	_hot_accum = 0.0
 
 
 func note_zombie_slain() -> void:

@@ -2300,14 +2300,12 @@ class FoodSynthesizer extends Fabricator:
 		return Color(0.3, 0.7, 0.35)
 
 
-# 药品制作台：白桌红十字，产医疗用品（绷带/急救包/恢复药水/止疼药）
+# 药品制作台：白桌红十字，产医疗用品（绷带/恢复药水）
 class MedStation extends Fabricator:
 	func _recipes() -> Dictionary:
 		return {
-			"bandage": {"name": "绷带 ×2", "kind": "resource", "resource": "meds", "qty": 2, "craft": 6, "time": 10.0},
-			"medkit": {"name": "急救包 ×1", "kind": "resource", "resource": "meds", "qty": 1, "craft": 12, "time": 15.0},
-			"heal_potion": {"name": "恢复药水 ×1（15%生命）", "kind": "loot", "loot": "heal_potion", "craft": 10, "time": 30.0},
-			"painkiller": {"name": "止疼药 ×1（30秒缓回）", "kind": "loot", "loot": "painkiller", "craft": 8, "time": 25.0},
+			"bandage": {"name": "绷带 ×1（瞬间+50）", "kind": "loot", "loot": "bandage", "craft": 6, "time": 10.0},
+			"heal_potion": {"name": "恢复药水 ×1（10秒回100）", "kind": "loot", "loot": "heal_potion", "craft": 10, "time": 30.0},
 		}
 
 
@@ -2334,12 +2332,12 @@ class MedStation extends Fabricator:
 		add_child(bar_b)
 
 
-# 医疗台：绿白箱子，酿造恢复药水/止疼药（耗 10 电/秒，红色进度条）
+# 医疗台（旧设施，已不在建造栏）：配方与药品制作台一致（绷带/恢复药水）
 class PotionBrewer extends Fabricator:
 	func _recipes() -> Dictionary:
 		return {
-			"heal_potion": {"name": "恢复药水 ×1（15%生命）", "kind": "loot", "loot": "heal_potion", "craft": 10, "time": 30.0},
-			"painkiller": {"name": "止疼药 ×1（30秒缓回）", "kind": "loot", "loot": "painkiller", "craft": 8, "time": 25.0},
+			"bandage": {"name": "绷带 ×1（瞬间+50）", "kind": "loot", "loot": "bandage", "craft": 6, "time": 10.0},
+			"heal_potion": {"name": "恢复药水 ×1（10秒回100）", "kind": "loot", "loot": "heal_potion", "craft": 10, "time": 30.0},
 		}
 
 

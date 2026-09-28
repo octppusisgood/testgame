@@ -2296,8 +2296,10 @@ func _build_model_city() -> void:
 			tower["position"] - tower["size"] / 2.0 - Vector2(50, 50),
 			tower["size"] + Vector2(100, 100)
 		))
+	# 批次 172：道路禁建带收窄（grow 50→20px）——建筑贴街沿街排满；
+	# 20px 缓冲防止建筑碰撞体压到路面（道路本体 Rect 已含 506px 路宽）
 	for r: Rect2 in GameState.ROADS:
-		reserved.append(r.grow(50.0))
+		reserved.append(r.grow(20.0))
 	for station in GameState.BASE_STATIONS:
 		reserved.append(Rect2(station["position"] - Vector2(130, 130), Vector2(260, 260)))
 	for spot in [Vector2(1265, 1739), Vector2(2846, 1739), Vector2(6640, 1739),
@@ -2313,7 +2315,6 @@ func _build_model_city() -> void:
 	var half := slot / 2.0
 	var y := 260.0
 	var dbg_attempt := 0
-	var dbg_oldcore := 0
 	var dbg_overlap := 0
 	var dbg_fail := 0
 	var dbg_ok := 0
@@ -2321,23 +2322,19 @@ func _build_model_city() -> void:
 		var x := 260.0
 		while x < GameState.CITY_SIZE.x - 260.0:
 			var rect := Rect2(Vector2(x - half, y - half), Vector2(slot, slot))
-			var old_core := x < 8100.0 and y < 4560.0
 			dbg_attempt += 1
-			if old_core:
-				dbg_oldcore += 1
-			elif _overlaps_any(rect, reserved):
+			if _overlaps_any(rect, reserved):
 				dbg_overlap += 1
-			if not old_core and not _overlaps_any(rect, reserved):
+			# 批次 172：全城小建筑沿街排布（不再留 old_core 空区）——
+			# 手建地标/道路/基站等保留区照常避让；slot+grow 的互斥保证
+			# 相邻格隔一放一，即「建筑之间相隔一个建筑的距离」。
+			# 分区落位：南侧=住宅（掺 20% 商业）；东北带=军事前哨；中带=工业；其余=商业。
+			# 原东侧商务高楼（DOWNTOWN 20~44m）已删除，全城统一为小建筑（≤16m）。
+			if not _overlaps_any(rect, reserved):
 				var south := y > 5700.0
 				var path := ""
 				var height := 10.0
 				var loot_id := "house"
-				# 批次 37 五分区落位：
-				#   南侧(y>5700)=住宅，掺 20% 商业；
-				#   东侧(x>9700 且非南)=商务/高楼，掺 30% 商业；
-				#   东北非 old_core 带(x∈[8100,9150] 且 y<4560)=军事前哨（不压手建地标区）；
-				#   old_core 南缘中带(y∈[4560,5700] 且 x≤9700)=工业；
-				#   其余=商业
 				if south:
 					if randf() < 0.8:
 						path = RESIDENTIAL_MODELS[randi() % RESIDENTIAL_MODELS.size()]
@@ -2346,15 +2343,6 @@ func _build_model_city() -> void:
 					else:
 						path = COMMERCIAL_MODELS[randi() % COMMERCIAL_MODELS.size()]
 						height = randf_range(9.0, 16.0)
-						loot_id = "food"
-				elif x > 9700.0:
-					if randf() < 0.7:
-						path = DOWNTOWN_MODELS[randi() % DOWNTOWN_MODELS.size()]
-						height = randf_range(20.0, 44.0)
-						loot_id = "tower"
-					else:
-						path = COMMERCIAL_MODELS[randi() % COMMERCIAL_MODELS.size()]
-						height = randf_range(12.0, 24.0)
 						loot_id = "food"
 				elif x >= 8100.0 and x <= 9150.0 and y < 4560.0:
 					path = MILITARY_MODELS[randi() % MILITARY_MODELS.size()]
@@ -2366,7 +2354,7 @@ func _build_model_city() -> void:
 					loot_id = "power"
 				else:
 					path = COMMERCIAL_MODELS[randi() % COMMERCIAL_MODELS.size()]
-					height = randf_range(10.0, 24.0)
+					height = randf_range(9.0, 16.0)
 					loot_id = "food"
 				if _place_model(path, Vector2(x, y), height, loot_id):
 					reserved.append(rect.grow(20.0))
@@ -2376,7 +2364,7 @@ func _build_model_city() -> void:
 					dbg_fail += 1
 			x += slot
 		y += slot
-	print("MODELCITY attempt=%d oldcore=%d overlap=%d ok=%d fail=%d" % [dbg_attempt, dbg_oldcore, dbg_overlap, dbg_ok, dbg_fail])
+	print("MODELCITY attempt=%d overlap=%d ok=%d fail=%d" % [dbg_attempt, dbg_overlap, dbg_ok, dbg_fail])
 
 
 func _place_model(path: String, pos_px: Vector2, target_height: float, loot_id := "house") -> bool:

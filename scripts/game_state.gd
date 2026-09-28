@@ -600,20 +600,9 @@ const OUTBREAK_SITES := [
 	{"name": "南部住宅区", "position": Vector2(2400, 6300), "spread": 1.4},
 ]
 
-const TOWERS := [
-	{"position": Vector2(420, 380), "size": Vector2(360, 360), "height": 40.0, "color": Color(0.55, 0.58, 0.62)},
-	{"position": Vector2(420, 1150), "size": Vector2(360, 300), "height": 30.0, "color": Color(0.6, 0.55, 0.5)},
-	{"position": Vector2(3600, 400), "size": Vector2(400, 400), "height": 55.0, "color": Color(0.5, 0.54, 0.6)},
-	{"position": Vector2(3600, 1150), "size": Vector2(400, 300), "height": 34.0, "color": Color(0.58, 0.55, 0.52)},
-	{"position": Vector2(6350, 1200), "size": Vector2(350, 300), "height": 45.0, "color": Color(0.52, 0.56, 0.6)},
-	{"position": Vector2(400, 2200), "size": Vector2(360, 320), "height": 36.0, "color": Color(0.6, 0.56, 0.5)},
-	{"position": Vector2(400, 3050), "size": Vector2(360, 260), "height": 28.0, "color": Color(0.55, 0.52, 0.48)},
-	{"position": Vector2(2500, 2250), "size": Vector2(380, 380), "height": 60.0, "color": Color(0.48, 0.52, 0.58)},
-	{"position": Vector2(3600, 3000), "size": Vector2(400, 300), "height": 42.0, "color": Color(0.56, 0.53, 0.5)},
-	{"position": Vector2(6700, 2250), "size": Vector2(400, 350), "height": 50.0, "color": Color(0.5, 0.55, 0.58)},
-	{"position": Vector2(7500, 4350), "size": Vector2(350, 300), "height": 38.0, "color": Color(0.57, 0.54, 0.5)},
-	{"position": Vector2(400, 4300), "size": Vector2(340, 260), "height": 32.0, "color": Color(0.55, 0.52, 0.47)},
-]
+# 批次 172：原 12 栋大楼（28~60m 塔楼）已删除——城市统一为小建筑；
+# 保留空表：拆除系统/小地图/生成器的塔楼代码路径按此自然跳过
+const TOWERS := []
 
 const WEAPONS := {
 	"pistol": {

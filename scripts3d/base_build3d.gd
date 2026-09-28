@@ -2123,15 +2123,15 @@ class Fabricator extends DefenseBase:
 			tooth.position = Vector3(cos(a) * 0.62, 0.0, sin(a) * 0.62)
 			tooth.rotation.y = -a
 			_gear.add_child(tooth)
-		_gear.visible = false
+		_gear.visible = true  # 批次 162：齿轮常驻可见，仅制造时转动
 
 
 	func _process(delta: float) -> void:
 		if GameState.is_run_over():
 			return
-		# 齿轮默认隐藏：只有真正在制造（有任务 + 有人 + 有电）时才显示并转动
+		# 齿轮常驻可见（批次 162）；仅真正在制造时转动
 		if _gear != null:
-			_gear.visible = false
+			_gear.visible = true  # 批次 162：齿轮常驻可见，仅制造时转动
 		if _job == "":
 			_show_progress(0.0)
 			# 队列续做：材料够即自动开工；不齐则等待，料/电恢复后继续

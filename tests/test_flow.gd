@@ -174,9 +174,7 @@ func _test_melee_3d() -> void:
 
 
 func _test_infection_3d() -> void:
-	GameState.transform_delay = 0.15
-	GameState.bite_infect_chance = 1.0
-	GameState.spread_infect_chance = 1.0
+	# NPC 感染转尸设定已移除：被丧尸攻击只掉血、死亡，不再转成丧尸
 	var civilian = load("res://scenes3d/npc3d.tscn").instantiate()
 	civilian.role = "pedestrian"
 	add_child(civilian)
@@ -184,32 +182,10 @@ func _test_infection_3d() -> void:
 	var zombie_source = load("res://scenes3d/zombie3d.tscn").instantiate()
 	add_child(zombie_source)
 	var count_before := get_tree().get_nodes_in_group("zombies").size()
-	civilian.take_damage(1, zombie_source)
-	_check(civilian._infected, "被咬后进入 10 秒感染倒计时")
-	await get_tree().create_timer(0.4).timeout
+	civilian.take_damage(9999, zombie_source)
+	_check(bool(civilian.get("_dying")), "被丧尸重击后直接死亡（不转尸）")
 	var count_after := get_tree().get_nodes_in_group("zombies").size()
-	_check(count_after == count_before + 1, "倒计时结束后尸变")
-
-	GameState.phase = "outbreak"
-	GameState.round_elapsed = 0.0
-	GameState.outbreak_site = {"name": "测试", "position": Vector2(500, 500), "spread": 1.0}
-	GameState.outbreak_sites = [
-		{"name": "测试", "position": Vector2(500, 500), "spread": 1.0, "activated_at": 0.0}
-	]
-	GameState.outbreak_elapsed = 0.0
-	var civilian2 = load("res://scenes3d/npc3d.tscn").instantiate()
-	civilian2.role = "pedestrian"
-	add_child(civilian2)
-	civilian2.position = Vector3(25, 0, 25)
-	await get_tree().create_timer(0.1).timeout
-	_check(civilian2._infected, "扩散范围内的市民被感染")
-
-	var cop = load("res://scenes3d/npc3d.tscn").instantiate()
-	cop.role = "cop"
-	add_child(cop)
-	cop.position = Vector3(950, 0, 950)
-	cop.take_damage(1, zombie_source)
-	_check(cop._infected, "警察被咬也会被感染")
+	_check(count_after == count_before, "死亡后不会原地变出丧尸")
 
 	var zombie2 = load("res://scenes3d/zombie3d.tscn").instantiate()
 	add_child(zombie2)
@@ -229,9 +205,6 @@ func _test_infection_3d() -> void:
 	GameState.phase = "prepare"
 	GameState.outbreak_site = {}
 	GameState.outbreak_sites = []
-	GameState.transform_delay = 10.0
-	GameState.bite_infect_chance = 0.99
-	GameState.spread_infect_chance = 0.9
 	for leftover in get_tree().get_nodes_in_group("zombies"):
 		leftover.queue_free()
 	for leftover in get_tree().get_nodes_in_group("npcs"):
@@ -326,7 +299,7 @@ func _test_world_outbreak() -> void:
 	GameState._last_world_stage = 0
 	GameState.custom_outbreak = false
 	GameState.add_outbreak_site(
-		{"name": "A", "position": Vector2(1000, 1000), "spread": 1.0}, 0.0, false
+		{"name": "A", "position": Vector2(1000, 1000), "spread": 1.0}, 0.0
 	)
 	GameState.outbreak_elapsed = 1300.0
 	GameState._update_world_stage()
@@ -1162,7 +1135,7 @@ func _test_material_transport() -> void:
 	_check(GameState.base_has_containment(), "建造后登记储存仓")
 	GameState.home_base["defenses"] = []
 
-	# —— 异能量场：市民在场内被感染尸变 ——
+	# —— 异能量场：市民在场内不再被感染（感染设定已移除） ——
 	GameState.phase = "survival"
 	var zone = load("res://scripts3d/anomaly_zone3d.gd").new()
 	add_child(zone)
@@ -1173,7 +1146,7 @@ func _test_material_transport() -> void:
 	civ.global_position = Vector3(1.0, 0.1, 0)
 	await get_tree().create_timer(0.4).timeout
 	zone._tick_effects()
-	_check(bool(civ.get("_infected")), "异能量场感染场内市民")
+	_check(civ.get("_infected") == null, "异能量场不再感染市民")
 	civ.queue_free()
 	zone.queue_free()
 
@@ -1189,22 +1162,6 @@ func _test_material_transport() -> void:
 	zb.zombie_tier = 10
 	_check(zb._crystal_drop_count() == 6, "尸神掉 6 颗")
 	zb.queue_free()
-	# 标记传播：被异能感染的市民尸变后，丧尸继承掉落标记
-	var civ2 = load("res://scenes3d/npc3d.tscn").instantiate()
-	civ2.role = "pedestrian"
-	add_child(civ2)
-	civ2.global_position = Vector3(0, 0.1, 0)
-	civ2.set_meta("anomaly_touched", true)
-	civ2._turn_into_zombie()
-	await get_tree().process_frame
-	var turned: Node3D = null
-	for z in get_tree().get_nodes_in_group("zombies"):
-		if z != null and is_instance_valid(z) and not z.is_queued_for_deletion():
-			turned = z
-	_check(turned != null and turned.has_meta("anomaly_touched"), "尸变后继承异能标记")
-	if turned != null:
-		_check(turned._crystal_drop_count() == 1, "继承标记的丧尸掉 1 颗")
-		turned.queue_free()
 
 	# —— 异能量场巢穴：持续刷怪 / 能量等级加成 / 核心摧毁掉结晶 ——
 	GameState.viewer_active = true

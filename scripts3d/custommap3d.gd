@@ -255,7 +255,7 @@ func _add_random_site() -> void:
 			clampf(rect.get_center().y + randf_range(-10.0, 10.0), 5.0, d - 5.0)
 		)
 	GameState.add_outbreak_site(
-		{"name": "爆发点", "position": pos, "spread": 1.2, "metric": true}, -1, true
+		{"name": "爆发点", "position": pos, "spread": 1.2, "metric": true}, -1
 	)
 
 

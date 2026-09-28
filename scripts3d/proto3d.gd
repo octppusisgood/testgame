@@ -444,7 +444,7 @@ func _tick_npc_pool(delta: float) -> void:
 		# 军营驻军不休眠：池化会丢掉特种兵等定制属性，且驻军是固定编制
 		if npc.is_in_group("soldiers"):
 			continue
-		if npc.get("_infected") == true or npc.get("_panicked") == true:
+		if npc.get("_panicked") == true:
 			continue
 		if npc.global_position.distance_to(viewer) <= NPC_POOL_DESPAWN:
 			continue

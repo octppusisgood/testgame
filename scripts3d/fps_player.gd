@@ -1848,12 +1848,6 @@ func _melee(damage: int) -> void:
 		DamagePopup.show_damage(npc.get_parent(), npc.global_position + Vector3(0, 1.0, 0), damage)
 		if GameState.is_good_zombie():
 			GameState.become_bad_zombie()
-		if (
-			GameState.is_zombie()
-			and GameState.has_mutation("z_plague")
-			and randf() < GameState.mut_value("z_plague") / 100.0
-		):
-			npc._infect(1.0)
 	for camera in get_tree().get_nodes_in_group("surveillance_cameras"):
 		var to_camera: Vector3 = camera.global_position - global_position
 		to_camera.y = 0.0

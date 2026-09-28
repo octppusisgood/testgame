@@ -57,9 +57,6 @@ var _flee_done := false
 var _alert: Label3D
 var _alert_timer := 0.0
 var _base_color := Color.WHITE
-var _infected := false
-var _infection_checked := false
-var _transform_timer := 0.0
 var _panicked := false
 var _panic_timer := 0.0
 var _saw_crime_msec := 0
@@ -387,10 +384,6 @@ func _process(delta: float) -> void:
 	elif _lod_level == 2:
 		proc_step = 4
 	if proc_step > 1 and (Engine.get_process_frames() + _lod_phase) % proc_step != 0:
-		if _infected:
-			_transform_timer -= delta
-			if _transform_timer <= 0.0:
-				_turn_into_zombie()
 		return
 	if proc_step > 1:
 		delta *= float(proc_step)
@@ -402,21 +395,6 @@ func _process(delta: float) -> void:
 		_alert_timer -= delta
 		if _alert_timer <= 0.0:
 			_alert.visible = false
-	if _infected:
-		_transform_timer -= delta
-		_update_infection_tint()
-		if _transform_timer <= 0.0:
-			_turn_into_zombie()
-			return
-	if not _infection_checked and not _infected and GameState.zombies_active():
-		for site in GameState.outbreak_sites:
-			var site_pos: Vector3 = GameState.site_pos3(site)
-			var dist := Vector2(
-				global_position.x - site_pos.x, global_position.z - site_pos.z
-			).length()
-			if dist <= GameState.site_radius_m(site):
-				_infect(GameState.spread_infect_chance)
-				break
 	if role == "pedestrian" and not _panicked and GameState.zombies_active():
 		_panic_timer -= delta
 		if _panic_timer <= 0.0:
@@ -425,68 +403,6 @@ func _process(delta: float) -> void:
 			if zombie != null and can_see_node(zombie):
 				_panicked = true
 				show_alert()
-
-
-func _infect(chance: float) -> void:
-	_infection_checked = true
-	if randf() >= chance:
-		return
-	_infected = true
-	_transform_timer = GameState.transform_delay
-	show_alert()
-
-
-func _update_infection_tint() -> void:
-	var progress := 1.0 - clampf(_transform_timer / maxf(GameState.transform_delay, 0.01), 0.0, 1.0)
-	if not _limbs.get("meshes", []).is_empty():
-		Humanoid.set_overlay(_limbs, Color(0.45, 0.95, 0.35, 0.15 + progress * 0.55))
-		return
-	var mesh := $Mesh as MeshInstance3D
-	var material := mesh.material_override as StandardMaterial3D
-	if material == null:
-		return
-	material.albedo_color = _base_color.lerp(Color(0.45, 0.95, 0.35), progress)
-
-
-func _turn_into_zombie() -> void:
-	Network.unregister_entity(self)
-	if _witnessed_here():
-		GameState.report_transform(global_position)
-	var zombie = preload("res://scenes3d/zombie3d.tscn").instantiate()
-	if has_meta("anomaly_touched"):
-		zombie.set_meta("anomaly_touched", true)
-	zombie.position = position
-	get_parent().add_child(zombie)
-	queue_free()
-
-
-func _witnessed_here() -> bool:
-	for npc in get_tree().get_nodes_in_group("npcs"):
-		if npc == self or npc.is_queued_for_deletion():
-			continue
-		if npc.can_see_node(self):
-			return true
-	return _player_sees_me()
-
-
-func _player_sees_me() -> bool:
-	var player = get_tree().get_first_node_in_group("player")
-	if player == null:
-		return false
-	var camera = player.get_node_or_null("Camera3D")
-	var from: Vector3 = player.global_position + Vector3(0, 1.6, 0)
-	if camera != null:
-		from = camera.global_position
-	var to := global_position + Vector3(0, 1.0, 0)
-	if from.distance_to(to) > 20.0:
-		return false
-	if camera != null:
-		var dir := (to - from).normalized()
-		if camera.global_transform.basis.z.dot(dir) > -0.4:
-			return false
-	var query := PhysicsRayQueryParameters3D.create(from, to, 1, [get_rid()])
-	var result := get_world_3d().direct_space_state.intersect_ray(query)
-	return result.is_empty() or result.collider == self
 
 
 func witness_crime() -> void:
@@ -1213,10 +1129,6 @@ func take_damage(amount: int, from: Node3D = null) -> void:
 		return
 	if _dying:
 		return
-	if from != null and from.is_in_group("zombies") and not _infected:
-		_infect(GameState.bite_infect_chance)
-		if _infected and _witnessed_here():
-			GameState.report_bite(global_position)
 	hp -= amount
 	if _tier_resist > 0.0:
 		hp += int(round(float(amount) * _tier_resist))
@@ -1329,13 +1241,6 @@ func _die(from: Node3D) -> void:
 	if from != null and from.is_in_group("player"):
 		var witness := _witnessed_by_other()
 		GameState.report_kill(global_position, witness, 3 if role == "cop" else 2)
-	if from != null and from.is_in_group("zombies"):
-		if randf() < GameState.zombie_transform_chance:
-			var zombie = preload("res://scenes3d/zombie3d.tscn").instantiate()
-			if has_meta("anomaly_touched"):
-				zombie.set_meta("anomaly_touched", true)
-			zombie.position = position
-			get_parent().add_child(zombie)
 	if not BlockyRig.play_death(_limbs):
 		queue_free()
 		return

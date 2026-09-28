@@ -216,13 +216,6 @@ func _tick_effects() -> void:
 				continue
 			z.hp = int(z.get("hp")) + gain
 	if GameState.zombies_active():
-		for npc in GameState.entities_in_group_in_radius(global_position, "npcs", radius):
-			if npc.is_queued_for_deletion() or bool(npc.get("_dying")):
-				continue
-			if bool(npc.get("_infected")) or not npc.has_method("_infect"):
-				continue
-			npc.set_meta("anomaly_touched", true)
-			npc._infect(1.0)
 		_tick_spawner()
 
 

@@ -883,7 +883,6 @@ class WorkerBody extends CharacterBody3D:
 	var role := "worker"
 	var net_puppet := false
 	var _dying := false
-	var _infected := false
 
 	var _limbs := {}
 	var _collision: CollisionShape3D = null
@@ -963,10 +962,6 @@ class WorkerBody extends CharacterBody3D:
 
 
 	func witness_crime() -> void:
-		pass
-
-
-	func _infect(_chance := 0.0) -> void:
 		pass
 
 
@@ -1436,7 +1431,6 @@ class FollowerBody extends CharacterBody3D:
 	var role := "follower"
 	var net_puppet := false
 	var _dying := false
-	var _infected := false
 
 	var _limbs := {}
 	var _collision: CollisionShape3D = null
@@ -1542,10 +1536,6 @@ class FollowerBody extends CharacterBody3D:
 
 
 	func witness_crime() -> void:
-		pass
-
-
-	func _infect(_chance := 0.0) -> void:
 		pass
 
 

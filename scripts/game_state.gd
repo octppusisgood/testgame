@@ -1027,10 +1027,6 @@ var news: Array = []
 var map_open := false
 var backpack_open := false
 var pause_menu_open := false
-var zombie_transform_chance := 0.99
-var bite_infect_chance := 0.99
-var spread_infect_chance := 0.9
-var transform_delay := 10.0
 var signal_strength := 0.0
 var in_coverage := false
 
@@ -1049,8 +1045,6 @@ var _signal_sources := {}
 # 信号干扰源（能量场 25m 内信号强制 <10%，设计文档 5.5）：id → {pos, radius}
 var _signal_interference := {}
 var _sighting_msec := 0
-var _bite_report_msec := 0
-var _transform_report_msec := 0
 
 
 func _ready() -> void:
@@ -1658,22 +1652,6 @@ func report_zombie_sighting(pos: Vector3) -> void:
 		return
 	_sighting_msec = now
 	post_message("目击报告：出现丧尸，位置已标记", _vec3_to_2(pos), "horde")
-
-
-func report_bite(pos: Vector3) -> void:
-	var now := Time.get_ticks_msec()
-	if now - _bite_report_msec < 12000:
-		return
-	_bite_report_msec = now
-	post_message("紧急消息：有人被丧尸咬伤，正在变异", _vec3_to_2(pos), "horde")
-
-
-func report_transform(pos: Vector3) -> void:
-	var now := Time.get_ticks_msec()
-	if now - _transform_report_msec < 12000:
-		return
-	_transform_report_msec = now
-	post_message("警报：有人变异成丧尸，位置已标记", _vec3_to_2(pos), "outbreak")
 
 
 func _vec3_to_2(pos: Vector3) -> Vector2:
@@ -3160,9 +3138,8 @@ func site_pos3(site: Dictionary) -> Vector3:
 	return Vector3(pos.x * WORLD_SCALE_3D, 0.0, pos.y * WORLD_SCALE_3D)
 
 
-# 追加一个爆发点；activated_at < 0 表示以当前爆发时刻激活；
-# infect 为 true 时立刻首批转化范围内市民（40% 概率，至少 3 个）
-func add_outbreak_site(site: Dictionary, activated_at := -1.0, infect := true) -> Dictionary:
+# 追加一个爆发点；activated_at < 0 表示以当前爆发时刻激活
+func add_outbreak_site(site: Dictionary, activated_at := -1.0) -> Dictionary:
 	if not site.has("position"):
 		return {}
 	var entry := site.duplicate()
@@ -3172,9 +3149,6 @@ func add_outbreak_site(site: Dictionary, activated_at := -1.0, infect := true) -
 	outbreak_sites.append(entry)
 	if outbreak_site.is_empty():
 		outbreak_site = entry
-	if infect:
-		var radius := maxf(site_radius_m(entry), OUTBREAK_CONVERT_RADIUS)
-		infect_civilians_near(site_pos3(entry), radius, 0.4)
 	return entry
 
 
@@ -3198,35 +3172,6 @@ func add_random_outbreak_site() -> Dictionary:
 		"outbreak"
 	)
 	return entry
-
-
-# 让 radius（米）范围内的市民批量感染：按 chance 概率转化，并保证至少 3 个
-func infect_civilians_near(pos3: Vector3, radius: float, chance: float) -> int:
-	if not is_inside_tree():
-		return 0
-	var candidates: Array = []
-	for npc in get_tree().get_nodes_in_group("npcs"):
-		if npc.is_queued_for_deletion():
-			continue
-		if _node_pos3(npc).distance_to(pos3) <= radius:
-			candidates.append(npc)
-	candidates.shuffle()
-	var infected := 0
-	for npc in candidates:
-		if bool(npc.get("_infected")):
-			infected += 1
-			continue
-		npc._infect(chance)
-		if bool(npc.get("_infected")):
-			infected += 1
-	for npc in candidates:
-		if infected >= 3:
-			break
-		if bool(npc.get("_infected")):
-			continue
-		npc._infect(1.0)
-		infected += 1
-	return infected
 
 
 func expected_zombie_count() -> int:
@@ -4089,16 +4034,10 @@ func reset_run(reload_scene := false) -> void:
 	news.clear()
 	map_open = false
 	backpack_open = false
-	zombie_transform_chance = 0.99
-	bite_infect_chance = 0.99
-	spread_infect_chance = 0.9
-	transform_delay = 10.0
 	signal_strength = 0.0
 	in_coverage = false
 	_signal_sources.clear()
 	_sighting_msec = 0
-	_bite_report_msec = 0
-	_transform_report_msec = 0
 	_intro_done = false
 	_last_seen_msec = 0
 	home_base_changed.emit()

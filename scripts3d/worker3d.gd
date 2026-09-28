@@ -26,6 +26,11 @@ var _squad_defend_button: Button = null
 var _squad_base_button: Button = null
 var _squad_checked := {}
 var _squad_refresh := 0.0
+# 指挥面板（Tab）：一键指挥全体成员（随从 + 工人），与 J 多选指派互补
+var _command_panel: CanvasLayer = null
+var _command_title: Label = null
+var _command_list: VBoxContainer = null
+var _command_refresh := 0.0
 
 
 func _ready() -> void:
@@ -34,6 +39,7 @@ func _ready() -> void:
 	_build_panel()
 	_build_gear_panel()
 	_build_squad_panel()
+	_build_command_panel()
 	_sync_workers()
 
 
@@ -127,7 +133,7 @@ func on_interact_menu_close(_player: Node3D) -> void:
 
 
 func interact_options(player: Node3D) -> Array:
-	if panel_open() or gear_panel_open() or squad_panel_open():
+	if panel_open() or gear_panel_open() or squad_panel_open() or command_panel_open():
 		return []
 	if _recruit_target == null or not is_instance_valid(_recruit_target):
 		return []
@@ -165,6 +171,11 @@ func _process(_delta: float) -> void:
 		if _squad_refresh <= 0.0:
 			_squad_refresh = 0.5
 			_refresh_squad_panel()
+	if command_panel_open():
+		_command_refresh -= _delta
+		if _command_refresh <= 0.0:
+			_command_refresh = 0.5
+			_refresh_command_panel()
 	if _recruit_target != null and is_instance_valid(_recruit_target):
 		global_position = _recruit_target.global_position
 	else:
@@ -183,7 +194,7 @@ func _forget_follower(follower) -> void:
 
 
 func _try_recruit() -> void:
-	if panel_open() or gear_panel_open() or squad_panel_open():
+	if panel_open() or gear_panel_open() or squad_panel_open() or command_panel_open():
 		return
 	if _recruit_target == null or not is_instance_valid(_recruit_target):
 		return
@@ -326,6 +337,7 @@ func _sync_panel_flag() -> void:
 		(_panel != null and _panel.visible)
 		or (_gear_panel != null and _gear_panel.visible)
 		or (_squad_panel != null and _squad_panel.visible)
+		or (_command_panel != null and _command_panel.visible)
 	)
 
 
@@ -593,7 +605,226 @@ func toggle_squad_panel() -> void:
 		open_squad_panel()
 
 
+# —— 指挥面板（Tab）：一键指挥全体随从 + 工人 ——
+
+func command_panel_open() -> bool:
+	return _command_panel != null and _command_panel.visible
+
+
+func toggle_command_panel() -> void:
+	if command_panel_open():
+		close_command_panel()
+	else:
+		open_command_panel()
+
+
+func open_command_panel() -> void:
+	if squad_panel_open():
+		close_squad_panel()
+	_refresh_command_panel()
+	_command_refresh = 0.5
+	_command_panel.visible = true
+	_sync_panel_flag()
+
+
+func close_command_panel() -> void:
+	if _command_panel != null:
+		_command_panel.visible = false
+	_sync_panel_flag()
+
+
+func _build_command_panel() -> void:
+	_command_panel = CanvasLayer.new()
+	_command_panel.layer = 25
+	_command_panel.visible = false
+	add_child(_command_panel)
+	var dim := ColorRect.new()
+	dim.color = Color(0.0, 0.0, 0.0, 0.5)
+	_command_panel.add_child(dim)
+	_pin_full_rect(dim)
+	var center := CenterContainer.new()
+	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.add_child(center)
+	var box := PanelContainer.new()
+	center.add_child(box)
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 4)
+	box.add_child(vbox)
+	_command_title = Label.new()
+	_command_title.text = "指挥面板"
+	_command_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_command_title.add_theme_font_size_override("font_size", 14)
+	vbox.add_child(_command_title)
+	var row1 := HBoxContainer.new()
+	row1.add_theme_constant_override("separation", 4)
+	row1.alignment = BoxContainer.ALIGNMENT_CENTER
+	vbox.add_child(row1)
+	row1.add_child(_make_panel_button("全体跟随我", _on_command_follow))
+	row1.add_child(_make_panel_button("全体附近拾荒", _on_command_scavenge))
+	row1.add_child(_make_panel_button("全体巡逻此处", _on_command_patrol))
+	row1.add_child(_make_panel_button("全体防守此处", _on_command_defend))
+	var row2 := HBoxContainer.new()
+	row2.add_theme_constant_override("separation", 4)
+	row2.alignment = BoxContainer.ALIGNMENT_CENTER
+	vbox.add_child(row2)
+	row2.add_child(_make_panel_button("全体回营地", _on_command_base))
+	row2.add_child(_make_panel_button("全体立即运送", _on_command_deliver))
+	row2.add_child(_make_panel_button("全体解散", _on_command_dismiss))
+	var scroll := ScrollContainer.new()
+	scroll.custom_minimum_size = Vector2(360, 150)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	vbox.add_child(scroll)
+	_command_list = VBoxContainer.new()
+	_command_list.add_theme_constant_override("separation", 2)
+	_command_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(_command_list)
+	var hint := Label.new()
+	hint.text = "巡逻/防守以玩家当前位置为目标 · Tab/Esc 关闭 · J 打开多选指派"
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint.add_theme_font_size_override("font_size", 10)
+	hint.modulate = Color(0.8, 0.8, 0.8)
+	vbox.add_child(hint)
+	vbox.add_child(_make_panel_button("关闭", close_command_panel))
+	# Tab 是 Godot 焦点导航默认键：按钮禁用焦点，保证 Tab/Esc 一定能到达 _unhandled_input
+	for btn in box.find_children("*", "Button", true, false):
+		(btn as Button).focus_mode = Control.FOCUS_NONE
+
+
+func _refresh_command_panel() -> void:
+	if _command_list == null:
+		return
+	_prune_followers()
+	for child in _command_list.get_children():
+		child.queue_free()
+	var count := _followers.size() + GameState.workers().size()
+	_command_title.text = "指挥面板（成员 %d 人）" % count
+	if count == 0:
+		var empty := Label.new()
+		empty.text = "还没有可指挥的成员——走近市民按 E 招募随从，或到据点雇佣工人"
+		empty.add_theme_font_size_override("font_size", 11)
+		empty.modulate = Color(0.8, 0.8, 0.8)
+		_command_list.add_child(empty)
+		return
+	for f in _followers:
+		if f == null or not is_instance_valid(f):
+			continue
+		var row := Label.new()
+		row.text = "· %s（随从）：%s" % [f.follower_name, follower_task_name(String(f.mode))]
+		row.add_theme_font_size_override("font_size", 11)
+		_command_list.add_child(row)
+	for w in GameState.workers():
+		var row := Label.new()
+		row.text = "· %s（工人）：%s" % [w["name"], GameState.WORKER_JOBS.get(String(w.get("job", "")), "待命")]
+		row.add_theme_font_size_override("font_size", 11)
+		_command_list.add_child(row)
+
+
+func _all_followers() -> Array:
+	var out: Array = []
+	for f in _followers:
+		if f != null and is_instance_valid(f):
+			out.append(f)
+	return out
+
+
+func _all_worker_names() -> Array:
+	var out: Array = []
+	for w in GameState.workers():
+		out.append(String(w["name"]))
+	return out
+
+
+func _on_command_follow() -> void:
+	assign_follower_task(_all_followers(), "follow")
+	var names := _all_worker_names()
+	for wname in names:
+		GameState.assign_worker(wname, "follow")
+	_notify_workers(names, "跟随")
+
+
+func _on_command_scavenge() -> void:
+	assign_follower_task(_all_followers(), "scavenge")
+	var names := _all_worker_names()
+	for wname in names:
+		GameState.assign_worker(wname, "collect")
+	_notify_workers(names, "收集战斗掉落")
+
+
+func _command_point() -> Vector3:
+	var player = get_tree().get_first_node_in_group("player")
+	if player != null:
+		return player.global_position
+	var fallback := Vector3.ZERO
+	for f in _all_followers():
+		fallback = f.global_position
+		break
+	return fallback
+
+
+func _on_command_patrol() -> void:
+	var point := _command_point()
+	assign_follower_task(_all_followers(), "patrol", point)
+	var names := _all_worker_names()
+	for wname in names:
+		GameState.assign_worker(wname, "goto", {"target": point})
+	_notify_workers(names, "前往玩家位置巡逻")
+	_refresh_command_panel()
+
+
+func _on_command_defend() -> void:
+	var point := _command_point()
+	assign_follower_task(_all_followers(), "defend", point)
+	var names := _all_worker_names()
+	for wname in names:
+		GameState.assign_worker(wname, "goto", {"target": point})
+	_notify_workers(names, "前往玩家位置防守")
+	_refresh_command_panel()
+
+
+func _on_command_base() -> void:
+	if not GameState.has_home_base():
+		GameState.notify("先占领一个据点")
+		return
+	assign_follower_task(_all_followers(), "goto_base")
+	var names := _all_worker_names()
+	for wname in names:
+		GameState.assign_worker(wname, "idle")
+	_notify_workers(names, "回营地待命")
+	_refresh_command_panel()
+
+
+func _on_command_deliver() -> void:
+	var n := 0
+	for f in _all_followers():
+		if not f._carry.is_empty():
+			f._deliver_requested = true
+			n += 1
+	for wname in _all_worker_names():
+		var body = _entities.get(wname, null)
+		if body == null or not is_instance_valid(body):
+			continue
+		if String(body._job()) != "collect" or body._carry.is_empty():
+			continue
+		body._deliver_requested = true
+		n += 1
+	if n > 0:
+		GameState.notify("已命令 %d 名成员立即运送物资" % n)
+	else:
+		GameState.notify("没有成员背着物资（拾荒/收集才有物资可运）")
+
+
+func _on_command_dismiss() -> void:
+	for f in _all_followers():
+		f._dismiss()
+	for wname in _all_worker_names():
+		GameState.remove_worker(wname)
+		GameState.notify("%s 离开了营地" % wname)
+	_refresh_command_panel()
+
+
 func open_squad_panel() -> void:
+	if command_panel_open():
+		close_command_panel()
 	_refresh_squad_panel()
 	_squad_refresh = 0.5
 	_squad_panel.visible = true
@@ -851,9 +1082,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		toggle_squad_panel()
 		get_viewport().set_input_as_handled()
 		return
+	if event.keycode == KEY_TAB:
+		toggle_command_panel()
+		get_viewport().set_input_as_handled()
+		return
 	if event.keycode != KEY_ESCAPE:
 		return
-	if squad_panel_open():
+	if command_panel_open():
+		close_command_panel()
+	elif squad_panel_open():
 		close_squad_panel()
 	elif panel_open():
 		close_panel()

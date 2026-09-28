@@ -871,7 +871,7 @@ var scavenged_buildings: Array = []
 const SCAVENGE_POOL_TOTAL := 20
 const SCAVENGE_COOLDOWN := 120.0
 # 每次搜刮固定产出的制造材料数量（不占物资池，保底收益）
-const SCAVENGE_CRAFT_MAT := 2
+const SCAVENGE_CRAFT_MAT := 20  # 批次 161：搜刮保底制造材料 ×10
 var scavenge_pools := {}
 var scavenge_cooldowns := {}
 # 建筑/塔楼剩余可拆建材库存（key = position: Vector2 像素坐标，value = 剩余量）

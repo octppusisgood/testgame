@@ -3331,7 +3331,8 @@ class BaseDoor extends Node3D:
 		var names: Array = ["制造材料 ×%d" % GameState.SCAVENGE_CRAFT_MAT]
 		for i in got:
 			var loot_id := GameState.roll_loot(table)
-			GameState.add_loot(loot_id)
+			# 批次 161：搜刮得到的制造材料数量 ×10
+			GameState.add_loot(loot_id, 10 if loot_id == "craft_mat" else 1)
 			names.append(GameState.loot_name(loot_id))
 		var remaining := GameState.scavenge_pool_remaining(scavenge_key)
 		GameState.notify("搜刮到：" + "、".join(names) + "（库存 %d）" % remaining)

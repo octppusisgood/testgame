@@ -1898,7 +1898,7 @@ class Converter extends Fabricator:
 	func _decorate() -> void:
 		# 闪电标识：三段折线，悬在进度条上方（供电/制造时点亮）
 		_bolt = Node3D.new()
-		_bolt.position = Vector3(0, 1.62, 0)
+		_bolt.position = Vector3(0, 2.92, 0)
 		add_child(_bolt)
 		var bolt_material := StandardMaterial3D.new()
 		bolt_material.albedo_color = Color(1.0, 0.9, 0.3)
@@ -1997,6 +1997,7 @@ class Fabricator extends DefenseBase:
 	var _no_power_notify := 0
 	var _progress_bg: MeshInstance3D = null
 	var _progress_fill: MeshInstance3D = null
+	var _gear: Node3D = null
 
 
 	func _recipes() -> Dictionary:
@@ -2019,74 +2020,104 @@ class Fabricator extends DefenseBase:
 		add_to_group("base_defense")
 		GameState.request_spatial_rebuild()
 		hp = GameState.base_defense_hp(String(defense_type))
-		debris_size = Vector3(1.4, 0.9, 0.9)
+		debris_size = Vector3(2.8, 1.8, 1.8)
 		debris_color = Color(0.35, 0.45, 0.65)
 		var shape := CollisionShape3D.new()
 		var box_shape := BoxShape3D.new()
-		box_shape.size = Vector3(1.4, 0.9, 0.9)
+		box_shape.size = Vector3(2.8, 1.8, 1.8)
 		shape.shape = box_shape
-		shape.position.y = 0.45
+		shape.position.y = 0.9
 		add_child(shape)
 		_build_body()
 		_build_progress_bar()
+		_build_gear()
 		_decorate()
 
 
 	func _build_body() -> void:
-		# 工作台（桌面 + 四腿 + 虎钳）
+		# 工作台（桌面 + 四腿 + 虎钳）——批次 157 尺寸加大一倍
 		var table_material := StandardMaterial3D.new()
 		table_material.albedo_color = _table_color()
 		var table := MeshInstance3D.new()
 		var table_box := BoxMesh.new()
-		table_box.size = Vector3(1.4, 0.08, 0.9)
+		table_box.size = Vector3(2.8, 0.16, 1.8)
 		table.mesh = table_box
 		table.material_override = table_material
-		table.position.y = 0.84
+		table.position.y = 1.68
 		add_child(table)
-		for sx in [-0.6, 0.6]:
-			for sz in [-0.35, 0.35]:
+		for sx in [-1.2, 1.2]:
+			for sz in [-0.7, 0.7]:
 				var leg := MeshInstance3D.new()
 				var leg_box := BoxMesh.new()
-				leg_box.size = Vector3(0.1, 0.8, 0.1)
+				leg_box.size = Vector3(0.2, 1.6, 0.2)
 				leg.mesh = leg_box
 				leg.material_override = table_material
-				leg.position = Vector3(sx, 0.4, sz)
+				leg.position = Vector3(sx, 0.8, sz)
 				add_child(leg)
 		var vice := MeshInstance3D.new()
 		var vice_box := BoxMesh.new()
-		vice_box.size = Vector3(0.3, 0.2, 0.2)
+		vice_box.size = Vector3(0.6, 0.4, 0.4)
 		vice.mesh = vice_box
 		var vice_material := StandardMaterial3D.new()
 		vice_material.albedo_color = Color(0.2, 0.22, 0.25)
 		vice.material_override = vice_material
-		vice.position = Vector3(0.35, 0.98, 0)
+		vice.position = Vector3(0.7, 1.96, 0)
 		add_child(vice)
 
 
 	func _build_progress_bar() -> void:
 		_progress_bg = MeshInstance3D.new()
 		var bg_box := BoxMesh.new()
-		bg_box.size = Vector3(1.0, 0.08, 0.04)
+		bg_box.size = Vector3(2.0, 0.12, 0.06)
 		_progress_bg.mesh = bg_box
 		var bg_material := StandardMaterial3D.new()
 		bg_material.albedo_color = Color(0.05, 0.05, 0.05, 0.8)
 		bg_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 		bg_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 		_progress_bg.material_override = bg_material
-		_progress_bg.position = Vector3(0, 1.5, 0)
+		_progress_bg.position = Vector3(0, 2.7, 0)
 		add_child(_progress_bg)
 		_progress_fill = MeshInstance3D.new()
 		var fill_box := BoxMesh.new()
-		fill_box.size = Vector3(1.0, 0.06, 0.05)
+		fill_box.size = Vector3(2.0, 0.09, 0.07)
 		_progress_fill.mesh = fill_box
 		var fill_material := StandardMaterial3D.new()
 		fill_material.albedo_color = _progress_color()
 		fill_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 		_progress_fill.material_override = fill_material
-		_progress_fill.position = Vector3(0, 1.5, 0.005)
+		_progress_fill.position = Vector3(0, 2.7, 0.01)
 		add_child(_progress_fill)
 		_progress_bg.visible = false
 		_progress_fill.visible = false
+
+
+	# 工作动效：制造进行中时台面上方有齿轮旋转（批次 157）
+	func _build_gear() -> void:
+		_gear = Node3D.new()
+		_gear.position = Vector3(0, 3.3, 0)
+		add_child(_gear)
+		var gear_mat := StandardMaterial3D.new()
+		gear_mat.albedo_color = Color(0.78, 0.74, 0.6)
+		gear_mat.metallic = 0.5
+		gear_mat.roughness = 0.45
+		var ring := MeshInstance3D.new()
+		var torus := TorusMesh.new()
+		torus.inner_radius = 0.3
+		torus.outer_radius = 0.52
+		ring.mesh = torus
+		ring.material_override = gear_mat
+		_gear.add_child(ring)
+		for i in 8:
+			var tooth := MeshInstance3D.new()
+			var tooth_box := BoxMesh.new()
+			tooth_box.size = Vector3(0.18, 0.12, 0.3)
+			tooth.mesh = tooth_box
+			tooth.material_override = gear_mat
+			var a := TAU * float(i) / 8.0
+			tooth.position = Vector3(cos(a) * 0.62, 0.0, sin(a) * 0.62)
+			tooth.rotation.y = -a
+			_gear.add_child(tooth)
+		_gear.visible = false
 
 
 	func _process(delta: float) -> void:
@@ -2094,7 +2125,13 @@ class Fabricator extends DefenseBase:
 			return
 		if _job == "":
 			_show_progress(0.0)
+			if _gear != null:
+				_gear.visible = false
 			return
+		if _gear != null:
+			# 工作中：齿轮转动
+			_gear.visible = true
+			_gear.rotation.y += delta * 2.2
 		var ops := GameState.defense_operator_count(global_position)
 		if ops <= 0 and not _operator_nearby():
 			return
@@ -2247,14 +2284,14 @@ class MedStation extends Fabricator:
 		box_a.size = Vector3(0.4, 0.06, 0.12)
 		bar_a.mesh = box_a
 		bar_a.material_override = cross_material
-		bar_a.position = Vector3(-0.35, 0.92, 0)
+		bar_a.position = Vector3(-0.7, 1.84, 0)
 		add_child(bar_a)
 		var bar_b := MeshInstance3D.new()
 		var box_b := BoxMesh.new()
 		box_b.size = Vector3(0.12, 0.06, 0.4)
 		bar_b.mesh = box_b
 		bar_b.material_override = cross_material
-		bar_b.position = Vector3(-0.35, 0.92, 0)
+		bar_b.position = Vector3(-0.7, 1.84, 0)
 		add_child(bar_b)
 
 
@@ -2281,19 +2318,19 @@ class PotionBrewer extends Fabricator:
 		white_material.albedo_color = Color(0.9, 0.92, 0.9)
 		var box := MeshInstance3D.new()
 		var box_mesh := BoxMesh.new()
-		box_mesh.size = Vector3(1.1, 0.85, 0.85)
+		box_mesh.size = Vector3(2.2, 1.7, 1.7)
 		box.mesh = box_mesh
 		box.material_override = white_material
-		box.position.y = 0.425
+		box.position.y = 0.85
 		add_child(box)
 		var green_material := StandardMaterial3D.new()
 		green_material.albedo_color = Color(0.25, 0.7, 0.35)
 		var lid := MeshInstance3D.new()
 		var lid_mesh := BoxMesh.new()
-		lid_mesh.size = Vector3(1.15, 0.1, 0.9)
+		lid_mesh.size = Vector3(2.3, 0.2, 1.8)
 		lid.mesh = lid_mesh
 		lid.material_override = green_material
-		lid.position.y = 0.9
+		lid.position.y = 1.8
 		add_child(lid)
 
 

@@ -2170,7 +2170,8 @@ class Fabricator extends DefenseBase:
 		if _job != "":
 			return [false, "制造中"]
 		var craft := int(r.get("craft", 0))
-		if craft > 0 and GameState.loot_count("craft_mat") < craft:
+		# 测试模式：制造材料无上限，不检查不消耗
+		if craft > 0 and not GameState.test_mode and GameState.loot_count("craft_mat") < craft:
 			return [false, "制造材料不足（需 ×%d）" % craft]
 		return [true, ""]
 
@@ -2213,7 +2214,7 @@ class Fabricator extends DefenseBase:
 				GameState.notify(String(check[1]))
 				return
 			var r: Dictionary = _recipes()[recipe_id]
-			if int(r.get("craft", 0)) > 0:
+			if int(r.get("craft", 0)) > 0 and not GameState.test_mode:
 				GameState.remove_loot("craft_mat", int(r["craft"]))
 			_job = recipe_id
 			_job_total = float(r["time"])

@@ -437,6 +437,8 @@ const VEHICLE_CARGO := {
 	"sedan": 40, "sedan-sports": 40, "hatchback-sports": 30, "taxi": 40,
 	"suv": 60, "police": 60, "ambulance": 80, "van": 120, "delivery": 150,
 	"firetruck": 150, "garbage-truck": 250, "truck": 200,
+	"tank": 60, "light_tank": 60, "armored_car": 80, "radar_tank": 80,
+	"technical": 60, "apc": 150, "apc_heavy": 200, "rocket_truck": 150,
 }
 const VEHICLE_CARGO_DEFAULT := 60
 # 拆除规则：大楼 = 占地 > 150000 像素² 或 3 层及以上

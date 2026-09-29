@@ -8,6 +8,7 @@ const CITY_VEH := "res://assets/Synty/PolygonCity/Prefabs/Vehicles/"
 const APOCO_VEH := "res://assets/Synty/PolygonApocalypse/Prefabs/Vehicles/"
 const CAR_MODELS := [
 	"sedan", "sedan-sports", "suv", "taxi", "van", "truck", "delivery", "hatchback-sports", "tank",
+	"light_tank", "apc", "apc_heavy", "armored_car", "technical", "rocket_truck", "radar_tank",
 ]
 const CAR_MODEL_PATHS := {
 	"sedan": CITY_VEH + "SM_Veh_Car_Sedan_01.tscn",
@@ -18,12 +19,45 @@ const CAR_MODEL_PATHS := {
 	"truck": APOCO_VEH + "SM_Veh_BigRig_01.tscn",
 	"delivery": APOCO_VEH + "SM_Veh_NewsVan_01.tscn",
 	"hatchback-sports": APOCO_VEH + "SM_Veh_HotRod_01.tscn",
+	# 军用车（PolygonMilitary 包，批次 182）
+	"tank": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Tank_USA_01.tscn",
+	"light_tank": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Light_Tank_01.tscn",
+	"apc": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_APC_01.tscn",
+	"apc_heavy": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_APC_Heavy_01.tscn",
+	"armored_car": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Light_Armored_Car_01.tscn",
+	"technical": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Pickup_Technical_01.tscn",
+	"rocket_truck": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Rocket_Truck_01.tscn",
+	"radar_tank": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Radar_Tank_01.tscn",
+}
+# APC 二号皮肤（同车型随机外观）与其对应击毁版
+const APC_ALT_PATH := "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_APC_02.tscn"
+# 模型路径 → 击毁版路径（报废换壳；民用车无击毁版，沿用变灰）
+const DESTROYED_MODELS := {
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Tank_USA_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Tank_USA_Destroyed_01.tscn",
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Light_Tank_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Light_Tank_01_Destroyed.tscn",
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_APC_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_APC_01_Destroyed.tscn",
+	APC_ALT_PATH:
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_APC_02_Destroyed.tscn",
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_APC_Heavy_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_APC_Heavy_01_Destroyed.tscn",
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Light_Armored_Car_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Light_Armored_Car_01_Destroyed.tscn",
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Pickup_Technical_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Pickup_Technical_Destroyed_01.tscn",
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Rocket_Truck_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Rocket_Truck_01_Destroyed.tscn",
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Radar_Tank_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Radar_Tank_01_Destroyed.tscn",
 }
 # 车辆血量（设计：普通轿车 1000 / 集装箱车 5000 / 坦克 10000）
 const VEHICLE_HP := {
 	"sedan": 1000, "sedan-sports": 1000, "suv": 1000, "taxi": 1000, "hatchback-sports": 1000,
 	"van": 5000, "truck": 5000, "delivery": 5000,
-	"tank": 10000,
+	"tank": 10000, "apc_heavy": 4500, "rocket_truck": 5000, "light_tank": 4000,
+	"apc": 3000, "radar_tank": 3000, "armored_car": 1500, "technical": 1200,
 }
 # 坦克炮管/机枪威力（等同火箭炮/重机枪）
 const TANK_CANNON_DAMAGE := 200
@@ -41,6 +75,8 @@ const PILE_MAGNET_SPEED := 10.0
 const FUEL_TANK := {
 	"sedan": 55.0, "sedan-sports": 50.0, "suv": 65.0, "taxi": 55.0,
 	"van": 70.0, "truck": 90.0, "delivery": 80.0, "hatchback-sports": 45.0,
+	"tank": 120.0, "light_tank": 90.0, "apc": 80.0, "apc_heavy": 95.0,
+	"armored_car": 60.0, "technical": 60.0, "rocket_truck": 90.0, "radar_tank": 80.0,
 }
 # 三类燃料：轿车/跑车汽油、货运车柴油、出租车燃气；油价按类区分
 const FUEL_TYPES := {"petrol": "汽油", "diesel": "柴油", "lpg": "燃气"}
@@ -49,6 +85,9 @@ const FUEL_TYPE_BY_MODEL := {
 	"hatchback-sports": "petrol",
 	"van": "diesel", "truck": "diesel", "delivery": "diesel",
 	"taxi": "lpg",
+	# 军用车统一柴油（武装皮卡除外，跟民用车一样烧汽油）
+	"tank": "diesel", "light_tank": "diesel", "apc": "diesel", "apc_heavy": "diesel",
+	"armored_car": "diesel", "technical": "petrol", "rocket_truck": "diesel", "radar_tank": "diesel",
 }
 const FUEL_PRICE := {"petrol": 3, "diesel": 2, "lpg": 4}
 const FUEL_IDLE_RATE := 0.03
@@ -79,6 +118,9 @@ var pilot: Node3D = null
 var auto_target := Vector3.ZERO
 # 坦克炮塔（可旋转）与开火冷却
 var _turret: Node3D = null
+# 当前视觉模型（击毁版换壳用）与实际使用的模型路径（查击毁版）
+var _visual_root: Node3D = null
+var _visual_path := ""
 var _tank_fire_cd := 0.0
 
 var _speed := 0.0
@@ -131,24 +173,37 @@ func _is_puppet() -> bool:
 
 func _build_visual() -> void:
 	model = CAR_MODELS[absi(net_id) % CAR_MODELS.size()]
+	var car_path := String(CAR_MODEL_PATHS.get(model, ""))
+	# APC 用一号/二号两套皮肤随机
+	if model == "apc" and randf() < 0.5:
+		car_path = APC_ALT_PATH
+	var packed: PackedScene = load(car_path) if not car_path.is_empty() else null
+	if packed != null:
+		var visual: Node3D = packed.instantiate()
+		# Synty 预制体自带碰撞体：车辆物理由本脚本 CharacterBody3D 负责，剥掉
+		for static_body in visual.find_children("*", "StaticBody3D", true, false):
+			static_body.free()
+		add_child(visual)
+		var aabb := _combined_aabb(visual)
+		if aabb.size.x > 0.01:
+			var factor := CAR_WIDTH / aabb.size.x
+			visual.scale = Vector3.ONE * factor
+			visual.position = Vector3(0.0, -aabb.position.y * factor, 0.0)
+			_visual_root = visual
+			_visual_path = car_path
+			# 坦克：把模型自带炮塔节点接进瞄准系统（批次 182 换真模型）
+			if model == "tank":
+				var turret_nodes := visual.find_children(
+					"SM_Veh_Tank_USA_Turret_01", "Node3D", true, false
+				)
+				if turret_nodes.size() > 0:
+					_turret = turret_nodes[0]
+			return
+		visual.queue_free()
+	# 模型加载失败的手搓后备：坦克用旧手搓外观，其余给个盒子
 	if model == "tank":
 		_build_tank_visual()
 		return
-	var car_path := String(CAR_MODEL_PATHS.get(model, ""))
-	var packed: PackedScene = load(car_path) if not car_path.is_empty() else null
-	if packed != null:
-		var model: Node3D = packed.instantiate()
-		# Synty 预制体自带碰撞体：车辆物理由本脚本 CharacterBody3D 负责，剥掉
-		for static_body in model.find_children("*", "StaticBody3D", true, false):
-			static_body.free()
-		add_child(model)
-		var aabb := _combined_aabb(model)
-		if aabb.size.x > 0.01:
-			var factor := CAR_WIDTH / aabb.size.x
-			model.scale = Vector3.ONE * factor
-			model.position = Vector3(0.0, -aabb.position.y * factor, 0.0)
-			return
-		model.queue_free()
 	var body_mesh := MeshInstance3D.new()
 	var box := BoxMesh.new()
 	box.size = Vector3(2.0, 0.9, 4.2)
@@ -205,8 +260,23 @@ func _build_tank_visual() -> void:
 
 
 func _vehicle_name() -> String:
-	if model == "tank":
-		return "坦克"
+	match model:
+		"tank":
+			return "坦克"
+		"light_tank":
+			return "轻型坦克"
+		"apc":
+			return "装甲运兵车"
+		"apc_heavy":
+			return "重型装甲车"
+		"armored_car":
+			return "装甲侦察车"
+		"technical":
+			return "武装皮卡"
+		"rocket_truck":
+			return "火箭卡车"
+		"radar_tank":
+			return "雷达车"
 	if int(VEHICLE_HP.get(model, 1000)) >= 5000:
 		return "集装箱车"
 	return "轿车"
@@ -245,10 +315,27 @@ func _explode() -> void:
 		0.0, true, Color(1.0, 0.4, 0.1, 0.6), true
 	)
 	GameState.noise_at(global_position, 30.0)
-	for mesh in find_children("*", "MeshInstance3D", true, false):
-		var mat := StandardMaterial3D.new()
-		mat.albedo_color = Color(0.22, 0.22, 0.22)
-		mesh.material_override = mat
+	# 军用车换官方击毁版模型；民用车沿用整体变灰
+	var wreck_path := String(DESTROYED_MODELS.get(_visual_path, ""))
+	var wreck_packed: PackedScene = load(wreck_path) if not wreck_path.is_empty() else null
+	if wreck_packed != null and _visual_root != null and is_instance_valid(_visual_root):
+		var wreck_scale := _visual_root.scale
+		var wreck_pos := _visual_root.position
+		_visual_root.queue_free()
+		_visual_root = null
+		_turret = null
+		var wreck: Node3D = wreck_packed.instantiate()
+		for static_body in wreck.find_children("*", "StaticBody3D", true, false):
+			static_body.free()
+		add_child(wreck)
+		wreck.scale = wreck_scale
+		wreck.position = wreck_pos
+		_visual_root = wreck
+	else:
+		for mesh in find_children("*", "MeshInstance3D", true, false):
+			var mat := StandardMaterial3D.new()
+			mat.albedo_color = Color(0.22, 0.22, 0.22)
+			mesh.material_override = mat
 	GameState.notify("%s 被打爆了！" % _vehicle_name())
 
 

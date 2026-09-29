@@ -123,12 +123,21 @@ var _visual_root: Node3D = null
 var _visual_path := ""
 # 强制指定视觉模型路径（测试展示用；空 = 按车型默认，APC 仍随机双皮肤）
 var force_visual_path := ""
-# 坦克主炮备弹（血量属性 hp/max_hp 既有；本属性显示+耗弹，E 装填消耗背包火炮弹）
+# 车载武器备弹：ammo 为主武器（坦克=炮弹 / 重型装甲车=榴弹），mg_ammo 为车载机枪
 var ammo := 0
+var mg_ammo := 0
 const TANK_AMMO_MAX := 20
-# 带机枪模块的车辆：驾驶时左键机枪射击（伤害/射速等同重机枪）
-const MG_VEHICLES := ["technical", "apc_heavy", "armored_car"]
+const HEAVY_AMMO_MAX := 30
+const MG_AMMO_MAX := 200
+const HEAVY_GRENADE_CD := 0.6
+# 带机枪模块的车辆：驾驶时左键机枪射击（伤害/射速等同重机枪）；
+# 重型装甲车例外——左键是榴弹、机枪走右键（见 _tick_tank）
+const MG_VEHICLES := ["technical", "armored_car"]
+# 带可旋转炮塔的车辆（炮塔随鼠标）
+const TURRET_VEHICLES := ["tank", "apc_heavy"]
 var _mg_fire_cd := 0.0
+var _heavy_fire_cd := 0.0
+var _mg_notice_msec := 0
 # 坦克头顶状态标签（HP + 备弹）
 var _status_label: Label3D = null
 var _tank_fire_cd := 0.0
@@ -187,6 +196,10 @@ func _build_visual() -> void:
 	model = CAR_MODELS[absi(net_id) % CAR_MODELS.size()]
 	if model == "tank":
 		ammo = TANK_AMMO_MAX
+	elif model == "apc_heavy":
+		ammo = HEAVY_AMMO_MAX
+	if TURRET_VEHICLES.has(model):
+		mg_ammo = MG_AMMO_MAX
 		_status_label = Label3D.new()
 		_status_label.font_size = 40
 		_status_label.modulate = Color(0.6, 1.0, 0.7)
@@ -194,6 +207,8 @@ func _build_visual() -> void:
 		_status_label.position = Vector3(0, 3.4, 0)
 		add_child(_status_label)
 		_refresh_status_label()
+	elif MG_VEHICLES.has(model):
+		mg_ammo = MG_AMMO_MAX
 	var car_path := String(CAR_MODEL_PATHS.get(model, ""))
 	if not force_visual_path.is_empty():
 		car_path = force_visual_path
@@ -214,11 +229,10 @@ func _build_visual() -> void:
 			visual.position = Vector3(0.0, -aabb.position.y * factor, 0.0)
 			_visual_root = visual
 			_visual_path = car_path
-			# 坦克：把模型自带炮塔节点接进瞄准系统（批次 182 换真模型）
-			if model == "tank":
-				var turret_nodes := visual.find_children(
-					"SM_Veh_Tank_USA_Turret_01", "Node3D", true, false
-				)
+			# 炮塔车：把模型自带炮塔节点接进瞄准系统（坦克 / 重型装甲车）
+			var turret_name := "SM_Veh_Tank_USA_Turret_01" if model == "tank" else "SM_Veh_APC_Heavy_Turret_01"
+			if TURRET_VEHICLES.has(model):
+				var turret_nodes := visual.find_children(turret_name, "Node3D", true, false)
 				if turret_nodes.size() > 0:
 					_turret = turret_nodes[0]
 			return
@@ -285,7 +299,8 @@ func _build_tank_visual() -> void:
 func _refresh_status_label() -> void:
 	if _status_label == null:
 		return
-	_status_label.text = "HP %d/%d · 炮弹 %d" % [hp, max_hp, ammo]
+	var main_part := "炮弹 %d" % ammo if model == "tank" else "榴弹 %d" % ammo
+	_status_label.text = "HP %d/%d · %s · 机枪 %d" % [hp, max_hp, main_part, mg_ammo]
 
 # 机枪车辆驾驶射击（等同重机枪：伤 70 / CD 0.25）
 func _tick_vehicle_mg(delta: float) -> void:
@@ -294,12 +309,15 @@ func _tick_vehicle_mg(delta: float) -> void:
 	_mg_fire_cd -= delta
 	if GameState.attack_blocked_by_ui():
 		return
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or _mg_fire_cd > 0.0:
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		return
 	if driver == null:
 		return
-	_mg_fire_cd = TANK_MG_CD
-	_tank_fire_mg(_tank_aim_point())
+	_fire_vehicle_mg(_tank_aim_point())
+
+
+func main_ammo_cap() -> int:
+	return TANK_AMMO_MAX if model == "tank" else HEAVY_AMMO_MAX
 
 
 func _vehicle_name() -> String:
@@ -443,11 +461,12 @@ func _tank_fire_mg(aim_point: Vector3) -> void:
 	GameState.noise_at(global_position, 12.0)
 
 
-# 坦克驾驶态：炮塔随鼠标旋转，左键主炮、右键机枪
+# 炮塔车驾驶态：炮塔随鼠标旋转；坦克=左炮/右机枪，重型装甲车=左榴弹/右机枪
 func _tick_tank(delta: float) -> void:
-	if model != "tank" or destroyed:
+	if not TURRET_VEHICLES.has(model) or destroyed:
 		return
 	_tank_fire_cd -= delta
+	_heavy_fire_cd -= delta
 	var aim_point := _tank_aim_point()
 	if _turret != null:
 		var to_aim := aim_point - _turret.global_position
@@ -460,17 +479,59 @@ func _tick_tank(delta: float) -> void:
 			)
 	if GameState.attack_blocked_by_ui():
 		return
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and _tank_fire_cd <= 0.0:
-		if ammo <= 0:
-			_notify_ammo_empty()
-		else:
-			_tank_fire_cd = TANK_CANNON_CD
-			ammo -= 1
-			_tank_fire_cannon(aim_point)
-			_refresh_status_label()
-	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and _tank_fire_cd <= 0.0:
-		_tank_fire_cd = TANK_MG_CD
-		_tank_fire_mg(aim_point)
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if model == "tank":
+			if _tank_fire_cd <= 0.0:
+				if ammo <= 0:
+					_notify_ammo_empty()
+				else:
+					_tank_fire_cd = TANK_CANNON_CD
+					ammo -= 1
+					_tank_fire_cannon(aim_point)
+					_refresh_status_label()
+		elif _heavy_fire_cd <= 0.0:
+			if ammo <= 0:
+				_notify_ammo_empty()
+			else:
+				_heavy_fire_cd = HEAVY_GRENADE_CD
+				ammo -= 1
+				_fire_heavy_grenade(aim_point)
+				_refresh_status_label()
+	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		_fire_vehicle_mg(aim_point)
+
+
+# 重型装甲车主武器：高爆榴弹（等同步枪右键枪榴弹：60 伤 / 4m 半径 / 瞬爆红色特效）
+func _fire_heavy_grenade(aim_point: Vector3) -> void:
+	var from := global_position + Vector3(0, 1.8, 0)
+	var dir := aim_point - from
+	dir.y = 0.0
+	if dir.length() < 0.1:
+		dir = global_transform.basis.z
+	dir = dir.normalized()
+	var shell = load("res://scenes3d/explosive3d.tscn").instantiate()
+	get_parent().add_child(shell)
+	shell.setup(
+		from, dir, 60, 4.0, false, self,
+		minf(40.0, from.distance_to(aim_point)),
+		true, Color(0.9, 0.08, 0.04, 0.85), true
+	)
+	GameState.noise_at(global_position, 16.0)
+
+
+# 车载机枪统一入口（坦克右键 / 重装甲右键 / 机枪车左键共用）：耗机枪备弹
+func _fire_vehicle_mg(aim_point: Vector3) -> void:
+	if _mg_fire_cd > 0.0:
+		return
+	if mg_ammo <= 0:
+		if Time.get_ticks_msec() - _mg_notice_msec > 3000:
+			_mg_notice_msec = Time.get_ticks_msec()
+			GameState.notify("机枪弹耗尽——E 装填（消耗背包弹药）")
+		return
+	_mg_fire_cd = TANK_MG_CD
+	mg_ammo -= 1
+	_tank_fire_mg(aim_point)
+	_refresh_status_label()
 
 
 func _combined_aabb(root: Node3D) -> AABB:
@@ -909,6 +970,24 @@ func interact_options(player: Node3D) -> Array:
 			"disabled": loadable <= 0,
 			"reason": "背包没有火炮弹（弹药加工台可造）" if shells <= 0 else "备弹已满",
 		})
+	elif model == "apc_heavy":
+		var grenades := GameState.grenade_count()
+		var loadable := mini(grenades, HEAVY_AMMO_MAX - ammo)
+		options.append({
+			"id": "load_ammo",
+			"label": "装填榴弹（可装 %d，背包手雷 %d）" % [loadable, grenades],
+			"disabled": loadable <= 0,
+			"reason": "背包没有手雷" if grenades <= 0 else "榴弹已满",
+		})
+	if TURRET_VEHICLES.has(model) or MG_VEHICLES.has(model):
+		var bag_ammo := GameState.total_ammo()
+		var mg_loadable := mini(bag_ammo, MG_AMMO_MAX - mg_ammo)
+		options.append({
+			"id": "load_mg",
+			"label": "装填机枪弹（可装 %d，背包弹药 %d）" % [mg_loadable, bag_ammo],
+			"disabled": mg_loadable <= 0,
+			"reason": "背包没有弹药" if bag_ammo <= 0 else "机枪弹已满",
+		})
 	var carry := int(GameState.resources.get("fuel", 0))
 	var cap := int(GameState.CAPS.get("fuel", 60))
 	# 抽油：把这辆车油箱里的油抽进背包（升）
@@ -936,13 +1015,32 @@ func interact_choose(id: String, player: Node3D) -> void:
 			if player != null and driver == null:
 				player.enter_vehicle(self)
 		"load_ammo":
-			var shells := mini(GameState.loot_count("cannon_shell"), TANK_AMMO_MAX - ammo)
-			if shells <= 0:
+			var cap := main_ammo_cap()
+			var got := 0
+			if model == "tank":
+				got = mini(GameState.loot_count("cannon_shell"), cap - ammo)
+				if got > 0:
+					GameState.remove_loot("cannon_shell", got)
+			else:
+				got = mini(GameState.grenade_count(), cap - ammo)
+				if got > 0 and not GameState.infinite_ammo:
+					GameState.weapons["grenade"] = GameState.grenade_count() - got
+					GameState.weapons_changed.emit()
+			if got <= 0:
 				return
-			GameState.remove_loot("cannon_shell", shells)
-			ammo += shells
+			ammo += got
 			_refresh_status_label()
-			GameState.notify("装填炮弹 %d 发（备弹 %d/%d）" % [shells, ammo, TANK_AMMO_MAX])
+			GameState.notify("装填%s %d 发（备弹 %d/%d）" % [
+				"炮弹" if model == "tank" else "榴弹", got, ammo, cap,
+			])
+		"load_mg":
+			var mg_got := mini(GameState.total_ammo(), MG_AMMO_MAX - mg_ammo)
+			if mg_got <= 0:
+				return
+			GameState.consume_ammo(mg_got)
+			mg_ammo += mg_got
+			_refresh_status_label()
+			GameState.notify("装填机枪弹 %d 发（机枪 %d/%d）" % [mg_got, mg_ammo, MG_AMMO_MAX])
 		"siphon":
 			var cap := int(GameState.CAPS.get("fuel", 60))
 			var take := mini(int(fuel), cap - int(GameState.resources.get("fuel", 0)))

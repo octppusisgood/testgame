@@ -1792,11 +1792,14 @@ func _refresh_vehicle_info_bar(veh) -> void:
 		float(veh.get("fuel")), float(veh.call("tank_cap")),
 	]
 	var script = load("res://scripts3d/vehicle3d.gd")
+	var vmodel := String(veh.get("model"))
 	var ammo_text := "—"
-	if String(veh.get("model")) == "tank":
-		ammo_text = "炮弹 %d/%d" % [int(veh.get("ammo")), int(script.TANK_AMMO_MAX)]
-	elif script.MG_VEHICLES.has(String(veh.get("model"))):
-		ammo_text = "车载机枪（左键）"
+	if vmodel == "tank":
+		ammo_text = "炮 %d · 机枪 %d" % [int(veh.get("ammo")), int(veh.get("mg_ammo"))]
+	elif vmodel == "apc_heavy":
+		ammo_text = "榴 %d · 机枪 %d" % [int(veh.get("ammo")), int(veh.get("mg_ammo"))]
+	elif script.MG_VEHICLES.has(vmodel):
+		ammo_text = "机枪 %d（左键）" % int(veh.get("mg_ammo"))
 	(_vehicle_info_labels["ammo"] as Label).text = ammo_text
 
 

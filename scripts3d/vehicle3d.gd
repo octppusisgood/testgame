@@ -121,6 +121,8 @@ var _turret: Node3D = null
 # 当前视觉模型（击毁版换壳用）与实际使用的模型路径（查击毁版）
 var _visual_root: Node3D = null
 var _visual_path := ""
+# 强制指定视觉模型路径（测试展示用；空 = 按车型默认，APC 仍随机双皮肤）
+var force_visual_path := ""
 var _tank_fire_cd := 0.0
 
 var _speed := 0.0
@@ -174,8 +176,10 @@ func _is_puppet() -> bool:
 func _build_visual() -> void:
 	model = CAR_MODELS[absi(net_id) % CAR_MODELS.size()]
 	var car_path := String(CAR_MODEL_PATHS.get(model, ""))
+	if not force_visual_path.is_empty():
+		car_path = force_visual_path
 	# APC 用一号/二号两套皮肤随机
-	if model == "apc" and randf() < 0.5:
+	elif model == "apc" and randf() < 0.5:
 		car_path = APC_ALT_PATH
 	var packed: PackedScene = load(car_path) if not car_path.is_empty() else null
 	if packed != null:

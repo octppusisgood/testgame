@@ -300,6 +300,8 @@ func _ready() -> void:
 	_build_boundaries()
 	_build_stations()
 	_build_vehicles()
+	if GameState.test_mode:
+		_spawn_vehicle_showcase()
 	_build_horde_renderer()
 	_build_pickup_renderers()
 	# 预热角色变体缓存：消灭战斗中首次刷出某变体时的同步加载顿卡
@@ -2673,6 +2675,42 @@ func _build_stations() -> void:
 	# 批次 145：地图自带基站（信号塔）已移除，信号塔改由玩家建造（任意位置）；
 	# 玩家建造的信号塔与原基站同款模型（station3d.build_station_visual 共享）
 	return
+
+
+# 测试模式专用：出生地召唤全部车辆模型（含 APC 双皮肤）排开供查验
+func _spawn_vehicle_showcase() -> void:
+	var origin := Vector3(
+		GameState.SPAWN_POS.x * SCALE, 0.1, GameState.SPAWN_POS.y * SCALE
+	) + Vector3(0, 0, 12.0)
+	var script := load("res://scripts3d/vehicle3d.gd")
+	var ids: Array = script.CAR_MODELS.duplicate()
+	# APC 追加一辆二号皮肤
+	ids.append("apc")
+	for i in ids.size():
+		var id: String = ids[i]
+		var car = VEHICLE_SCENE.instantiate()
+		# _build_visual 在 add_child 时按 net_id 定车型：先指到目标槽位再入树
+		var slot := int(script.CAR_MODELS.find(id))
+		car.net_id = slot if slot >= 0 else i
+		# APC 展示双皮肤：原生那辆强制一号皮肤，追加一辆强制二号皮肤
+		if id == "apc":
+			car.force_visual_path = (
+				script.APC_ALT_PATH if i >= script.CAR_MODELS.size()
+				else String(script.CAR_MODEL_PATHS["apc"])
+			)
+		car.position = origin + Vector3(
+			(i % 4) * 4.5 - 6.75, 0.0, (i / 4) * 5.0
+		)
+		car.set_meta("showcase", true)
+		add_child(car)
+		var label := Label3D.new()
+		label.text = "%s (%s)" % [car.call("_vehicle_name"), id]
+		label.font_size = 40
+		label.modulate = Color(1.0, 0.9, 0.5)
+		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		label.position = car.position + Vector3(0, 3.2, 0)
+		add_child(label)
+	GameState.notify("测试模式：出生地前方已召唤全部 %d 辆载具模型" % ids.size())
 
 
 func _build_vehicles() -> void:

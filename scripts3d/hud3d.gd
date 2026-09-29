@@ -3816,10 +3816,9 @@ func quick_mortar_command() -> void:
 		return
 	var mortars := _available_artillery("mortar")
 	var cannons := _available_artillery("cannon")
-	if mortars.is_empty() and cannons.is_empty():
-		GameState.notify("没有迫击炮/火炮（在营地防御类建造后按 Q 指挥）")
-		return
-	# 玩家不在信号覆盖内：圆盘照常弹出，但全部置灰并显示「无信号无法使用」
+	var no_artillery := mortars.is_empty() and cannons.is_empty()
+	# 玩家不在信号覆盖内：圆盘照常弹出，但全部置灰并显示「无信号无法使用」；
+	# 没有任何火炮时同样照常弹出空盘，圆心显示「未部署」
 	var covered := true
 	var player = get_tree().get_first_node_in_group("player")
 	if player != null:
@@ -3835,7 +3834,9 @@ func quick_mortar_command() -> void:
 			"kind": "cannon", "disabled": cannons.is_empty() or not covered,
 		},
 	]
-	if not covered:
+	if no_artillery:
+		_strike_dial.banner = "未部署"
+	elif not covered:
 		_strike_dial.banner = "无信号无法使用"
 		_show_toast("不在据点信号网络内：孤立信号塔是独立信号区，不与据点互通")
 	_strike_dial.on_pick = _on_strike_pick

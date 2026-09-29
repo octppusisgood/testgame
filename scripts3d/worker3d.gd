@@ -513,6 +513,8 @@ static func follower_task_name(task: String) -> String:
 			return "巡逻"
 		"defend":
 			return "防守"
+		"drive":
+			return "驾驶中"
 	return task
 
 
@@ -521,6 +523,14 @@ func assign_follower_task(list: Array, task: String, point := Vector3.ZERO) -> v
 	for f in list:
 		if f == null or not is_instance_valid(f):
 			continue
+		# 驾驶中的随从改指派任务 = 先下车归队（车已失效则直接恢复可见）
+		if String(f.get("mode")) == "drive":
+			var vref = f.get("vehicle_ref")
+			if vref != null and is_instance_valid(vref) and vref.has_method("dismiss_pilot"):
+				vref.call("dismiss_pilot")
+			else:
+				f.visible = true
+				f.add_to_group("npcs")
 		f.mode = task
 		if task == "scavenge":
 			f.task_point = player.global_position if player != null else f.global_position
@@ -802,16 +812,18 @@ func _on_vehicle_assign_pilot() -> void:
 		return
 	var pilot = null
 	for f in _followers:
-		if f != null and is_instance_valid(f):
+		if f != null and is_instance_valid(f) and String(f.get("mode")) != "drive":
 			pilot = f
 			break
 	if pilot == null:
 		GameState.notify("没有可委派的随从（走近市民按 E 招募）")
 		return
 	var pname := String(pilot.get("follower_name"))
-	_forget_follower(pilot)
-	pilot.queue_free()
-	target.call("assign_pilot", pname)
+	pilot.set("mode", "drive")
+	pilot.set("vehicle_ref", target)
+	pilot.visible = false
+	pilot.remove_from_group("npcs")
+	target.call("assign_pilot", pname, pilot)
 	_refresh_vehicle_panel()
 
 
@@ -1686,6 +1698,8 @@ class FollowerBody extends CharacterBody3D:
 	var follower_name := ""
 	var manager: Node3D = null
 	var mode := "follow"
+	# 驾驶中的载具（委派驾驶员）：随车移动/隐藏，J 面板状态显示「驾驶中」
+	var vehicle_ref: Node3D = null
 	var task_point := Vector3.ZERO
 	var max_hp := 60
 	var hp := 60
@@ -1930,6 +1944,17 @@ class FollowerBody extends CharacterBody3D:
 				_mode_patrol()
 			"defend":
 				_mode_defend()
+			"drive":
+				_mode_drive()
+
+
+	# 驾驶中：人已在车里——随车移动（不渲染），丧尸/小地图不可见
+	func _mode_drive() -> void:
+		_stop()
+		velocity.x = 0.0
+		velocity.z = 0.0
+		if vehicle_ref != null and is_instance_valid(vehicle_ref):
+			global_position = vehicle_ref.global_position + Vector3(0, 1.2, 0)
 
 
 	func _move_to(target: Vector3, speed := SPEED) -> void:
@@ -2260,6 +2285,8 @@ class FollowerBody extends CharacterBody3D:
 	# —— 解散：变回普通市民，装备掉在原地 ——
 
 	func _dismiss() -> void:
+		if vehicle_ref != null and is_instance_valid(vehicle_ref) and vehicle_ref.has_method("_pilot_gone"):
+			vehicle_ref.call("_pilot_gone")
 		_drop_all_gear()
 		var parent := get_parent()
 		if parent != null:

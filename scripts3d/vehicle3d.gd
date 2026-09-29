@@ -73,6 +73,8 @@ var destroyed := false
 # 委派驾驶员（Tab 载具面板）：委派后成为玩家的车，可远程指挥自动驾驶
 var owned := false
 var pilot_name := ""
+# 驾驶员随从实体（FollowerBody）：在车上随车移动/隐藏，J 面板保留栏位显示「驾驶中」
+var pilot: Node3D = null
 # 自动驾驶目标（ZERO = 待命）；由载具面板「开往地图标点 / 召回身边」设置
 var auto_target := Vector3.ZERO
 # 坦克炮塔（可旋转）与开火冷却
@@ -225,9 +227,13 @@ func _explode() -> void:
 		return
 	if owned and not pilot_name.is_empty():
 		GameState.notify("驾驶员 %s 随车阵亡……" % pilot_name)
-		pilot_name = ""
-		owned = false
-		auto_target = Vector3.ZERO
+		var dead_pilot = pilot
+		_pilot_gone()
+		if dead_pilot != null and is_instance_valid(dead_pilot):
+			var mgr = dead_pilot.get("manager")
+			if mgr != null and mgr.has_method("_forget_follower"):
+				mgr.call("_forget_follower", dead_pilot)
+			dead_pilot.queue_free()
 	destroyed = true
 	if driver != null and driver.has_method("exit_vehicle"):
 		driver.exit_vehicle()
@@ -426,11 +432,33 @@ func _drive(delta: float) -> void:
 # —— 委派驾驶员与远程指挥（Tab 载具面板） ——
 
 # 委派一名随从当驾驶员：车成为玩家的车（面板显示/可远程指挥）
-func assign_pilot(fname: String) -> void:
+func assign_pilot(fname: String, pilot_node: Node3D = null) -> void:
 	owned = true
 	pilot_name = fname
+	pilot = pilot_node
 	auto_target = Vector3.ZERO
 	GameState.notify("%s 已委派为 %s 的驾驶员" % [fname, _vehicle_name()])
+
+
+# 驾驶员下车：恢复随从（可见/回 npcs 组/转跟随），车失去归属与指令
+func dismiss_pilot() -> void:
+	if pilot == null or not is_instance_valid(pilot):
+		_pilot_gone()
+		return
+	GameState.notify("%s 从 %s 下来，重新归队" % [pilot_name, _vehicle_name()])
+	pilot.set("mode", "follow")
+	pilot.set("vehicle_ref", null)
+	pilot.visible = true
+	pilot.add_to_group("npcs")
+	_pilot_gone()
+
+
+# 驾驶员离开（下车/阵亡/解散）：只清车侧引用，不动随从实体
+func _pilot_gone() -> void:
+	pilot = null
+	pilot_name = ""
+	owned = false
+	auto_target = Vector3.ZERO
 
 
 # 远程指挥：设置自动驾驶目标（开往标点 / 召回身边）

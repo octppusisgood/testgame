@@ -1117,14 +1117,16 @@ func _hover_material() -> StandardMaterial3D:
 	if _hover_mat == null:
 		_hover_mat = StandardMaterial3D.new()
 		_hover_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		_hover_mat.albedo_color = Color(1.0, 0.84, 0.35, 0.45)
+		_hover_mat.albedo_color = Color(1.0, 0.84, 0.35, 0.55)
 		_hover_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 		_hover_mat.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
-		# 反面外扩描边（ inverted hull ）：只勾勒轮廓一圈光晕
+		# 反面外扩描边（inverted hull）：只勾勒轮廓一圈光晕。
+		# 开深度测试（no_depth_test=false）：楼体自身遮挡背面的描边壳，
+		# 只留正对相机一侧的轮廓变亮——否则整栋前后壳叠加像整体镀金
 		_hover_mat.cull_mode = BaseMaterial3D.CULL_FRONT
 		_hover_mat.grow_enabled = true
-		_hover_mat.grow_amount = 0.05
-		_hover_mat.no_depth_test = true
+		_hover_mat.grow_amount = 0.08
+		_hover_mat.no_depth_test = false
 	return _hover_mat
 
 

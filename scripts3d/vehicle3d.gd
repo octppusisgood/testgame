@@ -70,6 +70,11 @@ var fuel := -1.0
 var hp := 0
 var max_hp := 0
 var destroyed := false
+# 委派驾驶员（Tab 载具面板）：委派后成为玩家的车，可远程指挥自动驾驶
+var owned := false
+var pilot_name := ""
+# 自动驾驶目标（ZERO = 待命）；由载具面板「开往地图标点 / 召回身边」设置
+var auto_target := Vector3.ZERO
 # 坦克炮塔（可旋转）与开火冷却
 var _turret: Node3D = null
 var _tank_fire_cd := 0.0
@@ -218,6 +223,11 @@ func take_damage(amount: int, _from: Node3D = null) -> void:
 func _explode() -> void:
 	if destroyed:
 		return
+	if owned and not pilot_name.is_empty():
+		GameState.notify("驾驶员 %s 随车阵亡……" % pilot_name)
+		pilot_name = ""
+		owned = false
+		auto_target = Vector3.ZERO
 	destroyed = true
 	if driver != null and driver.has_method("exit_vehicle"):
 		driver.exit_vehicle()
@@ -345,6 +355,9 @@ func _physics_process(delta: float) -> void:
 			if _net_timer <= 0.0:
 				_net_timer = 0.066
 				Network.broadcast_vehicle_state(net_id, global_position, rotation.y)
+	elif owned and not pilot_name.is_empty() and auto_target != Vector3.ZERO:
+		# 委派驾驶员的玩家车：远程指挥自动驾驶
+		_autopilot(delta)
 	else:
 		_speed = move_toward(_speed, 0.0, friction * delta)
 		_apply_speed()
@@ -407,6 +420,55 @@ func _drive(delta: float) -> void:
 	var direction := 1.0 if _speed >= 0.0 else -1.0
 	var turn_factor := clampf(absf(_speed) / max_speed, 0.25, 1.0)
 	rotate_y(-steer * turn_speed * turn_factor * delta * direction)
+	_apply_speed()
+
+
+# —— 委派驾驶员与远程指挥（Tab 载具面板） ——
+
+# 委派一名随从当驾驶员：车成为玩家的车（面板显示/可远程指挥）
+func assign_pilot(fname: String) -> void:
+	owned = true
+	pilot_name = fname
+	auto_target = Vector3.ZERO
+	GameState.notify("%s 已委派为 %s 的驾驶员" % [fname, _vehicle_name()])
+
+
+# 远程指挥：设置自动驾驶目标（开往标点 / 召回身边）
+func command_to(target: Vector3) -> void:
+	if not owned or pilot_name.is_empty():
+		GameState.notify("先在载具面板给这辆车委派驾驶员")
+		return
+	if destroyed:
+		GameState.notify("这辆车已经报废了")
+		return
+	if fuel <= 0.0:
+		GameState.notify("%s 没油了，先去加油" % _vehicle_name())
+		return
+	auto_target = target
+
+
+# 自动驾驶：朝目标转向 + 全油门，到达即停；油尽/报废由上层分支拦住
+func _autopilot(delta: float) -> void:
+	consume_fuel(delta)
+	if fuel <= 0.0:
+		_notify_no_fuel()
+		_speed = move_toward(_speed, 0.0, friction * delta)
+		_apply_speed()
+		return
+	var to := auto_target - global_position
+	to.y = 0.0
+	if to.length() <= ARRIVE_DIST:
+		auto_target = Vector3.ZERO
+		_speed = 0.0
+		_apply_speed()
+		GameState.notify("%s（%s 驾驶）已到达目的地" % [_vehicle_name(), pilot_name])
+		return
+	var want_yaw := atan2(to.x, to.z)
+	var diff := wrapf(want_yaw - rotation.y, -PI, PI)
+	_speed = move_toward(_speed, max_speed * 0.7, acceleration * delta)
+	var turn_factor := clampf(absf(_speed) / max_speed, 0.25, 1.0)
+	# 绕 y 正方向旋转使 yaw（atan2(forward.x, forward.z)）增大；diff>0 需 yaw 增大
+	rotate_y(clampf(diff * 2.0, -1.0, 1.0) * turn_speed * turn_factor * delta)
 	_apply_speed()
 
 

@@ -672,9 +672,12 @@ func _build_vehicle_panel() -> void:
 	vbox.add_child(row)
 	row.add_child(_make_panel_button("全选/全不选", _on_vehicle_toggle_all))
 	row.add_child(_make_panel_button("标记选中到大地图", _on_vehicle_mark))
+	row.add_child(_make_panel_button("委派驾驶员", _on_vehicle_assign_pilot))
+	row.add_child(_make_panel_button("开往地图标点", _on_vehicle_goto_marker))
+	row.add_child(_make_panel_button("召回身边", _on_vehicle_recall))
 	row.add_child(_make_panel_button("关闭", close_vehicle_panel))
 	var hint := Label.new()
-	hint.text = "勾选车辆后可标记到大地图（M 查看）· Tab/Esc 关闭"
+	hint.text = "勾选后：标记地图 / 委派随从驾驶（变玩家车，可远程指挥）· Tab/Esc 关闭"
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	hint.add_theme_font_size_override("font_size", 10)
 	hint.modulate = Color(0.8, 0.8, 0.8)
@@ -730,6 +733,10 @@ func _refresh_vehicle_panel() -> void:
 			info.modulate = Color(0.6, 0.6, 0.6)
 		else:
 			var state := "驾驶中" if v.get("driver") != null else "停放"
+			if bool(v.get("owned")) and not String(v.get("pilot_name")).is_empty():
+				state = "我方·%s 驾驶" % String(v.get("pilot_name"))
+				if (v.get("auto_target") as Vector3) != Vector3.ZERO:
+					state += "→ 自动驾驶中"
 			var dist := ""
 			if player != null:
 				dist = " · 距你 %dm" % int((v.global_position as Vector3).distance_to(player.global_position))
@@ -778,6 +785,64 @@ func _on_vehicle_mark() -> void:
 	var pos: Vector3 = best.global_position
 	GameState.map_marker = Vector2(pos.x, pos.z) / GameState.WORLD_SCALE_3D
 	GameState.notify("已在大地图标记 %s（按 M 查看）" % String(best.call("_vehicle_name")))
+
+
+# 选中的车里取第一辆未委派未报废的：派一名随从当驾驶员（消耗随从名额）
+func _on_vehicle_assign_pilot() -> void:
+	var target = null
+	for v in _vehicle_checked.keys():
+		if v == null or not is_instance_valid(v) or not bool(_vehicle_checked[v]):
+			continue
+		if bool(v.get("destroyed")) or bool(v.get("owned")):
+			continue
+		target = v
+		break
+	if target == null:
+		GameState.notify("先勾选一辆未委派且未报废的车")
+		return
+	var pilot = null
+	for f in _followers:
+		if f != null and is_instance_valid(f):
+			pilot = f
+			break
+	if pilot == null:
+		GameState.notify("没有可委派的随从（走近市民按 E 招募）")
+		return
+	var pname := String(pilot.get("follower_name"))
+	_forget_follower(pilot)
+	pilot.queue_free()
+	target.call("assign_pilot", pname)
+	_refresh_vehicle_panel()
+
+
+# 选中的玩家车全部开往大地图标记点
+func _on_vehicle_goto_marker() -> void:
+	if GameState.map_marker == Vector2.ZERO:
+		GameState.notify("先在地图上标一个点（M 打开地图左键标点）")
+		return
+	var n := 0
+	for v in _vehicle_checked.keys():
+		if v == null or not is_instance_valid(v) or not bool(_vehicle_checked[v]):
+			continue
+		v.call("command_to", GameState.map_marker_3d())
+		n += 1
+	if n == 0:
+		GameState.notify("先勾选车辆")
+
+
+# 选中的玩家车全部开回玩家身边
+func _on_vehicle_recall() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	var n := 0
+	for v in _vehicle_checked.keys():
+		if v == null or not is_instance_valid(v) or not bool(_vehicle_checked[v]):
+			continue
+		v.call("command_to", player.global_position)
+		n += 1
+	if n == 0:
+		GameState.notify("先勾选车辆")
 
 
 func open_squad_panel() -> void:

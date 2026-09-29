@@ -259,7 +259,7 @@ func _build_tank_visual() -> void:
 	var barrel_mat := StandardMaterial3D.new()
 	barrel_mat.albedo_color = Color(0.24, 0.27, 0.24)
 	barrel.material_override = barrel_mat
-	barrel.position = Vector3(0, 0.1, -1.9)
+	barrel.position = Vector3(0, 0.1, 1.9)
 	_turret.add_child(barrel)
 
 
@@ -401,7 +401,8 @@ func _tick_tank(delta: float) -> void:
 		var to_aim := aim_point - _turret.global_position
 		to_aim.y = 0.0
 		if to_aim.length() > 0.3:
-			var target_yaw := atan2(-to_aim.x, -to_aim.z)
+			# 炮管朝局部 +Z：yaw 使 +Z 对准瞄准点（原手搓炮管朝 -Z 用负号，换真模型后 180° 反转）
+			var target_yaw := atan2(to_aim.x, to_aim.z)
 			_turret.global_rotation.y = lerp_angle(
 				_turret.global_rotation.y, target_yaw, minf(1.0, delta * 8.0)
 			)

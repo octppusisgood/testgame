@@ -67,6 +67,9 @@ var _weapon_menu: PopupMenu = null
 var _weapon_menu_id := ""
 var _drag_item_id := ""
 var _hotbar_bar: Control
+# 驾驶时的载具信息条（替换武器栏位置）
+var _vehicle_info_bar: HBoxContainer = null
+var _vehicle_info_labels := {}
 var _skills_panel: Control
 var _skills_dim: ColorRect
 var _skills_title: Label
@@ -481,9 +484,15 @@ func _process(delta: float) -> void:
 		_sight_view.queue_redraw()
 	_refresh_hotbar_ammo()
 	_update_hotbar_cd()
-	# 建造模式打开时隐藏武器栏（底部让给建造栏）
+	# 建造模式打开时隐藏武器栏（底部让给建造栏）；驾驶时武器栏换成载具信息条
+	var driving_veh = player.get("vehicle") if player != null else null
 	if _hotbar_bar != null and not _overlay_hud_hidden:
-		_hotbar_bar.visible = not GameState.base_build_mode
+		_hotbar_bar.visible = not GameState.base_build_mode and driving_veh == null
+	if _vehicle_info_bar != null and not _overlay_hud_hidden:
+		var show_info: bool = driving_veh != null and not GameState.base_build_mode
+		_vehicle_info_bar.visible = show_info
+		if show_info:
+			_refresh_vehicle_info_bar(driving_veh)
 	_hp_bar.max_value = GameState.max_hp()
 	_hp_bar.value = GameState.hp
 	_hp_value.text = "%d/%d" % [GameState.hp, GameState.max_hp()]
@@ -1703,6 +1712,24 @@ func _build_hotbar() -> void:
 	bar.add_theme_constant_override("separation", 6)
 	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(bar)
+	# 载具信息条：与武器栏同位置（驾驶时显示、武器栏隐藏）
+	_vehicle_info_bar = HBoxContainer.new()
+	_vehicle_info_bar.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	_vehicle_info_bar.offset_left = -260
+	_vehicle_info_bar.offset_top = -62
+	_vehicle_info_bar.offset_right = 260
+	_vehicle_info_bar.offset_bottom = -6
+	_vehicle_info_bar.alignment = BoxContainer.ALIGNMENT_CENTER
+	_vehicle_info_bar.add_theme_constant_override("separation", 14)
+	_vehicle_info_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_vehicle_info_bar.visible = false
+	add_child(_vehicle_info_bar)
+	for part in ["name", "hp", "fuel", "ammo"]:
+		var lbl := Label.new()
+		lbl.add_theme_font_size_override("font_size", 11)
+		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		_vehicle_info_bar.add_child(lbl)
+		_vehicle_info_labels[part] = lbl
 	var slots := [{"id": "melee", "key": "V", "index": -1}]
 	for i in 2:
 		slots.append({"id": "", "key": str(i + 1), "index": i})
@@ -1746,6 +1773,31 @@ func _build_hotbar() -> void:
 			"key": slot_data["key"],
 			"index": int(slot_data.get("index", -1)),
 		})
+
+
+# 载具信息条刷新：车名 / 血量 / 油量 / 备弹（坦克）；0.25s 节流
+var _vehicle_info_tick := 0.0
+
+
+func _refresh_vehicle_info_bar(veh) -> void:
+	var now := Time.get_ticks_msec()
+	if now - _vehicle_info_tick < 250:
+		return
+	_vehicle_info_tick = now
+	if veh == null or not is_instance_valid(veh):
+		return
+	(_vehicle_info_labels["name"] as Label).text = String(veh.call("_vehicle_name"))
+	(_vehicle_info_labels["hp"] as Label).text = "耐久 %d/%d" % [int(veh.get("hp")), int(veh.get("max_hp"))]
+	(_vehicle_info_labels["fuel"] as Label).text = "油 %.0f/%.0fL" % [
+		float(veh.get("fuel")), float(veh.call("tank_cap")),
+	]
+	var script = load("res://scripts3d/vehicle3d.gd")
+	var ammo_text := "—"
+	if String(veh.get("model")) == "tank":
+		ammo_text = "炮弹 %d/%d" % [int(veh.get("ammo")), int(script.TANK_AMMO_MAX)]
+	elif script.MG_VEHICLES.has(String(veh.get("model"))):
+		ammo_text = "车载机枪（左键）"
+	(_vehicle_info_labels["ammo"] as Label).text = ammo_text
 
 
 # 取槽位当前显示的武器 id：数字槽按动态 weapon_slots 取，近战固定 melee

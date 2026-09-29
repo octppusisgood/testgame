@@ -1107,27 +1107,34 @@ func _mouse_ray_hits_footprint(
 	return true
 
 
-# —— 悬停金色光晕：鼠标指着可交互对象时，沿其网格轮廓描一圈很淡的金色 ——
-var _hover_mat: StandardMaterial3D = null
+# —— 悬停金色轮廓：反面外扩描边（inverted hull），开深度测试 ——
+# 深度测试开启后楼体自身遮挡壳的背面，只有超出轮廓的一圈侧带可见
+# （正对相机的轮廓变亮，不会整栋镀金）；建筑用宽描边、小物件用细描边
+var _hover_mat_building: StandardMaterial3D = null
+var _hover_mat_small: StandardMaterial3D = null
 var _hover_node: Node = null
 var _hover_meshes: Array = []
 
 
-func _hover_material() -> StandardMaterial3D:
-	if _hover_mat == null:
-		_hover_mat = StandardMaterial3D.new()
-		_hover_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		_hover_mat.albedo_color = Color(1.0, 0.84, 0.35, 0.55)
-		_hover_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-		_hover_mat.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
-		# 反面外扩描边（inverted hull）：只勾勒轮廓一圈光晕。
-		# 开深度测试（no_depth_test=false）：楼体自身遮挡背面的描边壳，
-		# 只留正对相机一侧的轮廓变亮——否则整栋前后壳叠加像整体镀金
-		_hover_mat.cull_mode = BaseMaterial3D.CULL_FRONT
-		_hover_mat.grow_enabled = true
-		_hover_mat.grow_amount = 0.08
-		_hover_mat.no_depth_test = false
-	return _hover_mat
+func _hover_material(building: bool) -> StandardMaterial3D:
+	var mat: StandardMaterial3D = _hover_mat_building if building else _hover_mat_small
+	if mat != null:
+		return mat
+	mat = StandardMaterial3D.new()
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mat.albedo_color = Color(1.0, 0.84, 0.35, 0.95)
+	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mat.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+	mat.cull_mode = BaseMaterial3D.CULL_FRONT
+	mat.grow_enabled = true
+	# 建筑楼体大，宽描边在屏幕上才可见；枪/掉落物等小物件用细描边
+	mat.grow_amount = 0.45 if building else 0.06
+	mat.no_depth_test = false
+	if building:
+		_hover_mat_building = mat
+	else:
+		_hover_mat_small = mat
+	return mat
 
 
 func _update_hover_highlight(node: Node) -> void:
@@ -1143,8 +1150,12 @@ func _update_hover_highlight(node: Node) -> void:
 	_hover_node = node
 	if node == null:
 		return
+	# 带占地的建筑门描整栋楼（宽描边），其余小物件用细描边
+	var is_building: bool = (
+		node.get("footprint_half") is Vector2 and node.get("footprint_half") != Vector2.ZERO
+	)
 	for mesh in _hover_meshes_of(node):
-		mesh.material_overlay = _hover_material()
+		mesh.material_overlay = _hover_material(is_building)
 		_hover_meshes.append(mesh)
 
 

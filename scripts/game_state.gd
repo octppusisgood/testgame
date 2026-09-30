@@ -3025,7 +3025,7 @@ func _collect_artillery_nodes(node: Node, out: Array) -> void:
 # - 信号塔位于任一已连通信号源范围内（据点圈内、或另一已连通塔的覆盖圈内）即接入网络，
 #   其覆盖圈并入网络（接力扩展）；
 # - 位于网络之外的信号塔是独立信号区（HUD 有信号），但不与据点互通，不能呼叫远程打击。
-# 场景中可作为移动信号源的雷达车（未报废）
+# 场景中可作为移动信号源的雷达车：未报废且「有人」——玩家正在驾驶或已委派驾驶员
 func radar_vehicles() -> Array:
 	var out: Array = []
 	if not is_inside_tree():
@@ -3035,7 +3035,9 @@ func radar_vehicles() -> Array:
 			continue
 		if str(v.get("model")) != "radar_tank" or bool(v.get("destroyed")):
 			continue
-		out.append(v)
+		var manned: bool = v.get("driver") != null or not str(v.get("pilot_name")).is_empty()
+		if manned:
+			out.append(v)
 	return out
 
 

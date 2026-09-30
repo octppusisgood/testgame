@@ -737,12 +737,9 @@ func _tick_tank(delta: float) -> void:
 				else:
 					_heavy_fire_cd = TRUCK_ROCKET_CD
 					ammo -= 1
-					# 未部署时发射架朝车头：火箭沿车头方向直射（部署后朝鼠标）
-					var fire_target := (
-						global_position + global_transform.basis.z * 30.0
-						if not deployed else aim_point
-					)
-					_fire_truck_rocket(fire_target)
+					# 未部署弹道仍朝鼠标瞄准点（发射架只是视觉锁定车头）：
+					# 固定打车头前 30m 会让玩家朝远目标开火时误以为没发射
+					_fire_truck_rocket(aim_point)
 					_sync_rocket_meshes()
 					_refresh_status_label()
 		elif _heavy_fire_cd <= 0.0:

@@ -694,13 +694,20 @@ func _tick_tank(delta: float) -> void:
 	_heavy_fire_cd -= delta
 	var aim_point := _tank_aim_point()
 	if _turret != null:
-		var to_aim := aim_point - _turret.global_position
-		to_aim.y = 0.0
-		if to_aim.length() > 0.3:
-			# 炮管朝局部 +Z：yaw 使 +Z 对准瞄准点（原手搓炮管朝 -Z 用负号，换真模型后 180° 反转）
-			var target_yaw := atan2(to_aim.x, to_aim.z)
-			_turret.global_rotation.y = lerp_angle(
-				_turret.global_rotation.y, target_yaw, minf(1.0, delta * 8.0)
+		# 火箭卡车未部署：发射架固定朝车头（回正），部署后才随鼠标转动
+		var follow_mouse: bool = model != "rocket_truck" or deployed
+		if follow_mouse:
+			var to_aim := aim_point - _turret.global_position
+			to_aim.y = 0.0
+			if to_aim.length() > 0.3:
+				# 炮管朝局部 +Z：yaw 使 +Z 对准瞄准点（原手搓炮管朝 -Z 用负号，换真模型后 180° 反转）
+				var target_yaw := atan2(to_aim.x, to_aim.z)
+				_turret.global_rotation.y = lerp_angle(
+					_turret.global_rotation.y, target_yaw, minf(1.0, delta * 8.0)
+				)
+		else:
+			_turret.rotation.y = lerp_angle(
+				_turret.rotation.y, 0.0, minf(1.0, delta * 6.0)
 			)
 	if GameState.attack_blocked_by_ui():
 		return
@@ -730,7 +737,12 @@ func _tick_tank(delta: float) -> void:
 				else:
 					_heavy_fire_cd = TRUCK_ROCKET_CD
 					ammo -= 1
-					_fire_truck_rocket(aim_point)
+					# 未部署时发射架朝车头：火箭沿车头方向直射（部署后朝鼠标）
+					var fire_target := (
+						global_position + global_transform.basis.z * 30.0
+						if not deployed else aim_point
+					)
+					_fire_truck_rocket(fire_target)
 					_sync_rocket_meshes()
 					_refresh_status_label()
 		elif _heavy_fire_cd <= 0.0:

@@ -80,6 +80,12 @@ const VEHICLE_WIDTH := {
 	"heli_transport": 5.2,
 	"tank": 2.6,
 }
+# 碰撞盒宽度（米）：直升机视觉宽按旋翼盘算，碰撞只算机身——
+# 旋翼盘做碰撞会让密集停靠的车互相重叠、物理去重叠把车挤进地下
+const VEHICLE_COLLISION_W := {
+	"heli_attack": 2.4,
+	"heli_transport": 2.8,
+}
 const MATERIAL_PILE_SCENE := preload("res://scenes3d/material_pile3d.tscn")
 const PILE_REACH := 2.5
 # 建材磁吸：此半径内的建材堆会被车吸过来
@@ -260,7 +266,7 @@ func _build_visual() -> void:
 			var factor := target_w / aabb.size.x
 			visual.scale = Vector3.ONE * factor
 			visual.position = Vector3(0.0, -aabb.position.y * factor, 0.0)
-			_sync_collision_size(target_w)
+			_sync_collision_size(float(VEHICLE_COLLISION_W.get(model, target_w)))
 			_visual_root = visual
 			_visual_path = car_path
 			# 炮塔车：把模型自带炮塔节点接进瞄准系统（坦克 / 重型装甲车 / 攻击直升机机鼻机枪）
@@ -652,10 +658,13 @@ func _combined_aabb(root: Node3D) -> AABB:
 
 
 func _collect_aabbs(node: Node, xform: Transform3D, boxes: Array) -> void:
+	# 注意：必须用 mesh.get_aabb()（模型自身 AABB，不含节点 transform）；
+	# Node.get_aabb() 已含节点 transform，再乘累乘 xform 会把 transform 算两次——
+	# 子节点带偏移的模型（如运输直升机舱门）AABB 全歪、落地补偿把整机埋进地下
 	if node is Node3D:
 		xform = xform * node.transform
 		if node is MeshInstance3D and node.mesh != null:
-			boxes.append(xform * node.get_aabb())
+			boxes.append(xform * node.mesh.get_aabb())
 	for child in node.get_children():
 		_collect_aabbs(child, xform, boxes)
 

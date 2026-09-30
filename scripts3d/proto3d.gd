@@ -2678,6 +2678,18 @@ func _build_stations() -> void:
 
 
 # 测试模式专用：出生地召唤全部车辆模型（含 APC 双皮肤）排开供查验
+# 展示位是否无静态障碍：在离地 1.2m 处探一个 3×1.5×3 的盒（避开地面本身）
+func _showcase_spot_clear(pos: Vector3) -> bool:
+	var space := get_world_3d().direct_space_state
+	var q := PhysicsShapeQueryParameters3D.new()
+	var box := BoxShape3D.new()
+	box.size = Vector3(3.0, 1.5, 3.0)
+	q.shape = box
+	q.transform = Transform3D(Basis(), pos + Vector3(0, 1.2, 0))
+	q.collide_with_areas = false
+	return space.intersect_shape(q, 4).is_empty()
+
+
 func _spawn_vehicle_showcase() -> void:
 	var origin := Vector3(
 		GameState.SPAWN_POS.x * SCALE, 0.1, GameState.SPAWN_POS.y * SCALE
@@ -2698,9 +2710,16 @@ func _spawn_vehicle_showcase() -> void:
 				script.APC_ALT_PATH if i >= script.CAR_MODELS.size()
 				else String(script.CAR_MODEL_PATHS["apc"])
 			)
-		car.position = origin + Vector3(
-			(i % 4) * 4.5 - 6.75, 0.0, (i / 4) * 5.0
+		var place := origin + Vector3(
+			(i % 4) * 6.5 - 9.75, 0.0, (i / 4) * 7.0
 		)
+		# 落位避障：格子被街道杂物等静态碰撞体占着就顺移让位，
+		# 否则 spawn 即重叠、物理去重叠会把车挤进地下（直升机最宽最吃亏）
+		for try_shift in 6:
+			if _showcase_spot_clear(place):
+				break
+			place += Vector3(2.5, 0.0, 2.5)
+		car.position = place
 		car.set_meta("showcase", true)
 		add_child(car)
 		var label := Label3D.new()

@@ -171,6 +171,7 @@ var _rocket_meshes: Array = []
 var _salvo_target := Vector3.ZERO  # ZERO = 无齐射任务
 var _salvo_timer := 0.0
 var _deploy_held := false
+var _deploy_notice_msec := 0
 # 飞行载具（直升机）：无重力悬停，空格升 / 左Ctrl 降，巡航高度 1~40m
 const FLY_VEHICLES := ["heli_attack", "heli_transport"]
 const HELI_MIN_H := 1.0
@@ -731,14 +732,17 @@ func _tick_tank(delta: float) -> void:
 					_fire_heli_rocket(aim_point)
 					_refresh_status_label()
 		elif model == "rocket_truck":
-			if _heavy_fire_cd <= 0.0:
+			# 未部署不能发射：必须先右键部署展开发射架（节流提示）
+			if not deployed:
+				if Time.get_ticks_msec() - _deploy_notice_msec > 3000:
+					_deploy_notice_msec = Time.get_ticks_msec()
+					GameState.notify("发射架未展开——停车按右键部署后才能发射")
+			elif _heavy_fire_cd <= 0.0:
 				if ammo <= 0:
 					_notify_ammo_empty()
 				else:
 					_heavy_fire_cd = TRUCK_ROCKET_CD
 					ammo -= 1
-					# 未部署弹道仍朝鼠标瞄准点（发射架只是视觉锁定车头）：
-					# 固定打车头前 30m 会让玩家朝远目标开火时误以为没发射
 					_fire_truck_rocket(aim_point)
 					_sync_rocket_meshes()
 					_refresh_status_label()

@@ -351,7 +351,7 @@ func _notify_ammo_empty() -> void:
 	if Time.get_ticks_msec() - _ammo_notice_msec < 3000:
 		return
 	_ammo_notice_msec = Time.get_ticks_msec()
-	GameState.notify("炮弹耗尽——E 装填（消耗背包火炮弹，弹药台可造）")
+	GameState.notify("炮弹耗尽——E 装填（消耗背包坦克炮弹/榴弹，弹药加工台可造）")
 
 
 func take_damage(amount: int, _from: Node3D = null) -> void:
@@ -962,22 +962,22 @@ func interact_options(player: Node3D) -> Array:
 		return []
 	var options: Array = [{"id": "board", "label": "上车"}]
 	if model == "tank":
-		var shells := GameState.loot_count("cannon_shell")
+		var shells := GameState.loot_count("tank_shell")
 		var loadable := mini(shells, TANK_AMMO_MAX - ammo)
 		options.append({
 			"id": "load_ammo",
-			"label": "装填炮弹（可装 %d，背包火炮弹 %d）" % [loadable, shells],
+			"label": "装填炮弹（可装 %d，背包坦克炮弹 %d）" % [loadable, shells],
 			"disabled": loadable <= 0,
-			"reason": "背包没有火炮弹（弹药加工台可造）" if shells <= 0 else "备弹已满",
+			"reason": "背包没有坦克炮弹（弹药加工台可造）" if shells <= 0 else "备弹已满",
 		})
 	elif model == "apc_heavy":
-		var grenades := GameState.grenade_count()
+		var grenades := GameState.loot_count("grenade_round")
 		var loadable := mini(grenades, HEAVY_AMMO_MAX - ammo)
 		options.append({
 			"id": "load_ammo",
-			"label": "装填榴弹（可装 %d，背包手雷 %d）" % [loadable, grenades],
+			"label": "装填榴弹（可装 %d，背包榴弹 %d）" % [loadable, grenades],
 			"disabled": loadable <= 0,
-			"reason": "背包没有手雷" if grenades <= 0 else "榴弹已满",
+			"reason": "背包没有榴弹（弹药加工台可造）" if grenades <= 0 else "榴弹已满",
 		})
 	if TURRET_VEHICLES.has(model) or MG_VEHICLES.has(model):
 		var bag_ammo := GameState.total_ammo()
@@ -1016,16 +1016,11 @@ func interact_choose(id: String, player: Node3D) -> void:
 				player.enter_vehicle(self)
 		"load_ammo":
 			var cap := main_ammo_cap()
-			var got := 0
-			if model == "tank":
-				got = mini(GameState.loot_count("cannon_shell"), cap - ammo)
-				if got > 0:
-					GameState.remove_loot("cannon_shell", got)
-			else:
-				got = mini(GameState.grenade_count(), cap - ammo)
-				if got > 0 and not GameState.infinite_ammo:
-					GameState.weapons["grenade"] = GameState.grenade_count() - got
-					GameState.weapons_changed.emit()
+			# 弹药不互通：坦克吃「坦克炮弹」、重装甲吃「榴弹」（均为弹药台独立产线，不吃手雷/火炮弹）
+			var item_id := "tank_shell" if model == "tank" else "grenade_round"
+			var got := mini(GameState.loot_count(item_id), cap - ammo)
+			if got > 0:
+				GameState.remove_loot(item_id, got)
 			if got <= 0:
 				return
 			ammo += got

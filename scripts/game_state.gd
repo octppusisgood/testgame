@@ -340,6 +340,8 @@ const LOOT_ITEMS := {
 	# 弹药加工台产物：迫击炮弹/火炮弹（炮击开火消耗）
 	"mortar_shell": {"name": "迫击炮弹", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_01.tscn", "value": 30},
 	"cannon_shell": {"name": "火炮弹", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_01.tscn", "value": 50},
+	"tank_shell": {"name": "坦克炮弹", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_01.tscn", "value": 40},
+	"grenade_round": {"name": "榴弹", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_01.tscn", "value": 25},
 	# 异能宝石：异能转换台产物，随身携带强化能力（每颗伤害 +10%、生命上限 +25，最多 3 颗）
 	"anomaly_gem": {"name": "异能宝石", "cat": "tool", "model": APO_ITEM + "SM_Item_Jar_01.tscn", "value": 400},
 }
@@ -2259,6 +2261,8 @@ const LOOT_CAPS := {
 	"anomaly_gem": 3,
 	"mortar_shell": 20,
 	"cannon_shell": 10,
+	"tank_shell": 40,
+	"grenade_round": 60,
 }
 
 

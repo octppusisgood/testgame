@@ -1848,6 +1848,8 @@ class Workbench extends Fabricator:
 			"lmg_ammo": {"name": "重机枪弹药 ×50", "kind": "ammo", "craft": 25, "time": 45.0, "ammo": 50, "caliber": "lmg"},
 			"mortar_shell": {"name": "迫击炮弹 ×2", "kind": "loot", "loot": "mortar_shell", "qty": 2, "craft": 16, "time": 24.0},
 			"cannon_shell": {"name": "火炮弹 ×2", "kind": "loot", "loot": "cannon_shell", "qty": 2, "craft": 30, "time": 36.0},
+			"tank_shell": {"name": "坦克炮弹 ×3", "kind": "loot", "loot": "tank_shell", "qty": 3, "craft": 24, "time": 30.0},
+			"grenade_round": {"name": "榴弹 ×5", "kind": "loot", "loot": "grenade_round", "qty": 5, "craft": 12, "time": 18.0},
 		}
 
 

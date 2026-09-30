@@ -74,6 +74,12 @@ const TANK_CANNON_CD := 1.2
 const TANK_MG_DAMAGE := 70
 const TANK_MG_CD := 0.25
 const CAR_WIDTH := 2.0
+# 车型目标宽度（米）：直升机按旋翼直径放大——统一 2m 会把机身压得太小
+const VEHICLE_WIDTH := {
+	"heli_attack": 4.6,
+	"heli_transport": 5.2,
+	"tank": 2.6,
+}
 const MATERIAL_PILE_SCENE := preload("res://scenes3d/material_pile3d.tscn")
 const PILE_REACH := 2.5
 # 建材磁吸：此半径内的建材堆会被车吸过来
@@ -250,9 +256,11 @@ func _build_visual() -> void:
 		add_child(visual)
 		var aabb := _combined_aabb(visual)
 		if aabb.size.x > 0.01:
-			var factor := CAR_WIDTH / aabb.size.x
+			var target_w: float = float(VEHICLE_WIDTH.get(model, CAR_WIDTH))
+			var factor := target_w / aabb.size.x
 			visual.scale = Vector3.ONE * factor
 			visual.position = Vector3(0.0, -aabb.position.y * factor, 0.0)
+			_sync_collision_size(target_w)
 			_visual_root = visual
 			_visual_path = car_path
 			# 炮塔车：把模型自带炮塔节点接进瞄准系统（坦克 / 重型装甲车 / 攻击直升机机鼻机枪）
@@ -392,6 +400,17 @@ func _tick_vehicle_mg(delta: float) -> void:
 
 func main_ammo_cap() -> int:
 	return TANK_AMMO_MAX if model == "tank" else HEAVY_AMMO_MAX
+
+
+# 车体碰撞盒随目标宽度同步放大（默认 2.0×1.0×4.2）
+func _sync_collision_size(target_w: float) -> void:
+	var col := get_node_or_null("CollisionShape3D") as CollisionShape3D
+	if col == null or not (col.shape is BoxShape3D):
+		return
+	var scale_f := target_w / CAR_WIDTH
+	var box := (col.shape as BoxShape3D).duplicate()
+	box.size = Vector3(2.0, 1.0, 4.2) * scale_f
+	col.shape = box
 
 
 func _vehicle_name() -> String:

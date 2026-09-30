@@ -155,8 +155,22 @@ const HEAVY_GRENADE_CD := 0.6
 # 带机枪模块的车辆：驾驶时左键机枪射击（伤害/射速等同重机枪）；
 # 重型装甲车例外——左键是榴弹、机枪走右键（见 _tick_tank）
 const MG_VEHICLES := ["technical", "armored_car"]
-# 带可旋转炮塔的车辆（炮塔随鼠标；攻击直升机用机鼻机枪三级节点）
-const TURRET_VEHICLES := ["tank", "apc_heavy", "heli_attack"]
+# 带可旋转炮塔的车辆（炮塔随鼠标；攻击直升机用机鼻机枪三级节点；火箭卡车用发射架）
+const TURRET_VEHICLES := ["tank", "apc_heavy", "heli_attack", "rocket_truck"]
+# 火箭卡车：单发 200 伤 / 6m 半径 / 1.2s；停车右键部署→开地图标点→剩余火箭连射
+const TRUCK_ROCKET_DAMAGE := 200
+const TRUCK_ROCKET_RADIUS := 6.0
+const TRUCK_ROCKET_CD := 1.2
+const TRUCK_AMMO_MAX := 12
+const TRUCK_SALVO_INTERVAL := 0.4
+const TRUCK_RANGE := 250.0
+const TRUCK_DEPLOY_PITCH := -0.7  # 发射架部署仰角（弧度）
+var deployed := false
+var _battery: Node3D = null
+var _rocket_meshes: Array = []
+var _salvo_target := Vector3.ZERO  # ZERO = 无齐射任务
+var _salvo_timer := 0.0
+var _deploy_held := false
 # 飞行载具（直升机）：无重力悬停，空格升 / 左Ctrl 降，巡航高度 1~40m
 const FLY_VEHICLES := ["heli_attack", "heli_transport"]
 const HELI_MIN_H := 1.0
@@ -236,6 +250,8 @@ func _build_visual() -> void:
 		ammo = HEAVY_AMMO_MAX
 	elif model == "heli_attack":
 		ammo = HELI_AMMO_MAX
+	elif model == "rocket_truck":
+		ammo = TRUCK_AMMO_MAX
 	if TURRET_VEHICLES.has(model):
 		mg_ammo = MG_AMMO_MAX
 		_status_label = Label3D.new()
@@ -274,11 +290,25 @@ func _build_visual() -> void:
 				"tank": "SM_Veh_Tank_USA_Turret_01",
 				"apc_heavy": "SM_Veh_APC_Heavy_Turret_01",
 				"heli_attack": "SM_Veh_Helicopter_Attack_01_Gun_Horizontal",
+			"rocket_truck": "SM_Veh_Rocket_Truck_01_Rocket_Battery",
 			}
 			if turret_names.has(model):
 				var turret_nodes := visual.find_children(String(turret_names[model]), "Node3D", true, false)
 				if turret_nodes.size() > 0:
 					_turret = turret_nodes[0]
+			# 火箭卡车：抓住发射架上 12 枚火箭网格（打一发藏一枚，装填恢复）
+			if model == "rocket_truck":
+				var batteries := visual.find_children(
+					"SM_Veh_Rocket_Truck_01_Rocket_Battery", "Node3D", true, false
+				)
+				if batteries.size() > 0:
+					_battery = batteries[0]
+				for rk in visual.find_children("SM_Veh_Rocket_Truck_01_Rocket_*", "Node3D", true, false):
+					# 通配符会带进发射架自身（Rocket_Battery），只收 12 枚弹体
+					if String(rk.name).contains("Battery"):
+						continue
+					_rocket_meshes.append(rk)
+				_sync_rocket_meshes()
 			# 直升机旋翼：抓住主/尾旋翼节点做旋转动画
 			if flying:
 				var blades := visual.find_children("*Blades_Main*", "Node3D", true, false)
@@ -384,10 +414,94 @@ func _fire_heli_rocket(aim_point: Vector3) -> void:
 	GameState.noise_at(global_position, 16.0)
 
 
+# 发射架上火箭网格与备弹同步：显示前 ammo 枚（mesh 顺序即架上顺序）
+func _sync_rocket_meshes() -> void:
+	for i in _rocket_meshes.size():
+		var rk = _rocket_meshes[i]
+		if rk != null and is_instance_valid(rk):
+			rk.visible = i < ammo
+
+
+# 火箭卡车发射一枚：从发射架世界位置飞向目标（带尾迹弹体与爆炸）
+func _fire_truck_rocket(target: Vector3) -> void:
+	var from := global_position + Vector3(0, 2.6, 0)
+	var dir := target - from
+	if dir.length() < 0.5:
+		dir = global_transform.basis.z
+	dir = dir.normalized()
+	var rocket = load("res://scenes3d/explosive3d.tscn").instantiate()
+	get_parent().add_child(rocket)
+	rocket.setup(
+		from, dir, TRUCK_ROCKET_DAMAGE, TRUCK_ROCKET_RADIUS, false, self,
+		clampf(from.distance_to(target), 8.0, TRUCK_RANGE),
+		true, Color(1.0, 0.5, 0.1, 0.75), true
+	)
+	GameState.noise_at(global_position, 20.0)
+
+
+# 停车时右键：部署（锁车+发射架仰起+开大地图选打击点）/ 收起
+func toggle_deploy() -> void:
+	if deployed:
+		_undeploy()
+		return
+	if Vector2(velocity.x, velocity.z).length() > 1.5:
+		GameState.notify("先停车再部署（松开油门）")
+		return
+	if ammo <= 0:
+		GameState.notify("架上没有火箭——E 装填（背包火箭弹）")
+		return
+	deployed = true
+	_speed = 0.0
+	_salvo_target = Vector3.ZERO
+	GameState.map_marker = Vector2.ZERO
+	GameState.notify("部署完成——在大地图左键选打击点（射程 %dm）；再按右键收起" % int(TRUCK_RANGE))
+	if not GameState.map_open:
+		GameState.toggle_map()
+
+
+func _undeploy() -> void:
+	deployed = false
+	_salvo_target = Vector3.ZERO
+	GameState.notify("收起发射架，恢复行驶")
+
+
+# 部署中：发射架俯仰动画；等地图标点 → 校验射程 → 逐枚齐射
+func _tick_deploy(delta: float) -> void:
+	if _battery != null and is_instance_valid(_battery):
+		var want := TRUCK_DEPLOY_PITCH if deployed else 0.0
+		_battery.rotation.x = lerp_angle(_battery.rotation.x, want, minf(1.0, delta * 4.0))
+	if not deployed:
+		return
+	if _salvo_target == Vector3.ZERO:
+		if GameState.map_marker != Vector2.ZERO and not GameState.map_open:
+			var target := GameState.map_marker_3d()
+			if target.distance_to(global_position) > TRUCK_RANGE:
+				GameState.notify("打击点超出射程（%dm），请重新标点" % int(TRUCK_RANGE))
+				GameState.map_marker = Vector2.ZERO
+			else:
+				_salvo_target = target
+				_salvo_timer = 0.3
+				GameState.notify("火力覆盖开始！剩余 %d 枚连射" % ammo)
+		return
+	if ammo <= 0:
+		_salvo_target = Vector3.ZERO
+		GameState.notify("齐射结束——架上已空，E 装填或右键收起")
+		return
+	_salvo_timer -= delta
+	if _salvo_timer <= 0.0:
+		_salvo_timer = TRUCK_SALVO_INTERVAL
+		ammo -= 1
+		_fire_truck_rocket(_salvo_target)
+		_sync_rocket_meshes()
+		_refresh_status_label()
+
+
 func _refresh_status_label() -> void:
 	if _status_label == null:
 		return
 	var main_part := "炮弹 %d" % ammo if model == "tank" else "榴弹 %d" % ammo
+	if model == "rocket_truck":
+		main_part = "火箭 %d" % ammo
 	_status_label.text = "HP %d/%d · %s · 机枪 %d" % [hp, max_hp, main_part, mg_ammo]
 
 # 机枪车辆驾驶射击（等同重机枪：伤 70 / CD 0.25）
@@ -405,7 +519,13 @@ func _tick_vehicle_mg(delta: float) -> void:
 
 
 func main_ammo_cap() -> int:
-	return TANK_AMMO_MAX if model == "tank" else HEAVY_AMMO_MAX
+	if model == "tank":
+		return TANK_AMMO_MAX
+	if model == "apc_heavy":
+		return HEAVY_AMMO_MAX
+	if model == "rocket_truck":
+		return TRUCK_AMMO_MAX
+	return HELI_AMMO_MAX
 
 
 # 车体碰撞盒随目标宽度同步放大（默认 2.0×1.0×4.2）
@@ -441,6 +561,8 @@ func _vehicle_name() -> String:
 			return "攻击直升机"
 		"heli_transport":
 			return "运输直升机"
+		"rocket_truck":
+			return "火箭卡车"
 	if int(VEHICLE_HP.get(model, 1000)) >= 5000:
 		return "集装箱车"
 	return "轿车"
@@ -601,6 +723,16 @@ func _tick_tank(delta: float) -> void:
 					ammo -= 1
 					_fire_heli_rocket(aim_point)
 					_refresh_status_label()
+		elif model == "rocket_truck":
+			if _heavy_fire_cd <= 0.0:
+				if ammo <= 0:
+					_notify_ammo_empty()
+				else:
+					_heavy_fire_cd = TRUCK_ROCKET_CD
+					ammo -= 1
+					_fire_truck_rocket(aim_point)
+					_sync_rocket_meshes()
+					_refresh_status_label()
 		elif _heavy_fire_cd <= 0.0:
 			if ammo <= 0:
 				_notify_ammo_empty()
@@ -610,7 +742,15 @@ func _tick_tank(delta: float) -> void:
 				_fire_heavy_grenade(aim_point)
 				_refresh_status_label()
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		_fire_vehicle_mg(aim_point)
+		if model == "rocket_truck":
+			# 右键是部署开关（按住只触发一次，松开复位）
+			if not _deploy_held:
+				_deploy_held = true
+				toggle_deploy()
+		else:
+			_fire_vehicle_mg(aim_point)
+	if model == "rocket_truck" and not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		_deploy_held = false
 
 
 # 重型装甲车主武器：高爆榴弹（等同步枪右键枪榴弹：60 伤 / 4m 半径 / 瞬爆红色特效）
@@ -682,6 +822,7 @@ func _physics_process(delta: float) -> void:
 		_drive(delta)
 		_tick_tank(delta)
 		_tick_vehicle_mg(delta)
+		_tick_deploy(delta)
 		if Network.is_multiplayer() and Network.vehicle_owner(net_id) == Network.my_id():
 			_net_timer -= delta
 			if _net_timer <= 0.0:
@@ -725,6 +866,12 @@ func _auto_deposit_cargo() -> void:
 
 func _drive(delta: float) -> void:
 	consume_fuel(delta)
+	# 部署状态锁移动：发射架展开中不能开车
+	if deployed:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		_speed = 0.0
+		return
 	# 车辆自身坐标系：W 前进（车头方向）/ S 倒车 / A D 转向
 	if driver != null and driver.has_method("drive_input"):
 		var input: Vector2 = driver.drive_input()
@@ -1100,9 +1247,10 @@ func interact_options(player: Node3D) -> Array:
 			"disabled": loadable <= 0,
 			"reason": "背包没有榴弹（弹药加工台可造）" if grenades <= 0 else "榴弹已满",
 		})
-	elif model == "heli_attack":
+	elif model == "heli_attack" or model == "rocket_truck":
 		var rockets := GameState.loot_count("rocket_round")
-		var loadable := mini(rockets, HELI_AMMO_MAX - ammo)
+		var cap := main_ammo_cap()
+		var loadable := mini(rockets, cap - ammo)
 		options.append({
 			"id": "load_ammo",
 			"label": "装填火箭弹（可装 %d，背包火箭弹 %d）" % [loadable, rockets],
@@ -1147,16 +1295,18 @@ func interact_choose(id: String, player: Node3D) -> void:
 		"load_ammo":
 			var cap := main_ammo_cap()
 			# 弹药不互通：坦克吃「坦克炮弹」、重装甲吃「榴弹」（均为弹药台独立产线，不吃手雷/火炮弹）
-			var item_id: String = {"tank": "tank_shell", "apc_heavy": "grenade_round", "heli_attack": "rocket_round"}.get(model, "")
+			var item_id: String = {"tank": "tank_shell", "apc_heavy": "grenade_round", "heli_attack": "rocket_round", "rocket_truck": "rocket_round"}.get(model, "")
 			var got := mini(GameState.loot_count(item_id), cap - ammo)
 			if got > 0:
 				GameState.remove_loot(item_id, got)
 			if got <= 0:
 				return
 			ammo += got
+			_sync_rocket_meshes()
 			_refresh_status_label()
 			GameState.notify("装填%s %d 发（备弹 %d/%d）" % [
-				"炮弹" if model == "tank" else "榴弹", got, ammo, cap,
+				"炮弹" if model == "tank" else ("榴弹" if model == "apc_heavy" else "火箭弹"),
+				got, ammo, cap,
 			])
 		"load_mg":
 			var mg_got := mini(GameState.total_ammo(), MG_AMMO_MAX - mg_ammo)

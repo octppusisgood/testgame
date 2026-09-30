@@ -545,15 +545,20 @@ const HEAT_LAYERS := 10
 
 
 func _draw_signal_zones() -> void:
-	if not GameState.has_home_base():
+	var radar_list: Array = GameState.radar_vehicles()
+	if not GameState.has_home_base() and radar_list.is_empty():
 		return
-	var home: Vector3 = GameState.home_base.get("position", Vector3.ZERO)
-	_draw_signal_heat(home, GameState.base_signal_radius(), true)
-	for entry in GameState.home_base.get("defenses", []):
-		if String(entry.get("type", "")) != "signal_tower":
-			continue
-		var tp: Vector3 = entry["pos"]
-		_draw_signal_heat(tp, GameState.SIGNAL_TOWER_RANGE, GameState.point_in_signal_coverage(tp))
+	if GameState.has_home_base():
+		var home: Vector3 = GameState.home_base.get("position", Vector3.ZERO)
+		_draw_signal_heat(home, GameState.base_signal_radius(), true)
+		for entry in GameState.home_base.get("defenses", []):
+			if String(entry.get("type", "")) != "signal_tower":
+				continue
+			var tp: Vector3 = entry["pos"]
+			_draw_signal_heat(tp, GameState.SIGNAL_TOWER_RANGE, GameState.point_in_signal_coverage(tp))
+	# 雷达车（移动信号站）：半塔距暖色热圈，随车移动
+	for v in radar_list:
+		_draw_signal_heat(v.global_position, GameState.RADAR_VEHICLE_RANGE, true)
 
 
 # 分层热度：由外向内画同心圆，越靠内颜色越热、透明度越高；

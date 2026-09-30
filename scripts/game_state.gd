@@ -388,6 +388,8 @@ const BASE_BASE_RADIUS := 8.0
 const BASE_MAX_RADIUS := 20.0
 # 信号塔覆盖半径（原 40m，批次 151 扩大 10 倍）
 const SIGNAL_TOWER_RANGE := 400.0
+# 雷达车 = 小型移动信号站：信号塔范围的 1/2，车开到哪信号到哪（不依赖据点网络）
+const RADAR_VEHICLE_RANGE := SIGNAL_TOWER_RANGE * 0.5
 # 据点建造消耗建材（拆除建筑/街道杂物获得），不再消耗现金
 const BASE_EXPAND_COST := 10
 # 建造目录（cost 均为建材）：照明灯纯功能，发电机是炮塔射程光环、每据点限 1 个
@@ -3020,7 +3022,27 @@ func _collect_artillery_nodes(node: Node, out: Array) -> void:
 # - 信号塔位于任一已连通信号源范围内（据点圈内、或另一已连通塔的覆盖圈内）即接入网络，
 #   其覆盖圈并入网络（接力扩展）；
 # - 位于网络之外的信号塔是独立信号区（HUD 有信号），但不与据点互通，不能呼叫远程打击。
+# 场景中可作为移动信号源的雷达车（未报废）
+func radar_vehicles() -> Array:
+	var out: Array = []
+	if not is_inside_tree():
+		return out
+	for v in get_tree().get_nodes_in_group("vehicles"):
+		if v == null or not is_instance_valid(v) or v.is_queued_for_deletion():
+			continue
+		if str(v.get("model")) != "radar_tank" or bool(v.get("destroyed")):
+			continue
+		out.append(v)
+	return out
+
+
 func point_in_signal_coverage(point: Vector3) -> bool:
+	# 雷达车（移动信号站）：200m 圈独立覆盖，无据点也有效
+	var flat := Vector2(point.x, point.z)
+	for v in radar_vehicles():
+		var vp: Vector3 = v.global_position
+		if Vector2(vp.x, vp.z).distance_to(flat) <= RADAR_VEHICLE_RANGE:
+			return true
 	if not has_home_base():
 		return false
 	var home_pos: Vector3 = home_base.get("position", Vector3.ZERO)

@@ -1850,6 +1850,7 @@ class Workbench extends Fabricator:
 			"cannon_shell": {"name": "火炮弹 ×2", "kind": "loot", "loot": "cannon_shell", "qty": 2, "craft": 30, "time": 36.0},
 			"tank_shell": {"name": "坦克炮弹 ×3", "kind": "loot", "loot": "tank_shell", "qty": 3, "craft": 24, "time": 30.0},
 			"grenade_round": {"name": "榴弹 ×5", "kind": "loot", "loot": "grenade_round", "qty": 5, "craft": 12, "time": 18.0},
+			"rocket_round": {"name": "火箭弹 ×4", "kind": "loot", "loot": "rocket_round", "qty": 4, "craft": 18, "time": 25.0},
 		}
 
 

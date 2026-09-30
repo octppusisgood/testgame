@@ -1798,6 +1798,8 @@ func _refresh_vehicle_info_bar(veh) -> void:
 		ammo_text = "炮 %d · 机枪 %d" % [int(veh.get("ammo")), int(veh.get("mg_ammo"))]
 	elif vmodel == "apc_heavy":
 		ammo_text = "榴 %d · 机枪 %d" % [int(veh.get("ammo")), int(veh.get("mg_ammo"))]
+	elif vmodel == "heli_attack":
+		ammo_text = "火箭 %d · 机枪 %d" % [int(veh.get("ammo")), int(veh.get("mg_ammo"))]
 	elif script.MG_VEHICLES.has(vmodel):
 		ammo_text = "机枪 %d（左键）" % int(veh.get("mg_ammo"))
 	(_vehicle_info_labels["ammo"] as Label).text = ammo_text

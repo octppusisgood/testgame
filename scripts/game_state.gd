@@ -342,6 +342,7 @@ const LOOT_ITEMS := {
 	"cannon_shell": {"name": "火炮弹", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_01.tscn", "value": 50},
 	"tank_shell": {"name": "坦克炮弹", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_01.tscn", "value": 40},
 	"grenade_round": {"name": "榴弹", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_01.tscn", "value": 25},
+	"rocket_round": {"name": "火箭弹", "cat": "tool", "model": APO_ITEM + "SM_Item_Battery_01.tscn", "value": 30},
 	# 异能宝石：异能转换台产物，随身携带强化能力（每颗伤害 +10%、生命上限 +25，最多 3 颗）
 	"anomaly_gem": {"name": "异能宝石", "cat": "tool", "model": APO_ITEM + "SM_Item_Jar_01.tscn", "value": 400},
 }
@@ -443,6 +444,7 @@ const VEHICLE_CARGO := {
 	"firetruck": 150, "garbage-truck": 250, "truck": 200,
 	"tank": 60, "light_tank": 60, "armored_car": 80, "radar_tank": 80,
 	"technical": 60, "apc": 150, "apc_heavy": 200, "rocket_truck": 150,
+	"heli_attack": 80, "heli_transport": 400,
 }
 const VEHICLE_CARGO_DEFAULT := 60
 # 拆除规则：大楼 = 占地 > 150000 像素² 或 3 层及以上
@@ -2265,6 +2267,7 @@ const LOOT_CAPS := {
 	"cannon_shell": 10,
 	"tank_shell": 40,
 	"grenade_round": 60,
+	"rocket_round": 48,
 }
 
 

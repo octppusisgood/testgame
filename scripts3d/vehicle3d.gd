@@ -9,6 +9,7 @@ const APOCO_VEH := "res://assets/Synty/PolygonApocalypse/Prefabs/Vehicles/"
 const CAR_MODELS := [
 	"sedan", "sedan-sports", "suv", "taxi", "van", "truck", "delivery", "hatchback-sports", "tank",
 	"light_tank", "apc", "apc_heavy", "armored_car", "technical", "rocket_truck", "radar_tank",
+	"heli_attack", "heli_transport",
 ]
 const CAR_MODEL_PATHS := {
 	"sedan": CITY_VEH + "SM_Veh_Car_Sedan_01.tscn",
@@ -28,6 +29,8 @@ const CAR_MODEL_PATHS := {
 	"technical": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Pickup_Technical_01.tscn",
 	"rocket_truck": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Rocket_Truck_01.tscn",
 	"radar_tank": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Radar_Tank_01.tscn",
+	"heli_attack": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Helicopter_Attack_01.tscn",
+	"heli_transport": "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Helicopter_Transport_01.tscn",
 }
 # APC 二号皮肤（同车型随机外观）与其对应击毁版
 const APC_ALT_PATH := "res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_APC_02.tscn"
@@ -51,6 +54,10 @@ const DESTROYED_MODELS := {
 		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Rocket_Truck_01_Destroyed.tscn",
 	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Radar_Tank_01.tscn":
 		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Radar_Tank_01_Destroyed.tscn",
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Helicopter_Attack_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Helicopter_Attack_01_Destroyed.tscn",
+	"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/SM_Veh_Helicopter_Transport_01.tscn":
+		"res://assets/Synty/PolygonMilitary/Prefabs/Vehicles/Destroyed/SM_Veh_Helicopter_Transport_01_Destroyed.tscn",
 }
 # 车辆血量（设计：普通轿车 1000 / 集装箱车 5000 / 坦克 10000）
 const VEHICLE_HP := {
@@ -58,6 +65,7 @@ const VEHICLE_HP := {
 	"van": 5000, "truck": 5000, "delivery": 5000,
 	"tank": 10000, "apc_heavy": 4500, "rocket_truck": 5000, "light_tank": 4000,
 	"apc": 3000, "radar_tank": 3000, "armored_car": 1500, "technical": 1200,
+	"heli_attack": 2500, "heli_transport": 3000,
 }
 # 坦克炮管/机枪威力（等同火箭炮/重机枪）
 const TANK_CANNON_DAMAGE := 200
@@ -77,6 +85,7 @@ const FUEL_TANK := {
 	"van": 70.0, "truck": 90.0, "delivery": 80.0, "hatchback-sports": 45.0,
 	"tank": 120.0, "light_tank": 90.0, "apc": 80.0, "apc_heavy": 95.0,
 	"armored_car": 60.0, "technical": 60.0, "rocket_truck": 90.0, "radar_tank": 80.0,
+	"heli_attack": 100.0, "heli_transport": 120.0,
 }
 # 三类燃料：轿车/跑车汽油、货运车柴油、出租车燃气；油价按类区分
 const FUEL_TYPES := {"petrol": "汽油", "diesel": "柴油", "lpg": "燃气"}
@@ -88,6 +97,7 @@ const FUEL_TYPE_BY_MODEL := {
 	# 军用车统一柴油（武装皮卡除外，跟民用车一样烧汽油）
 	"tank": "diesel", "light_tank": "diesel", "apc": "diesel", "apc_heavy": "diesel",
 	"armored_car": "diesel", "technical": "petrol", "rocket_truck": "diesel", "radar_tank": "diesel",
+	"heli_attack": "diesel", "heli_transport": "diesel",
 }
 const FUEL_PRICE := {"petrol": 3, "diesel": 2, "lpg": 4}
 const FUEL_IDLE_RATE := 0.03
@@ -133,8 +143,21 @@ const HEAVY_GRENADE_CD := 0.6
 # 带机枪模块的车辆：驾驶时左键机枪射击（伤害/射速等同重机枪）；
 # 重型装甲车例外——左键是榴弹、机枪走右键（见 _tick_tank）
 const MG_VEHICLES := ["technical", "armored_car"]
-# 带可旋转炮塔的车辆（炮塔随鼠标）
-const TURRET_VEHICLES := ["tank", "apc_heavy"]
+# 带可旋转炮塔的车辆（炮塔随鼠标；攻击直升机用机鼻机枪三级节点）
+const TURRET_VEHICLES := ["tank", "apc_heavy", "heli_attack"]
+# 飞行载具（直升机）：无重力悬停，空格升 / 左Ctrl 降，巡航高度 1~40m
+const FLY_VEHICLES := ["heli_attack", "heli_transport"]
+const HELI_MIN_H := 1.0
+const HELI_MAX_H := 40.0
+const HELI_CLIMB_SPEED := 7.0
+# 攻击直升机火箭弹：120 伤 / 3.5m 半径 / 1.0s 一发
+const HELI_ROCKET_DAMAGE := 120
+const HELI_ROCKET_RADIUS := 3.5
+const HELI_ROCKET_CD := 1.0
+const HELI_AMMO_MAX := 24
+var flying := false
+var _rotor_main: Node3D = null
+var _rotor_tail: Node3D = null
 var _mg_fire_cd := 0.0
 var _heavy_fire_cd := 0.0
 var _mg_notice_msec := 0
@@ -194,10 +217,13 @@ func _is_puppet() -> bool:
 
 func _build_visual() -> void:
 	model = CAR_MODELS[absi(net_id) % CAR_MODELS.size()]
+	flying = FLY_VEHICLES.has(model)
 	if model == "tank":
 		ammo = TANK_AMMO_MAX
 	elif model == "apc_heavy":
 		ammo = HEAVY_AMMO_MAX
+	elif model == "heli_attack":
+		ammo = HELI_AMMO_MAX
 	if TURRET_VEHICLES.has(model):
 		mg_ammo = MG_AMMO_MAX
 		_status_label = Label3D.new()
@@ -229,12 +255,24 @@ func _build_visual() -> void:
 			visual.position = Vector3(0.0, -aabb.position.y * factor, 0.0)
 			_visual_root = visual
 			_visual_path = car_path
-			# 炮塔车：把模型自带炮塔节点接进瞄准系统（坦克 / 重型装甲车）
-			var turret_name := "SM_Veh_Tank_USA_Turret_01" if model == "tank" else "SM_Veh_APC_Heavy_Turret_01"
-			if TURRET_VEHICLES.has(model):
-				var turret_nodes := visual.find_children(turret_name, "Node3D", true, false)
+			# 炮塔车：把模型自带炮塔节点接进瞄准系统（坦克 / 重型装甲车 / 攻击直升机机鼻机枪）
+			var turret_names := {
+				"tank": "SM_Veh_Tank_USA_Turret_01",
+				"apc_heavy": "SM_Veh_APC_Heavy_Turret_01",
+				"heli_attack": "SM_Veh_Helicopter_Attack_01_Gun_Horizontal",
+			}
+			if turret_names.has(model):
+				var turret_nodes := visual.find_children(String(turret_names[model]), "Node3D", true, false)
 				if turret_nodes.size() > 0:
 					_turret = turret_nodes[0]
+			# 直升机旋翼：抓住主/尾旋翼节点做旋转动画
+			if flying:
+				var blades := visual.find_children("*Blades_Main*", "Node3D", true, false)
+				if blades.size() > 0:
+					_rotor_main = blades[0]
+				var tail := visual.find_children("*Blades_Back*", "Node3D", true, false)
+				if tail.size() > 0:
+					_rotor_tail = tail[0]
 			return
 		visual.queue_free()
 	# 模型加载失败的手搓后备：坦克用旧手搓外观，其余给个盒子
@@ -296,6 +334,42 @@ func _build_tank_visual() -> void:
 	_turret.add_child(barrel)
 
 
+# 直升机垂直控制：驾驶中空格上升 / 左Ctrl 下降，无输入悬停；未驾驶缓缓降至地面
+func _fly_vertical(delta: float) -> void:
+	if driver != null:
+		if Input.is_action_pressed("jump"):
+			velocity.y = HELI_CLIMB_SPEED
+		elif Input.is_key_pressed(KEY_CTRL):
+			velocity.y = -HELI_CLIMB_SPEED
+		elif global_position.y < 3.0:
+			velocity.y = minf(HELI_CLIMB_SPEED, (3.0 - global_position.y) * 2.0)
+		else:
+			velocity.y = 0.0
+		global_position.y = clampf(global_position.y, HELI_MIN_H, HELI_MAX_H)
+	elif global_position.y > 0.6:
+		velocity.y = -HELI_CLIMB_SPEED * 0.6
+	else:
+		velocity.y = 0.0
+
+
+# 攻击直升机火箭弹：120 伤 / 3.5m 半径爆炸
+func _fire_heli_rocket(aim_point: Vector3) -> void:
+	var from := global_position + Vector3(0, 0.5, 0) + global_transform.basis.z * 1.5
+	var dir := aim_point - from
+	dir.y = 0.0
+	if dir.length() < 0.1:
+		dir = global_transform.basis.z
+	dir = dir.normalized()
+	var rocket = load("res://scenes3d/explosive3d.tscn").instantiate()
+	get_parent().add_child(rocket)
+	rocket.setup(
+		from, dir, HELI_ROCKET_DAMAGE, HELI_ROCKET_RADIUS, false, self,
+		minf(60.0, from.distance_to(aim_point)),
+		true, Color(1.0, 0.45, 0.1, 0.7), true
+	)
+	GameState.noise_at(global_position, 16.0)
+
+
 func _refresh_status_label() -> void:
 	if _status_label == null:
 		return
@@ -338,6 +412,10 @@ func _vehicle_name() -> String:
 			return "火箭卡车"
 		"radar_tank":
 			return "雷达车"
+		"heli_attack":
+			return "攻击直升机"
+		"heli_transport":
+			return "运输直升机"
 	if int(VEHICLE_HP.get(model, 1000)) >= 5000:
 		return "集装箱车"
 	return "轿车"
@@ -489,6 +567,15 @@ func _tick_tank(delta: float) -> void:
 					ammo -= 1
 					_tank_fire_cannon(aim_point)
 					_refresh_status_label()
+		elif model == "heli_attack":
+			if _heavy_fire_cd <= 0.0:
+				if ammo <= 0:
+					_notify_ammo_empty()
+				else:
+					_heavy_fire_cd = HELI_ROCKET_CD
+					ammo -= 1
+					_fire_heli_rocket(aim_point)
+					_refresh_status_label()
 		elif _heavy_fire_cd <= 0.0:
 			if ammo <= 0:
 				_notify_ammo_empty()
@@ -578,17 +665,23 @@ func _physics_process(delta: float) -> void:
 	else:
 		_speed = move_toward(_speed, 0.0, friction * delta)
 		_apply_speed()
-	if not is_on_floor():
-		velocity.y -= GRAVITY * delta
+	if flying:
+		_fly_vertical(delta)
 	else:
-		velocity.y = 0.0
+		if not is_on_floor():
+			velocity.y -= GRAVITY * delta
+		else:
+			velocity.y = 0.0
 	move_and_slide()
-	_ram_check()
-	_collect_material_piles()
+	# 直升机：仅低空（近地）才有碾压/建材磁吸
+	if not flying or global_position.y < 2.0:
+		_ram_check()
+		_collect_material_piles()
 	_deposit_timer -= delta
 	if _deposit_timer <= 0.0:
 		_deposit_timer = 0.5
-		_auto_deposit_cargo()
+		if not flying or global_position.y < 2.0:
+			_auto_deposit_cargo()
 
 
 # 车斗建材在据点半径内自动入仓（无需按 U）
@@ -979,6 +1072,15 @@ func interact_options(player: Node3D) -> Array:
 			"disabled": loadable <= 0,
 			"reason": "背包没有榴弹（弹药加工台可造）" if grenades <= 0 else "榴弹已满",
 		})
+	elif model == "heli_attack":
+		var rockets := GameState.loot_count("rocket_round")
+		var loadable := mini(rockets, HELI_AMMO_MAX - ammo)
+		options.append({
+			"id": "load_ammo",
+			"label": "装填火箭弹（可装 %d，背包火箭弹 %d）" % [loadable, rockets],
+			"disabled": loadable <= 0,
+			"reason": "背包没有火箭弹（弹药加工台可造）" if rockets <= 0 else "火箭弹已满",
+		})
 	if TURRET_VEHICLES.has(model) or MG_VEHICLES.has(model):
 		var bag_ammo := GameState.total_ammo()
 		var mg_loadable := mini(bag_ammo, MG_AMMO_MAX - mg_ammo)
@@ -1017,7 +1119,7 @@ func interact_choose(id: String, player: Node3D) -> void:
 		"load_ammo":
 			var cap := main_ammo_cap()
 			# 弹药不互通：坦克吃「坦克炮弹」、重装甲吃「榴弹」（均为弹药台独立产线，不吃手雷/火炮弹）
-			var item_id := "tank_shell" if model == "tank" else "grenade_round"
+			var item_id: String = {"tank": "tank_shell", "apc_heavy": "grenade_round", "heli_attack": "rocket_round"}.get(model, "")
 			var got := mini(GameState.loot_count(item_id), cap - ammo)
 			if got > 0:
 				GameState.remove_loot(item_id, got)
@@ -1062,6 +1164,10 @@ func interact_choose(id: String, player: Node3D) -> void:
 
 func _process(_delta: float) -> void:
 	headlights_on = GameState.is_night()
+	if _rotor_main != null and is_instance_valid(_rotor_main):
+		_rotor_main.rotate_y(_delta * 22.0)
+	if _rotor_tail != null and is_instance_valid(_rotor_tail):
+		_rotor_tail.rotate_x(_delta * 30.0)
 
 
 func enter(player: Node3D) -> void:

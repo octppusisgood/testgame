@@ -942,7 +942,6 @@ func _extract_from_pause() -> void:
 		else:
 			mult = 0.5
 			place = "战斗中（无信号脱战）"
-	GameState.extract_multiplier = mult
 	GameState.notify("撤离点：%s · 物资结算 ×%d%%" % [place, int(mult * 100)])
 	GameState.end_run(true, "你从「%s」主动撤离了城市（结算 ×%d%%）" % [place, int(mult * 100)])
 

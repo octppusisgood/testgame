@@ -1264,6 +1264,23 @@ func save_meta() -> void:
 	file.close()
 
 
+# 结束方式 → 结算倍率：活着=按位置与脱战状态；阵亡=死亡点信号 ×50%（无信号 0%）
+func _resolve_end_multiplier(won: bool) -> float:
+	var player = get_tree().get_first_node_in_group("player") if is_inside_tree() else null
+	var covered := false
+	if player != null:
+		covered = point_in_signal_coverage(player.global_position)
+	if not won:
+		return 0.5 if covered else 0.0
+	if player == null:
+		return 1.0
+	if in_combat_now():
+		return 0.5
+	if player_in_base_radius():
+		return 1.5
+	return 1.0 if covered else 0.5
+
+
 func settle_run(won: bool) -> Dictionary:
 	runs_played += 1
 	var days := clampi(day_number - 1, 0, FINAL_DAY)
@@ -1276,13 +1293,6 @@ func settle_run(won: bool) -> Dictionary:
 		"anomaly_sp": anomaly,
 		"total": space_energy,
 	}
-	if not won:
-		# 死亡按死亡瞬间信号强度 ×50% 封顶，无信号 = 0%
-		var player = get_tree().get_first_node_in_group("player") if is_inside_tree() else null
-		if player == null or not point_in_signal_coverage(player.global_position):
-			extract_multiplier = 0.0
-		else:
-			extract_multiplier = 0.5
 	if won:
 		extractions += 1
 		var loot := (
@@ -4033,6 +4043,10 @@ func echo_regen() -> float:
 func end_run(won: bool, reason: String) -> void:
 	if is_run_over():
 		return
+	# 统一撤离分档（设计稿 2.1）：活着撤离三档（营地150/信号100/战斗50），
+	# 阵亡=死亡瞬间信号 ×50%（无信号 0%）；通关=150 顶格。Esc 入口已设 mult 时尊重不覆盖。
+	if extract_multiplier == 1.0:
+		extract_multiplier = _resolve_end_multiplier(won)
 	phase = "won" if won else "lost"
 	phase_changed.emit(phase)
 	notify(reason)

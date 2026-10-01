@@ -316,7 +316,6 @@ func _ready() -> void:
 			_spawn_rogue_civilians_indoors()
 		# 通缉系统已彻底删除：不再生成警察（_spawn_cops 不再调用）
 	_spawn_player()
-	_spawn_hired_npcs()
 	var base_build := Node3D.new()
 	base_build.name = "BaseBuild"
 	base_build.set_script(load("res://scripts3d/base_build3d.gd"))
@@ -344,6 +343,9 @@ func _ready() -> void:
 	workers.name = "Workers"
 	workers.set_script(load("res://scripts3d/worker3d.gd"))
 	add_child(workers)
+	# 系统空间雇佣的随从：必须在 workers 管理器就位后再生成
+	# （此前在 _spawn_player 后就调用，管理器尚未创建 → 查找落空 → 静默不生成）
+	_spawn_hired_npcs()
 	if GameState.rogue_mode:
 		# 肉鸽模式：直接进入灾变阶段（平民逃难/能量场活性都依赖它），1 分钟准备期由 _tick_rogue 管
 		GameState.phase = "outbreak"

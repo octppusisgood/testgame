@@ -212,7 +212,9 @@ func _draw() -> void:
 		_forward = _forward.normalized()
 	_right = Vector2(-_forward.y, _forward.x)
 	_draw_content(true)
-	_draw_player_arrow()
+	# 藏匿在建筑里：小地图不显示玩家箭头
+	if GameState.player_in_building.is_empty():
+		_draw_player_arrow()
 	_draw_marker()
 	draw_arc(_center, _radius + 1.0, 0.0, TAU, 64, Color(0.65, 0.75, 0.85, 0.85), 2.0)
 	draw_arc(_center, _radius - 1.0, 0.0, TAU, 64, Color(0.1, 0.12, 0.15, 0.6), 1.0)
@@ -451,7 +453,8 @@ func _draw_content(show_people: bool) -> void:
 			_draw_car(car_pos, atan2(screen_dir.y, screen_dir.x))
 
 	var player = get_tree().get_first_node_in_group("player")
-	if player != null and not show_people:
+	# 藏匿在建筑里：地图上不暴露位置
+	if player != null and not show_people and GameState.player_in_building.is_empty():
 		draw_circle(_project3(player.global_position), 4.0, Color(0.4, 1.0, 0.5, 1.0))
 
 

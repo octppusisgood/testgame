@@ -890,7 +890,7 @@ func _physics_process(delta: float) -> void:
 	var input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	# 交互菜单打开时锁死移动（W/S 在菜单里用于上下选择；Input.get_vector 是轮询，
 	# hud 的 set_input_as_handed 拦不住，必须在这里归零）；藏匿在建筑中同样锁移动
-	if GameState.interact_menu_open or not GameState.player_in_building.is_empty():
+	if GameState.interact_menu_open:
 		input = Vector2.ZERO
 	# 架设状态：不能移动；切到非重机枪自动收起
 	if _deployed:

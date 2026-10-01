@@ -902,6 +902,13 @@ func _build_pause_panel() -> void:
 	resume.add_theme_font_size_override("font_size", 16)
 	resume.pressed.connect(GameState.toggle_pause_menu)
 	box.add_child(resume)
+	# 局内 Esc 撤离：站据点内=×150%，据点外有信号=×100%，无信号=×50%
+	var extract := Button.new()
+	extract.text = "撤离本局（按信号分档结算 SP）"
+	extract.custom_minimum_size = Vector2(220, 36)
+	extract.add_theme_font_size_override("font_size", 14)
+	extract.pressed.connect(_extract_from_pause)
+	box.add_child(extract)
 	var quit := Button.new()
 	quit.text = "返回主界面"
 	quit.custom_minimum_size = Vector2(220, 36)
@@ -914,6 +921,27 @@ func _build_pause_panel() -> void:
 	tip.add_theme_color_override("font_color", Color(0.75, 0.8, 0.85))
 	tip.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	box.add_child(tip)
+
+
+# 暂停菜单撤离：按信号覆盖分档（据点内 150% / 信号区 100% / 战斗中无信号 50%），
+# 结算乘在物资折算上，随后走 end_run(won) 统一结算链
+func _extract_from_pause() -> void:
+	if GameState.is_run_over():
+		return
+	GameState.toggle_pause_menu()
+	var player = get_tree().get_first_node_in_group("player")
+	var mult := 0.5
+	var place := "战斗中（无信号）"
+	if player != null:
+		if GameState.player_in_base_radius():
+			mult = 1.5
+			place = "据点内"
+		elif GameState.point_in_signal_coverage(player.global_position):
+			mult = 1.0
+			place = "信号区"
+	GameState.extract_multiplier = mult
+	GameState.notify("撤离点：%s · 物资结算 ×%d%%" % [place, int(mult * 100)])
+	GameState.end_run(true, "你从「%s」主动撤离了城市（结算 ×%d%%）" % [place, int(mult * 100)])
 
 
 func _on_pause_toggled(open: bool) -> void:

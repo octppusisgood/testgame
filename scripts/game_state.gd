@@ -273,6 +273,8 @@ const GUN_TREE := [
 ]
 # 本局已购层数（0 = 未购任何层；进局后强化钩子读取，局终清零）
 var gun_tree_levels := 0
+# Esc 撤离分档倍率（据点内 1.5 / 信号区 1.0 / 战斗中 0.5）；settle_run 应用后清零
+var extract_multiplier := 1.0
 const FOOD_DIR := "res://assets/models/items/food/"
 const SUR_DIR := "res://assets/models/items/survival/"
 const WEAPON_DIR := "res://assets/models/weapons/"
@@ -1273,9 +1275,15 @@ func settle_run(won: bool) -> Dictionary:
 			+ money / 10
 		)
 		var bonus := 60 + maxi(0, zombie_stage_index() + 1) * 10
-		space_energy += loot + bonus + loot_total_value() / 4
+		# Esc 撤离分档：物资折算（loot+背包值）乘倍率；天数/仓储/异能量不乘
+		loot = int(loot * extract_multiplier)
+		var bag_sp := int(loot_total_value() / 4 * extract_multiplier)
+		space_energy += loot + bonus + bag_sp
 		summary["loot"] = loot
 		summary["bonus"] = bonus
+		if extract_multiplier != 1.0:
+			summary["mult"] = extract_multiplier
+	extract_multiplier = 1.0
 	space_energy += day_sp + boss_sp_bonus + storage_sp + anomaly
 	if anomaly > 0:
 		notify("异能量折算 SP +%d" % anomaly)

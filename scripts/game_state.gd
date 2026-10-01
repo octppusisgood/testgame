@@ -4104,6 +4104,7 @@ func reset_run(reload_scene := false) -> void:
 	player_kills = 0
 	civilian_kills = 0
 	gun_tree_levels = 0
+	last_combat_msec = 0
 	_crime_reports.clear()
 	_gunshot_alerts.clear()
 	_last_gunshot_notice = 0

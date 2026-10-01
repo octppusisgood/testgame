@@ -143,6 +143,8 @@ var guard_home := Vector3.ZERO
 # 肉鸽 Boss 能量场留守怪：非 Boss 也可留守——绕场徘徊、只反击进圈目标，不主动出击
 var hold_home := Vector3.ZERO
 var hold_radius := 0.0
+# 普通能量场守场期限：>0 倒计时，归零即解除守场散入城市（Boss 场留守怪不设=永久留守）
+var hold_timer := 0.0
 var _guard_roam_pos := Vector3.ZERO
 const GUARD_ROAM_RADIUS := 10.0
 const GUARD_LEASH := 22.0
@@ -339,6 +341,14 @@ func _physics_process(delta: float) -> void:
 	if net_puppet:
 		_puppet_tick(delta)
 		return
+	# 守场期满释放：放在早退分支之前，远距/群演模式下也照常到期解除
+	if hold_timer > 0.0:
+		hold_timer -= delta
+		if hold_timer <= 0.0:
+			hold_timer = 0.0
+			hold_radius = 0.0
+			guard_home = Vector3.ZERO
+			hold_home = Vector3.ZERO
 	if (
 		GameState.viewer_active
 		and global_position.distance_to(GameState.viewer_position) > 130.0

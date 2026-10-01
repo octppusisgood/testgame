@@ -259,9 +259,13 @@ func _spawn_zone_zombie() -> void:
 		zombie.guard_home = global_position
 		zombie.hold_home = global_position
 		zombie.hold_radius = radius + 4.0
-	elif GameState.rogue_mode and GameState.has_home_base():
-		# 肉鸽守营：能量点刷出的丧尸优先进攻营地
-		zombie.assault_target = GameState.home_base.get("position", Vector3.ZERO)
+	elif GameState.rogue_mode:
+		# 普通能量场：先守场徘徊 15~25 秒，期满散入城市游荡/袭扰市民；
+		# 游荡进营地 20m 才会被 proto3d 转为袭营（不再出生直奔营地）
+		zombie.guard_home = global_position
+		zombie.hold_home = global_position
+		zombie.hold_radius = radius + 4.0
+		zombie.hold_timer = randf_range(15.0, 25.0)
 
 
 # 肉鸽守关：Boss 能量场激活后生成守关 Boss；Boss 存活期间核心无敌，死亡后解锁

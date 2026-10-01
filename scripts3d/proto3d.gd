@@ -230,12 +230,11 @@ var _rogue_stage := 0
 var _rogue_phase := "prep"  # prep / active / dev / won
 var _rogue_dev_timer := 0.0
 var _rogue_zone: Node3D = null
-# 肉鸽普通能量场：灾变后随机刷在营地附近，同时最多 3 个，尸群袭营（不强化）；
-# 拆掉一个后 60 秒才会补生新的
+# 肉鸽普通能量场：进入灾变即刷（城内随机，无需营地），同时最多 3 个；
+# 拆掉一个后 60 秒才会补生新的；丧尸游荡到营地 20m 内才转为袭营
 const ROGUE_FIELD_CAP := 3
-const ROGUE_FIELD_MIN_DIST := 20.0
-const ROGUE_FIELD_MAX_DIST := 50.0
 const ROGUE_FIELD_RESPAWN_DELAY := 60.0
+const ROGUE_BASE_ASSAULT_RANGE := 20.0
 var _rogue_field_timer := 15.0
 var _last_field_count := 0
 # 肉鸽新手提示：准备期按间隔逐条弹出核心规则（设计文档 2.3）
@@ -2896,11 +2895,9 @@ func _rogue_field_count() -> int:
 	return count
 
 
-# 在营地附近随机刷一个普通能量场：持续刷怪袭营，不强化（区别于 Boss 场）
+# 在城内随机刷一个普通能量场（无需营地，进入灾变即刷）：
+# 离玩家至少 40m；刷出的丧尸先守场、定时释放进城游荡，靠近营地（≤20m）才转袭营
 func _spawn_rogue_field() -> void:
-	if not GameState.has_home_base():
-		return
-	var base_pos: Vector3 = GameState.home_base.get("position", Vector3.ZERO)
 	var zone := Node3D.new()
 	zone.set_script(load("res://scripts3d/anomaly_zone3d.gd"))
 	zone.radius = randf_range(6.0, 9.0)
@@ -2908,31 +2905,27 @@ func _spawn_rogue_field() -> void:
 	zone.energy = randi_range(1, 2)
 	zone.active = true
 	add_child(zone)
-	var placed := false
-	# 能量场必须整圈落在城内：中心连同半径一起 clamp 进边界
-	# （此前只查「不压建筑」，营地靠近地图边时会刷到城外）
-	var margin: float = zone.radius + 1.5
-	var max_x: float = GameState.CITY_SIZE.x * SCALE - margin
-	var max_z: float = GameState.CITY_SIZE.y * SCALE - margin
-	for attempt in 40:
-		var angle := randf() * TAU
-		var dist := randf_range(ROGUE_FIELD_MIN_DIST, ROGUE_FIELD_MAX_DIST)
-		var p := Vector3(
-			clampf(base_pos.x + cos(angle) * dist, margin, max_x),
-			0.0,
-			clampf(base_pos.z + sin(angle) * dist, margin, max_z)
-		)
-		if not _inside_any_building(Vector2(p.x / SCALE, p.z / SCALE)):
-			zone.global_position = p
-			placed = true
+	var pos := _random_free_pos()
+	var player = get_tree().get_first_node_in_group("player")
+	var min_dist := 40.0
+	for attempt in 60:
+		if player == null:
 			break
-	if not placed:
-		zone.global_position = Vector3(
-			clampf(base_pos.x + ROGUE_FIELD_MIN_DIST + 10.0, margin, max_x),
-			0.0,
-			clampf(base_pos.z, margin, max_z)
-		)
-	GameState.notify("营地附近出现新的异常能量场——尸群正在逼近营地！")
+		if (
+			Vector2(pos.x, pos.z).distance_to(
+				Vector2(player.global_position.x, player.global_position.z)
+			) >= min_dist
+		):
+			break
+		pos = _random_free_pos()
+	# 兜底 clamp 进城界（_random_free_pos 已在界内，防未来改动出图）
+	var margin: float = zone.radius + 1.5
+	zone.global_position = Vector3(
+		clampf(pos.x, margin, GameState.CITY_SIZE.x * SCALE - margin),
+		0.0,
+		clampf(pos.z, margin, GameState.CITY_SIZE.y * SCALE - margin)
+	)
+	GameState.notify("城市里出现异常能量场——尸群正在涌出！")
 
 
 func _win_rogue() -> void:
@@ -2985,7 +2978,7 @@ func _tick_rogue(delta: float) -> void:
 			GameState.notify("异常能量点已激活——第 1 关开启！")
 			_start_rogue_stage(1)
 	elif _rogue_phase == "active":
-		# 当前关进行中：丧尸随时间变强（反龟缩）；已建营地则定期给无目标丧尸补设袭营目标
+		# 当前关进行中：丧尸随时间变强（反龟缩）；游荡到营地附近的丧尸转为袭营
 		GameState.rogue_active_elapsed += delta
 		_rogue_retarget_timer -= delta
 		if _rogue_retarget_timer <= 0.0:
@@ -2998,8 +2991,13 @@ func _tick_rogue(delta: float) -> void:
 					# 守关 Boss 和 Boss 场留守怪不改目标（留守场边）
 					if zombie.has_method("_guarding") and zombie._guarding():
 						continue
+					# 只有无目标且游荡进营地 20m 的丧尸才转袭营（其余在城市游荡/袭扰市民）
 					if zombie.get("assault_target") == Vector3.ZERO:
-						zombie.assault_target = base_pos
+						if (
+							zombie.global_position.distance_to(base_pos)
+							<= ROGUE_BASE_ASSAULT_RANGE
+						):
+							zombie.assault_target = base_pos
 		# 普通能量场：同时最多 3 个；检测到有场被拆 → 补生冷却 60 秒
 		var field_alive := _rogue_field_count()
 		if field_alive < _last_field_count:

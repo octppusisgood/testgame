@@ -31,6 +31,8 @@ var _life := 0.0
 var _traveled := 0.0
 # 拖影分段起点：每飞过 TRAIL_STEP 米生成一段首尾相接的光痕
 var _last_trail_pos := Vector3.ZERO
+# 出生点所在建筑/墙体的豁免列表（进入建筑后对外开火用）
+var _indoor_exclude: Array[RID] = []
 
 const TRAIL_STEP := 2.0
 
@@ -49,6 +51,19 @@ func setup(
 	falloff = falloff_arr
 	headshot_range = headshot_max
 	_last_trail_pos = pos
+	# 在建筑内开火：枪口若位于某个建筑/墙体碰撞体内部，该碰撞体对这颗子弹
+	# 整体豁免——角色进屋后依旧可以对外开火，子弹不会在出生点撞墙消失
+	var point_shape := SphereShape3D.new()
+	point_shape.radius = 0.15
+	var shape_query := PhysicsShapeQueryParameters3D.new()
+	shape_query.shape = point_shape
+	shape_query.transform = Transform3D(Basis(), pos)
+	shape_query.collision_mask = 1
+	shape_query.exclude = _exclude()
+	for hit in get_world_3d().direct_space_state.intersect_shape(shape_query, 4):
+		var col = hit.get("collider")
+		if col is CollisionObject3D:
+			_indoor_exclude.append(col.get_rid())
 	var up := Vector3.UP
 	if absf(direction.dot(Vector3.UP)) > 0.98:
 		up = Vector3.RIGHT
@@ -152,6 +167,7 @@ func _exclude() -> Array[RID]:
 	var exclude: Array[RID] = []
 	if shooter != null and is_instance_valid(shooter):
 		exclude.append(shooter.get_rid())
+	exclude.append_array(_indoor_exclude)
 	return exclude
 
 

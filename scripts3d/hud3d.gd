@@ -909,6 +909,12 @@ func _build_pause_panel() -> void:
 	extract.add_theme_font_size_override("font_size", 14)
 	extract.pressed.connect(_extract_from_pause)
 	box.add_child(extract)
+	var hub := Button.new()
+	hub.text = "返回系统空间（不结算）"
+	hub.custom_minimum_size = Vector2(220, 36)
+	hub.add_theme_font_size_override("font_size", 14)
+	hub.pressed.connect(_return_to_hub_direct)
+	box.add_child(hub)
 	var quit := Button.new()
 	quit.text = "返回主界面"
 	quit.custom_minimum_size = Vector2(220, 36)
@@ -937,6 +943,13 @@ func _extract_from_pause() -> void:
 		place += " · 战斗中×50%"
 	GameState.notify("撤离 · %s · 物资结算 ×%d%%" % [place, int(GameState.signal_strength * (0.5 if combat else 1.0) * 100)])
 	GameState.end_run(true, "你主动撤离了城市（%s）" % place)
+
+
+# 直接回系统空间：不结算、不走 end_run——测试模式/中途退出的快速通道
+func _return_to_hub_direct() -> void:
+	GameState.toggle_pause_menu()
+	GameState.phase = "prep"  # 复位防 is_run_over 卡结算面板
+	GameState.return_to_hub()
 
 
 func _on_pause_toggled(open: bool) -> void:

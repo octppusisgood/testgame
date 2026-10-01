@@ -1,433 +1,334 @@
 extends Node3D
-# 系统空间（2.5D）：局外中枢——入口（进城市）/ 基因库 / 商城 / 交易所 / 强化仓。
-# 轻量小玩家（WASD 行走 + 正交俯视相机），走近设施按 E 打开对应面板。
-# 替代旧观测舱（hub3d 的全按钮界面），撤离/死亡后回到这里。
-
+# 系统空间（批次 222 重写）：局外中枢。
+# 大厅 + 4 个设施点（进城市/商城/基因库/强化仓），WASD 走动，走近按 E 开面板。
+# 刻意保持简单：无定时器、无延迟切场景、无联机依赖、无自动进城逻辑。
 
 const WALK_SPEED := 5.0
-const INTERACT_RANGE := 3.2
+const INTERACT_RANGE := 3.0
+const CAM_OFFSET := Vector3(0, 9.0, 7.5)
+
+const STATIONS := [
+	{"kind": "enter", "name": "进入城市", "pos": Vector3(0, 0, -7), "color": Color(0.4, 0.9, 0.6)},
+	{"kind": "shop", "name": "商城", "pos": Vector3(-7, 0, 0), "color": Color(0.95, 0.8, 0.3)},
+	{"kind": "gene", "name": "基因库", "pos": Vector3(7, 0, 0), "color": Color(0.7, 0.5, 0.95)},
+	{"kind": "train", "name": "强化仓", "pos": Vector3(0, 0, 7), "color": Color(0.4, 0.7, 1.0)},
+]
 
 var _player: CharacterBody3D
 var _cam: Camera3D
-var _points: Array = []
-var _near_point: Dictionary = {}
-var _hint_label: Label3D = null
+var _near := ""
+var _hint: Label3D = null
 var _panel: Control = null
-var _panel_kind := ""
-var _energy_label: Label
-var _tree_rows := {}
+var _energy_label: Label = null
 
 
 func _ready() -> void:
-	print("SYSTEM_SPACE: _ready fired")
-	GameState._hlog("system_space: _ready begin")
 	GameState.load_meta()
-	if GameState.spawn_point_override == Vector2.ZERO:
-		GameState.spawn_point_override = Vector2(3036, 1960)
-	_build_world()
+	_build_room()
+	_build_stations()
 	_build_player()
 	_build_ui()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	GameState._hlog("system_space: _ready done")
-	# 5 秒后打点：看场景有没有被切走
-	await get_tree().create_timer(5.0).timeout
-	if is_instance_valid(self) and not is_queued_for_deletion():
-		GameState._hlog("system_space: alive after 5s, current=%s" % (
-			str(get_tree().current_scene.name if get_tree().current_scene != null else "NULL")
-		))
 
 
-func _process(delta: float) -> void:
-	_update_near_point()
+# —— 大厅 ——
+
+func _build_room() -> void:
+	var env := Environment.new()
+	env.background_mode = Environment.BG_COLOR
+	env.background_color = Color(0.02, 0.03, 0.06)
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	env.ambient_light_color = Color(0.6, 0.7, 0.9)
+	env.ambient_light_energy = 0.7
+	var world_env := WorldEnvironment.new()
+	world_env.environment = env
+	add_child(world_env)
+	# 地面
+	var floor_mesh := MeshInstance3D.new()
+	var plane := PlaneMesh.new()
+	plane.size = Vector2(40, 40)
+	floor_mesh.mesh = plane
+	var floor_mat := StandardMaterial3D.new()
+	floor_mat.albedo_color = Color(0.08, 0.1, 0.14)
+	floor_mesh.material_override = floor_mat
+	add_child(floor_mesh)
+	var floor_body := StaticBody3D.new()
+	var floor_shape := CollisionShape3D.new()
+	var floor_box := BoxShape3D.new()
+	floor_box.size = Vector3(40, 0.1, 40)
+	floor_shape.shape = floor_box
+	floor_body.add_child(floor_shape)
+	add_child(floor_body)
+
+
+func _build_stations() -> void:
+	for st in STATIONS:
+		var root := Node3D.new()
+		root.name = "Station_%s" % String(st["kind"])
+		root.position = st["pos"]
+		add_child(root)
+		# 底座
+		var base := MeshInstance3D.new()
+		var base_box := BoxMesh.new()
+		base_box.size = Vector3(1.6, 0.3, 1.6)
+		base.mesh = base_box
+		var base_mat := StandardMaterial3D.new()
+		base_mat.albedo_color = (st["color"] as Color).darkened(0.5)
+		base.material_override = base_mat
+		base.position.y = 0.15
+		root.add_child(base)
+		# 信标柱（发光）
+		var beacon := MeshInstance3D.new()
+		var beacon_box := BoxMesh.new()
+		beacon_box.size = Vector3(0.4, 1.2, 0.4)
+		beacon.mesh = beacon_box
+		var beacon_mat := StandardMaterial3D.new()
+		beacon_mat.albedo_color = st["color"]
+		beacon_mat.emission_enabled = true
+		beacon_mat.emission = st["color"]
+		beacon_mat.emission_energy_multiplier = 1.6
+		beacon.material_override = beacon_mat
+		beacon.position.y = 0.9
+		root.add_child(beacon)
+		# 名称牌
+		var label := Label3D.new()
+		label.text = String(st["name"])
+		label.font_size = 64
+		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		label.modulate = st["color"]
+		label.outline_size = 10
+		label.outline_modulate = Color(0, 0, 0, 0.9)
+		label.position = Vector3(0, 1.9, 0)
+		root.add_child(label)
+
+
+# —— 玩家与相机 ——
+
+func _build_player() -> void:
+	_player = CharacterBody3D.new()
+	_player.name = "HubPlayer"
+	var shape := CollisionShape3D.new()
+	var capsule := CapsuleShape3D.new()
+	capsule.radius = 0.4
+	capsule.height = 1.6
+	shape.shape = capsule
+	shape.position.y = 0.8
+	_player.add_child(shape)
+	var body := MeshInstance3D.new()
+	var body_box := BoxMesh.new()
+	body_box.size = Vector3(0.6, 1.4, 0.4)
+	body.mesh = body_box
+	var body_mat := StandardMaterial3D.new()
+	body_mat.albedo_color = Color(0.85, 0.6, 0.75)
+	body.material_override = body_mat
+	body.position.y = 0.7
+	_player.add_child(body)
+	_player.position = Vector3(0, 0.2, 3)
+	add_child(_player)
+	_cam = Camera3D.new()
+	_cam.current = true
+	add_child(_cam)
+	_update_camera(0.0)
+
+
+func _update_camera(_delta: float) -> void:
+	var target := _player.global_position + CAM_OFFSET
+	_cam.global_position = _cam.global_position.lerp(target, 0.15)
+	_cam.look_at(_player.global_position + Vector3(0, 1.0, 0), Vector3.UP)
+
+
+func _physics_process(delta: float) -> void:
+	var dir := Vector3.ZERO
+	if Input.is_key_pressed(KEY_W):
+		dir.z -= 1.0
+	if Input.is_key_pressed(KEY_S):
+		dir.z += 1.0
+	if Input.is_key_pressed(KEY_A):
+		dir.x -= 1.0
+	if Input.is_key_pressed(KEY_D):
+		dir.x += 1.0
+	if dir.length() > 0.01:
+		dir = dir.normalized()
+	_player.velocity.x = dir.x * WALK_SPEED
+	_player.velocity.z = dir.z * WALK_SPEED
+	_player.velocity.y -= 9.8 * delta
+	_player.move_and_slide()
+	_update_camera(delta)
+
+
+# —— UI 与交互 ——
+
+func _build_ui() -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 10
+	add_child(layer)
+	_energy_label = Label.new()
+	_energy_label.position = Vector2(16, 12)
+	_energy_label.add_theme_font_size_override("font_size", 16)
+	_energy_label.add_theme_color_override("font_color", Color(0.6, 1.0, 0.8))
+	layer.add_child(_energy_label)
+	_hint = Label3D.new()
+	_hint.font_size = 72
+	_hint.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	_hint.modulate = Color(1.0, 1.0, 0.85)
+	_hint.outline_size = 10
+	_hint.outline_modulate = Color(0, 0, 0, 0.9)
+	_hint.visible = false
+	add_child(_hint)
+
+
+func _process(_delta: float) -> void:
 	if _energy_label != null:
 		_energy_label.text = "SP：%d" % GameState.space_energy
+	# 最近的设施点
+	var best := ""
+	var best_d := INTERACT_RANGE
+	for st in STATIONS:
+		var d: float = _player.global_position.distance_to((st["pos"] as Vector3))
+		if d < best_d:
+			best_d = d
+			best = String(st["kind"])
+	if best != _near:
+		_near = best
+		if _near == "":
+			_hint.visible = false
+		else:
+			var st := _station_of(_near)
+			_hint.text = "%s · 按 E 打开" % String(st["name"])
+			_hint.visible = true
+	if _near != "":
+		_hint.global_position = _player.global_position + Vector3(0, 2.4, 0)
 
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_E and not _panel_kind.is_empty():
-			pass
-		if event.keycode == KEY_ESCAPE and not _panel_kind.is_empty():
-			close_panel()
-			get_viewport().set_input_as_handled()
+func _station_of(kind: String) -> Dictionary:
+	for st in STATIONS:
+		if String(st["kind"]) == kind:
+			return st
+	return {}
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventKey and event.pressed and not event.echo):
 		return
-	if event.keycode == KEY_E and _panel_kind.is_empty() and not _near_point.is_empty():
-		open_panel(String(_near_point["kind"]))
+	if event.keycode == KEY_ESCAPE and _panel != null:
+		_close_panel()
+		get_viewport().set_input_as_handled()
+		return
+	if event.keycode == KEY_E:
+		if _panel != null:
+			_close_panel()
+		elif _near != "":
+			_open_panel(_near)
 		get_viewport().set_input_as_handled()
 
 
-# ————————————————— 世界搭建 —————————————————
+# —— 面板 ——
 
-func _build_world() -> void:
-	var world_env := WorldEnvironment.new()
-	var env := Environment.new()
-	env.background_mode = Environment.BG_COLOR
-	env.background_color = Color(0.04, 0.05, 0.09)
-	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color(0.5, 0.55, 0.7)
-	env.ambient_light_energy = 1.0
-	world_env.environment = env
-	add_child(world_env)
-	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-55, 30, 0)
-	sun.light_energy = 0.9
-	add_child(sun)
-
-	var floor_body := StaticBody3D.new()
-	var shape := CollisionShape3D.new()
-	var box := BoxShape3D.new()
-	box.size = Vector3(60, 1, 40)
-	shape.shape = box
-	floor_body.add_child(shape)
-	add_child(floor_body)
-	floor_body.position = Vector3(0, -0.5, 0)
-	var floor_mesh := MeshInstance3D.new()
-	var fbox := BoxMesh.new()
-	fbox.size = Vector3(60, 1, 40)
-	floor_mesh.mesh = fbox
-	var fmat := StandardMaterial3D.new()
-	fmat.albedo_color = Color(0.13, 0.15, 0.2)
-	floor_mesh.material_override = fmat
-	floor_body.add_child(floor_mesh)
-
-	_hint_label = Label3D.new()
-	_hint_label.font_size = 44
-	_hint_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	_hint_label.modulate = Color(1.0, 0.9, 0.5)
-	_hint_label.visible = false
-	add_child(_hint_label)
-
-	# 五个设施：入口 / 基因库 / 商城 / 交易所 / 强化仓
-	_add_station("exit", "城市入口", Vector3(0, 0, -12), Color(0.95, 0.75, 0.3))
-	_add_station("gene", "基因库", Vector3(-18, 0, 4), Color(0.5, 0.95, 0.7))
-	_add_station("shop", "蓝图商城", Vector3(-9, 0, 8), Color(0.55, 0.75, 1.0))
-	_add_station("trade", "交易所", Vector3(9, 0, 8), Color(1.0, 0.6, 0.4))
-	_add_station("train", "强化仓", Vector3(18, 0, 4), Color(0.85, 0.55, 1.0))
-
-
-func _add_station(kind: String, title: String, pos: Vector3, color: Color) -> void:
-	var root := Node3D.new()
-	add_child(root)
-	root.position = pos
-	var body := MeshInstance3D.new()
-	var box := BoxMesh.new()
-	box.size = Vector3(3.6, 1.2, 3.6)
-	body.mesh = box
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = color.darkened(0.55)
-	body.material_override = mat
-	body.position = Vector3(0, 0.6, 0)
-	root.add_child(body)
-	var cap := MeshInstance3D.new()
-	var cap_box := BoxMesh.new()
-	cap_box.size = Vector3(4.0, 0.25, 4.0)
-	cap.mesh = cap_box
-	var cap_mat := StandardMaterial3D.new()
-	cap_mat.albedo_color = color
-	cap_mat.emission_enabled = true
-	cap_mat.emission = color
-	cap_mat.emission_energy_multiplier = 0.6
-	cap.material_override = cap_mat
-	cap.position = Vector3(0, 1.3, 0)
-	root.add_child(cap)
-	var label := Label3D.new()
-	label.text = title
-	label.font_size = 64
-	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	label.modulate = color
-	label.position = Vector3(0, 2.6, 0)
-	root.add_child(label)
-	_points.append({"kind": kind, "title": title, "pos": pos, "label": label})
-
-
-func _build_player() -> void:
-	_player = CharacterBody3D.new()
-	add_child(_player)
-	var col := CollisionShape3D.new()
-	var cap := CapsuleShape3D.new()
-	cap.radius = 0.35
-	cap.height = 1.7
-	col.shape = cap
-	col.position = Vector3(0, 0.85, 0)
-	_player.add_child(col)
-	var body := MeshInstance3D.new()
-	var capsule := CapsuleMesh.new()
-	capsule.radius = 0.35
-	capsule.height = 1.7
-	body.mesh = capsule
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = Color(0.35, 0.8, 1.0)
-	body.material_override = mat
-	body.position = Vector3(0, 0.85, 0)
-	_player.add_child(body)
-	_player.position = Vector3(0, 0.2, 0)
-	_cam = Camera3D.new()
-	add_child(_cam)
-	_cam.projection = Camera3D.PROJECTION_ORTHOGONAL
-	_cam.size = 16.0
-	_cam.rotation_degrees = Vector3(-55, 0, 0)
-
-
-func _physics_process(delta: float) -> void:
-	if _player == null:
-		return
-	var input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var dir := Vector3(input.x, 0, input.y).rotated(Vector3.UP, 0.0)
-	_player.velocity.x = dir.x * WALK_SPEED
-	_player.velocity.z = dir.z * WALK_SPEED
-	if not _player.is_on_floor():
-		_player.velocity.y -= 18.0 * delta
-	_player.move_and_slide()
-	if _cam != null:
-		_cam.position = _player.global_position + Vector3(0, 12, 8)
-
-
-func _update_near_point() -> void:
-	_near_point = {}
-	var best := INTERACT_RANGE
-	for pt in _points:
-		var d: float = _player.global_position.distance_to(Vector3(pt["pos"].x, _player.global_position.y, pt["pos"].z))
-		if d < best:
-			best = d
-			_near_point = pt
-	if _panel_kind.is_empty() and not _near_point.is_empty():
-		_hint_label.visible = true
-		_hint_label.global_position = _player.global_position + Vector3(0, 2.2, 0)
-		_hint_label.text = "按 E：%s" % String(_near_point["title"])
-	else:
-		_hint_label.visible = false
-
-
-# ————————————————— UI 面板 —————————————————
-
-func _build_ui() -> void:
+func _open_panel(kind: String) -> void:
+	_panel = Control.new()
+	_panel.set_anchors_preset(Control.PRESET_CENTER)
+	_panel.custom_minimum_size = Vector2(280, 0)
+	_panel.z_index = 20
 	var layer := CanvasLayer.new()
+	layer.layer = 20
 	add_child(layer)
-	var root := Control.new()
-	root.set_anchors_preset(Control.PRESET_FULL_RECT)
-	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	layer.add_child(root)
-	var title := Label.new()
-	title.text = "回响之城 · 系统空间"
-	title.position = Vector2(20, 10)
-	title.add_theme_font_size_override("font_size", 18)
-	title.add_theme_color_override("font_color", Color(0.7, 0.9, 1.0))
-	root.add_child(title)
-	_energy_label = Label.new()
-	_energy_label.position = Vector2(20, 38)
-	_energy_label.add_theme_font_size_override("font_size", 14)
-	_energy_label.add_theme_color_override("font_color", Color(0.6, 1.0, 0.8))
-	root.add_child(_energy_label)
-	var hint := Label.new()
-	hint.text = "WASD 走动 · 走近设施按 E 交互 · Esc 关闭面板"
-	hint.position = Vector2(20, 60)
-	hint.add_theme_font_size_override("font_size", 11)
-	hint.add_theme_color_override("font_color", Color(0.75, 0.8, 0.9))
-	root.add_child(hint)
-	_panel = root
-
-
-func open_panel(kind: String) -> void:
-	close_panel()
-	_panel_kind = kind
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	match kind:
-		"exit":
-			_panel_exit()
-		"gene":
-			_panel_gene()
-		"shop":
-			_panel_shop()
-		"trade":
-			_panel_trade()
-		"train":
-			_panel_train()
-
-
-func close_panel() -> void:
-	_panel_kind = ""
-	if _panel == null or not is_instance_valid(_panel):
-		return
-	for child in _panel.get_children():
-		if child.name.begins_with("PANEL"):
-			child.queue_free()
-	_tree_rows.clear()
-
-
-func _make_panel_frame(title_text: String) -> Control:
-	var dim := ColorRect.new()
-	dim.name = "PANEL_DIM"
-	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
-	dim.color = Color(0, 0, 0, 0.5)
-	dim.mouse_filter = Control.MOUSE_FILTER_STOP
-	_panel.add_child(dim)
-	var frame := PanelContainer.new()
-	frame.name = "PANEL_FRAME"
-	var center := CenterContainer.new()
-	center.name = "PANEL_CENTER"
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	dim.add_child(center)
-	center.add_child(frame)
+	layer.add_child(_panel)
+	var bg := PanelContainer.new()
+	bg.custom_minimum_size = Vector2(280, 0)
+	_panel.add_child(bg)
 	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 6)
-	frame.add_child(box)
+	box.add_theme_constant_override("separation", 4)
+	bg.add_child(box)
 	var title := Label.new()
-	title.text = title_text
+	title.text = String(_station_of(kind).get("name", kind))
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 16)
+	title.add_theme_font_size_override("font_size", 14)
 	title.add_theme_color_override("font_color", Color(0.95, 0.9, 0.7))
 	box.add_child(title)
+	match kind:
+		"enter":
+			_build_enter_panel(box)
+		"shop":
+			_build_shop_panel(box)
+		"gene":
+			_build_gene_panel(box)
+		"train":
+			_build_train_panel(box)
 	var close := Button.new()
 	close.text = "关闭（Esc）"
-	close.pressed.connect(close_panel)
+	close.pressed.connect(_close_panel)
 	box.add_child(close)
-	return box
 
 
-func _panel_exit() -> void:
-	var box := _make_panel_frame("城市入口 · 进入本局")
-	var tip := Label.new()
-	tip.text = "离开系统空间进入城市。当前观测点：出生点由城内默认位置决定。"
-	tip.add_theme_font_size_override("font_size", 12)
-	tip.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	box.add_child(tip)
-	var go := Button.new()
-	go.text = "进入城市"
-	go.custom_minimum_size = Vector2(200, 36)
-	go.pressed.connect(_enter_world)
-	box.add_child(go)
-	# SP 面板中买好的技能树会自动带上（gun_tree_levels 局内生效）
+func _close_panel() -> void:
+	if _panel != null:
+		_panel.get_parent().queue_free()
+		_panel = null
 
 
-func _panel_gene() -> void:
-	var box := _make_panel_frame("基因库 · 幸存者档案")
-	if GameState.gene_pool.is_empty():
-		var empty := Label.new()
-		empty.text = "还没有存入的 NPC——局内招募的随从在撤离时会自动登记入库。"
-		empty.add_theme_font_size_override("font_size", 12)
-		empty.modulate = Color(0.8, 0.85, 0.9)
-		box.add_child(empty)
-		return
-	for person in GameState.gene_pool:
-		var row := Label.new()
-		row.text = "· %s（%s）%s" % [
-			String(person.get("name", "?")),
-			String(person.get("role", "市民")),
-			String(person.get("note", "")),
-		]
-		row.add_theme_font_size_override("font_size", 12)
-		box.add_child(row)
+func _build_enter_panel(box: VBoxContainer) -> void:
+	var btn := Button.new()
+	btn.text = "进入城市（开始新的一局）"
+	btn.custom_minimum_size = Vector2(240, 32)
+	btn.pressed.connect(func() -> void:
+		_close_panel()
+		GameState.enter_city()
+	)
+	box.add_child(btn)
 
 
-func _panel_shop() -> void:
-	var box := _make_panel_frame("蓝图商城（SP 解锁，永久有效）")
-	for key in GameState.SHOP.keys():
-		var item: Dictionary = GameState.SHOP[key]
-		var row := HBoxContainer.new()
-		row.add_theme_constant_override("separation", 8)
-		box.add_child(row)
-		var name_label := Label.new()
-		name_label.text = String(item.get("name", key))
-		name_label.custom_minimum_size = Vector2(180, 0)
-		name_label.add_theme_font_size_override("font_size", 12)
-		row.add_child(name_label)
-		var btn := Button.new()
-		var owned: bool = String(key) == "revival_stone" and GameState.revival_stone
-		if String(key) in ["suppressor", "scope_rds", "scope_2x", "scope_4x", "scope_8x"]:
-			owned = int(GameState.meta_supplies.get(String(key), 0)) > 0
-		elif String(key) in GameState.meta_weapons.keys():
-			owned = int(GameState.meta_weapons[String(key)]) > 0
-		btn.text = ("已解锁" if owned else "SP %d" % int(item.get("cost", 0)))
-		btn.disabled = owned
-		var k := String(key)
-		btn.pressed.connect(func() -> void:
-			if GameState.buy_shop_item(k):
-				GameState.notify("蓝图已解锁：%s" % String(item.get("name", k)))
-				close_panel()
-				open_panel("shop")
-		)
-		row.add_child(btn)
-
-
-func _panel_trade() -> void:
-	var box := _make_panel_frame("交易所 · 战绩与结余")
-	var stats: Dictionary = GameState.meta_stats if "meta_stats" in GameState else {}
-	for line in [
-		"系统点数（SP）：%d" % GameState.space_energy,
-		"出战次数：%d · 完成轮回：%d" % [
-			int(stats.get("runs", 0)) if not stats.is_empty() else int(GameState.war_runs if "war_runs" in GameState else 0),
-			int(stats.get("clears", 0)) if not stats.is_empty() else 0,
-		],
-		"局内撤离时带回的物资已按 1:1 自动折算为 SP（观测舱结算规则不变）。",
-	]:
-		var row := Label.new()
-		row.text = line
-		row.add_theme_font_size_override("font_size", 12)
-		box.add_child(row)
-
-
-func _panel_train() -> void:
-	var box := _make_panel_frame("强化仓 · 枪械技能树（当局生效，逐层解锁）")
+func _build_shop_panel(box: VBoxContainer) -> void:
 	var scroll := ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(420, 300)
+	scroll.custom_minimum_size = Vector2(260, 180)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	box.add_child(scroll)
 	var list := VBoxContainer.new()
-	list.add_theme_constant_override("separation", 4)
+	list.add_theme_constant_override("separation", 3)
 	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(list)
-	for i in GameState.GUN_TREE.size():
-		var node: Dictionary = GameState.GUN_TREE[i]
-		var row := HBoxContainer.new()
-		row.add_theme_constant_override("separation", 8)
-		list.add_child(row)
-		var idx_label := Label.new()
-		idx_label.text = "L%d" % (i + 1)
-		idx_label.custom_minimum_size = Vector2(30, 0)
-		idx_label.add_theme_font_size_override("font_size", 12)
-		row.add_child(idx_label)
-		var info := Label.new()
-		info.text = "%s  %s" % [String(node["name"]), String(node["desc"])]
-		info.custom_minimum_size = Vector2(230, 0)
-		info.add_theme_font_size_override("font_size", 12)
-		row.add_child(info)
+	for id in GameState.SHOP.keys():
+		var info: Dictionary = GameState.SHOP[id]
 		var btn := Button.new()
-		var bought := GameState.gun_tree_levels > i
-		var locked := GameState.gun_tree_levels < i
-		if bought:
-			btn.text = "已激活"
-			btn.disabled = true
-		elif locked:
-			btn.text = "需先解锁 L%d" % i
-			btn.disabled = true
-		else:
-			btn.text = "SP %d" % int(node["cost"])
-			btn.disabled = GameState.space_energy < int(node["cost"])
-		var idx := i
+		btn.text = "%s — %d SP" % [String(info["name"]), int(info["cost"])]
+		btn.disabled = GameState.space_energy < int(info["cost"])
+		var key := String(id)
 		btn.pressed.connect(func() -> void:
-			var cost := int(GameState.GUN_TREE[idx]["cost"])
-			if GameState.spend_energy(cost):
-				GameState.gun_tree_levels = idx + 1
-				GameState.save_meta()
-				GameState.notify("技能树 L%d 已激活：%s（本局生效）" % [idx + 1, String(GameState.GUN_TREE[idx]["name"])])
-				close_panel()
-				open_panel("train")
+			if GameState.buy_shop_item(key):
+				_close_panel()
+				_open_panel("shop")
 		)
-		row.add_child(btn)
-	var tip := Label.new()
-	tip.text = "已激活 %d/10 层——进入城市后自动生效，本局结束清空。" % GameState.gun_tree_levels
-	tip.add_theme_font_size_override("font_size", 11)
-	tip.modulate = Color(0.8, 0.9, 0.8)
-	box.add_child(tip)
+		list.add_child(btn)
 
 
-func _enter_world() -> void:
-	GameState.reset_run(false)
-	_do_enter.call_deferred()
+func _build_gene_panel(box: VBoxContainer) -> void:
+	var relics: Dictionary = GameState.boss_relics
+	var label := Label.new()
+	if relics.is_empty():
+		label.text = "还没有收集到 Boss 专属材料\n（击败守关 Boss 掉落，供后续解锁）"
+	else:
+		var lines: Array = []
+		for name in relics.keys():
+			lines.append("%s ×%d" % [String(name), int(relics[name])])
+		label.text = "已收集 Boss 材料：\n" + "\n".join(lines)
+	label.add_theme_font_size_override("font_size", 11)
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(label)
 
 
-func _do_enter() -> void:
-	get_tree().change_scene_to_file("res://scenes3d/proto3d.tscn")
+func _build_train_panel(box: VBoxContainer) -> void:
+	for id in GameState.ATTRS.keys():
+		var info: Dictionary = GameState.ATTRS[id]
+		var level: int = GameState.attr_level(id)
+		var cost: int = GameState.attr_cost(level)
+		var btn := Button.new()
+		btn.text = "%s Lv.%d — %d SP（%s）" % [
+			String(info["name"]), level, cost, String(info["desc"])
+		]
+		btn.disabled = GameState.space_energy < cost
+		var key := String(id)
+		btn.pressed.connect(func() -> void:
+			if GameState.buy_attr(key):
+				_close_panel()
+				_open_panel("train")
+		)
+		box.add_child(btn)

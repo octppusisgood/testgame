@@ -742,10 +742,13 @@ func _on_map_toggled(open: bool) -> void:
 			GameState.toggle_backpack()
 		if GameState.skills_open:
 			GameState.toggle_skills()
-		# 大地图打开时隐藏其他所有 HUD 元素，不遮挡地图
+		# 大地图打开时隐藏其他所有 HUD 元素，不遮挡地图；
+		# 底部武器栏/载具信息条保持显示（用户要求：看地图时武器菜单不消失）
 		_map_hidden_nodes.clear()
 		for child in get_children():
-			if child != _full_map and child.visible:
+			if child == _full_map or child == _hotbar_bar or child == _vehicle_info_bar:
+				continue
+			if child.visible:
 				child.visible = false
 				_map_hidden_nodes.append(child)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

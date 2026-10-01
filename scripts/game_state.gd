@@ -257,7 +257,22 @@ const WORLD_STAGES := [
 ]
 
 const META_PATH := "user://meta.json"
-const HUB_SCENE := "res://scenes3d/hub3d.tscn"
+const HUB_SCENE := "res://scenes3d/system_space3d.tscn"
+# —— 强化仓·枪械技能树（10 层逐层解锁，SP 购买，仅当局生效）——
+const GUN_TREE := [
+	{"id": "g1", "name": "稳定握把", "desc": "枪械散布 -10%", "cost": 5},
+	{"id": "g2", "name": "扩容弹匣 I", "desc": "弹匣容量 +20%", "cost": 5},
+	{"id": "g3", "name": "快拔弹匣", "desc": "换弹时间 -15%", "cost": 8},
+	{"id": "g4", "name": "穿甲弹头", "desc": "枪械伤害 +10%", "cost": 8},
+	{"id": "g5", "name": "扳机微调", "desc": "射击间隔 -10%", "cost": 10},
+	{"id": "g6", "name": "精密瞄具", "desc": "开镜视距 +15%", "cost": 10},
+	{"id": "g7", "name": "双联供弹", "desc": "弹匣容量 +30%", "cost": 12},
+	{"id": "g8", "name": "高爆弹头", "desc": "枪械伤害 +15%", "cost": 12},
+	{"id": "g9", "name": "枪管强化", "desc": "武器射程 +20%", "cost": 15},
+	{"id": "g10", "name": "枪神", "desc": "伤害 +25% · 换弹 -20%", "cost": 20},
+]
+# 本局已购层数（0 = 未购任何层；进局后强化钩子读取，局终清零）
+var gun_tree_levels := 0
 const FOOD_DIR := "res://assets/models/items/food/"
 const SUR_DIR := "res://assets/models/items/survival/"
 const WEAPON_DIR := "res://assets/models/weapons/"
@@ -833,6 +848,8 @@ var scopes := {}
 var mutation_levels := {}
 var mutations_taken := 0
 var meta_weapons := {"pistol": 1, "shotgun": 0, "rifle": 0}
+# 基因库：撤离时存入的 NPC（跨局持久化）——名字/职业/天赋简述
+var gene_pool: Array = []
 var viewer_position := Vector3.ZERO
 var viewer_active := false
 var map_building_rects: Array = []
@@ -1178,6 +1195,7 @@ func load_meta() -> void:
 	mutation_levels = data.get("mutations", {})
 	mutations_taken = int(data.get("mutations_taken", 0))
 	meta_weapons = data.get("weapons", meta_weapons)
+	gene_pool = data.get("gene_pool", gene_pool)
 	meta_supplies = data.get("supplies", meta_supplies)
 	runs_played = int(data.get("runs", 0))
 	extractions = int(data.get("extractions", 0))
@@ -1211,6 +1229,7 @@ func save_meta() -> void:
 		"mutations": mutation_levels,
 		"mutations_taken": mutations_taken,
 		"weapons": meta_weapons,
+		"gene_pool": gene_pool,
 		"supplies": meta_supplies,
 		"runs": runs_played,
 		"extractions": extractions,
@@ -1736,6 +1755,7 @@ func mag_size(id: String) -> int:
 	var base := int(WEAPONS.get(id, {}).get("mag", 0))
 	if has_extended_mag(id):
 		base = int(round(base * 1.5))
+	base = int(round(base * (1.0 + gun_tree_bonus("mag"))))
 	return base
 
 
@@ -1998,12 +2018,60 @@ func anomaly_gem_count() -> int:
 	return mini(3, loot_count("anomaly_gem"))
 
 
+func gun_tree_bonus(field: String) -> float:
+	# 汇总已购层的加成（field: dmg/mag/reload/cd/spread/view/range）
+	var dmg := 0.0
+	var mag := 0.0
+	var reload := 0.0
+	var cd := 0.0
+	var spread := 0.0
+	var view := 0.0
+	var rng := 0.0
+	for i in mini(gun_tree_levels, GUN_TREE.size()):
+		match String(GUN_TREE[i]["id"]):
+			"g1":
+				spread += 0.10
+			"g2":
+				mag += 0.20
+			"g3":
+				reload += 0.15
+			"g4":
+				dmg += 0.10
+			"g5":
+				cd += 0.10
+			"g6":
+				view += 0.15
+			"g7":
+				mag += 0.30
+			"g8":
+				dmg += 0.15
+			"g9":
+				rng += 0.20
+			"g10":
+				dmg += 0.25
+				reload += 0.20
+	match field:
+		"dmg":
+			return dmg
+		"mag":
+			return mag
+		"reload":
+			return reload
+		"cd":
+			return cd
+		"spread":
+			return spread
+		"view":
+			return view
+	return rng
+
+
 func weapon_damage_mult(id: String) -> float:
-	return 1.0 + WEAPON_LEVEL_DMG * weapon_level(id) + 0.1 * anomaly_gem_count()
+	return 1.0 + WEAPON_LEVEL_DMG * weapon_level(id) + 0.1 * anomaly_gem_count() + gun_tree_bonus("dmg")
 
 
 func weapon_reload_speed_mult(id: String) -> float:
-	return 1.0 / (1.0 + WEAPON_LEVEL_RELOAD * weapon_level(id))
+	return 1.0 / (1.0 + WEAPON_LEVEL_RELOAD * weapon_level(id) + gun_tree_bonus("reload"))
 
 
 func weapon_upgrade_cost(id: String) -> Dictionary:
@@ -2780,7 +2848,8 @@ func gun_spread_mult() -> float:
 
 
 func gun_cooldown_mult() -> float:
-	return (1.0 - mut_value("quickdraw") / 100.0) * (1.0 - rogue_rank("rapid") * 0.07)
+	var base := (1.0 - mut_value("quickdraw") / 100.0) * (1.0 - rogue_rank("rapid") * 0.07)
+	return maxf(0.2, base - gun_tree_bonus("cd"))
 
 
 func recoil_mult() -> float:
@@ -3995,6 +4064,7 @@ func reset_run(reload_scene := false) -> void:
 	crime_points = 0
 	player_kills = 0
 	civilian_kills = 0
+	gun_tree_levels = 0
 	_crime_reports.clear()
 	_gunshot_alerts.clear()
 	_last_gunshot_notice = 0

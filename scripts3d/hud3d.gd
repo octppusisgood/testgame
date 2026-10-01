@@ -484,12 +484,18 @@ func _process(delta: float) -> void:
 		_sight_view.queue_redraw()
 	_refresh_hotbar_ammo()
 	_update_hotbar_cd()
-	# 建造模式打开时隐藏武器栏（底部让给建造栏）；驾驶时武器栏换成载具信息条
+	# 建造模式打开时隐藏武器栏（底部让给建造栏）；驾驶时武器栏换成载具信息条；
+	# 大地图打开时也完全隐藏（否则这里每帧会把 _on_map_toggled 藏掉的武器栏翻回来，
+	# 并遮住地图左下角的信号区按钮）
 	var driving_veh = player.get("vehicle") if player != null else null
 	if _hotbar_bar != null and not _overlay_hud_hidden:
-		_hotbar_bar.visible = not GameState.base_build_mode and driving_veh == null
+		_hotbar_bar.visible = (
+			not GameState.base_build_mode and driving_veh == null and not GameState.map_open
+		)
 	if _vehicle_info_bar != null and not _overlay_hud_hidden:
-		var show_info: bool = driving_veh != null and not GameState.base_build_mode
+		var show_info: bool = (
+			driving_veh != null and not GameState.base_build_mode and not GameState.map_open
+		)
 		_vehicle_info_bar.visible = show_info
 		if show_info:
 			_refresh_vehicle_info_bar(driving_veh)

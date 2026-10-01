@@ -742,13 +742,10 @@ func _on_map_toggled(open: bool) -> void:
 			GameState.toggle_backpack()
 		if GameState.skills_open:
 			GameState.toggle_skills()
-		# 大地图打开时隐藏其他所有 HUD 元素，不遮挡地图；
-		# 底部武器栏/载具信息条保持显示（用户要求：看地图时武器菜单不消失）
+		# 大地图打开时隐藏其他所有 HUD 元素（含底部武器栏），不遮挡地图
 		_map_hidden_nodes.clear()
 		for child in get_children():
-			if child == _full_map or child == _hotbar_bar or child == _vehicle_info_bar:
-				continue
-			if child.visible:
+			if child != _full_map and child.visible:
 				child.visible = false
 				_map_hidden_nodes.append(child)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -804,6 +801,11 @@ var _overlay_hud_hidden := false
 
 func _set_overlay_hud_hidden(hidden: bool) -> void:
 	_overlay_hud_hidden = hidden
+	# 任何全屏 UI（背包/技能/暂停）打开：底部武器栏/载具信息条完全隐藏，关闭后恢复
+	if _hotbar_bar != null:
+		_hotbar_bar.visible = not hidden
+	if _vehicle_info_bar != null:
+		_vehicle_info_bar.visible = not hidden
 	if _hotbar_bar != null:
 		_hotbar_bar.visible = not hidden and not GameState.base_build_mode
 	# 玩法提示改为 F1 打开，常态隐藏
@@ -1706,7 +1708,6 @@ func _assign_follower_as_operator(follower: Node3D, pos: Vector3, type: String) 
 func _build_hotbar() -> void:
 	var bar := HBoxContainer.new()
 	_hotbar_bar = bar
-	bar.z_index = 5  # 大地图 z=2：武器栏压在地图上面（开地图时菜单可见）
 	bar.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	bar.offset_left = -260
 	bar.offset_top = -62
@@ -1718,7 +1719,6 @@ func _build_hotbar() -> void:
 	add_child(bar)
 	# 载具信息条：与武器栏同位置（驾驶时显示、武器栏隐藏）
 	_vehicle_info_bar = HBoxContainer.new()
-	_vehicle_info_bar.z_index = 5
 	_vehicle_info_bar.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	_vehicle_info_bar.offset_left = -260
 	_vehicle_info_bar.offset_top = -62

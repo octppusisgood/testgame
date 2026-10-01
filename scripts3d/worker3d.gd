@@ -1652,9 +1652,12 @@ class WorkerBody extends CharacterBody3D:
 	func take_damage(amount: int, _from: Node3D = null) -> void:
 		if _dying:
 			return
+		# 工人免疫玩家的伤害（友军不伤：远程炮击/爆炸/误伤一律无效）
+		if _from != null and _from.is_in_group("player"):
+			return
 		hp -= amount
 		if hp <= 0:
-			_killed_by_player = _from != null and _from.is_in_group("player")
+			_killed_by_player = false
 			_die()
 
 

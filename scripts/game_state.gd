@@ -1313,10 +1313,18 @@ func settle_run(won: bool) -> Dictionary:
 	return summary
 
 
+var _hub_changing := false
+
+
 func return_to_hub() -> void:
+	if _hub_changing:
+		return
+	_hub_changing = true
 	settle_run(phase == "won")
 	# 联机局结束回观测舱：断开 ENet，避免挂着僵尸连接（重进需重新建房/加入）
 	Network.leave()
+	# 结算/死亡时暂停菜单可能没关干净，回舱前强制解除暂停（否则系统空间全程冻结）
+	get_tree().paused = false
 	# 在输入回调里直接切场景会段错误（场景树还在处理 _unhandled_input），
 	# 延迟到帧末安全执行
 	_change_to_hub.call_deferred()
@@ -1324,17 +1332,12 @@ func return_to_hub() -> void:
 
 func _change_to_hub() -> void:
 	print("HUB: switching to ", HUB_SCENE)
-	var packed: PackedScene = load(HUB_SCENE)
-	if packed == null:
-		push_error("HUB scene failed to load: " + HUB_SCENE)
-		return
-	# 先释放旧场景再挂新场景（file 版在旧场景巨大时偶尔切不完）
-	get_tree().current_scene.queue_free()
-	get_tree().current_scene = null
-	var inst := packed.instantiate()
-	get_tree().root.add_child(inst)
-	get_tree().current_scene = inst
-	print("HUB: new scene ready")
+	# 换回标准 change_scene_to_file：批次 219 的手动 queue_free+挂节点在
+	# current_scene 已为 null（此前一次切换中途失败）时会中止，从此永远卡在城里
+	var err := get_tree().change_scene_to_file(HUB_SCENE)
+	_hub_changing = false
+	if err != OK:
+		push_error("HUB scene change failed: %s" % error_string(err))
 
 
 func enter_city() -> void:

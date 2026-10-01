@@ -19,6 +19,7 @@ var _cam: Camera3D
 var _near := ""
 var _hint: Label3D = null
 var _panel: Control = null
+var _panel_layer: CanvasLayer = null
 var _energy_label: Label = null
 
 
@@ -230,6 +231,7 @@ func _open_panel(kind: String) -> void:
 	var layer := CanvasLayer.new()
 	layer.layer = 20
 	add_child(layer)
+	_panel_layer = layer
 	var dim := ColorRect.new()
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	dim.color = Color(0, 0, 0, 0.55)
@@ -278,10 +280,9 @@ func _open_panel(kind: String) -> void:
 
 
 func _close_panel() -> void:
-	if _panel != null and is_instance_valid(_panel):
-		var layer := _panel.get_parent()
-		if layer != null and layer is CanvasLayer:
-			layer.queue_free()
+	if _panel_layer != null and is_instance_valid(_panel_layer):
+		_panel_layer.queue_free()
+	_panel_layer = null
 	_panel = null
 
 

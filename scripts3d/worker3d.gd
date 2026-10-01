@@ -671,7 +671,7 @@ func _build_vehicle_panel() -> void:
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	vbox.add_child(scroll)
 	_vehicle_grid = GridContainer.new()
-	_vehicle_grid.columns = 2
+	_vehicle_grid.columns = 3
 	_vehicle_grid.add_theme_constant_override("h_separation", 4)
 	_vehicle_grid.add_theme_constant_override("v_separation", 4)
 	_vehicle_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -707,22 +707,25 @@ func _refresh_vehicle_panel() -> void:
 			_vehicle_checked.erase(key)
 	for child in _vehicle_grid.get_children():
 		child.queue_free()
-	var vehicles: Array = get_tree().get_nodes_in_group("vehicles")
-	var alive := 0
-	for v in vehicles:
-		if v != null and is_instance_valid(v) and not v.is_queued_for_deletion() and not bool(v.get("destroyed")):
-			alive += 1
-	_vehicle_title.text = "载具管理（可用 %d 辆）" % alive
+	# 只列「我方载具」：委派了驾驶员的车（owned）+ 玩家正在驾驶的车——
+	# 城市里的野生车不进面板；委派入口 = 驾驶中车辆的卡片（选中后「委派驾驶员」）
+	var vehicles: Array = []
+	for v in get_tree().get_nodes_in_group("vehicles"):
+		if v == null or not is_instance_valid(v) or v.is_queued_for_deletion():
+			continue
+		var mine: bool = bool(v.get("owned")) or (player != null and v.get("driver") == player)
+		if mine:
+			vehicles.append(v)
+	_vehicle_title.text = "我的载具（%d 辆）" % vehicles.size()
 	if vehicles.is_empty():
 		var empty := Label.new()
-		empty.text = "城市里没有找到车辆"
+		empty.text = "还没有自己的载具——开上一辆车后按 Tab 委派随从驾驶，
+委派后即使人不在车上也归你指挥"
 		empty.add_theme_font_size_override("font_size", 11)
 		empty.modulate = Color(0.8, 0.8, 0.8)
 		_vehicle_grid.add_child(empty)
 		return
 	for v in vehicles:
-		if v == null or not is_instance_valid(v) or v.is_queued_for_deletion():
-			continue
 		var card := VBoxContainer.new()
 		card.add_theme_constant_override("separation", 1)
 		_vehicle_grid.add_child(card)

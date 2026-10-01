@@ -230,11 +230,14 @@ var _rogue_stage := 0
 var _rogue_phase := "prep"  # prep / active / dev / won
 var _rogue_dev_timer := 0.0
 var _rogue_zone: Node3D = null
-# 肉鸽普通能量场：灾变后随机刷在营地附近，上限 5 个，尸群袭营（不强化）
-const ROGUE_FIELD_CAP := 5
+# 肉鸽普通能量场：灾变后随机刷在营地附近，同时最多 3 个，尸群袭营（不强化）；
+# 拆掉一个后 60 秒才会补生新的
+const ROGUE_FIELD_CAP := 3
 const ROGUE_FIELD_MIN_DIST := 20.0
 const ROGUE_FIELD_MAX_DIST := 50.0
+const ROGUE_FIELD_RESPAWN_DELAY := 60.0
 var _rogue_field_timer := 15.0
+var _last_field_count := 0
 # 肉鸽新手提示：准备期按间隔逐条弹出核心规则（设计文档 2.3）
 const ROGUE_HINTS := [
 	"击杀不给经验：收益在掉落物，谁捡归谁，别忘了收经验球。",
@@ -2804,6 +2807,7 @@ func _init_rogue_stages() -> void:
 	_rogue_dev_timer = 0.0
 	_rogue_zone = null
 	_rogue_field_timer = 15.0
+	_last_field_count = 0
 	GameState.rogue_stage = 0
 	GameState.rogue_phase = "prep"
 	GameState.rogue_dev_left = 0.0
@@ -2996,7 +3000,11 @@ func _tick_rogue(delta: float) -> void:
 						continue
 					if zombie.get("assault_target") == Vector3.ZERO:
 						zombie.assault_target = base_pos
-		# 普通能量场：营地附近随机刷新，上限 5 个，持续刷怪袭营
+		# 普通能量场：同时最多 3 个；检测到有场被拆 → 补生冷却 60 秒
+		var field_alive := _rogue_field_count()
+		if field_alive < _last_field_count:
+			_rogue_field_timer = maxf(_rogue_field_timer, ROGUE_FIELD_RESPAWN_DELAY)
+		_last_field_count = field_alive
 		_rogue_field_timer -= delta
 		if _rogue_field_timer <= 0.0:
 			_rogue_field_timer = randf_range(20.0, 40.0)

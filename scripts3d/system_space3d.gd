@@ -299,10 +299,19 @@ func _build_enter_panel(box: VBoxContainer) -> void:
 
 
 func _build_shop_panel(box: VBoxContainer) -> void:
+	if not GameState.TRIAL_SHOP_OPEN:
+		# 试玩版：商城整类暂闭（局外成长只开「枪械+身体属性」，都在强化仓）
+		var note := Label.new()
+		note.text = "试玩版：商城暂未开放（后续版本加入）\n局外成长请前往「强化仓」\n—— 枪械强化 / 身体属性 ——"
+		note.add_theme_font_size_override("font_size", 11)
+		note.add_theme_color_override("font_color", Color(0.75, 0.8, 0.9))
+		note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		box.add_child(note)
+		return
 	for id in GameState.SHOP.keys():
 		var info: Dictionary = GameState.SHOP[id]
 		if info.has("panel"):
-			continue  # 雇佣随从/枪械强化分属基因库与强化仓，不在商城重复陈列
+			continue  # 雇佣随从等分属其他设施
 		var btn := Button.new()
 		btn.text = "%s — %d SP" % [String(info["name"]), int(info["cost"])]
 		btn.add_theme_font_size_override("font_size", 10)
@@ -329,7 +338,15 @@ func _build_gene_panel(box: VBoxContainer) -> void:
 	label.add_theme_font_size_override("font_size", 10)
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(label)
-	# 雇佣随从：购买后进局自动跟随（上限 4 名，与进城生成上限一致）
+	# 雇佣随从：试玩版暂闭；开放后购买进局自动跟随（上限 4 名）
+	if not GameState.TRIAL_HIRE_OPEN:
+		var note := Label.new()
+		note.text = "试玩版：雇佣随从暂未开放（后续版本加入）"
+		note.add_theme_font_size_override("font_size", 11)
+		note.add_theme_color_override("font_color", Color(0.75, 0.8, 0.9))
+		note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		box.add_child(note)
+		return
 	var hire_info: Dictionary = GameState.SHOP.get("hire_npc", {})
 	if hire_info.is_empty():
 		return
@@ -353,6 +370,7 @@ func _build_gene_panel(box: VBoxContainer) -> void:
 
 
 func _build_train_panel(box: VBoxContainer) -> void:
+	_add_section_header(box, "身体属性")
 	for id in GameState.ATTRS.keys():
 		var info: Dictionary = GameState.ATTRS[id]
 		var level: int = GameState.attr_level(id)
@@ -370,21 +388,34 @@ func _build_train_panel(box: VBoxContainer) -> void:
 				_open_panel("train")
 		)
 		box.add_child(btn)
-	# 枪械强化：局内枪械伤害 +10%（进局生效，局终清零，可重复购买）
-	var boost_info: Dictionary = GameState.SHOP.get("gun_boost", {})
-	if boost_info.is_empty():
-		return
-	var boost_btn := Button.new()
-	boost_btn.add_theme_font_size_override("font_size", 10)
-	if GameState.gun_tree_levels >= 4:
-		boost_btn.text = "%s（已激活）" % String(boost_info["name"])
-		boost_btn.disabled = true
-	else:
-		boost_btn.text = "%s — %d SP" % [String(boost_info["name"]), int(boost_info["cost"])]
-		boost_btn.disabled = GameState.space_energy < int(boost_info["cost"])
-		boost_btn.pressed.connect(func() -> void:
-			if GameState.buy_shop_item("gun_boost"):
-				_close_panel()
-				_open_panel("train")
-		)
-	box.add_child(boost_btn)
+	# 枪械强化：10 层技能树逐层购买（跨局持久化，进局自动生效）
+	_add_section_header(box, "枪械强化（逐层解锁）")
+	for i in GameState.GUN_TREE.size():
+		var tier: Dictionary = GameState.GUN_TREE[i]
+		var tier_btn := Button.new()
+		tier_btn.add_theme_font_size_override("font_size", 9)
+		if i < GameState.gun_tree_levels:
+			tier_btn.text = "✓ %s（%s）" % [String(tier["name"]), String(tier["desc"])]
+			tier_btn.disabled = true
+		elif i == GameState.gun_tree_levels:
+			var tier_cost := int(tier["cost"])
+			tier_btn.text = "%s — %d SP（%s）" % [String(tier["name"]), tier_cost, String(tier["desc"])]
+			tier_btn.disabled = GameState.space_energy < tier_cost
+			tier_btn.pressed.connect(func() -> void:
+				if GameState.buy_gun_tree():
+					_close_panel()
+					_open_panel("train")
+			)
+		else:
+			tier_btn.text = "%s（先购上一层）" % String(tier["name"])
+			tier_btn.disabled = true
+		box.add_child(tier_btn)
+
+
+func _add_section_header(box: VBoxContainer, text: String) -> void:
+	var header := Label.new()
+	header.text = "—— %s ——" % text
+	header.add_theme_font_size_override("font_size", 11)
+	header.add_theme_color_override("font_color", Color(0.95, 0.9, 0.7))
+	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	box.add_child(header)

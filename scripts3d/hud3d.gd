@@ -98,18 +98,17 @@ var _pause_panel: Control
 var _time_label: Label
 var _day_bar: ProgressBar
 var _echo_panel: Control
+var _echo_dim: ColorRect
 var _echo_title: Label
-var _echo_options: Label
+var _echo_box: VBoxContainer
 var _echo_choices: Array = []
-var _echo_timer := 0.0
-# 肉鸽模式：状态行（准备倒计时/剩余能量点/等级经验）+ 升级三选一横条
+# 肉鸽模式：顶部状态行 + 升级三选一（大 UI 阻塞，直到玩家选择才消失）
 var _rogue_label: Label
 var _rogue_panel: Control
+var _rogue_dim: ColorRect
 var _rogue_title: Label
-var _rogue_options: Label
+var _rogue_box: VBoxContainer
 var _rogue_choices: Array = []
-var _rogue_timer := 0.0
-const ROGUE_AUTO_PICK_SECONDS := 10.0
 # 完美闪避：CD 图标（血条右侧小方框）+ 缓速变暗遮罩 + 玩家旁的逆时针秒表
 var _dodge_icon: Control
 var _dodge_was_cd := false
@@ -129,8 +128,6 @@ var _menu_options: Array = []
 var _menu_index := 0
 var _menu_render_key := ""
 var _last_menu_index := -1
-
-const ECHO_AUTO_PICK_SECONDS := 3.0
 
 
 func _ready() -> void:
@@ -576,12 +573,6 @@ func _process(delta: float) -> void:
 	_refresh_time_display()
 	_refresh_interact_prompt()
 	_update_interact_menu()
-	if _echo_panel != null and _echo_panel.visible and not get_tree().paused:
-		_echo_timer -= delta
-		if _echo_timer <= 0.0:
-			_on_echo_chosen(0)
-		else:
-			_refresh_echo_title()
 	if _rogue_label != null:
 		if GameState.rogue_mode:
 			_rogue_label.visible = true
@@ -607,14 +598,8 @@ func _process(delta: float) -> void:
 						"营地 %d/%d" % [GameState.home_base_hp(), GameState.home_base_hp_max()]
 					)
 				_rogue_label.text = " · ".join(parts)
-		else:
-			_rogue_label.visible = false
-	if _rogue_panel != null and _rogue_panel.visible and not get_tree().paused:
-		_rogue_timer -= delta
-		if _rogue_timer <= 0.0:
-			_on_rogue_chosen(0)
-		else:
-			_refresh_rogue_title()
+	else:
+		_rogue_label.visible = false
 	_news_label.position.x -= delta * 55.0
 	if _news_label.position.x + _news_label.get_minimum_size().x < 0.0:
 		_news_label.position.x = _news_box.size.x
@@ -3041,63 +3026,61 @@ func _on_mutation_chosen(id: String) -> void:
 
 
 func _build_echo_panel() -> void:
-	# 非阻塞回响横条：顶部居中（避开左上状态条与右上小地图），
-	# 不暂停游戏、不遮罩全屏，倒计时结束自动铭刻第 1 个
+	# 回响选择：全屏遮罩 + 居中大 UI，直到玩家选择才消失（不自动铭刻）
+	_echo_dim = ColorRect.new()
+	_echo_dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_echo_dim.color = Color(0.0, 0.0, 0.0, 0.62)
+	_echo_dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	_echo_dim.z_index = 15
+	_echo_dim.visible = false
+	add_child(_echo_dim)
 	_echo_panel = Control.new()
-	_echo_panel.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	_echo_panel.offset_left = -140
-	_echo_panel.offset_top = 40
-	_echo_panel.offset_right = 140
-	_echo_panel.offset_bottom = 70
+	_echo_panel.set_anchors_preset(Control.PRESET_CENTER)
+	_echo_panel.offset_left = -240
+	_echo_panel.offset_top = -110
+	_echo_panel.offset_right = 240
+	_echo_panel.offset_bottom = 110
 	_echo_panel.visible = false
-	_echo_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_echo_panel.z_index = 14
+	_echo_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	_echo_panel.z_index = 16
 	add_child(_echo_panel)
 	var bg := ColorRect.new()
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	bg.color = Color(0.05, 0.03, 0.1, 0.82)
-	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	bg.color = Color(0.05, 0.03, 0.1, 0.96)
 	_echo_panel.add_child(bg)
-	var box := VBoxContainer.new()
-	box.set_anchors_preset(Control.PRESET_FULL_RECT)
-	box.offset_left = 8
-	box.offset_top = 3
-	box.offset_right = -8
-	box.offset_bottom = -3
-	box.add_theme_constant_override("separation", 1)
-	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_echo_panel.add_child(box)
 	_echo_title = Label.new()
-	_echo_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_echo_title.add_theme_font_size_override("font_size", 11)
+	_echo_title.position = Vector2(16, 14)
+	_echo_title.add_theme_font_size_override("font_size", 15)
 	_echo_title.add_theme_color_override("font_color", Color(0.9, 0.78, 1.0))
-	_echo_title.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	box.add_child(_echo_title)
-	_echo_options = Label.new()
-	_echo_options.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_echo_options.add_theme_font_size_override("font_size", 10)
-	_echo_options.add_theme_color_override("font_color", Color(0.82, 0.85, 0.9))
-	_echo_options.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	box.add_child(_echo_options)
+	_echo_panel.add_child(_echo_title)
+	var hint := Label.new()
+	hint.text = "按 1/2/3 或点击选择一枚铭刻（不会自动消失）"
+	hint.position = Vector2(16, 178)
+	hint.add_theme_font_size_override("font_size", 11)
+	hint.add_theme_color_override("font_color", Color(0.7, 0.65, 0.8))
+	_echo_panel.add_child(hint)
+	_echo_box = VBoxContainer.new()
+	_echo_box.position = Vector2(16, 44)
+	_echo_box.add_theme_constant_override("separation", 8)
+	_echo_panel.add_child(_echo_box)
 
 
 func _on_echo_offered(choices: Array) -> void:
 	_echo_choices = choices
-	_echo_timer = ECHO_AUTO_PICK_SECONDS
-	var parts: Array = []
+	for child in _echo_box.get_children():
+		child.queue_free()
 	for i in choices.size():
-		var short := String(choices[i].get("name", "")).trim_prefix("回响·")
-		parts.append("[%d] %s" % [i + 1, short])
-	_echo_options.text = "%s · 按 1/2/3 改选" % " ".join(parts)
-	_refresh_echo_title()
+		var info: Dictionary = choices[i]
+		var btn := Button.new()
+		btn.text = "[%d] %s" % [i + 1, String(info.get("name", ""))]
+		btn.custom_minimum_size = Vector2(0, 40)
+		btn.add_theme_font_size_override("font_size", 13)
+		btn.pressed.connect(_on_echo_chosen.bind(i))
+		_echo_box.add_child(btn)
+	_echo_title.text = "回响浮现 · 选择一枚铭刻"
 	_echo_panel.visible = true
-
-
-func _refresh_echo_title() -> void:
-	var first := ""
-	if not _echo_choices.is_empty():
-		first = String(_echo_choices[0].get("name", "")).trim_prefix("回响·")
-	_echo_title.text = "回响浮现：%d 秒后自动铭刻 [1] %s" % [int(ceil(_echo_timer)), first]
+	_echo_dim.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _on_echo_chosen(index: int) -> void:
@@ -3105,7 +3088,7 @@ func _on_echo_chosen(index: int) -> void:
 		return
 	var id := String(_echo_choices[index].get("id", ""))
 	if not GameState.pick_echo(id):
-		# Offer 已被外部消费（如联机同步），直接收起避免倒计时卡在失败状态
+		# Offer 已被外部消费（如联机同步），直接收起避免卡住
 		_close_echo_panel()
 		return
 	_close_echo_panel()
@@ -3115,11 +3098,18 @@ func _on_echo_chosen(index: int) -> void:
 
 func _close_echo_panel() -> void:
 	_echo_panel.visible = false
+	_echo_dim.visible = false
 	_echo_choices = []
-	_echo_timer = 0.0
+	if (
+		not GameState.skills_open
+		and not GameState.backpack_open
+		and not GameState.map_open
+		and not GameState.pause_menu_open
+	):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
-# 肉鸽模式 UI：顶部状态行 + 升级三选一横条（不暂停，10 秒自动选第一项）
+# 肉鸽模式 UI：顶部状态行 + 升级三选一大 UI（阻塞，直到玩家选择才消失）
 func _build_rogue_ui() -> void:
 	_rogue_label = Label.new()
 	_rogue_label.set_anchors_preset(Control.PRESET_CENTER_TOP)
@@ -3134,61 +3124,60 @@ func _build_rogue_ui() -> void:
 	_rogue_label.visible = false
 	add_child(_rogue_label)
 
+	_rogue_dim = ColorRect.new()
+	_rogue_dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_rogue_dim.color = Color(0.0, 0.0, 0.0, 0.62)
+	_rogue_dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	_rogue_dim.z_index = 15
+	_rogue_dim.visible = false
+	add_child(_rogue_dim)
 	_rogue_panel = Control.new()
-	_rogue_panel.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	_rogue_panel.set_anchors_preset(Control.PRESET_CENTER)
 	_rogue_panel.offset_left = -260
-	_rogue_panel.offset_top = 50
+	_rogue_panel.offset_top = -140
 	_rogue_panel.offset_right = 260
-	_rogue_panel.offset_bottom = 82
+	_rogue_panel.offset_bottom = 140
 	_rogue_panel.visible = false
-	_rogue_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_rogue_panel.z_index = 14
+	_rogue_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	_rogue_panel.z_index = 16
 	add_child(_rogue_panel)
 	var bg := ColorRect.new()
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	bg.color = Color(0.03, 0.08, 0.1, 0.85)
-	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	bg.color = Color(0.03, 0.08, 0.1, 0.96)
 	_rogue_panel.add_child(bg)
-	var box := VBoxContainer.new()
-	box.set_anchors_preset(Control.PRESET_FULL_RECT)
-	box.offset_left = 8
-	box.offset_top = 3
-	box.offset_right = -8
-	box.offset_bottom = -3
-	box.add_theme_constant_override("separation", 1)
-	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_rogue_panel.add_child(box)
 	_rogue_title = Label.new()
-	_rogue_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_rogue_title.add_theme_font_size_override("font_size", 12)
+	_rogue_title.position = Vector2(16, 14)
+	_rogue_title.add_theme_font_size_override("font_size", 15)
 	_rogue_title.add_theme_color_override("font_color", Color(0.6, 1.0, 0.85))
-	_rogue_title.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	box.add_child(_rogue_title)
-	_rogue_options = Label.new()
-	_rogue_options.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_rogue_options.add_theme_font_size_override("font_size", 11)
-	_rogue_options.add_theme_color_override("font_color", Color(0.85, 0.92, 0.95))
-	_rogue_options.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	box.add_child(_rogue_options)
+	_rogue_panel.add_child(_rogue_title)
+	var hint := Label.new()
+	hint.text = "按 1/2/3 或点击选择（不会自动消失）"
+	hint.position = Vector2(16, 244)
+	hint.add_theme_font_size_override("font_size", 11)
+	hint.add_theme_color_override("font_color", Color(0.6, 0.75, 0.75))
+	_rogue_panel.add_child(hint)
+	_rogue_box = VBoxContainer.new()
+	_rogue_box.position = Vector2(16, 44)
+	_rogue_box.add_theme_constant_override("separation", 8)
+	_rogue_panel.add_child(_rogue_box)
 
 
 func _on_rogue_offered(choices: Array) -> void:
 	_rogue_choices = choices
-	_rogue_timer = ROGUE_AUTO_PICK_SECONDS
-	var parts: Array = []
+	for child in _rogue_box.get_children():
+		child.queue_free()
 	for i in choices.size():
-		parts.append(
-			"[%d] %s（%s）" % [i + 1, String(choices[i]["name"]), String(choices[i]["desc"])]
-		)
-	_rogue_options.text = "  ".join(parts)
-	_refresh_rogue_title()
+		var info: Dictionary = choices[i]
+		var btn := Button.new()
+		btn.text = "[%d] %s（%s）" % [i + 1, String(info["name"]), String(info["desc"])]
+		btn.custom_minimum_size = Vector2(0, 52)
+		btn.add_theme_font_size_override("font_size", 13)
+		btn.pressed.connect(_on_rogue_chosen.bind(i))
+		_rogue_box.add_child(btn)
+	_rogue_title.text = "升级！Lv.%d · 选择一项强化" % GameState.rogue_level
 	_rogue_panel.visible = true
-
-
-func _refresh_rogue_title() -> void:
-	_rogue_title.text = "升级！Lv.%d · %d 秒后自动选 [1] · 按 1/2/3 选择" % [
-		GameState.rogue_level, int(ceil(_rogue_timer))
-	]
+	_rogue_dim.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _on_rogue_chosen(index: int) -> void:
@@ -3196,8 +3185,15 @@ func _on_rogue_chosen(index: int) -> void:
 		return
 	GameState.rogue_pick(String(_rogue_choices[index].get("id", "")))
 	_rogue_choices = []
-	_rogue_timer = 0.0
 	_rogue_panel.visible = false
+	_rogue_dim.visible = false
+	if (
+		not GameState.skills_open
+		and not GameState.backpack_open
+		and not GameState.map_open
+		and not GameState.pause_menu_open
+	):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 class SightView extends Control:

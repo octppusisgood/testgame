@@ -403,9 +403,13 @@ const SHOP := {
 	"scope_4x": {"name": "四倍镜 ×1", "cost": 420},
 	"scope_8x": {"name": "八倍镜 ×1", "cost": 680},
 	"revival_stone": {"name": "复活石", "cost": REVIVE_STONE_COST},
-	"hire_npc": {"name": "雇佣一名随从", "cost": 5, "panel": "gene"},
-	"gun_boost": {"name": "枪械强化（伤害+10%）", "cost": 3, "panel": "train"},
+	"hire_npc": {"name": "雇佣一名随从", "cost": 5},
 }
+
+# 试玩版口径：局外成长只开放「枪械强化 + 身体属性」两类（都在强化仓）；
+# 商城/基因库雇佣暂闭，后续版本逐类放开
+const TRIAL_SHOP_OPEN := false
+const TRIAL_HIRE_OPEN := false
 
 # 能源系统：玩家不再用电（设备由信号塔供能）；异能量（击杀丧尸积累，应急治疗/局末折算 SP）
 const ANOMALY_MAX := 100
@@ -1215,6 +1219,7 @@ func load_meta() -> void:
 	mutations_taken = int(data.get("mutations_taken", 0))
 	meta_weapons = data.get("weapons", meta_weapons)
 	gene_pool = data.get("gene_pool", gene_pool)
+	gun_tree_levels = int(data.get("gun_tree", gun_tree_levels))
 	meta_supplies = data.get("supplies", meta_supplies)
 	runs_played = int(data.get("runs", 0))
 	extractions = int(data.get("extractions", 0))
@@ -1249,6 +1254,7 @@ func save_meta() -> void:
 		"mutations_taken": mutations_taken,
 		"weapons": meta_weapons,
 		"gene_pool": gene_pool,
+		"gun_tree": gun_tree_levels,
 		"supplies": meta_supplies,
 		"runs": runs_played,
 		"extractions": extractions,
@@ -1312,7 +1318,6 @@ func settle_run(won: bool) -> Dictionary:
 		summary["bonus"] = bonus
 		summary["storage_sp"] = storage_mult
 	extract_multiplier = 1.0
-	gun_tree_levels = 0  # 枪械强化为局内增益，局终清零（可在系统空间再次购买）
 	space_energy += day_sp + boss_sp_bonus + anomaly
 	if anomaly > 0:
 		notify("异能量折算 SP +%d" % anomaly)
@@ -1430,12 +1435,6 @@ func buy_shop_item(id: String) -> bool:
 			# 雇佣 NPC：名字入待带名单，进局后自动成为随从
 			pending_hires.append("雇佣兵%d" % (pending_hires.size() + 1))
 			notify("已雇佣，进局后自动跟随")
-		"gun_boost":
-			if not spend_energy(cost):
-				return false
-			# 枪械强化：直接给一层技能树（进局生效）
-			gun_tree_levels = maxi(gun_tree_levels, 4)  # L4=穿甲弹头 +10% 伤害
-			notify("枪械强化已激活（本局伤害+10%）")
 		_:
 			return false
 	save_meta()
@@ -2108,6 +2107,26 @@ func weapon_level(id: String) -> int:
 # 异能宝石增益（随身携带生效，最多 3 颗）：伤害 +10%/颗、生命上限 +25/颗
 func anomaly_gem_count() -> int:
 	return mini(3, loot_count("anomaly_gem"))
+
+
+# —— 枪械技能树（强化仓逐层购买，跨局持久化）——
+func gun_tree_next_cost() -> int:
+	if gun_tree_levels >= GUN_TREE.size():
+		return -1
+	return int(GUN_TREE[gun_tree_levels]["cost"])
+
+
+func buy_gun_tree() -> bool:
+	if gun_tree_levels >= GUN_TREE.size():
+		notify("枪械强化已全部学满")
+		return false
+	var info: Dictionary = GUN_TREE[gun_tree_levels]
+	if not spend_energy(int(info["cost"])):
+		return false
+	gun_tree_levels += 1
+	save_meta()
+	notify("枪械强化习得：%s（%s）" % [String(info["name"]), String(info["desc"])])
+	return true
 
 
 func gun_tree_bonus(field: String) -> float:

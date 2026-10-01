@@ -118,7 +118,7 @@ func enter_player(door: Node, player: Node3D) -> bool:
 	if gun != null:
 		gun.visible = false
 	GameState.notify(
-		"藏进建筑（%d/%d 人）——不会被发现与攻击，移动与开火暂停；再按 E 选择「离开建筑」"
+		"藏进建筑（%d/%d 人）——不会被发现与攻击，移动暂停（仍可对外开火）；再按 E 直接离开"
 		% [count_for(_door_id(door)), CAP]
 	)
 	return true

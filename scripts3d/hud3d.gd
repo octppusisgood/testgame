@@ -1494,6 +1494,14 @@ func _input(event: InputEvent) -> void:
 				get_viewport().set_input_as_handled()
 				return
 	if event.keycode == KEY_E:
+		# 藏匿在建筑中时：按 E 直接离开建筑，不走交互菜单
+		if not GameState.player_in_building.is_empty():
+			var interiors := get_tree().get_first_node_in_group("building_interiors")
+			var player := get_tree().get_first_node_in_group("player")
+			if interiors != null and player != null:
+				interiors.player_leave(player)
+				get_viewport().set_input_as_handled()
+				return
 		_try_interact_press()
 		if _menu_target != null:
 			get_viewport().set_input_as_handled()

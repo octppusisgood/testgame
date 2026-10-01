@@ -1556,6 +1556,9 @@ class Mortar extends DefenseBase:
 
 
 	func _consume_shell() -> bool:
+		# 测试模式炮弹无限（与枪械弹药/制造材料的测试模式免耗规则一致）
+		if GameState.test_mode:
+			return true
 		if GameState.loot_count(_shell_item_id()) <= 0:
 			return false
 		GameState.remove_loot(_shell_item_id(), 1)

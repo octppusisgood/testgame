@@ -1362,7 +1362,9 @@ class WorkerBody extends CharacterBody3D:
 			"goto":
 				_job_goto()
 			"operate":
-				# 操作设施：站在被指派的设施旁边（向外 1.5m，不卡进设施模型）
+				# 操作设施：站在设施外围环带（中心距 2.6~3.2m）——旧逻辑走向距中心
+				# 1.5m 的目标会把工人带进设施模型/碰撞体里（视觉消失、被卡死），
+				# 太近时反向退出来，换任务后也靠这条自愈
 				var opos = _worker().get("data", {}).get("pos", Vector3.ZERO)
 				if opos == Vector3.ZERO:
 					_stand_at_base()
@@ -1370,11 +1372,10 @@ class WorkerBody extends CharacterBody3D:
 					var flat := Vector2(
 						global_position.x - opos.x, global_position.z - opos.z
 					)
-					if flat.length() > 2.2:
-						var dir := flat.normalized()
-						if dir == Vector2.ZERO:
-							dir = Vector2(1, 0)
-						_move_to(opos + Vector3(dir.x, 0.0, dir.y) * 1.5, SPEED)
+					var flen := flat.length()
+					var dir := flat / flen if flen > 0.01 else Vector2(1, 0)
+					if flen > 3.2 or flen < 2.6:
+						_move_to(opos + Vector3(dir.x, 0.0, dir.y) * 2.9, SPEED)
 					else:
 						_stop()
 			_:
@@ -1649,8 +1650,11 @@ class WorkerBody extends CharacterBody3D:
 
 	# —— 受伤与死亡 ——
 
-	func take_damage(amount: int, _from: Node3D = null, _friendly_fire := false) -> void:
+	func take_damage(amount: int, _from: Node3D = null, friendly_fire := false) -> void:
 		if _dying:
+			return
+		# 免疫玩家的直射（子弹/近战，操作员被打不到）；爆炸类（friendly_fire）无差别穿透
+		if _from != null and _from.is_in_group("player") and not friendly_fire:
 			return
 		hp -= amount
 		if hp <= 0:

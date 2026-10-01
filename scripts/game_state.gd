@@ -1323,7 +1323,18 @@ func return_to_hub() -> void:
 
 
 func _change_to_hub() -> void:
-	get_tree().change_scene_to_file(HUB_SCENE)
+	print("HUB: switching to ", HUB_SCENE)
+	var packed: PackedScene = load(HUB_SCENE)
+	if packed == null:
+		push_error("HUB scene failed to load: " + HUB_SCENE)
+		return
+	# 先释放旧场景再挂新场景（file 版在旧场景巨大时偶尔切不完）
+	get_tree().current_scene.queue_free()
+	get_tree().current_scene = null
+	var inst := packed.instantiate()
+	get_tree().root.add_child(inst)
+	get_tree().current_scene = inst
+	print("HUB: new scene ready")
 
 
 func enter_city() -> void:

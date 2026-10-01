@@ -19,6 +19,7 @@ var _tree_rows := {}
 
 
 func _ready() -> void:
+	print("SYSTEM_SPACE: _ready fired")
 	GameState.load_meta()
 	if GameState.spawn_point_override == Vector2.ZERO:
 		GameState.spawn_point_override = Vector2(3036, 1960)

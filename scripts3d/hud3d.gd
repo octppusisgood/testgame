@@ -929,21 +929,14 @@ func _extract_from_pause() -> void:
 	if GameState.is_run_over():
 		return
 	GameState.toggle_pause_menu()
-	var player = get_tree().get_first_node_in_group("player")
-	var mult := 0.5
-	var place := "战斗中"
-	if player != null and not GameState.in_combat_now():
-		if GameState.player_in_base_radius():
-			mult = 1.5
-			place = "回到营地（脱战）"
-		elif GameState.point_in_signal_coverage(player.global_position):
-			mult = 1.0
-			place = "信号区撤离（脱战）"
-		else:
-			mult = 0.5
-			place = "战斗中（无信号脱战）"
-	GameState.notify("撤离点：%s · 物资结算 ×%d%%" % [place, int(mult * 100)])
-	GameState.end_run(true, "你从「%s」主动撤离了城市（结算 ×%d%%）" % [place, int(mult * 100)])
+	# 新规则：倍率 = 信号强度 × 战斗惩罚；end_run 统一解析
+	var sig_pct := int(round(GameState.signal_strength * 100))
+	var combat := GameState.in_combat_now()
+	var place := "信号 %d%%" % sig_pct
+	if combat:
+		place += " · 战斗中×50%"
+	GameState.notify("撤离 · %s · 物资结算 ×%d%%" % [place, int(GameState.signal_strength * (0.5 if combat else 1.0) * 100)])
+	GameState.end_run(true, "你主动撤离了城市（%s）" % place)
 
 
 func _on_pause_toggled(open: bool) -> void:

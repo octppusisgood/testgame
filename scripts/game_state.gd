@@ -1264,21 +1264,11 @@ func save_meta() -> void:
 	file.close()
 
 
-# 结束方式 → 结算倍率：活着=按位置与脱战状态；阵亡=死亡点信号 ×50%（无信号 0%）
-func _resolve_end_multiplier(won: bool) -> float:
-	var player = get_tree().get_first_node_in_group("player") if is_inside_tree() else null
-	var covered := false
-	if player != null:
-		covered = point_in_signal_coverage(player.global_position)
-	if not won:
-		return 0.5 if covered else 0.0
-	if player == null:
-		return 1.0
-	if in_combat_now():
-		return 0.5
-	if player_in_base_radius():
-		return 1.5
-	return 1.0 if covered else 0.5
+# 撤离倍率 = 信号强度 × 战斗惩罚（用户规则 2026-10-02）：
+# 脱战 = 信号强度（0~1），战斗中 = 信号强度 × 0.5，无信号 = 0（只带回 NPC 和蓝图）；
+# 与位置无关（营不营地在无所谓），无通关特殊档
+func _resolve_end_multiplier(_won: bool) -> float:
+	return signal_strength * (0.5 if in_combat_now() else 1.0)
 
 
 func settle_run(won: bool) -> Dictionary:
@@ -1293,6 +1283,11 @@ func settle_run(won: bool) -> Dictionary:
 		"anomaly_sp": anomaly,
 		"total": space_energy,
 	}
+	# 撤离倍率=信号强度×战斗惩罚（0~1）：物资（身上+背包+营地仓储）统一乘；
+	# 天数/Boss/异能量不乘（与信号无关的基础成就）；无信号=物资全损，仅 NPC/蓝图保留
+	var combat_note := "战斗中×50%" if extract_multiplier < signal_strength else ""
+	summary["mult"] = extract_multiplier
+	summary["combat"] = combat_note
 	if won:
 		extractions += 1
 		var loot := (
@@ -1302,16 +1297,15 @@ func settle_run(won: bool) -> Dictionary:
 			+ money / 10
 		)
 		var bonus := 60 + maxi(0, zombie_stage_index() + 1) * 10
-		# 撤离/死亡分档：物资折算（loot+背包值）乘倍率；天数/仓储/异能量不乘
 		loot = int(loot * extract_multiplier)
 		var bag_sp := int(loot_total_value() / 4 * extract_multiplier)
-		space_energy += loot + bonus + bag_sp
+		var storage_mult := int(storage_sp * extract_multiplier)
+		space_energy += loot + bonus + bag_sp + storage_mult
 		summary["loot"] = loot
 		summary["bonus"] = bonus
-		if extract_multiplier != 1.0:
-			summary["mult"] = extract_multiplier
+		summary["storage_sp"] = storage_mult
 	extract_multiplier = 1.0
-	space_energy += day_sp + boss_sp_bonus + storage_sp + anomaly
+	space_energy += day_sp + boss_sp_bonus + anomaly
 	if anomaly > 0:
 		notify("异能量折算 SP +%d" % anomaly)
 	summary["total"] = space_energy

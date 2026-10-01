@@ -1727,6 +1727,7 @@ class FollowerBody extends CharacterBody3D:
 	var _limbs := {}
 	var _collision: CollisionShape3D = null
 	var _name_label: Label3D = null
+	var _hp_bar: Label3D = null
 	var _decide := 0.0
 	var _next_attack := 0
 	var _move_target := Vector3.ZERO
@@ -1766,13 +1767,20 @@ class FollowerBody extends CharacterBody3D:
 		_name_label.position = Vector3(0, 2.15, 0)
 		add_child(_name_label)
 		_refresh_label()
+		_hp_bar = Label3D.new()
+		_hp_bar.font_size = 36
+		_hp_bar.outline_size = 8
+		_hp_bar.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		_hp_bar.position = Vector3(0, 2.55, 0)
+		add_child(_hp_bar)
+		_refresh_hp_bar()
 
 
-	# 胸前醒目色块：青色区别于工人（橙）与普通市民
+	# 胸前身份徽标（贴身缩小版）：青色区别于工人（橙）与普通市民
 	func _add_marker() -> void:
 		var mesh := MeshInstance3D.new()
 		var box := BoxMesh.new()
-		box.size = Vector3(0.36, 0.2, 0.1)
+		box.size = Vector3(0.2, 0.1, 0.04)
 		mesh.mesh = box
 		var material := StandardMaterial3D.new()
 		material.albedo_color = Color(0.2, 0.75, 0.9)
@@ -1780,7 +1788,7 @@ class FollowerBody extends CharacterBody3D:
 		material.emission = Color(0.1, 0.65, 0.85)
 		material.emission_energy_multiplier = 1.5
 		mesh.material_override = material
-		mesh.position = Vector3(0, 1.32, -0.28)
+		mesh.position = Vector3(0, 1.28, -0.2)
 		add_child(mesh)
 
 
@@ -1798,6 +1806,23 @@ class FollowerBody extends CharacterBody3D:
 	func _refresh_label() -> void:
 		if _name_label != null:
 			_name_label.text = "%s（%s）（%s）" % [follower_name, mode_name(), _gear_name()]
+
+	# 头顶血条：10 格方块，颜色随比例（>70% 绿 / >30% 黄 / 其余红）
+	func _refresh_hp_bar() -> void:
+		if _hp_bar == null:
+			return
+		var ratio := clampf(float(hp) / float(maxi(max_hp, 1)), 0.0, 1.0)
+		var filled := int(round(ratio * 10.0))
+		var text := ""
+		for _i in 10:
+			text += ("█" if _i < filled else "░")
+		_hp_bar.text = text
+		if ratio > 0.7:
+			_hp_bar.modulate = Color(0.45, 0.95, 0.55)
+		elif ratio > 0.3:
+			_hp_bar.modulate = Color(0.95, 0.85, 0.35)
+		else:
+			_hp_bar.modulate = Color(1.0, 0.35, 0.3)
 
 
 	func mode_name() -> String:
@@ -2251,6 +2276,7 @@ class FollowerBody extends CharacterBody3D:
 			max_hp += ARMOR_HP_BONUS
 			hp += ARMOR_HP_BONUS
 		_refresh_label()
+		_refresh_hp_bar()
 
 
 	func equip_melee(id: String, damage: int) -> void:
@@ -2321,6 +2347,7 @@ class FollowerBody extends CharacterBody3D:
 		if _from != null and _from.is_in_group("player") and not friendly_fire:
 			return
 		hp -= amount
+		_refresh_hp_bar()
 		if hp <= 0:
 			_killed_by_player = _from != null and _from.is_in_group("player")
 			_die()

@@ -316,6 +316,7 @@ func _ready() -> void:
 			_spawn_rogue_civilians_indoors()
 		# 通缉系统已彻底删除：不再生成警察（_spawn_cops 不再调用）
 	_spawn_player()
+	_spawn_hired_npcs()
 	var base_build := Node3D.new()
 	base_build.name = "BaseBuild"
 	base_build.set_script(load("res://scripts3d/base_build3d.gd"))
@@ -3067,6 +3068,40 @@ func _spawn_player() -> void:
 	player.position = Vector3(spawn.x * SCALE, 0.2, spawn.y * SCALE)
 	add_child(player)
 
+
+
+# 系统空间雇佣的 NPC：进局后在玩家旁自动成为随从
+func _spawn_hired_npcs() -> void:
+	if GameState.pending_hires.is_empty():
+		return
+	var player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	var worker_manager: Node = null
+	for node in get_tree().get_nodes_in_group("interactables"):
+		if node.get_script() == load("res://scripts3d/worker3d.gd"):
+			worker_manager = node
+			break
+	if worker_manager == null:
+		return
+	for i in mini(GameState.pending_hires.size(), 4):
+		var fname: String = String(GameState.pending_hires[i])
+		var npc = NPC_SCENE.instantiate()
+		npc.role = "pedestrian"
+		add_child(npc)
+		npc.global_position = player.global_position + Vector3(
+			randf_range(-2.0, 2.0), 0.1, randf_range(1.5, 3.0)
+		)
+		# 直接生成 FollowerBody 随从（不走招募链——系统空间已付费）
+		var follower = load("res://scripts3d/worker3d.gd").FollowerBody.new()
+		follower.follower_name = fname
+		follower.manager = worker_manager
+		add_child(follower)
+		follower.global_position = npc.global_position
+		npc.queue_free()
+		worker_manager._followers.append(follower)
+		GameState.notify("雇佣随从 %s 已就位" % fname)
+	GameState.pending_hires.clear()
 
 func _spawn_zombie() -> void:
 	var pos := Vector3.ZERO

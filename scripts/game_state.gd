@@ -402,6 +402,9 @@ const SHOP := {
 	"scope_4x": {"name": "四倍镜 ×1", "cost": 420},
 	"scope_8x": {"name": "八倍镜 ×1", "cost": 680},
 	"revival_stone": {"name": "复活石", "cost": REVIVE_STONE_COST},
+	"pistol_ammo100": {"name": "手枪弹药 ×100", "cost": 1},
+	"hire_npc": {"name": "雇佣一名随从", "cost": 5},
+	"gun_boost": {"name": "枪械强化 L1（伤害+10%）", "cost": 3},
 }
 
 # 能源系统：玩家不再用电（设备由信号塔供能）；异能量（击杀丧尸积累，应急治疗/局末折算 SP）
@@ -862,6 +865,8 @@ var mutations_taken := 0
 var meta_weapons := {"pistol": 1, "shotgun": 0, "rifle": 0}
 # 基因库：撤离时存入的 NPC（跨局持久化）——名字/职业/天赋简述
 var gene_pool: Array = []
+# 系统空间雇佣的 NPC（进局后在出生点自动生成随从）
+var pending_hires: Array = []
 var viewer_position := Vector3.ZERO
 var viewer_active := false
 var map_building_rects: Array = []
@@ -1411,6 +1416,22 @@ func buy_shop_item(id: String) -> bool:
 			add_loot(id)
 		"revival_stone":
 			return buy_revival_stone()
+		"pistol_ammo100":
+			if not spend_energy(cost):
+				return false
+			meta_supplies["ammo"] = int(meta_supplies.get("ammo", 0)) + 100
+		"hire_npc":
+			if not spend_energy(cost):
+				return false
+			# 雇佣 NPC：名字入待带名单，进局后自动成为随从
+			pending_hires.append("雇佣兵%d" % (pending_hires.size() + 1))
+			notify("已雇佣，进局后自动跟随")
+		"gun_boost":
+			if not spend_energy(cost):
+				return false
+			# 枪械强化：直接给一层技能树（进局生效）
+			gun_tree_levels = maxi(gun_tree_levels, 4)  # L4=穿甲弹头 +10% 伤害
+			notify("枪械强化已激活（本局伤害+10%）")
 		_:
 			return false
 	save_meta()
@@ -4135,7 +4156,6 @@ func reset_run(reload_scene := false) -> void:
 	crime_points = 0
 	player_kills = 0
 	civilian_kills = 0
-	gun_tree_levels = 0
 	last_combat_msec = 0
 	_crime_reports.clear()
 	_gunshot_alerts.clear()

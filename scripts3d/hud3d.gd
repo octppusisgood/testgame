@@ -2004,7 +2004,7 @@ func _build_end_panel() -> void:
 	_end_info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(_end_info)
 	var end_hint := Label.new()
-	end_hint.text = "按 Enter 重新开始"
+	end_hint.text = "按 Enter 返回系统空间"
 	end_hint.add_theme_font_size_override("font_size", 12)
 	end_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	end_hint.add_theme_color_override("font_color", Color(0.85, 0.85, 0.85, 0.8))

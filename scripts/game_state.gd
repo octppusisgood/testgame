@@ -1316,24 +1316,23 @@ func settle_run(won: bool) -> Dictionary:
 var _hub_changing := false
 
 
+# 结算后回系统空间：一条直链——结算 SP → 清场 → 切场景。
+# 结算面板唯一出口（Enter），死亡/通关/撤离全部汇到同一面板进这里。
 func return_to_hub() -> void:
 	if _hub_changing:
 		return
 	_hub_changing = true
 	settle_run(phase == "won")
-	# 联机局结束回观测舱：断开 ENet，避免挂着僵尸连接（重进需重新建房/加入）
 	Network.leave()
-	# 结算/死亡时暂停菜单可能没关干净，回舱前强制解除暂停（否则系统空间全程冻结）
+	# 清场：暂停、面板全部关掉，避免状态带进系统空间
 	get_tree().paused = false
-	# 在输入回调里直接切场景会段错误（场景树还在处理 _unhandled_input），
-	# 延迟到帧末安全执行
+	pause_menu_open = false
+	close_all_panels()
 	_change_to_hub.call_deferred()
 
 
 func _change_to_hub() -> void:
 	print("HUB: switching to ", HUB_SCENE)
-	# 换回标准 change_scene_to_file：批次 219 的手动 queue_free+挂节点在
-	# current_scene 已为 null（此前一次切换中途失败）时会中止，从此永远卡在城里
 	var err := get_tree().change_scene_to_file(HUB_SCENE)
 	_hub_changing = false
 	if err != OK:

@@ -93,7 +93,7 @@ func _build_stations() -> void:
 		# 名称牌
 		var label := Label3D.new()
 		label.text = String(st["name"])
-		label.font_size = 64
+		label.font_size = 28
 		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		label.modulate = st["color"]
 		label.outline_size = 10
@@ -163,12 +163,12 @@ func _build_ui() -> void:
 	layer.layer = 10
 	add_child(layer)
 	_energy_label = Label.new()
-	_energy_label.position = Vector2(16, 12)
-	_energy_label.add_theme_font_size_override("font_size", 16)
+	_energy_label.position = Vector2(12, 8)
+	_energy_label.add_theme_font_size_override("font_size", 12)
 	_energy_label.add_theme_color_override("font_color", Color(0.6, 1.0, 0.8))
 	layer.add_child(_energy_label)
 	_hint = Label3D.new()
-	_hint.font_size = 72
+	_hint.font_size = 28
 	_hint.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	_hint.modulate = Color(1.0, 1.0, 0.85)
 	_hint.outline_size = 10
@@ -225,51 +225,70 @@ func _unhandled_input(event: InputEvent) -> void:
 # —— 面板 ——
 
 func _open_panel(kind: String) -> void:
-	_panel = Control.new()
-	_panel.set_anchors_preset(Control.PRESET_CENTER)
-	_panel.custom_minimum_size = Vector2(280, 0)
-	_panel.z_index = 20
+	_close_panel()
+	# 暗色遮罩 + 居中面板（640×360 逻辑视口内）
 	var layer := CanvasLayer.new()
 	layer.layer = 20
 	add_child(layer)
-	layer.add_child(_panel)
-	var bg := PanelContainer.new()
-	bg.custom_minimum_size = Vector2(280, 0)
-	_panel.add_child(bg)
+	var dim := ColorRect.new()
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.color = Color(0, 0, 0, 0.55)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	layer.add_child(dim)
+	var center := CenterContainer.new()
+	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dim.add_child(center)
+	var frame := PanelContainer.new()
+	frame.custom_minimum_size = Vector2(280, 0)
+	center.add_child(frame)
+	_panel = frame
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 4)
-	bg.add_child(box)
+	frame.add_child(box)
 	var title := Label.new()
 	title.text = String(_station_of(kind).get("name", kind))
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 14)
+	title.add_theme_font_size_override("font_size", 13)
 	title.add_theme_color_override("font_color", Color(0.95, 0.9, 0.7))
 	box.add_child(title)
+	# 内容滚动区（面板总高不超过视口 80%）
+	var scroll := ScrollContainer.new()
+	scroll.custom_minimum_size = Vector2(260, 0)
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	box.add_child(scroll)
+	var content := VBoxContainer.new()
+	content.add_theme_constant_override("separation", 3)
+	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(content)
 	match kind:
 		"enter":
-			_build_enter_panel(box)
+			_build_enter_panel(content)
 		"shop":
-			_build_shop_panel(box)
+			_build_shop_panel(content)
 		"gene":
-			_build_gene_panel(box)
+			_build_gene_panel(content)
 		"train":
-			_build_train_panel(box)
+			_build_train_panel(content)
 	var close := Button.new()
 	close.text = "关闭（Esc）"
+	close.add_theme_font_size_override("font_size", 10)
 	close.pressed.connect(_close_panel)
 	box.add_child(close)
 
 
 func _close_panel() -> void:
-	if _panel != null:
-		_panel.get_parent().queue_free()
-		_panel = null
+	if _panel != null and is_instance_valid(_panel):
+		var layer := _panel.get_parent()
+		if layer != null and layer is CanvasLayer:
+			layer.queue_free()
+	_panel = null
 
 
 func _build_enter_panel(box: VBoxContainer) -> void:
 	var btn := Button.new()
 	btn.text = "进入城市（开始新的一局）"
-	btn.custom_minimum_size = Vector2(240, 32)
+	btn.add_theme_font_size_override("font_size", 11)
 	btn.pressed.connect(func() -> void:
 		_close_panel()
 		GameState.enter_city()
@@ -278,18 +297,11 @@ func _build_enter_panel(box: VBoxContainer) -> void:
 
 
 func _build_shop_panel(box: VBoxContainer) -> void:
-	var scroll := ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(260, 180)
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	box.add_child(scroll)
-	var list := VBoxContainer.new()
-	list.add_theme_constant_override("separation", 3)
-	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	scroll.add_child(list)
 	for id in GameState.SHOP.keys():
 		var info: Dictionary = GameState.SHOP[id]
 		var btn := Button.new()
 		btn.text = "%s — %d SP" % [String(info["name"]), int(info["cost"])]
+		btn.add_theme_font_size_override("font_size", 10)
 		btn.disabled = GameState.space_energy < int(info["cost"])
 		var key := String(id)
 		btn.pressed.connect(func() -> void:
@@ -297,7 +309,7 @@ func _build_shop_panel(box: VBoxContainer) -> void:
 				_close_panel()
 				_open_panel("shop")
 		)
-		list.add_child(btn)
+		box.add_child(btn)
 
 
 func _build_gene_panel(box: VBoxContainer) -> void:
@@ -310,7 +322,7 @@ func _build_gene_panel(box: VBoxContainer) -> void:
 		for name in relics.keys():
 			lines.append("%s ×%d" % [String(name), int(relics[name])])
 		label.text = "已收集 Boss 材料：\n" + "\n".join(lines)
-	label.add_theme_font_size_override("font_size", 11)
+	label.add_theme_font_size_override("font_size", 10)
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(label)
 
@@ -324,6 +336,7 @@ func _build_train_panel(box: VBoxContainer) -> void:
 		btn.text = "%s Lv.%d — %d SP（%s）" % [
 			String(info["name"]), level, cost, String(info["desc"])
 		]
+		btn.add_theme_font_size_override("font_size", 9)
 		btn.disabled = GameState.space_energy < cost
 		var key := String(id)
 		btn.pressed.connect(func() -> void:

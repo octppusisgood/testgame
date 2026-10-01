@@ -20,6 +20,7 @@ var _tree_rows := {}
 
 func _ready() -> void:
 	print("SYSTEM_SPACE: _ready fired")
+	GameState._hlog("system_space: _ready begin")
 	GameState.load_meta()
 	if GameState.spawn_point_override == Vector2.ZERO:
 		GameState.spawn_point_override = Vector2(3036, 1960)
@@ -27,6 +28,13 @@ func _ready() -> void:
 	_build_player()
 	_build_ui()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	GameState._hlog("system_space: _ready done")
+	# 5 秒后打点：看场景有没有被切走
+	await get_tree().create_timer(5.0).timeout
+	if is_instance_valid(self) and not is_queued_for_deletion():
+		GameState._hlog("system_space: alive after 5s, current=%s" % (
+			str(get_tree().current_scene.name if get_tree().current_scene != null else "NULL")
+		))
 
 
 func _process(delta: float) -> void:

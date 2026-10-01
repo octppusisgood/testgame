@@ -1320,8 +1320,10 @@ var _hub_changing := false
 # 结算面板唯一出口（Enter），死亡/通关/撤离全部汇到同一面板进这里。
 func return_to_hub() -> void:
 	if _hub_changing:
+		_hlog("return_to_hub: blocked by re-entry guard")
 		return
 	_hub_changing = true
+	_hlog("return_to_hub: settle + clear + switch")
 	settle_run(phase == "won")
 	Network.leave()
 	# 清场：暂停、面板全部关掉，避免状态带进系统空间
@@ -1332,14 +1334,31 @@ func return_to_hub() -> void:
 
 
 func _change_to_hub() -> void:
+	_hlog("_change_to_hub: change_scene_to_file " + HUB_SCENE)
 	print("HUB: switching to ", HUB_SCENE)
 	var err := get_tree().change_scene_to_file(HUB_SCENE)
 	_hub_changing = false
+	_hlog("_change_to_hub: err=%d current=%s" % [
+		err, str(get_tree().current_scene.name if get_tree().current_scene != null else "NULL")
+	])
 	if err != OK:
 		push_error("HUB scene change failed: %s" % error_string(err))
 
 
+# 切换链路文件日志（定位「回不到系统空间」用）：user://hub_debug.log
+func _hlog(text: String) -> void:
+	var f := FileAccess.open("user://hub_debug.log", FileAccess.WRITE_READ)
+	if f == null:
+		f = FileAccess.open("user://hub_debug.log", FileAccess.WRITE)
+	if f == null:
+		return
+	f.seek_end()
+	f.store_line("[%d] %s" % [Time.get_ticks_msec(), text])
+	f.close()
+
+
 func enter_city() -> void:
+	_hlog("enter_city called: " + str(get_stack()))
 	reset_run()
 	get_tree().change_scene_to_file("res://scenes3d/proto3d.tscn")
 

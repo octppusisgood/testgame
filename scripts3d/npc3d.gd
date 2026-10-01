@@ -1168,7 +1168,7 @@ func _line_of_sight(target: Node3D) -> bool:
 	return not result.is_empty() and result.collider == target
 
 
-func take_damage(amount: int, from: Node3D = null) -> void:
+func take_damage(amount: int, from: Node3D = null, _friendly_fire := false) -> void:
 	if net_puppet:
 		if Network.is_multiplayer():
 			Network.request_entity_damage(net_id, amount)

@@ -1621,7 +1621,12 @@ class Mortar extends DefenseBase:
 			if npc.is_queued_for_deletion() or bool(npc.get("_dying")):
 				continue
 			if npc.has_method("take_damage"):
-				npc.take_damage(_damage(), player)
+				# 炮击无差别：友军（随从免伤被 friendly_fire 穿透）、市民、工人一视同仁
+				npc.take_damage(_damage(), player, true)
+		# 炮击同样会炸到玩家（自己叫的炮也一样；藏匿/测试模式免伤在伤害入口内部判定）
+		if player != null and player.has_method("take_damage"):
+			if center.distance_to(player.global_position) <= _blast():
+				player.take_damage(_damage())
 		# 炮弹也会震伤建筑结构
 		var demolisher := get_tree().get_first_node_in_group("demolisher")
 		if demolisher != null and demolisher.has_method("damage_structure_at"):

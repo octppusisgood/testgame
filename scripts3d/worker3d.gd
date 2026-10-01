@@ -1649,15 +1649,12 @@ class WorkerBody extends CharacterBody3D:
 
 	# —— 受伤与死亡 ——
 
-	func take_damage(amount: int, _from: Node3D = null) -> void:
+	func take_damage(amount: int, _from: Node3D = null, _friendly_fire := false) -> void:
 		if _dying:
-			return
-		# 工人免疫玩家的伤害（友军不伤：远程炮击/爆炸/误伤一律无效）
-		if _from != null and _from.is_in_group("player"):
 			return
 		hp -= amount
 		if hp <= 0:
-			_killed_by_player = false
+			_killed_by_player = _from != null and _from.is_in_group("player")
 			_die()
 
 
@@ -2313,15 +2310,15 @@ class FollowerBody extends CharacterBody3D:
 
 	# —— 受伤与死亡 ——
 
-	func take_damage(amount: int, _from: Node3D = null) -> void:
+	func take_damage(amount: int, _from: Node3D = null, friendly_fire := false) -> void:
 		if _dying:
 			return
-		# 随从免疫玩家的子弹和近战（友军不伤）；其他来源致死时记录凶手
-		if _from != null and _from.is_in_group("player"):
+		# 随从免疫玩家的子弹与近战（友军不伤）；爆炸类（friendly_fire）无差别
+		if _from != null and _from.is_in_group("player") and not friendly_fire:
 			return
 		hp -= amount
 		if hp <= 0:
-			_killed_by_player = _from != null and str(_from.get("vehicle")) != ""
+			_killed_by_player = _from != null and _from.is_in_group("player")
 			_die()
 
 

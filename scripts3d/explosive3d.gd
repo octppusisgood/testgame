@@ -148,7 +148,8 @@ func _explode() -> void:
 		if npc.is_queued_for_deletion():
 			continue
 		if pos.distance_to(npc.global_position) <= radius:
-			npc.take_damage(damage, shooter)
+			# 爆炸无差别：穿透随从的友军免伤（friendly_fire）
+			npc.take_damage(damage, shooter, true)
 			DamagePopup.show_damage(parent, npc.global_position + Vector3(0, 1.0, 0), damage, true)
 	for camera in get_tree().get_nodes_in_group("surveillance_cameras"):
 		if pos.distance_to(camera.global_position) <= radius:
@@ -163,7 +164,8 @@ func _explode() -> void:
 			target.take_damage(damage)
 			DamagePopup.show_damage(parent, target.global_position + Vector3(0, 2.2, 0), damage, true)
 	var player = get_tree().get_first_node_in_group("player")
-	if player != null and shooter != player and pos.distance_to(player.global_position) <= radius:
+	# 爆炸无差别：自己扔的/自己打的爆炸同样伤害自己（藏匿与测试模式免伤在伤害入口内部）
+	if player != null and pos.distance_to(player.global_position) <= radius:
 		player.take_damage(damage)
 	# 爆炸也能打坏建筑/塔楼：扣结构耐久，血尽即炸毁并只掉小额建材
 	var demolisher = get_tree().get_first_node_in_group("demolisher")

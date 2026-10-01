@@ -3177,6 +3177,8 @@ func _on_rogue_offered(choices: Array) -> void:
 	_rogue_title.text = "升级！Lv.%d · 选择一项强化" % GameState.rogue_level
 	_rogue_panel.visible = true
 	_rogue_dim.visible = true
+	# 技能三选一弹出时暂停游戏（HUD 为 ALWAYS 模式，面板照常可交互）
+	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
@@ -3187,6 +3189,8 @@ func _on_rogue_chosen(index: int) -> void:
 	_rogue_choices = []
 	_rogue_panel.visible = false
 	_rogue_dim.visible = false
+	# 选定后恢复游戏（若暂停菜单开着则保持暂停）
+	get_tree().paused = GameState.pause_menu_open
 	if (
 		not GameState.skills_open
 		and not GameState.backpack_open

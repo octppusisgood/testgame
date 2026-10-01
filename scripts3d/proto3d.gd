@@ -2905,16 +2905,29 @@ func _spawn_rogue_field() -> void:
 	zone.active = true
 	add_child(zone)
 	var placed := false
+	# 能量场必须整圈落在城内：中心连同半径一起 clamp 进边界
+	# （此前只查「不压建筑」，营地靠近地图边时会刷到城外）
+	var margin: float = zone.radius + 1.5
+	var max_x: float = GameState.CITY_SIZE.x * SCALE - margin
+	var max_z: float = GameState.CITY_SIZE.y * SCALE - margin
 	for attempt in 40:
 		var angle := randf() * TAU
 		var dist := randf_range(ROGUE_FIELD_MIN_DIST, ROGUE_FIELD_MAX_DIST)
-		var p: Vector3 = base_pos + Vector3(cos(angle), 0.0, sin(angle)) * dist
+		var p := Vector3(
+			clampf(base_pos.x + cos(angle) * dist, margin, max_x),
+			0.0,
+			clampf(base_pos.z + sin(angle) * dist, margin, max_z)
+		)
 		if not _inside_any_building(Vector2(p.x / SCALE, p.z / SCALE)):
-			zone.global_position = Vector3(p.x, 0.0, p.z)
+			zone.global_position = p
 			placed = true
 			break
 	if not placed:
-		zone.global_position = base_pos + Vector3(ROGUE_FIELD_MIN_DIST + 10.0, 0.0, 0.0)
+		zone.global_position = Vector3(
+			clampf(base_pos.x + ROGUE_FIELD_MIN_DIST + 10.0, margin, max_x),
+			0.0,
+			clampf(base_pos.z, margin, max_z)
+		)
 	GameState.notify("营地附近出现新的异常能量场——尸群正在逼近营地！")
 
 

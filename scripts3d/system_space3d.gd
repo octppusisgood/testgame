@@ -417,4 +417,8 @@ func _panel_train() -> void:
 
 func _enter_world() -> void:
 	GameState.reset_run(false)
+	_do_enter.call_deferred()
+
+
+func _do_enter() -> void:
 	get_tree().change_scene_to_file("res://scenes3d/proto3d.tscn")

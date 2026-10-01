@@ -1317,6 +1317,12 @@ func return_to_hub() -> void:
 	settle_run(phase == "won")
 	# 联机局结束回观测舱：断开 ENet，避免挂着僵尸连接（重进需重新建房/加入）
 	Network.leave()
+	# 在输入回调里直接切场景会段错误（场景树还在处理 _unhandled_input），
+	# 延迟到帧末安全执行
+	_change_to_hub.call_deferred()
+
+
+func _change_to_hub() -> void:
 	get_tree().change_scene_to_file(HUB_SCENE)
 
 

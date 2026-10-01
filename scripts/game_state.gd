@@ -273,8 +273,18 @@ const GUN_TREE := [
 ]
 # 本局已购层数（0 = 未购任何层；进局后强化钩子读取，局终清零）
 var gun_tree_levels := 0
-# Esc 撤离分档倍率（据点内 1.5 / 信号区 1.0 / 战斗中 0.5）；settle_run 应用后清零
+# Esc 撤离分档倍率（据点内 1.5 / 信号区 1.0 / 战斗中 0.5 / 死亡=信号强度×0.5）；settle_run 应用后清零
 var extract_multiplier := 1.0
+# 上一次伤害时间（战斗中判定：近 5 秒有交战 → 撤离只能 ×50%）
+var last_combat_msec := 0
+
+
+func in_combat_now() -> bool:
+	return Time.get_ticks_msec() - last_combat_msec < 5000
+
+
+func note_combat() -> void:
+	last_combat_msec = Time.get_ticks_msec()
 const FOOD_DIR := "res://assets/models/items/food/"
 const SUR_DIR := "res://assets/models/items/survival/"
 const WEAPON_DIR := "res://assets/models/weapons/"
@@ -1266,6 +1276,13 @@ func settle_run(won: bool) -> Dictionary:
 		"anomaly_sp": anomaly,
 		"total": space_energy,
 	}
+	if not won:
+		# 死亡按死亡瞬间信号强度 ×50% 封顶，无信号 = 0%
+		var player = get_tree().get_first_node_in_group("player") if is_inside_tree() else null
+		if player == null or not point_in_signal_coverage(player.global_position):
+			extract_multiplier = 0.0
+		else:
+			extract_multiplier = 0.5
 	if won:
 		extractions += 1
 		var loot := (
@@ -1275,7 +1292,7 @@ func settle_run(won: bool) -> Dictionary:
 			+ money / 10
 		)
 		var bonus := 60 + maxi(0, zombie_stage_index() + 1) * 10
-		# Esc 撤离分档：物资折算（loot+背包值）乘倍率；天数/仓储/异能量不乘
+		# 撤离/死亡分档：物资折算（loot+背包值）乘倍率；天数/仓储/异能量不乘
 		loot = int(loot * extract_multiplier)
 		var bag_sp := int(loot_total_value() / 4 * extract_multiplier)
 		space_energy += loot + bonus + bag_sp
@@ -5065,6 +5082,7 @@ func damage_player(amount: int) -> void:
 	# 藏在建筑里：不可被发现与攻击
 	if not player_in_building.is_empty():
 		return
+	note_combat()
 	_last_damage_msec = Time.get_ticks_msec()
 	var reduction := mut_value("tough_skin") / 100.0
 	if is_zombie():

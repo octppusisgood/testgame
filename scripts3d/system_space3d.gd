@@ -253,9 +253,10 @@ func _open_panel(kind: String) -> void:
 	title.add_theme_font_size_override("font_size", 13)
 	title.add_theme_color_override("font_color", Color(0.95, 0.9, 0.7))
 	box.add_child(title)
-	# 内容滚动区（面板总高不超过视口 80%）
+	# 内容滚动区（显式高度：ScrollContainer 不会向父级申报内容高度，
+	# 给 0 会被 VBox 压扁成 0——批次 224 商城「什么都没有」的根因）
 	var scroll := ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(260, 0)
+	scroll.custom_minimum_size = Vector2(260, 190)
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	box.add_child(scroll)
@@ -300,6 +301,8 @@ func _build_enter_panel(box: VBoxContainer) -> void:
 func _build_shop_panel(box: VBoxContainer) -> void:
 	for id in GameState.SHOP.keys():
 		var info: Dictionary = GameState.SHOP[id]
+		if info.has("panel"):
+			continue  # 雇佣随从/枪械强化分属基因库与强化仓，不在商城重复陈列
 		var btn := Button.new()
 		btn.text = "%s — %d SP" % [String(info["name"]), int(info["cost"])]
 		btn.add_theme_font_size_override("font_size", 10)
@@ -326,6 +329,27 @@ func _build_gene_panel(box: VBoxContainer) -> void:
 	label.add_theme_font_size_override("font_size", 10)
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(label)
+	# 雇佣随从：购买后进局自动跟随（上限 4 名，与进城生成上限一致）
+	var hire_info: Dictionary = GameState.SHOP.get("hire_npc", {})
+	if hire_info.is_empty():
+		return
+	var hired: int = GameState.pending_hires.size()
+	var hire_btn := Button.new()
+	hire_btn.add_theme_font_size_override("font_size", 10)
+	if hired >= 4:
+		hire_btn.text = "雇佣随从已满 4 名（进局自动跟随）"
+		hire_btn.disabled = true
+	else:
+		hire_btn.text = "%s — %d SP" % [String(hire_info["name"]), int(hire_info["cost"])]
+		if hired > 0:
+			hire_btn.text += "（已带 %d 名）" % hired
+		hire_btn.disabled = GameState.space_energy < int(hire_info["cost"])
+		hire_btn.pressed.connect(func() -> void:
+			if GameState.buy_shop_item("hire_npc"):
+				_close_panel()
+				_open_panel("gene")
+		)
+	box.add_child(hire_btn)
 
 
 func _build_train_panel(box: VBoxContainer) -> void:
@@ -346,3 +370,21 @@ func _build_train_panel(box: VBoxContainer) -> void:
 				_open_panel("train")
 		)
 		box.add_child(btn)
+	# 枪械强化：局内枪械伤害 +10%（进局生效，局终清零，可重复购买）
+	var boost_info: Dictionary = GameState.SHOP.get("gun_boost", {})
+	if boost_info.is_empty():
+		return
+	var boost_btn := Button.new()
+	boost_btn.add_theme_font_size_override("font_size", 10)
+	if GameState.gun_tree_levels >= 4:
+		boost_btn.text = "%s（已激活）" % String(boost_info["name"])
+		boost_btn.disabled = true
+	else:
+		boost_btn.text = "%s — %d SP" % [String(boost_info["name"]), int(boost_info["cost"])]
+		boost_btn.disabled = GameState.space_energy < int(boost_info["cost"])
+		boost_btn.pressed.connect(func() -> void:
+			if GameState.buy_shop_item("gun_boost"):
+				_close_panel()
+				_open_panel("train")
+		)
+	box.add_child(boost_btn)

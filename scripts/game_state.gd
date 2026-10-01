@@ -384,6 +384,7 @@ const LOOT_TABLES := {
 	"valuable": ["gold_box", "money_bag", "gold_box", "heal_potion", "vest", "craft_mat"],
 }
 const SHOP := {
+	"pistol_ammo100": {"name": "手枪弹药 ×100", "cost": 1},
 	"skill_point": {"name": "SP ×1", "cost": 10},
 	"ammo10": {"name": "弹药 ×10", "cost": 30},
 	"meds1": {"name": "医疗包 ×1", "cost": 40},
@@ -402,9 +403,8 @@ const SHOP := {
 	"scope_4x": {"name": "四倍镜 ×1", "cost": 420},
 	"scope_8x": {"name": "八倍镜 ×1", "cost": 680},
 	"revival_stone": {"name": "复活石", "cost": REVIVE_STONE_COST},
-	"pistol_ammo100": {"name": "手枪弹药 ×100", "cost": 1},
-	"hire_npc": {"name": "雇佣一名随从", "cost": 5},
-	"gun_boost": {"name": "枪械强化 L1（伤害+10%）", "cost": 3},
+	"hire_npc": {"name": "雇佣一名随从", "cost": 5, "panel": "gene"},
+	"gun_boost": {"name": "枪械强化（伤害+10%）", "cost": 3, "panel": "train"},
 }
 
 # 能源系统：玩家不再用电（设备由信号塔供能）；异能量（击杀丧尸积累，应急治疗/局末折算 SP）
@@ -867,6 +867,8 @@ var meta_weapons := {"pistol": 1, "shotgun": 0, "rifle": 0}
 var gene_pool: Array = []
 # 系统空间雇佣的 NPC（进局后在出生点自动生成随从）
 var pending_hires: Array = []
+# 商城购买的手枪弹药（进局时按口径直接入备弹库存）
+var pending_pistol_ammo := 0
 var viewer_position := Vector3.ZERO
 var viewer_active := false
 var map_building_rects: Array = []
@@ -1310,6 +1312,7 @@ func settle_run(won: bool) -> Dictionary:
 		summary["bonus"] = bonus
 		summary["storage_sp"] = storage_mult
 	extract_multiplier = 1.0
+	gun_tree_levels = 0  # 枪械强化为局内增益，局终清零（可在系统空间再次购买）
 	space_energy += day_sp + boss_sp_bonus + anomaly
 	if anomaly > 0:
 		notify("异能量折算 SP +%d" % anomaly)
@@ -1419,7 +1422,8 @@ func buy_shop_item(id: String) -> bool:
 		"pistol_ammo100":
 			if not spend_energy(cost):
 				return false
-			meta_supplies["ammo"] = int(meta_supplies.get("ammo", 0)) + 100
+			# 手枪弹药：进局时按手枪口径入备弹（不再走会被均分的通用弹药池）
+			pending_pistol_ammo += 100
 		"hire_npc":
 			if not spend_energy(cost):
 				return false
@@ -4242,6 +4246,9 @@ func reset_run(reload_scene := false) -> void:
 	phase_changed.emit(phase)
 	ammo_stock.clear()
 	_migrate_legacy_ammo()
+	if pending_pistol_ammo > 0:
+		add_ammo("pistol", "normal", pending_pistol_ammo)  # 商城手枪弹药进局发放
+		pending_pistol_ammo = 0
 	if reload_scene:
 		get_tree().change_scene_to_file(home_scene)
 

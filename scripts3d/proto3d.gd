@@ -749,7 +749,7 @@ func _tick_pickups(delta: float) -> void:
 				GameState.notify("拾取建材 +%d（随身 %d/%d）" % [take, have + take, carry_cap])
 	if _pickup_render_dirty:
 		if _pickup_render_timer <= 0.0:
-			_pickup_render_timer = 1.0 / 30.0
+			_pickup_render_timer = 0.1
 			_pickup_render_dirty = false
 			_refresh_pickup_renderers()
 	elif _pickup_render_timer <= 0.0:
@@ -762,12 +762,20 @@ func _tick_pickups(delta: float) -> void:
 var _pickup_worker_busy := false
 
 
+# 快照只收玩家/相机 120m 内的掉落：磁吸范围外本来也拾取不到，
+# 尸潮战场留下的几百个远掉落不再进 MultiMesh 分桶（主线程快照与实例数双降）
+const PICKUP_RENDER_RANGE := 120.0
+
+
 func _refresh_pickup_renderers() -> void:
 	if _pickup_worker_busy:
 		return
+	var viewer := GameState.viewer_position
 	var snapshot: Array = []
 	for node in get_tree().get_nodes_in_group("pickups"):
 		if node.is_queued_for_deletion():
+			continue
+		if (node.global_position as Vector3).distance_to(viewer) > PICKUP_RENDER_RANGE:
 			continue
 		snapshot.append({"kind": String(node.get("kind")), "node": node, "pos": node.global_position})
 	_pickup_worker_busy = true

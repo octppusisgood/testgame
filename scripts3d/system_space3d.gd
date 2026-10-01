@@ -241,6 +241,8 @@ func open_panel(kind: String) -> void:
 
 func close_panel() -> void:
 	_panel_kind = ""
+	if _panel == null or not is_instance_valid(_panel):
+		return
 	for child in _panel.get_children():
 		if child.name.begins_with("PANEL"):
 			child.queue_free()
@@ -414,6 +416,5 @@ func _panel_train() -> void:
 
 
 func _enter_world() -> void:
-	close_panel()
 	GameState.reset_run(false)
 	get_tree().change_scene_to_file("res://scenes3d/proto3d.tscn")

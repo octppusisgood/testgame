@@ -1272,10 +1272,6 @@ func _resolve_end_multiplier(_won: bool) -> float:
 
 
 func settle_run(won: bool) -> Dictionary:
-	# 测试模式：跳过结算（资源全满/无限弹药不作数），只切场景回系统空间
-	if test_mode:
-		return {"won": won, "loot": 0, "bonus": 0, "days": 0, "day_sp": 0,
-			"boss_sp": 0, "storage_sp": 0, "anomaly_sp": 0, "total": space_energy}
 	runs_played += 1
 	var days := clampi(day_number - 1, 0, FINAL_DAY)
 	var day_sp := days * 50

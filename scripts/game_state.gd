@@ -815,6 +815,8 @@ var wanted := 0
 var vault_key := false
 var crime_points := 0
 var player_kills := 0
+# 玩家击杀人类数（市民/警察/工人/随从都算；被丧尸杀死的不计）
+var civilian_kills := 0
 var jail_timer := 0.0
 var jail_active := false
 var faction := FACTION_HUMAN
@@ -3992,6 +3994,7 @@ func reset_run(reload_scene := false) -> void:
 	vault_key = false
 	crime_points = 0
 	player_kills = 0
+	civilian_kills = 0
 	_crime_reports.clear()
 	_gunshot_alerts.clear()
 	_last_gunshot_notice = 0

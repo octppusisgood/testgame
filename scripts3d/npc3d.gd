@@ -1290,6 +1290,7 @@ func _die(from: Node3D) -> void:
 		GameState.take_vault_key()
 	_drop_loot()
 	if from != null and from.is_in_group("player"):
+		GameState.civilian_kills += 1
 		var witness := _witnessed_by_other()
 		GameState.report_kill(global_position, witness, 3 if role == "cop" else 2)
 	if not BlockyRig.play_death(_limbs):

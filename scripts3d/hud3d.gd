@@ -1978,8 +1978,9 @@ func _on_run_ended(won: bool, reason: String) -> void:
 		if GameState.weapons.get(id, 0) > 0:
 			owned.append(GameState.WEAPONS[id]["name"])
 	var weapon_text := "无" if owned.is_empty() else "、".join(owned)
-	_end_info.text = "%s\n\n带走的物资：食物 %d · 药品 %d · 弹药 %d\n武器：%s · 剩余现金 ¥%d\n\n按回车返回观测舱（本局收获会结算成 SP）" % [
+	_end_info.text = "%s\n\n带走的物资：食物 %d · 药品 %d · 弹药 %d\n武器：%s · 剩余现金 ¥%d\n本局击杀：丧尸 %d · 人类 %d\n\n按回车返回观测舱（本局收获会结算成 SP）" % [
 		reason, r["food"], r["meds"], GameState.total_ammo(), weapon_text, GameState.money,
+		GameState.player_kills, GameState.civilian_kills,
 	]
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

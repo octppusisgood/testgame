@@ -1162,6 +1162,7 @@ class WorkerBody extends CharacterBody3D:
 	var hp := 60
 	# npcs 组兼容桩：丧尸/小地图/目击逻辑会对 npcs 组成员访问这些成员
 	var role := "worker"
+	var _killed_by_player := false
 	var net_puppet := false
 	var _dying := false
 
@@ -1653,6 +1654,7 @@ class WorkerBody extends CharacterBody3D:
 			return
 		hp -= amount
 		if hp <= 0:
+			_killed_by_player = _from != null and _from.is_in_group("player")
 			_die()
 
 
@@ -1660,6 +1662,8 @@ class WorkerBody extends CharacterBody3D:
 		if _dying:
 			return
 		_dying = true
+		if _killed_by_player:
+			GameState.civilian_kills += 1
 		if manager != null and manager.has_method("_forget"):
 			manager._forget(worker_name)
 		GameState.remove_worker(worker_name)
@@ -1712,6 +1716,7 @@ class FollowerBody extends CharacterBody3D:
 	var melee_damage := 0
 	# npcs 组兼容桩：丧尸/小地图/目击逻辑会对 npcs 组成员访问这些成员
 	var role := "follower"
+	var _killed_by_player := false
 	var net_puppet := false
 	var _dying := false
 
@@ -2308,11 +2313,12 @@ class FollowerBody extends CharacterBody3D:
 	func take_damage(amount: int, _from: Node3D = null) -> void:
 		if _dying:
 			return
-		# 随从免疫玩家的子弹和近战（友军不伤）
+		# 随从免疫玩家的子弹和近战（友军不伤）；其他来源致死时记录凶手
 		if _from != null and _from.is_in_group("player"):
 			return
 		hp -= amount
 		if hp <= 0:
+			_killed_by_player = _from != null and str(_from.get("vehicle")) != ""
 			_die()
 
 
@@ -2320,6 +2326,8 @@ class FollowerBody extends CharacterBody3D:
 		if _dying:
 			return
 		_dying = true
+		if _killed_by_player:
+			GameState.civilian_kills += 1
 		_drop_all_gear()
 		if manager != null and manager.has_method("_forget_follower"):
 			manager._forget_follower(self)

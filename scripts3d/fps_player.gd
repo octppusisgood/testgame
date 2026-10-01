@@ -890,7 +890,7 @@ func _physics_process(delta: float) -> void:
 	var input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	# 交互菜单打开时锁死移动（W/S 在菜单里用于上下选择；Input.get_vector 是轮询，
 	# hud 的 set_input_as_handed 拦不住，必须在这里归零）；藏匿在建筑中同样锁移动
-	if GameState.interact_menu_open:
+	if GameState.interact_menu_open or not GameState.player_in_building.is_empty():
 		input = Vector2.ZERO
 	# 架设状态：不能移动；切到非重机枪自动收起
 	if _deployed:
@@ -910,8 +910,8 @@ func _physics_process(delta: float) -> void:
 			_last_tap[dir_name] = now
 	if input == Vector2.ZERO:
 		_sprint_held = false
-	# Shift 按下瞬间冲刺
-	if Input.is_action_just_pressed("sprint"):
+	# Shift 按下瞬间冲刺（藏匿在建筑中禁用）
+	if Input.is_action_just_pressed("sprint") and GameState.player_in_building.is_empty():
 		_try_dash()
 	var sprinting := (
 		_sprint_held
@@ -930,8 +930,9 @@ func _physics_process(delta: float) -> void:
 		_tick_gun_kata(delta)
 	elif _fan_shots_left > 0:
 		_tick_fan_fire()
-	elif _body_root != null and not _body_root.visible:
-		# 枪斗结束恢复模型可见（闪烁的最后一帧可能停在隐藏态）
+	elif _body_root != null and not _body_root.visible and GameState.player_in_building.is_empty():
+		# 枪斗结束恢复模型可见（闪烁的最后一帧可能停在隐藏态）；
+		# 藏匿建筑中的隐藏态不在此恢复（否则每帧把藏匿模型翻回可见）
 		_body_root.visible = true
 	# 冲刺：跳跃键改为冲刺（覆盖普通移动，撞墙即停）
 	if _dash_left > 0.0:
@@ -952,7 +953,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = dir.z * speed
 	if is_on_floor():
 		velocity.y = 0.0
-		if Input.is_action_just_pressed("jump") and vehicle == null and _dash_left <= 0.0:
+		if (
+			Input.is_action_just_pressed("jump")
+			and vehicle == null
+			and _dash_left <= 0.0
+			and GameState.player_in_building.is_empty()
+		):
 			velocity.y = JUMP_VELOCITY * GameState.jump_mult()
 	else:
 		velocity.y -= GRAVITY * delta

@@ -1706,6 +1706,7 @@ func _assign_follower_as_operator(follower: Node3D, pos: Vector3, type: String) 
 func _build_hotbar() -> void:
 	var bar := HBoxContainer.new()
 	_hotbar_bar = bar
+	bar.z_index = 5  # 大地图 z=2：武器栏压在地图上面（开地图时菜单可见）
 	bar.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	bar.offset_left = -260
 	bar.offset_top = -62
@@ -1717,6 +1718,7 @@ func _build_hotbar() -> void:
 	add_child(bar)
 	# 载具信息条：与武器栏同位置（驾驶时显示、武器栏隐藏）
 	_vehicle_info_bar = HBoxContainer.new()
+	_vehicle_info_bar.z_index = 5
 	_vehicle_info_bar.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	_vehicle_info_bar.offset_left = -260
 	_vehicle_info_bar.offset_top = -62

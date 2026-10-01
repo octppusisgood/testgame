@@ -2346,7 +2346,6 @@ func attack_blocked_by_ui() -> bool:
 		or base_build_mode
 		or mortar_command != null
 		or strike_dial_open
-		or not player_in_building.is_empty()
 	)
 
 

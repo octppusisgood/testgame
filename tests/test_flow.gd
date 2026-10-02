@@ -825,15 +825,24 @@ func _test_material_transport() -> void:
 	_check(bindex >= 0, "找到可拆除的小楼")
 	var pos_px: Vector2 = GameState.BUILDING_LAYOUT[bindex]["position"]
 	var gain: int = GameState.BUILDING_MATERIAL_PER_DEMOLISH
+	# 批次 251：挖取建材直接入背包（不再落地成堆）
+	var mats_before := int(GameState.resources.get("materials", 0))
 	demo._mine_building(bindex)
 	await get_tree().process_frame
-	var piles := get_tree().get_nodes_in_group("material_piles")
-	_check(piles.size() == 1, "拆小楼后废墟上出现建材堆实体")
-	if piles.size() == 1:
-		_check(piles[0].amount == gain, "建材堆数量与单次拆卸收益一致（%d）" % gain)
+	_check(
+		int(GameState.resources.get("materials", 0)) == mats_before + gain,
+		"拆小楼建材直接入背包（+%d）" % gain
+	)
+	_check(
+		get_tree().get_nodes_in_group("material_piles").is_empty(),
+		"挖取不在地面生成建材堆"
+	)
 
-	# —— 车辆装载：2.5m 内自动入车斗 ——
-	var pile: Node3D = piles[0]
+	# —— 车辆装载：2.5m 内自动入车斗（手动生成堆供测试） ——
+	var pile: Node3D = load("res://scenes3d/material_pile3d.tscn").instantiate()
+	add_child(pile)
+	pile.global_position = Vector3(600.0, 0.05, 600.0)
+	pile.setup(gain)
 	var vehicle = load("res://scenes3d/vehicle3d.tscn").instantiate()
 	add_child(vehicle)
 	vehicle.model = "van"
@@ -1754,15 +1763,15 @@ func _test_interact_menu() -> void:
 	_check(not station.destroyed, "修复选项恢复原修复效果（test_mode 引导为 0）")
 	GameState.test_mode = old_test
 	var piles_before := get_tree().get_nodes_in_group("material_piles").size()
+	var mats_before_station := int(GameState.resources.get("materials", 0))
 	station.interact_choose("demolish", player)
 	await get_tree().process_frame
 	_check(not is_instance_valid(station), "拆除选项彻底摧毁信号塔")
-	var piles := get_tree().get_nodes_in_group("material_piles")
 	_check(
-		piles.size() == piles_before + 1 and piles.back().amount == 10,
-		"拆除在废墟上掉建材堆 ×10"
+		int(GameState.resources.get("materials", 0)) == mats_before_station + 10
+		and get_tree().get_nodes_in_group("material_piles").size() == piles_before,
+		"拆除信号塔建材 ×10 直接入背包（不落地）"
 	)
-	piles.back().queue_free()
 	GameState.set_wanted(0)
 
 	# —— 防御设施菜单：升级 / 卖掉 ——

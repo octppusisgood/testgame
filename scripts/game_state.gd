@@ -425,6 +425,7 @@ const BASE_DEFENSES := {
 	"generator": {"name": "发电机", "cost": 30, "hp": 100, "range_aura": 3.0, "unique": true},
 	"solar": {"name": "太阳能电池板", "cost": 20, "hp": 60},
 	"windmill": {"name": "自制风力发电机", "cost": 25, "hp": 80},
+	"anomaly_gen": {"name": "异能发电机", "cost": 25, "hp": 120},
 	"containment": {"name": "异能储存仓", "cost": 25, "hp": 120, "unique": true},
 	"workbench": {"name": "弹药加工台", "cost": 5, "hp": 100},
 	"converter": {"name": "异能转换台", "cost": 5, "hp": 120, "craft": 5},
@@ -5506,12 +5507,12 @@ func power_gen_rate() -> float:
 	if wind > 0:
 		var wind_rate := WIND_POWER_RATE * (2.0 if is_raining() else 1.0)
 		rate += (wind + 0.3 * operated_defense_count("windmill")) * wind_rate
-	# 异能转换台：缓冲有电且在据点 15m 内时作为发电源放出
+	# 异能发电机：缓冲有异能电时作为发电源放出（power_output_rate）
 	for device in get_tree().get_nodes_in_group("base_defense"):
 		if device.is_queued_for_deletion():
 			continue
-		if device.has_method("converter_rate"):
-			rate += float(device.call("converter_rate"))
+		if device.has_method("power_output_rate"):
+			rate += float(device.call("power_output_rate"))
 	return rate
 
 
@@ -5620,6 +5621,7 @@ const ENERGY_TAGS := {
 	"solar": ["电"],
 	"windmill": ["电"],
 	"containment": ["异"],
+	"anomaly_gen": ["异"],
 	"generator": ["燃料", "电"],
 	"vehicle": ["燃料"],
 }

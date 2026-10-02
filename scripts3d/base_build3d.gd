@@ -38,7 +38,7 @@ const BUILD_CATEGORIES := [
 ]
 const BUILD_CATEGORY_ITEMS := {
 	"defense": ["barricade", "turret", "mortar", "cannon", "spikes", "wall"],
-	"base": ["lamp", "generator", "solar", "windmill", "signal_tower"],
+	"base": ["lamp", "generator", "solar", "windmill", "anomaly_gen", "signal_tower"],
 	"craft": ["fabricator", "med_station", "food_synth", "workbench", "converter"],
 	"storage": ["containment", "upgrade_storage"],
 }
@@ -60,6 +60,7 @@ const DEFENSE_FOOTPRINT_RADIUS := {
 	"generator": 0.6,
 	"solar": 0.8,
 	"windmill": 0.4,
+	"anomaly_gen": 0.7,
 	"containment": 0.7,
 	"workbench": 0.7,
 	"converter": 0.7,
@@ -615,6 +616,8 @@ func _make_ghost(type: String) -> void:
 			box.size = Vector3(1.4, 1.0, 1.2)
 		"windmill":
 			box.size = Vector3(0.6, 3.4, 0.6)
+		"anomaly_gen":
+			box.size = Vector3(1.2, 1.8, 1.2)
 		"containment":
 			box.size = Vector3(1.2, 1.6, 1.2)
 		"workbench":
@@ -791,6 +794,8 @@ func _spawn_defense(type: String, pos: Vector3, yaw: float) -> void:
 			node = SolarPanel.new()
 		"windmill":
 			node = Windmill.new()
+		"anomaly_gen":
+			node = AnomalyGenerator.new()
 		"containment":
 			node = ContainmentUnit.new()
 		"workbench":
@@ -888,6 +893,8 @@ class BuildSlot extends Control:
 				return Color(0.35, 0.5, 0.85)
 			"windmill":
 				return Color(0.7, 0.75, 0.7)
+			"anomaly_gen":
+				return Color(0.6, 0.4, 0.95)
 			"containment", "converter":
 				return Color(0.75, 0.6, 0.9)
 			"fabricator":
@@ -957,6 +964,10 @@ class BuildSlot extends Control:
 					draw_line(
 						o + Vector2(12, 6), o + Vector2(12 + cos(a) * 6, 6 + sin(a) * 6), c, 1.5
 					)
+			"anomaly_gen":
+				# 紫色圆核 + 两侧能量弧
+				draw_circle(o + Vector2(12, 9), 4.5, c)
+				draw_arc(o + Vector2(12, 9), 7.0, 0.0, TAU, 16, Color(0.6, 0.4, 0.95) * dim, 1.2)
 			"containment":
 				draw_rect(Rect2(o + Vector2(6, 3), Vector2(12, 12)), c, false, 1.5)
 				draw_circle(o + Vector2(12, 9), 3.0, Color(0.8, 0.5, 0.95) * dim)
@@ -1897,22 +1908,9 @@ class Workbench extends Fabricator:
 
 	func _progress_color() -> Color:
 		return Color(0.3, 0.95, 0.4)
-# 异能转换台（批次 156）：紫色四方桌，职责二合一——
-# ①供电：把玩家携带的异能即时转为电力（1 异能 = 30 电力），为 15m 内据点设备供电；
-# ②制作：异能宝石（随身携带强化能力，伤害 +10%/生命上限 +25 每颗，最多 3 颗）。
+# 异能转换台（批次 250 改纯制作）：紫色四方桌——专做异能宝石
+# （伤害 +10%/生命上限 +25 每颗，最多 3 颗）；发电职责移交异能发电机。
 class Converter extends Fabricator:
-	const SUPPLY_RANGE := 15.0
-	const POWER_CAP := 9999.0
-	const ANOMALY_CAP := 9999
-	const RATE := 30.0
-	const POWER_TICK := 0.5
-
-	var stored_power := 0.0
-	var anomaly_buffer := 0
-	var _power_tick := 0.0
-	var _bolt: Node3D = null
-
-
 	func _recipes() -> Dictionary:
 		return {
 			"anomaly_gem": {
@@ -1935,83 +1933,6 @@ class Converter extends Fabricator:
 		add_to_group("power_converters")
 
 
-	func _decorate() -> void:
-		# 闪电标识：三段折线，悬在进度条上方（供电/制造时点亮）
-		_bolt = Node3D.new()
-		_bolt.position = Vector3(0, 2.92, 0)
-		add_child(_bolt)
-		var bolt_material := StandardMaterial3D.new()
-		bolt_material.albedo_color = Color(1.0, 0.9, 0.3)
-		bolt_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		bolt_material.emission_enabled = true
-		bolt_material.emission = Color(1.0, 0.85, 0.2)
-		bolt_material.emission_energy_multiplier = 2.0
-		_bolt_seg(bolt_material, Vector3(0.05, 0.12, 0), 0.55)
-		_bolt_seg(bolt_material, Vector3(-0.01, -0.01, 0), -0.65)
-		_bolt_seg(bolt_material, Vector3(-0.06, -0.13, 0), 0.55)
-		_bolt.visible = false
-
-
-	func _bolt_seg(material: StandardMaterial3D, pos: Vector3, rot_z: float) -> void:
-		var seg := MeshInstance3D.new()
-		var box := BoxMesh.new()
-		box.size = Vector3(0.07, 0.2, 0.04)
-		seg.mesh = box
-		seg.material_override = material
-		seg.position = pos
-		seg.rotation.z = rot_z
-		_bolt.add_child(seg)
-
-
-	func _process(delta: float) -> void:
-		super._process(delta)
-		if GameState.is_run_over():
-			return
-		_power_tick -= delta
-		if _power_tick > 0.0:
-			return
-		_power_tick = POWER_TICK
-		# 1. 玩家携带的异能进入缓冲（上限 9999）
-		var take := mini(GameState.anomaly, ANOMALY_CAP - anomaly_buffer)
-		if take > 0:
-			anomaly_buffer += take
-			GameState.anomaly -= take
-		# 2. 即时转换：1 异能 = 30 电力
-		var convert := mini(anomaly_buffer, int((POWER_CAP - stored_power) / RATE))
-		if convert > 0:
-			anomaly_buffer -= convert
-			stored_power = minf(POWER_CAP, stored_power + convert * RATE)
-		# 3. 15 米内向据点供电：无储备池模型（批次 249）下作为发电源放出 5.0/s（=50kW）
-		var supplying := converter_rate() > 0.0
-		if supplying:
-			stored_power = maxf(0.0, stored_power - CONVERTER_OUTPUT * delta)
-		# 制造任务进行中优先显示制造进度；空闲时显示供电状态
-		if _job == "":
-			_show_power(supplying or anomaly_buffer > 0)
-		elif _bolt != null:
-			_bolt.visible = true
-
-
-	# 作为发电源的当前输出：缓冲有电且据点在 15m 内 = CONVERTER_OUTPUT/s，否则 0
-	const CONVERTER_OUTPUT := 5.0
-
-	func converter_rate() -> float:
-		if stored_power <= 0.0 or not GameState.has_home_base():
-			return 0.0
-		var base_pos: Vector3 = GameState.home_base.get("position", Vector3.ZERO)
-		return CONVERTER_OUTPUT if global_position.distance_to(base_pos) <= SUPPLY_RANGE else 0.0
-
-
-	func _show_power(active: bool) -> void:
-		_progress_bg.visible = active
-		_progress_fill.visible = active
-		if _bolt != null:
-			_bolt.visible = active
-		if active:
-			# 储存越满进度越满
-			var r := clampf(stored_power / POWER_CAP, 0.02, 1.0)
-			_progress_fill.scale.x = r
-			_progress_fill.position.x = -0.5 * (1.0 - r)
 # 装备制作台：枪械蓝工作台。制造所有枪械与防具（防弹插板），
 # 每秒耗 0.5 电力（批次 236 降 10 倍，原 5.0），需有人在场操作；材料统一为城市里搜刮来的「制造材料」（从背包直接扣除）
 class Fabricator extends DefenseBase:
@@ -2592,6 +2513,105 @@ class Windmill extends DefenseBase:
 	func _process(delta: float) -> void:
 		if _rotor != null:
 			_rotor.rotation.z += delta * ROTOR_SPEED
+
+
+# 异能发电机（批次 250）：吞玩家携带的异能量发电——
+# 1 异能 = 30 电入缓冲，缓冲有电时输出 5.0/s（=50kW，与燃油发电机同档）。
+class AnomalyGenerator extends DefenseBase:
+	const POWER_CAP := 9999.0
+	const ANOMALY_CAP := 9999
+	const RATE := 30.0
+	const OUTPUT := 5.0
+	const POWER_TICK := 0.5
+
+	var stored_power := 0.0
+	var anomaly_buffer := 0
+	var _power_tick := 0.0
+	var _core: MeshInstance3D = null
+
+
+	func _ready() -> void:
+		add_to_group("base_defense")
+		GameState.request_spatial_rebuild()
+		hp = GameState.base_defense_hp("anomaly_gen")
+		debris_size = Vector3(1.2, 1.4, 1.2)
+		debris_color = Color(0.25, 0.15, 0.35)
+		debris_noise = 18.0
+		var shape := CollisionShape3D.new()
+		var box_shape := BoxShape3D.new()
+		box_shape.size = Vector3(1.2, 1.8, 1.2)
+		shape.shape = box_shape
+		shape.position.y = 0.9
+		add_child(shape)
+		# 底座
+		var base_mesh := MeshInstance3D.new()
+		var base_box := BoxMesh.new()
+		base_box.size = Vector3(1.2, 0.3, 1.2)
+		base_mesh.mesh = base_box
+		var base_material := StandardMaterial3D.new()
+		base_material.albedo_color = Color(0.24, 0.2, 0.3)
+		base_mesh.material_override = base_material
+		base_mesh.position.y = 0.15
+		add_child(base_mesh)
+		# 发光核心柱：有缓冲电时亮紫，空了转暗
+		_core = MeshInstance3D.new()
+		var core_mesh := CylinderMesh.new()
+		core_mesh.top_radius = 0.22
+		core_mesh.bottom_radius = 0.3
+		core_mesh.height = 1.3
+		_core.mesh = core_mesh
+		var core_material := StandardMaterial3D.new()
+		core_material.albedo_color = Color(0.55, 0.3, 0.85)
+		core_material.emission_enabled = true
+		core_material.emission = Color(0.6, 0.3, 0.95)
+		core_material.emission_energy_multiplier = 1.6
+		_core.material_override = core_material
+		_core.position.y = 1.0
+		add_child(_core)
+		# 顶部护环
+		var ring := MeshInstance3D.new()
+		var ring_mesh := CylinderMesh.new()
+		ring_mesh.top_radius = 0.45
+		ring_mesh.bottom_radius = 0.45
+		ring_mesh.height = 0.12
+		ring.mesh = ring_mesh
+		var ring_material := StandardMaterial3D.new()
+		ring_material.albedo_color = Color(0.3, 0.28, 0.38)
+		ring.material_override = ring_material
+		ring.position.y = 1.72
+		add_child(ring)
+
+
+	func _process(delta: float) -> void:
+		if GameState.is_run_over():
+			return
+		# 连续放电：作为发电源放出 OUTPUT/s，缓冲同步消耗
+		if stored_power > 0.0:
+			stored_power = maxf(0.0, stored_power - OUTPUT * delta)
+		_power_tick -= delta
+		if _power_tick > 0.0:
+			return
+		_power_tick = POWER_TICK
+		# 1. 玩家携带的异能进缓冲（上限 9999）
+		var take := mini(GameState.anomaly, ANOMALY_CAP - anomaly_buffer)
+		if take > 0:
+			anomaly_buffer += take
+			GameState.anomaly -= take
+		# 2. 即时转换：1 异能 = 30 电
+		var convert := mini(anomaly_buffer, int((POWER_CAP - stored_power) / RATE))
+		if convert > 0:
+			anomaly_buffer -= convert
+			stored_power = minf(POWER_CAP, stored_power + convert * RATE)
+		# 视觉反馈：缓冲电量驱动核心亮度
+		if _core != null:
+			var mat := _core.material_override as StandardMaterial3D
+			mat.emission_energy_multiplier = 1.6 if stored_power > 0.0 else 0.15
+
+
+	# 作为发电源的当前输出：缓冲有电 = 5.0/s（=50kW），空了为 0
+	func power_output_rate() -> float:
+		return OUTPUT if stored_power > 0.0 else 0.0
+
 
 # 异能储存仓：力场玻璃罐，存异能结晶
 class ContainmentUnit extends DefenseBase:

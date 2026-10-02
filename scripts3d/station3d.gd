@@ -79,7 +79,7 @@ func interact_options(player: Node3D) -> Array:
 			"disabled": destroyed,
 			"reason": "已被破坏" if destroyed else "",
 		},
-		{"id": "demolish", "label": "拆除（掉建材堆 ×%d）" % DEMOLISH_YIELD},
+		{"id": "demolish", "label": "拆除（建材 ×%d 入背包）" % DEMOLISH_YIELD},
 	]
 
 
@@ -123,23 +123,29 @@ func _update_repair_channel(delta: float) -> void:
 		complete_repair()
 
 
-# 拆除：任意状态可用，彻底摧毁并掉建材堆；目击按重罪 severity 2 举报
+# 拆除：任意状态可用，彻底摧毁；建材直接入拆除者（玩家）背包（批次 251）；目击按重罪 severity 2 举报
 func _demolish_station() -> void:
 	var witness := _any_witness()
 	if witness != null and not GameState.is_zombie():
 		GameState.report_crime(2, witness)
 	GameState.clear_signal(get_instance_id())
 	GameState.noise_at(global_position, 25.0)
-	var parent := get_parent()
-	if parent != null:
-		var pile: Node3D = MATERIAL_PILE_SCENE.instantiate()
-		parent.add_child(pile)
-		pile.global_position = global_position + Vector3(1.2, 0.05, 1.2)
-		pile.setup(DEMOLISH_YIELD)
+	# 建材直入背包，超携带上限才落地成堆
+	var before := int(GameState.resources.get("materials", 0))
+	GameState.add_resource("materials", DEMOLISH_YIELD)
+	var got_in := int(GameState.resources.get("materials", 0)) - before
+	var leftover := DEMOLISH_YIELD - got_in
+	if leftover > 0:
+		var parent := get_parent()
+		if parent != null:
+			var pile: Node3D = MATERIAL_PILE_SCENE.instantiate()
+			parent.add_child(pile)
+			pile.global_position = global_position + Vector3(1.2, 0.05, 1.2)
+			pile.setup(leftover)
 	GameState.post_message(
 		"%s 被彻底拆除" % data.get("name", "基站"), _world_to_map(global_position), "station", true
 	)
-	GameState.notify("信号塔已拆除，废墟上留下建材堆（%d 建材）" % DEMOLISH_YIELD)
+	GameState.notify("信号塔已拆除，建材 +%d 已入背包" % got_in)
 	queue_free()
 
 

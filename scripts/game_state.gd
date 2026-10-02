@@ -3558,7 +3558,7 @@ func claim_open_ground_base(pos: Vector3) -> bool:
 	var available := nearby_pile_materials(pos)
 	if available < OPEN_GROUND_BASE_COST:
 		notify(
-			"空地建据点需要建材 ×%d，还差 %d（拆除建筑掉堆，车运到脚边再按 X）"
+			"空地建据点需要建材 ×%d，还差 %d（Z 拆除建筑/设施，建材直接入背包）"
 			% [OPEN_GROUND_BASE_COST, OPEN_GROUND_BASE_COST - available]
 		)
 		return false

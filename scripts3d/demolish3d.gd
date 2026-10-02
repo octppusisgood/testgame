@@ -454,12 +454,13 @@ func _mine_structure(s: Dictionary) -> void:
 	var size_px: Vector2 = s["size"]
 	var got := GameState.mine_building_materials(pos_px)
 	if got > 0:
-		_drop_material_pile(_door_pos(pos_px, size_px), got)
+		# 批次 251：挖取建材直接入挖取人（玩家）背包，超携带上限才落地成堆
+		_give_dug_materials(_door_pos(pos_px, size_px), got)
 	var remaining := GameState.building_pool_remaining(pos_px)
 	if remaining <= 0:
 		_collapse_structure(s)
 	else:
-		GameState.notify("拆除建材 +%d（库存 %d）" % [got, remaining])
+		GameState.notify("拆除建材 +%d 已入背包（库存 %d）" % [got, remaining])
 
 
 # 手建建筑单次拆卸（测试与旧的直接调用入口）
@@ -607,8 +608,9 @@ func _demolish_prop(prop: Node3D) -> void:
 	proto._street_props.erase(prop)
 	var pile_pos := prop.global_position + Vector3(0.0, 0.05, 0.0)
 	prop.queue_free()
-	_drop_material_pile(pile_pos, gain)
-	GameState.notify("杂物已拆除，掉落建材堆（%d 建材）" % gain)
+	# 批次 251：杂物拆除建材同样直接入背包
+	_give_dug_materials(pile_pos, gain)
+	GameState.notify("杂物已拆除，建材 +%d 已入背包" % gain)
 
 
 # 拆除产物落在地上：在废墟位置生成建材堆实体
@@ -617,6 +619,17 @@ func _drop_material_pile(pos: Vector3, amount: int) -> void:
 	get_parent().add_child(pile)
 	pile.global_position = pos
 	pile.setup(amount)
+
+
+# 批次 251：挖取建材直接入挖取人（玩家）背包；超出携带上限（CAPS.materials）的部分落地成堆
+func _give_dug_materials(fallback_pos: Vector3, amount: int) -> void:
+	var before := int(GameState.resources.get("materials", 0))
+	GameState.add_resource("materials", amount)
+	var got_in := int(GameState.resources.get("materials", 0)) - before
+	var leftover := amount - got_in
+	if leftover > 0:
+		_drop_material_pile(fallback_pos, leftover)
+		GameState.notify("背包建材已满，%d 建材落地成堆" % leftover)
 
 
 # 废墟痕迹：3~6 个带碰撞的低矮碎块（高度 <0.5m，不挡路）

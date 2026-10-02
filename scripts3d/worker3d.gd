@@ -2057,6 +2057,15 @@ class FollowerBody extends CharacterBody3D:
 
 
 	func _mode_scavenge() -> void:
+		# 批次 244：拾荒途中主动迎击周围丧尸（12m 内：徒手逼近/有枪原地射）
+		var foe := _engage_foe()
+		if foe != null:
+			if equipped_weapon != "" and GameState.WEAPONS.has(equipped_weapon):
+				_stop()
+			else:
+				_move_to(foe.global_position)
+			_try_attack()
+			return
 		# 批次 243：背包满自动送回【营地仓库】；没有营地才送回玩家；交付后继续拾荒
 		if (_carry_full() or _deliver_requested) and not _carry.is_empty():
 			var target_pos := Vector3.ZERO
@@ -2187,6 +2196,15 @@ class FollowerBody extends CharacterBody3D:
 	# —— 巡逻：绕 task_point 半径 8m 随机选点，走到后歇 1~2 秒再选下一个 ——
 
 	func _mode_patrol() -> void:
+		# 批次 244：巡逻中主动迎击周围丧尸（12m 内：徒手逼近/有枪原地射）
+		var foe := _engage_foe()
+		if foe != null:
+			if equipped_weapon != "" and GameState.WEAPONS.has(equipped_weapon):
+				_stop()
+			else:
+				_move_to(foe.global_position)
+			_try_attack()
+			return
 		if _patrol_wait > 0.0:
 			_patrol_wait -= DECIDE_INTERVAL
 			_stop()
@@ -2215,6 +2233,12 @@ class FollowerBody extends CharacterBody3D:
 
 
 	# —— 攻击：有枪按武器数据开火，否则用近战工具/拳头打近身丧尸 ——
+
+	# 迎击侦测：12m 内最近的丧尸（拾荒/巡逻岗位的自动战斗，批次 244）
+	const AGGRO_RANGE := 12.0
+
+	func _engage_foe() -> Node3D:
+		return GameState.nearest_entity_in_group(global_position, "zombies", AGGRO_RANGE) as Node3D
 
 	func _try_attack() -> void:
 		if Time.get_ticks_msec() < _next_attack:

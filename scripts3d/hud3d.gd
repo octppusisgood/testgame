@@ -1294,6 +1294,12 @@ func _open_interact_menu(target: Node, options: Array) -> void:
 	_menu_index = 0
 	_menu_render_key = ""
 	GameState.interact_menu_open = true
+	GameState._close_sibling_menus("interact")
+	GameState.register_top_menu(
+		"interact",
+		func() -> bool: return GameState.interact_menu_open,
+		_close_interact_menu
+	)
 	_menu_panel.visible = true
 	_refresh_interact_menu()
 	# 交互期间让目标停住（市民站定，不会菜单没选完就走远）

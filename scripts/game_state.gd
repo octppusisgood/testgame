@@ -1824,6 +1824,7 @@ func latest_news() -> String:
 
 
 func toggle_map() -> void:
+	_close_sibling_menus("map")
 	map_open = not map_open
 	map_toggled.emit(map_open)
 
@@ -2310,6 +2311,7 @@ func uninstall_attachment(id: String, kind: String) -> void:
 
 
 func toggle_backpack() -> void:
+	_close_sibling_menus("backpack")
 	backpack_open = not backpack_open
 	backpack_toggled.emit(backpack_open)
 
@@ -2336,6 +2338,7 @@ func attack_blocked_by_ui() -> bool:
 
 
 func toggle_pause_menu() -> void:
+	_close_sibling_menus("pause")
 	pause_menu_open = not pause_menu_open
 	if not Network.is_multiplayer():
 		get_tree().paused = pause_menu_open
@@ -2358,6 +2361,35 @@ func close_all_panels() -> void:
 		toggle_map()
 	if custom_panel_open:
 		custom_panel_close_requested.emit()
+
+
+# —— 批次 267：同层菜单互斥 ——
+# 打开任一顶层菜单（背包/能力/地图/建造/E 交互/暂停）时自动关闭其他顶层菜单；
+# 二级/子面板（建造内部分类页、随从装备面板等）不注册、不受影响。
+# 各面板注册 {is_open, close} 两个回调，打开时广播，其余已开的自动关闭。
+var top_menu_close_handlers := {}
+
+
+func register_top_menu(menu_id: String, is_open: Callable, close: Callable) -> void:
+	top_menu_close_handlers[menu_id] = {"is_open": is_open, "close": close}
+
+
+func notify_top_menu_opened(menu_id: String) -> void:
+	for other_id in top_menu_close_handlers.keys():
+		if String(other_id) == menu_id:
+			continue
+		var pair: Dictionary = top_menu_close_handlers[other_id]
+		var is_open: Callable = pair.get("is_open")
+		if is_open.is_valid() and is_open.call():
+			var close: Callable = pair.get("close")
+			if close.is_valid():
+				close.call()
+
+
+# 场景侧面板（建造/E 交互/J/Tab）打开时调用：先广播关掉兄弟菜单，
+# 再把这些面板自身的关闭回调注册进来（由 hud3d/worker3d/base_build3d 在 _ready 时注册）
+func _close_sibling_menus(menu_id: String) -> void:
+	notify_top_menu_opened(menu_id)
 
 
 func roll_loot(table: String) -> String:
@@ -2610,6 +2642,7 @@ func melee_base_damage() -> int:
 
 
 func toggle_skills() -> void:
+	_close_sibling_menus("skills")
 	skills_open = not skills_open
 	skills_toggled.emit(skills_open)
 

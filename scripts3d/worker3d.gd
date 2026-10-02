@@ -41,6 +41,10 @@ func _ready() -> void:
 	_build_gear_panel()
 	_build_squad_panel()
 	_build_vehicle_panel()
+	# 批次 267：J 随从/Tab 载具加入同层互斥注册（gear 是 J 打开的二级面板，
+	# 不参与互斥——它自带"从 J 打开先收起 J"逻辑，close_gear_panel 会还原）
+	GameState.register_top_menu("squad", squad_panel_open, close_squad_panel)
+	GameState.register_top_menu("vehicle", vehicle_panel_open, close_vehicle_panel)
 	_sync_workers()
 
 
@@ -642,6 +646,7 @@ func toggle_vehicle_panel() -> void:
 func open_vehicle_panel() -> void:
 	if squad_panel_open():
 		close_squad_panel()
+	GameState._close_sibling_menus("vehicle")
 	_refresh_vehicle_panel()
 	_vehicle_refresh = 0.5
 	_vehicle_panel.visible = true
@@ -873,6 +878,7 @@ func _on_vehicle_recall() -> void:
 func open_squad_panel() -> void:
 	if vehicle_panel_open():
 		close_vehicle_panel()
+	GameState._close_sibling_menus("squad")
 	_refresh_squad_panel()
 	_squad_refresh = 0.5
 	_squad_panel.visible = true

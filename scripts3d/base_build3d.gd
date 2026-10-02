@@ -129,6 +129,8 @@ func _open() -> void:
 	_active = true
 	_placing = ""
 	GameState.base_build_mode = true
+	GameState._close_sibling_menus("build")
+	GameState.register_top_menu("build", is_active, force_close)
 	_last_in_range = GameState.player_in_base_radius()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_build_ui()

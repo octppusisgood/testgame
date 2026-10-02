@@ -39,6 +39,9 @@ var _hp_labels := {}
 # 批次 264：血条显示时刻（pos_px → msec），受击显示 10 秒后自动隐藏
 var _hp_label_shown_at := {}
 var _hp_fade_timer := 0.0
+# 批次 265：搜刮读条（与拆楼同机制：触发后自动进行，进度提示跟随玩家）
+var _scavenge_door: Node = null
+const SCAVENGE_SECONDS := 3.0
 # 已拆塔楼记录在 GameState.demolished_towers（像素中心坐标，与 demolished_buildings 同构），
 # 这样小地图也能读到；节点本地不再各存一份，避免两份状态不同步。
 
@@ -136,8 +139,44 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
+# 批次 265：E 菜单「搜刮建筑」入口——进入读条（同拆楼：自动进行），完成时由 door._scavenge 发物资
+func start_scavenge(door: Node) -> void:
+	if _running or door == null or not is_instance_valid(door):
+		return
+	var key = door.get("scavenge_key")
+	if key != null and GameState.scavenge_depleted(key):
+		GameState.notify("这栋建筑的物资已经取尽了")
+		return
+	if key != null and GameState.scavenge_cooldown_left(key) > 0.0:
+		GameState.notify("刚搜刮过，%d 秒后再来" % int(ceilf(GameState.scavenge_cooldown_left(key))))
+		return
+	_scavenge_door = door
+	_hold = 0.0
+	_running = true
+
+
 # 触发后本轮自动进行（不再要求准星保持对准），完成或目标失效后复位
 func _tick_run(delta: float) -> void:
+	# 批次 265：搜刮读条——E 菜单选「搜刮建筑」后自动进行，3 秒完成发物资
+	if _scavenge_door != null:
+		if (
+			not is_instance_valid(_scavenge_door)
+			or _scavenge_door.is_queued_for_deletion()
+		):
+			_scavenge_door = null
+			_reset_hold()
+			_running = false
+			return
+		_hold += delta
+		_prompt = "搜刮中… %d%%" % mini(99, int(_hold / SCAVENGE_SECONDS * 100.0))
+		if _hold >= SCAVENGE_SECONDS:
+			var door := _scavenge_door
+			_scavenge_door = null
+			_reset_hold()
+			_running = false
+			if door.has_method("_scavenge"):
+				door.call("_scavenge")
+		return
 	if _target_kind != "":
 		var s := _descriptor(_target_kind, _target_ref)
 		if s.is_empty() or _is_demolished(s):

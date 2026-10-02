@@ -3453,7 +3453,12 @@ class BaseDoor extends Node3D:
 				var summary := GameState.store_all_loot()
 				GameState.notify("身上没有可存入的物资" if summary.is_empty() else summary)
 			"scavenge":
-				_scavenge()
+				# 批次 265：搜刮进入读条（同拆楼自动进行），完成由 demolish 节点回调发物资
+				var dm_scav = get_parent().get_node_or_null("Demolish") if get_parent() != null else null
+				if dm_scav != null and dm_scav.has_method("start_scavenge"):
+					dm_scav.call("start_scavenge", self)
+				else:
+					_scavenge()
 
 
 	# 批次 100：搜刮建筑——每栋楼一池总物资（默认 20 件），每次从池里提取 2~3 件 × loot_mult，

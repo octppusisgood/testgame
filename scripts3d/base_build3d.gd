@@ -23,6 +23,9 @@ var _ghost_material: StandardMaterial3D = null
 var _ghost_height := 1.0
 var _ghost_ok := false
 var _ghost_yaw := 0.0
+# 批次 248：建造摆放时的可建范围虚线圈（营地边界可视化）
+var _range_ring: MeshInstance3D = null
+var _range_ring_r := -1.0
 var _defense_root: Node3D = null
 var _defense_nodes: Array = []
 # 底部建造栏：9 格可见，滚轮循环滚动，左侧分类页签
@@ -192,6 +195,7 @@ func _process(_delta: float) -> void:
 		return
 	if _placing != "":
 		_update_ghost()
+	_update_range_ring()
 	# 玩家进出据点半径时刷新置灰状态（任意位置都能打开界面）
 	var in_range := GameState.player_in_base_radius()
 	if in_range != _last_in_range:
@@ -696,6 +700,42 @@ func _position_blocked(pos: Vector3) -> bool:
 
 func _footprint_radius(type: String) -> float:
 	return float(DEFENSE_FOOTPRINT_RADIUS.get(type, 0.55))
+
+
+# 批次 248：建造摆放时在地面画营地可建范围虚线圈（绿色，隔段虚线）
+func _update_range_ring() -> void:
+	if _placing == "" or not GameState.has_home_base():
+		if _range_ring != null:
+			_range_ring.visible = false
+		return
+	if _range_ring == null or not is_instance_valid(_range_ring):
+		var mi := MeshInstance3D.new()
+		mi.mesh = ImmediateMesh.new()
+		var mat := StandardMaterial3D.new()
+		mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		mat.albedo_color = Color(0.4, 1.0, 0.5, 0.8)
+		mi.material_override = mat
+		_range_ring = mi
+		add_child(mi)
+	_range_ring.visible = true
+	var base_pos: Vector3 = GameState.home_base.get("position", Vector3.ZERO)
+	var r := GameState.home_base_radius()
+	_range_ring.global_position = Vector3(base_pos.x, 0.07, base_pos.z)
+	if absf(_range_ring_r - r) > 0.01:
+		_range_ring_r = r
+		var im := _range_ring.mesh as ImmediateMesh
+		im.clear_surfaces()
+		im.surface_begin(Mesh.PRIMITIVE_LINES)
+		var segs := 48
+		for i in segs:
+			if i % 2 == 1:
+				continue  # 隔一段画一段 = 虚线
+			var a0 := TAU * float(i) / float(segs)
+			var a1 := TAU * float(i + 1) / float(segs)
+			im.surface_add_vertex(Vector3(cos(a0) * r, 0.0, sin(a0) * r))
+			im.surface_add_vertex(Vector3(cos(a1) * r, 0.0, sin(a1) * r))
+		im.surface_end()
 
 
 func _confirm_place() -> void:

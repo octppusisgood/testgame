@@ -3606,12 +3606,22 @@ func claim_home_base(building_id: String, pos: Vector3) -> bool:
 		if old_pos.distance_to(pos) < 2.0:
 			kept_defenses = home_base.get("defenses", [])
 			kept_levels = home_base.get("defense_levels", {})
+	# 批次 248：营地边界按建筑底座划定——建筑越大可建圈越大
+	# （底座对角线半径 + 4m 外扩环；空地建点用基础 8m；上限沿用 20m）
+	var base_radius := BASE_BASE_RADIUS
+	if building_id != OPEN_GROUND_BASE_ID:
+		var footprint := building_footprint_at(pos)
+		if footprint.has_area():
+			base_radius = minf(
+				BASE_MAX_RADIUS,
+				maxf(BASE_BASE_RADIUS, footprint.size.length() * 0.5 + 4.0)
+			)
 	home_base = {
 		"building_id": building_id,
 		"position": pos,
 		"storage": storage,
 		"level": 1,
-		"radius": BASE_BASE_RADIUS,
+		"radius": base_radius,
 		"power": 0.0,
 		"defenses": kept_defenses,
 		"storage_upgrade": 0,

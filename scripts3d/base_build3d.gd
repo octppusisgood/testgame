@@ -1988,10 +1988,10 @@ class Converter extends Fabricator:
 			_progress_fill.scale.x = r
 			_progress_fill.position.x = -0.5 * (1.0 - r)
 # 装备制作台：枪械蓝工作台。制造所有枪械与防具（防弹插板），
-# 每秒耗 5 电力，需有人在场操作；材料统一为城市里搜刮来的「制造材料」（从背包直接扣除）
+# 每秒耗 0.5 电力（批次 236 降 10 倍，原 5.0），需有人在场操作；材料统一为城市里搜刮来的「制造材料」（从背包直接扣除）
 class Fabricator extends DefenseBase:
 	const OPERATE_RANGE := 2.5
-	const POWER_DRAIN := 5.0
+	const POWER_DRAIN := 0.5
 	const RECIPES := {
 		"pistol": {"name": "手枪", "kind": "weapon", "requires": "pistol", "craft": 40, "time": 30.0},
 		"smg": {"name": "冲锋枪", "kind": "weapon", "requires": "smg", "craft": 80, "time": 60.0},
@@ -2353,7 +2353,7 @@ class PotionBrewer extends Fabricator:
 
 
 	func _power_drain_rate() -> float:
-		return 10.0
+		return 1.0  # 批次 236 降 10 倍（原 10.0）：仍是普通制作台的 2 倍重载
 
 
 	func _progress_color() -> Color:

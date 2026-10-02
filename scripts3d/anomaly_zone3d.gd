@@ -52,7 +52,9 @@ func _ready() -> void:
 
 
 func _spawn_interval() -> float:
-	return SPAWN_INTERVAL / float(energy)
+	# 批次 261：夜间刷怪速度翻倍（间隔减半）
+	var night_mult := 0.5 if GameState.is_night() else 1.0
+	return SPAWN_INTERVAL * night_mult / float(energy)
 
 
 func _alive_cap() -> int:

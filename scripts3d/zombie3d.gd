@@ -151,6 +151,9 @@ const GUARD_LEASH := 22.0
 # 挠营地本体的攻击计时
 var _base_attack_timer := 0.0
 var _assault_roam_pos := Vector3.ZERO
+# 批次 261：城市漫游——白天普通丧尸（含能量点刷出的非留守怪）定期脱队去城市远处游走
+var _roam_target := Vector3.ZERO
+var _roam_timer := 0.0
 var _sight_timer := 0.0
 var _lod_level := 0
 var _lod_phase := 0
@@ -422,6 +425,17 @@ func _physics_process(delta: float) -> void:
 		moving = _hound_move(delta)
 	elif is_spider:
 		moving = _spider_move(delta)
+	elif _roam_target != Vector3.ZERO:
+		# 批次 261：城市漫游中——白天没目标时去城市远处游走（遇敌/夜间立即放弃）
+		if GameState.is_night() or _target != null:
+			_roam_target = Vector3.ZERO
+		else:
+			var to_roam := _roam_target - global_position
+			to_roam.y = 0.0
+			if to_roam.length() < 2.0:
+				_roam_target = Vector3.ZERO
+			else:
+				moving = _move_toward(_roam_target, WANDER_SPEED * 1.4 * _speed_mult * _slow_mult)
 	elif _target != null:
 		moving = _chase_target()
 	elif _has_investigation:
@@ -649,6 +663,25 @@ func _move_toward(pos: Vector3, speed: float) -> bool:
 
 
 func _wander(delta: float) -> void:
+	# 批次 261：白天（无目标、非留守、非袭营）按概率发起城市漫游——
+	# 目标点 = 自身位置 ± 60~140m 的城市内随机点，让怪物散布全城而非聚在能量点
+	_roam_timer -= delta
+	if (
+		_roam_target == Vector3.ZERO
+		and _roam_timer <= 0.0
+		and not GameState.is_night()
+		and not _guarding()
+		and assault_target == Vector3.ZERO
+	):
+		_roam_timer = randf_range(20.0, 40.0)
+		if randf() < 0.5:
+			var size := GameState.CITY_SIZE * 0.05
+			var margin := 8.0
+			_roam_target = Vector3(
+				clampf(global_position.x + randf_range(-140.0, 140.0), margin, size.x - margin),
+				0.0,
+				clampf(global_position.z + randf_range(-140.0, 140.0), margin, size.y - margin)
+			)
 	_wander_timer -= delta
 	if _wander_timer <= 0.0:
 		_wander_timer = randf_range(1.5, 4.0)

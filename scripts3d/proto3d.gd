@@ -1082,7 +1082,9 @@ func _process(delta: float) -> void:
 	_zombie_timer -= delta
 	if _zombie_timer > 0.0:
 		return
-	_zombie_timer = ZOMBIE_SPAWN_STEP / maxf(float(stats["spawn_mult"]), 0.1)
+	# 批次 261：夜间刷怪速度翻倍（间隔减半）
+	var night_mult := 0.5 if GameState.is_night() else 1.0
+	_zombie_timer = ZOMBIE_SPAWN_STEP * night_mult / maxf(float(stats["spawn_mult"]), 0.1)
 	_zombie_count += 1
 	_spawn_zombie()
 
@@ -2982,25 +2984,25 @@ func _tick_rogue(delta: float) -> void:
 			GameState.notify("异常能量点已激活——第 1 关开启！")
 			_start_rogue_stage(1)
 	elif _rogue_phase == "active":
-		# 当前关进行中：丧尸随时间变强（反龟缩）；游荡到营地附近的丧尸转为袭营
+		# 当前关进行中：丧尸随时间变强（反龟缩）；
+		# 白天：游荡到营地附近的丧尸转为袭营；夜间：全部无目标丧尸转攻营地（夜袭）
 		GameState.rogue_active_elapsed += delta
 		_rogue_retarget_timer -= delta
 		if _rogue_retarget_timer <= 0.0:
 			_rogue_retarget_timer = 2.0
 			if GameState.has_home_base():
 				var base_pos: Vector3 = GameState.home_base.get("position", Vector3.ZERO)
+				var night_assault := GameState.is_night()
 				for zombie in get_tree().get_nodes_in_group("zombies"):
 					if zombie.is_queued_for_deletion():
 						continue
 					# 守关 Boss 和 Boss 场留守怪不改目标（留守场边）
 					if zombie.has_method("_guarding") and zombie._guarding():
 						continue
-					# 只有无目标且游荡进营地 20m 的丧尸才转袭营（其余在城市游荡/袭扰市民）
 					if zombie.get("assault_target") == Vector3.ZERO:
-						if (
-							zombie.global_position.distance_to(base_pos)
-							<= ROGUE_BASE_ASSAULT_RANGE
-						):
+						var dist_base: float = zombie.global_position.distance_to(base_pos)
+						# 夜间：全城丧尸无论多远都转攻营地；白天：游荡进 20m 才转
+						if night_assault or dist_base <= ROGUE_BASE_ASSAULT_RANGE:
 							zombie.assault_target = base_pos
 		# 普通能量场：同时最多 3 个；检测到有场被拆 → 补生冷却 60 秒
 		var field_alive := _rogue_field_count()

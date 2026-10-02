@@ -415,7 +415,27 @@ func _physics_process(delta: float) -> void:
 		or not is_instance_valid(_target)
 	):
 		_target_timer = (0.15 if _target != null else randf_range(0.4, 0.6)) * _scan_mult()
-		_target = _find_target()
+		# 批次 262：锁定追到底——已有目标时只在「目标死亡/无效」时才重扫；
+		# 跑出侦测圈不再丢失目标（脱离战斗），直到一方死亡才算结束
+		if _target != null and is_instance_valid(_target):
+			# 贴脸抢仇恨：侦测圈一半内有别的目标（如玩家贴到丧尸背后）→ 直接切换，
+			# 避免死咬旧目标显得"瞎"；扫描仍走节流，无额外开销
+			var current: Node3D = _target
+			var close_dist: float = _detect_range * 0.5
+			var closer := GameState.nearest_entity_in_group(global_position, "npcs", close_dist) as Node3D
+			var pl := get_tree().get_first_node_in_group("player") as Node3D
+			if (
+				pl != null
+				and not GameState.is_bad_zombie()
+				and GameState.player_in_building.is_empty()
+				and global_position.distance_to(pl.global_position) < close_dist
+				and pl != current
+			):
+				_target = pl
+			elif closer != null and closer != current:
+				_target = closer
+		else:
+			_target = _find_target()
 	if _target == null and _has_investigation:
 		_investigate_timer -= delta
 		if _investigate_timer <= 0.0:

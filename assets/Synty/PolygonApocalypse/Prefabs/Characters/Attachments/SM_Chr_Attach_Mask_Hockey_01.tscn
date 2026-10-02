@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd6r5fjwpqeay"]
-
-[ext_resource type="ArrayMesh" uid="uid://clioeeqh8tv18" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Mask_Hockey_01.res" id="1_w15vh"]
-[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_7rg0r"]
-
-[node name="SM_Chr_Attach_Mask_Hockey_01" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_w15vh")
-surface_material_override/0 = ExtResource("2_7rg0r")

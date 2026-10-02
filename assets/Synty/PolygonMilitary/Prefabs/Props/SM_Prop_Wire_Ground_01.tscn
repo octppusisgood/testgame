@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://b0xkvrnm1pttn"]
-
-[ext_resource type="ArrayMesh" uid="uid://bqullh7mxppjd" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Wire_Ground_01.res" id="1_iete2"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_vgx6a"]
-
-[node name="SM_Prop_Wire_Ground_01" type="MeshInstance3D" unique_id=97422678]
-gi_mode = 2
-mesh = ExtResource("1_iete2")
-surface_material_override/0 = ExtResource("2_vgx6a")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://chy726qsri6f6"]
-
-[ext_resource type="ArrayMesh" uid="uid://c0vwh4tyxuuih" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Env_Fern_01.res" id="1_yt0w5"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_8igye"]
-
-[node name="SM_Env_Fern_01" type="MeshInstance3D" unique_id=1400138996]
-gi_mode = 2
-mesh = ExtResource("1_yt0w5")
-surface_material_override/0 = ExtResource("2_8igye")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bq8g4rihs0tdg"]
-
-[ext_resource type="ArrayMesh" uid="uid://dbdnmtars2ste" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Rail_Canted_01.res" id="1_x57n0"]
-[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_25d8g"]
-
-[node name="SM_Wep_Mod_Rail_Canted_01" type="MeshInstance3D" unique_id=1853114083]
-gi_mode = 2
-mesh = ExtResource("1_x57n0")
-surface_material_override/0 = ExtResource("2_25d8g")

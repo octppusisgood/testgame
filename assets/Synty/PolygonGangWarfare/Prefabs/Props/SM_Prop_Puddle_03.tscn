@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bgmnji2s4iurq"]
-
-[ext_resource type="ArrayMesh" uid="uid://b4feyx4mhlfj1" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Puddle_03.res" id="1_palbl"]
-[ext_resource type="Material" uid="uid://c68mn6u7thq1c" path="res://Assets/Synty/PolygonGangWarfare/Materials/Misc/PolygonGangWarfare_01_Puddle_mat.tres" id="2_3mqnq"]
-
-[node name="SM_Prop_Puddle_03" type="MeshInstance3D" unique_id=1519978589]
-gi_mode = 2
-mesh = ExtResource("1_palbl")
-surface_material_override/0 = ExtResource("2_3mqnq")

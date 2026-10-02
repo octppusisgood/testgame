@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://c2el8i5qneybo"]
-
-[ext_resource type="ArrayMesh" uid="uid://dfddyo2abe3by" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_ForeGrip_02.res" id="1_2gtga"]
-[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_vcl0l"]
-
-[node name="SM_Wep_Mod_ForeGrip_02" type="MeshInstance3D" unique_id=136171254]
-gi_mode = 2
-mesh = ExtResource("1_2gtga")
-surface_material_override/0 = ExtResource("2_vcl0l")

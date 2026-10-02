@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bd6jkyq633416"]
-
-[ext_resource type="ArrayMesh" uid="uid://bwbrelgy3ey51" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Veh_Attach_Rope_01.res" id="1_3epfx"]
-[ext_resource type="Material" uid="uid://yubemm7328s6" path="res://Assets/Synty/PolygonMilitary/Materials/Vehicles/Land_Vehicles_03_mat.tres" id="2_rfqcb"]
-
-[node name="SM_Veh_Attach_Rope_01" type="MeshInstance3D" unique_id=375800020]
-gi_mode = 2
-mesh = ExtResource("1_3epfx")
-surface_material_override/0 = ExtResource("2_rfqcb")

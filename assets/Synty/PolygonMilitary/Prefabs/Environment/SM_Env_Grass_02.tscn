@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://f40biimsrchv"]
-
-[ext_resource type="ArrayMesh" uid="uid://7b421sfuet81" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Env_Grass_02.res" id="1_upotg"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_84qfs"]
-
-[node name="SM_Env_Grass_02" type="MeshInstance3D" unique_id=259870819]
-gi_mode = 2
-mesh = ExtResource("1_upotg")
-surface_material_override/0 = ExtResource("2_84qfs")

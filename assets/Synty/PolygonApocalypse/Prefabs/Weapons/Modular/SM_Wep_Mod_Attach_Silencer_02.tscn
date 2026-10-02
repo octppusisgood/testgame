@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqgnjtlfgkmon"]
-
-[ext_resource type="ArrayMesh" uid="uid://dr0adqagg70n" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Attach_Silencer_02.res" id="1_chwma"]
-[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_tiu1q"]
-
-[node name="SM_Wep_Mod_Attach_Silencer_02" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_chwma")
-surface_material_override/0 = ExtResource("2_tiu1q")

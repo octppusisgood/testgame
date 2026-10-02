@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://csk57o2aofh8w"]
-
-[ext_resource type="ArrayMesh" uid="uid://djnqhtn7g8xvp" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_ShellStrip_Rifle_01.res" id="1_x0qkw"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_d4qas"]
-
-[node name="SM_Chr_Attach_ShellStrip_Rifle_01" type="MeshInstance3D" unique_id=607304611]
-gi_mode = 2
-mesh = ExtResource("1_x0qkw")
-surface_material_override/0 = ExtResource("2_d4qas")

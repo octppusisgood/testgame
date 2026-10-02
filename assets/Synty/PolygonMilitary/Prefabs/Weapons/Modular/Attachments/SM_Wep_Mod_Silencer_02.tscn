@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://77xagrs2uunj"]
-
-[ext_resource type="ArrayMesh" uid="uid://cit5yw4ogqv50" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Silencer_02.res" id="1_0ccqv"]
-[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_2th21"]
-
-[node name="SM_Wep_Mod_Silencer_02" type="MeshInstance3D" unique_id=1113521252]
-gi_mode = 2
-mesh = ExtResource("1_0ccqv")
-surface_material_override/0 = ExtResource("2_2th21")

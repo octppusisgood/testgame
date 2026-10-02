@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://drr8mr5gd0mw1"]
-
-[ext_resource type="ArrayMesh" uid="uid://6n72qum3xh5m" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Grenade_01.res" id="1_2vop7"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_3ofvo"]
-
-[node name="SM_Chr_Attach_Grenade_01" type="MeshInstance3D" unique_id=283399535]
-gi_mode = 2
-mesh = ExtResource("1_2vop7")
-surface_material_override/0 = ExtResource("2_3ofvo")

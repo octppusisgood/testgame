@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwggd0u55xklw"]
-
-[ext_resource type="ArrayMesh" uid="uid://dgihxyyihmmw2" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Bld_Window_Poster_Inside_06.res" id="1_5sm8g"]
-[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_8pm4h"]
-
-[node name="SM_Bld_Window_Poster_Inside_06" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_5sm8g")
-surface_material_override/0 = ExtResource("2_8pm4h")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://c7xm8cwbdbj7g"]
-
-[ext_resource type="ArrayMesh" uid="uid://bmjp7an4734xf" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_B_Barrel_01.res" id="1_cdnsp"]
-[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_joamc"]
-
-[node name="SM_Wep_Mod_B_Barrel_01" type="MeshInstance3D" unique_id=942553728]
-gi_mode = 2
-mesh = ExtResource("1_cdnsp")
-surface_material_override/0 = ExtResource("2_joamc")

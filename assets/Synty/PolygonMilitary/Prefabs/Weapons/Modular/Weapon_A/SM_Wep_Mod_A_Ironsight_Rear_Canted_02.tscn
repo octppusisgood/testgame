@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://dim7paf4y8tdk"]
-
-[ext_resource type="ArrayMesh" uid="uid://pp7junyai4aw" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_A_Ironsight_Rear_Canted_02.res" id="1_rcc4d"]
-[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_1cnc3"]
-
-[node name="SM_Wep_Mod_A_Ironsight_Rear_Canted_02" type="MeshInstance3D" unique_id=966633092]
-gi_mode = 2
-mesh = ExtResource("1_rcc4d")
-surface_material_override/0 = ExtResource("2_1cnc3")

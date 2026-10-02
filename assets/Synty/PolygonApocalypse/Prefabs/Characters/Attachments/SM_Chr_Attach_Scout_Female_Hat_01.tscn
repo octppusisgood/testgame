@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://5gmj2yr2ek2f"]
-
-[ext_resource type="ArrayMesh" uid="uid://cg1lf4gu3lir0" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Scout_Female_Hat_01.res" id="1_w73k4"]
-[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_fj27v"]
-
-[node name="SM_Chr_Attach_Scout_Female_Hat_01" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_w73k4")
-surface_material_override/0 = ExtResource("2_fj27v")

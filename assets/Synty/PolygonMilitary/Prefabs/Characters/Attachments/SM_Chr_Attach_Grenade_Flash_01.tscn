@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://8nc3rbpmo3d4"]
-
-[ext_resource type="ArrayMesh" uid="uid://bkn8g45eifrp5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Grenade_Flash_01.res" id="1_w5d3i"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_7op16"]
-
-[node name="SM_Chr_Attach_Grenade_Flash_01" type="MeshInstance3D" unique_id=206821305]
-gi_mode = 2
-mesh = ExtResource("1_w5d3i")
-surface_material_override/0 = ExtResource("2_7op16")

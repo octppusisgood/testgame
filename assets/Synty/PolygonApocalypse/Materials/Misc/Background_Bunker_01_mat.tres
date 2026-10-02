@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cx4qsgovtjsdn"]
-
-[resource]
-resource_name = "Background_Bunker_01_mat"
-transparency = 1
-depth_draw_mode = 1
-albedo_color = Color(0.34509805, 0.3882353, 0.3882353, 1)
-uv1_scale = Vector3(1, 1, 0)

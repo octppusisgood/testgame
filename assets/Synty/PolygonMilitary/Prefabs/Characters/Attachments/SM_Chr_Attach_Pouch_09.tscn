@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://f83hp80218pu"]
-
-[ext_resource type="ArrayMesh" uid="uid://bri32lwyv77bj" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Pouch_09.res" id="1_c45lg"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_dmb66"]
-
-[node name="SM_Chr_Attach_Pouch_09" type="MeshInstance3D" unique_id=1758018965]
-gi_mode = 2
-mesh = ExtResource("1_c45lg")
-surface_material_override/0 = ExtResource("2_dmb66")

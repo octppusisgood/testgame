@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://by53xg65ymdyx"]
-
-[ext_resource type="ArrayMesh" uid="uid://8toaeyt80ph" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Env_Bush_Group_03.res" id="1_o6v8s"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_m3kvs"]
-
-[node name="SM_Env_Bush_Group_03" type="MeshInstance3D" unique_id=358696750]
-gi_mode = 2
-mesh = ExtResource("1_o6v8s")
-surface_material_override/0 = ExtResource("2_m3kvs")

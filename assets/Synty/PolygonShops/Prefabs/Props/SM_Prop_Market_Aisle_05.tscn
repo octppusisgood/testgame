@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dddrkeyg53y5f"]
-
-[ext_resource type="ArrayMesh" uid="uid://b2mrrk6te745l" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Market_Aisle_05.res" id="1_vpfub"]
-[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_eiqkm"]
-
-[node name="SM_Prop_Market_Aisle_05" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_vpfub")
-surface_material_override/0 = ExtResource("2_eiqkm")

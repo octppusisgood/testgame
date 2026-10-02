@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://djyqc64arbfs6"]
-
-[ext_resource type="ArrayMesh" uid="uid://bxm406qbbcggu" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Mask_01.res" id="1_comlx"]
-
-[node name="SM_Prop_Mask_01" type="MeshInstance3D" unique_id=1099950428]
-gi_mode = 2
-mesh = ExtResource("1_comlx")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://b01rje3v5nqif"]
-
-[ext_resource type="ArrayMesh" uid="uid://dendjp6kx722n" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_SlipRing_03.res" id="1_r7hrl"]
-[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_8vj6k"]
-
-[node name="SM_Wep_Mod_SlipRing_03" type="MeshInstance3D" unique_id=841698789]
-gi_mode = 2
-mesh = ExtResource("1_r7hrl")
-surface_material_override/0 = ExtResource("2_8vj6k")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://dvpj4gp7ln7d3"]
-
-[ext_resource type="ArrayMesh" uid="uid://bdp1j5sbxbw7e" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Flashlight_01.res" id="1_egck0"]
-[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_sxcft"]
-
-[node name="SM_Wep_Mod_Flashlight_01" type="MeshInstance3D" unique_id=283695726]
-gi_mode = 2
-mesh = ExtResource("1_egck0")
-surface_material_override/0 = ExtResource("2_sxcft")

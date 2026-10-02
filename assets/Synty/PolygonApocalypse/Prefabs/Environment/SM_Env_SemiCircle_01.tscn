@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0ntkvsese63v"]
-
-[ext_resource type="ArrayMesh" uid="uid://b7hikibbxwkji" path="res://Assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_SemiCircle_01.res" id="1_05qh3"]
-[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_cjwpp"]
-
-[node name="SM_Env_SemiCircle_01" type="MeshInstance3D"]
-mesh = ExtResource("1_05qh3")
-surface_material_override/0 = ExtResource("2_cjwpp")

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3h1d3ss2j3hc"]
-
-[ext_resource type="ArrayMesh" uid="uid://eugoreknlcyf" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Wep_Mod_Barrel_06.res" id="1_77fqf"]
-[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_i63oa"]
-
-[node name="SM_Wep_Mod_Barrel_06" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_77fqf")
-surface_material_override/0 = ExtResource("2_i63oa")

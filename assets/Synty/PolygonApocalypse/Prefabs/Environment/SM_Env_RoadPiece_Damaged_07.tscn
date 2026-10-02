@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://daksnwdn222vo"]
-
-[ext_resource type="ArrayMesh" uid="uid://b4juehlm6okg" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_RoadPiece_Damaged_07.res" id="1_bdiu2"]
-[ext_resource type="Material" uid="uid://cs5tr0n48vvsw" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Road_Standard_01_mat.tres" id="2_jk152"]
-
-[node name="SM_Env_RoadPiece_Damaged_07" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_bdiu2")
-surface_material_override/0 = ExtResource("2_jk152")

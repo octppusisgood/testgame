@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cc1ldmx08o6o"]
-
-[ext_resource type="ArrayMesh" uid="uid://dovmlrlnoedb0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Env_Flowers_05.res" id="1_7knt0"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_yeoyb"]
-
-[node name="SM_Env_Flowers_05" type="MeshInstance3D" unique_id=638819031]
-gi_mode = 2
-mesh = ExtResource("1_7knt0")
-surface_material_override/0 = ExtResource("2_yeoyb")

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dua0cqoe35rec"]
-
-[ext_resource type="ArrayMesh" uid="uid://buqfuv6payk6b" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Industrial_Beam_Fence_02.res" id="1_0wgf1"]
-[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_11thn"]
-
-[node name="SM_Bld_Industrial_Beam_Fence_02" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_0wgf1")
-surface_material_override/0 = ExtResource("2_11thn")

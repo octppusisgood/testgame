@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://3ok8i62mfuhm"]
-
-[ext_resource type="ArrayMesh" uid="uid://fhqn1hdn2ok0" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Env_Pebbles_03.res" id="1_bvg7m"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_6vm2p"]
-
-[node name="SM_Env_Pebbles_03" type="MeshInstance3D" unique_id=1701395218]
-gi_mode = 2
-mesh = ExtResource("1_bvg7m")
-surface_material_override/0 = ExtResource("2_6vm2p")

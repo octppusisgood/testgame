@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://viun2i7yjpig"]
-
-[ext_resource type="ArrayMesh" uid="uid://c8rkcum6an8m6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Beard_12.res" id="1_dq0ff"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_rkx2d"]
-
-[node name="SM_Chr_Attach_Beard_12" type="MeshInstance3D" unique_id=11268741]
-gi_mode = 2
-mesh = ExtResource("1_dq0ff")
-surface_material_override/0 = ExtResource("2_rkx2d")

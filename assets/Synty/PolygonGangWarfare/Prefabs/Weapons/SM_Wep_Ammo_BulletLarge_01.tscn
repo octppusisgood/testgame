@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://lcnlhrhbsxwd"]
-
-[ext_resource type="ArrayMesh" uid="uid://08wk51q7qnit" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Wep_Ammo_BulletLarge_01.res" id="1_48x7v"]
-[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_gh5it"]
-
-[node name="SM_Wep_Ammo_BulletLarge_01" type="MeshInstance3D" unique_id=1658484366]
-gi_mode = 2
-mesh = ExtResource("1_48x7v")
-surface_material_override/0 = ExtResource("2_gh5it")

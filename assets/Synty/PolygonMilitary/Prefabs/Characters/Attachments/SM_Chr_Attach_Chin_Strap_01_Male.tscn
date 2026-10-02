@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://be4fj0q2h0pt7"]
-
-[ext_resource type="ArrayMesh" uid="uid://bxhssdow8ikxm" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Chin_Strap_01_Male.res" id="1_6e3hu"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_rdts2"]
-
-[node name="SM_Chr_Attach_Chin_Strap_01_Male" type="MeshInstance3D" unique_id=664404970]
-gi_mode = 2
-mesh = ExtResource("1_6e3hu")
-surface_material_override/0 = ExtResource("2_rdts2")

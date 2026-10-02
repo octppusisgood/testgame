@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://ckxtoissquruf"]
-
-[ext_resource type="ArrayMesh" uid="uid://c280i8ifhf56b" path="res://assets/Synty/PolygonGangWarfare/Models/extracted/SM_Prop_Holster_01.res" id="1_nw73a"]
-[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_eefsp"]
-
-[node name="SM_Prop_Holster_01" type="MeshInstance3D" unique_id=1410062988]
-gi_mode = 2
-mesh = ExtResource("1_nw73a")
-surface_material_override/0 = ExtResource("2_eefsp")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://d1a4ustclun42"]
-
-[ext_resource type="ArrayMesh" uid="uid://cjfkqhw6ewjbv" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Pouch_WalkieTalkie_Empty_01.res" id="1_b2fsx"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_pegeu"]
-
-[node name="SM_Chr_Attach_Pouch_WalkieTalkie_Empty_01" type="MeshInstance3D" unique_id=637232780]
-gi_mode = 2
-mesh = ExtResource("1_b2fsx")
-surface_material_override/0 = ExtResource("2_pegeu")

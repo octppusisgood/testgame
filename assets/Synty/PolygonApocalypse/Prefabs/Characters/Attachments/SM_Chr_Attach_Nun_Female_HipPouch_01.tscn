@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8io1vgsmnwlf"]
-
-[ext_resource type="ArrayMesh" uid="uid://dg2s8vmh77ikt" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Chr_Attach_Nun_Female_HipPouch_01.res" id="1_yjif3"]
-[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_y8i4e"]
-
-[node name="SM_Chr_Attach_Nun_Female_HipPouch_01" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_yjif3")
-surface_material_override/0 = ExtResource("2_y8i4e")

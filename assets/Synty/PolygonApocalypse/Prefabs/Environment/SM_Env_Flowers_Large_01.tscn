@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://mgarg8e7g163"]
-
-[ext_resource type="ArrayMesh" uid="uid://d200gxkwhpm5p" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_Flowers_Large_01.res" id="1_uham2"]
-[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_5ifwo"]
-
-[node name="SM_Env_Flowers_Large_01" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_uham2")
-surface_material_override/0 = ExtResource("2_5ifwo")

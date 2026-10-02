@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://c6d7kvxsghq25"]
-
-[ext_resource type="ArrayMesh" uid="uid://nntlp7loqelm" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Earmuffs_01.res" id="1_xlkns"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_s1lvn"]
-
-[node name="SM_Chr_Attach_Earmuffs_01" type="MeshInstance3D" unique_id=546164592]
-gi_mode = 2
-mesh = ExtResource("1_xlkns")
-surface_material_override/0 = ExtResource("2_s1lvn")

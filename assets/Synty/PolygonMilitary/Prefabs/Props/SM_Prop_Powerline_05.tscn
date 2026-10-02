@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cn0gs65cl7qdc"]
-
-[ext_resource type="ArrayMesh" uid="uid://ck3o0qx1ct86v" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Powerline_05.res" id="1_o7cia"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_sj7jr"]
-
-[node name="SM_Prop_Powerline_05" type="MeshInstance3D" unique_id=656739404]
-gi_mode = 2
-mesh = ExtResource("1_o7cia")
-surface_material_override/0 = ExtResource("2_sj7jr")

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckxpj2c6af13j"]
-
-[ext_resource type="ArrayMesh" uid="uid://7i7f0oxgd0ws" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Generic_Cloud_05.res" id="1_rel33"]
-[ext_resource type="Material" uid="uid://djbv4p7a4ojoo" path="res://Assets/Synty/PolygonShops/Materials/Misc/PolygonShops_Cloud_01_mat.tres" id="2_dpcbq"]
-
-[node name="SM_Generic_Cloud_05" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_rel33")
-surface_material_override/0 = ExtResource("2_dpcbq")

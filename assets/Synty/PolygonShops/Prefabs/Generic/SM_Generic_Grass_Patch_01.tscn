@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://47vfuucjspcj"]
-
-[ext_resource type="ArrayMesh" uid="uid://bcxfax5m6umv" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Gerneric_Grass_Patch_01.res" id="1_vadk6"]
-[ext_resource type="Material" uid="uid://b02cyq0hqbt6v" path="res://Assets/Synty/PolygonShops/Materials/Alternates/PolygonShops_Mat_01_B_mat.tres" id="2_24xrh"]
-
-[node name="SM_Generic_Grass_Patch_01" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_vadk6")
-surface_material_override/0 = ExtResource("2_24xrh")

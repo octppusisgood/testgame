@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://b8teeliep3c10"]
-
-[ext_resource type="ArrayMesh" uid="uid://yj72p7eyjpu5" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_B_Mag_03.res" id="1_4b3kf"]
-[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_ig46s"]
-
-[node name="SM_Wep_Mod_B_Mag_03" type="MeshInstance3D" unique_id=60767434]
-gi_mode = 2
-mesh = ExtResource("1_4b3kf")
-surface_material_override/0 = ExtResource("2_ig46s")

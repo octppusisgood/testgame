@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c73f3545nmqn"]
-
-[ext_resource type="ArrayMesh" uid="uid://jcpa0w32l044" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Bld_Junk_Shelter_04_Tarp.res" id="1_u6pel"]
-[ext_resource type="Material" uid="uid://ocqq8eqfnevf" path="res://Assets/Synty/PolygonApocalypse/Materials/Alts/PolygonApocalypse_01_A_mat.tres" id="2_2aw6d"]
-
-[node name="SM_Bld_Junk_Shelter_04_Tarp" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_u6pel")
-surface_material_override/0 = ExtResource("2_2aw6d")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cm53g50r7ndxd"]
-
-[ext_resource type="ArrayMesh" path="res://assets/Synty/PolygonGangWarfare/Models/Generic/extracted/SM_Generic_Grass_Patch_02.res" id="1_exwsa"]
-[ext_resource type="Material" uid="uid://3tiseb00qm3y" path="res://Assets/Synty/PolygonGangWarfare/Materials/Alts/PolygonGangWarfare_01_A_mat.tres" id="2_mawqw"]
-
-[node name="SM_Generic_Grass_Patch_02" type="MeshInstance3D" unique_id=62509471]
-gi_mode = 2
-mesh = ExtResource("1_exwsa")
-surface_material_override/0 = ExtResource("2_mawqw")

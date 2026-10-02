@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bpacaqjljmdkq"]
-
-[ext_resource type="ArrayMesh" uid="uid://dtah4vejwyaiu" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Bomb_C4_01.res" id="1_kobie"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_v3ttv"]
-
-[node name="SM_Chr_Attach_Bomb_C4_01" type="MeshInstance3D" unique_id=789738840]
-gi_mode = 2
-mesh = ExtResource("1_kobie")
-surface_material_override/0 = ExtResource("2_v3ttv")

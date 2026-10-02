@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://3fv2im8gj0mf"]
-
-[ext_resource type="ArrayMesh" uid="uid://btdxsa3i3kmtw" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Hair_Female_02.res" id="1_38jo3"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_1llxh"]
-
-[node name="SM_Chr_Attach_Hair_Female_02" type="MeshInstance3D" unique_id=256631398]
-gi_mode = 2
-mesh = ExtResource("1_38jo3")
-surface_material_override/0 = ExtResource("2_1llxh")

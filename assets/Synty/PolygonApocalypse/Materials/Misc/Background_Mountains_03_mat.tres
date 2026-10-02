@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://bmkc4hug465sx"]
-
-[resource]
-resource_name = "Background_Mountains_03_mat"
-depth_draw_mode = 1
-shading_mode = 0
-albedo_color = Color(0.8117648, 0.5686275, 0.45098042, 1)
-uv1_scale = Vector3(1, 1, 0)

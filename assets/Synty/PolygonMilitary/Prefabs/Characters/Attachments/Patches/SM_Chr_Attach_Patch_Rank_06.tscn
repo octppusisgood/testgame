@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://c6hc1lxl8a81j"]
-
-[ext_resource type="ArrayMesh" uid="uid://cp1ay0nt0khnl" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Patch_Rank_06.res" id="1_wsk5i"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_xdpct"]
-
-[node name="SM_Chr_Attach_Patch_Rank_06" type="MeshInstance3D" unique_id=231676451]
-gi_mode = 2
-mesh = ExtResource("1_wsk5i")
-surface_material_override/0 = ExtResource("2_xdpct")

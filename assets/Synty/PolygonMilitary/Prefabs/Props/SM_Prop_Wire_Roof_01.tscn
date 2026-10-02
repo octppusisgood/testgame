@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://c8lxpt2kj8ig"]
-
-[ext_resource type="ArrayMesh" uid="uid://deiw3tf8swsk6" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Prop_Wire_Roof_01.res" id="1_ke3km"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_khgpg"]
-
-[node name="SM_Prop_Wire_Roof_01" type="MeshInstance3D" unique_id=1307102802]
-gi_mode = 2
-mesh = ExtResource("1_ke3km")
-surface_material_override/0 = ExtResource("2_khgpg")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bdmaeyni160pw"]
-
-[ext_resource type="ArrayMesh" uid="uid://bmtap75gdag6b" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Generic_Water_Plane_02.res" id="1_0h70c"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_uldlp"]
-
-[node name="SM_Generic_Water_Plane_02" type="MeshInstance3D" unique_id=1496530146]
-gi_mode = 2
-mesh = ExtResource("1_0h70c")
-surface_material_override/0 = ExtResource("2_uldlp")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://5yuhm3k5btol"]
-
-[ext_resource type="ArrayMesh" uid="uid://pl80if8x6oiu" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Mustache_01.res" id="1_djg8s"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_2w8nw"]
-
-[node name="SM_Chr_Attach_Mustache_01" type="MeshInstance3D" unique_id=747021863]
-gi_mode = 2
-mesh = ExtResource("1_djg8s")
-surface_material_override/0 = ExtResource("2_2w8nw")

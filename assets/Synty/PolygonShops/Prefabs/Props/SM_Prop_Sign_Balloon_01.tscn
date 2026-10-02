@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4llurluiri0o"]
-
-[ext_resource type="ArrayMesh" uid="uid://brvsn8oice2pk" path="res://assets/Synty/PolygonShops/Models/extracted/SM_Prop_Sign_Balloon_01.res" id="1_aqq1y"]
-[ext_resource type="Material" uid="uid://xivyu5jq04ks" path="res://Assets/Synty/PolygonShops/Materials/PolygonShops_Mat_01_A_mat.tres" id="2_ihn3y"]
-
-[node name="SM_Prop_Sign_Balloon_01" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_aqq1y")
-surface_material_override/0 = ExtResource("2_ihn3y")

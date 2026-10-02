@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cu5xbmdc7twh1"]
-
-[ext_resource type="ArrayMesh" uid="uid://bl07cd4w28y6i" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Wep_Mod_Rail_01.res" id="1_7fxp0"]
-[ext_resource type="Material" uid="uid://8qib14ti7crd" path="res://Assets/Synty/PolygonMilitary/Materials/Weapons/Weapon_01_mat.tres" id="2_q6n1p"]
-
-[node name="SM_Wep_Mod_Rail_01" type="MeshInstance3D" unique_id=730973768]
-gi_mode = 2
-mesh = ExtResource("1_7fxp0")
-surface_material_override/0 = ExtResource("2_q6n1p")

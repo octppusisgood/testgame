@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://dftdbwy81irsd"]
-
-[ext_resource type="ArrayMesh" uid="uid://baos3sklv8p1y" path="res://assets/Synty/PolygonMilitary/Models/extracted/SM_Chr_Attach_Knife_Sheath_01.res" id="1_5uuhl"]
-[ext_resource type="Material" uid="uid://bdqpwj7wrdt5e" path="res://Assets/Synty/PolygonMilitary/Materials/Alts/PolygonMilitary_01_A_mat.tres" id="2_hih80"]
-
-[node name="SM_Chr_Attach_Knife_Sheath_01" type="MeshInstance3D" unique_id=710092446]
-gi_mode = 2
-mesh = ExtResource("1_5uuhl")
-surface_material_override/0 = ExtResource("2_hih80")

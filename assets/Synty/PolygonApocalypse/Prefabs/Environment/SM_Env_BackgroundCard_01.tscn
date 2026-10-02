@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfrnq4kwx0r18"]
-
-[ext_resource type="ArrayMesh" uid="uid://cicejdjtybnuk" path="res://assets/Synty/PolygonApocalypse/Models/extracted/SM_Env_BackgroundCard_01.res" id="1_5lgb7"]
-[ext_resource type="Material" uid="uid://bxjutbpfpu84j" path="res://Assets/Synty/PolygonApocalypse/Materials/Misc/Background_Mountains_01_mat.tres" id="2_iwb6k"]
-
-[node name="SM_Env_BackgroundCard_01" type="MeshInstance3D"]
-gi_mode = 2
-mesh = ExtResource("1_5lgb7")
-surface_material_override/0 = ExtResource("2_iwb6k")

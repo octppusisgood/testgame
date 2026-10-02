@@ -43,6 +43,7 @@ var _hint: Label
 var _debug_label: Label
 var _extract: Label
 var _signal_value: Label
+var _signal_bars: SignalBarsIcon
 var _signal_timer := 0.0
 var _eye_icon: Control
 var _eye_timer := 0.0
@@ -220,15 +221,26 @@ func _ready() -> void:
 	_vehicle_row.visible = false
 	_wanted = _make_label(box, 14, Color(1.0, 0.8, 0.2))
 	_cargo_label = _make_label(box, 13, Color(0.9, 0.8, 0.55))
-	var signal_row := HBoxContainer.new()
-	signal_row.add_theme_constant_override("separation", 6)
-	box.add_child(signal_row)
-	_signal_value = _make_label(signal_row, 12, Color(0.8, 0.9, 1.0))
 	_eye_icon = EyeIcon.new()
 	_eye_icon.custom_minimum_size = Vector2(24, 14)
 	_eye_icon.visible = false
 	_eye_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	signal_row.add_child(_eye_icon)
+	box.add_child(_eye_icon)
+	# 信号 UI：右上角（小地图正下方）——手机信号条图标 + 百分比
+	var sig_box := HBoxContainer.new()
+	sig_box.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	sig_box.offset_left = -110
+	sig_box.offset_top = 164
+	sig_box.offset_right = -8
+	sig_box.offset_bottom = 190
+	sig_box.add_theme_constant_override("separation", 5)
+	sig_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(sig_box)
+	_signal_bars = SignalBarsIcon.new()
+	_signal_bars.custom_minimum_size = Vector2(36, 22)
+	_signal_bars.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	sig_box.add_child(_signal_bars)
+	_signal_value = _make_label(sig_box, 13, Color(0.8, 0.9, 1.0))
 
 	var minimap := MapView3D.new()
 	add_child(minimap)
@@ -685,10 +697,7 @@ func _refresh_res_strip() -> void:
 
 func _refresh_signal() -> void:
 	var percent := int(round(GameState.reception_strength() * 100.0))
-	var status := ""
-	if GameState.base_signal_strength() > 0.0:
-		status += " · 据点信号覆盖中"
-	_signal_value.text = "信号强度 %d%%%s" % [percent, status]
+	_signal_value.text = "%d%%" % percent
 	if percent >= 66:
 		_signal_value.add_theme_color_override("font_color", Color(0.7, 1.0, 0.75))
 	elif percent >= 33:
@@ -697,6 +706,8 @@ func _refresh_signal() -> void:
 		_signal_value.add_theme_color_override("font_color", Color(0.95, 0.7, 0.4))
 	else:
 		_signal_value.add_theme_color_override("font_color", Color(0.85, 0.6, 0.55))
+	if _signal_bars != null:
+		_signal_bars.set_percent(percent)
 
 
 func _refresh_news() -> void:
@@ -3274,12 +3285,34 @@ class EyeIcon extends Control:
 			var x := lerpf(-1.0, 1.0, t)
 			var y := 0.55 * sqrt(maxf(0.0, 1.0 - x * x))
 			points.append(center + Vector2(x * w * 0.46, y * h))
-		draw_colored_polygon(points, Color(1.0, 0.95, 0.9, 0.92))
-		var outline := points.duplicate()
-		outline.append(points[0])
-		draw_polyline(outline, Color(0.05, 0.05, 0.05, 0.85), 1.6)
-		draw_circle(center, h * 0.34, Color(0.95, 0.25, 0.2))
-		draw_circle(center, h * 0.14, Color(0.05, 0.05, 0.05))
+			draw_colored_polygon(points, Color(1.0, 0.95, 0.9, 0.92))
+			var outline := points.duplicate()
+			outline.append(points[0])
+			draw_polyline(outline, Color(0.05, 0.05, 0.05, 0.85), 1.6)
+			draw_circle(center, h * 0.34, Color(0.95, 0.25, 0.2))
+			draw_circle(center, h * 0.14, Color(0.05, 0.05, 0.05))
+
+
+# 手机信号条图标：5 根递增竖条，按百分比点亮（每 20% 一根），颜色随强度分档
+class SignalBarsIcon extends Control:
+	var percent := 0
+
+	func set_percent(p: int) -> void:
+		if percent != p:
+			percent = p
+			queue_redraw()
+
+	func _draw() -> void:
+		var filled := mini(int(ceil(percent / 20.0)), 5)
+		var col := Color(0.4, 0.95, 0.55)
+		if percent < 33:
+			col = Color(0.95, 0.4, 0.35)
+		elif percent < 66:
+			col = Color(0.95, 0.85, 0.45)
+		for i in 5:
+			var bar_h := 6.0 + float(i) * 4.0
+			var rect := Rect2(float(i) * 7.0, size.y - bar_h, 5.0, bar_h)
+			draw_rect(rect, col if i < filled else Color(0.22, 0.26, 0.32, 0.85))
 
 
 # —— 据点仓库面板：与背包同款分区 UI（标题+分隔线+chip 流），双击全存/全取，右键输入数量，一键存放 ——

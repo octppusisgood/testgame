@@ -884,9 +884,14 @@ func _build_pause_panel() -> void:
 	var center := CenterContainer.new()
 	center.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_pause_panel.add_child(center)
+	# 批次 247：左列按钮 + 右列「全部功能与按键」说明
+	var columns := HBoxContainer.new()
+	columns.add_theme_constant_override("separation", 14)
+	center.add_child(columns)
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 8)
-	center.add_child(box)
+	box.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	columns.add_child(box)
 	var title := Label.new()
 	title.text = "游戏暂停"
 	title.add_theme_font_size_override("font_size", 24)
@@ -923,6 +928,32 @@ func _build_pause_panel() -> void:
 	tip.add_theme_color_override("font_color", Color(0.75, 0.8, 0.85))
 	tip.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	box.add_child(tip)
+	var help_panel := PanelContainer.new()
+	help_panel.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	columns.add_child(help_panel)
+	var help_style := StyleBoxFlat.new()
+	help_style.bg_color = Color(0.06, 0.08, 0.1, 0.9)
+	help_style.set_corner_radius_all(4)
+	help_style.content_margin_left = 8
+	help_style.content_margin_right = 8
+	help_style.content_margin_top = 6
+	help_style.content_margin_bottom = 6
+	help_panel.add_theme_stylebox_override("panel", help_style)
+	var help := Label.new()
+	help.text = "\n".join([
+		"—— 操作说明 ——",
+		"【移动】  WASD 移动 · 双击方向 疾跑 · Shift 冲刺 · 空格 跳跃",
+		"【战斗】  左键 开火 · 右键 开镜/特殊 · R 换弹 · V 近战 · G 手雷 · F 医疗",
+		"【装备】  1/2 武器槽 · B 背包 · C 能力面板",
+		"【交互】  E 交互（可鼠标点选） · X 建造 · Z 拆除",
+		"【指挥】  Q 炮击圆盘 · J 随从面板 · Tab 载具面板",
+		"【地图】  M 大地图 · 小地图外圈=电力环 左绿发电/右红用电",
+		"【其他】  T 手电 · U 车斗卸货 · 载具内 E 下车",
+		"【调试】  F1 帮助 · F3 性能 · F12 调试信息",
+	])
+	help.add_theme_font_size_override("font_size", 9)
+	help.add_theme_color_override("font_color", Color(0.82, 0.87, 0.92))
+	help_panel.add_child(help)
 
 
 # 暂停菜单撤离：按信号覆盖分档（据点内 150% / 信号区 100% / 战斗中无信号 50%），

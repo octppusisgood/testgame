@@ -40,7 +40,7 @@ func _marker_for(door: Node) -> Label3D:
 	label.position = Vector3(0, 5.2, 0)
 	label.visible = false
 	door.add_child(label)
-	_shelters[bid] = {"count": 0, "label": label}
+	_shelters[bid] = {"count": 0, "label": label, "members": []}
 	return label
 
 
@@ -77,6 +77,7 @@ func enter_npc(door: Node, npc: Node3D) -> bool:
 		return true
 	_adjust(door, 1)
 	npc.set("sheltered", _door_id(door))
+	_shelters[_door_id(door)].get("members").append(npc)
 	npc.visible = false
 	npc.remove_from_group("npcs")
 	npc.set_physics_process(false)
@@ -93,6 +94,7 @@ func npc_leave(npc: Node3D) -> void:
 		return
 	var bid := str(bid_value)
 	npc.set("sheltered", "")
+	_shelters[bid].get("members").erase(npc)
 	npc.visible = true
 	npc.add_to_group("npcs")
 	npc.set_physics_process(true)
@@ -116,6 +118,7 @@ func enter_player(door: Node, player: Node3D) -> bool:
 		return false
 	_adjust(door, 1)
 	GameState.player_in_building = _door_id(door)
+	_shelters[_door_id(door)].get("members").append(player)
 	var body = player.get("_body_root")
 	if body != null:
 		body.visible = false
@@ -133,6 +136,7 @@ func player_leave(player: Node3D) -> void:
 	if player == null or GameState.player_in_building.is_empty():
 		return
 	var bid := GameState.player_in_building
+	_shelters[bid].get("members").erase(player)
 	var body = player.get("_body_root")
 	if body != null:
 		body.visible = true
@@ -167,3 +171,26 @@ func _door_by_id(bid: String) -> Node3D:
 		if door != null and is_instance_valid(door) and _door_id(door) == bid:
 			return door
 	return null
+
+
+# 批次 263：建筑被丧尸围攻坍塌时，驱赶该楼附近的所有藏匿者（玩家/随从/市民）
+# 到门口——楼没了不能再藏着。按位置过滤（bid 是类别不唯一，不能按字串全城驱逐）
+func evict_near(world_pos: Vector3, radius := 10.0) -> void:
+	var kicked := 0
+	for bid in _shelters.keys():
+		var entry: Dictionary = _shelters[bid]
+		var members: Array = entry.get("members", [])
+		for i in range(members.size() - 1, -1, -1):
+			var m = members[i]
+			if m == null or not is_instance_valid(m):
+				members.remove_at(i)
+				continue
+			if m.global_position.distance_to(world_pos) > radius:
+				continue
+			if m.is_in_group("player"):
+				player_leave(m)
+			else:
+				npc_leave(m)
+			kicked += 1
+	if kicked > 0:
+		GameState.notify("楼房坍塌！楼里藏匿的 %d 人被赶了出来" % kicked)

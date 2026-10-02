@@ -1408,6 +1408,16 @@ func _resolve_windup() -> void:
 		return
 	if global_position.distance_to(target.global_position) > _attack_range + 0.6:
 		return
+	# 批次 263：目标玩家藏匿在建筑里 → 抓挠转攻建筑本体（围攻）；
+	# 建筑血尽坍塌会把藏匿者全部驱赶到门口（demolish3d.siege_damage_at）
+	if target.is_in_group("player") and not GameState.player_in_building.is_empty():
+		var city := get_parent()
+		if city != null:
+			var dm = city.get_node_or_null("Demolish")
+			if dm != null and dm.has_method("siege_damage_at"):
+				dm.call("siege_damage_at", target.global_position, _damage)
+				BlockyRig.play_once(_limbs, "attack-melee-right")
+		return
 	target.take_damage(_damage)
 	# 普通丧尸与猎犬（tier 0/1/2）抓挠不感染；高阶怪保留感染
 	if target.is_in_group("player") and not GameState.is_zombie() and zombie_tier > 2:

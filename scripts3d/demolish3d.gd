@@ -387,6 +387,50 @@ func damage_structure_at(pos: Vector3, dmg: int) -> void:
 		return
 
 
+# 批次 263：丧尸围攻入口——目标玩家藏匿在楼里，抓挠落在建筑本体上；
+# 建筑血尽坍塌时把楼里藏匿的玩家/随从/市民全部驱赶到门口（楼没了不能再藏）
+func siege_damage_at(world_pos: Vector3, dmg: int) -> void:
+	var flat := Vector2(world_pos.x, world_pos.z)
+	# 玩家藏在门口（楼前 ~1.2m），足迹判定可能不含 → 回退取 8m 内最近的楼（统一世界坐标）
+	var hit_pos: Vector2 = Vector2(-99999.0, -99999.0)
+	var best_d := 8.0
+	for index in GameState.BUILDING_LAYOUT.size():
+		var s := _descriptor("building", index)
+		if GameState.demolished_buildings.has(s["pos"]):
+			continue
+		if _footprint_contains(s["pos"], s["size"], flat):
+			hit_pos = s["pos"]
+			break
+		var wc := Vector2(float(s["pos"].x) * SCALE, float(s["pos"].y) * SCALE)
+		var half: float = maxf(s["size"].x, s["size"].y) * SCALE * 0.5
+		var d: float = wc.distance_to(flat) - half
+		if d < best_d:
+			best_d = d
+			hit_pos = s["pos"]
+	if hit_pos.x < -9999.0:
+		return
+	var hp_before := GameState.building_hp_at(hit_pos)
+	var center3 := Vector3(hit_pos.x * 0.05, 0.0, hit_pos.y * 0.05)
+	_damage_structure_px(hit_pos, dmg, center3)
+	var hp_after := GameState.building_hp_at(hit_pos)
+	if hp_before > 0 and hp_after <= 0:
+		var interiors_root := get_tree().get_first_node_in_group("building_interiors")
+		if interiors_root != null and interiors_root.has_method("evict_near"):
+			interiors_root.call("evict_near", world_pos, 12.0)
+
+
+# 按像素坐标直接伤害一栋楼（坍塌掉堆 + 血条刷新），供围攻走最近楼回退
+func _damage_structure_px(pos_px: Vector2, dmg: int, _world_center: Vector3) -> void:
+	for index in GameState.BUILDING_LAYOUT.size():
+		var s := _descriptor("building", index)
+		if s["pos"] != pos_px:
+			continue
+		if GameState.damage_building_hp(pos_px, dmg):
+			_collapse_structure(s, GameState.demolish_yield(s["size"], 1))
+		_refresh_hp_label(s)
+		return
+
+
 # 建筑血量标记：满血不显示（避免全城满屏标签）；受损后楼顶挂 HP x/y，
 # 颜色随血量变化（<30% 红 / <70% 黄 / 其余浅绿）；坍塌/归零后隐藏。
 # 标签挂到建筑自身节点下：随建筑距离剔除一起隐藏（远处楼标签不会悬空可见），

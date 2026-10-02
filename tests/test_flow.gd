@@ -1886,11 +1886,11 @@ func _test_interact_menu() -> void:
 	await get_tree().process_frame
 	# 交互新规：鼠标悬停在掉落物上
 	_hover_mouse(loot, player)
-	var loot_before := GameState.loot_items.size()
+	# 批次 239：默认掉落物是「食物」，拾取入资源计数（不再进背包 loot_items）
+	var food_before := int(GameState.resources.get("food", 0))
 	hud._try_interact_press()
 	_check(not GameState.interact_menu_open, "只有 1 个选项时不弹菜单")
-	_check(GameState.loot_items.size() == loot_before + 1, "单选项按 E 直接执行拾取")
-	GameState.loot_items.clear()
+	_check(int(GameState.resources.get("food", 0)) == food_before + 1, "单选项按 E 直接执行拾取（食物入资源计数）")
 
 	# —— 清理 ——
 	mgr.queue_free()

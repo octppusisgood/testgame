@@ -2455,6 +2455,12 @@ func add_loot(id: String, qty := 1) -> void:
 		notify("获得 食物 ×%d（共 %d，自动进食）" % [qty, int(resources["food"])])
 		resources_changed.emit()
 		return
+	# 批次 240：现金袋/金条箱不是背包物品——拾取直接折算成现金数值（角色属性）
+	if id == "money_bag" or id == "gold_box":
+		var cash := int(LOOT_ITEMS[id].get("value", 0)) * qty
+		add_money(cash)
+		notify("拾得现金 ¥%d（共 ¥%d）" % [cash, money])
+		return
 	if LOOT_CAPS.has(id):
 		var current := loot_count(id)
 		var cap := int(LOOT_CAPS[id])
@@ -3588,7 +3594,7 @@ func claim_home_base(building_id: String, pos: Vector3) -> bool:
 		if footprint.has_area() and npcs_in_rect(footprint) > 0:
 			notify("建筑里还有人，先清空再占领")
 			return false
-	var storage := {"food": 0, "meds": 0, "ammo": 0, "money": 0, "materials": 0, "fuel": 0, "crystals": 0}
+	var storage := {"food": 0, "meds": 0, "ammo": 0, "materials": 0, "fuel": 0, "crystals": 0}
 	var kept_defenses: Array = []
 	var kept_levels: Dictionary = {}
 	if has_home_base():
@@ -3866,19 +3872,15 @@ func base_signal_strength() -> float:
 	return float(_signal_sources.get(BASE_SIGNAL_ID, 0.0))
 
 
-# 把背包资源/现金转入据点储物，返回实际存入数量
+# 把背包资源转入据点储物，返回实际存入数量（批次 240：现金是角色数值，不入仓）
 func store_loot(kind: String, amount: int) -> int:
 	if not has_home_base() or amount <= 0:
 		return 0
+	if kind == "money":
+		return 0
 	var storage: Dictionary = home_base["storage"]
 	var take := 0
-	if kind == "money":
-		take = mini(amount, money)
-		if take <= 0:
-			return 0
-		money -= take
-		money_changed.emit(money)
-	elif kind == "ammo":
+	if kind == "ammo":
 		# 弹药按口径/弹种明细入仓（storage["ammo"] 记总发数，ammo_detail 记明细供原样取回）
 		take = mini(amount, total_ammo())
 		if take <= 0:
@@ -3914,7 +3916,8 @@ func store_loot(kind: String, amount: int) -> int:
 
 
 # 仓库可存取的种类（UI 显示顺序）
-const STORAGE_KINDS := ["food", "meds", "ammo", "materials", "fuel", "money", "crystals"]
+# 批次 240：现金是角色数值（HUD 资源栏显示），不再入仓库存取
+const STORAGE_KINDS := ["food", "meds", "ammo", "materials", "fuel", "crystals"]
 
 
 # 从据点仓库取出到背包，返回实际取出数量（ammo 按入仓明细原样取回，无明细的旧档转为手枪普通弹）
@@ -3928,6 +3931,7 @@ func withdraw_loot(kind: String, amount: int) -> int:
 		return 0
 	match kind:
 		"money":
+			# 批次 240 兜底：现金已不入仓，取出时直接并入角色数值
 			money += take
 			money_changed.emit(money)
 		"ammo":
@@ -3978,10 +3982,6 @@ func store_all_loot() -> String:
 		if got > 0:
 			ammo_stock.clear()
 			parts.append("弹药 ×%d" % got)
-	if money > 0:
-		var got_money := store_loot("money", money)
-		if got_money > 0:
-			parts.append("现金 ¥%d" % got_money)
 	var crystals := loot_count("anomaly_crystal")
 	if crystals > 0 and base_has_containment():
 		for i in crystals:
@@ -4003,9 +4003,8 @@ func home_storage_cashout() -> int:
 		+ int(storage.get("meds", 0)) * 4
 		+ int(storage.get("ammo", 0))
 		+ int(storage.get("fuel", 0))
-		+ int(storage.get("money", 0)) / 10
 	)
-	home_base["storage"] = {"food": 0, "meds": 0, "ammo": 0, "money": 0, "materials": 0, "fuel": 0, "crystals": 0}
+	home_base["storage"] = {"food": 0, "meds": 0, "ammo": 0, "materials": 0, "fuel": 0, "crystals": 0}
 	return int(value * home_storage_rate() * echo_cashout_mult())
 
 
@@ -4866,8 +4865,6 @@ func _supply_name(kind: String) -> String:
 			return "建材"
 		"fuel":
 			return "燃料"
-		"money":
-			return "现金"
 	return kind
 
 

@@ -2,7 +2,7 @@ extends Node3D
 
 const REACH := 2.4
 
-var loot_id := "can"
+var loot_id := "food"
 
 var _model: Node3D
 

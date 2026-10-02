@@ -320,20 +320,8 @@ const CONTAINER_MODELS := {
 	"valuable": GW_PROP + "SM_Prop_Money_Stack_01.tscn",
 }
 const LOOT_ITEMS := {
-	"bread": {"name": "面包", "cat": "food", "model": SHOP_FOOD + "SM_Prop_Food_Baguette_01.tscn", "value": 8, "satiety": 30.0},
-	"can": {"name": "罐头", "cat": "food", "model": APO_ITEM + "SM_Item_Can_01.tscn", "value": 10, "satiety": 40.0},
-	"cheese": {"name": "奶酪", "cat": "food", "model": SHOP_FOOD + "SM_Prop_Food_Cheese_Slice_01.tscn", "value": 12, "satiety": 25.0},
-	"meat": {"name": "熟肉", "cat": "food", "model": APO_ITEM + "SM_Item_Meat_Cooked_01.tscn", "value": 16, "satiety": 45.0},
-	"apple": {"name": "苹果", "cat": "food", "model": SHOP_FOOD + "SM_Prop_Food_Apple_01.tscn", "value": 6, "satiety": 14.0},
-	"banana": {"name": "香蕉", "cat": "food", "model": SHOP_FOOD + "SM_Prop_Food_Banana_01.tscn", "value": 6, "satiety": 14.0},
-	"cookie": {"name": "饼干", "cat": "food", "model": SHOP_FOOD + "SM_Prop_Food_Cookie_01.tscn", "value": 5, "satiety": 15.0},
-	"candy": {"name": "能量棒", "cat": "food", "model": SHOP_FOOD + "SM_Prop_Food_Donut_01.tscn", "value": 7, "satiety": 20.0, "stamina": 15.0},
-	"chocolate": {"name": "巧克力", "cat": "food", "model": SHOP_FOOD + "SM_Prop_Food_Muffin_01.tscn", "value": 9, "satiety": 18.0, "stamina": 10.0},
-	"water": {"name": "矿泉水", "cat": "drink", "model": APO_ITEM + "SM_Item_Bottle_01.tscn", "value": 6, "satiety": 25.0},
-	"soda": {"name": "汽水", "cat": "drink", "model": APO_ITEM + "SM_Item_Drink_01.tscn", "value": 7, "satiety": 20.0, "stamina": 15.0},
-	"soda_big": {"name": "大瓶汽水", "cat": "drink", "model": APO_ITEM + "SM_Item_Drink_Bottle_01.tscn", "value": 12, "satiety": 35.0, "stamina": 25.0},
-	"coffee": {"name": "咖啡", "cat": "drink", "model": APO_ITEM + "SM_Item_BeerCup_01.tscn", "value": 14, "satiety": 10.0, "stamina": 45.0},
-	"water_big": {"name": "桶装水", "cat": "drink", "model": APO_PROP_S + "SM_Prop_Barrel_Water_01.tscn", "value": 18, "satiety": 50.0},
+	# 批次 239：全部食物/饮品品类合并为单一「食物」——拾取直接计入资源计数，自动进食消耗
+	"food": {"name": "食物", "cat": "food", "model": APO_ITEM + "SM_Item_Can_01.tscn", "value": 8, "satiety": 40.0},
 	"bandage": {"name": "绷带", "cat": "med", "model": APO_PROP_S + "SM_Prop_MedicalBox_01.tscn", "value": 15, "heal": 50},
 	"heal_potion": {"name": "恢复药水", "cat": "med", "model": APO_ITEM + "SM_Item_Pills_01.tscn", "value": 60, "hot_total": 100, "hot_duration": 10.0},
 	"axe": {"name": "消防斧", "cat": "melee", "model": APO_MELEE + "SM_Wep_FireAxe_01.tscn", "value": 130, "damage": 48},
@@ -375,11 +363,11 @@ const LOOT_ITEMS := {
 }
 
 const LOOT_TABLES := {
-	"house": ["bread", "can", "water", "soda", "apple", "banana", "cookie", "bandage", "plank", "hammer", "money_bag", "craft_mat", "craft_mat"],
-	"market": ["can", "bread", "cheese", "meat", "water", "soda_big", "coffee", "cookie", "chocolate", "money_bag", "craft_mat", "craft_mat"],
+	"house": ["food", "food", "food", "bandage", "plank", "hammer", "money_bag", "craft_mat", "craft_mat"],
+	"market": ["food", "food", "food", "food", "money_bag", "craft_mat", "craft_mat"],
 	"gun": ["pistol_loot", "smg_loot", "shotgun_loot", "rifle_loot", "sniper_loot", "lmg_loot", "grenade_loot", "rpg_loot", "suppressor", "scope_rds", "scope_2x", "scope_4x", "scope_8x", "hammer", "axe", "vest", "money_bag", "craft_mat", "craft_mat", "craft_mat"],
-	"medical": ["bandage", "bandage", "heal_potion", "water", "money_bag", "craft_mat", "craft_mat"],
-	"office": ["coffee", "soda", "cookie", "money_bag", "gold_box", "plank", "vest", "flashlight", "craft_mat", "craft_mat"],
+	"medical": ["bandage", "bandage", "heal_potion", "food", "money_bag", "craft_mat", "craft_mat"],
+	"office": ["food", "money_bag", "gold_box", "plank", "vest", "flashlight", "craft_mat", "craft_mat"],
 	"warehouse": ["plank", "wood", "stone", "bucket", "hammer", "shovel", "pickaxe", "axe", "vest", "flashlight", "craft_mat", "craft_mat", "craft_mat"],
 	"valuable": ["gold_box", "money_bag", "gold_box", "heal_potion", "vest", "craft_mat"],
 }
@@ -2377,7 +2365,7 @@ func close_all_panels() -> void:
 func roll_loot(table: String) -> String:
 	var list: Array = LOOT_TABLES.get(table, [])
 	if list.is_empty():
-		return "can"
+		return "food"
 	return String(list[randi() % list.size()])
 
 
@@ -2460,6 +2448,12 @@ func collect_boss_relic(relic_name: String) -> void:
 
 func add_loot(id: String, qty := 1) -> void:
 	if not LOOT_ITEMS.has(id):
+		return
+	# 批次 239：食物不是背包物品——拾取直接计入资源计数（自动进食消耗，营地工人喂食同源）
+	if id == "food":
+		resources["food"] = int(resources.get("food", 0)) + qty
+		notify("获得 食物 ×%d（共 %d，自动进食）" % [qty, int(resources["food"])])
+		resources_changed.emit()
 		return
 	if LOOT_CAPS.has(id):
 		var current := loot_count(id)
@@ -5051,16 +5045,12 @@ func _update_auto_use(delta: float) -> void:
 		elif _auto_warn_timer <= 0.0:
 			_auto_warn_timer = 10.0
 			notify("生命值过低，背包没有医疗包")
-	# 自动进食：饱食低于 40% 自动吃 1 份（背包没有且不在营地仓库范围内时提醒）
-	if satiety < MAX_SATIETY * AUTO_EAT_RATIO:
-		var has_food := int(resources.get("food", 0)) > 0 or (
-			player_in_base_radius() and int(home_base.get("storage", {}).get("food", 0)) > 0
-		)
-		if has_food:
-			eat_food()
-		elif _auto_warn_timer <= 0.0:
+	# 批次 239：进食改由 drain_satiety 的饥饿累积自动消耗（有食物饱食度不掉）；
+	# 这里只保留断粮警告
+	if satiety < MAX_SATIETY * AUTO_EAT_RATIO and not _food_unit_available():
+		if _auto_warn_timer <= 0.0:
 			_auto_warn_timer = 10.0
-			notify("饱食度过低，背包没有食物")
+			notify("饱食度持续下降——没有食物了！")
 
 
 func has_stamina() -> bool:
@@ -5077,9 +5067,45 @@ func regen_stamina(amount: float) -> void:
 	stamina_changed.emit(stamina)
 
 
+# 批次 239：饥饿累积计数——每满 40 点自动吃 1 份食物（1 份 = 40 饱食度的口粮）
+var _meal_debt := 0.0
+
+
+func _food_unit_available() -> bool:
+	if int(resources.get("food", 0)) > 0:
+		return true
+	return player_in_base_radius() and int(home_base.get("storage", {}).get("food", 0)) > 0
+
+
+func _consume_food_unit() -> bool:
+	if int(resources.get("food", 0)) > 0:
+		resources["food"] = int(resources["food"]) - 1
+		resources_changed.emit()
+		return true
+	if player_in_base_radius() and int(home_base.get("storage", {}).get("food", 0)) > 0:
+		var storage: Dictionary = home_base["storage"]
+		storage["food"] = int(storage.get("food", 0)) - 1
+		home_base_changed.emit()
+		return true
+	return false
+
+
 func drain_satiety(amount: float) -> void:
-	satiety = maxf(0.0, satiety - amount)
-	satiety_changed.emit(satiety)
+	# 批次 239：有食物时饱食度不掉——饥饿量累积起来每满 40 点自动吃 1 份食物；
+	# 食物耗尽后恢复正常衰减（此时才真正挨饿）
+	if amount <= 0.0:
+		return
+	if not _food_unit_available():
+		_meal_debt = 0.0
+		satiety = maxf(0.0, satiety - amount)
+		satiety_changed.emit(satiety)
+		return
+	_meal_debt += amount
+	while _meal_debt >= 40.0:
+		_meal_debt -= 40.0
+		if not _consume_food_unit():
+			_meal_debt = 0.0
+			break
 
 
 func eat_food() -> bool:

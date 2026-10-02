@@ -2302,8 +2302,7 @@ class Fabricator extends DefenseBase:
 class FoodSynthesizer extends Fabricator:
 	func _recipes() -> Dictionary:
 		return {
-			"can": {"name": "罐头 ×3", "kind": "resource", "resource": "food", "qty": 3, "craft": 4, "time": 8.0},
-			"bread": {"name": "面包 ×5", "kind": "resource", "resource": "food", "qty": 5, "craft": 3, "time": 6.0},
+			"food": {"name": "食物 ×5", "kind": "resource", "resource": "food", "qty": 5, "craft": 3, "time": 6.0},
 		}
 
 

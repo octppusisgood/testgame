@@ -37,14 +37,25 @@ const LEGACY_LOOT_MAP := {
 	"clothes": "money_bag",
 	"power_bank": "money_bag",
 	"hazmat": "money_bag",
+	# 批次 239：旧食物/饮品品类全部迁移为「食物」
+	"bread": "food",
+	"can": "food",
+	"cheese": "food",
+	"meat": "food",
+	"apple": "food",
+	"banana": "food",
+	"cookie": "food",
+	"candy": "food",
+	"chocolate": "food",
+	"water": "food",
+	"soda": "food",
+	"soda_big": "food",
+	"coffee": "food",
+	"water_big": "food",
 }
 
 const ITEM_CHOICES := [
-	{"id": "bread", "kind": "loot"},
-	{"id": "can", "kind": "loot"},
-	{"id": "meat", "kind": "loot"},
-	{"id": "water", "kind": "loot"},
-	{"id": "soda", "kind": "loot"},
+	{"id": "food", "kind": "loot"},
 	{"id": "bandage", "kind": "loot"},
 	{"id": "heal_potion", "kind": "loot"},
 	{"id": "axe", "kind": "loot"},
@@ -101,7 +112,7 @@ static func building_height(id: String) -> float:
 
 static func item_display_name(entry: Dictionary) -> String:
 	if String(entry.get("kind", "loot")) == "loot":
-		return GameState.loot_name(String(entry.get("id", "can")))
+		return GameState.loot_name(String(entry.get("id", "food")))
 	match String(entry.get("id", "")):
 		"ammo":
 			return "弹药 ×%d" % int(entry.get("amount", 30))
@@ -426,7 +437,7 @@ func _build_items() -> void:
 			add_child(pickup)
 			pickup.global_position = pos
 		else:
-			var loot_id := String(entry.get("id", "can"))
+			var loot_id := String(entry.get("id", "food"))
 			# 旧版医疗物品已下架，读旧地图时迁移为现存两种医疗物品
 			loot_id = String(LEGACY_LOOT_MAP.get(loot_id, loot_id))
 			if not GameState.LOOT_ITEMS.has(loot_id):

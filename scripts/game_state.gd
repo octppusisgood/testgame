@@ -425,7 +425,6 @@ const BASE_DEFENSES := {
 	"generator": {"name": "发电机", "cost": 30, "hp": 100, "range_aura": 3.0, "unique": true},
 	"solar": {"name": "太阳能电池板", "cost": 20, "hp": 60},
 	"windmill": {"name": "自制风力发电机", "cost": 25, "hp": 80},
-	"battery": {"name": "大型蓄电池组", "cost": 20, "hp": 100, "unique": true},
 	"containment": {"name": "异能储存仓", "cost": 25, "hp": 120, "unique": true},
 	"workbench": {"name": "弹药加工台", "cost": 5, "hp": 100},
 	"converter": {"name": "异能转换台", "cost": 5, "hp": 120, "craft": 5},
@@ -441,9 +440,7 @@ const BASE_DEFENSES := {
 }
 # 据点发电机：烧仓库燃料发电，1 升燃料发电 60 秒
 const GEN_FUEL_SECONDS := 60.0
-# 据点电力：储备 0~上限（基础 100，每组蓄电池 +200）；发电设备充入，用电设备（炮塔/照明灯）消耗
-const BASE_POWER_CAP := 100.0
-const BASE_POWER_PER_BATTERY := 200.0
+# 据点电力（批次 249）：无储备池——发电/用电为瞬时速率，见 power_gen_rate/power_use_rate
 const GEN_POWER_RATE := 5.0  # 批次 237：发电机 50kW（原 1.0=10kW）
 const SOLAR_POWER_RATE := 0.6
 const WIND_POWER_RATE := 0.25
@@ -5489,11 +5486,17 @@ func generator_running() -> bool:
 	return int(home_base["storage"].get("fuel", 0)) > 0
 
 
-# —— 电力速率（小地图电力环用）：当前每秒发电/用电（功率），×10 显示为千瓦 ——
+# —— 电力（批次 249：无储备池，即发即用）——
+# 城市电网在线时市电兜底（第 3 天发电站停运）
+const GRID_POWER_RATE := 100.0
+
+
 func power_gen_rate() -> float:
 	if not has_home_base():
 		return 0.0
 	var rate := 0.0
+	if grid_online():
+		rate += GRID_POWER_RATE
 	if generator_running():
 		rate += GEN_POWER_RATE * (1.0 + 0.3 * operated_defense_count("generator"))
 	var solar := _count_defense("solar")
@@ -5503,6 +5506,12 @@ func power_gen_rate() -> float:
 	if wind > 0:
 		var wind_rate := WIND_POWER_RATE * (2.0 if is_raining() else 1.0)
 		rate += (wind + 0.3 * operated_defense_count("windmill")) * wind_rate
+	# 异能转换台：缓冲有电且在据点 15m 内时作为发电源放出
+	for device in get_tree().get_nodes_in_group("base_defense"):
+		if device.is_queued_for_deletion():
+			continue
+		if device.has_method("converter_rate"):
+			rate += float(device.call("converter_rate"))
 	return rate
 
 
@@ -5547,42 +5556,21 @@ func repair_power_plant() -> bool:
 	return true
 
 
-# —— 据点电力：储备池；油机/太阳能/风力充入，炮塔/照明灯消耗，玩家回充 ——
+# —— 据点电力（批次 249：无储备池，即发即用——发电速率覆盖用电速率设备才运转）——
 
-func base_power() -> float:
-	if not has_home_base():
-		return 0.0
-	return float(home_base.get("power", 0.0))
-
-
-func base_power_cap() -> float:
-	if not has_home_base():
-		return 0.0
-	var batteries := 0
-	for entry in home_base.get("defenses", []):
-		if String(entry.get("type", "")) == "battery":
-			batteries += 1
-	return BASE_POWER_CAP + batteries * BASE_POWER_PER_BATTERY
-
-
-func _add_base_power(amount: float) -> void:
-	if not has_home_base() or amount <= 0.0:
-		return
-	home_base["power"] = clampf(base_power() + amount, 0.0, base_power_cap())
-
-
-# 从据点电力池取电（制造设备耗电用），返回实际取到的量
+# 用电请求（制造设备逐帧调用）：当前发电 ≥ 当前用电 → 放行；否则 0（缺电暂停）
 func drain_base_power(amount: float) -> float:
 	if not has_home_base() or amount <= 0.0:
 		return 0.0
-	var got := minf(amount, base_power())
-	home_base["power"] = base_power() - got
-	return got
+	if power_gen_rate() >= power_use_rate():
+		return amount
+	return 0.0
 
 
 # 据点用电设备是否有电：电网在线时免费用市电，断电后吃据点储备
 func base_devices_powered() -> bool:
-	return grid_online() or base_power() > 0.0
+	# 批次 249：无储备池——市电在线或本地有发电即视为有电
+	return grid_online() or power_gen_rate() > 0.0
 
 
 func _count_defense(type: String) -> int:
@@ -5596,19 +5584,13 @@ func _count_defense(type: String) -> int:
 
 
 # 电力节拍：发电设备充储备；断电时用电设备吃储备；半径内玩家从储备（或市电）回充
+# 电力节拍（批次 249：无储备池）：发电机持续烧油维持运转；
+# 发电/用电均为瞬时速率（power_gen_rate / power_use_rate），无充放
 func _tick_generator(delta: float) -> void:
 	if not has_home_base():
 		_gen_burn = 0.0
 		return
-	# 充入：太阳能（白天）/ 风力（全天，雨天加倍）；有操作员的机组效率 +30%
-	if _count_defense("solar") > 0 and not is_night():
-		var solar_units := _count_defense("solar") + 0.3 * operated_defense_count("solar")
-		_add_base_power(solar_units * SOLAR_POWER_RATE * day_brightness() * delta)
-	if _count_defense("windmill") > 0:
-		var wind_rate := WIND_POWER_RATE * (2.0 if is_raining() else 1.0)
-		var wind_units := _count_defense("windmill") + 0.3 * operated_defense_count("windmill")
-		_add_base_power(wind_units * wind_rate * delta)
-	# 发电机：持续烧仓库燃料（1 升 / 60 秒），烧油期间 1 电力/秒（操作员 +30%）
+	# 发电机：持续烧仓库燃料（1 升 / 60 秒）维持 50kW 输出
 	if base_has_generator():
 		var storage: Dictionary = home_base["storage"]
 		var fuel_left := int(storage.get("fuel", 0))
@@ -5620,21 +5602,12 @@ func _tick_generator(delta: float) -> void:
 			if _gen_stall_notified:
 				_gen_stall_notified = false
 				notify("发电机恢复运转")
-			_add_base_power(GEN_POWER_RATE * (1.0 + 0.3 * operated_defense_count("generator")) * delta)
 			_gen_burn += delta
 			if _gen_burn >= GEN_FUEL_SECONDS:
 				var liters := int(_gen_burn / GEN_FUEL_SECONDS)
 				_gen_burn -= liters * GEN_FUEL_SECONDS
 				storage["fuel"] = fuel_left - mini(liters, fuel_left)
 				home_base_changed.emit()
-	# 消耗：断电后炮塔/照明灯吃储备（照明灯只在夜间耗电；有驻守的灯不耗电）
-	if not grid_online():
-		var drain := _count_defense("turret") * TURRET_POWER_DRAIN * delta
-		if is_night():
-			var unmanned_lamps := _count_defense("lamp") - operated_defense_count("lamp")
-			drain += maxi(0, unmanned_lamps) * LAMP_POWER_DRAIN * delta
-		if drain > 0.0 and base_power() > 0.0:
-			home_base["power"] = maxf(0.0, base_power() - drain)
 
 
 # —— 能源标记：物品/设施用什么能源一目了然（可叠加多种）——
@@ -5644,7 +5617,6 @@ const ENERGY_TAGS := {
 	"turret": ["电"],
 	"lamp": ["电"],
 	"station": ["电"],
-	"battery": ["电"],
 	"solar": ["电"],
 	"windmill": ["电"],
 	"containment": ["异"],

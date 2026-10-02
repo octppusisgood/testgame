@@ -1066,38 +1066,34 @@ func _test_material_transport() -> void:
 	GameState.day_number = old_day
 	GameState.grid_repaired = old_repaired
 
-	# —— 据点电力储备：发电设备充入 / 用电设备消耗 / 蓄电池扩容 ——
-	GameState.claim_home_base("house", Vector3(500, 0, 500))
-	GameState.home_base["power"] = 0.0
+	# —— 据点电力（批次 249：无储备池，即发即用——发电≥用电设备才运转）——
+	GameState.claim_home_base(GameState.OPEN_GROUND_BASE_ID, Vector3(500, 0, 500))
 	GameState.home_base["defenses"] = []
-	_check(GameState.base_power_cap() == 100.0, "据点电力基础上限 100")
-	GameState.home_base["defenses"] = [{"type": "battery", "pos": Vector3(500, 0, 500)}]
-	_check(GameState.base_power_cap() == 300.0, "蓄电池组扩容到 300")
-	GameState.home_base["defenses"] = [{"type": "solar", "pos": Vector3(500, 0, 500)}]
+	_check(not GameState.BASE_DEFENSES.has("battery"), "蓄电池已从建造表移除")
+	# 电网在线：市电兜底，发电速率 ≥ 用电速率，设备放行
+	GameState.phase = "prepare"
+	_check(GameState.grid_online(), "准备期电网在线")
+	_check(GameState.power_gen_rate() >= GameState.power_use_rate(), "市电期发电覆盖用电")
+	_check(GameState.drain_base_power(0.5) == 0.5, "市电期用电请求放行")
+	# 电网停运 + 无发电：用电请求被拒（缺电）
 	GameState.phase = "survival"
-	GameState.day_number = 1
-	GameState.day_elapsed = 100.0
-	GameState._tick_generator(1.0)
-	_check(GameState.base_power() > 0.2, "太阳能板白天充电（%.2f）" % GameState.base_power())
-	GameState.day_elapsed = 700.0
-	var power_before_wind := GameState.base_power()
-	GameState.home_base["defenses"] = [{"type": "windmill", "pos": Vector3(500, 0, 500)}]
-	GameState._tick_generator(1.0)
-	_check(
-		GameState.base_power() > power_before_wind,
-		"风力发电机夜间也充电（%.2f）" % GameState.base_power()
-	)
-	# 断电后炮塔吃储备
 	GameState.day_number = 3
 	GameState.grid_repaired = false
-	GameState.home_base["power"] = 10.0
 	GameState.home_base["defenses"] = [{"type": "turret", "pos": Vector3(500, 0, 500)}]
-	GameState._tick_generator(10.0)
-	_check(GameState.base_power() < 10.0, "断电后炮塔消耗储备（%.2f）" % GameState.base_power())
-	GameState.home_base["power"] = 0.0
-	_check(not GameState.base_devices_powered(), "储备归零设备断电")
-	GameState.day_number = 1
-	_check(GameState.base_devices_powered(), "电网在线设备有电")
+	_check(GameState.power_gen_rate() < GameState.power_use_rate(), "断电无发电时发电<用电")
+	_check(GameState.drain_base_power(0.5) == 0.0, "缺电时用电请求返回 0")
+	_check(not GameState.base_devices_powered(), "断电且无发电设备断电")
+	# 发电机运转：50kW 覆盖用电，设备放行
+	GameState.home_base["defenses"] = [
+		{"type": "generator", "pos": Vector3(500, 0, 500)},
+		{"type": "turret", "pos": Vector3(501, 0, 500)},
+	]
+	GameState.home_base["storage"]["fuel"] = 60
+	_check(GameState.power_gen_rate() >= GameState.power_use_rate(), "发电机 50kW 覆盖用电")
+	_check(GameState.drain_base_power(0.5) == 0.5, "有发电时用电请求放行")
+	_check(GameState.base_devices_powered(), "有发电设备有电")
+	GameState.home_base["storage"]["fuel"] = 0
+	_check(GameState.power_gen_rate() < GameState.power_use_rate(), "燃料耗尽发电归零")
 	GameState.home_base["defenses"] = []
 	GameState.home_base["power"] = 0.0
 

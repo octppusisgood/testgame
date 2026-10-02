@@ -38,7 +38,7 @@ const BUILD_CATEGORIES := [
 ]
 const BUILD_CATEGORY_ITEMS := {
 	"defense": ["barricade", "turret", "mortar", "cannon", "spikes", "wall"],
-	"base": ["lamp", "generator", "solar", "windmill", "battery", "signal_tower"],
+	"base": ["lamp", "generator", "solar", "windmill", "signal_tower"],
 	"craft": ["fabricator", "med_station", "food_synth", "workbench", "converter"],
 	"storage": ["containment", "upgrade_storage"],
 }
@@ -60,7 +60,6 @@ const DEFENSE_FOOTPRINT_RADIUS := {
 	"generator": 0.6,
 	"solar": 0.8,
 	"windmill": 0.4,
-	"battery": 0.95,
 	"containment": 0.7,
 	"workbench": 0.7,
 	"converter": 0.7,
@@ -426,7 +425,7 @@ func _refresh_panel() -> void:
 	if _info_label == null or not GameState.has_home_base():
 		return
 	_info_label.text = (
-		"Lv.%d/%d · 半径 %.0fm · 建材 %d/%d（含周边 %d） · 设施 %d 座 · 信号 %.0fm · 折现 %d%% · 电力 %d/%d"
+		"Lv.%d/%d · 半径 %.0fm · 建材 %d/%d（含周边 %d） · 设施 %d 座 · 信号 %.0fm · 折现 %d%% · 电力 发电%dkW/用电%dkW"
 		% [
 			GameState.home_base_level(),
 			GameState.BASE_MAX_LEVEL,
@@ -437,8 +436,8 @@ func _refresh_panel() -> void:
 			GameState.base_defense_count(),
 			GameState.base_signal_radius(),
 			int(GameState.home_storage_rate() * 100.0),
-			int(GameState.base_power()),
-			int(GameState.base_power_cap()),
+			int(GameState.power_gen_rate() * 10.0),
+			int(GameState.power_use_rate() * 10.0),
 		]
 	)
 	_upgrade_button.text = "升级据点 — 建材 ×%d" % GameState.upgrade_base_cost()
@@ -616,8 +615,6 @@ func _make_ghost(type: String) -> void:
 			box.size = Vector3(1.4, 1.0, 1.2)
 		"windmill":
 			box.size = Vector3(0.6, 3.4, 0.6)
-		"battery":
-			box.size = Vector3(1.7, 1.1, 0.7)
 		"containment":
 			box.size = Vector3(1.2, 1.6, 1.2)
 		"workbench":
@@ -794,8 +791,6 @@ func _spawn_defense(type: String, pos: Vector3, yaw: float) -> void:
 			node = SolarPanel.new()
 		"windmill":
 			node = Windmill.new()
-		"battery":
-			node = BatteryBank.new()
 		"containment":
 			node = ContainmentUnit.new()
 		"workbench":
@@ -893,8 +888,6 @@ class BuildSlot extends Control:
 				return Color(0.35, 0.5, 0.85)
 			"windmill":
 				return Color(0.7, 0.75, 0.7)
-			"battery":
-				return Color(0.5, 0.65, 0.5)
 			"containment", "converter":
 				return Color(0.75, 0.6, 0.9)
 			"fabricator":
@@ -964,10 +957,6 @@ class BuildSlot extends Control:
 					draw_line(
 						o + Vector2(12, 6), o + Vector2(12 + cos(a) * 6, 6 + sin(a) * 6), c, 1.5
 					)
-			"battery":
-				draw_rect(Rect2(o + Vector2(4, 5), Vector2(15, 9)), c)
-				draw_rect(Rect2(o + Vector2(19, 8), Vector2(3, 4)), c)
-				draw_rect(Rect2(o + Vector2(6, 7), Vector2(4, 5)), Color(0.4, 0.9, 0.4) * dim)
 			"containment":
 				draw_rect(Rect2(o + Vector2(6, 3), Vector2(12, 12)), c, false, 1.5)
 				draw_circle(o + Vector2(12, 9), 3.0, Color(0.8, 0.5, 0.95) * dim)
@@ -1992,8 +1981,10 @@ class Converter extends Fabricator:
 		if convert > 0:
 			anomaly_buffer -= convert
 			stored_power = minf(POWER_CAP, stored_power + convert * RATE)
-		# 3. 15 米内向据点电力池供电
-		var supplying := _supply_base()
+		# 3. 15 米内向据点供电：无储备池模型（批次 249）下作为发电源放出 5.0/s（=50kW）
+		var supplying := converter_rate() > 0.0
+		if supplying:
+			stored_power = maxf(0.0, stored_power - CONVERTER_OUTPUT * delta)
 		# 制造任务进行中优先显示制造进度；空闲时显示供电状态
 		if _job == "":
 			_show_power(supplying or anomaly_buffer > 0)
@@ -2001,20 +1992,14 @@ class Converter extends Fabricator:
 			_bolt.visible = true
 
 
-	# 向 15 米内的据点电力池输电，返回是否正在供电
-	func _supply_base() -> bool:
+	# 作为发电源的当前输出：缓冲有电且据点在 15m 内 = CONVERTER_OUTPUT/s，否则 0
+	const CONVERTER_OUTPUT := 5.0
+
+	func converter_rate() -> float:
 		if stored_power <= 0.0 or not GameState.has_home_base():
-			return false
+			return 0.0
 		var base_pos: Vector3 = GameState.home_base.get("position", Vector3.ZERO)
-		if global_position.distance_to(base_pos) > SUPPLY_RANGE:
-			return false
-		var want := GameState.base_power_cap() - GameState.base_power()
-		var transfer := minf(stored_power, maxf(want, 0.0))
-		if transfer <= 0.0:
-			return true
-		GameState._add_base_power(transfer)
-		stored_power -= transfer
-		return true
+		return CONVERTER_OUTPUT if global_position.distance_to(base_pos) <= SUPPLY_RANGE else 0.0
 
 
 	func _show_power(active: bool) -> void:
@@ -2607,78 +2592,6 @@ class Windmill extends DefenseBase:
 	func _process(delta: float) -> void:
 		if _rotor != null:
 			_rotor.rotation.z += delta * ROTOR_SPEED
-
-
-# 大型蓄电池组：并排电池柜 + 顶部指示灯（有电亮绿、断电转暗）
-class BatteryBank extends DefenseBase:
-	const CHECK_INTERVAL := 0.5
-
-	var _lamp_material: StandardMaterial3D = null
-	var _check := 0.0
-
-
-	func _ready() -> void:
-		add_to_group("base_defense")
-		GameState.request_spatial_rebuild()
-		hp = GameState.base_defense_hp("battery")
-		debris_size = Vector3(1.7, 1.0, 0.6)
-		debris_color = Color(0.28, 0.34, 0.3)
-		debris_noise = 24.0
-		var shape := CollisionShape3D.new()
-		var box_shape := BoxShape3D.new()
-		box_shape.size = Vector3(1.7, 1.0, 0.6)
-		shape.shape = box_shape
-		shape.position.y = 0.5
-		add_child(shape)
-		for i in 3:
-			var cabinet := MeshInstance3D.new()
-			var cabinet_box := BoxMesh.new()
-			cabinet_box.size = Vector3(0.52, 1.0, 0.55)
-			cabinet.mesh = cabinet_box
-			var cabinet_material := StandardMaterial3D.new()
-			cabinet_material.albedo_color = Color(0.28 + 0.03 * i, 0.34, 0.3)
-			cabinet.material_override = cabinet_material
-			cabinet.position = Vector3(-0.56 + 0.56 * i, 0.5, 0.0)
-			add_child(cabinet)
-		# 柜门缝线条
-		for i in 2:
-			var seam := MeshInstance3D.new()
-			var seam_box := BoxMesh.new()
-			seam_box.size = Vector3(0.03, 0.9, 0.02)
-			seam.mesh = seam_box
-			var seam_material := StandardMaterial3D.new()
-			seam_material.albedo_color = Color(0.15, 0.17, 0.16)
-			seam.material_override = seam_material
-			seam.position = Vector3(-0.28 + 0.56 * i, 0.5, -0.28)
-			add_child(seam)
-		var lamp := MeshInstance3D.new()
-		var lamp_box := BoxMesh.new()
-		lamp_box.size = Vector3(0.1, 0.06, 0.1)
-		lamp.mesh = lamp_box
-		_lamp_material = StandardMaterial3D.new()
-		_lamp_material.albedo_color = Color(0.2, 0.35, 0.22)
-		_lamp_material.emission_enabled = true
-		_lamp_material.emission = Color(0.25, 1.0, 0.35)
-		_lamp_material.emission_energy_multiplier = 0.1
-		lamp.material_override = _lamp_material
-		lamp.position = Vector3(0, 1.04, 0)
-		add_child(lamp)
-
-
-	func _process(delta: float) -> void:
-		_check -= delta
-		if _check > 0.0:
-			return
-		_check = CHECK_INTERVAL
-		if _lamp_material == null:
-			return
-		if GameState.base_devices_powered():
-			_lamp_material.albedo_color = Color(0.3, 1.0, 0.4)
-			_lamp_material.emission_energy_multiplier = 2.0
-		else:
-			_lamp_material.albedo_color = Color(0.2, 0.35, 0.22)
-			_lamp_material.emission_energy_multiplier = 0.1
-
 
 # 异能储存仓：力场玻璃罐，存异能结晶
 class ContainmentUnit extends DefenseBase:

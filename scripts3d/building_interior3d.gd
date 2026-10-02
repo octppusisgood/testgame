@@ -67,7 +67,8 @@ func _adjust(door: Node, delta: int) -> void:
 	_refresh_marker(door)
 
 
-# 市民藏匿：隐藏 + 移出 npcs 组（丧尸空间哈希/池化按组扫描，天然排除）+ 关碰撞 + AI 静止
+# 市民/随从藏匿（批次 253：整个人从地图上消失）——隐藏 + 冻结处理（AI/动画/可见性管理全停）
+# + 移出 npcs 组（丧尸空间哈希/池化按组扫描，天然排除）+ 关碰撞；叫出时完整恢复
 func enter_npc(door: Node, npc: Node3D) -> bool:
 	if not has_space(door):
 		return false
@@ -78,6 +79,8 @@ func enter_npc(door: Node, npc: Node3D) -> bool:
 	npc.set("sheltered", _door_id(door))
 	npc.visible = false
 	npc.remove_from_group("npcs")
+	npc.set_physics_process(false)
+	npc.set_process(false)
 	var collision := npc.get_node_or_null("CollisionShape3D") as CollisionShape3D
 	if collision != null:
 		collision.set_deferred("disabled", true)
@@ -92,6 +95,8 @@ func npc_leave(npc: Node3D) -> void:
 	npc.set("sheltered", "")
 	npc.visible = true
 	npc.add_to_group("npcs")
+	npc.set_physics_process(true)
+	npc.set_process(true)
 	var collision := npc.get_node_or_null("CollisionShape3D") as CollisionShape3D
 	if collision != null:
 		collision.set_deferred("disabled", false)

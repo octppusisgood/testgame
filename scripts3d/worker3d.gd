@@ -1720,6 +1720,9 @@ class FollowerBody extends CharacterBody3D:
 	var melee_damage := 0
 	# npcs 组兼容桩：丧尸/小地图/目击逻辑会对 npcs 组成员访问这些成员
 	var role := "follower"
+	# 批次 253：藏匿系统状态桩——没有这个属性时 enter_npc 的 set("sheltered") 静默失败，
+	# npc_leave 守卫永远早退 → 随从进楼后永久隐形（"丢失模型"的根因）
+	var sheltered := ""
 	var _killed_by_player := false
 	var net_puppet := false
 	var _dying := false

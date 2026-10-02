@@ -130,11 +130,8 @@ func _demolish_station() -> void:
 		GameState.report_crime(2, witness)
 	GameState.clear_signal(get_instance_id())
 	GameState.noise_at(global_position, 25.0)
-	# 建材直入背包，超携带上限才落地成堆
-	var before := int(GameState.resources.get("materials", 0))
-	GameState.add_resource("materials", DEMOLISH_YIELD)
-	var got_in := int(GameState.resources.get("materials", 0)) - before
-	var leftover := DEMOLISH_YIELD - got_in
+	# 批次 251/252：建材投放——车上优先入车斗、其次背包，超出落地成堆
+	var leftover := GameState.give_dug_materials(DEMOLISH_YIELD)
 	if leftover > 0:
 		var parent := get_parent()
 		if parent != null:
@@ -145,7 +142,7 @@ func _demolish_station() -> void:
 	GameState.post_message(
 		"%s 被彻底拆除" % data.get("name", "基站"), _world_to_map(global_position), "station", true
 	)
-	GameState.notify("信号塔已拆除，建材 +%d 已入背包" % got_in)
+	GameState.notify("信号塔已拆除，建材 ×%d 已入车斗/背包" % (DEMOLISH_YIELD - leftover))
 	queue_free()
 
 

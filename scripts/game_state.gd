@@ -4470,6 +4470,26 @@ func add_resource(kind: String, amount := 1) -> void:
 	resources_changed.emit()
 
 
+# 批次 252：挖取建材投放——玩家在车上优先装车斗，其次入背包；返回放不下的余量（调用方落地成堆）
+func give_dug_materials(amount: int) -> int:
+	if amount <= 0:
+		return 0
+	var player = get_tree().get_first_node_in_group("player")
+	if player != null:
+		var vehicle = player.get("vehicle")
+		if vehicle != null and is_instance_valid(vehicle) and amount > 0:
+			var space: int = int(vehicle.call("cargo_cap")) - int(vehicle.get("cargo"))
+			var load: int = mini(amount, maxi(space, 0))
+			if load > 0:
+				vehicle.set("cargo", int(vehicle.get("cargo")) + load)
+				amount -= load
+				notify("建材 +%d 已装入车斗" % load)
+	var before := int(resources.get("materials", 0))
+	add_resource("materials", amount)
+	amount -= int(resources.get("materials", 0)) - before
+	return amount
+
+
 # 玩家是否站在据点半径内（进入营地范围，身上物资与仓库共享）
 func player_in_base_radius() -> bool:
 	if not has_home_base():

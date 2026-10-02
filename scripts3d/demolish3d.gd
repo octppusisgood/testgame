@@ -621,15 +621,13 @@ func _drop_material_pile(pos: Vector3, amount: int) -> void:
 	pile.setup(amount)
 
 
-# 批次 251：挖取建材直接入挖取人（玩家）背包；超出携带上限（CAPS.materials）的部分落地成堆
+# 批次 251/252：挖取建材投放——车上优先入车斗、其次玩家背包（GameState.give_dug_materials）；
+# 超出的部分落地成堆
 func _give_dug_materials(fallback_pos: Vector3, amount: int) -> void:
-	var before := int(GameState.resources.get("materials", 0))
-	GameState.add_resource("materials", amount)
-	var got_in := int(GameState.resources.get("materials", 0)) - before
-	var leftover := amount - got_in
+	var leftover := GameState.give_dug_materials(amount)
 	if leftover > 0:
 		_drop_material_pile(fallback_pos, leftover)
-		GameState.notify("背包建材已满，%d 建材落地成堆" % leftover)
+		GameState.notify("车斗与背包都满了，%d 建材落地成堆" % leftover)
 
 
 # 废墟痕迹：3~6 个带碰撞的低矮碎块（高度 <0.5m，不挡路）

@@ -531,6 +531,18 @@ func assign_follower_task(list: Array, task: String, point := Vector3.ZERO) -> v
 			else:
 				f.visible = true
 				f.add_to_group("npcs")
+		# 藏匿中的随从改派任务 = 先叫出（恢复可见/解冻/回 npcs 组/开碰撞），
+		# 否则人一直藏在建筑里隐形（批次 253 只修了 npc_leave，J 面板指挥这条路漏了）
+		if str(f.get("sheltered")) != "":
+			var interiors_root = get_tree().get_first_node_in_group("building_interiors")
+			if interiors_root != null:
+				interiors_root.npc_leave(f)
+			else:
+				f.set("sheltered", "")
+				f.visible = true
+				f.add_to_group("npcs")
+				f.set_physics_process(true)
+				f.set_process(true)
 		f.mode = task
 		if task == "scavenge":
 			f.task_point = player.global_position if player != null else f.global_position

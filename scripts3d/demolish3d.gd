@@ -36,6 +36,9 @@ var _hold := 0.0
 var _running := false
 # 建筑血量标记：pos_px -> Label3D（满血不显示，受损挂楼顶，坍塌隐藏）
 var _hp_labels := {}
+# 批次 264：血条显示时刻（pos_px → msec），受击显示 10 秒后自动隐藏
+var _hp_label_shown_at := {}
+var _hp_fade_timer := 0.0
 # 已拆塔楼记录在 GameState.demolished_towers（像素中心坐标，与 demolished_buildings 同构），
 # 这样小地图也能读到；节点本地不再各存一份，避免两份状态不同步。
 
@@ -60,6 +63,19 @@ func prompt_priority() -> bool:
 
 func _process(delta: float) -> void:
 	_prompt = ""
+	# 批次 264：血条 10 秒无受击自动隐藏
+	_hp_fade_timer -= delta
+	if _hp_fade_timer <= 0.0:
+		_hp_fade_timer = 1.0
+		var now := Time.get_ticks_msec()
+		for pos_px in _hp_label_shown_at.keys():
+			if now - int(_hp_label_shown_at[pos_px]) < 10000:
+				continue
+			_hp_label_shown_at.erase(pos_px)
+			if _hp_labels.has(pos_px):
+				var lbl = _hp_labels[pos_px]
+				if lbl != null and is_instance_valid(lbl):
+					lbl.visible = false
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null or GameState.is_run_over():
 		_reset_hold()
@@ -478,6 +494,9 @@ func _refresh_hp_label(s: Dictionary) -> void:
 	else:
 		label.modulate = Color(0.8, 0.95, 0.8)
 	label.text = "HP %d/%d" % [hp, GameState.BUILDING_HP]
+	# 批次 264：受击显示并刷新 10 秒计时（到时由 _process 隐藏）
+	label.visible = true
+	_hp_label_shown_at[pos_px] = Time.get_ticks_msec()
 	label.visible = true
 
 

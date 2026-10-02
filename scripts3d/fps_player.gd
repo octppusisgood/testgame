@@ -809,8 +809,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				var hud := get_node_or_null("HUD")
 				if hud != null and hud.has_method("quick_mortar_command"):
 					hud.quick_mortar_command()
-			KEY_H:
-				GameState.use_medkit()
+			KEY_F:
+				# F = 使用药品（医疗包/仓库药/异能量应急）；UI 打开时不响应
+				if not _dead and not GameState.attack_blocked_by_ui():
+					GameState.use_medkit()
 			KEY_M:
 				GameState.toggle_map()
 			KEY_B:

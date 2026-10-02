@@ -5394,12 +5394,12 @@ func add_anomaly(amount: int) -> void:
 		return
 	anomaly = mini(ANOMALY_MAX, anomaly + amount)
 	if anomaly == ANOMALY_HEAL_COST:
-		notify("异能量达到 %d：没有医疗包时可按 H 应急治疗" % ANOMALY_HEAL_COST)
+		notify("异能量达到 %d：没有医疗包时可按 F 应急治疗" % ANOMALY_HEAL_COST)
 	elif anomaly == ANOMALY_MAX:
 		notify("异能量已满（撤离/败北结算时 1:1 折算 SP）")
 
 
-# 异能量应急治疗：没有医疗包时按 H 触发，消耗 15 点回 40% 生命
+# 异能量应急治疗：没有医疗包时按 F 触发，消耗 15 点回 40% 生命
 func use_anomaly_heal() -> bool:
 	if anomaly < ANOMALY_HEAL_COST:
 		notify("没有医疗包，异能量也不足 %d（击杀丧尸积累）" % ANOMALY_HEAL_COST)

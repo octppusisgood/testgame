@@ -471,16 +471,15 @@ func _draw_content(show_people: bool) -> void:
 			var npc_pos: Vector2 = _project3(npc.global_position)
 			if not _in_circle(npc_pos, 4.0):
 				continue
-			if npc.role == "cop":
-				_draw_badge(npc_pos)
+			if npc.role == "cop" or npc.role == "soldier":
+				# 批次 246：警察与军队统一标记为黄点
+				draw_circle(npc_pos, 1.5, Color(1.0, 0.85, 0.3, 0.95))
 				continue
 			if npc.role == "follower":
 				# 批次 245：被招募的随从 = 亮绿大点（与士兵绿/市民灰区分）
 				draw_circle(npc_pos, 1.9, Color(0.45, 1.0, 0.5, 0.98))
 				continue
 			var color := Color(0.75, 0.75, 0.8, 0.9)
-			if npc.role == "soldier":
-				color = Color(0.4, 0.75, 0.35, 0.95)
 			draw_circle(npc_pos, 1.4, color)
 		for zombie in get_tree().get_nodes_in_group("zombies"):
 			# 死亡动画中的尸体不再显示红点（暂停时死亡 tween 可能延迟释放）；
@@ -712,6 +711,7 @@ func _draw_tower(center: Vector2, color: Color) -> void:
 
 
 func _draw_badge(center: Vector2) -> void:
+	# 批次 246 后警察改画黄点，此函数保留备用（无调用方）
 	var points := PackedVector2Array()
 	for i in 10:
 		var angle := -PI / 2.0 + PI * float(i) / 5.0

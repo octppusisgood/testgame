@@ -4714,9 +4714,6 @@ func add_worker(wname: String) -> bool:
 		return false
 	if not get_worker(wname).is_empty():
 		return false
-	if worker_count() >= worker_cap():
-		notify("营地工人已满（%d/%d），升级据点可扩容" % [worker_count(), worker_cap()])
-		return false
 	workers().append({"name": wname, "job": "idle", "state": "home", "data": {}, "level": 0})
 	home_base_changed.emit()
 	return true

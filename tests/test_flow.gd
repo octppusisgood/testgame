@@ -1433,7 +1433,7 @@ func _test_workers() -> void:
 	_check(GameState.add_worker("王建国"), "招募第一名工人")
 	_check(GameState.add_worker("李秀英"), "招募第二名工人")
 	_check(GameState.worker_count() == 2, "工人数量为 2")
-	_check(not GameState.add_worker("张铁柱"), "超出容量不能继续招募")
+	_check(GameState.add_worker("张铁柱"), "取消工人上限后超出旧容量仍可招募")
 	_check(not GameState.add_worker("王建国"), "同名工人不能重复招募")
 	var first: Dictionary = GameState.get_worker("王建国")
 	_check(
@@ -1461,7 +1461,7 @@ func _test_workers() -> void:
 	mgr.set_script(load("res://scripts3d/worker3d.gd"))
 	add_child(mgr)
 	await get_tree().physics_frame
-	_check(mgr._entities.size() == 2, "管理器为 2 名工人生成实体")
+	_check(mgr._entities.size() == 3, "管理器为 3 名工人生成实体（无上限）")
 	var body = mgr._entities["王建国"]
 	_check(body.is_in_group("workers") and body.is_in_group("npcs"), "工人实体在 workers/npcs 组")
 	_check(body.hp == body.max_hp and body.hp > 0, "工人实体带生命值")
@@ -1582,8 +1582,8 @@ func _test_followers() -> void:
 	mgr._update_recruit_target()
 	opts = mgr.interact_options(player)
 	_check(
-		bool(opts[0]["disabled"]) and String(opts[0]["reason"]).contains("随从已满"),
-		"随从满 4 人后提示随从已满"
+		not bool(opts[0]["disabled"]),
+		"取消随从上限后满 4 人仍可继续招募"
 	)
 
 	# —— 随从免疫玩家伤害 ——
@@ -1835,8 +1835,8 @@ func _test_interact_menu() -> void:
 		mgr._followers.append(dummy)
 	opts = mgr.interact_options(player)
 	_check(
-		bool(opts[0]["disabled"]) and String(opts[0]["reason"]).contains("随从已满"),
-		"随从满 4 人时招募选项禁用并附原因"
+		not bool(opts[0]["disabled"]),
+		"取消随从上限后招募选项始终可用"
 	)
 	mgr._followers.clear()
 

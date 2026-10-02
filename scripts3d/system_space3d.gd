@@ -353,19 +353,15 @@ func _build_gene_panel(box: VBoxContainer) -> void:
 	var hired: int = GameState.pending_hires.size()
 	var hire_btn := Button.new()
 	hire_btn.add_theme_font_size_override("font_size", 10)
-	if hired >= 4:
-		hire_btn.text = "雇佣随从已满 4 名（进局自动跟随）"
-		hire_btn.disabled = true
-	else:
-		hire_btn.text = "%s — %d SP" % [String(hire_info["name"]), int(hire_info["cost"])]
-		if hired > 0:
-			hire_btn.text += "（已带 %d 名）" % hired
-		hire_btn.disabled = GameState.space_energy < int(hire_info["cost"])
-		hire_btn.pressed.connect(func() -> void:
-			if GameState.buy_shop_item("hire_npc"):
-				_close_panel()
-				_open_panel("gene")
-		)
+	hire_btn.text = "%s — %d SP" % [String(hire_info["name"]), int(hire_info["cost"])]
+	if hired > 0:
+		hire_btn.text += "（已带 %d 名）" % hired
+	hire_btn.disabled = GameState.space_energy < int(hire_info["cost"])
+	hire_btn.pressed.connect(func() -> void:
+		if GameState.buy_shop_item("hire_npc"):
+			_close_panel()
+			_open_panel("gene")
+	)
 	box.add_child(hire_btn)
 
 

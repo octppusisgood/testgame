@@ -98,11 +98,9 @@ func _update_recruit_target() -> void:
 			_recruit_target = npc
 
 
-# 招募条件不满足时的原因（空串 = 可招募）：招募即跟随，只看随从数量上限
+# 招募条件不满足时的原因（空串 = 可招募）：已取消随从数量上限，永远可招募
 func _recruit_block_reason() -> String:
 	_prune_followers()
-	if _followers.size() >= FOLLOWER_CAP:
-		return "随从已满（最多 %d 人）" % FOLLOWER_CAP
 	return ""
 
 

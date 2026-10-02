@@ -3105,7 +3105,7 @@ func _spawn_hired_npcs() -> void:
 			break
 	if worker_manager == null:
 		return
-	for i in mini(GameState.pending_hires.size(), 4):
+	for i in GameState.pending_hires.size():
 		var fname: String = String(GameState.pending_hires[i])
 		var npc = NPC_SCENE.instantiate()
 		npc.role = "pedestrian"

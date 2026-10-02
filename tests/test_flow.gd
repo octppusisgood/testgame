@@ -673,17 +673,18 @@ func _test_base_upgrades() -> void:
 	GameState.home_base["defense_levels"] = {}
 	GameState.home_base["storage"]["materials"] = 100
 	_check(GameState.add_base_defense("generator", Vector3(52, 0, 52)), "放置发电机成功")
-	_check(not GameState.add_base_defense("generator", Vector3(48, 0, 52)), "发电机每据点限建 1 个")
+	_check(GameState.add_base_defense("generator", Vector3(48, 0, 52)), "取消上限后发电机可重复建造（不设数量上限）")
 
 	# —— 设施升级 ——
 	GameState.home_base["defenses"] = []
 	GameState.home_base["defense_levels"] = {}
+	GameState.home_base["storage"]["materials"] = 100
 	_check(GameState.add_base_defense("barricade", Vector3(52, 0, 52)), "放置待升级路障")
 	_check(GameState.defense_upgrade_level(Vector3(52, 0, 52)) == 0, "新设施升级等级 0")
 	_check(GameState.upgrade_base_defense(Vector3(52, 0, 52)), "设施升级成功")
 	_check(
 		GameState.defense_upgrade_level(Vector3(52, 0, 52)) == 1
-		and GameState.base_materials() == 47,
+		and GameState.base_materials() == 77,
 		"升级后等级 +1 且从仓库扣建材 ×15"
 	)
 	_check(GameState.upgrade_base_defense(Vector3(52, 0, 52)), "设施升到 2 级")

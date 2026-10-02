@@ -3767,21 +3767,7 @@ func base_defense_count() -> int:
 func add_base_defense(type: String, pos: Vector3) -> bool:
 	if not has_home_base() or not BASE_DEFENSES.has(type):
 		return false
-	if bool(BASE_DEFENSES[type].get("unique", false)):
-		for entry in home_base["defenses"]:
-			if String(entry["type"]) == type:
-				notify("%s 每据点限建 1 个" % String(BASE_DEFENSES[type]["name"]))
-				return false
-	# 数量上限（防无脑堆叠塔阵，设计文档 5.2）：cap 字段 > 0 时生效
-	var cap := int(BASE_DEFENSES[type].get("cap", 0))
-	if cap > 0:
-		var count := 0
-		for entry in home_base["defenses"]:
-			if String(entry["type"]) == type:
-				count += 1
-		if count >= cap:
-			notify("%s 数量已达上限（%d 座）" % [String(BASE_DEFENSES[type]["name"]), cap])
-			return false
+	# 批次 256：取消建造物数量上限（原 unique 限建 1 个 / cap 同类数量上限均已移除，可无限建造）
 	var base_pos: Vector3 = home_base["position"]
 	var flat := Vector2(pos.x - base_pos.x, pos.z - base_pos.z)
 	# 信号塔任意位置可建（自成信号区/接力用），其余设施须在据点半径内

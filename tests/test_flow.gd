@@ -577,7 +577,8 @@ func _test_base_upgrades() -> void:
 	# —— 复活逻辑 ——
 	GameState.home_base = {}
 	_check(not GameState.can_respawn_at_base(), "无据点不能复活")
-	GameState.claim_home_base("house", Vector3(50, 0, 50))
+	# 批次 248：建筑据点半径按底座推导（专用探针覆盖）；此处用空地建点保持确定性 8m
+	GameState.claim_home_base(GameState.OPEN_GROUND_BASE_ID, Vector3(50, 0, 50))
 	_check(GameState.can_respawn_at_base(), "有据点有复活石可以复活")
 	GameState.revival_stone = false
 	_check(not GameState.can_respawn_at_base(), "无复活石不能复活")
@@ -604,7 +605,8 @@ func _test_base_upgrades() -> void:
 	# —— 建材资源（新语义：玩家可徒手拾取建材随身携带，回据点存入仓库）——
 	var old_test_mode := GameState.test_mode
 	GameState.test_mode = false
-	GameState.claim_home_base("house", Vector3(50, 0, 50))
+	# 批次 248：建筑据点半径按底座推导（专用探针覆盖）；此处用空地建点保持确定性 8m
+	GameState.claim_home_base(GameState.OPEN_GROUND_BASE_ID, Vector3(50, 0, 50))
 	_check(GameState.materials_carriable(), "建材可随身携带")
 	_check(GameState.base_storage_cap() == 150, "1 级据点仓库容量 150")
 	_check(GameState.add_materials_to_base(50) == 50, "建材入仓 50")
@@ -622,7 +624,8 @@ func _test_base_upgrades() -> void:
 	GameState.home_base["storage"]["materials"] = 0
 
 	# —— 据点升级 ——
-	GameState.claim_home_base("house", Vector3(50, 0, 50))
+	# 批次 248：建筑据点半径按底座推导（专用探针覆盖）；此处用空地建点保持确定性 8m
+	GameState.claim_home_base(GameState.OPEN_GROUND_BASE_ID, Vector3(50, 0, 50))
 	_check(GameState.home_base_level() == 1, "新据点默认 1 级")
 	_check(is_equal_approx(GameState.home_base_radius(), 8.0), "新据点默认半径 8 米")
 	_check(is_equal_approx(GameState.home_storage_rate(), 0.4), "1 级折现率 40%")
@@ -704,7 +707,8 @@ func _test_base_signal_defense() -> void:
 	# —— 建造模式标志进出 ——
 	var old_stone := GameState.revival_stone
 	GameState.revival_stone = true
-	GameState.claim_home_base("house", Vector3(50, 0, 50))
+	# 批次 248：建筑据点半径按底座推导（专用探针覆盖）；此处用空地建点保持确定性 8m
+	GameState.claim_home_base(GameState.OPEN_GROUND_BASE_ID, Vector3(50, 0, 50))
 	_check(not GameState.base_build_mode, "默认不在建造模式")
 	var build := Node3D.new()
 	build.set_script(load("res://scripts3d/base_build3d.gd"))
@@ -1414,7 +1418,8 @@ func _test_workers() -> void:
 	var old_stone := GameState.revival_stone
 	var old_food: int = GameState.resources["food"]
 	GameState.revival_stone = true
-	GameState.claim_home_base("house", Vector3(50, 0, 50))
+	# 批次 248：建筑据点半径按底座推导（专用探针覆盖）；此处用空地建点保持确定性 8m
+	GameState.claim_home_base(GameState.OPEN_GROUND_BASE_ID, Vector3(50, 0, 50))
 
 	# —— 招募与容量 ——
 	_check(GameState.home_base.has("workers"), "据点数据带 workers 列表")
@@ -1766,7 +1771,8 @@ func _test_interact_menu() -> void:
 
 	# —— 防御设施菜单：升级 / 卖掉 ——
 	GameState.test_mode = true
-	GameState.claim_home_base("house", Vector3(50, 0, 50))
+	# 批次 248：建筑据点半径按底座推导（专用探针覆盖）；此处用空地建点保持确定性 8m
+	GameState.claim_home_base(GameState.OPEN_GROUND_BASE_ID, Vector3(50, 0, 50))
 	var build := Node3D.new()
 	build.set_script(load("res://scripts3d/base_build3d.gd"))
 	add_child(build)

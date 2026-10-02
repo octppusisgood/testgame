@@ -1746,6 +1746,10 @@ func _collect_light_zones(player: Node3D) -> Dictionary:
 	for defense in get_tree().get_nodes_in_group("base_defense"):
 		if bool(defense.get_meta("lamp_on", false)):
 			points.append({"pos": defense.global_position, "radius": 9.0})
+	# 营地灯光（批次 260）：营地自带照明，照亮整圈建造范围（半径 = 据点半径）
+	if GameState.has_home_base():
+		var base_pos: Vector3 = GameState.home_base.get("position", player.global_position)
+		points.append({"pos": base_pos, "radius": GameState.home_base_radius()})
 	var cones: Array = []
 	if (
 		bool(player.get("_flashlight_on"))

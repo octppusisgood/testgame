@@ -12,6 +12,8 @@ const BOUNDARY_COLOR := Color(0.45, 0.5, 0.55, 0.6)
 
 var full := false
 var force_visible := false
+# 无信号（肉鸽）：小地图降级——地形与自身位置可见，但不画敌我实时情报点
+var _signal_blind := false
 # 大地图「信号区」按钮开关：连通网络合并轮廓，孤立塔单独圈
 var _show_signal := false
 var _signal_btn: Button = null
@@ -100,10 +102,9 @@ func _process(delta: float) -> void:
 		# 开镜瞄准时暂时隐藏小地图，避免瞄准圈与其重叠
 		visible = false
 		return
-	if GameState.rogue_mode and GameState.signal_strength <= 0.01:
-		# 无信号区不显示小地图（设计文档 5.5：信号 = 生命线，无信号 = 小地图黑屏）
-		visible = false
-		return
+	# 无信号区（肉鸽）：不再整块隐藏小地图，改为降级——
+	# 地形/建筑/自身位置照常，敌我实时情报点不画（设计 5.5：信号 = 情报线）
+	_signal_blind = GameState.rogue_mode and GameState.signal_strength <= 0.01
 	visible = force_visible or _in_scene()
 	if not visible:
 		return
@@ -211,11 +212,17 @@ func _draw() -> void:
 	else:
 		_forward = _forward.normalized()
 	_right = Vector2(-_forward.y, _forward.x)
-	_draw_content(true)
+	_draw_content(not _signal_blind)
 	# 藏匿在建筑里：小地图不显示玩家箭头
 	if GameState.player_in_building.is_empty():
 		_draw_player_arrow()
 	_draw_marker()
+	if _signal_blind:
+		# 无信号角标：告知当前地图没有实时情报
+		draw_string(
+			ThemeDB.fallback_font, _center + Vector2(-24.0, -_radius + 14.0), "无信号",
+			HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(0.95, 0.75, 0.4, 0.9)
+		)
 	draw_arc(_center, _radius + 1.0, 0.0, TAU, 64, Color(0.65, 0.75, 0.85, 0.85), 2.0)
 	draw_arc(_center, _radius - 1.0, 0.0, TAU, 64, Color(0.1, 0.12, 0.15, 0.6), 1.0)
 

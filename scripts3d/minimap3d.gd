@@ -474,6 +474,10 @@ func _draw_content(show_people: bool) -> void:
 			if npc.role == "cop":
 				_draw_badge(npc_pos)
 				continue
+			if npc.role == "follower":
+				# 批次 245：被招募的随从 = 亮绿大点（与士兵绿/市民灰区分）
+				draw_circle(npc_pos, 1.9, Color(0.45, 1.0, 0.5, 0.98))
+				continue
 			var color := Color(0.75, 0.75, 0.8, 0.9)
 			if npc.role == "soldier":
 				color = Color(0.4, 0.75, 0.35, 0.95)

@@ -3390,7 +3390,7 @@ const STORAGE_SECTIONS := [
 	{"title": "食物", "kinds": ["food"]},
 	{"title": "药品", "kinds": ["meds"]},
 	{"title": "弹药", "kinds": ["ammo"]},
-	{"title": "资源", "kinds": ["materials", "fuel", "money", "crystals"]},
+	{"title": "资源", "kinds": ["materials", "fuel", "crystals"]},
 ]
 
 

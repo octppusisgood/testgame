@@ -3025,13 +3025,7 @@ func on_melee_kill() -> void:
 
 func backpack_items() -> Array:
 	var items: Array = []
-	if money > 0:
-		items.append({
-			"id": "cash",
-			"label": "现金 ¥%d" % money,
-			"color": Color(0.86, 0.72, 0.3),
-			"group": "special",
-		})
+	# 金钱不作为背包物品占格（批次 257：现金纯数值，仅顶部资源条/角色数值显示）
 	var food := int(resources.get("food", 0))
 	if food > 0:
 		items.append({

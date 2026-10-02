@@ -1384,10 +1384,28 @@ func _refresh_interact_menu() -> void:
 			hl.content_margin_left = 4
 			hl.content_margin_right = 4
 			label.add_theme_stylebox_override("normal", hl)
-		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		# 批次 242：鼠标可直接交互——悬停高亮选中项、左键点击执行（禁用项不响应）
+		if disabled:
+			label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		else:
+			label.mouse_filter = Control.MOUSE_FILTER_STOP
+			label.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+			var idx := i
+			label.gui_input.connect(func(ev: InputEvent) -> void:
+				if ev is InputEventMouseMotion:
+					if _menu_index != idx:
+						_menu_index = idx
+						_refresh_interact_menu()
+				elif (
+					ev is InputEventMouseButton
+					and ev.button_index == MOUSE_BUTTON_LEFT
+					and ev.pressed
+				):
+					_choose_menu_option(idx)
+			)
 		_menu_box.add_child(label)
 	var hint := Label.new()
-	hint.text = "W/S 上下选择 · E 确认 · 其它键关闭"
+	hint.text = "W/S 或鼠标悬停 选择 · E 或点击 确认 · 其它键关闭"
 	hint.add_theme_font_size_override("font_size", 9)
 	hint.add_theme_color_override("font_color", Color(0.6, 0.65, 0.7))
 	hint.mouse_filter = Control.MOUSE_FILTER_IGNORE

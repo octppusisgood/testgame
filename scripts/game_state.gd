@@ -343,7 +343,7 @@ const LOOT_ITEMS := {
 	"scope_8x": {"name": "八倍镜", "cat": "attach", "model": APO_MOD + "SM_Wep_Mod_Attach_Scope_06.tscn", "value": 680, "view": 70.0},
 	"anomaly_crystal": {"name": "异能结晶", "cat": "tool", "model": APO_ITEM + "SM_Item_Jar_01.tscn", "value": 150},
 	"flashlight": {"name": "手电筒", "cat": "tool", "model": APO_PROP_S + "SM_Prop_Flashlight_01.tscn", "value": 140},
-	"vest": {"name": "防弹插板", "cat": "armor", "model": APO_MISC + "SM_Wep_Sign_Shield_01.tscn", "value": 180, "resist": 0.12},
+	"vest": {"name": "防弹衣", "cat": "armor", "model": APO_MISC + "SM_Wep_Sign_Shield_01.tscn", "value": 180, "resist": 0.12},
 	"plank": {"name": "木板", "cat": "junk", "model": APO_MELEE + "SM_Wep_Plank_01.tscn", "value": 10},
 	"wood": {"name": "木料", "cat": "junk", "model": APO_ITEM + "SM_Item_Log_01.tscn", "value": 8},
 	"stone": {"name": "石料", "cat": "junk", "model": "res://assets/Synty/PolygonApocalypse/Prefabs/Generic/SM_Generic_Small_Rocks_01.tscn", "value": 6},

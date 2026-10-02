@@ -2562,7 +2562,8 @@ func _refresh_backpack() -> void:
 	_set_slot_text("melee", melee_text)
 	_set_slot_text(
 		"armor",
-		GameState.loot_name(GameState.armor_id) if not GameState.armor_id.is_empty() else "无"
+		"防具 "
+		+ (GameState.loot_name(GameState.armor_id) if not GameState.armor_id.is_empty() else "无")
 	)
 	# 手雷小图标 + 数量（物品列表上方）
 	if _inv_grenade_label != null:

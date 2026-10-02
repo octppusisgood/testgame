@@ -1933,7 +1933,7 @@ class Converter extends Fabricator:
 		add_to_group("power_converters")
 
 
-# 装备制作台：枪械蓝工作台。制造所有枪械与防具（防弹插板），
+# 装备制作台：枪械蓝工作台。制造所有枪械与防具（防弹衣），
 # 每秒耗 0.5 电力（批次 236 降 10 倍，原 5.0），需有人在场操作；材料统一为城市里搜刮来的「制造材料」（从背包直接扣除）
 class Fabricator extends DefenseBase:
 	const OPERATE_RANGE := 2.5
@@ -1945,7 +1945,7 @@ class Fabricator extends DefenseBase:
 		"rifle": {"name": "步枪", "kind": "weapon", "requires": "rifle", "craft": 120, "time": 120.0},
 		"sniper": {"name": "狙击枪", "kind": "weapon", "requires": "sniper", "craft": 180, "time": 150.0},
 		"lmg": {"name": "重机枪", "kind": "weapon", "requires": "lmg", "craft": 240, "time": 180.0},
-		"vest": {"name": "防弹插板（伤害抗性 +12%）", "kind": "loot", "loot": "vest", "craft": 30, "time": 40.0},
+		"vest": {"name": "防弹衣（伤害抗性 +12%）", "kind": "loot", "loot": "vest", "craft": 30, "time": 40.0},
 	}
 
 	var _job := ""

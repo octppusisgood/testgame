@@ -5456,6 +5456,38 @@ func generator_running() -> bool:
 	return int(home_base["storage"].get("fuel", 0)) > 0
 
 
+# —— 电力速率（小地图电力环用）：当前每秒发电/用电（功率），×10 显示为千瓦 ——
+func power_gen_rate() -> float:
+	if not has_home_base():
+		return 0.0
+	var rate := 0.0
+	if generator_running():
+		rate += GEN_POWER_RATE * (1.0 + 0.3 * operated_defense_count("generator"))
+	var solar := _count_defense("solar")
+	if solar > 0 and not is_night():
+		rate += (solar + 0.3 * operated_defense_count("solar")) * SOLAR_POWER_RATE * day_brightness()
+	var wind := _count_defense("windmill")
+	if wind > 0:
+		var wind_rate := WIND_POWER_RATE * (2.0 if is_raining() else 1.0)
+		rate += (wind + 0.3 * operated_defense_count("windmill")) * wind_rate
+	return rate
+
+
+func power_use_rate() -> float:
+	# 制作台/重设备按额定功率计（建了就计，无论当前是否在跑）
+	var rate := 0.0
+	for device in get_tree().get_nodes_in_group("base_defense"):
+		if device.is_queued_for_deletion():
+			continue
+		if device.has_method("_power_drain_rate"):
+			rate += float(device.call("_power_drain_rate"))
+	if has_home_base():
+		rate += _count_defense("turret") * TURRET_POWER_DRAIN
+		if is_night():
+			rate += maxi(0, _count_defense("lamp") - operated_defense_count("lamp")) * LAMP_POWER_DRAIN
+	return rate
+
+
 # —— 城市电网：准备期与灾变后头两天有电，第 3 天发电站停运 ——
 
 func grid_online() -> bool:

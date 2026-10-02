@@ -14,6 +14,13 @@ var full := false
 var force_visible := false
 # 无信号（肉鸽）：小地图降级——地形与自身位置可见，但不画敌我实时情报点
 var _signal_blind := false
+# 电力环：外圈整环，左半绿=当前发电(kW)、右半红=当前用电(kW)，量程动态伸缩
+const POWER_KW_SCALE := 10.0  # 游戏内部 1 电力/秒 = 10 kW
+const POWER_CAP_MIN := 20.0  # 初始量程 20kW，也是收缩下限
+var _power_cap := 20.0
+var _power_gen := 0.0
+var _power_use := 0.0
+var _power_timer := 0.0
 # 大地图「信号区」按钮开关：连通网络合并轮廓，孤立塔单独圈
 var _show_signal := false
 var _signal_btn: Button = null
@@ -112,6 +119,11 @@ func _process(delta: float) -> void:
 	if _update_timer <= 0.0:
 		_update_timer = 0.05
 		queue_redraw()
+	# 电力环数值 0.5 秒刷新一次（速率变化不需要每帧）
+	_power_timer -= delta
+	if _power_timer <= 0.0:
+		_power_timer = 0.5
+		_update_power_values()
 
 
 func _in_scene() -> bool:
@@ -223,7 +235,7 @@ func _draw() -> void:
 			ThemeDB.fallback_font, _center + Vector2(-24.0, -_radius + 14.0), "无信号",
 			HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(0.95, 0.75, 0.4, 0.9)
 		)
-	draw_arc(_center, _radius + 1.0, 0.0, TAU, 64, Color(0.65, 0.75, 0.85, 0.85), 2.0)
+	_draw_power_ring()
 	draw_arc(_center, _radius - 1.0, 0.0, TAU, 64, Color(0.1, 0.12, 0.15, 0.6), 1.0)
 
 
@@ -239,6 +251,38 @@ func _draw_player_arrow() -> void:
 	var outline := PackedVector2Array(arrow)
 	outline.append(arrow[0])
 	draw_polyline(outline, Color(0.05, 0.25, 0.1, 0.9), 1.0)
+
+
+# 电力环：小地图外圈整环——左半圈绿=当前发电(kW)、右半圈红=当前用电(kW)，
+# 都从正下方起笔向两侧伸展；量程满（任一侧到顶）翻倍、长期低于 1/10 收缩
+func _draw_power_ring() -> void:
+	var r := _radius + 1.0
+	# 底环（深色整圈轨道）
+	draw_arc(_center, r, 0.0, TAU, 72, Color(0.1, 0.12, 0.16, 0.85), 3.0, true)
+	var f_gen := clampf(_power_gen / _power_cap, 0.0, 1.0)
+	var f_use := clampf(_power_use / _power_cap, 0.0, 1.0)
+	# 左半圈（绿）：正下方 90° 起逆时针经 180°（左）到 270°（上）
+	if f_gen > 0.004:
+		draw_arc(_center, r, PI * 0.5, PI * 0.5 + PI * f_gen, 48, Color(0.3, 0.95, 0.45, 0.95), 3.0, true)
+	# 右半圈（红）：正下方 90° 起顺时针经 0°（右）到 -90°（上）
+	if f_use > 0.004:
+		draw_arc(_center, r, PI * 0.5, PI * 0.5 - PI * f_use, 48, Color(0.95, 0.35, 0.3, 0.95), 3.0, true)
+
+
+# 刷新当前发电/用电（kW）并按规则调量程
+func _update_power_values() -> void:
+	_power_gen = GameState.power_gen_rate() * POWER_KW_SCALE
+	_power_use = GameState.power_use_rate() * POWER_KW_SCALE
+	_apply_power_cap(maxf(_power_gen, _power_use))
+
+
+# 动态量程：任一侧到顶 → 量程翻倍；两侧都低于量程 1/10 → 收缩到
+# 当前峰值 ×2（下限 = 初始 20kW，避免归零除零）
+func _apply_power_cap(peak_kw: float) -> void:
+	if peak_kw >= _power_cap:
+		_power_cap *= 2.0
+	elif peak_kw < _power_cap * 0.1:
+		_power_cap = maxf(POWER_CAP_MIN, peak_kw * 2.0)
 
 
 var _cjk_font: Font = null

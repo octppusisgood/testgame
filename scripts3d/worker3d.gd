@@ -2057,19 +2057,26 @@ class FollowerBody extends CharacterBody3D:
 
 
 	func _mode_scavenge() -> void:
-		# 背包装满（或被手动命令运送）才送回玩家；交付后继续拾荒
+		# 批次 243：背包满自动送回【营地仓库】；没有营地才送回玩家；交付后继续拾荒
 		if (_carry_full() or _deliver_requested) and not _carry.is_empty():
-			var player = get_tree().get_first_node_in_group("player")
-			if player == null:
-				_stop()
-				return
-			var dist := global_position.distance_to(player.global_position)
+			var target_pos := Vector3.ZERO
+			var deliver_home := false
+			if GameState.has_home_base():
+				target_pos = _base_pos()
+				deliver_home = true
+			else:
+				var player = get_tree().get_first_node_in_group("player")
+				if player == null:
+					_stop()
+					return
+				target_pos = player.global_position
+			var dist := global_position.distance_to(target_pos)
 			if dist < 2.0:
 				_stop()
-				_deliver_carry()
+				_deliver_carry(deliver_home)
 				_deliver_requested = false
 			else:
-				_move_to(player.global_position, clampf(dist * 2.0, 2.0, 7.5))
+				_move_to(target_pos, clampf(dist * 2.0, 2.0, 7.5))
 			_try_attack()
 			return
 		if (
@@ -2148,8 +2155,9 @@ class FollowerBody extends CharacterBody3D:
 
 
 	# 距玩家 2m 内交付：现金→钱包，药品/弹药/食物/建材→资源
-	func _deliver_carry() -> void:
+	func _deliver_carry(to_base := false) -> void:
 		var parts: Array = []
+		var stored_base := false
 		for kind in _carry.keys():
 			var n := int(_carry[kind])
 			if n <= 0:
@@ -2158,11 +2166,22 @@ class FollowerBody extends CharacterBody3D:
 				"money":
 					GameState.add_money(n)
 				_:
-					GameState.add_resource(String(kind), n)
+					if to_base and GameState.has_home_base():
+						# 批次 243：满包自动回家——物资直接入营地仓库
+						var storage: Dictionary = GameState.home_base["storage"]
+						storage[String(kind)] = int(storage.get(String(kind), 0)) + n
+						stored_base = true
+					else:
+						GameState.add_resource(String(kind), n)
 			parts.append("%s ×%d" % [GameState._supply_name(String(kind)), n])
 		_carry.clear()
+		if stored_base:
+			GameState.home_base_changed.emit()
 		if not parts.is_empty():
-			GameState.notify("%s 把 %s 交给了你" % [follower_name, "、".join(parts)])
+			if stored_base:
+				GameState.notify("%s 把 %s 存入了营地仓库" % [follower_name, "、".join(parts)])
+			else:
+				GameState.notify("%s 把 %s 交给了你" % [follower_name, "、".join(parts)])
 
 
 	# —— 巡逻：绕 task_point 半径 8m 随机选点，走到后歇 1~2 秒再选下一个 ——

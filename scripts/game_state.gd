@@ -456,7 +456,7 @@ const GEN_FUEL_SECONDS := 60.0
 # 据点电力：储备 0~上限（基础 100，每组蓄电池 +200）；发电设备充入，用电设备（炮塔/照明灯）消耗
 const BASE_POWER_CAP := 100.0
 const BASE_POWER_PER_BATTERY := 200.0
-const GEN_POWER_RATE := 1.0
+const GEN_POWER_RATE := 5.0  # 批次 237：发电机 50kW（原 1.0=10kW）
 const SOLAR_POWER_RATE := 0.6
 const WIND_POWER_RATE := 0.25
 const TURRET_POWER_DRAIN := 0.05

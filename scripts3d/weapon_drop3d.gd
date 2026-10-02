@@ -6,6 +6,8 @@ var weapon_id := "pistol"
 var ammo := 8
 var net_id := 0
 var net_puppet := false
+# 磁吸渲染器按 kind 查表（"weapon" 无 MultiMesh 条目 → 安全跳过，用自身实体模型）
+var kind := "weapon"
 
 
 func net_params() -> Dictionary:
@@ -19,6 +21,9 @@ func setup_puppet(params: Dictionary) -> void:
 
 func _ready() -> void:
 	add_to_group("interactables")
+	# 批次 266：并入磁吸拾取体系（proto3d._tick_pickups 扫 pickups 组）——
+	# 靠近自动吸附结算，不再要求按 E；E 交互保留为冗余入口
+	add_to_group("pickups")
 	_build_visual()
 	if (
 		not net_puppet
@@ -27,6 +32,11 @@ func _ready() -> void:
 		and Network.is_server()
 	):
 		Network.register_entity(self, "drop", net_params())
+
+
+# 磁吸结算入口（与 pickup3d.apply_effect 同协议）：武器未解锁则解锁，弹药按口径入备弹
+func apply_effect() -> void:
+	_pick_up()
 
 
 func prompt_text() -> String:
@@ -57,6 +67,8 @@ func _near_player() -> bool:
 
 func _pick_up() -> void:
 	if GameState.is_zombie():
+		# 磁吸结算可能每帧重试：摘出 pickups 组防重复触发（E 交互保留）
+		remove_from_group("pickups")
 		GameState.notify("丧尸无法使用枪械")
 		return
 	if int(GameState.weapons.get(weapon_id, 0)) <= 0:

@@ -2331,32 +2331,7 @@ func _build_backpack_panel() -> void:
 	gunmod_btn.pressed.connect(_open_gunmod)
 	_backpack_panel.add_child(gunmod_btn)
 
-	# 底部资源栏：小图标 + 数字（食物/医疗包/建材/燃料），不显示子弹
-	_res_row = HBoxContainer.new()
-	_res_row.position = Vector2(INV_PAD_X, 414)
-	_res_row.add_theme_constant_override("separation", 14)
-	_backpack_panel.add_child(_res_row)
-	for res_data in [
-		{"id": "food", "name": "食物", "color": Color(1.0, 0.65, 0.3)},
-		{"id": "meds", "name": "医疗", "color": Color(0.4, 0.9, 0.5)},
-		{"id": "materials", "name": "建材", "color": Color(0.8, 0.7, 0.5)},
-		{"id": "fuel", "name": "燃料", "color": Color(0.95, 0.85, 0.3)},
-	]:
-		var entry := HBoxContainer.new()
-		entry.add_theme_constant_override("separation", 4)
-		entry.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		var icon := ColorRect.new()
-		icon.custom_minimum_size = Vector2(10, 10)
-		icon.color = res_data["color"]
-		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		entry.add_child(icon)
-		var lbl := Label.new()
-		lbl.add_theme_font_size_override("font_size", 11)
-		lbl.add_theme_color_override("font_color", Color(0.85, 0.9, 0.85))
-		lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		entry.add_child(lbl)
-		_res_row.add_child(entry)
-		_res_labels[res_data["id"]] = lbl
+	# 批次 258：已删除背包底部资源速览图标（食物/医疗/建材/燃料），资源数值见顶部资源条
 
 
 # ===== 武器改装面板（配件栏 / 子弹栏 / 异能改装槽 + 武器升级）=====
@@ -2592,19 +2567,6 @@ func _refresh_backpack() -> void:
 	# 手雷小图标 + 数量（物品列表上方）
 	if _inv_grenade_label != null:
 		_inv_grenade_label.text = "手雷 ×%d" % GameState.grenade_count()
-	# 资源栏（背包底部小图标 + 数字）：食物/医疗包/建材/燃料，不显示子弹
-	_set_res_label("food", "×%d" % int(GameState.resources.get("food", 0)))
-	_set_res_label("meds", "×%d" % int(GameState.resources.get("meds", 0)))
-	if GameState.has_home_base():
-		_set_res_label("materials", "随身 %d · 据点 %d/%d" % [
-			int(GameState.resources.get("materials", 0)),
-			GameState.base_materials(), GameState.base_storage_cap(),
-		])
-	else:
-		_set_res_label("materials", "×%d" % int(GameState.resources.get("materials", 0)))
-	_set_res_label("fuel", "%d/%d" % [
-		int(GameState.resources.get("fuel", 0)), int(GameState.CAPS.get("fuel", 60)),
-	])
 	# 回响区已删（批次 164）
 
 

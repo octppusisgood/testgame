@@ -298,12 +298,24 @@ func _ready() -> void:
 	_day_bar.visible = false
 	add_child(_day_bar)
 
-	# 顶部资源条：小图标 +（身上）总数，总数含营地仓库
+	# 顶部资源条（批次 272：贴紧画面顶端 + 黑底 + 缩小字号 + 只显示总资源）
 	_res_strip = HBoxContainer.new()
-	_res_strip.position = Vector2(14, 6)
-	_res_strip.add_theme_constant_override("separation", 10)
+	_res_strip.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	_res_strip.offset_left = 0
+	_res_strip.offset_top = 0
+	_res_strip.offset_right = 640
+	_res_strip.offset_bottom = 16
+	_res_strip.alignment = BoxContainer.ALIGNMENT_CENTER
+	_res_strip.add_theme_constant_override("separation", 8)
 	_res_strip.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_res_strip)
+	var strip_bg := StyleBoxFlat.new()
+	strip_bg.bg_color = Color(0, 0, 0, 0.82)
+	strip_bg.content_margin_left = 6
+	strip_bg.content_margin_right = 6
+	strip_bg.content_margin_top = 1
+	strip_bg.content_margin_bottom = 1
+	_res_strip.add_theme_stylebox_override("panel", strip_bg)
 	# F3 性能监视悬浮窗（帧率/帧耗时/物理耗时/节点数/绘制调用）
 	_perf_label = Label.new()
 	_perf_label.position = Vector2(14, 28)
@@ -331,14 +343,15 @@ func _ready() -> void:
 		# 资源名用文字不用图标，颜色区分种类
 		var name_lbl := Label.new()
 		name_lbl.text = String(def["name"])
-		name_lbl.add_theme_font_size_override("font_size", 11)
+		name_lbl.text = String(def["name"])
+		name_lbl.add_theme_font_size_override("font_size", 9)
 		name_lbl.add_theme_color_override("font_color", def["color"])
 		name_lbl.add_theme_constant_override("outline_size", 3)
 		name_lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
 		name_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		entry.add_child(name_lbl)
 		var lbl := Label.new()
-		lbl.add_theme_font_size_override("font_size", 11)
+		lbl.add_theme_font_size_override("font_size", 9)
 		lbl.add_theme_color_override("font_color", Color(0.92, 0.94, 0.9))
 		lbl.add_theme_constant_override("outline_size", 3)
 		lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
@@ -694,7 +707,7 @@ func _refresh_res_strip() -> void:
 				own = int(GameState.resources.get(id, 0))
 		var base_key := String(RES_STRIP_BASE_KEY.get(id, ""))
 		var total := own + (int(storage.get(base_key, 0)) if base_key != "" else 0)
-		var text := "(%d) %d" % [own, total]
+		var text := str(total)  # 批次 272：只显示总资源（身上+仓库合计）
 		if lbl.text != text:
 			lbl.text = text
 

@@ -233,10 +233,11 @@ func _ready() -> void:
 	# 信号 UI：右上角（小地图正下方）——手机信号条图标 + 百分比
 	var sig_box := HBoxContainer.new()
 	sig_box.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	sig_box.offset_left = -110
-	sig_box.offset_top = 164
+	# 批次 273：信号条移到右上角小地图右上方（绿圈位），原在小地图下方遮挡 NPC 按钮
+	sig_box.offset_left = -70
+	sig_box.offset_top = 24
 	sig_box.offset_right = -8
-	sig_box.offset_bottom = 190
+	sig_box.offset_bottom = 50
 	sig_box.add_theme_constant_override("separation", 5)
 	sig_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(sig_box)

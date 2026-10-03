@@ -1,5 +1,5 @@
 extends Node3D
-# 工人管理器：挂在 proto3d 下，同步 GameState.home_base["workers"] 与场景里的工人实体；
+# 我方NPC管理器：挂在 proto3d 下，同步 GameState.home_base["workers"]（营地岗位任务）与场景里的我方NPC实体；
 # 处理市民招募（走近行人按 E 即跟随，无需据点）与任务/装备面板（自建 CanvasLayer，不动 hud3d）
 
 const RECRUIT_REACH := 2.5
@@ -210,7 +210,7 @@ func _try_recruit() -> void:
 		return
 	var reason := _recruit_block_reason()
 	if reason != "":
-		GameState.notify(reason + "，无法再带随从")
+		GameState.notify(reason + "，无法再招募成员")
 		return
 	var price := int(_recruit_target.get("recruit_price"))
 	if not GameState.spend_money(price):
@@ -282,7 +282,7 @@ func _build_panel() -> void:
 		vbox.add_child(button)
 		if job == "goto":
 			_goto_button = button
-	var dismiss := _make_panel_button("解散工人", _on_dismiss_pressed)
+	var dismiss := _make_panel_button("解散成员", _on_dismiss_pressed)
 	vbox.add_child(dismiss)
 	var idle_button := _make_panel_button("待命", _on_job_pressed.bind("idle"))
 	vbox.add_child(idle_button)
@@ -316,7 +316,7 @@ func open_panel(wname: String) -> void:
 	if w.is_empty():
 		return
 	_panel_worker = wname
-	_panel_title.text = "工人：%s" % wname
+	_panel_title.text = "我方NPC：%s" % wname
 	_panel_job.text = "当前任务：%s" % GameState.worker_job_name(String(w.get("job", "idle")))
 	if _goto_button != null:
 		var has_marker := GameState.map_marker != Vector2.ZERO
@@ -351,7 +351,7 @@ func _on_job_pressed(job: String) -> void:
 		return
 	if job == "goto":
 		if GameState.map_marker == Vector2.ZERO:
-			GameState.notify("先在地图上标一个点，再派工人前往")
+			GameState.notify("先在地图上标一个点，再派成员前往")
 			return
 		GameState.assign_worker(_panel_worker, job, {"target": GameState.map_marker_3d()})
 	else:
@@ -517,6 +517,8 @@ static func follower_task_name(task: String) -> String:
 			return "巡逻"
 		"defend":
 			return "防守"
+		"operate":
+			return "操作设施"
 		"drive":
 			return "驾驶中"
 	return task
@@ -551,6 +553,9 @@ func assign_follower_task(list: Array, task: String, point := Vector3.ZERO) -> v
 		# 混入时只做「叫出藏匿」不做任务赋值，避免 null 属性崩溃
 		if f.get("mode") == null:
 			continue
+		# 批次 279：改派新任务 =「操作设施」任务结束，撤出设施操作员位（工作只是任务）
+		if task != "operate":
+			GameState.clear_operator_slot(str(f.get("follower_name")))
 		f.mode = task
 		if task == "scavenge":
 			f.task_point = player.global_position if player != null else f.global_position
@@ -566,6 +571,24 @@ func assign_follower_task(list: Array, task: String, point := Vector3.ZERO) -> v
 			f._deliver_requested = false
 		f._refresh_label()
 		GameState.notify("%s：%s" % [f.follower_name, follower_task_name(task)])
+
+
+# 指派「操作设施」任务：同一个实体接任务（身份/实体不变），由 hud3d 操作员面板调用
+func assign_operate_task(follower, pos: Vector3) -> void:
+	if follower == null or not is_instance_valid(follower):
+		return
+	if follower.get("mode") == null:
+		return
+	follower.mode = "operate"
+	follower.task_point = pos
+	follower._collect_target = null
+	follower._patrol_moving = false
+	follower._patrol_wait = 0.0
+	if not follower._carry.is_empty():
+		follower._deliver_carry()
+	follower._deliver_requested = false
+	follower._refresh_label()
+	GameState.notify("%s：%s" % [follower.follower_name, follower_task_name("operate")])
 
 
 # —— 随从队伍窗口（J 开关，多选指派）——
@@ -592,7 +615,7 @@ func _build_squad_panel() -> void:
 	vbox.add_theme_constant_override("separation", 4)
 	box.add_child(vbox)
 	var title := Label.new()
-	title.text = "成员总览（J 关闭）· 点随从卡片勾选后可批量指派"
+	title.text = "成员总览（J 关闭）· 点成员卡片勾选后可批量指派"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 14)
 	vbox.add_child(title)
@@ -708,7 +731,7 @@ func _build_vehicle_panel() -> void:
 	row.add_child(_make_panel_button("召回身边", _on_vehicle_recall))
 	row.add_child(_make_panel_button("关闭", close_vehicle_panel))
 	var hint := Label.new()
-	hint.text = "勾选后：标记地图 / 委派随从驾驶（变玩家车，可远程指挥）· Tab/Esc 关闭"
+	hint.text = "勾选后：标记地图 / 委派成员驾驶（变玩家车，可远程指挥）· Tab/Esc 关闭"
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	hint.add_theme_font_size_override("font_size", 10)
 	hint.modulate = Color(0.8, 0.8, 0.8)
@@ -740,7 +763,7 @@ func _refresh_vehicle_panel() -> void:
 	_vehicle_title.text = "我的载具（%d 辆）" % vehicles.size()
 	if vehicles.is_empty():
 		var empty := Label.new()
-		empty.text = "还没有自己的载具——开上一辆车后按 Tab 委派随从驾驶，
+		empty.text = "还没有自己的载具——开上一辆车后按 Tab 委派成员驾驶，
 委派后即使人不在车上也归你指挥"
 		empty.add_theme_font_size_override("font_size", 11)
 		empty.modulate = Color(0.8, 0.8, 0.8)
@@ -840,7 +863,7 @@ func _on_vehicle_assign_pilot() -> void:
 			pilot = f
 			break
 	if pilot == null:
-		GameState.notify("没有可委派的随从（走近市民按 E 招募）")
+		GameState.notify("没有可委派的成员（走近市民按 E 招募）")
 		return
 	var pname := String(pilot.get("follower_name"))
 	pilot.set("mode", "drive")
@@ -912,24 +935,24 @@ func _refresh_squad_panel() -> void:
 	for child in _squad_grid.get_children():
 		child.queue_free()
 	var count := 0
-	# 营地工人卡片（含操作员）：与随从共享同一总览，可勾选下达新指令（打断旧岗位）
+	# 营地岗位卡片（含操作员）：与队伍成员共享同一总览，可勾选下达新指令（打断旧岗位）
 	for w in GameState.workers():
 		count += 1
 		var wname := String(w.get("name", ""))
 		_squad_grid.add_child(_make_member_card(
 			wname,
-			"工人",
+			"我方NPC",
 			GameState.worker_proficiency(wname),
 			GameState.worker_skills(wname),
 			GameState.worker_job_name(String(w.get("job", "idle"))),
 			wname
 		))
-	# 随从卡片：点击勾选，供下方批量指派
+	# 队伍成员卡片：点击勾选，供下方批量指派
 	for f in _followers:
 		count += 1
 		_squad_grid.add_child(_make_member_card(
 			f.follower_name,
-			"随从",
+			"我方NPC",
 			0,
 			GameState.skills_for_name(f.follower_name),
 			"%s · %s · HP %d/%d" % [follower_task_name(f.mode), f._gear_name(), f.hp, f.max_hp],
@@ -1158,7 +1181,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		close_gear_panel()
 
 
-# 工人实体：BlockyRig 市民外观 + 胸前醒目色块；加入 npcs 组后会被丧尸当作攻击目标
+# 我方NPC实体（营地岗位任务）：BlockyRig 市民外观；加入 npcs 组后会被丧尸当作攻击目标
 class WorkerBody extends CharacterBody3D:
 	const GRAVITY := 18.0
 	const SPEED := 4.6
@@ -1186,7 +1209,8 @@ class WorkerBody extends CharacterBody3D:
 	# npc_leave 守卫早退 → 永久隐形只剩头顶标签悬空（同批次 253 FollowerBody 的坑）
 	var sheltered := ""
 	# npcs 组兼容桩：丧尸/小地图/目击逻辑会对 npcs 组成员访问这些成员
-	var role := "worker"
+	# 批次 279：身份统一为「我方NPC」——工作只是任务，不再区分工人/随从
+	var role := "npc"
 	var _killed_by_player := false
 	var net_puppet := false
 	var _dying := false
@@ -1224,7 +1248,6 @@ class WorkerBody extends CharacterBody3D:
 		add_child(_collision)
 		_limbs = BlockyRig.build(self, null, {"model": BlockyRig.random_civilian()})
 		_limbs["aiming"] = true
-		_add_marker()
 		_name_label = Label3D.new()
 		_name_label.font_size = 48
 		_name_label.modulate = Color(1.0, 0.7, 0.3)
@@ -1233,22 +1256,6 @@ class WorkerBody extends CharacterBody3D:
 		_name_label.position = Vector3(0, 2.15, 0)
 		add_child(_name_label)
 		_refresh_label()
-
-
-	# 胸前醒目色块：区别于普通市民
-	func _add_marker() -> void:
-		var mesh := MeshInstance3D.new()
-		var box := BoxMesh.new()
-		box.size = Vector3(0.36, 0.2, 0.1)
-		mesh.mesh = box
-		var material := StandardMaterial3D.new()
-		material.albedo_color = Color(1.0, 0.55, 0.1)
-		material.emission_enabled = true
-		material.emission = Color(1.0, 0.45, 0.05)
-		material.emission_energy_multiplier = 1.5
-		mesh.material_override = material
-		mesh.position = Vector3(0, 1.32, -0.28)
-		add_child(mesh)
 
 
 	func _refresh_label() -> void:
@@ -1299,7 +1306,7 @@ class WorkerBody extends CharacterBody3D:
 		return ""
 
 
-	# —— 统一交互菜单协议：分配任务 / 解散工人 ——
+	# —— 统一交互菜单协议：分配任务 / 解散成员 ——
 
 	func interact_title() -> String:
 		return "%s（%s）" % [worker_name, GameState.worker_job_name(_job())]
@@ -1312,7 +1319,7 @@ class WorkerBody extends CharacterBody3D:
 			return []
 		return [
 			{"id": "assign", "label": "分配任务（当前：%s）" % GameState.worker_job_name(_job())},
-			{"id": "dismiss", "label": "解散工人"},
+			{"id": "dismiss", "label": "解散成员"},
 		]
 
 
@@ -1712,9 +1719,9 @@ class WorkerBody extends CharacterBody3D:
 		tween.tween_callback(queue_free)
 
 
-# 跟随者实体：招募市民而来，立即跟随玩家作战；可装备枪械/防弹衣/近战工具。
-# 不占用营地工人名额也不消耗口粮；模式：follow 跟随 / goto_base 前往营地 / guard 守护营地 /
-# stay 原地警戒 / scavenge 附近拾荒 / patrol 巡逻标点 / defend 防守标点
+# 我方NPC实体（队伍成员）：招募市民而来，立即跟随玩家作战；可装备枪械/防弹衣/近战工具。
+# 不占用营地岗位名额也不消耗口粮；模式：follow 跟随 / goto_base 前往营地 / guard 守护营地 /
+# stay 原地警戒 / scavenge 附近拾荒 / patrol 巡逻标点 / defend 防守标点 / operate 操作设施
 class FollowerBody extends CharacterBody3D:
 	const GRAVITY := 18.0
 	const SPEED := 4.6
@@ -1744,9 +1751,10 @@ class FollowerBody extends CharacterBody3D:
 	var equipped_melee := ""
 	var melee_damage := 0
 	# npcs 组兼容桩：丧尸/小地图/目击逻辑会对 npcs 组成员访问这些成员
-	var role := "follower"
+	# 批次 279：身份统一为「我方NPC」——工作只是任务，不再区分工人/随从
+	var role := "npc"
 	# 批次 253：藏匿系统状态桩——没有这个属性时 enter_npc 的 set("sheltered") 静默失败，
-	# npc_leave 守卫永远早退 → 随从进楼后永久隐形（"丢失模型"的根因）
+	# npc_leave 守卫永远早退 → 进楼后永久隐形（"丢失模型"的根因）
 	var sheltered := ""
 	# 批次 270：标记指挥「进攻/跟踪」注入的目标点（naocs 组兼容桩，ZombieAI 同名语义）
 	var assault_target := Vector3.ZERO
@@ -1790,7 +1798,6 @@ class FollowerBody extends CharacterBody3D:
 		add_child(_collision)
 		_limbs = BlockyRig.build(self, null, {"model": BlockyRig.random_civilian()})
 		_limbs["aiming"] = true
-		_add_marker()
 		_name_label = Label3D.new()
 		_name_label.font_size = 48
 		_name_label.modulate = Color(0.5, 0.9, 1.0)
@@ -1806,22 +1813,6 @@ class FollowerBody extends CharacterBody3D:
 		_hp_bar.position = Vector3(0, 2.55, 0)
 		add_child(_hp_bar)
 		_refresh_hp_bar()
-
-
-	# 胸前身份徽标（贴身缩小版）：青色区别于工人（橙）与普通市民
-	func _add_marker() -> void:
-		var mesh := MeshInstance3D.new()
-		var box := BoxMesh.new()
-		box.size = Vector3(0.2, 0.1, 0.04)
-		mesh.mesh = box
-		var material := StandardMaterial3D.new()
-		material.albedo_color = Color(0.2, 0.75, 0.9)
-		material.emission_enabled = true
-		material.emission = Color(0.1, 0.65, 0.85)
-		material.emission_energy_multiplier = 1.5
-		mesh.material_override = material
-		mesh.position = Vector3(0, 1.28, -0.2)
-		add_child(mesh)
 
 
 	func _gear_name() -> String:
@@ -1873,6 +1864,8 @@ class FollowerBody extends CharacterBody3D:
 				return "巡逻"
 			"defend":
 				return "防守"
+			"operate":
+				return "操作设施"
 		return mode
 
 
@@ -2026,6 +2019,8 @@ class FollowerBody extends CharacterBody3D:
 				_mode_patrol()
 			"defend":
 				_mode_defend()
+			"operate":
+				_mode_operate()
 			"drive":
 				_mode_drive()
 
@@ -2277,6 +2272,22 @@ class FollowerBody extends CharacterBody3D:
 		_try_attack()
 
 
+	# —— 操作设施：走到设施外围环带驻守（中心距 2.6~3.2m，避免卡进模型），顺带迎击 ——
+
+	func _mode_operate() -> void:
+		if task_point == Vector3.ZERO:
+			mode = "follow"
+			return
+		var flat := Vector2(global_position.x - task_point.x, global_position.z - task_point.z)
+		var flen := flat.length()
+		var dir := flat / flen if flen > 0.01 else Vector2(1, 0)
+		if flen > 3.2 or flen < 2.6:
+			_move_to(task_point + Vector3(dir.x, 0.0, dir.y) * 2.9, SPEED)
+		else:
+			_stop()
+		_try_attack()
+
+
 	# —— 攻击：有枪按武器数据开火，否则用近战工具/拳头打近身丧尸 ——
 
 	# 迎击侦测：12m 内最近的丧尸（拾荒/巡逻岗位的自动战斗，批次 244）
@@ -2414,6 +2425,7 @@ class FollowerBody extends CharacterBody3D:
 		if vehicle_ref != null and is_instance_valid(vehicle_ref) and vehicle_ref.has_method("_pilot_gone"):
 			vehicle_ref.call("_pilot_gone")
 		_drop_all_gear()
+		GameState.clear_operator_slot(follower_name)
 		var parent := get_parent()
 		if parent != null:
 			var npc = load("res://scenes3d/npc3d.tscn").instantiate()
@@ -2431,7 +2443,7 @@ class FollowerBody extends CharacterBody3D:
 	func take_damage(amount: int, _from: Node3D = null, friendly_fire := false) -> void:
 		if _dying:
 			return
-		# 随从免疫玩家的子弹与近战（友军不伤）；爆炸类（friendly_fire）无差别
+		# 我方NPC免疫玩家的子弹与近战（友军不伤）；爆炸类（friendly_fire）无差别
 		if _from != null and _from.is_in_group("player") and not friendly_fire:
 			return
 		hp -= amount
@@ -2448,6 +2460,7 @@ class FollowerBody extends CharacterBody3D:
 		if _killed_by_player:
 			GameState.civilian_kills += 1
 		_drop_all_gear()
+		GameState.clear_operator_slot(follower_name)
 		if manager != null and manager.has_method("_forget_follower"):
 			manager._forget_follower(self)
 		GameState.notify("%s 阵亡了" % follower_name)

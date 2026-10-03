@@ -437,7 +437,7 @@ const SHOP := {
 	"scope_4x": {"name": "四倍镜 ×1", "cost": 420},
 	"scope_8x": {"name": "八倍镜 ×1", "cost": 680},
 	"revival_stone": {"name": "复活石", "cost": REVIVE_STONE_COST},
-	"hire_npc": {"name": "雇佣一名随从", "cost": 5},
+	"hire_npc": {"name": "雇佣一名我方NPC", "cost": 5},
 }
 
 # 试玩版口径：局外成长只开放「枪械强化 + 身体属性」两类（都在强化仓）；
@@ -881,7 +881,7 @@ var wanted := 0
 var vault_key := false
 var crime_points := 0
 var player_kills := 0
-# 玩家击杀人类数（市民/警察/工人/随从都算；被丧尸杀死的不计）
+# 玩家击杀人类数（市民/警察/我方NPC都算；被丧尸杀死的不计）
 var civilian_kills := 0
 var jail_timer := 0.0
 var jail_active := false
@@ -901,7 +901,7 @@ var mutations_taken := 0
 var meta_weapons := {"pistol": 1, "shotgun": 0, "rifle": 0}
 # 基因库：撤离时存入的 NPC（跨局持久化）——名字/职业/天赋简述
 var gene_pool: Array = []
-# 系统空间雇佣的 NPC（进局后在出生点自动生成随从）
+# 系统空间雇佣的 NPC（进局后在出生点自动生成我方NPC）
 var pending_hires: Array = []
 # 商城购买的手枪弹药（进局时按口径直接入备弹库存）
 var pending_pistol_ammo := 0
@@ -1508,7 +1508,7 @@ func buy_shop_item(id: String) -> bool:
 		"hire_npc":
 			if not spend_energy(cost):
 				return false
-			# 雇佣 NPC：名字入待带名单，进局后自动成为随从
+			# 雇佣 NPC：名字入待带名单，进局后自动成为我方NPC
 			pending_hires.append("雇佣兵%d" % (pending_hires.size() + 1))
 			notify("已雇佣，进局后自动跟随")
 		_:
@@ -2478,7 +2478,7 @@ func close_all_panels() -> void:
 
 # —— 批次 267：同层菜单互斥 ——
 # 打开任一顶层菜单（背包/能力/地图/建造/E 交互/暂停）时自动关闭其他顶层菜单；
-# 二级/子面板（建造内部分类页、随从装备面板等）不注册、不受影响。
+# 二级/子面板（建造内部分类页、成员装备面板等）不注册、不受影响。
 # 各面板注册 {is_open, close} 两个回调，打开时广播，其余已开的自动关闭。
 var top_menu_close_handlers := {}
 
@@ -4529,7 +4529,7 @@ func select_weapon(id: String) -> void:
 	weapons_changed.emit()
 
 
-# 把装备交给随从：玩家失去该装备并刷新热键栏（当前武器被给出时自动切换）
+# 把装备交给我方NPC：玩家失去该装备并刷新热键栏（当前武器被给出时自动切换）
 func strip_weapon(id: String) -> void:
 	if not WEAPONS.has(id):
 		return
@@ -4761,8 +4761,8 @@ func upgrade_base_storage() -> bool:
 	return true
 
 
-# 工人系统：据点招募的市民（数据存 home_base["workers"]，每项 {name, job, state, data}），
-# 每天黎明每人消耗 2 食物（先扣据点仓库，不够扣玩家背包），断粮的工人离队
+# 工人任务体系：据点在岗的我方NPC（数据存 home_base["workers"]，每项 {name, job, state, data}），
+# 每天黎明每人消耗 2 食物（先扣据点仓库，不够扣玩家背包），断粮的离岗
 const WORKER_FOOD_PER_DAY := 2
 const WORKER_JOBS := {
 	"idle": "待命",
@@ -4876,7 +4876,7 @@ func worker_job_name(job: String) -> String:
 	return String(WORKER_JOBS.get(job, job))
 
 
-# —— 设施操作员（home_base["operators"]: defense_key → [工人名]）——
+# —— 设施操作员（home_base["operators"]: defense_key → [我方NPC 名]）——
 
 func operator_slots(type: String) -> int:
 	# 不在 OPERATOR_DEFS 里的设施没有工作位（围墙/地刺/路障/灯/基建类）
@@ -4906,9 +4906,10 @@ func defense_operator_count(pos: Vector3) -> int:
 	return defense_operators(pos).size()
 
 
-# 指派工人到设施工作位：满员或无工作位的设施拒绝；同一工人只能守一台设施（先从旧位置撤出）
+# 指派我方NPC到设施工作位：满员或无工作位的设施拒绝；同一人只能守一台设施（先从旧位置撤出）。
+# 批次 279：不再要求工人记录——原随从直接以「操作设施」任务承接岗位，实体/身份不变
 func assign_operator(pos: Vector3, wname: String, type: String) -> bool:
-	if not has_home_base() or get_worker(wname).is_empty():
+	if not has_home_base():
 		return false
 	if operator_slots(type) <= 0:
 		return false
@@ -4929,10 +4930,27 @@ func assign_operator(pos: Vector3, wname: String, type: String) -> bool:
 			other.erase(wname)
 	list.append(wname)
 	ops[key] = list
-	assign_worker(wname, "operate", {"pos": pos})
+	# 营地工人走工人任务体系（实体走向设施）；我方NPC由实体侧 operate 任务模式承接
+	if not get_worker(wname).is_empty():
+		assign_worker(wname, "operate", {"pos": pos})
 	home_base_changed.emit()
 	notify("%s 开始操作%s" % [wname, String(BASE_DEFENSES.get(type, {}).get("name", "设施"))])
 	return true
+
+
+# 从所有设施操作员位撤出该名字（改派任务/解散/阵亡时调用）
+func clear_operator_slot(wname: String) -> void:
+	if not has_home_base() or not home_base.has("operators"):
+		return
+	var ops: Dictionary = home_base["operators"]
+	var changed := false
+	for key in ops.keys():
+		var list: Array = ops[key] as Array
+		if list.has(wname):
+			list.erase(wname)
+			changed = true
+	if changed:
+		home_base_changed.emit()
 
 
 func unassign_operator(pos: Vector3, wname: String) -> void:

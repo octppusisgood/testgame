@@ -134,7 +134,7 @@ var destroyed := false
 # 委派驾驶员（Tab 载具面板）：委派后成为玩家的车，可远程指挥自动驾驶
 var owned := false
 var pilot_name := ""
-# 驾驶员随从实体（FollowerBody）：在车上随车移动/隐藏，J 面板保留栏位显示「驾驶中」
+# 驾驶员我方NPC实体（FollowerBody）：在车上随车移动/隐藏，J 面板保留栏位显示「驾驶中」
 var pilot: Node3D = null
 # 自动驾驶目标（ZERO = 待命）；由载具面板「开往地图标点 / 召回身边」设置
 var auto_target := Vector3.ZERO
@@ -923,7 +923,7 @@ func _drive(delta: float) -> void:
 
 # —— 委派驾驶员与远程指挥（Tab 载具面板） ——
 
-# 委派一名随从当驾驶员：车成为玩家的车（面板显示/可远程指挥）
+# 委派一名我方NPC当驾驶员：车成为玩家的车（面板显示/可远程指挥）
 func assign_pilot(fname: String, pilot_node: Node3D = null) -> void:
 	owned = true
 	pilot_name = fname
@@ -932,7 +932,7 @@ func assign_pilot(fname: String, pilot_node: Node3D = null) -> void:
 	GameState.notify("%s 已委派为 %s 的驾驶员" % [fname, _vehicle_name()])
 
 
-# 驾驶员下车：恢复随从（可见/回 npcs 组/转跟随），车失去归属与指令
+# 驾驶员下车：恢复我方NPC（可见/回 npcs 组/转跟随），车失去归属与指令
 func dismiss_pilot() -> void:
 	if pilot == null or not is_instance_valid(pilot):
 		_pilot_gone()
@@ -945,7 +945,7 @@ func dismiss_pilot() -> void:
 	_pilot_gone()
 
 
-# 驾驶员离开（下车/阵亡/解散）：只清车侧引用，不动随从实体
+# 驾驶员离开（下车/阵亡/解散）：只清车侧引用，不动我方NPC实体
 func _pilot_gone() -> void:
 	pilot = null
 	pilot_name = ""

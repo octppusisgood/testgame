@@ -475,8 +475,8 @@ func _draw_content(show_people: bool) -> void:
 				# 批次 246：警察与军队统一标记为黄点
 				draw_circle(npc_pos, 1.5, Color(1.0, 0.85, 0.3, 0.95))
 				continue
-			if npc.role == "follower":
-				# 批次 245：被招募的随从 = 亮绿大点（与士兵绿/市民灰区分）
+			if npc.role == "npc":
+				# 批次 279：我方NPC（原随从/工人统一）= 亮绿大点（与市民灰区分）
 				draw_circle(npc_pos, 1.9, Color(0.45, 1.0, 0.5, 0.98))
 				continue
 			var color := Color(0.75, 0.75, 0.8, 0.9)

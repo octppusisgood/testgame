@@ -93,7 +93,7 @@ func _mark_enemy(pos: Vector3) -> Dictionary:
 	if z != null:
 		return {"type": "enemy", "node": z, "pos": z.global_position, "label": "丧尸"}
 	var npc = GameState.nearest_entity_in_group(pos, "npcs", ENEMY_SCAN)
-	if npc != null and str(npc.get("role")) != "follower":
+	if npc != null and str(npc.get("role")) != "npc":
 		return {"type": "enemy", "node": npc, "pos": npc.global_position, "label": "目标人物"}
 	return {}
 
@@ -179,7 +179,7 @@ func menu_open() -> bool:
 	return _menu_layer != null and is_instance_valid(_menu_layer) and _menu_layer.visible
 
 
-# —— 指令派发：把标记转成随从任务 ——
+# —— 指令派发：把标记转成我方NPC任务 ——
 func _on_command(cmd: String) -> void:
 	var info: Dictionary = GameState.marked_target
 	if info.is_empty():
@@ -199,7 +199,7 @@ func _on_command(cmd: String) -> void:
 							f.set("assault_target", pos)
 							f.set("track_target", null)
 							assigned += 1
-					GameState.notify("%d 名随从转向进攻目标！" % assigned)
+					GameState.notify("%d 名我方NPC转向进攻目标！" % assigned)
 				else:
 					assigned = _send_all(manager, pos, "defend", "进攻标记点")
 			"harass":
@@ -211,13 +211,13 @@ func _on_command(cmd: String) -> void:
 							f.set("assault_target", pos)
 							f.set("track_target", info["node"])
 							assigned += 1
-					GameState.notify("%d 名随从开始跟踪目标" % assigned)
+					GameState.notify("%d 名我方NPC开始跟踪目标" % assigned)
 			"drive":
 				if manager.has_method("open_vehicle_panel"):
 					manager.call("open_vehicle_panel")
-					GameState.notify("载具面板已打开——勾选随从后点「委派驾驶员」")
+					GameState.notify("载具面板已打开——勾选成员后点「委派驾驶员」")
 			"enter", "scavenge", "demolish":
-				# 建筑：派随从前往门口执行对应意图（搜刮/拆除本体需玩家 E/Z，随从负责护送/驻守）
+				# 建筑：派我方NPC前往门口执行对应意图（搜刮/拆除本体需玩家 E/Z，成员负责护送/驻守）
 				assigned = _send_all(manager, pos, "defend", "%s 标记建筑" % cmd)
 			"defend":
 				assigned = _send_all(manager, pos, "defend", "驻守标记点")
@@ -228,7 +228,7 @@ func _on_command(cmd: String) -> void:
 	if assigned > 0:
 		clear_mark()
 	else:
-		GameState.notify("没有可指挥的随从（先招募）")
+		GameState.notify("没有可指挥的我方NPC（先招募）")
 		_close_menu()
 
 
@@ -237,7 +237,7 @@ func _send_all(manager, pos: Vector3, task: String, label: String) -> int:
 	if list.is_empty():
 		return 0
 	manager.call("assign_follower_task", list, task, pos)
-	GameState.notify("全体随从：%s" % label)
+	GameState.notify("全体成员：%s" % label)
 	return list.size()
 
 

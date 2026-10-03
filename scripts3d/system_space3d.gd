@@ -311,7 +311,7 @@ func _build_shop_panel(box: VBoxContainer) -> void:
 	for id in GameState.SHOP.keys():
 		var info: Dictionary = GameState.SHOP[id]
 		if info.has("panel"):
-			continue  # 雇佣随从等分属其他设施
+			continue  # 雇佣我方NPC等分属其他设施
 		var btn := Button.new()
 		btn.text = "%s — %d SP" % [String(info["name"]), int(info["cost"])]
 		btn.add_theme_font_size_override("font_size", 10)
@@ -338,10 +338,10 @@ func _build_gene_panel(box: VBoxContainer) -> void:
 	label.add_theme_font_size_override("font_size", 10)
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(label)
-	# 雇佣随从：试玩版暂闭；开放后购买进局自动跟随（上限 4 名）
+	# 雇佣我方NPC：试玩版暂闭；开放后购买进局自动跟随（上限 4 名）
 	if not GameState.TRIAL_HIRE_OPEN:
 		var note := Label.new()
-		note.text = "试玩版：雇佣随从暂未开放（后续版本加入）"
+		note.text = "试玩版：雇佣我方NPC暂未开放（后续版本加入）"
 		note.add_theme_font_size_override("font_size", 11)
 		note.add_theme_color_override("font_color", Color(0.75, 0.8, 0.9))
 		note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

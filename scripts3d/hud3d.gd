@@ -370,7 +370,7 @@ func _ready() -> void:
 	_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_hint.add_theme_font_size_override("font_size", 9)
 	_hint.add_theme_color_override("font_color", Color(0.8, 0.8, 0.8, 0.75))
-	_hint.text = "WASD 移动 · 双击方向 疾跑 · Shift 冲刺 · 空格 跳跃 · 左键 攻击 · 右键 开镜 · 1~2 武器槽 · R 换弹 · V 近战 · G 手雷 · B 背包 · C 能力\nE 交互 · Q 炮击指挥 · M 地图 · F 医疗 · U 车斗卸货 · J 随从 · Tab 载具 · T 手电 · Esc 鼠标"
+	_hint.text = "WASD 移动 · 双击方向 疾跑 · Shift 冲刺 · 空格 跳跃 · 左键 攻击 · 右键 开镜 · 1~2 武器槽 · R 换弹 · V 近战 · G 手雷 · B 背包 · C 能力\nE 交互 · Q 炮击指挥 · M 地图 · F 医疗 · U 车斗卸货 · J 队伍 · Tab 载具 · T 手电 · Esc 鼠标"
 	_hint.visible = false
 	add_child(_hint)
 
@@ -877,7 +877,7 @@ func _build_help_panel() -> void:
 		+ "击杀丧尸攒异能量与物资；加油站给车加油；第 3 天全城断电后，\n"
 		+ "靠发电机（烧燃料）/太阳能/风力给据点设备供电，或修复发电厂。\n"
 		+ "紫色异能量场会不断刷怪——打爆核心掉结晶（拾取可吸收异能量）。\n"
-		+ "走近市民按 E 招募随从，J 打开随从面板指派拾荒/巡逻/防守。"
+		+ "走近市民按 E 招募成员，J 打开队伍面板指派拾荒/巡逻/防守。"
 	)
 	intro.add_theme_font_size_override("font_size", 12)
 	intro.add_theme_color_override("font_color", Color(0.85, 0.88, 0.9))
@@ -971,7 +971,7 @@ func _build_pause_panel() -> void:
 		"【战斗】  左键 开火 · 右键 开镜/特殊 · R 换弹 · V 近战 · G 手雷 · F 医疗",
 		"【装备】  1/2 武器槽 · B 背包 · C 能力面板",
 		"【交互】  E 交互（可鼠标点选） · X 建造 · Z 拆除",
-		"【指挥】  Q 炮击圆盘 · J 随从面板 · Tab 载具面板",
+		"【指挥】  Q 炮击圆盘 · J 队伍面板 · Tab 载具面板",
 		"【地图】  M 大地图 · 小地图外圈=电力环 左绿发电/右红用电",
 		"【其他】  T 手电 · U 车斗卸货 · 载具内 E 下车",
 		"【调试】  F1 帮助 · F3 性能 · F12 调试信息",
@@ -1769,7 +1769,7 @@ func _try_open_defense_menu_at_mouse() -> bool:
 	return true
 
 
-# —— 操作员面板：从营地工人中为设施指派/撤出操作员，展示等级与技能 ——
+# —— 操作员面板：从我方NPC中为设施指派/撤出操作员，展示技能与当前任务 ——
 var _operator_panel: Control = null
 var _operator_list: VBoxContainer = null
 var _operator_title: Label = null
@@ -1852,7 +1852,7 @@ func _refresh_operator_panel() -> void:
 	var followers := get_tree().get_nodes_in_group("followers")
 	if workers.is_empty() and followers.is_empty():
 		var empty := Label.new()
-		empty.text = "（营地没有工人：先走近市民按 E 招募）"
+		empty.text = "（还没有我方NPC：先走近市民按 E 招募）"
 		empty.add_theme_font_size_override("font_size", 10)
 		empty.add_theme_color_override("font_color", Color(0.6, 0.65, 0.6))
 		_operator_list.add_child(empty)
@@ -1902,7 +1902,7 @@ func _refresh_operator_panel() -> void:
 			)
 		row.add_child(btn)
 		_operator_list.add_child(row)
-	# 随从（招募的跟随者）也能指派：指派后转为营地工人并停下手头工作
+	# 我方NPC（原随从）同样可指派：只下达「操作设施」任务，实体/身份不变
 	for follower in followers:
 		if follower.is_queued_for_deletion():
 			continue
@@ -1914,7 +1914,10 @@ func _refresh_operator_panel() -> void:
 		var flabel := Label.new()
 		flabel.custom_minimum_size = Vector2(216, 20)
 		var fskills: Array = GameState.skills_for_name(fname)
-		flabel.text = "%s · 新兵 · 技能 %s · 随从" % [fname, "/".join(fskills)]
+		var ftask := ""
+		if str(follower.get("mode")) == "operate":
+			ftask = " · 操作中" if ops.has(fname) else " · 操作中（其它设施）"
+		flabel.text = "%s · 技能 %s%s" % [fname, "/".join(fskills), ftask]
 		flabel.add_theme_font_size_override("font_size", 10)
 		flabel.add_theme_color_override(
 			"font_color",
@@ -1922,35 +1925,49 @@ func _refresh_operator_panel() -> void:
 		)
 		frow.add_child(flabel)
 		var fbtn := Button.new()
-		fbtn.text = "指派"
 		fbtn.custom_minimum_size = Vector2(52, 20)
 		fbtn.add_theme_font_size_override("font_size", 10)
-		fbtn.disabled = ops.size() >= slots
-		fbtn.tooltip_text = "工作位已满" if ops.size() >= slots else "转为工人并指派到该设施"
-		fbtn.pressed.connect(_assign_follower_as_operator.bind(follower, pos, type))
+		if ops.has(fname):
+			fbtn.text = "撤出"
+			fbtn.pressed.connect(_unassign_follower_operator.bind(follower, pos))
+		else:
+			fbtn.text = "指派"
+			fbtn.disabled = ops.size() >= slots
+			fbtn.tooltip_text = "工作位已满" if ops.size() >= slots else "指派到该设施操作"
+			fbtn.pressed.connect(_assign_follower_as_operator.bind(follower, pos, type))
 		frow.add_child(fbtn)
 		_operator_list.add_child(frow)
 
 
-# 把随从转为营地工人并指派为设施操作员（停止其当前跟随任务）
+# 把我方NPC指派为设施操作员：只是接下「操作设施」任务——
+# 实体不重建、身份不改变（批次 279：废除“随从转工人”的换实体逻辑）
 func _assign_follower_as_operator(follower: Node3D, pos: Vector3, type: String) -> void:
 	var fname := String(follower.get("follower_name"))
 	if fname == "":
 		return
-	if GameState.get_worker(fname).is_empty() and not GameState.add_worker(fname):
-		return  # 工人已满，add_worker 已提示
 	if not GameState.assign_operator(pos, fname, type):
 		return
-	# 从随从队伍移除，实体由工人系统接管——原地交接，不要让人凭空消失
-	var old_pos := follower.global_position
 	var mgr = follower.get("manager")
-	if mgr != null and mgr.get("_followers") is Array:
-		mgr._followers.erase(follower)
-		mgr._sync_workers()
-		var body = mgr._entities.get(fname)
-		if body != null:
-			body.global_position = old_pos
-	follower.queue_free()
+	if mgr != null and mgr.has_method("assign_operate_task"):
+		mgr.call("assign_operate_task", follower, pos)
+	else:
+		follower.set("mode", "operate")
+		follower.set("task_point", pos)
+		if follower.has_method("_refresh_label"):
+			follower._refresh_label()
+	_refresh_operator_panel()
+
+
+# 撤出操作员：「操作设施」任务结束，恢复跟随——同样不动实体
+func _unassign_follower_operator(follower: Node3D, pos: Vector3) -> void:
+	var fname := String(follower.get("follower_name"))
+	if fname == "":
+		return
+	GameState.unassign_operator(pos, fname)
+	if is_instance_valid(follower):
+		follower.set("mode", "follow")
+		if follower.has_method("_refresh_label"):
+			follower._refresh_label()
 	_refresh_operator_panel()
 
 

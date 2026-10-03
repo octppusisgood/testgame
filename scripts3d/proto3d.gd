@@ -350,7 +350,7 @@ func _ready() -> void:
 	workers.name = "Workers"
 	workers.set_script(load("res://scripts3d/worker3d.gd"))
 	add_child(workers)
-	# 系统空间雇佣的随从：必须在 workers 管理器就位后再生成
+	# 系统空间雇佣的我方NPC：必须在 workers 管理器就位后再生成
 	# （此前在 _spawn_player 后就调用，管理器尚未创建 → 查找落空 → 静默不生成）
 	_spawn_hired_npcs()
 	if GameState.rogue_mode:
@@ -367,7 +367,7 @@ func _client_mode() -> bool:
 
 
 # —— NPC 池化：超 150m 的市民拆成轻量记录休眠，回到 130m 内重新激活 ——
-# 活跃 NPC 数量从此只与玩家周边密度有关，总人口可以随便加（池外：随从/工人/感染者/恐慌者）
+# 活跃 NPC 数量从此只与玩家周边密度有关，总人口可以随便加（池外：我方NPC/感染者/恐慌者）
 
 const NPC_POOL_RESPAWN := 130.0
 const NPC_POOL_DESPAWN := 150.0
@@ -3107,7 +3107,7 @@ func _spawn_player() -> void:
 
 
 
-# 系统空间雇佣的 NPC：进局后在玩家旁自动成为随从
+# 系统空间雇佣的 NPC：进局后在玩家旁自动成为我方NPC（队伍成员）
 func _spawn_hired_npcs() -> void:
 	if GameState.pending_hires.is_empty():
 		return
@@ -3137,7 +3137,7 @@ func _spawn_hired_npcs() -> void:
 		follower.global_position = npc.global_position
 		npc.queue_free()
 		worker_manager._followers.append(follower)
-		GameState.notify("雇佣随从 %s 已就位" % fname)
+		GameState.notify("雇佣成员 %s 已就位" % fname)
 	GameState.pending_hires.clear()
 
 func _spawn_zombie() -> void:

@@ -1739,6 +1739,10 @@ class FollowerBody extends CharacterBody3D:
 	# 批次 253：藏匿系统状态桩——没有这个属性时 enter_npc 的 set("sheltered") 静默失败，
 	# npc_leave 守卫永远早退 → 随从进楼后永久隐形（"丢失模型"的根因）
 	var sheltered := ""
+	# 批次 270：标记指挥「进攻/跟踪」注入的目标点（naocs 组兼容桩，ZombieAI 同名语义）
+	var assault_target := Vector3.ZERO
+	# 跟踪模式的动态跟随目标
+	var track_target: Node3D = null
 	var _killed_by_player := false
 	var net_puppet := false
 	var _dying := false
@@ -1983,6 +1987,19 @@ class FollowerBody extends CharacterBody3D:
 	# —— 模式决策（每 0.2s 一次）——
 
 	func _decide_mode() -> void:
+		# 批次 270：标记指挥「进攻/跟踪」优先——朝注入目标点移动并攻击沿途敌人
+		if assault_target != Vector3.ZERO:
+			var dist := global_position.distance_to(assault_target)
+			if track_target != null and is_instance_valid(track_target):
+				assault_target = track_target.global_position  # 跟踪：目标移动则刷新
+			if dist > 3.0:
+				_move_to(assault_target, clampf(dist * 1.5, 2.5, 7.0))
+			else:
+				_stop()
+				if track_target == null:
+					assault_target = Vector3.ZERO  # 进攻：抵达即解除
+			_try_attack()
+			return
 		match mode:
 			"follow":
 				_mode_follow()

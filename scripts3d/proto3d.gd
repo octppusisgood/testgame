@@ -328,6 +328,11 @@ func _ready() -> void:
 	demolish.name = "Demolish"
 	demolish.set_script(load("res://scripts3d/demolish3d.gd"))
 	add_child(demolish)
+	# 批次 270：T 键标记指挥
+	var marker_cmd := Node3D.new()
+	marker_cmd.name = "MarkerCommand"
+	marker_cmd.set_script(load("res://scripts3d/marker_command3d.gd"))
+	add_child(marker_cmd)
 	var base_visual := Node3D.new()
 	base_visual.name = "BaseVisual"
 	base_visual.set_script(load("res://scripts3d/base_visual3d.gd"))

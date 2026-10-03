@@ -18,6 +18,52 @@ signal map_marker_changed()
 
 var map_marker := Vector2.ZERO
 
+# —— 批次 270：T 键标记指挥 ——
+# 标记目标（鼠标所指物体）：{type: building/vehicle/ground/enemy, node, pos, label}
+signal marked_target_changed()
+var marked_target: Dictionary = {}
+
+
+func set_marked_target(info: Dictionary) -> void:
+	marked_target = info
+	marked_target_changed.emit()
+
+
+func clear_marked_target() -> void:
+	if marked_target.is_empty():
+		return
+	marked_target = {}
+	marked_target_changed.emit()
+
+
+# 标记指令按目标类型分派（子菜单选项）
+func mark_commands_for(mark_type: String) -> Array:
+	match mark_type:
+		"building":
+			return [
+				{"id": "enter", "label": "进入"},
+				{"id": "demolish", "label": "拆除"},
+				{"id": "scavenge", "label": "搜刮"},
+				{"id": "attack", "label": "摧毁"},
+			]
+		"vehicle":
+			return [
+				{"id": "drive", "label": "驾驶"},
+				{"id": "attack", "label": "摧毁"},
+			]
+		"enemy":
+			return [
+				{"id": "attack", "label": "进攻"},
+				{"id": "harass", "label": "骚扰"},
+				{"id": "track", "label": "跟踪"},
+			]
+		_:
+			return [
+				{"id": "defend", "label": "驻守"},
+				{"id": "patrol", "label": "巡逻"},
+				{"id": "attack_move", "label": "进攻"},
+			]
+
 
 func set_map_marker(pos: Vector2) -> void:
 	map_marker = pos
@@ -929,10 +975,11 @@ const DEFAULT_BINDINGS := {
 	"skills": KEY_C,      # 能力面板
 	"build": KEY_X,       # 建造
 	"reload": KEY_R,      # 换弹
-	"flashlight": KEY_T,  # 手电
+	"flashlight": KEY_Y,  # 手电（批次 270 让位标记指挥）
 	"melee": KEY_V,       # 近战
 	"grenade": KEY_G,     # 手雷
 	"artillery": KEY_Q,   # 炮击指挥
+	"mark": KEY_T,        # 标记指挥
 }
 var action_bindings := {}
 

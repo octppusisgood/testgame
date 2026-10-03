@@ -788,6 +788,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if GameState.is_action_key(event, "flashlight"):
 			_toggle_flashlight()
 			return
+		if GameState.is_action_key(event, "mark"):
+			# 批次 270：T 标记指挥——标记鼠标所指物体并弹指令子菜单
+			var city := get_parent()
+			if city != null:
+				var mc = city.get_node_or_null("MarkerCommand")
+				if mc != null:
+					mc.call("handle_t_key", self)
+			return
 		if GameState.is_action_key(event, "melee"):
 			GameState.select_weapon("melee")
 			return
@@ -824,6 +832,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_ESCAPE:
 				# 炮击指挥/远程打击圆盘打开时 Esc 由对应 UI 接管（不开暂停菜单）
 				if GameState.mortar_command != null or GameState.strike_dial_open:
+					return
+				# 批次 270：标记指挥菜单打开时 Esc 只取消标记
+				var mc_node := get_parent().get_node_or_null("MarkerCommand") if get_parent() != null else null
+				if mc_node != null and mc_node.menu_open():
+					mc_node.clear_mark()
 					return
 				var build := _build_controller()
 				if build != null and build.is_active():

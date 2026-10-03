@@ -674,12 +674,48 @@ func _move_toward(pos: Vector3, speed: float) -> bool:
 	if to_pos.length() < 1.0:
 		return false
 	var dir := to_pos.normalized()
+	# 批次 274：前瞻绕障——目标方向近处有建筑挡路时，沿建筑边缘切向绕行
+	# （比卡墙后才随机转向可靠；绕行中每 0.4s 重估，绕过楼角立即恢复直奔）
+	var avoid := _avoid_angle(dir)
+	if avoid != 0.0:
+		dir = dir.rotated(Vector3.UP, avoid)
 	if _detour_time > 0.0:
 		dir = dir.rotated(Vector3.UP, _detour_angle)
 	velocity.x = dir.x * speed
 	velocity.z = dir.z * speed
 	look_at(Vector3(pos.x, global_position.y, pos.z), Vector3.UP)
 	return true
+
+
+# 前瞻探测：目标方向 6m 处有建筑矩形 → 返回绕行角（朝最近边切向 ±90° 内），无遮挡返回 0
+const AVOID_PROBE := 6.0
+
+func _avoid_angle(dir: Vector3) -> float:
+	var proto = get_parent()
+	if proto == null or not proto.has_method("building_push_out"):
+		return 0.0
+	var probe := global_position + dir * AVOID_PROBE
+	var rects: Array = proto.get("_building_collision_rects")
+	var index: Dictionary = proto.get("_building_rect_index")
+	var flat := Vector2(probe.x, probe.z)
+	var cc := Vector2i(floori(flat.x / 20.0), floori(flat.y / 20.0))
+	for dx in [-1, 0, 1]:
+		for dz in [-1, 0, 1]:
+			for id in index.get(cc + Vector2i(dx, dz), []):
+				var e: Dictionary = rects[int(id)]
+				var rect: Rect2 = e["rect"]
+				if not rect.has_point(flat):
+					continue
+				# 探针点落在建筑内 → 朝最近的边避让（x 边绕横向，z 边绕纵向）
+				var dl: float = flat.x - rect.position.x
+				var dr: float = rect.end.x - flat.x
+				var dt: float = flat.y - rect.position.y
+				var db: float = rect.end.y - flat.y
+				var side := signf(dir.x) if minf(dl, dr) < minf(dt, db) else -signf(dir.z)
+				# 沿选择轴的切向转 ±80°，配合原方向保留一点向目标的分量
+				var angle := deg_to_rad(80.0) * (1.0 if side >= 0.0 else -1.0)
+				return angle
+	return 0.0
 
 
 func _wander(delta: float) -> void:

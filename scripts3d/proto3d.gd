@@ -2049,6 +2049,9 @@ func _build_building(entry: Dictionary, index: int) -> void:
 	# 批次 42：搜刮建筑——门挂上本栋的 loot 表与一次性标记 key（像素坐标）
 	door.loot_table = _loot_table_for(id)
 	door.scavenge_key = pos
+	# 批次 278：藏匿唯一键——building_id 是类别（house 等多栋共用），拿它当
+	# 藏匿键会让同类别楼的成员/计数互相串门（进楼出楼模型消失的真根因）
+	door.shelter_key = "%s@%d,%d" % [id, int(pos.x), int(pos.y)]
 	add_child(door)
 	door.position = center + Vector3(0, 0.05, depth / 2.0 + 1.2)
 	# 交互占地用模型实际包围盒（视觉=碰撞=交互三者对齐）：
@@ -2289,6 +2292,7 @@ func _build_tower(tower: Dictionary, index: int) -> void:
 	# 批次 42：搜刮建筑——塔楼用 office 表，一次性标记 key 为像素坐标
 	tower_door.loot_table = _loot_table_for("tower")
 	tower_door.scavenge_key = pos
+	tower_door.shelter_key = "tower@%d,%d" % [int(pos.x), int(pos.y)]
 	add_child(tower_door)
 	tower_door.position = center + Vector3(0.0, 0.05, depth / 2.0 + 1.2)
 	_tower_doors.append(tower_door)
@@ -2455,6 +2459,7 @@ func _place_model(path: String, pos_px: Vector2, target_height: float, loot_id :
 	# 批次 42：搜刮建筑——模型楼挂 loot 表与一次性标记 key（像素坐标）
 	door.loot_table = _loot_table_for(loot_id)
 	door.scavenge_key = pos_px
+	door.shelter_key = "model@%d,%d" % [int(pos_px.x), int(pos_px.y)]
 	add_child(door)
 	door.position = Vector3(
 		pos_px.x * SCALE, 0.05, pos_px.y * SCALE + footprint.y / 2.0 + 1.2
@@ -3259,6 +3264,8 @@ class BaseDoor extends Node3D:
 	# 批次 42：搜刮建筑——本栋的 loot 表与一次性标记 key（像素坐标中心点）
 	var loot_table := ""
 	var scavenge_key := Vector2.ZERO
+	# 批次 278：本栋唯一藏匿键（类别@坐标）——player_in_building 比较用它
+	var shelter_key := ""
 	var _plate: Label3D
 	var _channel := -1.0
 	var _channel_label: Label3D
@@ -3344,6 +3351,11 @@ class BaseDoor extends Node3D:
 		return "据点 · %s" % building_name if _is_home() else building_name
 
 
+	# 批次 278：藏匿桶唯一键（shelter_key 优先，类别兜底）
+	func _shelter_bid() -> String:
+		return shelter_key if shelter_key != "" else building_id
+
+
 	func interact_options(player: Node3D) -> Array:
 		if player == null or not within_reach(player):
 			return []
@@ -3354,8 +3366,8 @@ class BaseDoor extends Node3D:
 		var interiors_root := get_tree().get_first_node_in_group("building_interiors")
 		var room_used := 0
 		if interiors_root != null:
-			room_used = interiors_root.count_for(building_id)
-		if GameState.player_in_building == building_id:
+			room_used = interiors_root.count_for(_shelter_bid())
+		if GameState.player_in_building == _shelter_bid():
 			options.append({
 				"id": "leave",
 				"label": "离开建筑（楼内藏匿 %d/%d 人）" % [room_used, 20],
@@ -3370,7 +3382,7 @@ class BaseDoor extends Node3D:
 		# 批次 277：驱逐——耗 1 发子弹把楼里藏匿的市民全部赶出来
 		var evictable := 0
 		if interiors_root != null:
-			evictable = interiors_root.count_citizens_for(building_id)
+			evictable = interiors_root.count_citizens_for(_shelter_bid())
 		options.append({
 			"id": "evict",
 			"label": "驱逐（耗 1 发子弹，赶出楼内 %d 名市民）" % evictable,
@@ -3461,7 +3473,7 @@ class BaseDoor extends Node3D:
 					return
 				var kicked := 0
 				if interiors_root != null:
-					kicked = interiors_root.evict_citizens(building_id, self)
+					kicked = interiors_root.evict_citizens(_shelter_bid(), self)
 				GameState.noise_at(global_position, 25.0)
 				GameState.notify(
 					("朝楼上开了一枪——%d 名市民被赶了出来！" % kicked) if kicked > 0

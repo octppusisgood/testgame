@@ -900,7 +900,8 @@ func _wander_or_flee(delta: float) -> void:
 		if global_position.distance_to(_shelter_door.global_position) < 3.5:
 			var interiors_root := get_tree().get_first_node_in_group("building_interiors")
 			if interiors_root != null and interiors_root.enter_npc(_shelter_door, self):
-				sheltered = str(_shelter_door.get("building_id"))
+				var sk = _shelter_door.get("shelter_key")
+				sheltered = str(sk) if sk != null and not str(sk).is_empty() else str(_shelter_door.get("building_id"))
 				_shelter_timer = randf_range(40.0, 80.0)
 				_flee_done = true
 				_flee_target = Vector3.INF

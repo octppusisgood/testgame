@@ -88,6 +88,11 @@ func _refresh_marker(door: Node) -> void:
 
 
 func _door_id(door: Node) -> String:
+	# 批次 278：优先唯一 shelter_key（类别+坐标）——building_id 是类别不唯一，
+	# 同类别多栋楼曾共用一个藏匿桶，成员/计数互相串门导致进楼出楼模型消失
+	var sk = door.get("shelter_key")
+	if sk != null and not str(sk).is_empty():
+		return str(sk)
 	var bid = door.get("building_id")
 	if bid == null or str(bid).is_empty():
 		return "door_%d" % door.get_instance_id()

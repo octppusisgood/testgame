@@ -1297,6 +1297,39 @@ func _find_interact_target(player: Node3D) -> Dictionary:
 			mouse_options = options
 	if mouse_best != null:
 		return {"node": mouse_best, "options": mouse_options}
+	# 批次 271：右键远程交互——近距扫描落空时，做一次同屏远距扫描：
+	# 鼠标射线命中对象几何（建筑足迹/世界坐标投影），无论多远都接受其选项
+	# （选项内部已带 far 标记：近距动作置灰提示走近，同屏动作可执行）
+	if mouse == Vector2.INF:
+		return {}
+	var far_best: Node = null
+	var far_best_px := INF
+	for node in get_tree().get_nodes_in_group("interactables"):
+		if not node.has_method("interact_options"):
+			continue
+		var footprint = node.get("footprint_half")
+		var center: Vector3
+		if footprint is Vector2 and footprint != Vector2.ZERO:
+			center = node.global_position + node.get("reach_center_offset")
+			if camera.is_position_behind(center):
+				continue
+			if not _mouse_ray_hits_footprint(camera, mouse, center, footprint):
+				continue
+			var fpx := camera.unproject_position(center).distance_to(mouse)
+			if fpx < far_best_px:
+				far_best_px = fpx
+				far_best = node
+		else:
+			if camera.is_position_behind(node.global_position):
+				continue
+			var px := camera.unproject_position(node.global_position).distance_to(mouse)
+			if px < px_threshold * 2.0 and px < far_best_px:
+				far_best_px = px
+				far_best = node
+	if far_best != null:
+		var far_options: Array = far_best.interact_options(player)
+		if not far_options.is_empty():
+			return {"node": far_best, "options": far_options}
 	return {}
 
 

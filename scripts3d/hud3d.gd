@@ -233,20 +233,20 @@ func _ready() -> void:
 	# 信号 UI：右上角（小地图正下方）——手机信号条图标 + 百分比
 	var sig_box := HBoxContainer.new()
 	sig_box.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	# 批次 281：信号条放画面最右上角（红圈指定位）——小地图圆右上侧，圆外
-	sig_box.offset_left = -76
-	sig_box.offset_top = 6
-	sig_box.offset_right = -8
-	sig_box.offset_bottom = 28
-	sig_box.add_theme_constant_override("separation", 5)
+	# 批次 282：信号条缩小版放画面最右上角红框位（右缘贴边、顶部贴边）
+	sig_box.offset_left = -58
+	sig_box.offset_top = 4
+	sig_box.offset_right = -4
+	sig_box.offset_bottom = 22
+	sig_box.add_theme_constant_override("separation", 3)
 	sig_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(sig_box)
 	sig_box.z_index = 5  # 压在小地图（默认 0）之上，避免再被后绘制的地图覆盖
 	_signal_bars = SignalBarsIcon.new()
-	_signal_bars.custom_minimum_size = Vector2(36, 22)
+	_signal_bars.custom_minimum_size = Vector2(28, 14)
 	_signal_bars.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	sig_box.add_child(_signal_bars)
-	_signal_value = _make_label(sig_box, 13, Color(0.8, 0.9, 1.0))
+	_signal_value = _make_label(sig_box, 9, Color(0.8, 0.9, 1.0))
 
 	var minimap := MapView3D.new()
 	add_child(minimap)
@@ -3498,8 +3498,10 @@ class SignalBarsIcon extends Control:
 		elif percent < 66:
 			col = Color(0.95, 0.85, 0.45)
 		for i in 5:
-			var bar_h := 6.0 + float(i) * 4.0
-			var rect := Rect2(float(i) * 7.0, size.y - bar_h, 5.0, bar_h)
+			# 批次 282：缩小版——按控件高度自适应缩放（原固定 6+4i 高 / 7px 步进）
+			var step := size.y / 22.0
+			var bar_h := (6.0 + float(i) * 4.0) * step
+			var rect := Rect2(float(i) * 7.0 * step, size.y - bar_h, 5.0 * step, bar_h)
 			draw_rect(rect, col if i < filled else Color(0.22, 0.26, 0.32, 0.85))
 
 

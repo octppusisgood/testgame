@@ -75,6 +75,10 @@ func enter_npc(door: Node, npc: Node3D) -> bool:
 	var prev = npc.get("sheltered")
 	if prev != null and not str(prev).is_empty():
 		return true
+	# 批次 276：没有 sheltered 属性的节点一律拒绝藏匿——藏了恢复不了
+	# （set 静默失败 → npc_leave 守卫永远早退 → 永久隐形只剩标签悬空）
+	if prev == null:
+		return false
 	_adjust(door, 1)
 	npc.set("sheltered", _door_id(door))
 	_shelters[_door_id(door)].get("members").append(npc)

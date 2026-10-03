@@ -54,12 +54,14 @@ func _sync_workers() -> void:
 	var alive := {}
 	if GameState.has_home_base():
 		for w in GameState.workers():
-			var wname := String(w["name"])
+			var wname := str(w.get("name", ""))
+			if wname == "":
+				continue
 			alive[wname] = true
 			var body = _entities.get(wname, null)
 			if body == null or not is_instance_valid(body):
 				_spawn_worker(wname)
-			elif String(w.get("state", "home")) != "out" and not body.visible:
+			elif str(w.get("state", "home")) != "out" and not body.visible:
 				body.recall_to_base()
 	for wname in _entities.keys():
 		if alive.has(wname):
@@ -526,7 +528,7 @@ func assign_follower_task(list: Array, task: String, point := Vector3.ZERO) -> v
 		if f == null or not is_instance_valid(f):
 			continue
 		# 驾驶中的随从改指派任务 = 先下车归队（车已失效则直接恢复可见）
-		if String(f.get("mode")) == "drive":
+		if str(f.get("mode")) == "drive":
 			var vref = f.get("vehicle_ref")
 			if vref != null and is_instance_valid(vref) and vref.has_method("dismiss_pilot"):
 				vref.call("dismiss_pilot")
@@ -545,6 +547,10 @@ func assign_follower_task(list: Array, task: String, point := Vector3.ZERO) -> v
 				f.add_to_group("npcs")
 				f.set_physics_process(true)
 				f.set_process(true)
+		# 批次 276：WorkerBody 没有 mode/task_point 属性（营地工人走 assign_worker），
+		# 混入时只做「叫出藏匿」不做任务赋值，避免 null 属性崩溃
+		if f.get("mode") == null:
+			continue
 		f.mode = task
 		if task == "scavenge":
 			f.task_point = player.global_position if player != null else f.global_position
@@ -1176,6 +1182,9 @@ class WorkerBody extends CharacterBody3D:
 	var manager: Node3D = null
 	var max_hp := 60
 	var hp := 60
+	# 批次 276：藏匿状态桩——没有它 enter_npc 的 set 静默失败，工人进楼后
+	# npc_leave 守卫早退 → 永久隐形只剩头顶标签悬空（同批次 253 FollowerBody 的坑）
+	var sheltered := ""
 	# npcs 组兼容桩：丧尸/小地图/目击逻辑会对 npcs 组成员访问这些成员
 	var role := "worker"
 	var _killed_by_player := false

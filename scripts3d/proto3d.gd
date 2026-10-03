@@ -2866,7 +2866,7 @@ func _start_rogue_stage(n: int) -> void:
 		pos = _random_free_pos()
 	zone.global_position = Vector3(pos.x, 0.0, pos.z)
 	_rogue_zone = zone
-	GameState.notify("第 %d 关：%s 镇守的异常能量场出现了，先击败 Boss 再拆核心！" % [
+	GameState.notify("第 %d 关：%s 镇守的异常能量场出现了，守关 Boss 60 秒后降临——抢先拆核心可直接过关！" % [
 		n, String(cfg["boss_name"])
 	])
 	GameState.rogue_progress_changed.emit()

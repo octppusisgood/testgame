@@ -270,12 +270,27 @@ func _spawn_zone_zombie() -> void:
 		zombie.hold_timer = randf_range(15.0, 25.0)
 
 
-# 肉鸽守关：Boss 能量场激活后生成守关 Boss；Boss 存活期间核心无敌，死亡后解锁
+# 肉鸽守关（批次 285：Boss 延迟 60 秒降临）——
+# 能量场出现后核心【先可被攻击】：60 秒内拆掉核心 → Boss 不再出现，直接视为过关；
+# 60 秒到 → 守关 Boss 降临并锁定核心（核心无敌，必须先击杀 Boss）
+var _core_unlocked := true  # 核心是否未锁定（Boss 未降临期间可被拆）
+var _boss_delay := 60.0
+
+
 func _tick_guard() -> void:
 	if not GameState.rogue_mode or not boss_field or destroyed or not active:
 		return
+	if _core_unlocked:
+		var was := int(ceilf(_boss_delay))
+		_boss_delay -= TICK  # 调用节拍 0.5s（_process 固定 TICK 步进）
+		# 每 15 秒播报一次剩余时间（60/45/30/15），催促玩家先拆核心
+		if int(ceilf(_boss_delay)) != was and int(ceilf(_boss_delay)) % 15 == 0:
+			GameState.notify("守关 Boss 将在 %d 秒后降临——抢先摧毁能量核心即可直接过关！" % int(ceilf(_boss_delay)))
+		if _boss_delay <= 0.0 and not destroyed:
+			_core_unlocked = false
+			_spawn_guard_boss()
+		return
 	if _guard_boss == null:
-		_spawn_guard_boss()
 		return
 	if not _boss_alive():
 		_guard_boss = null

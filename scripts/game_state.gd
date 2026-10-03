@@ -2123,6 +2123,29 @@ func total_ammo() -> int:
 	return total
 
 
+# 批次 277：消耗 1 发子弹（驱逐等非武器用途）——从任一有弹口径的普通弹扣 1
+func consume_one_bullet() -> bool:
+	if infinite_reserve:
+		return true
+	for caliber in ammo_stock.keys():
+		var types: Dictionary = ammo_stock[caliber]
+		if int(types.get("normal", 0)) > 0:
+			types["normal"] = int(types["normal"]) - 1
+			resources_changed.emit()
+			return true
+	return false
+
+
+# 只查不扣（菜单置灰判定用）
+func consume_one_bullet_check() -> bool:
+	if infinite_reserve:
+		return true
+	for caliber in ammo_stock.keys():
+		if int((ammo_stock[caliber] as Dictionary).get("normal", 0)) > 0:
+			return true
+	return false
+
+
 # 通用「弹药」来源（商店/拾取/掉落/开局）：按持有武器口径均分为普通弹
 func grant_generic_ammo(amount: int) -> void:
 	var cals: Array = []

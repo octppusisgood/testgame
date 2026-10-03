@@ -20,6 +20,41 @@ func count_for(building_id: String) -> int:
 	return int(entry.get("count", 0))
 
 
+# 批次 277：楼内藏匿的市民数（不计玩家——驱逐赶的是市民）
+func count_citizens_for(building_id: String) -> int:
+	var entry: Dictionary = _shelters.get(building_id, {})
+	var n := 0
+	for m in entry.get("members", []):
+		if m != null and is_instance_valid(m) and not m.is_in_group("player"):
+			n += 1
+	return n
+
+
+# 批次 277：驱逐——把该楼藏匿的市民全部赶出到门口（玩家不动），返回赶出人数
+func evict_citizens(building_id: String, door: Node3D = null) -> int:
+	var entry: Dictionary = _shelters.get(building_id, {})
+	var members: Array = entry.get("members", [])
+	var out_pos: Vector3 = (
+		door.global_position if door != null and is_instance_valid(door)
+		else Vector3.ZERO
+	)
+	var kicked := 0
+	for i in range(members.size() - 1, -1, -1):
+		var m = members[i]
+		if m == null or not is_instance_valid(m):
+			members.remove_at(i)
+			continue
+		if m.is_in_group("player"):
+			continue  # 玩家不参与驱逐
+		if door != null and is_instance_valid(door):
+			m.global_position = out_pos + Vector3(
+				randf_range(-1.5, 1.5), 0.1, randf_range(0.5, 1.5)
+			)
+		npc_leave(m)
+		kicked += 1
+	return kicked
+
+
 func has_space(door: Node) -> bool:
 	var bid := _door_id(door)
 	return count_for(bid) < CAP

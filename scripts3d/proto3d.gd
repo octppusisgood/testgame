@@ -3367,6 +3367,18 @@ class BaseDoor extends Node3D:
 				"disabled": room_used >= 20,
 				"reason": "楼内已藏满（20 人）",
 			})
+		# 批次 277：驱逐——耗 1 发子弹把楼里藏匿的市民全部赶出来
+		var evictable := 0
+		if interiors_root != null:
+			evictable = interiors_root.count_citizens_for(building_id)
+		options.append({
+			"id": "evict",
+			"label": "驱逐（耗 1 发子弹，赶出楼内 %d 名市民）" % evictable,
+			"disabled": evictable <= 0 or not GameState.consume_one_bullet_check(),
+			"reason": (
+				"楼里没有藏匿市民" if evictable <= 0 else "没有子弹（任意口径普通弹）"
+			),
+		})
 		if building_id == "power":
 			# 发电厂：专属修复交互（发电站停运后恢复全城供电）
 			if GameState.grid_repaired:
@@ -3442,6 +3454,19 @@ class BaseDoor extends Node3D:
 			"leave":
 				if interiors_root != null:
 					interiors_root.player_leave(_player)
+			"evict":
+				# 批次 277：驱逐——耗 1 发子弹把楼内市民全部赶出到门口
+				if not GameState.consume_one_bullet():
+					GameState.notify("没有子弹，无法驱逐")
+					return
+				var kicked := 0
+				if interiors_root != null:
+					kicked = interiors_root.evict_citizens(building_id, self)
+				GameState.noise_at(global_position, 25.0)
+				GameState.notify(
+					("朝楼上开了一枪——%d 名市民被赶了出来！" % kicked) if kicked > 0
+					else "枪声在楼里回荡，但没有藏匿的市民"
+				)
 			"claim":
 				_try_interact()
 			"repair":

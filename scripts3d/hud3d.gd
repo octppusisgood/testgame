@@ -2866,10 +2866,11 @@ func _build_skills_panel() -> void:
 
 	_skills_panel = Control.new()
 	_skills_panel.set_anchors_preset(Control.PRESET_CENTER)
+	# 批次 268：面板加高到 336（原 280 装不下 7 属性+冲刺共 8 行，底部溢出视口）
 	_skills_panel.offset_left = -240
-	_skills_panel.offset_top = -140
+	_skills_panel.offset_top = -168
 	_skills_panel.offset_right = 240
-	_skills_panel.offset_bottom = 140
+	_skills_panel.offset_bottom = 168
 	_skills_panel.visible = false
 	_skills_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	_skills_panel.z_index = 10
@@ -2879,20 +2880,20 @@ func _build_skills_panel() -> void:
 	bg.color = Color(0.05, 0.05, 0.08)
 	_skills_panel.add_child(bg)
 	_skills_title = Label.new()
-	_skills_title.position = Vector2(16, 12)
+	_skills_title.position = Vector2(16, 10)
 	_skills_title.add_theme_font_size_override("font_size", 14)
 	_skills_title.add_theme_color_override("font_color", Color(0.95, 0.9, 0.7))
 	_skills_panel.add_child(_skills_title)
 	var hint := Label.new()
 	hint.text = "击杀丧尸或每存活 60 秒获得 SP · 某项满级触发变异"
-	hint.position = Vector2(16, 240)
+	hint.position = Vector2(16, 306)
 	hint.add_theme_font_size_override("font_size", 11)
 	hint.add_theme_color_override("font_color", Color(0.65, 0.7, 0.75))
 	_skills_panel.add_child(hint)
 
 	var rows := VBoxContainer.new()
-	rows.position = Vector2(16, 40)
-	rows.add_theme_constant_override("separation", 3)
+	rows.position = Vector2(16, 34)
+	rows.add_theme_constant_override("separation", 2)
 	_skills_panel.add_child(rows)
 	for skill in GameState.SKILLS:
 		var id := String(skill["id"])
@@ -2900,24 +2901,24 @@ func _build_skills_panel() -> void:
 		row.add_theme_constant_override("separation", 8)
 		rows.add_child(row)
 		var name_label := Label.new()
-		name_label.custom_minimum_size = Vector2(96, 24)
+		name_label.custom_minimum_size = Vector2(96, 22)
 		name_label.add_theme_font_size_override("font_size", 12)
 		name_label.add_theme_color_override("font_color", Color(0.85, 0.9, 0.95))
 		row.add_child(name_label)
 		var level_label := Label.new()
-		level_label.custom_minimum_size = Vector2(60, 24)
+		level_label.custom_minimum_size = Vector2(60, 22)
 		level_label.add_theme_font_size_override("font_size", 12)
 		level_label.add_theme_color_override("font_color", Color(0.6, 0.9, 0.6))
 		row.add_child(level_label)
 		var desc_label := Label.new()
-		desc_label.custom_minimum_size = Vector2(180, 24)
+		desc_label.custom_minimum_size = Vector2(180, 22)
 		desc_label.text = String(skill["desc"]) + "/级"
 		desc_label.add_theme_font_size_override("font_size", 11)
 		desc_label.add_theme_color_override("font_color", Color(0.7, 0.75, 0.8))
 		row.add_child(desc_label)
 		var button := Button.new()
 		button.text = "+"
-		button.custom_minimum_size = Vector2(46, 24)
+		button.custom_minimum_size = Vector2(46, 22)
 		button.add_theme_font_size_override("font_size", 14)
 		button.pressed.connect(_on_skill_upgrade.bind(id))
 		row.add_child(button)
@@ -2931,22 +2932,22 @@ func _build_skills_panel() -> void:
 	dash_row.add_theme_constant_override("separation", 8)
 	rows.add_child(dash_row)
 	var dash_name := Label.new()
-	dash_name.custom_minimum_size = Vector2(96, 24)
+	dash_name.custom_minimum_size = Vector2(96, 22)
 	dash_name.add_theme_font_size_override("font_size", 12)
 	dash_name.add_theme_color_override("font_color", Color(0.95, 0.8, 0.5))
 	dash_row.add_child(dash_name)
 	var dash_level_label := Label.new()
-	dash_level_label.custom_minimum_size = Vector2(60, 24)
+	dash_level_label.custom_minimum_size = Vector2(60, 22)
 	dash_level_label.add_theme_font_size_override("font_size", 12)
 	dash_level_label.add_theme_color_override("font_color", Color(0.6, 0.9, 0.6))
 	dash_row.add_child(dash_level_label)
 	_dash_desc_label = Label.new()
-	_dash_desc_label.custom_minimum_size = Vector2(180, 24)
+	_dash_desc_label.custom_minimum_size = Vector2(180, 22)
 	_dash_desc_label.add_theme_font_size_override("font_size", 11)
 	_dash_desc_label.add_theme_color_override("font_color", Color(0.7, 0.75, 0.8))
 	dash_row.add_child(_dash_desc_label)
 	var dash_button := Button.new()
-	dash_button.custom_minimum_size = Vector2(46, 24)
+	dash_button.custom_minimum_size = Vector2(46, 22)
 	dash_button.add_theme_font_size_override("font_size", 14)
 	dash_button.pressed.connect(GameState.upgrade_dash)
 	dash_row.add_child(dash_button)

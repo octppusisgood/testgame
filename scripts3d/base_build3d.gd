@@ -672,6 +672,8 @@ func _update_ghost() -> void:
 		return
 	var pos: Vector3 = hit
 	pos.y = 0.0
+	# 批次 283：围墙/地刺端点磁吸——靠近同类型且同朝向的上一段时，自动吸附到其左/右端
+	pos = _snap_to_neighbor(pos)
 	_ghost.visible = true
 	_ghost.global_position = pos + Vector3(0, _ghost_height * 0.5, 0)
 	_ghost.rotation.y = _ghost_yaw
@@ -688,6 +690,52 @@ func _update_ghost() -> void:
 
 
 # 放置碰撞：与已建设施的足迹圈重叠则不能堆叠摆放
+
+
+# 批次 283：围墙/地刺端点磁吸——放置这两类时，若鼠标靠近上一段同类型同朝向的设施
+# （3.2m 内），自动吸附到其左端或右端（沿自身朝向的端点），拼出连续防线
+const SNAP_TYPES := ["wall", "spikes"]
+const SNAP_RANGE := 3.2
+
+
+func _snap_to_neighbor(pos: Vector3) -> Vector3:
+	if not SNAP_TYPES.has(_placing):
+		return pos
+	var best: Node3D = null
+	var best_d := SNAP_RANGE
+	for node in _defense_nodes:
+		if not is_instance_valid(node) or str(node.get("defense_type")) != _placing:
+			continue
+		# 批次 283 修正：距离按最近【端点】算（墙 3m 长，按中心量会让端点附近的鼠标超程）
+		var ny: float = node.rotation.y
+		var half: float = (
+			0.4 if _placing == "spikes"
+			else (1.5 if absf(wrapf(ny, -PI, PI)) < PI * 0.25 or absf(absf(wrapf(ny, -PI, PI)) - PI) < PI * 0.25 else 0.15)
+		)
+		var side: Vector3 = Vector3(cos(ny), 0.0, -sin(ny))
+		var end_a: Vector3 = node.global_position + side * half
+		var end_b: Vector3 = node.global_position - side * half
+		var d: float = minf(pos.distance_to(end_a), pos.distance_to(end_b))
+		if d < best_d:
+			best_d = d
+			best = node
+	if best == null:
+		return pos
+	# 朝向差 90° 内视为同向（墙/地刺的左右端才有意义）
+	var yaw_diff: float = absf(wrapf(best.rotation.y - _ghost_yaw, -PI, PI))
+	if yaw_diff > PI * 0.5 and yaw_diff < PI * 1.5:
+		return pos
+	# 沿上一段朝向取左/右端点（半长 + 半自身长，紧凑拼接），取离鼠标更近的一端
+	var half_self: float = (
+		0.4 if _placing == "spikes" else (1.5 if absf(wrapf(_ghost_yaw, -PI, PI)) < PI * 0.25 or absf(absf(wrapf(_ghost_yaw, -PI, PI)) - PI) < PI * 0.25 else 0.15)
+	)
+	var half_prev: float = (
+		0.4 if _placing == "spikes" else (1.5 if absf(wrapf(best.rotation.y, -PI, PI)) < PI * 0.25 or absf(absf(wrapf(best.rotation.y, -PI, PI)) - PI) < PI * 0.25 else 0.15)
+	)
+	var side: Vector3 = Vector3(cos(_ghost_yaw), 0.0, -sin(_ghost_yaw))  # 朝向的左右轴
+	var end_a: Vector3 = best.global_position + side * (half_prev + half_self)
+	var end_b: Vector3 = best.global_position - side * (half_prev + half_self)
+	return end_a if end_a.distance_to(pos) <= end_b.distance_to(pos) else end_b
 func _position_blocked(pos: Vector3) -> bool:
 	var need_self := _footprint_radius(_placing)
 	for node in _defense_nodes:

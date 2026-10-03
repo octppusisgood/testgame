@@ -100,6 +100,9 @@ func apply_effect() -> void:
 		"relic":
 			GameState.collect_boss_relic(item_name)
 			GameState.notify("获得 Boss 专属材料：%s" % item_name)
+		"exp":
+			GameState.rogue_add_xp(maxi(1, amount))
+			GameState.notify("拾取 %s +%d 经验" % [item_name, amount])
 	if net_puppet:
 		Network.request_entity_remove(net_id)
 	else:

@@ -1333,10 +1333,10 @@ func _drop_loot() -> void:
 			cash = 80
 			wallet_name = "警察钱包"
 		"pedestrian":
-			cash = 30 + randi_range(0, 40)
+			cash = clampi(int(randfn(300.0, 500.0)), 10, 10000)
 			wallet_name = "路人的钱包"
 		"clerk":
-			cash = 50
+			cash = clampi(int(randfn(300.0, 500.0)), 10, 10000)
 			wallet_name = "店员钱包"
 		_:
 			cash = 0

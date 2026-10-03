@@ -1599,42 +1599,18 @@ func _drop_loot() -> void:
 	var parent := get_parent()
 	if parent == null:
 		return
-	if randf() < 0.75:
+	# 批次 281：怪物只掉 异常结晶 / 经验球 / 特殊素材（Boss 专属材料），不掉其它物品
+	# 经验球：击杀经验改为掉落拾取（谁捡归谁）
+	var exp_orbs := 1 + zombie_tier / 3
+	for i in exp_orbs:
+		var ea := randf() * TAU
+		var er := randf_range(0.2, 0.5)
 		PICKUP_DROP.spawn_merged(
-			parent, "cash",
-			global_position + Vector3(randf_range(-0.4, 0.4), 0.1, randf_range(-0.4, 0.4)),
-			0, "尸变者的钱包", randi_range(15, 70)
+			parent, "exp",
+			global_position + Vector3(cos(ea) * er, 0.1, sin(ea) * er),
+			1, "经验球"
 		)
-	var roll := randf()
-	if roll < 0.28:
-		PICKUP_DROP.spawn_merged(
-			parent, "meds", global_position + Vector3(0, 0.1, 0), 1, "尸变者的药品"
-		)
-	elif roll < 0.5 + GameState.echo_ammo_drop_bonus():
-		PICKUP_DROP.spawn_merged(
-			parent, "ammo", global_position + Vector3(0, 0.1, 0), randi_range(3, 8), "尸变者的弹药"
-		)
-	elif roll < 0.62:
-		PICKUP_DROP.spawn_merged(
-			parent, "food", global_position + Vector3(0, 0.1, 0), 1, "尸变者的干粮"
-		)
-	elif roll < 0.68:
-		PICKUP_DROP.spawn_merged(
-			parent, "fuel", global_position + Vector3(0, 0.1, 0), 20, "尸变者的汽油桶"
-		)
-	elif roll < 0.76:
-		PICKUP_DROP.spawn_merged(
-			parent, "anomaly", global_position + Vector3(0, 0.1, 0), 1, "异能结晶"
-		)
-	# 肉鸽模式：丧尸 25% 概率掉建材堆（建材不进背包，只能运回据点）
-	if GameState.rogue_mode and randf() < 0.25:
-		var pile = MATERIAL_PILE_SCENE.instantiate()
-		pile.amount = randi_range(5, 12)
-		parent.add_child(pile)
-		pile.global_position = global_position + Vector3(
-			randf_range(-0.5, 0.5), 0.0, randf_range(-0.5, 0.5)
-		)
-	# 异能结晶：受异能影响的个体必掉；异界精英按 tier 递增，越强大掉越多
+	# 异常结晶：受异能影响的个体必掉；异界精英按 tier 递增，越强大掉越多
 	var drops := _crystal_drop_count()
 	for i in drops:
 		var angle := randf() * TAU
@@ -1655,7 +1631,6 @@ func _drop_loot() -> void:
 			)
 
 
-# Boss 专属材料名：尸王/尸皇/尸神（tier 7/8/9），其余 Boss 无专属材料
 func _boss_relic_name() -> String:
 	match zombie_tier:
 		7:

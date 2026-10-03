@@ -5503,7 +5503,7 @@ func start_hot_regen(total: int, duration: float) -> void:
 
 func note_zombie_slain() -> void:
 	add_anomaly(1)
-	rogue_add_xp(1)
+	# 批次 281：击杀不再直接给经验，经验改为掉「经验球」拾取（见 zombie3d._drop_loot）
 
 
 # —— 肉鸽模式局内升级：击杀得经验，升级时三选一（HUD 顶条 1/2/3，超时自动选第一项）——

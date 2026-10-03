@@ -3345,12 +3345,9 @@ class BaseDoor extends Node3D:
 
 
 	func interact_options(player: Node3D) -> Array:
-		if player == null:
+		if player == null or not within_reach(player):
 			return []
-		# 批次 271：不在交互距离时不再返回空——带 far=true 返回选项
-		# （右键远程开菜单可见，选择近距动作时 interact_choose 提示走近）
-		var far := not within_reach(player)
-		if far and channeling():
+		if channeling():
 			return []
 		var options: Array = []
 		# 进入/离开建筑（藏匿，容量 20：玩家 + 市民）
@@ -3367,8 +3364,8 @@ class BaseDoor extends Node3D:
 			options.append({
 				"id": "enter",
 				"label": "进入建筑藏匿（%d/%d 人）" % [room_used, 20],
-				"disabled": room_used >= 20 or far,
-				"reason": "走近建筑后再进入" if far else "楼内已藏满（20 人）",
+				"disabled": room_used >= 20,
+				"reason": "楼内已藏满（20 人）",
 			})
 		if building_id == "power":
 			# 发电厂：专属修复交互（发电站停运后恢复全城供电）
@@ -3415,8 +3412,6 @@ class BaseDoor extends Node3D:
 			options.append({
 				"id": "claim",
 				"label": "占领为据点（引导 %d 秒）" % int(claim_channel_time()),
-				"disabled": far,
-				"reason": "走近建筑后再占领" if far else "",
 			})
 		# 批次 100：非据点建筑追加"搜刮建筑"——每栋楼一池总物资，每次从池里提取，
 		# 2 分钟一次，池尽即止；据点（自己家）没有"搜刮"这回事，不加该项
@@ -3434,8 +3429,6 @@ class BaseDoor extends Node3D:
 				options.insert(0, {
 					"id": "scavenge",
 					"label": "搜刮建筑（库存 %d）" % GameState.scavenge_pool_remaining(scavenge_key),
-					"disabled": far,
-					"reason": "走近建筑后再搜刮" if far else "",
 				})
 		return options
 
@@ -3443,26 +3436,14 @@ class BaseDoor extends Node3D:
 	func interact_choose(id: String, _player: Node3D) -> void:
 		var interiors_root := get_tree().get_first_node_in_group("building_interiors")
 		match id:
-			"enter", "claim", "scavenge":
-				# 批次 271：近距动作——远程菜单里选了这些，走过来才能执行
-				if not within_reach(_player):
-					GameState.notify("走近建筑后再操作")
-					return
-				if id == "enter":
-					if interiors_root != null:
-						interiors_root.enter_player(self, _player)
-				elif id == "claim":
-					_try_interact()
-				else:
-					# 批次 265：搜刮进入读条（同拆楼自动进行），完成由 demolish 节点回调发物资
-					var dm_scav = get_parent().get_node_or_null("Demolish") if get_parent() != null else null
-					if dm_scav != null and dm_scav.has_method("start_scavenge"):
-						dm_scav.call("start_scavenge", self)
-					else:
-						_scavenge()
+			"enter":
+				if interiors_root != null:
+					interiors_root.enter_player(self, _player)
 			"leave":
 				if interiors_root != null:
 					interiors_root.player_leave(_player)
+			"claim":
+				_try_interact()
 			"repair":
 				GameState.repair_power_plant()
 			"sleep":
@@ -3476,6 +3457,13 @@ class BaseDoor extends Node3D:
 					GameState.notify("没有异能储存仓，%d 颗结晶仍留在背包" % crystals)
 				var summary := GameState.store_all_loot()
 				GameState.notify("身上没有可存入的物资" if summary.is_empty() else summary)
+			"scavenge":
+				# 批次 265：搜刮进入读条（同拆楼自动进行），完成由 demolish 节点回调发物资
+				var dm_scav = get_parent().get_node_or_null("Demolish") if get_parent() != null else null
+				if dm_scav != null and dm_scav.has_method("start_scavenge"):
+					dm_scav.call("start_scavenge", self)
+				else:
+					_scavenge()
 
 
 	# 批次 100：搜刮建筑——每栋楼一池总物资（默认 20 件），每次从池里提取 2~3 件 × loot_mult，

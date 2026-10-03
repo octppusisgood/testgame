@@ -980,7 +980,6 @@ const DEFAULT_BINDINGS := {
 	"grenade": KEY_G,     # 手雷
 	"artillery": KEY_Q,   # 炮击指挥
 	"mark": KEY_T,        # 标记指挥
-	"special": KEY_E,     # 武器特殊技能（批次 271：右键改交互，E 让位）
 }
 var action_bindings := {}
 

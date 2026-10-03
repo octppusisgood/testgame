@@ -1311,39 +1311,6 @@ func _find_interact_target(player: Node3D) -> Dictionary:
 			mouse_options = options
 	if mouse_best != null:
 		return {"node": mouse_best, "options": mouse_options}
-	# 批次 271：右键远程交互——近距扫描落空时，做一次同屏远距扫描：
-	# 鼠标射线命中对象几何（建筑足迹/世界坐标投影），无论多远都接受其选项
-	# （选项内部已带 far 标记：近距动作置灰提示走近，同屏动作可执行）
-	if mouse == Vector2.INF:
-		return {}
-	var far_best: Node = null
-	var far_best_px := INF
-	for node in get_tree().get_nodes_in_group("interactables"):
-		if not node.has_method("interact_options"):
-			continue
-		var footprint = node.get("footprint_half")
-		var center: Vector3
-		if footprint is Vector2 and footprint != Vector2.ZERO:
-			center = node.global_position + node.get("reach_center_offset")
-			if camera.is_position_behind(center):
-				continue
-			if not _mouse_ray_hits_footprint(camera, mouse, center, footprint):
-				continue
-			var fpx := camera.unproject_position(center).distance_to(mouse)
-			if fpx < far_best_px:
-				far_best_px = fpx
-				far_best = node
-		else:
-			if camera.is_position_behind(node.global_position):
-				continue
-			var px := camera.unproject_position(node.global_position).distance_to(mouse)
-			if px < px_threshold * 2.0 and px < far_best_px:
-				far_best_px = px
-				far_best = node
-	if far_best != null:
-		var far_options: Array = far_best.interact_options(player)
-		if not far_options.is_empty():
-			return {"node": far_best, "options": far_options}
 	return {}
 
 
@@ -1609,28 +1576,11 @@ func _refresh_interact_menu() -> void:
 			hl.content_margin_left = 4
 			hl.content_margin_right = 4
 			label.add_theme_stylebox_override("normal", hl)
-		# 批次 242：鼠标可直接交互——悬停高亮选中项、左键点击执行（禁用项不响应）
-		if disabled:
-			label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		else:
-			label.mouse_filter = Control.MOUSE_FILTER_STOP
-			label.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-			var idx := i
-			label.gui_input.connect(func(ev: InputEvent) -> void:
-				if ev is InputEventMouseMotion:
-					if _menu_index != idx:
-						_menu_index = idx
-						_refresh_interact_menu()
-				elif (
-					ev is InputEventMouseButton
-					and ev.button_index == MOUSE_BUTTON_LEFT
-					and ev.pressed
-				):
-					_choose_menu_option(idx)
-			)
+		# 批次 275：回退批次 242 的菜单行鼠标点击——菜单只响应键盘 W/S/E 与滚轮
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_menu_box.add_child(label)
 	var hint := Label.new()
-	hint.text = "W/S 或鼠标悬停 选择 · E 或点击 确认 · 其它键关闭"
+	hint.text = "W/S 上下选择 · E 确认 · 滚轮也可选 · 其它键关闭"
 	hint.add_theme_font_size_override("font_size", 9)
 	hint.add_theme_color_override("font_color", Color(0.6, 0.65, 0.7))
 	hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -1710,6 +1660,16 @@ func _build_interact_menu() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	# 批次 275：交互菜单打开时鼠标滚轮上下选择（E 确认；滚轮只换选中不执行）
+	if (
+		event is InputEventMouseButton
+		and event.pressed
+		and _menu_target != null
+		and (event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN)
+	):
+		_move_menu_selection(-1 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1)
+		get_viewport().set_input_as_handled()
+		return
 	# 右键点建造物：打开其交互菜单（升级/卖掉/操作员），抢占开镜
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		if _try_open_defense_menu_at_mouse():

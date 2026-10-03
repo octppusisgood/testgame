@@ -766,13 +766,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
-			# 批次 271：右键 = 交互菜单（原 E 键）——任意距离指向目标即可打开；
-			# 近距动作（拆除/进驻/搜刮/占领/驾驶）执行时仍需走到目标边（interact_choose 内判定）
-			if event.pressed and not _dead and not GameState.attack_blocked_by_ui():
-				var hud := get_node_or_null("HUD")
-				if hud != null and hud.has_method("_try_interact_press"):
-					hud.call("_try_interact_press")
-					get_viewport().set_input_as_handled()
+			# 批次 275：右键回归 = 当前武器的特殊技能（狙击枪为开镜）；任何 UI 面板打开时禁用
+			# （批次 271 曾把交互挪到右键，按用户要求回退：交互回 E）
+			if (
+				event.pressed
+				and vehicle == null
+				and not _dead
+				and not GameState.attack_blocked_by_ui()
+			):
+				_try_special()
 			return
 		if vehicle == null and event.pressed:
 			# 切换武器改为数字按键：不再用鼠标滚轮切枪（避免滚轮误触换武器）
@@ -794,11 +796,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				var mc = city.get_node_or_null("MarkerCommand")
 				if mc != null:
 					mc.call("handle_t_key", self)
-			return
-		if GameState.is_action_key(event, "special"):
-			# 批次 271：E = 武器特殊技能（右键改为交互菜单）
-			if vehicle == null and not _dead and not GameState.attack_blocked_by_ui():
-				_try_special()
 			return
 		if GameState.is_action_key(event, "melee"):
 			GameState.select_weapon("melee")
@@ -913,11 +910,11 @@ func _physics_process(delta: float) -> void:
 		if (
 			Time.get_ticks_msec() >= _vehicle_switch_msec
 			and not GameState.interact_menu_open
+			and Input.is_action_just_pressed("interact")
 		):
-			# 批次 271：下车改右键（E 已让位给武器特殊技能）
-			if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-				exit_vehicle()
-			return
+			# 批次 275：下车回归 E（右键已还原为特殊技能）
+			exit_vehicle()
+		return
 	_update_aim(delta)
 	var input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	# 交互菜单打开时锁死移动（W/S 在菜单里用于上下选择；Input.get_vector 是轮询，

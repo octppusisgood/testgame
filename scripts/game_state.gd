@@ -919,6 +919,43 @@ var revival_stone := false
 var revive_count := 0
 # 肉鸽新手提示是否已展示过（"首局"引导，见设计文档 2.3）
 var rogue_hints_seen := false
+
+# —— 批次 269：可改键（Esc 设定）——
+# action -> 物理键（Key 枚举 int）；默认值 = 现行键位。输入侧用 is_action(event, id) 查询。
+const DEFAULT_BINDINGS := {
+	"meds": KEY_F,        # 使用药品
+	"map": KEY_M,         # 大地图
+	"backpack": KEY_B,    # 背包
+	"skills": KEY_C,      # 能力面板
+	"build": KEY_X,       # 建造
+	"reload": KEY_R,      # 换弹
+	"flashlight": KEY_T,  # 手电
+	"melee": KEY_V,       # 近战
+	"grenade": KEY_G,     # 手雷
+	"artillery": KEY_Q,   # 炮击指挥
+}
+var action_bindings := {}
+
+
+func action_key(action: String) -> int:
+	if action_bindings.has(action):
+		return int(action_bindings[action])
+	return int(DEFAULT_BINDINGS.get(action, KEY_NONE))
+
+
+func set_action_key(action: String, key: int) -> void:
+	action_bindings[action] = key
+	save_meta()
+
+
+func reset_bindings() -> void:
+	action_bindings.clear()
+	save_meta()
+
+
+# 输入侧查询：事件是否触发了该 action（匹配可改键，内置键 F1/F12/Esc 等不在此列）
+func is_action_key(event: InputEventKey, action: String) -> bool:
+	return event.keycode == action_key(action)
 var _meta_loaded := false
 var test_mode := false
 var test_points := 999
@@ -1217,6 +1254,11 @@ func load_meta() -> void:
 	intel = data.get("intel", [])
 	revival_stone = bool(data.get("revival_stone", false))
 	rogue_hints_seen = bool(data.get("rogue_hints_seen", false))
+	# 批次 269：读档可改键（仅收 DEFAULT_BINDINGS 内的 action，防脏数据）
+	var saved_bindings: Dictionary = data.get("action_bindings", {})
+	for action in DEFAULT_BINDINGS.keys():
+		if saved_bindings.has(action):
+			action_bindings[action] = int(saved_bindings[action])
 	loot_items = data.get("loot", loot_items)
 	armor_id = String(data.get("armor", armor_id))
 	armor_resist_value = float(data.get("armor_resist", armor_resist_value))
@@ -1252,6 +1294,7 @@ func save_meta() -> void:
 		"intel": intel,
 		"revival_stone": revival_stone,
 		"rogue_hints_seen": rogue_hints_seen,
+		"action_bindings": action_bindings,
 		"loot": loot_items,
 		"armor": armor_id,
 		"armor_resist": armor_resist_value,

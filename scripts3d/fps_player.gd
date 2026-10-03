@@ -780,6 +780,46 @@ func _unhandled_input(event: InputEvent) -> void:
 			pass
 		return
 	if event is InputEventKey and event.pressed and not event.echo:
+		# 批次 269：可改键功能优先于固定 match（is_action_key 查映射表）；
+		# 数字切枪/F10 补点等固定键仍在下方 match
+		if GameState.is_action_key(event, "reload"):
+			GameState.start_reload()
+			return
+		if GameState.is_action_key(event, "flashlight"):
+			_toggle_flashlight()
+			return
+		if GameState.is_action_key(event, "melee"):
+			GameState.select_weapon("melee")
+			return
+		if GameState.is_action_key(event, "grenade"):
+			_throw_grenade()
+			return
+		if GameState.is_action_key(event, "artillery"):
+			# 远程炮击：直接指挥场景中最近的迫击炮
+			var hud := get_node_or_null("HUD")
+			if hud != null and hud.has_method("quick_mortar_command"):
+				hud.quick_mortar_command()
+			return
+		if GameState.is_action_key(event, "meds"):
+			# 使用药品（医疗包/仓库药/异能量应急）；UI 打开时不响应
+			if not _dead and not GameState.attack_blocked_by_ui():
+				GameState.use_medkit()
+			return
+		if GameState.is_action_key(event, "map"):
+			GameState.toggle_map()
+			return
+		if GameState.is_action_key(event, "backpack"):
+			GameState.toggle_backpack()
+			return
+		if GameState.is_action_key(event, "skills"):
+			GameState.toggle_skills()
+			return
+		if GameState.is_action_key(event, "build"):
+			var build := _build_controller()
+			if build != null and build.handles_x_key(self):
+				return
+			_try_surrender()
+			return
 		match event.keycode:
 			KEY_ESCAPE:
 				# 炮击指挥/远程打击圆盘打开时 Esc 由对应 UI 接管（不开暂停菜单）
@@ -793,37 +833,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				else:
 					GameState.toggle_pause_menu()
 			KEY_1:
-				GameState.select_weapon(GameState.weapon_at_slot(0))
+					GameState.select_weapon(GameState.weapon_at_slot(0))
 			KEY_2:
-				GameState.select_weapon(GameState.weapon_at_slot(1))
-			KEY_R:
-				GameState.start_reload()
-			KEY_T:
-				_toggle_flashlight()
-			KEY_V:
-				GameState.select_weapon("melee")
-			KEY_G:
-				_throw_grenade()
-			KEY_Q:
-				# 远程炮击：直接指挥场景中最近的迫击炮
-				var hud := get_node_or_null("HUD")
-				if hud != null and hud.has_method("quick_mortar_command"):
-					hud.quick_mortar_command()
-			KEY_F:
-				# F = 使用药品（医疗包/仓库药/异能量应急）；UI 打开时不响应
-				if not _dead and not GameState.attack_blocked_by_ui():
-					GameState.use_medkit()
-			KEY_M:
-				GameState.toggle_map()
-			KEY_B:
-				GameState.toggle_backpack()
-			KEY_C:
-				GameState.toggle_skills()
-			KEY_X:
-				var build := _build_controller()
-				if build != null and build.handles_x_key(self):
-					return
-				_try_surrender()
+					GameState.select_weapon(GameState.weapon_at_slot(1))
 			KEY_F10:
 				if GameState.test_mode:
 					GameState.skill_points = GameState.test_points

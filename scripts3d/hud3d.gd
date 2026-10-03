@@ -96,6 +96,10 @@ var _end_title: Label
 var _end_info: Label
 var _last_phase := ""
 var _pause_panel: Control
+# 批次 269：按键设置面板
+var _bind_panel: Control = null
+var _bind_waiting := ""  # 等待按键的 action（非空时下一个按键即绑定）
+var _bind_rows := {}  # action -> 按钮标签
 var _time_label: Label
 var _day_bar: ProgressBar
 var _echo_panel: Control
@@ -922,6 +926,13 @@ func _build_pause_panel() -> void:
 	quit.add_theme_font_size_override("font_size", 16)
 	quit.pressed.connect(GameState.quit_to_menu)
 	box.add_child(quit)
+	# 批次 269：按键设置入口
+	var binds := Button.new()
+	binds.text = "按键设置"
+	binds.custom_minimum_size = Vector2(220, 32)
+	binds.add_theme_font_size_override("font_size", 14)
+	binds.pressed.connect(_toggle_bind_panel)
+	box.add_child(binds)
 	var tip := Label.new()
 	tip.text = "Esc 继续游戏"
 	tip.add_theme_font_size_override("font_size", 11)
@@ -958,6 +969,135 @@ func _build_pause_panel() -> void:
 
 # 暂停菜单撤离：按信号覆盖分档（据点内 150% / 信号区 100% / 战斗中无信号 50%），
 # 结算乘在物资折算上，随后走 end_run(won) 统一结算链
+# —— 批次 269：按键设置面板（Esc 设定）——
+const BIND_ACTION_NAMES := {
+	"meds": "使用药品", "map": "大地图", "backpack": "背包", "skills": "能力面板",
+	"build": "建造", "reload": "换弹", "flashlight": "手电", "melee": "近战",
+	"grenade": "手雷", "artillery": "炮击指挥",
+}
+
+
+func _toggle_bind_panel() -> void:
+	if _bind_panel != null and _bind_panel.visible:
+		_bind_panel.visible = false
+		_bind_waiting = ""
+		return
+	if _bind_panel == null:
+		_build_bind_panel()
+	_refresh_bind_rows()
+	_bind_panel.visible = true
+
+
+func _build_bind_panel() -> void:
+	_bind_panel = Control.new()
+	_bind_panel.set_anchors_preset(Control.PRESET_CENTER)
+	_bind_panel.offset_left = -220
+	_bind_panel.offset_top = -160
+	_bind_panel.offset_right = 220
+	_bind_panel.offset_bottom = 160
+	_bind_panel.visible = false
+	_bind_panel.z_index = 30
+	_bind_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(_bind_panel)
+	var bg := ColorRect.new()
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.color = Color(0.06, 0.07, 0.1, 0.98)
+	_bind_panel.add_child(bg)
+	var title := Label.new()
+	title.text = "按键设置（点击「改键」后按新键；Esc 取消）"
+	title.position = Vector2(14, 10)
+	title.add_theme_font_size_override("font_size", 12)
+	title.add_theme_color_override("font_color", Color(0.95, 0.9, 0.7))
+	_bind_panel.add_child(title)
+	var rows := VBoxContainer.new()
+	rows.position = Vector2(14, 36)
+	rows.add_theme_constant_override("separation", 2)
+	_bind_panel.add_child(rows)
+	for action in GameState.DEFAULT_BINDINGS.keys():
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 6)
+		rows.add_child(row)
+		var name_label := Label.new()
+		name_label.custom_minimum_size = Vector2(110, 20)
+		name_label.add_theme_font_size_override("font_size", 11)
+		name_label.add_theme_color_override("font_color", Color(0.85, 0.9, 0.95))
+		name_label.text = String(BIND_ACTION_NAMES.get(action, action))
+		row.add_child(name_label)
+		var key_label := Label.new()
+		key_label.custom_minimum_size = Vector2(70, 20)
+		key_label.add_theme_font_size_override("font_size", 11)
+		key_label.add_theme_color_override("font_color", Color(0.6, 0.9, 0.6))
+		row.add_child(key_label)
+		_bind_rows[String(action)] = key_label
+		var rebind := Button.new()
+		rebind.text = "改键"
+		rebind.custom_minimum_size = Vector2(56, 20)
+		rebind.add_theme_font_size_override("font_size", 10)
+		rebind.pressed.connect(_start_rebind.bind(String(action)))
+		row.add_child(rebind)
+	var reset := Button.new()
+	reset.text = "恢复默认键位"
+	reset.position = Vector2(14, 288)
+	reset.custom_minimum_size = Vector2(120, 24)
+	reset.add_theme_font_size_override("font_size", 11)
+	reset.pressed.connect(_reset_bindings)
+	_bind_panel.add_child(reset)
+	var close := Button.new()
+	close.text = "关闭"
+	close.position = Vector2(344, 288)
+	close.custom_minimum_size = Vector2(80, 24)
+	close.add_theme_font_size_override("font_size", 11)
+	close.pressed.connect(_toggle_bind_panel)
+	_bind_panel.add_child(close)
+
+
+func _key_name(key: int) -> String:
+	if key == KEY_NONE:
+		return "未设置"
+	return OS.get_keycode_string(key as Key)
+
+
+func _refresh_bind_rows() -> void:
+	for action in _bind_rows.keys():
+		var label: Label = _bind_rows[action]
+		label.text = _key_name(GameState.action_key(String(action)))
+
+
+func _start_rebind(action: String) -> void:
+	_bind_waiting = action
+	for action_id in _bind_rows.keys():
+		var label: Label = _bind_rows[action_id]
+		label.text = "按新键…" if String(action_id) == action else _key_name(GameState.action_key(String(action_id)))
+
+
+func _reset_bindings() -> void:
+	GameState.reset_bindings()
+	_bind_waiting = ""
+	_refresh_bind_rows()
+	GameState.notify("已恢复默认键位")
+
+
+# 等待改键时拦截下一个按键（在 _input 前部处理，优先级最高）
+func _handle_bind_capture(event: InputEvent) -> bool:
+	if _bind_waiting == "" or not (event is InputEventKey and event.pressed and not event.echo):
+		return false
+	if event.keycode == KEY_ESCAPE:
+		_bind_waiting = ""
+		_refresh_bind_rows()
+		return true
+	# 冲突检查：新键已被别的功能占用 → 提示并拒绝
+	for action in GameState.DEFAULT_BINDINGS.keys():
+		if String(action) != _bind_waiting and GameState.action_key(String(action)) == event.keycode:
+			GameState.notify("该键已被「%s」占用，先改走它再绑" % String(BIND_ACTION_NAMES.get(action, action)))
+			_bind_waiting = ""
+			_refresh_bind_rows()
+			return true
+	GameState.set_action_key(_bind_waiting, event.keycode)
+	_bind_waiting = ""
+	_refresh_bind_rows()
+	return true
+
+
 func _extract_from_pause() -> void:
 	if GameState.is_run_over():
 		return
@@ -1297,7 +1437,8 @@ func _open_interact_menu(target: Node, options: Array) -> void:
 	GameState._close_sibling_menus("interact")
 	GameState.register_top_menu(
 		"interact",
-		func() -> bool: return GameState.interact_menu_open,
+		func() -> bool:
+			return GameState.interact_menu_open,
 		_close_interact_menu
 	)
 	_menu_panel.visible = true
@@ -2092,6 +2233,9 @@ func _on_run_ended(won: bool, reason: String) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	# 批次 269：改键捕获优先（等新键时吞掉一切按键，避免误触功能）
+	if _handle_bind_capture(event):
+		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F1:
 		_help_panel.visible = not _help_panel.visible
 		_help_badge.visible = not _help_panel.visible

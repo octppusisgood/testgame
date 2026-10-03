@@ -465,6 +465,7 @@ const BASE_EXPAND_COST := 10
 const BASE_DEFENSES := {
 	"barricade": {"name": "路障", "cost": 8, "hp": 200},
 	"turret": {"name": "哨戒炮塔", "cost": 25, "hp": 150, "damage": 12, "range": 14.0, "cap": 6},
+	"hmg": {"name": "重机枪", "cost": 13, "hp": 180, "damage": 22, "range": 16.0},
 	"spikes": {"name": "尖刺陷阱", "cost": 12, "hp": 80, "dps": 15},
 	"wall": {"name": "围墙段", "cost": 10, "hp": 300},
 	"lamp": {"name": "照明灯", "cost": 15, "hp": 50},
@@ -4788,6 +4789,7 @@ const OPERATOR_DEFS := {
 	"potion_brewer": {"slots": 2, "auto": false, "desc": "必须有操作员才能生产（每操作员速度 +25%）", "skill": "医疗"},
 	"mortar": {"slots": 1, "auto": true, "desc": "操作员：装填速度 +25%/人", "skill": "射击"},
 	"cannon": {"slots": 1, "auto": true, "desc": "操作员：装填速度 +25%/人", "skill": "射击"},
+	"hmg": {"slots": 1, "auto": false, "desc": "必须有操作员才能开火", "skill": "射击"},
 }
 # 市民技能池（分配设施时展示，并对口加成预留）
 const WORKER_SKILL_POOL: Array[String] = ["射击", "工程", "机械", "医疗", "农艺", "电讯", "搜集"]

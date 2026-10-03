@@ -37,7 +37,7 @@ const BUILD_CATEGORIES := [
 	{"id": "storage", "name": "仓库"},
 ]
 const BUILD_CATEGORY_ITEMS := {
-	"defense": ["barricade", "turret", "mortar", "cannon", "spikes", "wall"],
+	"defense": ["barricade", "turret", "hmg", "mortar", "cannon", "spikes", "wall"],
 	"base": ["lamp", "generator", "solar", "windmill", "anomaly_gen", "signal_tower"],
 	"craft": ["fabricator", "med_station", "food_synth", "workbench", "converter"],
 	"storage": ["containment", "upgrade_storage"],
@@ -52,6 +52,7 @@ var _regen_timer := 0.0
 const DEFENSE_FOOTPRINT_RADIUS := {
 	"barricade": 1.1,
 	"turret": 0.55,
+	"hmg": 0.75,
 	"mortar": 0.7,
 	"cannon": 0.95,
 	"spikes": 0.5,
@@ -605,6 +606,8 @@ func _make_ghost(type: String) -> void:
 		"barricade":
 			box.size = BARRICADE_SIZE
 		"turret":
+			box.size = Vector3(0.7, 1.0, 0.7)
+		"hmg":
 			box.size = Vector3(0.9, 1.5, 0.9)
 		"spikes":
 			box.size = Vector3(0.8, 0.15, 0.8)
@@ -830,6 +833,8 @@ func _spawn_defense(type: String, pos: Vector3, yaw: float) -> void:
 			node = Barricade.new()
 		"turret":
 			node = Turret.new()
+		"hmg":
+			node = HMG.new()
 		"mortar", "cannon":
 			node = Mortar.new()
 		"spikes":
@@ -927,6 +932,8 @@ class BuildSlot extends Control:
 				return Color(0.65, 0.55, 0.4)
 			"turret":
 				return Color(0.6, 0.62, 0.66)
+			"hmg":
+				return Color(0.5, 0.42, 0.3)
 			"mortar":
 				return Color(0.38, 0.45, 0.3)
 			"cannon":
@@ -973,6 +980,11 @@ class BuildSlot extends Control:
 				draw_rect(Rect2(o + Vector2(9, 9), Vector2(6, 6)), c)
 				draw_rect(Rect2(o + Vector2(6, 5), Vector2(12, 4)), c)
 				draw_rect(Rect2(o + Vector2(11, 0), Vector2(2, 5)), c)
+			"hmg":
+				# 重机枪：宽机体 + 双管
+				draw_rect(Rect2(o + Vector2(7, 8), Vector2(10, 7)), c)
+				draw_rect(Rect2(o + Vector2(9, 1), Vector2(2, 7)), c)
+				draw_rect(Rect2(o + Vector2(12, 1), Vector2(2, 7)), c)
 			"mortar":
 				draw_rect(Rect2(o + Vector2(7, 11), Vector2(10, 3)), c)
 				draw_line(o + Vector2(10, 11), o + Vector2(15, 3), c, 2.5)
@@ -1066,6 +1078,50 @@ class DefenseBase extends StaticBody3D:
 	var debris_noise := 20.0
 	# Boss 干扰磁场：被沉默期间 set_process(false)，炮塔停火/机器停产（设计文档 5.2）
 	var jammed := false
+
+
+	# 批次 284：曳光/枪口焰从 Turret 上移到基类（HMG 复用）
+	func _tracer(from: Vector3, to: Vector3) -> void:
+		var parent := get_parent()
+		if parent == null:
+			return
+		var mesh := MeshInstance3D.new()
+		var box := BoxMesh.new()
+		box.size = Vector3(0.05, 0.05, from.distance_to(to))
+		mesh.mesh = box
+		var material := StandardMaterial3D.new()
+		material.albedo_color = Color(1.0, 0.8, 0.3)
+		material.emission_enabled = true
+		material.emission = Color(1.0, 0.75, 0.25)
+		material.emission_energy_multiplier = 3.0
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		mesh.material_override = material
+		parent.add_child(mesh)
+		mesh.global_position = (from + to) / 2.0
+		mesh.look_at(to, Vector3.UP)
+		var tween := mesh.create_tween()
+		tween.tween_property(mesh, "scale:x", 0.05, 0.1)
+		tween.parallel().tween_property(mesh, "scale:y", 0.05, 0.1)
+		tween.tween_callback(mesh.queue_free)
+
+
+	func _flash(pos: Vector3) -> void:
+		var parent := get_parent()
+		if parent == null:
+			return
+		var mesh := MeshInstance3D.new()
+		var box := BoxMesh.new()
+		box.size = Vector3(0.12, 0.12, 0.12)
+		mesh.mesh = box
+		var material := StandardMaterial3D.new()
+		material.albedo_color = Color(1.0, 0.9, 0.5)
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		mesh.material_override = material
+		parent.add_child(mesh)
+		mesh.global_position = pos
+		var tween := mesh.create_tween()
+		tween.tween_property(mesh, "scale", Vector3(0.04, 0.04, 0.04), 0.07)
+		tween.tween_callback(mesh.queue_free)
 
 
 	func _defense_name() -> String:
@@ -1331,49 +1387,6 @@ class Turret extends DefenseBase:
 		target.take_damage(_damage())
 		_tracer(from, to)
 		_flash(from)
-
-
-	func _tracer(from: Vector3, to: Vector3) -> void:
-		var parent := get_parent()
-		if parent == null:
-			return
-		var mesh := MeshInstance3D.new()
-		var box := BoxMesh.new()
-		box.size = Vector3(0.05, 0.05, from.distance_to(to))
-		mesh.mesh = box
-		var material := StandardMaterial3D.new()
-		material.albedo_color = Color(1.0, 0.8, 0.3)
-		material.emission_enabled = true
-		material.emission = Color(1.0, 0.75, 0.25)
-		material.emission_energy_multiplier = 3.0
-		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		mesh.material_override = material
-		parent.add_child(mesh)
-		mesh.global_position = (from + to) / 2.0
-		mesh.look_at(to, Vector3.UP)
-		var tween := mesh.create_tween()
-		tween.tween_property(mesh, "scale:x", 0.05, 0.1)
-		tween.parallel().tween_property(mesh, "scale:y", 0.05, 0.1)
-		tween.tween_callback(mesh.queue_free)
-
-
-	func _flash(pos: Vector3) -> void:
-		var parent := get_parent()
-		if parent == null:
-			return
-		var mesh := MeshInstance3D.new()
-		var box := BoxMesh.new()
-		box.size = Vector3(0.12, 0.12, 0.12)
-		mesh.mesh = box
-		var material := StandardMaterial3D.new()
-		material.albedo_color = Color(1.0, 0.9, 0.5)
-		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		mesh.material_override = material
-		parent.add_child(mesh)
-		mesh.global_position = pos
-		var tween := mesh.create_tween()
-		tween.tween_property(mesh, "scale", Vector3(0.04, 0.04, 0.04), 0.07)
-		tween.tween_callback(mesh.queue_free)
 
 
 # 迫击炮/火炮：远程曲射火力（同一套实体，数据按 defense_type 从 BASE_DEFENSES 读取）。
@@ -1826,6 +1839,150 @@ class Wall extends DefenseBase:
 		cap.material_override = cap_material
 		cap.position.y = SIZE.y + 0.05
 		add_child(cap)
+
+
+# 重机枪（批次 284）：需操作员才能开火的速射防御（auto=false）——
+# 射程/伤害高于哨戒炮塔，无操作员时枪口朝下待机；操作员射速 +25%/人
+class HMG extends DefenseBase:
+	const SCAN_INTERVAL := 0.3
+	const FIRE_INTERVAL := 0.35
+	const RANGE := 16.0
+	const DAMAGE := 22
+
+	var _head: Node3D = null
+	var _scan := 0.0
+	var _cooldown := 0.0
+	var _target: Node3D = null
+
+
+	func _damage() -> int:
+		if upgrade_level >= 1:
+			var ups: Array = GameState.DEFENSE_UPGRADES.get("hmg", [])
+			return int(ups[mini(upgrade_level, ups.size()) - 1].get("damage", DAMAGE))
+		return int(GameState.BASE_DEFENSES["hmg"].get("damage", DAMAGE))
+
+
+	func _range() -> float:
+		var reach := RANGE
+		if upgrade_level >= 1:
+			var ups: Array = GameState.DEFENSE_UPGRADES.get("hmg", [])
+			reach = float(ups[mini(upgrade_level, ups.size()) - 1].get("range", reach))
+		else:
+			reach = float(GameState.BASE_DEFENSES["hmg"].get("range", RANGE))
+		return reach + _generator_bonus()
+
+
+	func _generator_bonus() -> float:
+		if not GameState.has_home_base():
+			return 0.0
+		for entry in GameState.home_base.get("defenses", []):
+			if String(entry.get("type", "")) == "generator":
+				return float(GameState.BASE_DEFENSES["generator"].get("range_aura", 3.0))
+		return 0.0
+
+
+	func _ready() -> void:
+		add_to_group("base_defense")
+		GameState.request_spatial_rebuild()
+		hp = GameState.base_defense_hp("hmg")
+		debris_size = Vector3(0.9, 1.5, 0.9)
+		debris_color = Color(0.34, 0.3, 0.26)
+		debris_noise = 26.0
+		var shape := CollisionShape3D.new()
+		var box_shape := BoxShape3D.new()
+		box_shape.size = Vector3(0.9, 1.2, 0.9)
+		shape.shape = box_shape
+		shape.position.y = 0.6
+		add_child(shape)
+		# 三脚架底座
+		var base := MeshInstance3D.new()
+		var base_box := BoxMesh.new()
+		base_box.size = Vector3(0.9, 1.2, 0.9)
+		base.mesh = base_box
+		var base_material := StandardMaterial3D.new()
+		base_material.albedo_color = Color(0.34, 0.3, 0.26)
+		base.material_override = base_material
+		base.position.y = 0.6
+		add_child(base)
+		# 枪身（可旋转头）
+		_head = Node3D.new()
+		_head.position.y = 1.45
+		add_child(_head)
+		var body_mesh := MeshInstance3D.new()
+		var body_box := BoxMesh.new()
+		body_box.size = Vector3(0.55, 0.35, 0.7)
+		body_mesh.mesh = body_box
+		var body_material := StandardMaterial3D.new()
+		body_material.albedo_color = Color(0.45, 0.38, 0.28)
+		body_material.emission_enabled = true
+		body_material.emission = Color(0.3, 0.22, 0.12)
+		body_material.emission_energy_multiplier = 0.5
+		body_mesh.material_override = body_material
+		_head.add_child(body_mesh)
+		# 双管重枪管
+		for offset_x in [-0.09, 0.09]:
+			var barrel := MeshInstance3D.new()
+			var barrel_box := BoxMesh.new()
+			barrel_box.size = Vector3(0.07, 0.07, 0.75)
+			barrel.mesh = barrel_box
+			var barrel_material := StandardMaterial3D.new()
+			barrel_material.albedo_color = Color(0.16, 0.16, 0.18)
+			barrel.material_override = barrel_material
+			barrel.position = Vector3(offset_x, 0.05, -0.6)
+			_head.add_child(barrel)
+		# 弹链箱
+		var ammo_box := MeshInstance3D.new()
+		var ammo_box_mesh := BoxMesh.new()
+		ammo_box_mesh.size = Vector3(0.3, 0.25, 0.2)
+		ammo_box.mesh = ammo_box_mesh
+		var ammo_material := StandardMaterial3D.new()
+		ammo_material.albedo_color = Color(0.5, 0.42, 0.2)
+		ammo_box.material_override = ammo_material
+		ammo_box.position = Vector3(0.0, 0.05, 0.35)
+		_head.add_child(ammo_box)
+
+
+	func _process(delta: float) -> void:
+		if GameState.is_run_over():
+			return
+		# 批次 284：必须有操作员才能开火（auto=false）——无操作员枪口朝下待机
+		if GameState.defense_operator_count(global_position) <= 0:
+			_target = null
+			_head.rotation.x = lerp_angle(_head.rotation.x, 0.6, minf(1.0, delta * 4.0))
+			return
+		_head.rotation.x = lerp_angle(_head.rotation.x, 0.0, minf(1.0, delta * 4.0))
+		if not GameState.base_devices_powered():
+			_target = null
+			return
+		_scan -= delta
+		_cooldown -= delta
+		if _scan <= 0.0:
+			_scan = SCAN_INTERVAL
+			_target = _nearest_zombie()
+		if _target == null or not is_instance_valid(_target) or _target.is_queued_for_deletion():
+			_target = null
+			return
+		var to: Vector3 = _target.global_position - global_position
+		to.y = 0.0
+		if to.length() > _range():
+			_target = null
+			return
+		_head.rotation.y = lerp_angle(_head.rotation.y, atan2(-to.x, -to.z), minf(1.0, delta * 10.0))
+		if _cooldown <= 0.0:
+			_cooldown = FIRE_INTERVAL / (1.0 + 0.25 * GameState.defense_operator_count(global_position))
+			_fire(_target)
+
+
+	func _nearest_zombie() -> Node3D:
+		return GameState.nearest_entity_in_group(global_position, "zombies", _range()) as Node3D
+
+
+	func _fire(target: Node3D) -> void:
+		var from := _head.global_position + Vector3(0, 0.05, 0)
+		var to := target.global_position + Vector3(0, 1.0, 0)
+		target.take_damage(_damage())
+		_tracer(from, to)
+		_flash(from)
 
 
 # 照明灯：3 米灯杆 + 发光灯泡，夜间自动点亮判定圈（meta lamp_on），可被丧尸打爆
